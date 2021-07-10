@@ -68,7 +68,7 @@ void testScene::controlFrame()
 {
 	_count++;
 
-	if (_count > 5) {
+	if (_count > 4) {
 		if (_frameX >= _moveImg->getMaxFrameX())
 			_frameX = 0;
 		else
