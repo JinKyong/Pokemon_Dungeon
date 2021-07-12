@@ -16,9 +16,13 @@ HRESULT playGround::init()
 {
 	gameNode::init(true);
 
+	_player = new Player;
+	_player->init();
+
+	SCENEMANAGER->init(_player);
+
 	SCENEMANAGER->addScene("test", new testScene);
 	SCENEMANAGER->changeScene("test");
-
 
 	_debug = false;
 
@@ -62,7 +66,6 @@ void playGround::render()
 	////투명 브러쉬
 	//HBRUSH myBrush = (HBRUSH)GetStockObject(NULL_BRUSH);
 	//HBRUSH oldBrush = (HBRUSH)SelectObject(getMemDC(), myBrush);
-
 
 
 	//HPEN myPen = (HPEN)CreatePen(1, 2, RGB(255, 0, 0));

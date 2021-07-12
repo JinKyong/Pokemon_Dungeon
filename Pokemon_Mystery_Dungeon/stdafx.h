@@ -47,7 +47,7 @@ using namespace D2D1;
 // ## 매크로 처리 ##
 //==================================
 
-#define WINNAME (LPTSTR)(TEXT("THE LEGEND OF ZELDA : A LINK TO THE PAST"))
+#define WINNAME (LPTSTR)(TEXT("Pokemon Mystery Dungeon : Explorers of Time"))
 #define WINSTARTX 50	//윈도우 창 시작좌표 (left)
 #define WINSTARTY 50	//윈도우 창 시작좌표 (top)
 #define WINSIZEX 1024	//윈도우 가로크기
@@ -75,6 +75,13 @@ using namespace D2D1;
 #define SAFE_DELETE_ARRAY(p) { if(p) { delete[](p); (p) = nullptr; } }
 #define SAFE_RELEASE(p) { if(p) { (p)->release(); (p) = NULL; } }
 #define SAFE_RELEASE2(p) { if(p) { (p)->Release(); (p) = NULL; } }
+
+
+
+//프레임 렌더 카운트
+#define RENDERCOUNT		0.1
+#define RENDERCOUNT2	RENDERCOUNT * 2
+
 
 //==================================
 // ## extern ##

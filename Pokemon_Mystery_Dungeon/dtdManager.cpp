@@ -47,7 +47,7 @@ HRESULT dtdManager::init()
 			DWRITE_FONT_WEIGHT_NORMAL,
 			DWRITE_FONT_STYLE_NORMAL,
 			DWRITE_FONT_STRETCH_NORMAL,
-			30.0f,
+			15,
 			L"ko-kr",
 			&_dWFormat
 		);

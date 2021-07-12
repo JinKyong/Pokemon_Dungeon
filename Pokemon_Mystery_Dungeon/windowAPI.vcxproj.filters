@@ -31,29 +31,35 @@
     <Filter Include="2DGameFramework\timer">
       <UniqueIdentifier>{51ba2134-09a6-4e4a-a113-fec61f8f954a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="playGround\player">
-      <UniqueIdentifier>{ad9d0436-554f-453f-9495-e346fe762b4a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="playGround\pokemon">
-      <UniqueIdentifier>{1f8f557c-d5f6-4068-8b1b-e6f029b473ff}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="playGround\stage">
-      <UniqueIdentifier>{331f8d2a-72a8-4a40-8f8b-562c5b9aa040}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="playGround\stage\base">
-      <UniqueIdentifier>{db288f0d-41f2-4bfd-9e14-5eb3c195c761}</UniqueIdentifier>
-    </Filter>
     <Filter Include="2DGameFramework\video">
       <UniqueIdentifier>{af97ad4b-fd67-4c13-ba98-9340c86d80aa}</UniqueIdentifier>
     </Filter>
     <Filter Include="2DGameFramework\image">
       <UniqueIdentifier>{66e1e30c-aad1-4533-8b44-c8a4fc574d9d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="playGround\item">
+    <Filter Include="playGround\Item">
       <UniqueIdentifier>{9f02f7b0-652e-42ae-b392-a004f7ae5939}</UniqueIdentifier>
     </Filter>
-    <Filter Include="playGround\item\base">
+    <Filter Include="playGround\Item\base">
       <UniqueIdentifier>{4333cee4-2e32-4a06-bbcc-9880b13f7c48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="playGround\Stage">
+      <UniqueIdentifier>{331f8d2a-72a8-4a40-8f8b-562c5b9aa040}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="playGround\Stage\base">
+      <UniqueIdentifier>{db288f0d-41f2-4bfd-9e14-5eb3c195c761}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="playGround\Pokémon">
+      <UniqueIdentifier>{1f8f557c-d5f6-4068-8b1b-e6f029b473ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="playGround\Pokémon\Player">
+      <UniqueIdentifier>{ad9d0436-554f-453f-9495-e346fe762b4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="playGround\Pokémon\base">
+      <UniqueIdentifier>{8d83b967-1653-4d3d-9f53-4a3e6da24357}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="playGround\Pokémon\Enemy">
+      <UniqueIdentifier>{12fe99d0-febe-4a9f-ba7b-9eb900cbf9a3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -88,10 +94,10 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
-      <Filter>playGround\stage\base</Filter>
+      <Filter>playGround\Stage\base</Filter>
     </ClInclude>
     <ClInclude Include="testScene.h">
-      <Filter>playGround\stage</Filter>
+      <Filter>playGround\Stage</Filter>
     </ClInclude>
     <ClInclude Include="video.h">
       <Filter>2DGameFramework\video</Filter>
@@ -129,6 +135,15 @@
     <ClInclude Include="image.h">
       <Filter>2DGameFramework\image</Filter>
     </ClInclude>
+    <ClInclude Include="Pokemon.h">
+      <Filter>playGround\Pokémon\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>playGround\Pokémon\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Charmander.h">
+      <Filter>playGround\Pokémon</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -150,10 +165,10 @@
       <Filter>2DGameFramework\timer</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
-      <Filter>playGround\stage\base</Filter>
+      <Filter>playGround\Stage\base</Filter>
     </ClCompile>
     <ClCompile Include="testScene.cpp">
-      <Filter>playGround\stage</Filter>
+      <Filter>playGround\Stage</Filter>
     </ClCompile>
     <ClCompile Include="video.cpp">
       <Filter>2DGameFramework\video</Filter>
@@ -190,6 +205,15 @@
     </ClCompile>
     <ClCompile Include="image.cpp">
       <Filter>2DGameFramework\image</Filter>
+    </ClCompile>
+    <ClCompile Include="Pokemon.cpp">
+      <Filter>playGround\Pokémon\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>playGround\Pokémon\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Charmander.cpp">
+      <Filter>playGround\Pokémon</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

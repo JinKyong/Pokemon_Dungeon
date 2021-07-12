@@ -148,6 +148,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="cameraManager.h" />
+    <ClInclude Include="Charmander.h" />
     <ClInclude Include="collisionManager.h" />
     <ClInclude Include="dImage.h" />
     <ClInclude Include="dtdManager.h" />
@@ -156,7 +157,9 @@
     <ClInclude Include="keyManager.h" />
     <ClInclude Include="macroFunc.h" />
     <ClInclude Include="gameNode.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="playGround.h" />
+    <ClInclude Include="Pokemon.h" />
     <ClInclude Include="printManager.h" />
     <ClInclude Include="randomFunction.h" />
     <ClInclude Include="Resource.h" />
@@ -174,6 +177,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cameraManager.cpp" />
+    <ClCompile Include="Charmander.cpp" />
     <ClCompile Include="collisionManager.cpp" />
     <ClCompile Include="dImage.cpp" />
     <ClCompile Include="dtdManager.cpp" />
@@ -181,7 +185,9 @@
     <ClCompile Include="image.cpp" />
     <ClCompile Include="imageManager.cpp" />
     <ClCompile Include="keyManager.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="playGround.cpp" />
+    <ClCompile Include="Pokemon.cpp" />
     <ClCompile Include="printManager.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="sceneManager.cpp" />

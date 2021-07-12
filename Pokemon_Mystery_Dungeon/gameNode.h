@@ -1,8 +1,5 @@
 #pragma once
 
-#define RENDERCOUNT		0.05
-#define RENDERCOUNT2	RENDERCOUNT * 2
-
 class gameNode
 {
 private:

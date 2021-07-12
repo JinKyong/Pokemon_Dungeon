@@ -1,8 +1,9 @@
 #include "stdafx.h"
 #include "sceneManager.h"
+#include "Player.h"
 #include "Scene.h"
 
-//Player* sceneManager::_player = NULL;
+Player* sceneManager::_player = NULL;
 Scene* sceneManager::_currentScene = NULL;
 
 sceneManager::sceneManager()
@@ -17,6 +18,13 @@ sceneManager::~sceneManager()
 HRESULT sceneManager::init()
 {
 	_currentScene = NULL;
+
+	return S_OK;
+}
+
+HRESULT sceneManager::init(Player * player)
+{
+	_player = player;
 
 	return S_OK;
 }
@@ -66,7 +74,7 @@ HRESULT sceneManager::changeScene(string sceneName)
 
 	if (find->second == _currentScene) return S_OK;
 
-	if (SUCCEEDED(find->second->init()))
+	if (SUCCEEDED(find->second->init(_player)))
 	{
 		//현재(있던) 씬의 릴리즈 함수를 실행해주고
 		if (_currentScene) _currentScene->release();
