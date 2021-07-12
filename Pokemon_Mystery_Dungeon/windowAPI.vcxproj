@@ -152,8 +152,11 @@
     <ClInclude Include="collisionManager.h" />
     <ClInclude Include="dImage.h" />
     <ClInclude Include="dtdManager.h" />
+    <ClInclude Include="Food.h" />
+    <ClInclude Include="Hold.h" />
     <ClInclude Include="image.h" />
     <ClInclude Include="imageManager.h" />
+    <ClInclude Include="Item.h" />
     <ClInclude Include="keyManager.h" />
     <ClInclude Include="macroFunc.h" />
     <ClInclude Include="gameNode.h" />
@@ -170,8 +173,10 @@
     <ClInclude Include="streamManager.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="testScene.h" />
+    <ClInclude Include="ThrowItem.h" />
     <ClInclude Include="timeManager.h" />
     <ClInclude Include="timer.h" />
+    <ClInclude Include="TMachine.h" />
     <ClInclude Include="utils.h" />
     <ClInclude Include="video.h" />
   </ItemGroup>
@@ -181,9 +186,12 @@
     <ClCompile Include="collisionManager.cpp" />
     <ClCompile Include="dImage.cpp" />
     <ClCompile Include="dtdManager.cpp" />
+    <ClCompile Include="Food.cpp" />
     <ClCompile Include="gameNode.cpp" />
+    <ClCompile Include="Hold.cpp" />
     <ClCompile Include="image.cpp" />
     <ClCompile Include="imageManager.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="keyManager.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="playGround.cpp" />
@@ -199,8 +207,10 @@
     </ClCompile>
     <ClCompile Include="streamManager.cpp" />
     <ClCompile Include="testScene.cpp" />
+    <ClCompile Include="ThrowItem.cpp" />
     <ClCompile Include="timeManager.cpp" />
     <ClCompile Include="timer.cpp" />
+    <ClCompile Include="TMachine.cpp" />
     <ClCompile Include="utils.cpp" />
     <ClCompile Include="video.cpp" />
     <ClCompile Include="winMain.cpp" />

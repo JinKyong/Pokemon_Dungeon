@@ -144,6 +144,21 @@
     <ClInclude Include="Charmander.h">
       <Filter>playGround\Pokémon</Filter>
     </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>playGround\Item\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Food.h">
+      <Filter>playGround\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Hold.h">
+      <Filter>playGround\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="TMachine.h">
+      <Filter>playGround\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ThrowItem.h">
+      <Filter>playGround\Item</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -214,6 +229,21 @@
     </ClCompile>
     <ClCompile Include="Charmander.cpp">
       <Filter>playGround\Pokémon</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>playGround\Item\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Food.cpp">
+      <Filter>playGround\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Hold.cpp">
+      <Filter>playGround\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="TMachine.cpp">
+      <Filter>playGround\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="ThrowItem.cpp">
+      <Filter>playGround\Item</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
