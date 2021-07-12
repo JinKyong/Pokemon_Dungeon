@@ -49,6 +49,12 @@
     <Filter Include="2DGameFramework\image">
       <UniqueIdentifier>{66e1e30c-aad1-4533-8b44-c8a4fc574d9d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="playGround\item">
+      <UniqueIdentifier>{9f02f7b0-652e-42ae-b392-a004f7ae5939}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="playGround\item\base">
+      <UniqueIdentifier>{4333cee4-2e32-4a06-bbcc-9880b13f7c48}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
