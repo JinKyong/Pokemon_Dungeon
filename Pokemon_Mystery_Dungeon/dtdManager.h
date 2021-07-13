@@ -23,7 +23,7 @@ private:
 public:
 	HRESULT init();
 	void release();
-	void render();
+	void render(float destX, float destY, float width, float height);
 
 	void beginDraw();
 	void endDraw();
@@ -46,6 +46,8 @@ public:
 	void resetBrushColor();
 	D2D1_COLOR_F getBrushColor() { return _dBrush->GetColor(); }
 	void setBrushColor(D2D1_COLOR_F color) { _dBrush->SetColor(color); }
+
+	ID2D1SolidColorBrush* getBrush() { return _dBrush; }
 
 	ID2D1HwndRenderTarget* getRenderTarget() { return _dRenderTarget; }
 	ID2D1BitmapRenderTarget* getBitRenderTarget() { return _dBitRenderTarget; }

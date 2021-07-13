@@ -3,11 +3,6 @@
 
 Player* Scene::_player = NULL;
 
-HRESULT Scene::init()
-{
-	return S_OK;
-}
-
 HRESULT Scene::init(Player * player)
 {
 	_player = player;

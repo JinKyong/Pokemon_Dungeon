@@ -84,6 +84,5 @@ void playGround::render()
 	DTDMANAGER->endDraw();
 	//==================================================s
 	//this->getBackBuffer()->render(getHDC(), 0, 0);
-	//CAMERAMANAGER->render(getHDC(), 0, 0, getMemDC());
-	DTDMANAGER->render();
+	CAMERAMANAGER->render(3 * WINSIZEX / 16, 3 * WINSIZEY / 8);
 }

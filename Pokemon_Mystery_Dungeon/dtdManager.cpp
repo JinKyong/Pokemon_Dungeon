@@ -71,30 +71,34 @@ HRESULT dtdManager::init()
 void dtdManager::release()
 {
 	//동적 할당한 객체들 모두 해제
-	if(_dFactory)			SAFE_RELEASE2(_dFactory);
-	if(_dRenderTarget)		SAFE_RELEASE2(_dRenderTarget);
-	if(_dBitRenderTarget)	SAFE_RELEASE2(_dBitRenderTarget);
-	if(_dBitmap)			SAFE_RELEASE2(_dBitmap);
-	if(_dBrush)				SAFE_RELEASE2(_dBrush);
+	if (_dFactory)			SAFE_RELEASE2(_dFactory);
+	if (_dRenderTarget)		SAFE_RELEASE2(_dRenderTarget);
+	if (_dBitRenderTarget)	SAFE_RELEASE2(_dBitRenderTarget);
+	if (_dBitmap)			SAFE_RELEASE2(_dBitmap);
+	if (_dBrush)				SAFE_RELEASE2(_dBrush);
 
-	if(_dWFactory)			SAFE_RELEASE2(_dWFactory);
-	if(_dWFormat)			SAFE_RELEASE2(_dWFormat);
+	if (_dWFactory)			SAFE_RELEASE2(_dWFactory);
+	if (_dWFormat)			SAFE_RELEASE2(_dWFormat);
 }
 
-void dtdManager::render()
+void dtdManager::render(float destX, float destY, float width, float height)
 {
 	if (!_dRenderTarget) return;
 
 	_dRenderTarget->BeginDraw();
-	_dRenderTarget->Clear(ColorF(ColorF::White));
+	_dRenderTarget->Clear(ColorF(ColorF::Aquamarine));
 
-	D2D1_RECT_F dest = { 0, 0, WINSIZEX, WINSIZEY };
-	D2D1_RECT_F sour = CAMERAMANAGER->getScreen();
+	//위 화면(UI를 불러서 그림)
+	D2D1_RECT_F dest;
+	D2D1_RECT_F sour = UIMANAGER->getScreen();
+	_dRenderTarget->FillRectangle(sour, _dBrush);
 
-	if (_dRenderTarget) {
-		_dRenderTarget->DrawBitmap(_dBitmap, dest,
-			1.0, D2D1_BITMAP_INTERPOLATION_MODE_LINEAR, sour);
-	}
+	//아래 화면 (실제 게임 화면)
+	dest = { destX, destY, destX + width, destY + height };
+	sour = CAMERAMANAGER->getScreen();
+
+	_dRenderTarget->DrawBitmap(_dBitmap, dest,
+		1.0, D2D1_BITMAP_INTERPOLATION_MODE_LINEAR, sour);
 
 	_dRenderTarget->EndDraw();
 }
@@ -161,7 +165,7 @@ void dtdManager::setBackBuffer(float width, float height)
 	SAFE_RELEASE2(_dBitRenderTarget);
 
 	if (_dRenderTarget) {
-		_dRenderTarget->CreateCompatibleRenderTarget(SizeF(width , height), &_dBitRenderTarget);
+		_dRenderTarget->CreateCompatibleRenderTarget(SizeF(width, height), &_dBitRenderTarget);
 	}
 }
 

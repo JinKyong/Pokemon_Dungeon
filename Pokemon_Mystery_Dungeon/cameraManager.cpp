@@ -9,20 +9,19 @@ cameraManager::~cameraManager()
 {
 }
 
-HRESULT cameraManager::init(float width, float height)
+HRESULT cameraManager::init()
 {
 	//backDC와 frontDC크기 설정
-	_backWidth = width;
-	_backHeight = height;
-	_frontWidth = WINSIZEX;
-	_frontHeight = WINSIZEY;
+	_backWidth = WINSIZEX;
+	_backHeight = WINSIZEY;
+	_frontWidth = 5 * WINSIZEX / 8;
+	_frontHeight = 5 * WINSIZEY / 8;
 
 	//화면 Rect 생성
 	_screen = dRectMake(0, 0, WINSIZEX, WINSIZEY);
 
 	//fade화면
-	//_fadeScreen = IMAGEMANAGER->addImage("fade_B", "img/fade_B.bmp",
-	//	WINSIZEX, WINSIZEY, true, RGB(255, 0, 255), true);
+	_fadeScreen = IMAGEMANAGER->addDImage("fade_B", L"img/fade_B.png", WINSIZEX, WINSIZEY);
 
 	_alpha = 1.0;
 	_fade = NORMAL;
@@ -89,7 +88,7 @@ void cameraManager::fadeIn()
 
 	if (_alpha == 0) _fade = NORMAL;
 
-	//_fadeScreen->alphaRender(hdc, _screen.left, _screen.top, _alpha);
+	_fadeScreen->render(_screen.left, _screen.top, _alpha);
 }
 
 void cameraManager::fadeOut()
@@ -99,7 +98,7 @@ void cameraManager::fadeOut()
 
 	if (_alpha == 1.0) _fade = NORMAL;
 
-	//_fadeScreen->alphaRender(hdc, _screen.left, _screen.top, _alpha);
+	_fadeScreen->render(_screen.left, _screen.top, _alpha);
 }
 
 void cameraManager::vibrateScreen(float standardX, float standardY, float magnitude, float interval)
@@ -137,9 +136,10 @@ void cameraManager::render(float destX, float destY)
 	if (_fade == FADEIN)		fadeIn();
 	else if (_fade == FADEOUT)	fadeOut();
 
+	DTDMANAGER->render(destX, destY, _frontWidth, _frontHeight);
+
 #ifdef _DEBUG
 #endif // _DEBUG
-
 
 }
 
@@ -164,6 +164,6 @@ void cameraManager::onWindow(float & x, float & y)
 void cameraManager::setBackScreenSize(float width, float height)
 {
 	_backWidth = width, _backHeight = height;
-	
+
 	DTDMANAGER->setBackBuffer(width, height);
 }

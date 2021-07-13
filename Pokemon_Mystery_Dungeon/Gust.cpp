@@ -23,5 +23,5 @@ void Gust::release()
 
 void Gust::useSkill(float x, float y)
 {
-	EFFECTMANAGER->addEffect(x, y, 1);
+	//EFFECTMANAGER->addEffect(x, y, 1);
 }

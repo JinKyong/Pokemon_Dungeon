@@ -38,8 +38,8 @@ void ThrowItem::itemMove(float x, float y, float angle)
 	{
 		_isThrow = false;
 
-		_x += cosf(_angle) * _speed;
-		_y += -sinf(_angle) * _speed;
+		_x += cosf(_angle);
+		_y += -sinf(_angle);
 
 		_body = RectMakeCenter(_x, _y, ITEMSIZE, ITEMSIZE);
 	}

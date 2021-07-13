@@ -4,7 +4,6 @@
 class printManager : public singletonBase<printManager>
 {
 private:
-	char _text[128];
 	bool _debug;
 
 public:

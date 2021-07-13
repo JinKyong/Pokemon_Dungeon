@@ -22,5 +22,5 @@ void Lightning::release()
 
 void Lightning::useSkill(float x, float y)
 {
-	EFFECTMANAGER->addEffect(x, y, 2);
+	//EFFECTMANAGER->addEffect(x, y, 2);
 }

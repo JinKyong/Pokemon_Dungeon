@@ -4,15 +4,29 @@
 class Charmander : public Pokemon
 {
 private:
-	dImage* _stateImage[END_POKEMON_STATE];
+	float _tmpX, _tmpY;
+	float _tmpCount;
+	float _tmpCountMax;
+
+	float _a, _p, _q;
+	bool _attack;
+	bool _attackDirect;
 
 public:
+	Charmander();
+	~Charmander();
+
 	HRESULT init();
 	void release();
 	void update();
-	void render();
+	void render(float x, float y);
 
-	void changeState(POKEMON_STATE state);
-	void changeDirect(int direct);
+	float attackRange(float x);
+
+
+
+	void renderImage(float x, float y);
+
+	void renderAttack(float x, float y);
 };
 

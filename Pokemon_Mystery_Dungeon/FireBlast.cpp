@@ -22,5 +22,5 @@ void FireBlast::release()
 
 void FireBlast::useSkill(float x, float y)
 {
-	EFFECTMANAGER->addEffect(x, y, 0);
+	//EFFECTMANAGER->addEffect(x, y, 0);
 }

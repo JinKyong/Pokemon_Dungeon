@@ -19,10 +19,13 @@ private:
 
 	float _backWidth, _backHeight;	//backDC 크기
 	float _frontWidth, _frontHeight;	//frontDC 크기
+
+
 	//fade
-	image* _fadeScreen;
+	dImage* _fadeScreen;
 	float _alpha;
 	CAMERAFADE _fade;
+
 
 	//카메라 설정값
 	float _count;	//진동할 때 사용하는 count
@@ -35,7 +38,7 @@ public:
 	cameraManager();
 	~cameraManager();
 
-	HRESULT init(float width, float height);
+	HRESULT init();
 	void release();
 
 	//카메라 위치(screen) 갱신

@@ -72,9 +72,11 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 		}
 		else
 		{
-			TIMEMANAGER->update(60.0f);
-			_pg.update();
-			_pg.render();
+			if (GetActiveWindow() == _hWnd) {
+				TIMEMANAGER->update(60.0f);
+				_pg.update();
+				_pg.render();
+			}
 		}
 	}
 	

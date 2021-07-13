@@ -20,12 +20,13 @@ void testScene::release()
 void testScene::update()
 {
 	_player->update();
-	CAMERAMANAGER->updateScreen(_player->getPokemon()->getX(), _player->getPokemon()->getY());
-
+	CAMERAMANAGER->updateScreen(_player->getX(), _player->getY());
+	//CAMERAMANAGER->vibrateScreen(_player->getX(), _player->getY());
 }
 
 void testScene::render()
 {
+	//실제 게임 화면
 	D2D1_RECT_F rc = CAMERAMANAGER->getScreen();
 	_back->render(rc.left, rc.top, rc.left, rc.top,
 		rc.right - rc.left, rc.bottom - rc.top);

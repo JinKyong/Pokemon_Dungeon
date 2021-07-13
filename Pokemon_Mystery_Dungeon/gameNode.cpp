@@ -26,12 +26,13 @@ HRESULT gameNode::init(bool managerInit)
 		//SetTimer(_hWnd, 1, 10, NULL);
 		KEYMANAGER->init();
 		IMAGEMANAGER->init();
-		CAMERAMANAGER->init(WINSIZEX, WINSIZEY);
 		TIMEMANAGER->init();
 		PRINTMANAGER->init();
 		STREAMMANAGER->init();
 		DTDMANAGER->init();
-		EFFECTMANAGER->init();
+		CAMERAMANAGER->init();
+		UIMANAGER->init();
+		POKEDEX->init();
 	}
 
 	return S_OK;
@@ -48,9 +49,6 @@ void gameNode::release()
 		IMAGEMANAGER->release();
 		IMAGEMANAGER->releaseSingleton();
 
-		CAMERAMANAGER->release();
-		CAMERAMANAGER->releaseSingleton();
-
 		TIMEMANAGER->release();
 		TIMEMANAGER->releaseSingleton();
 
@@ -63,8 +61,14 @@ void gameNode::release()
 		DTDMANAGER->release();
 		DTDMANAGER->releaseSingleton();
 
-		EFFECTMANAGER->release();
-		EFFECTMANAGER->releaseSingleton();
+		CAMERAMANAGER->release();
+		CAMERAMANAGER->releaseSingleton();
+
+		UIMANAGER->release();
+		UIMANAGER->releaseSingleton();
+
+		POKEDEX->release();
+		POKEDEX->releaseSingleton();
 
 		CoUninitialize();
 	}

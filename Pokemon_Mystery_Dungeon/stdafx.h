@@ -31,12 +31,13 @@
 #include "sceneManager.h"
 #include "printManager.h"
 #include "collisionManager.h"
-//#include "uiManager.h"
-#include "EffectManager.h"
+#include "uiManager.h"
+//#include "EffectManager.h"
 //#include "inventoryManager.h"
 //#include "txtData.h"
 #include "streamManager.h"
 #include "dtdManager.h"
+#include "pokeDex.h"
 
 
 using namespace std;
@@ -50,8 +51,8 @@ using namespace D2D1;
 #define WINNAME (LPTSTR)(TEXT("Pokemon Mystery Dungeon : Explorers of Time"))
 #define WINSTARTX 50	//윈도우 창 시작좌표 (left)
 #define WINSTARTY 50	//윈도우 창 시작좌표 (top)
-#define WINSIZEX 1024	//윈도우 가로크기
-#define WINSIZEY 896	//윈도우 세로크기
+#define WINSIZEX 1100	//윈도우 가로크기
+#define WINSIZEY 900	//윈도우 세로크기
 #define WINSTYLE WS_CAPTION | WS_SYSMENU
 
 #define RND randomFunction::getSingleton()
@@ -63,13 +64,14 @@ using namespace D2D1;
 //#define STATEMANAGER stateManager::getSingleton()
 #define PRINTMANAGER printManager::getSingleton()
 #define COLLISIONMANAGER collisionManager::getSingleton()
-//#define UIMANAGER uiManager::getSingleton()
-#define EFFECTMANAGER EffectManager::getSingleton()
+#define UIMANAGER uiManager::getSingleton()
+//#define EFFECTMANAGER EffectManager::getSingleton()
 //#define INVENTORYMANAGER inventoryManager::getSingleton()
 //#define TILEMANAGER tileManager::getSingleton()
 //#define TXTDATA txtData::getSingleton()
 #define STREAMMANAGER streamManager::getSingleton()
 #define DTDMANAGER dtdManager::getSingleton()
+#define POKEDEX pokeDex::getSingleton()
 
 #define SAFE_DELETE(p) { if(p) { delete(p); (p) = nullptr; } }
 #define SAFE_DELETE_ARRAY(p) { if(p) { delete[](p); (p) = nullptr; } }
@@ -80,7 +82,6 @@ using namespace D2D1;
 
 //프레임 렌더 카운트
 #define RENDERCOUNT		0.1
-#define RENDERCOUNT2	RENDERCOUNT * 2
 
 
 //==================================

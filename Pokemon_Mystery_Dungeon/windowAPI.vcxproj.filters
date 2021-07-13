@@ -61,17 +61,20 @@
     <Filter Include="playGround\Pokémon\Enemy">
       <UniqueIdentifier>{12fe99d0-febe-4a9f-ba7b-9eb900cbf9a3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="playGround\skill">
+    <Filter Include="playGround\Skill">
       <UniqueIdentifier>{c1152465-957e-445b-9151-7d60efa4939c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="playGround\skill\base">
+    <Filter Include="playGround\Skill\base">
       <UniqueIdentifier>{d8a17582-ec80-46b7-af0d-28d1a5e66651}</UniqueIdentifier>
     </Filter>
-    <Filter Include="playGround\effect">
+    <Filter Include="playGround\Effect">
       <UniqueIdentifier>{84c97ce5-1f2e-4da6-b1e2-1a64ee558a9f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="playGround\effect\base">
+    <Filter Include="playGround\Effect\base">
       <UniqueIdentifier>{9e797791-43b7-4fb8-aacd-ad4d329e8490}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="playGround\PokéDex">
+      <UniqueIdentifier>{d6ea5394-ac74-483f-8d43-42be358411f4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -153,9 +156,6 @@
     <ClInclude Include="Player.h">
       <Filter>playGround\Pokémon\Player</Filter>
     </ClInclude>
-    <ClInclude Include="Charmander.h">
-      <Filter>playGround\Pokémon</Filter>
-    </ClInclude>
     <ClInclude Include="Item.h">
       <Filter>playGround\Item\base</Filter>
     </ClInclude>
@@ -172,40 +172,67 @@
       <Filter>playGround\Item</Filter>
     </ClInclude>
     <ClInclude Include="SkillManager.h">
-      <Filter>playGround\skill</Filter>
+      <Filter>playGround\Skill</Filter>
     </ClInclude>
     <ClInclude Include="RockSlide.h">
-      <Filter>playGround\skill</Filter>
+      <Filter>playGround\Skill</Filter>
     </ClInclude>
     <ClInclude Include="Lightning.h">
-      <Filter>playGround\skill</Filter>
+      <Filter>playGround\Skill</Filter>
     </ClInclude>
     <ClInclude Include="Gust.h">
-      <Filter>playGround\skill</Filter>
+      <Filter>playGround\Skill</Filter>
     </ClInclude>
     <ClInclude Include="FireBlast.h">
-      <Filter>playGround\skill</Filter>
+      <Filter>playGround\Skill</Filter>
     </ClInclude>
     <ClInclude Include="Skill.h">
-      <Filter>playGround\skill\base</Filter>
+      <Filter>playGround\Skill\base</Filter>
     </ClInclude>
     <ClInclude Include="EF_FireBlast.h">
-      <Filter>playGround\effect</Filter>
+      <Filter>playGround\Effect</Filter>
     </ClInclude>
     <ClInclude Include="EF_Gust.h">
-      <Filter>playGround\effect</Filter>
+      <Filter>playGround\Effect</Filter>
     </ClInclude>
     <ClInclude Include="EF_Lightning.h">
-      <Filter>playGround\effect</Filter>
+      <Filter>playGround\Effect</Filter>
     </ClInclude>
     <ClInclude Include="EF_RockSlide.h">
-      <Filter>playGround\effect</Filter>
+      <Filter>playGround\Effect</Filter>
     </ClInclude>
     <ClInclude Include="EffectManager.h">
-      <Filter>playGround\effect</Filter>
+      <Filter>playGround\Effect</Filter>
     </ClInclude>
     <ClInclude Include="Effect.h">
-      <Filter>playGround\effect\base</Filter>
+      <Filter>playGround\Effect\base</Filter>
+    </ClInclude>
+    <ClInclude Include="uiManager.h">
+      <Filter>2DGameFramework\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Charizard.h">
+      <Filter>playGround\Pokémon</Filter>
+    </ClInclude>
+    <ClInclude Include="Charmander.h">
+      <Filter>playGround\Pokémon</Filter>
+    </ClInclude>
+    <ClInclude Include="Charmeleon.h">
+      <Filter>playGround\Pokémon</Filter>
+    </ClInclude>
+    <ClInclude Include="Pichu.h">
+      <Filter>playGround\Pokémon</Filter>
+    </ClInclude>
+    <ClInclude Include="Pikachu.h">
+      <Filter>playGround\Pokémon</Filter>
+    </ClInclude>
+    <ClInclude Include="Raichu.h">
+      <Filter>playGround\Pokémon</Filter>
+    </ClInclude>
+    <ClInclude Include="PokemonHeader.h">
+      <Filter>playGround\Pokémon\base</Filter>
+    </ClInclude>
+    <ClInclude Include="pokeDex.h">
+      <Filter>playGround\PokéDex</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -275,9 +302,6 @@
     <ClCompile Include="Player.cpp">
       <Filter>playGround\Pokémon\Player</Filter>
     </ClCompile>
-    <ClCompile Include="Charmander.cpp">
-      <Filter>playGround\Pokémon</Filter>
-    </ClCompile>
     <ClCompile Include="Item.cpp">
       <Filter>playGround\Item\base</Filter>
     </ClCompile>
@@ -294,40 +318,64 @@
       <Filter>playGround\Item</Filter>
     </ClCompile>
     <ClCompile Include="SkillManager.cpp">
-      <Filter>playGround\skill</Filter>
+      <Filter>playGround\Skill</Filter>
     </ClCompile>
     <ClCompile Include="RockSlide.cpp">
-      <Filter>playGround\skill</Filter>
+      <Filter>playGround\Skill</Filter>
     </ClCompile>
     <ClCompile Include="Lightning.cpp">
-      <Filter>playGround\skill</Filter>
+      <Filter>playGround\Skill</Filter>
     </ClCompile>
     <ClCompile Include="Gust.cpp">
-      <Filter>playGround\skill</Filter>
+      <Filter>playGround\Skill</Filter>
     </ClCompile>
     <ClCompile Include="FireBlast.cpp">
-      <Filter>playGround\skill</Filter>
+      <Filter>playGround\Skill</Filter>
     </ClCompile>
     <ClCompile Include="Skill.cpp">
-      <Filter>playGround\skill\base</Filter>
+      <Filter>playGround\Skill\base</Filter>
     </ClCompile>
     <ClCompile Include="EF_FireBlast.cpp">
-      <Filter>playGround\effect</Filter>
+      <Filter>playGround\Effect</Filter>
     </ClCompile>
     <ClCompile Include="EF_Gust.cpp">
-      <Filter>playGround\effect</Filter>
+      <Filter>playGround\Effect</Filter>
     </ClCompile>
     <ClCompile Include="EF_Lightning.cpp">
-      <Filter>playGround\effect</Filter>
+      <Filter>playGround\Effect</Filter>
     </ClCompile>
     <ClCompile Include="EF_RockSlide.cpp">
-      <Filter>playGround\effect</Filter>
+      <Filter>playGround\Effect</Filter>
     </ClCompile>
     <ClCompile Include="EffectManager.cpp">
-      <Filter>playGround\effect</Filter>
+      <Filter>playGround\Effect</Filter>
     </ClCompile>
     <ClCompile Include="Effect.cpp">
-      <Filter>playGround\effect\base</Filter>
+      <Filter>playGround\Effect\base</Filter>
+    </ClCompile>
+    <ClCompile Include="uiManager.cpp">
+      <Filter>2DGameFramework\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Charizard.cpp">
+      <Filter>playGround\Pokémon</Filter>
+    </ClCompile>
+    <ClCompile Include="Charmander.cpp">
+      <Filter>playGround\Pokémon</Filter>
+    </ClCompile>
+    <ClCompile Include="Charmeleon.cpp">
+      <Filter>playGround\Pokémon</Filter>
+    </ClCompile>
+    <ClCompile Include="Pichu.cpp">
+      <Filter>playGround\Pokémon</Filter>
+    </ClCompile>
+    <ClCompile Include="Pikachu.cpp">
+      <Filter>playGround\Pokémon</Filter>
+    </ClCompile>
+    <ClCompile Include="Raichu.cpp">
+      <Filter>playGround\Pokémon</Filter>
+    </ClCompile>
+    <ClCompile Include="pokeDex.cpp">
+      <Filter>playGround\PokéDex</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

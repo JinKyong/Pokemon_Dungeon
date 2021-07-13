@@ -148,7 +148,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="cameraManager.h" />
+    <ClInclude Include="Charizard.h" />
     <ClInclude Include="Charmander.h" />
+    <ClInclude Include="Charmeleon.h" />
     <ClInclude Include="collisionManager.h" />
     <ClInclude Include="dImage.h" />
     <ClInclude Include="dtdManager.h" />
@@ -169,10 +171,15 @@
     <ClInclude Include="Lightning.h" />
     <ClInclude Include="macroFunc.h" />
     <ClInclude Include="gameNode.h" />
+    <ClInclude Include="Pichu.h" />
+    <ClInclude Include="Pikachu.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="playGround.h" />
+    <ClInclude Include="pokeDex.h" />
     <ClInclude Include="Pokemon.h" />
+    <ClInclude Include="PokemonHeader.h" />
     <ClInclude Include="printManager.h" />
+    <ClInclude Include="Raichu.h" />
     <ClInclude Include="randomFunction.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="RockSlide.h" />
@@ -189,12 +196,15 @@
     <ClInclude Include="timeManager.h" />
     <ClInclude Include="timer.h" />
     <ClInclude Include="TMachine.h" />
+    <ClInclude Include="uiManager.h" />
     <ClInclude Include="utils.h" />
     <ClInclude Include="video.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cameraManager.cpp" />
+    <ClCompile Include="Charizard.cpp" />
     <ClCompile Include="Charmander.cpp" />
+    <ClCompile Include="Charmeleon.cpp" />
     <ClCompile Include="collisionManager.cpp" />
     <ClCompile Include="dImage.cpp" />
     <ClCompile Include="dtdManager.cpp" />
@@ -214,10 +224,14 @@
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="keyManager.cpp" />
     <ClCompile Include="Lightning.cpp" />
+    <ClCompile Include="Pichu.cpp" />
+    <ClCompile Include="Pikachu.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="playGround.cpp" />
+    <ClCompile Include="pokeDex.cpp" />
     <ClCompile Include="Pokemon.cpp" />
     <ClCompile Include="printManager.cpp" />
+    <ClCompile Include="Raichu.cpp" />
     <ClCompile Include="RockSlide.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="sceneManager.cpp" />
@@ -235,6 +249,7 @@
     <ClCompile Include="timeManager.cpp" />
     <ClCompile Include="timer.cpp" />
     <ClCompile Include="TMachine.cpp" />
+    <ClCompile Include="uiManager.cpp" />
     <ClCompile Include="utils.cpp" />
     <ClCompile Include="video.cpp" />
     <ClCompile Include="winMain.cpp" />
