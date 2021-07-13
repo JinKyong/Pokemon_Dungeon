@@ -7,6 +7,9 @@ HRESULT Player::init()
 	_pokemon = new Charmander;
 	_pokemon->init();
 
+	_sm = new SkillManager;
+	_sm->init();
+
 	return S_OK;
 }
 
@@ -54,7 +57,18 @@ void Player::update()
 
 	if (KEYMANAGER->isOnceKeyDown('X')) { _pokemon->changeState(P_ATTACK); }
 
+	if (KEYMANAGER->isOnceKeyDown('S'))
+	{
+		_sm->addSkill(_pokemon->getX() + 48, _pokemon->getY(), _testNum);
+	}
+	if (KEYMANAGER->isOnceKeyDown('D'))
+	{
+		_testNum++;
+		if (_testNum > 3) _testNum = 0;
+	}
+
 	_pokemon->update();
+	EFFECTMANAGER->update();
 }
 
 void Player::render()
@@ -67,4 +81,5 @@ void Player::render()
 		RECT tmp = _pokemon->getBody();
 		DTDMANAGER->printText(str, dRectMake(tmp.left, tmp.top - 20, 100, 20));
 	}
+	EFFECTMANAGER->render();
 }

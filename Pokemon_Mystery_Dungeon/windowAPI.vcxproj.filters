@@ -61,6 +61,18 @@
     <Filter Include="playGround\Pokémon\Enemy">
       <UniqueIdentifier>{12fe99d0-febe-4a9f-ba7b-9eb900cbf9a3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="playGround\skill">
+      <UniqueIdentifier>{c1152465-957e-445b-9151-7d60efa4939c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="playGround\skill\base">
+      <UniqueIdentifier>{d8a17582-ec80-46b7-af0d-28d1a5e66651}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="playGround\effect">
+      <UniqueIdentifier>{84c97ce5-1f2e-4da6-b1e2-1a64ee558a9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="playGround\effect\base">
+      <UniqueIdentifier>{9e797791-43b7-4fb8-aacd-ad4d329e8490}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -159,6 +171,42 @@
     <ClInclude Include="ThrowItem.h">
       <Filter>playGround\Item</Filter>
     </ClInclude>
+    <ClInclude Include="SkillManager.h">
+      <Filter>playGround\skill</Filter>
+    </ClInclude>
+    <ClInclude Include="RockSlide.h">
+      <Filter>playGround\skill</Filter>
+    </ClInclude>
+    <ClInclude Include="Lightning.h">
+      <Filter>playGround\skill</Filter>
+    </ClInclude>
+    <ClInclude Include="Gust.h">
+      <Filter>playGround\skill</Filter>
+    </ClInclude>
+    <ClInclude Include="FireBlast.h">
+      <Filter>playGround\skill</Filter>
+    </ClInclude>
+    <ClInclude Include="Skill.h">
+      <Filter>playGround\skill\base</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_FireBlast.h">
+      <Filter>playGround\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_Gust.h">
+      <Filter>playGround\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_Lightning.h">
+      <Filter>playGround\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_RockSlide.h">
+      <Filter>playGround\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectManager.h">
+      <Filter>playGround\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect.h">
+      <Filter>playGround\effect\base</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -244,6 +292,42 @@
     </ClCompile>
     <ClCompile Include="ThrowItem.cpp">
       <Filter>playGround\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillManager.cpp">
+      <Filter>playGround\skill</Filter>
+    </ClCompile>
+    <ClCompile Include="RockSlide.cpp">
+      <Filter>playGround\skill</Filter>
+    </ClCompile>
+    <ClCompile Include="Lightning.cpp">
+      <Filter>playGround\skill</Filter>
+    </ClCompile>
+    <ClCompile Include="Gust.cpp">
+      <Filter>playGround\skill</Filter>
+    </ClCompile>
+    <ClCompile Include="FireBlast.cpp">
+      <Filter>playGround\skill</Filter>
+    </ClCompile>
+    <ClCompile Include="Skill.cpp">
+      <Filter>playGround\skill\base</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_FireBlast.cpp">
+      <Filter>playGround\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_Gust.cpp">
+      <Filter>playGround\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_Lightning.cpp">
+      <Filter>playGround\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_RockSlide.cpp">
+      <Filter>playGround\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectManager.cpp">
+      <Filter>playGround\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect.cpp">
+      <Filter>playGround\effect\base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

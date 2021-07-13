@@ -32,7 +32,7 @@
 #include "printManager.h"
 #include "collisionManager.h"
 //#include "uiManager.h"
-//#include "EffectManager.h"
+#include "EffectManager.h"
 //#include "inventoryManager.h"
 //#include "txtData.h"
 #include "streamManager.h"
@@ -64,7 +64,7 @@ using namespace D2D1;
 #define PRINTMANAGER printManager::getSingleton()
 #define COLLISIONMANAGER collisionManager::getSingleton()
 //#define UIMANAGER uiManager::getSingleton()
-//#define EFFECTMANAGER EffectManager::getSingleton()
+#define EFFECTMANAGER EffectManager::getSingleton()
 //#define INVENTORYMANAGER inventoryManager::getSingleton()
 //#define TILEMANAGER tileManager::getSingleton()
 //#define TXTDATA txtData::getSingleton()

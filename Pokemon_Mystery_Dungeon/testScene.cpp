@@ -21,6 +21,7 @@ void testScene::update()
 {
 	_player->update();
 	CAMERAMANAGER->updateScreen(_player->getPokemon()->getX(), _player->getPokemon()->getY());
+
 }
 
 void testScene::render()

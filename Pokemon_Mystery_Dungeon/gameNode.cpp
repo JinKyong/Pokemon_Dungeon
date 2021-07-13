@@ -31,6 +31,7 @@ HRESULT gameNode::init(bool managerInit)
 		PRINTMANAGER->init();
 		STREAMMANAGER->init();
 		DTDMANAGER->init();
+		EFFECTMANAGER->init();
 	}
 
 	return S_OK;
@@ -61,6 +62,9 @@ void gameNode::release()
 
 		DTDMANAGER->release();
 		DTDMANAGER->releaseSingleton();
+
+		EFFECTMANAGER->release();
+		EFFECTMANAGER->releaseSingleton();
 
 		CoUninitialize();
 	}
