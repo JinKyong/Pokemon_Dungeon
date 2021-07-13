@@ -59,5 +59,6 @@ HRESULT EffectManager::addEffect(float x, float y, int effect)
 
 		return S_OK;
 	}
+
 	return E_NOTIMPL;
 }

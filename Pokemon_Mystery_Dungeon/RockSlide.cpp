@@ -22,5 +22,5 @@ void RockSlide::release()
 
 void RockSlide::useSkill(float x, float y)
 {
-	//EFFECTMANAGER->addEffect(x, y, 3);
+	EFFECTMANAGER->addEffect(x, y, 3);
 }

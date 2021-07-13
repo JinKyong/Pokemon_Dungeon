@@ -32,4 +32,3 @@ public :
 	Effect* registerEffect(int effectNum, Effect* effect);
 	HRESULT addEffect(float x, float y, int effect);
 };
-
