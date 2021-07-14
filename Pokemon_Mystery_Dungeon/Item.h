@@ -8,6 +8,7 @@ enum ITEMTYPE
 	ITEM_HOLD,
 	ITEM_TM,		
 	ITEM_THROW,
+	ITEM_ORB,
 	ENDITEMTYPE //^^b
 };
 
@@ -42,10 +43,10 @@ public:
 	//void useItem();	//µµÇÎ¾à X
 	void eatItem();		//return value
 	void giveItem();
-	void throwItem(float x, float y, float angle);
 	
 	//throw
-	virtual void itemMove(float x, float y, float angle) = 0;
+	void throwItem(float x, float y, float angle);
+	void itemMove(float x, float y, float angle);
 
 	//get-set
 	float getX() { return _x; }
