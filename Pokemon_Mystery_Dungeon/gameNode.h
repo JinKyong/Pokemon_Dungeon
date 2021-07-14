@@ -18,8 +18,6 @@ public:
 	virtual void render();			//그리기 함수
 
 	void cursorOnWindow();
-	//백버퍼 접근자
-	//void setBackBufferSize(float width, float height){ _backBuffer->setwidth}
 
 	LRESULT MainProc(HWND, UINT, WPARAM, LPARAM);
 };

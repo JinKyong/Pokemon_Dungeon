@@ -1,21 +1,46 @@
 #include "stdafx.h"
 #include "Pokemon.h"
 
+void Pokemon::release()
+{
+}
+
+void Pokemon::update()
+{
+	if (_state == POKEMON_STATE_IDLE)			tuneIdle();
+	else if (_state == POKEMON_STATE_ATTACK)	tuneAttack();
+	else if (_state == POKEMON_STATE_HURT)		tuneHurt();
+}
+
+void Pokemon::render(float x, float y)
+{
+	controlFrame();
+
+	_currentImage->frameRender(
+		x + _tuningX - _currentImage->getFrameWidth() / 2,
+		y + _tuningY - _currentImage->getFrameHeight() / 2,
+		_frameX, _frameY);
+}
+
 void Pokemon::controlFrame()
 {
 	_frameCount += TIMEMANAGER->getElapsedTime();
 
 	if (_frameCount >= _count[_state]) {
 		if (_frameX >= _currentImage->getMaxFrameX()) {
-			if (_state == P_DEFAULT || _state == P_MOVE || _state == P_SLEEP)
+			if (_state == POKEMON_STATE_DEFAULT)
+				changeState(POKEMON_STATE_IDLE);
+			else if (_state == POKEMON_STATE_SLEEP)
 				_frameX = 0;
-			else if (_state == P_ATTACK) {
+			else if (_state == POKEMON_STATE_ATTACK) {
+
 			}
 			else
-				changeState(P_DEFAULT);
+				changeState(POKEMON_STATE_DEFAULT);
 		}
-		else
+		else {
 			_frameX++;
+		}
 
 		_frameCount = 0;
 	}
@@ -65,13 +90,53 @@ void Pokemon::changeState(POKEMON_STATE state)
 {
 	if (_state == state) return;
 
+
+	//상태 갱신
 	_state = state;
 	_currentImage = _stateImage[_state];
 
-	if (_state == P_SLEEP)
-		_frameY = 0;
 
+	//미세조정 초기화
+	_tuningX = 0;
+	_tuningY = 0;
+
+
+	//이미지 프레임/카운트 초기화
+	if (_state == POKEMON_STATE_SLEEP)
+		_frameY = 0;
 	_frameX = 0;
-	_idleCount = 0;
 	_frameCount = 0;
+}
+
+void Pokemon::tuneIdle()
+{
+	_tuningX = 0;
+	_tuningY = -4;
+}
+
+void Pokemon::tuneAttack()
+{
+	if (_frameX < _stateImage[POKEMON_STATE_ATTACK]->getMaxFrameX())
+		_tmpCount = _frameX * _count[POKEMON_STATE_ATTACK] + _frameCount;
+	else
+		_tmpCount -= TIMEMANAGER->getElapsedTime() * 2;
+
+	_tuningX = cosf(_angle) * attackRange(_tmpCount);
+	_tuningY = -sinf(_angle) * attackRange(_tmpCount);
+
+	if (_tmpCount < 0) {
+		_tmpCount = 0;
+		changeState(POKEMON_STATE_DEFAULT);
+	}
+}
+
+void Pokemon::tuneHurt()
+{
+	_tuningX = -cosf(_angle) * TILEWIDTH / 4 + RND->getFromFloatTo(-1, 1);
+	_tuningY = sinf(_angle) * TILEHEIGHT / 4 + RND->getFromFloatTo(-1, 1);
+}
+
+float Pokemon::attackRange(float x)
+{
+	return _gradient * (x - _interceptX) * (x - _interceptX) + _interceptY;
 }

@@ -6,9 +6,10 @@ class Pikachu : public Pokemon
 private:
 
 public:
+	Pikachu();
+	~Pikachu();
+
 	HRESULT init();
 	void release();
-	void update();
-	void render(float x, float y);
 };
 

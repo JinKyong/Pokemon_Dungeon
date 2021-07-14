@@ -1,27 +1,6 @@
 #pragma once
-#define TILEWIDTH 48
-#define TILEHEIGHT 48
+#include "PokemonType.h"
 
-/*enum ATTRIBUTE	//加己
-{
-	T_NORMAL,
-	T_GRASS,
-	T_FIRE,
-	T_WATER,
-	T_ELECTRIC,
-	T_FLYING,
-	T_GROUND,
-	T_ROCK,
-	T_BUG,
-	T_POISON,
-	T_STEEL,
-	T_FIGHTING,
-	T_ICE,
-	T_PSYCHIC,
-	T_DARK,
-	T_GHOST,
-	T_DRAGON
-};*/
 enum SKILLKEYVALUE	//傍拜加己
 {
 	FIREBLAST,

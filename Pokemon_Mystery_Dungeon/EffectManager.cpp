@@ -20,7 +20,7 @@ void EffectManager::update()
 	{
 		if ((*_viEffect)->getOff())
 		{
-			//SAFE_DELETE(*_viEffect); // 에러나면 순서만 바꾸기	//이거 활성화시키니 새로 이펙트가 나오면 터짐
+			SAFE_DELETE(*_viEffect); // 에러나면 순서만 바꾸기	//이거 활성화시키니 새로 이펙트가 나오면 터짐
 			_viEffect = _vEffect.erase(_viEffect);
 		}
 		else ++_viEffect;

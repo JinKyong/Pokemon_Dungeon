@@ -1,44 +1,31 @@
 #pragma once
+#include "PokemonType.h"
 
 #define RIGHT	0x00000001
 #define LEFT	0x00000002
 #define UP		0x00000004
 #define DOWN	0x00000008
 
-#define PSIZEX	48
-#define PSIZEY	48
-
-enum POKEMON_TYPE {
-	TYPE_NORMAL,
-	TYPE_FIRE,
-	TYPE_WATER,
-	TYPE_GRASS,
-	TYPE_ELECTRIC,
-	TYPE_ICE,
-	TYPE_FIGHTING,
-	TYPE_POISON,
-	TYPE_GROUND,
-	TYPE_FLYING,
-	TYPE_PSYCHIC,
-	TYPE_BUG,
-	TYPE_ROCK,
-	TYPE_GHOST,
-	TYPE_DRAGON,
-	TYPE_DARK,
-	TYPE_STEEL,
-	END_POKEMON_TYPE
-};
-
 enum POKEMON_STATE {
-	P_IDLE,
-	P_MOVE,
-	P_ATTACK,
-	P_SATTACK,
-	P_HURT,
-	P_SLEEP,
-	P_DEFAULT,
+	POKEMON_STATE_IDLE,
+	POKEMON_STATE_MOVE,
+	POKEMON_STATE_ATTACK,
+	POKEMON_STATE_SATTACK,
+	POKEMON_STATE_HURT,
+	POKEMON_STATE_SLEEP,
+	POKEMON_STATE_DEFAULT,
 	END_POKEMON_STATE
 };
+
+typedef struct tagPokemonStat {
+	int _hp;
+	int _attack;
+	int _defense;
+	int _sattack;
+	int _sdefense;
+	int _speed;
+}STAT, *PSTAT;
+
 
 class Pokemon
 {
@@ -52,27 +39,40 @@ protected:
 	int _frameX;
 	int _frameY;	//(== direct)
 	float _angle;
-	float _idleCount;					//DEFAULT상태일 때, IDLE로 가는 interval
+
 	float _frameCount;					//frameCount
 	float _count[END_POKEMON_STATE];	//frame넘기는 interval
+
+	//상태별 미세조정
+	float _tuningX;
+	float _tuningY;
+
+	//attack 관련 변수
+	float _interceptX;
+	float _interceptY;
+	float _gradient;
+	float _tmpCount;
+
+
+
+
+
 
 	//이름 & 도감 번호
 	wstring _name;
 	int _num;
 
+	//스탯
+	STAT _pokemonValue;
+
 	//타입 & 특성
 	POKEMON_TYPE _type;
 	//특성 _passive;
 
+	//상태이상
+	//현재 상태 : { 얼음, 수면, 마비, 독, 화상, 혼란, 헤롱헤롱, 노멀 }
+
 	//스탯(개체값)
-	int _hp;
-	int _attack;
-	int _defense;
-	int _sattack;
-	int _sdefense;
-	int _speed;
-
-
 
 	//배울 수 있는 기술(스킬)
 	//vector<int> _skill;
@@ -82,17 +82,23 @@ protected:
 	//진화 레벨
 	//int _revolution = 16; (16에 진화한다는 뜻) -> 0이면 진화 안함
 
-
 public:
 	virtual HRESULT init() = 0;
 	virtual void release() = 0;
-	virtual void update() = 0;
-	virtual void render(float x, float y) = 0;
+
+	void update();
+	void render(float x, float y);
+
 
 	void controlFrame();
-
 	void changeDirect(int direct);
 	void changeState(POKEMON_STATE state);
+
+
+	void tuneIdle();
+	void tuneAttack();
+	void tuneHurt();
+	float attackRange(float x);
 
 
 
@@ -101,9 +107,14 @@ public:
 
 	POKEMON_STATE getState() { return _state; }
 
+	float getAngle() { return _angle; }
+
 	int getDirect() { return _frameY; }
 	void setDirect(int direct) { _frameY = direct; }
 
 	wstring getName() { return _name; }
+	int getNum() { return _num; }
+
+	STAT getPokemonValue() { return _pokemonValue; }
 };
 

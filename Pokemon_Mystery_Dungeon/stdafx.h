@@ -38,6 +38,7 @@
 #include "streamManager.h"
 #include "dtdManager.h"
 #include "pokeDex.h"
+#include "skillDex.h"
 
 
 using namespace std;
@@ -61,7 +62,6 @@ using namespace D2D1;
 #define CAMERAMANAGER cameraManager::getSingleton()
 #define TIMEMANAGER timeManager::getSingleton()
 #define SCENEMANAGER sceneManager::getSingleton()
-//#define STATEMANAGER stateManager::getSingleton()
 #define PRINTMANAGER printManager::getSingleton()
 #define COLLISIONMANAGER collisionManager::getSingleton()
 #define UIMANAGER uiManager::getSingleton()
@@ -72,17 +72,15 @@ using namespace D2D1;
 #define STREAMMANAGER streamManager::getSingleton()
 #define DTDMANAGER dtdManager::getSingleton()
 #define POKEDEX pokeDex::getSingleton()
+#define SKILLDEX skillDex::getSingleton()
 
 #define SAFE_DELETE(p) { if(p) { delete(p); (p) = nullptr; } }
 #define SAFE_DELETE_ARRAY(p) { if(p) { delete[](p); (p) = nullptr; } }
 #define SAFE_RELEASE(p) { if(p) { (p)->release(); (p) = NULL; } }
 #define SAFE_RELEASE2(p) { if(p) { (p)->Release(); (p) = NULL; } }
 
-
-
-//프레임 렌더 카운트
-#define RENDERCOUNT		0.1
-
+#define TILEWIDTH	48
+#define TILEHEIGHT	48
 
 //==================================
 // ## extern ##

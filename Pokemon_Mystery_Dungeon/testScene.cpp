@@ -26,10 +26,21 @@ void testScene::update()
 
 void testScene::render()
 {
-	//실제 게임 화면
+
+
+
+	//배경(이미지 클리핑)
 	D2D1_RECT_F rc = CAMERAMANAGER->getScreen();
 	_back->render(rc.left, rc.top, rc.left, rc.top,
 		rc.right - rc.left, rc.bottom - rc.top);
+
+	if (PRINTMANAGER->isDebug()) {
+		for (int i = TILEHEIGHT / 2; i < _back->getHeight(); i += TILEHEIGHT)
+			for (int j = TILEWIDTH / 2; j < _back->getWidth(); j += TILEWIDTH) {
+				D2D1_RECT_F tmp = dRectMakeCenter(j, i, TILEWIDTH, TILEHEIGHT);
+				DTDMANAGER->Rectangle(tmp);
+			}
+	}
 
 	_player->render();
 }

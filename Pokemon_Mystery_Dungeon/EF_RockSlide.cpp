@@ -6,7 +6,7 @@ HRESULT EF_RockSlide::init(float x, float y)
 	_img = IMAGEMANAGER->addFrameDImage("RockSlide", L"img/effect/RockSlide.png", 4224, 448, 24, 1);
 	_x = x;
 	_y = y;
-	_body = RectMakeCenter(_x, _y, 48, 48);
+	_body = RectMakeCenter(_x, _y, TILEWIDTH, TILEHEIGHT);
 	_img->setFrameX(0);
 	_count = 0;
 	_off = false;

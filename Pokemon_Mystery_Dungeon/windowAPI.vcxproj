@@ -180,6 +180,7 @@
     <ClInclude Include="pokeDex.h" />
     <ClInclude Include="Pokemon.h" />
     <ClInclude Include="PokemonHeader.h" />
+    <ClInclude Include="PokemonType.h" />
     <ClInclude Include="printManager.h" />
     <ClInclude Include="Raichu.h" />
     <ClInclude Include="randomFunction.h" />
@@ -189,6 +190,8 @@
     <ClInclude Include="sceneManager.h" />
     <ClInclude Include="singletonBase.h" />
     <ClInclude Include="Skill.h" />
+    <ClInclude Include="skillDex.h" />
+    <ClInclude Include="SkillHeader.h" />
     <ClInclude Include="SkillManager.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="streamManager.h" />
@@ -198,6 +201,7 @@
     <ClInclude Include="timeManager.h" />
     <ClInclude Include="timer.h" />
     <ClInclude Include="TMachine.h" />
+    <ClInclude Include="turnManager.h" />
     <ClInclude Include="uiManager.h" />
     <ClInclude Include="utils.h" />
     <ClInclude Include="video.h" />
@@ -240,6 +244,7 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="sceneManager.cpp" />
     <ClCompile Include="Skill.cpp" />
+    <ClCompile Include="skillDex.cpp" />
     <ClCompile Include="SkillManager.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -253,6 +258,7 @@
     <ClCompile Include="timeManager.cpp" />
     <ClCompile Include="timer.cpp" />
     <ClCompile Include="TMachine.cpp" />
+    <ClCompile Include="turnManager.cpp" />
     <ClCompile Include="uiManager.cpp" />
     <ClCompile Include="utils.cpp" />
     <ClCompile Include="video.cpp" />

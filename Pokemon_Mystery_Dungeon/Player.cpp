@@ -3,12 +3,19 @@
 
 HRESULT Player::init()
 {
+	//포켓몬
 	_pokemon = POKEDEX->makePokemon(1);
 	_pokemon->init();
 
-	_x = WINSIZEX / 2;
-	_y = WINSIZEY / 2;
-	_body = RectMakeCenter(_x, _y, PSIZEX, PSIZEY);
+	//턴
+	_turn = true;
+
+	//좌표
+	_x = 25 * TILEWIDTH + TILEWIDTH / 2;
+	_y = 25 * TILEHEIGHT + TILEHEIGHT / 2;
+	_destX = _x;
+	_destY = _y;
+	_body = RectMakeCenter(_x, _y, TILEWIDTH, TILEHEIGHT);
 
 	//스탯
 	//계산해서 넣음 포켓몬 꺼
@@ -29,11 +36,27 @@ void Player::release()
 
 void Player::update()
 {
-	controlKey();
-	testKey();
+	if (_turn) {
+		controlKey();
+		testKey();
+	}
 
-	_body = RectMakeCenter(_x, _y, PSIZEX, PSIZEY);
+	if (_x != _destX) {
+		_x += cosf(_pokemon->getAngle()) * 2;
+	}
+	if (_y != _destY) {
+		_y += -sinf(_pokemon->getAngle()) * 2;
+		if (_y == _destY) {
+			_turn = true;
+		}
+	}
+	if (getDistance(_x, _y, _destX, _destY) <= TILEWIDTH / 16) {
+		_x = _destX;
+		_y = _destY;
+		_turn = true;
+	}
 
+	_body = RectMakeCenter(_x, _y, TILEWIDTH, TILEHEIGHT);
 	_pokemon->update();
 	EFFECTMANAGER->update();
 }
@@ -61,44 +84,55 @@ void Player::controlKey()
 	int direct = 0;
 
 	if (KEYMANAGER->isStayKeyDown(VK_RIGHT)) {
-		_x += 5;
 		direct |= RIGHT;
+		_destX = _x + TILEWIDTH;
 
 		_pokemon->changeDirect(direct);
-		_pokemon->changeState(P_MOVE);
+		_pokemon->changeState(POKEMON_STATE_MOVE);
+		_turn = false;
 	}
 	else if (KEYMANAGER->isStayKeyDown(VK_LEFT)) {
-		_x -= 5;
 		direct |= LEFT;
+		_destX = _x - TILEWIDTH;
 
 		_pokemon->changeDirect(direct);
-		_pokemon->changeState(P_MOVE);
+		_pokemon->changeState(POKEMON_STATE_MOVE);
+		_turn = false;
 	}
 	if (KEYMANAGER->isStayKeyDown(VK_UP)) {
-		_y -= 5;
 		direct |= UP;
+		_destY = _y - TILEHEIGHT;
 
 		_pokemon->changeDirect(direct);
-		_pokemon->changeState(P_MOVE);
+		_pokemon->changeState(POKEMON_STATE_MOVE);
+		_turn = false;
 	}
 	else if (KEYMANAGER->isStayKeyDown(VK_DOWN)) {
-		_y += 5;
 		direct |= DOWN;
+		_destY = _y + TILEHEIGHT;
 
 		_pokemon->changeDirect(direct);
-		_pokemon->changeState(P_MOVE);
+		_pokemon->changeState(POKEMON_STATE_MOVE);
+		_turn = false;
 	}
 
-	if (KEYMANAGER->isOnceKeyUp(VK_RIGHT)) { _pokemon->changeState(P_IDLE); }
-	if (KEYMANAGER->isOnceKeyUp(VK_LEFT)) { _pokemon->changeState(P_IDLE); }
-	if (KEYMANAGER->isOnceKeyUp(VK_DOWN)) { _pokemon->changeState(P_IDLE); }
-	if (KEYMANAGER->isOnceKeyUp(VK_UP)) { _pokemon->changeState(P_IDLE); }
+	if (KEYMANAGER->isOnceKeyDown('X')) {
+		_pokemon->changeState(POKEMON_STATE_ATTACK);
+		_turn = false;
+	}
+	if (KEYMANAGER->isOnceKeyDown('C')) {
+		_pokemon->changeState(POKEMON_STATE_SATTACK);
+		_turn = false;
+	}
 
-	if (KEYMANAGER->isOnceKeyDown('X')) { _pokemon->changeState(P_ATTACK); }
-	if (KEYMANAGER->isOnceKeyDown('C')) { _pokemon->changeState(P_SATTACK); }
-
-	if (KEYMANAGER->isOnceKeyDown('D')) { _pokemon->changeState(P_HURT); }
-	if (KEYMANAGER->isOnceKeyDown('S')) { _pokemon->changeState(P_SLEEP); }
+	if (KEYMANAGER->isOnceKeyDown('D')) {
+		_pokemon->changeState(POKEMON_STATE_HURT);
+		_turn = false;
+	}
+	if (KEYMANAGER->isOnceKeyDown('S')) {
+		_pokemon->changeState(POKEMON_STATE_SLEEP);
+		_turn = false;
+	}
 
 	// ==================스킬테스트================== //
 	switch (direct)
