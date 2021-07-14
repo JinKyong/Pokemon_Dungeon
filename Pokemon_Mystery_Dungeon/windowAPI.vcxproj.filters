@@ -76,6 +76,9 @@
     <Filter Include="playGround\Skill\number 0~9">
       <UniqueIdentifier>{422ee777-311f-4947-8870-ed61dd987b89}</UniqueIdentifier>
     </Filter>
+    <Filter Include="playGround\Maptool">
+      <UniqueIdentifier>{f216e278-2dde-4705-b5f6-646449aa534b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -252,6 +255,12 @@
     <ClInclude Include="PokemonType.h">
       <Filter>playGround\PokéDex</Filter>
     </ClInclude>
+    <ClInclude Include="maptool.h">
+      <Filter>playGround\Maptool</Filter>
+    </ClInclude>
+    <ClInclude Include="tileNode.h">
+      <Filter>playGround\Maptool</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -406,6 +415,9 @@
     </ClCompile>
     <ClCompile Include="Apple.cpp">
       <Filter>playGround\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="maptool.cpp">
+      <Filter>playGround\Maptool</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
