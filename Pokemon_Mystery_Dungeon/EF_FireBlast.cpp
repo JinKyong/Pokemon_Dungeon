@@ -3,7 +3,7 @@
 
 HRESULT EF_FireBlast::init(float x, float y)
 {
-	_img = IMAGEMANAGER->addFrameDImage("FireBlast", L"img/FireBlast.png", 2816, 134, 22, 1);
+	_img = IMAGEMANAGER->addFrameDImage("FireBlast", L"img/effect/FireBlast.png", 2816, 134, 22, 1);
 	_x = x;
 	_y = y;
 	_body = RectMakeCenter(_x, _y, 48, 48);
@@ -31,7 +31,7 @@ void EF_FireBlast::render()
 void EF_FireBlast::controlFrame()
 {
 	_count += TIMEMANAGER->getElapsedTime();
-	if (_count >= RENDERCOUNT)
+	if (_count >= 0.05f)
 	{
 		if (_img->getFrameX() >= _img->getMaxFrameX())
 			_off = true;

@@ -1,5 +1,6 @@
 #pragma once
 #include "Pokemon.h"
+#include "SkillManager.h"
 
 class Player
 {
@@ -24,6 +25,9 @@ private:
 
 	//기술(스킬)
 	//Skill _skill[4];
+	SkillManager* _sm;
+	float _effectX, _effectY; // 이펙트 좌표값 주기위한 변수
+	int _skillNum;
 
 	//지닌도구(아이템)
 	//Item _item;

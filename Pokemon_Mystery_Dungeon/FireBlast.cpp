@@ -4,7 +4,7 @@
 HRESULT FireBlast::init(float x, float y)
 {
 	_name = L"불대문자";
-	_skillNum = 126;
+	_skillNum = 0;
 	_damage = 120;
 	_accuracy = 0.85f;
 	_currentPP = _maxPP = 5;
@@ -22,5 +22,7 @@ void FireBlast::release()
 
 void FireBlast::useSkill(float x, float y)
 {
-	EFFECTMANAGER->addEffect(x, y, 0);
+	_fireBlastEffect = new EF_FireBlast;
+	_fireBlastEffect->init(x, y);
+	EFFECTMANAGER->addEffect(_fireBlastEffect);
 }

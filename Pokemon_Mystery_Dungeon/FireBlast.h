@@ -1,9 +1,12 @@
 #pragma once
 #include "Skill.h"
+#include "EF_FireBlast.h"
+
 class FireBlast :
 	public Skill
 {
 private:
+	EF_FireBlast* _fireBlastEffect;
 public:
 	FireBlast() {};
 	~FireBlast() {};
@@ -11,6 +14,6 @@ public:
 	virtual HRESULT init(float x, float y);
 	virtual void release();
 
-	void useSkill(float effectX, float effectY);
+	void useSkill(float x, float y);
 };
 

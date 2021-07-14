@@ -3,7 +3,7 @@
 
 HRESULT EF_Gust::init(float x, float y)
 {
-	_img = IMAGEMANAGER->addFrameDImage("Gust", L"img/Gust.png", 5824, 160, 52, 1);
+	_img = IMAGEMANAGER->addFrameDImage("Gust", L"img/effect/Gust.png", 5824, 160, 52, 1);
 	_x = x;
 	_y = y;
 	_body = RectMakeCenter(_x, _y, 48, 48);
@@ -31,7 +31,7 @@ void EF_Gust::render()
 void EF_Gust::controlFrame()
 {
 	_count += TIMEMANAGER->getElapsedTime();
-	if (_count >= RENDERCOUNT * 0.35f)
+	if (_count >= 0.02f)
 	{
 		if (_img->getFrameX() >= _img->getMaxFrameX())
 			_off = true;

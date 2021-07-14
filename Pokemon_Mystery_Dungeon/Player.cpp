@@ -15,6 +15,11 @@ HRESULT Player::init()
 
 	_inDungeon = false;
 
+	_sm = new SkillManager;	// 스킬매니저 등록
+	_sm->init();
+
+	_effectX = _effectY = _skillNum = 0;
+
 	return S_OK;
 }
 
@@ -30,6 +35,7 @@ void Player::update()
 	_body = RectMakeCenter(_x, _y, PSIZEX, PSIZEY);
 
 	_pokemon->update();
+	EFFECTMANAGER->update();
 }
 
 void Player::render()
@@ -47,6 +53,7 @@ void Player::render()
 	}
 
 	_pokemon->render(_x, _y);
+	EFFECTMANAGER->render();
 }
 
 void Player::controlKey()
@@ -92,6 +99,32 @@ void Player::controlKey()
 
 	if (KEYMANAGER->isOnceKeyDown('D')) { _pokemon->changeState(P_HURT); }
 	if (KEYMANAGER->isOnceKeyDown('S')) { _pokemon->changeState(P_SLEEP); }
+
+	// ==================스킬테스트================== //
+	switch (direct)
+	{
+	case RIGHT:
+		_effectX = 48; _effectY = 0;
+		break;
+	case LEFT:
+		_effectX = -48; _effectY = 0;
+		break;
+	case UP:
+		_effectX = 0; _effectY = -48;
+		break;
+	case DOWN:
+		_effectX = 0; _effectY = 48;
+		break;
+	}
+	if (KEYMANAGER->isOnceKeyDown('Q'))
+	{
+		_sm->addSkill(_x + _effectX, _y + _effectY, _skillNum);
+	}
+	if (KEYMANAGER->isOnceKeyDown('W'))
+	{
+		_skillNum++;
+		if (_skillNum > 6) _skillNum = 0;
+	}
 }
 
 void Player::testKey()

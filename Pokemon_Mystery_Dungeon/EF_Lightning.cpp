@@ -3,7 +3,7 @@
 
 HRESULT EF_Lightning::init(float x, float y)
 {
-	_img = IMAGEMANAGER->addFrameDImage("Lightning", L"img/Lightning.png", 816, 286, 12, 1);
+	_img = IMAGEMANAGER->addFrameDImage("Lightning", L"img/effect/Lightning.png", 816, 286, 12, 1);
 	_x = x;
 	_y = y;
 	_body = RectMakeCenter(_x, _y, 48, 48);
@@ -32,12 +32,12 @@ void EF_Lightning::render()
 void EF_Lightning::controlFrame()
 {
 	_count += TIMEMANAGER->getElapsedTime();
-	if (_count >= RENDERCOUNT)
+	if (_count >= 0.05)
 	{
 		if (_img->getFrameX() >= _img->getMaxFrameX())
 			_off = true;
 		else
-		_img->setFrameX(_img->getFrameX() + 1);
+			_img->setFrameX(_img->getFrameX() + 1);
 
 		_count = 0;
 	}

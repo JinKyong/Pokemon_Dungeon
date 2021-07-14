@@ -5,7 +5,7 @@
 HRESULT Gust::init(float x, float y)
 {
 	_name = L"바람일으키기";
-	_skillNum = 16;
+	_skillNum = 1;
 	_damage = 40;
 	_accuracy = 1.f;
 	_currentPP = _maxPP = 35;
@@ -23,5 +23,7 @@ void Gust::release()
 
 void Gust::useSkill(float x, float y)
 {
-	EFFECTMANAGER->addEffect(x, y, 1);
+	_gustEffect = new EF_Gust;
+	_gustEffect->init(x, y);
+	EFFECTMANAGER->addEffect(_gustEffect);
 }

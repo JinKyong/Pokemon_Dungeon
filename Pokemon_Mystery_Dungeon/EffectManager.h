@@ -6,21 +6,21 @@
 
 class EffectManager : public singletonBase<EffectManager>
 {
-private :
-	typedef map<int, Effect*>				effectList;
-	typedef map<int, Effect*>::iterator		effectIter;
+private:
+	//typedef map<int, Effect*>				effectList;
+	//typedef map<int, Effect*>::iterator		effectIter;
 
 	typedef vector<Effect*>					skillEffect;
 	typedef vector<Effect*>::iterator		skillIter;
 
-private :
-	effectList	_mEffectList;
-	effectIter	_miEffectList;
+private:
+	//effectList	_mEffectList;
+	//effectIter	_miEffectList;
 
 	skillEffect	_vEffect;
 	skillIter	_viEffect;
 
-public :
+public:
 	EffectManager() {};
 	~EffectManager() {};
 
@@ -29,6 +29,6 @@ public :
 	virtual void update();
 	virtual void render();
 
-	Effect* registerEffect(int effectNum, Effect* effect);
-	HRESULT addEffect(float x, float y, int effect);
+	//Effect* registerEffect(int effectNum, Effect* effect);
+	void addEffect(Effect* effect);
 };

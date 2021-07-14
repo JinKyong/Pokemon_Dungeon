@@ -3,7 +3,7 @@
 
 HRESULT EF_RockSlide::init(float x, float y)
 {
-	_img = IMAGEMANAGER->addFrameDImage("RockSlide", L"img/RockSlide.png", 4224, 448, 24, 1);
+	_img = IMAGEMANAGER->addFrameDImage("RockSlide", L"img/effect/RockSlide.png", 4224, 448, 24, 1);
 	_x = x;
 	_y = y;
 	_body = RectMakeCenter(_x, _y, 48, 48);
@@ -24,7 +24,7 @@ void EF_RockSlide::update()
 
 void EF_RockSlide::render()
 {
-	DTDMANAGER->Rectangle(_body);
+	//DTDMANAGER->Rectangle(_body);
 	_img->frameRender(_x - 70, _y - 370);
 	controlFrame();
 }
@@ -32,7 +32,7 @@ void EF_RockSlide::render()
 void EF_RockSlide::controlFrame()
 {
 	_count += TIMEMANAGER->getElapsedTime();
-	if (_count >= RENDERCOUNT)
+	if (_count >= 0.05)
 	{
 		if (_img->getFrameX() >= _img->getMaxFrameX())
 			_off = true;
