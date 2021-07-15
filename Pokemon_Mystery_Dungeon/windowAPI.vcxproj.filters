@@ -321,6 +321,9 @@
     <ClInclude Include="ThunderFang.h">
       <Filter>playGround\Skill\SK number 0~9</Filter>
     </ClInclude>
+    <ClInclude Include="GarbageTM.h">
+      <Filter>playGround\Item\TM</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -520,6 +523,9 @@
     </ClCompile>
     <ClCompile Include="ThunderFang.cpp">
       <Filter>playGround\Skill\SK number 0~9</Filter>
+    </ClCompile>
+    <ClCompile Include="GarbageTM.cpp">
+      <Filter>playGround\Item\TM</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

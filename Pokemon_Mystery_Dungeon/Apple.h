@@ -9,13 +9,12 @@ public:
 	Apple() {};
 	~Apple() {};
 
-	virtual HRESULT init(float x, float y);
-	virtual void release() = 0;
-	virtual void update() = 0;
-	virtual void render(float x, float y);
-
+	virtual HRESULT init(float x, float y, float angle);
+	virtual void release();
+	virtual void update();
 
 	//아이템 사용
-	//아이템 사용
-	void eatItem();
+	void eatItem(float value);
+
+	//get-set
 };

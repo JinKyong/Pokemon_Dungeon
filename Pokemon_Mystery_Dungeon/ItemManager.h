@@ -1,10 +1,16 @@
 #pragma once
-#include "Apple.h"
+#include "Item.h"
+#include <vector>
 
 class ItemManager
 {
 private:
-	Apple* _apple;
+	typedef vector<Item*>				itemUse;
+	typedef vector<Item*>::iterator		itemUseIter;
+
+private:
+	itemUse		_vItemAdd;
+	itemUseIter	_viItemAdd;
 
 public:
 	ItemManager() {};
@@ -15,7 +21,6 @@ public:
 	virtual void update();
 	virtual void render();
 
-	void setItemDrop(float x, float y);
-	Apple* getApple() { return _apple; } //뭔가 이게 아닌것같은데
+	void addItem(Item* item);
 };
 
