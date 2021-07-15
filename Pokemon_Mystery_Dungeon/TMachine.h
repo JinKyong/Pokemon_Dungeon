@@ -16,7 +16,4 @@ public:
 
 	//아이템 사용
 	virtual void useItem();
-	virtual void throwItem(float x, float y, float angle) = 0;
-
-	virtual void itemMove(float x, float y, float angle) = 0;
 };
