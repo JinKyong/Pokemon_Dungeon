@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "playGround.h"
 #include "testScene.h"
+#include "mapToolScene.h"
 
 playGround::playGround()
 {
@@ -22,7 +23,8 @@ HRESULT playGround::init()
 	SCENEMANAGER->init(_player);
 
 	SCENEMANAGER->addScene("test", new testScene);
-	SCENEMANAGER->changeScene("test");
+	SCENEMANAGER->addScene("tool", new mapToolScene);
+	SCENEMANAGER->changeScene("tool");
 
 	_debug = false;
 
@@ -40,7 +42,7 @@ void playGround::release()
 
 void playGround::update()
 {
-	gameNode::update();
+	
 
 	if (KEYMANAGER->isOnceKeyDown(VK_TAB)) {
 		_debug = !_debug;
@@ -48,6 +50,7 @@ void playGround::update()
 	}
 
 	SCENEMANAGER->update();
+	gameNode::update();
 }
 
 

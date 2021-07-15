@@ -261,6 +261,9 @@
     <ClInclude Include="tileNode.h">
       <Filter>playGround\Maptool</Filter>
     </ClInclude>
+    <ClInclude Include="mapToolScene.h">
+      <Filter>playGround\Maptool</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -417,6 +420,9 @@
       <Filter>playGround\Item</Filter>
     </ClCompile>
     <ClCompile Include="maptool.cpp">
+      <Filter>playGround\Maptool</Filter>
+    </ClCompile>
+    <ClCompile Include="mapToolScene.cpp">
       <Filter>playGround\Maptool</Filter>
     </ClCompile>
   </ItemGroup>

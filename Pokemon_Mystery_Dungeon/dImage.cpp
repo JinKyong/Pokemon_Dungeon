@@ -187,3 +187,15 @@ void dImage::frameRender(float destX, float destY, int currentFrameX, int curren
 	DTDMANAGER->getBitRenderTarget()->DrawBitmap(_imageInfo->bitMap, destRect,
 		opacity, D2D1_BITMAP_INTERPOLATION_MODE_LINEAR, sourRect);
 }
+
+void dImage::frameRender(float destX, float destY, int currentFrameX, int currentFrameY,int sizeX,int sizeY, float opacity)
+{
+	D2D1_RECT_F destRect = dRectMake(destX, destY, sizeX, sizeY);
+	D2D1_RECT_F sourRect = dRectMake(
+		currentFrameX * _imageInfo->frameWidth, currentFrameY * _imageInfo->frameHeight,
+		_imageInfo->frameWidth, _imageInfo->frameHeight);
+
+	//rendertarget을 불러와서 이미지의 비트맵을 그려준다
+	DTDMANAGER->getBitRenderTarget()->DrawBitmap(_imageInfo->bitMap, destRect,
+		opacity, D2D1_BITMAP_INTERPOLATION_MODE_LINEAR, sourRect);
+}

@@ -104,7 +104,7 @@ public:
 	/*					│			└──〉	 출력할 좌표(y축)													*/
 	/*					│																				*/
 	/*					└──〉 출력할 좌표(x축)																*/
-
+	void frameRender(float destX, float destY, int currentFrameX, int currentFrameY,int sizeX,int sizeY, float opacity = 1.0);
 
 
 	//===============================================

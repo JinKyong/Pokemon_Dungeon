@@ -46,7 +46,7 @@ struct Body
 	int height;
 };
 
-class maptool : public gameNode
+class Maptool : public gameNode
 {
 
 private:
@@ -70,8 +70,8 @@ private:
 	int type;
 
 public:
-	maptool();
-	~maptool();
+	Maptool();
+	~Maptool();
 
 	virtual HRESULT init();
 	virtual void release();
@@ -83,6 +83,11 @@ public:
 
 	virtual void save();
 	virtual void load();
+	void minimap();
+
+	dImage* getMaptile() { return _maptile; }
+	dImage* getObject() { return _object; }
+	//tagTile getTile() { return _tiles; }
 
 	TERRAIN terrainSelect(int frameX, int frameY);
 	OBJECT objSelect(int frameX, int frameY);

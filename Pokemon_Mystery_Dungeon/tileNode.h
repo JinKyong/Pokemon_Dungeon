@@ -1,9 +1,12 @@
 #pragma once
 
 #define TILESIZE 48
+#define MINITILESIZE 6
 
-#define TILEX 30	//가로 타일 갯수
-#define TILEY 30	//세로 타일 갯수
+#define TILEX 80	//가로 타일 갯수
+#define TILEY 45	//세로 타일 갯수
+
+
 
 #define TILESIZEX TILESIZE * TILEX	//560 28 * 20
 #define TILESIZEY TILESIZE * TILEY	//620 31 * 20
