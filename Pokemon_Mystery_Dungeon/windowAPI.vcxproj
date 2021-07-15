@@ -163,9 +163,9 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="FireBlast.h" />
     <ClInclude Include="Apple.h" />
+    <ClInclude Include="Glass.h" />
     <ClInclude Include="Gummy.h" />
     <ClInclude Include="Gust.h" />
-    <ClInclude Include="Hold.h" />
     <ClInclude Include="image.h" />
     <ClInclude Include="imageManager.h" />
     <ClInclude Include="Item.h" />
@@ -188,9 +188,11 @@
     <ClInclude Include="Raichu.h" />
     <ClInclude Include="randomFunction.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="Ribbon.h" />
     <ClInclude Include="RockSlide.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="sceneManager.h" />
+    <ClInclude Include="Scope.h" />
     <ClInclude Include="singletonBase.h" />
     <ClInclude Include="Skill.h" />
     <ClInclude Include="skillDex.h" />
@@ -228,9 +230,9 @@
     <ClCompile Include="FireBlast.cpp" />
     <ClCompile Include="Apple.cpp" />
     <ClCompile Include="gameNode.cpp" />
+    <ClCompile Include="Glass.cpp" />
     <ClCompile Include="Gummy.cpp" />
     <ClCompile Include="Gust.cpp" />
-    <ClCompile Include="Hold.cpp" />
     <ClCompile Include="image.cpp" />
     <ClCompile Include="imageManager.cpp" />
     <ClCompile Include="Item.cpp" />
@@ -247,9 +249,11 @@
     <ClCompile Include="Pokemon.cpp" />
     <ClCompile Include="printManager.cpp" />
     <ClCompile Include="Raichu.cpp" />
+    <ClCompile Include="Ribbon.cpp" />
     <ClCompile Include="RockSlide.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="sceneManager.cpp" />
+    <ClCompile Include="Scope.cpp" />
     <ClCompile Include="Skill.cpp" />
     <ClCompile Include="skillDex.cpp" />
     <ClCompile Include="stdafx.cpp">

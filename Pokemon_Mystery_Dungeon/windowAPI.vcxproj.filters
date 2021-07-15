@@ -270,14 +270,23 @@
     <ClInclude Include="Gummy.h">
       <Filter>playGround\Item\food</Filter>
     </ClInclude>
-    <ClInclude Include="Hold.h">
-      <Filter>playGround\Item\hold</Filter>
-    </ClInclude>
     <ClInclude Include="ThrowItem.h">
       <Filter>playGround\Item\throw</Filter>
     </ClInclude>
     <ClInclude Include="TMachine.h">
       <Filter>playGround\Item\TM</Filter>
+    </ClInclude>
+    <ClInclude Include="mapToolScene.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Glass.h">
+      <Filter>playGround\Item\hold</Filter>
+    </ClInclude>
+    <ClInclude Include="Ribbon.h">
+      <Filter>playGround\Item\hold</Filter>
+    </ClInclude>
+    <ClInclude Include="Scope.h">
+      <Filter>playGround\Item\hold</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -431,14 +440,23 @@
     <ClCompile Include="Gummy.cpp">
       <Filter>playGround\Item\food</Filter>
     </ClCompile>
-    <ClCompile Include="Hold.cpp">
-      <Filter>playGround\Item\hold</Filter>
-    </ClCompile>
     <ClCompile Include="ThrowItem.cpp">
       <Filter>playGround\Item\throw</Filter>
     </ClCompile>
     <ClCompile Include="TMachine.cpp">
       <Filter>playGround\Item\TM</Filter>
+    </ClCompile>
+    <ClCompile Include="mapToolScene.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Glass.cpp">
+      <Filter>playGround\Item\hold</Filter>
+    </ClCompile>
+    <ClCompile Include="Ribbon.cpp">
+      <Filter>playGround\Item\hold</Filter>
+    </ClCompile>
+    <ClCompile Include="Scope.cpp">
+      <Filter>playGround\Item\hold</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
