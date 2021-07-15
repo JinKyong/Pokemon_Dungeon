@@ -40,7 +40,7 @@ public :
 	Skill() {};
 	~Skill() {};
 
-	virtual HRESULT init(float x, float y) = 0;
+	virtual HRESULT init() = 0;
 	virtual void release() = 0;
 
 

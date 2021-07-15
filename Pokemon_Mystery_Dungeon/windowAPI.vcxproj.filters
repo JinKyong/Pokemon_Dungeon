@@ -76,17 +76,8 @@
     <Filter Include="playGround\Skill\number 0~9">
       <UniqueIdentifier>{422ee777-311f-4947-8870-ed61dd987b89}</UniqueIdentifier>
     </Filter>
-    <Filter Include="playGround\Item\Food">
-      <UniqueIdentifier>{801c667b-916b-419b-9589-7ec077ef6612}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="playGround\Item\Hold">
-      <UniqueIdentifier>{88bea93c-8f14-41b0-9a62-6caf0aad44d4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="playGround\Item\Throw">
-      <UniqueIdentifier>{39536bf8-8f88-464d-949c-1e197d7c7f27}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="playGround\Item\TM">
-      <UniqueIdentifier>{9098766f-475a-4e14-ba4b-b93bcf96225e}</UniqueIdentifier>
+    <Filter Include="playGround\Maptool">
+      <UniqueIdentifier>{f216e278-2dde-4705-b5f6-646449aa534b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -171,8 +162,14 @@
     <ClInclude Include="Item.h">
       <Filter>playGround\Item\base</Filter>
     </ClInclude>
-    <ClInclude Include="SkillManager.h">
-      <Filter>playGround\Skill</Filter>
+    <ClInclude Include="Hold.h">
+      <Filter>playGround\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="TMachine.h">
+      <Filter>playGround\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ThrowItem.h">
+      <Filter>playGround\Item</Filter>
     </ClInclude>
     <ClInclude Include="Skill.h">
       <Filter>playGround\Skill\base</Filter>
@@ -240,29 +237,26 @@
     <ClInclude Include="skillDex.h">
       <Filter>playGround\PokéDex</Filter>
     </ClInclude>
+    <ClInclude Include="Apple.h">
+      <Filter>playGround\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Gummy.h">
+      <Filter>playGround\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemManager.h">
+      <Filter>playGround\Item</Filter>
+    </ClInclude>
     <ClInclude Include="SkillHeader.h">
       <Filter>playGround\Skill\base</Filter>
     </ClInclude>
     <ClInclude Include="PokemonType.h">
       <Filter>playGround\PokéDex</Filter>
     </ClInclude>
-    <ClInclude Include="Apple.h">
-      <Filter>playGround\Item\Food</Filter>
+    <ClInclude Include="maptool.h">
+      <Filter>playGround\Maptool</Filter>
     </ClInclude>
-    <ClInclude Include="Gummy.h">
-      <Filter>playGround\Item\Food</Filter>
-    </ClInclude>
-    <ClInclude Include="Hold.h">
-      <Filter>playGround\Item\Hold</Filter>
-    </ClInclude>
-    <ClInclude Include="ThrowItem.h">
-      <Filter>playGround\Item\Throw</Filter>
-    </ClInclude>
-    <ClInclude Include="ItemManager.h">
-      <Filter>playGround\Item</Filter>
-    </ClInclude>
-    <ClInclude Include="TMachine.h">
-      <Filter>playGround\Item\TM</Filter>
+    <ClInclude Include="tileNode.h">
+      <Filter>playGround\Maptool</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -335,8 +329,14 @@
     <ClCompile Include="Item.cpp">
       <Filter>playGround\Item\base</Filter>
     </ClCompile>
-    <ClCompile Include="SkillManager.cpp">
-      <Filter>playGround\Skill</Filter>
+    <ClCompile Include="Hold.cpp">
+      <Filter>playGround\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="TMachine.cpp">
+      <Filter>playGround\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="ThrowItem.cpp">
+      <Filter>playGround\Item</Filter>
     </ClCompile>
     <ClCompile Include="Skill.cpp">
       <Filter>playGround\Skill\base</Filter>
@@ -401,23 +401,17 @@
     <ClCompile Include="skillDex.cpp">
       <Filter>playGround\PokéDex</Filter>
     </ClCompile>
-    <ClCompile Include="Apple.cpp">
-      <Filter>playGround\Item\Food</Filter>
-    </ClCompile>
-    <ClCompile Include="Gummy.cpp">
-      <Filter>playGround\Item\Food</Filter>
-    </ClCompile>
-    <ClCompile Include="Hold.cpp">
-      <Filter>playGround\Item\Hold</Filter>
-    </ClCompile>
-    <ClCompile Include="ThrowItem.cpp">
-      <Filter>playGround\Item\Throw</Filter>
-    </ClCompile>
     <ClCompile Include="ItemManager.cpp">
       <Filter>playGround\Item</Filter>
     </ClCompile>
-    <ClCompile Include="TMachine.cpp">
-      <Filter>playGround\Item\TM</Filter>
+    <ClCompile Include="Gummy.cpp">
+      <Filter>playGround\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Apple.cpp">
+      <Filter>playGround\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="maptool.cpp">
+      <Filter>playGround\Maptool</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

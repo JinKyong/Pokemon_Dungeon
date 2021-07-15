@@ -173,6 +173,7 @@
     <ClInclude Include="Lightning.h" />
     <ClInclude Include="macroFunc.h" />
     <ClInclude Include="gameNode.h" />
+    <ClInclude Include="maptool.h" />
     <ClInclude Include="Pichu.h" />
     <ClInclude Include="Pikachu.h" />
     <ClInclude Include="Player.h" />
@@ -192,12 +193,12 @@
     <ClInclude Include="Skill.h" />
     <ClInclude Include="skillDex.h" />
     <ClInclude Include="SkillHeader.h" />
-    <ClInclude Include="SkillManager.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="streamManager.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="testScene.h" />
     <ClInclude Include="ThrowItem.h" />
+    <ClInclude Include="tileNode.h" />
     <ClInclude Include="timeManager.h" />
     <ClInclude Include="timer.h" />
     <ClInclude Include="TMachine.h" />
@@ -232,6 +233,7 @@
     <ClCompile Include="ItemManager.cpp" />
     <ClCompile Include="keyManager.cpp" />
     <ClCompile Include="Lightning.cpp" />
+    <ClCompile Include="maptool.cpp" />
     <ClCompile Include="Pichu.cpp" />
     <ClCompile Include="Pikachu.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -245,7 +247,6 @@
     <ClCompile Include="sceneManager.cpp" />
     <ClCompile Include="Skill.cpp" />
     <ClCompile Include="skillDex.cpp" />
-    <ClCompile Include="SkillManager.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

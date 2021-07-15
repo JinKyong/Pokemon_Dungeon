@@ -33,6 +33,7 @@ HRESULT gameNode::init(bool managerInit)
 		CAMERAMANAGER->init();
 		UIMANAGER->init();
 		POKEDEX->init();
+		SKILLDEX->init();
 	}
 
 	return S_OK;
@@ -69,6 +70,9 @@ void gameNode::release()
 
 		POKEDEX->release();
 		POKEDEX->releaseSingleton();
+
+		SKILLDEX->release();
+		SKILLDEX->releaseSingleton();
 
 		CoUninitialize();
 	}
@@ -110,6 +114,18 @@ void gameNode::cursorOnWindow()
 	ClipCursor(&rc);
 }
 
+void gameNode::setMap()
+{
+}
+
+void gameNode::save()
+{
+}
+
+void gameNode::load()
+{
+}
+
 LRESULT gameNode::MainProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam)
 {
 	//	PAINTSTRUCT ps;
@@ -122,8 +138,47 @@ LRESULT gameNode::MainProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lPara
 		_ptMouse.x = static_cast<float>(LOWORD(lParam));
 		_ptMouse.y = static_cast<float>(HIWORD(lParam));
 
-		break;
+		if (_leftButtonDown) this->setMap();
+		if (_rightButtonDown) this->setMap();
 
+		break;
+	case WM_LBUTTONDOWN:
+		_leftButtonDown = true;
+		this->setMap();
+
+		break;
+	case WM_LBUTTONUP:
+		_leftButtonDown = false;
+
+		break;
+	case WM_RBUTTONDOWN:
+		_rightButtonDown = true;
+		this->setCtrlSelect(CTRL_ERASER);
+		this->setMap();
+
+
+		break;
+	case WM_RBUTTONUP:
+		_rightButtonDown = false;
+		this->setCtrlSelect(CTRL_OBJDRAW);
+
+		break;
+	case WM_COMMAND:
+		switch (LOWORD(wParam))
+		{
+		case CTRL_SAVE:
+			this->save();
+			break;
+		case CTRL_LOAD:
+			this->load();
+			InvalidateRect(hWnd, NULL, false);
+			break;
+
+		default:
+			this->setCtrlSelect(LOWORD(wParam));
+			break;
+		}
+		break;
 	case WM_KEYDOWN:
 
 		switch (wParam)

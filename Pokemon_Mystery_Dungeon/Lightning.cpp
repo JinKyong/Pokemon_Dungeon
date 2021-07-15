@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Lightning.h"
 
-HRESULT Lightning::init(float x, float y)
+HRESULT Lightning::init()
 {
 	_name = L"전기충격";
 	_skillNum = 2;
@@ -11,7 +11,6 @@ HRESULT Lightning::init(float x, float y)
 	_skType = SPECIAL_ATTACK;
 	//_att = T_ELECTRIC;
 	_scale = SS_FRONT;
-	useSkill(x, y);
 
 	return S_OK;
 }

@@ -2,7 +2,7 @@
 #include "Gust.h"
 #include "EF_Gust.h"
 
-HRESULT Gust::init(float x, float y)
+HRESULT Gust::init()
 {
 	_name = L"바람일으키기";
 	_skillNum = 1;
@@ -12,7 +12,6 @@ HRESULT Gust::init(float x, float y)
 	_skType = SPECIAL_ATTACK;
 	//_att = T_FLY;
 	_scale = SS_FRONT;
-	useSkill(x, y);
 
 	return S_OK;
 }

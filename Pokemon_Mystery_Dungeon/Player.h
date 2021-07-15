@@ -1,6 +1,5 @@
 #pragma once
 #include "Pokemon.h"
-#include "SkillManager.h"
 
 enum PLAYER_TYPE {
 	PLAYER_TYPE_USER,
@@ -32,6 +31,8 @@ private:
 
 	//기술(스킬)
 	//Skill _skill[4];
+	//float _effectX, _effectY; // 이펙트 좌표값 주기위한 변수
+	Skill* _testSkill;
 
 	//지닌도구(아이템)
 	//Item _item;
@@ -39,9 +40,6 @@ private:
 	//맵 상태(마을 또는 던전)
 	bool _inDungeon;
 
-	SkillManager* _sm;
-	float _effectX, _effectY; // 이펙트 좌표값 주기위한 변수
-	int _skillNum;
 
 public:
 	HRESULT init();

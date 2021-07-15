@@ -7,6 +7,9 @@ POINT _ptMouse;
 
 playGround _pg;
 
+BOOL _leftButtonDown;
+BOOL _rightButtonDown;
+
 void setWindowsSize(int x, int y, int width, int height);
 
 //함수의 프로토 타입 선언

@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "FireBlast.h"
 
-HRESULT FireBlast::init(float x, float y)
+HRESULT FireBlast::init()
 {
 	_name = L"불대문자";
 	_skillNum = 0;
@@ -11,7 +11,6 @@ HRESULT FireBlast::init(float x, float y)
 	_skType = SPECIAL_ATTACK;
 	//_att = T_FIRE
 	_scale = SS_FRONT;
-	useSkill(x, y);
 
 	return S_OK;
 }

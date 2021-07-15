@@ -88,3 +88,5 @@ using namespace D2D1;
 extern HINSTANCE _hInstance;
 extern HWND _hWnd;
 extern POINT _ptMouse;
+extern BOOL _leftButtonDown;
+extern BOOL _rightButtonDown;

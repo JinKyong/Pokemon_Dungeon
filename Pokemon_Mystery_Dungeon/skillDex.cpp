@@ -24,6 +24,10 @@ void skillDex::setSkillDex()
 {
 	//여기에 addSkill()로 계속 추가해줌 (번호 맞춰서 순서대로)
 	//예시: addSkill(&skillDex::fireBlast);
+	addSkill(&skillDex::fireBlast);
+	addSkill(&skillDex::gust);
+	addSkill(&skillDex::lightning);
+	addSkill(&skillDex::rockSlide);
 }
 
 Skill * skillDex::makeSkill(int num)

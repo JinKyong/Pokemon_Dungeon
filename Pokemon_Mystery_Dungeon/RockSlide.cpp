@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "RockSlide.h"
 
-HRESULT RockSlide::init(float x, float y)
+HRESULT RockSlide::init()
 {
 	_name = L"½ºÅæ»þ¿ö";
 	_skillNum = 3;
@@ -11,7 +11,6 @@ HRESULT RockSlide::init(float x, float y)
 	_skType = PHYSICAL_ATTACK;
 	//_att = T_ROCK;
 	_scale = SS_FRONT;
-	useSkill(x, y);
 
 	return S_OK;
 }

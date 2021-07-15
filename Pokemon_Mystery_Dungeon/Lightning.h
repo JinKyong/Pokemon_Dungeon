@@ -12,7 +12,7 @@ public:
 	Lightning() {};
 	~Lightning() {};
 
-	virtual HRESULT init(float x, float y);
+	virtual HRESULT init();
 	virtual void release();
 
 	void useSkill(float x, float y);
