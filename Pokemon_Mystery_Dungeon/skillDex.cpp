@@ -33,6 +33,12 @@ void skillDex::setSkillDex()
 	addSkill(&skillDex::thunderFang);
 	addSkill(&skillDex::iceFang);
 	addSkill(&skillDex::fireFang);
+	addSkill(&skillDex::pound);
+
+	addSkill(&skillDex::poisonPowder);
+	addSkill(&skillDex::sleepPowder);
+	addSkill(&skillDex::stunSpore);
+	addSkill(&skillDex::metalClaw);
 }
 
 Skill * skillDex::makeSkill(int num)

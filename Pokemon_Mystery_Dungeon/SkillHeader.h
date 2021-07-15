@@ -8,3 +8,9 @@
 #include "ThunderFang.h"
 #include "IceFang.h"
 #include "FireFang.h"
+#include "Pound.h"
+
+#include "PoisonPowder.h"
+#include "SleepPowder.h"
+#include "StunSpore.h"
+#include "MetalClaw.h"
