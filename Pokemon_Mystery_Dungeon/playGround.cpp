@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "playGround.h"
 #include "testScene.h"
+#include "User.h"
 
 playGround::playGround()
 {
@@ -16,8 +17,8 @@ HRESULT playGround::init()
 {
 	gameNode::init(true);
 
-	_player = new Player;
-	_player->init();
+	_player = new User;
+	_player->init(1);
 
 	SCENEMANAGER->init(_player);
 

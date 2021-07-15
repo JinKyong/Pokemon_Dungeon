@@ -39,6 +39,7 @@
 #include "dtdManager.h"
 #include "pokeDex.h"
 #include "skillDex.h"
+#include "turnManager.h"
 
 
 using namespace std;
@@ -73,6 +74,7 @@ using namespace D2D1;
 #define DTDMANAGER dtdManager::getSingleton()
 #define POKEDEX pokeDex::getSingleton()
 #define SKILLDEX skillDex::getSingleton()
+#define TURNMANAGER turnManager::getSingleton()
 
 #define SAFE_DELETE(p) { if(p) { delete(p); (p) = nullptr; } }
 #define SAFE_DELETE_ARRAY(p) { if(p) { delete[](p); (p) = nullptr; } }

@@ -160,6 +160,7 @@
     <ClInclude Include="EF_Gust.h" />
     <ClInclude Include="EF_Lightning.h" />
     <ClInclude Include="EF_RockSlide.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="FireBlast.h" />
     <ClInclude Include="Apple.h" />
     <ClInclude Include="Gummy.h" />
@@ -204,6 +205,7 @@
     <ClInclude Include="TMachine.h" />
     <ClInclude Include="turnManager.h" />
     <ClInclude Include="uiManager.h" />
+    <ClInclude Include="User.h" />
     <ClInclude Include="utils.h" />
     <ClInclude Include="video.h" />
   </ItemGroup>
@@ -221,6 +223,7 @@
     <ClCompile Include="EF_Gust.cpp" />
     <ClCompile Include="EF_Lightning.cpp" />
     <ClCompile Include="EF_RockSlide.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="FireBlast.cpp" />
     <ClCompile Include="Apple.cpp" />
     <ClCompile Include="gameNode.cpp" />
@@ -261,6 +264,7 @@
     <ClCompile Include="TMachine.cpp" />
     <ClCompile Include="turnManager.cpp" />
     <ClCompile Include="uiManager.cpp" />
+    <ClCompile Include="User.cpp" />
     <ClCompile Include="utils.cpp" />
     <ClCompile Include="video.cpp" />
     <ClCompile Include="winMain.cpp" />

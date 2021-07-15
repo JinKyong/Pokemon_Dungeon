@@ -79,6 +79,9 @@
     <Filter Include="playGround\Maptool">
       <UniqueIdentifier>{f216e278-2dde-4705-b5f6-646449aa534b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="playGround\Pokémon\Player\base">
+      <UniqueIdentifier>{40707cc5-2f18-4412-95e5-2e8508689d03}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -155,9 +158,6 @@
     </ClInclude>
     <ClInclude Include="Pokemon.h">
       <Filter>playGround\Pokémon\base</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>playGround\Pokémon\Player</Filter>
     </ClInclude>
     <ClInclude Include="Item.h">
       <Filter>playGround\Item\base</Filter>
@@ -258,6 +258,15 @@
     <ClInclude Include="tileNode.h">
       <Filter>playGround\Maptool</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>playGround\Pokémon\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="User.h">
+      <Filter>playGround\Pokémon\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>playGround\Pokémon\Player\base</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -322,9 +331,6 @@
     </ClCompile>
     <ClCompile Include="Pokemon.cpp">
       <Filter>playGround\Pokémon\base</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>playGround\Pokémon\Player</Filter>
     </ClCompile>
     <ClCompile Include="Item.cpp">
       <Filter>playGround\Item\base</Filter>
@@ -412,6 +418,15 @@
     </ClCompile>
     <ClCompile Include="maptool.cpp">
       <Filter>playGround\Maptool</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>playGround\Pokémon\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="User.cpp">
+      <Filter>playGround\Pokémon\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>playGround\Pokémon\Player\base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
