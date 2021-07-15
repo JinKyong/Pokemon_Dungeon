@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "playGround.h"
 #include "testScene.h"
-#include "mapToolScene.h"
+#include "User.h"
 
 playGround::playGround()
 {
@@ -17,14 +17,13 @@ HRESULT playGround::init()
 {
 	gameNode::init(true);
 
-	_player = new Player;
-	_player->init();
+	_player = new User;
+	_player->init(1);
 
 	SCENEMANAGER->init(_player);
 
 	SCENEMANAGER->addScene("test", new testScene);
-	SCENEMANAGER->addScene("tool", new mapToolScene);
-	SCENEMANAGER->changeScene("tool");
+	SCENEMANAGER->changeScene("test");
 
 	_debug = false;
 
@@ -42,7 +41,7 @@ void playGround::release()
 
 void playGround::update()
 {
-	
+	gameNode::update();
 
 	if (KEYMANAGER->isOnceKeyDown(VK_TAB)) {
 		_debug = !_debug;
@@ -50,7 +49,6 @@ void playGround::update()
 	}
 
 	SCENEMANAGER->update();
-	gameNode::update();
 }
 
 
@@ -60,7 +58,6 @@ void playGround::render()
 		return;*/
 
 	DTDMANAGER->beginDraw();
-	//PatBlt(getMemDC(), 0, 0, WINSIZEX, WINSIZEY, BLACKNESS);
 	//================제발 이 사이에 좀 그립시다==========================
 	SCENEMANAGER->render();
 

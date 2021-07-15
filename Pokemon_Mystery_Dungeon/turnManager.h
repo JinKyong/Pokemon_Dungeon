@@ -10,13 +10,21 @@ private:
 	typedef vector<Player*>::iterator	playerIter;
 
 private:
-	playerList _playerList;
+	playerList _allPlayerList;		//현재 모든 플레이어
 
+	playerList _attackPlayerList;	//공격을 입력한 플레이어
+	playerList _movePlayerList;		//이동을 입력한 플레이어
+
+	int _order;
+	bool _input;
 
 public:
 	HRESULT init();
 	void release();
 	void update();
 	void render();
-};
 
+	void addAllPlayer(Player* player);
+	void addAttackPlayer(Player* player);
+	void addMovePlayer(Player* player);
+};

@@ -79,6 +79,21 @@
     <Filter Include="playGround\Maptool">
       <UniqueIdentifier>{f216e278-2dde-4705-b5f6-646449aa534b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="playGround\Pokémon\Player\base">
+      <UniqueIdentifier>{40707cc5-2f18-4412-95e5-2e8508689d03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="playGround\Item\food">
+      <UniqueIdentifier>{383c4a7a-6b7e-4131-aebc-d2751632670c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="playGround\Item\hold">
+      <UniqueIdentifier>{234a51c4-c7de-4010-a6bd-c6c08b7eeed6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="playGround\Item\throw">
+      <UniqueIdentifier>{01cb81da-067d-4be6-b4c4-81c23d4e6a4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="playGround\Item\TM">
+      <UniqueIdentifier>{43f6172a-f0a0-40a6-8294-f1d9a9952f11}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -156,23 +171,8 @@
     <ClInclude Include="Pokemon.h">
       <Filter>playGround\Pokémon\base</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>playGround\Pokémon\Player</Filter>
-    </ClInclude>
     <ClInclude Include="Item.h">
       <Filter>playGround\Item\base</Filter>
-    </ClInclude>
-    <ClInclude Include="Hold.h">
-      <Filter>playGround\Item</Filter>
-    </ClInclude>
-    <ClInclude Include="TMachine.h">
-      <Filter>playGround\Item</Filter>
-    </ClInclude>
-    <ClInclude Include="ThrowItem.h">
-      <Filter>playGround\Item</Filter>
-    </ClInclude>
-    <ClInclude Include="SkillManager.h">
-      <Filter>playGround\Skill</Filter>
     </ClInclude>
     <ClInclude Include="Skill.h">
       <Filter>playGround\Skill\base</Filter>
@@ -240,12 +240,6 @@
     <ClInclude Include="skillDex.h">
       <Filter>playGround\PokéDex</Filter>
     </ClInclude>
-    <ClInclude Include="Apple.h">
-      <Filter>playGround\Item</Filter>
-    </ClInclude>
-    <ClInclude Include="Gummy.h">
-      <Filter>playGround\Item</Filter>
-    </ClInclude>
     <ClInclude Include="ItemManager.h">
       <Filter>playGround\Item</Filter>
     </ClInclude>
@@ -261,8 +255,29 @@
     <ClInclude Include="tileNode.h">
       <Filter>playGround\Maptool</Filter>
     </ClInclude>
-    <ClInclude Include="mapToolScene.h">
-      <Filter>playGround\Maptool</Filter>
+    <ClInclude Include="Enemy.h">
+      <Filter>playGround\Pokémon\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="User.h">
+      <Filter>playGround\Pokémon\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>playGround\Pokémon\Player\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Apple.h">
+      <Filter>playGround\Item\food</Filter>
+    </ClInclude>
+    <ClInclude Include="Gummy.h">
+      <Filter>playGround\Item\food</Filter>
+    </ClInclude>
+    <ClInclude Include="Hold.h">
+      <Filter>playGround\Item\hold</Filter>
+    </ClInclude>
+    <ClInclude Include="ThrowItem.h">
+      <Filter>playGround\Item\throw</Filter>
+    </ClInclude>
+    <ClInclude Include="TMachine.h">
+      <Filter>playGround\Item\TM</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -329,23 +344,8 @@
     <ClCompile Include="Pokemon.cpp">
       <Filter>playGround\Pokémon\base</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>playGround\Pokémon\Player</Filter>
-    </ClCompile>
     <ClCompile Include="Item.cpp">
       <Filter>playGround\Item\base</Filter>
-    </ClCompile>
-    <ClCompile Include="Hold.cpp">
-      <Filter>playGround\Item</Filter>
-    </ClCompile>
-    <ClCompile Include="TMachine.cpp">
-      <Filter>playGround\Item</Filter>
-    </ClCompile>
-    <ClCompile Include="ThrowItem.cpp">
-      <Filter>playGround\Item</Filter>
-    </ClCompile>
-    <ClCompile Include="SkillManager.cpp">
-      <Filter>playGround\Skill</Filter>
     </ClCompile>
     <ClCompile Include="Skill.cpp">
       <Filter>playGround\Skill\base</Filter>
@@ -413,17 +413,32 @@
     <ClCompile Include="ItemManager.cpp">
       <Filter>playGround\Item</Filter>
     </ClCompile>
-    <ClCompile Include="Gummy.cpp">
-      <Filter>playGround\Item</Filter>
-    </ClCompile>
-    <ClCompile Include="Apple.cpp">
-      <Filter>playGround\Item</Filter>
-    </ClCompile>
     <ClCompile Include="maptool.cpp">
       <Filter>playGround\Maptool</Filter>
     </ClCompile>
-    <ClCompile Include="mapToolScene.cpp">
-      <Filter>playGround\Maptool</Filter>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>playGround\Pokémon\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="User.cpp">
+      <Filter>playGround\Pokémon\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>playGround\Pokémon\Player\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Apple.cpp">
+      <Filter>playGround\Item\food</Filter>
+    </ClCompile>
+    <ClCompile Include="Gummy.cpp">
+      <Filter>playGround\Item\food</Filter>
+    </ClCompile>
+    <ClCompile Include="Hold.cpp">
+      <Filter>playGround\Item\hold</Filter>
+    </ClCompile>
+    <ClCompile Include="ThrowItem.cpp">
+      <Filter>playGround\Item\throw</Filter>
+    </ClCompile>
+    <ClCompile Include="TMachine.cpp">
+      <Filter>playGround\Item\TM</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

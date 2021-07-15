@@ -5,6 +5,7 @@ class testScene : public Scene
 {
 private:
 	dImage* _back;
+	Player* _testEnemy;
 
 public:
 	HRESULT init(Player* player);

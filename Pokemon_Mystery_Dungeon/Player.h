@@ -1,6 +1,5 @@
 #pragma once
 #include "Pokemon.h"
-#include "SkillManager.h"
 
 enum PLAYER_TYPE {
 	PLAYER_TYPE_USER,
@@ -11,16 +10,18 @@ enum PLAYER_TYPE {
 
 class Player
 {
-private:
+protected:
+	//플레이어 타입 & 상태
+	PLAYER_TYPE _playerType;
+	POKEMON_STATE _playerState;
+
 	//플레이어 포켓몬
 	Pokemon* _pokemon;
-
-	//현재 턴
-	bool _turn;
 
 	//좌표
 	float _x, _y;
 	float _destX, _destY;
+	int _direct;
 	RECT _body;
 
 	//레벨 & 경험치
@@ -31,7 +32,7 @@ private:
 	STAT _realStat;
 
 	//기술(스킬)
-	//Skill _skill[4];
+	Skill* _skill[4];
 
 	//지닌도구(아이템)
 	//Item _item;
@@ -39,27 +40,26 @@ private:
 	//맵 상태(마을 또는 던전)
 	bool _inDungeon;
 
-	SkillManager* _sm;
-	float _effectX, _effectY; // 이펙트 좌표값 주기위한 변수
-	int _skillNum;
-
 public:
-	HRESULT init();
-	void release();
-	void update();
-	void render();
+	virtual HRESULT init(int pokemonNum) = 0;
+	virtual void release() = 0;
+	virtual void update() = 0;
+	virtual void render() = 0;
 
-	void controlKey();
-	void testKey();
+	virtual int input() = 0;
+
+	void attack();
+	void move();
 
 
 
 	//=================== 접근자 ===================//
+	PLAYER_TYPE getPlayerType() { return _playerType; }
+	POKEMON_STATE getPlayerState() { return _playerState; }
+	void setPlayerState(POKEMON_STATE playerState) { _playerState = playerState; }
+
 	Pokemon* getPokemon() { return _pokemon; }
 	void setPokemon(Pokemon* pokemon) { _pokemon = pokemon; }
-
-	bool getTurn() { return _turn; }
-	void setTurn(bool turn) { _turn = turn; }
 
 	float getX() { return _x; }
 	void setX(float x) { _x = x; }

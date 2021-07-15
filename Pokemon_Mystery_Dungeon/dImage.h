@@ -111,6 +111,8 @@ public:
 	// ## 이미지 관련 접근자 설정자 ##
 	//=============================================
 
+	inline ID2D1Bitmap* getBitmap() { return _imageInfo->bitMap; }
+
 	inline void setX(float x) { _imageInfo->x = x; }
 	inline float getX() { return _imageInfo->x; }
 

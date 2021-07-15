@@ -40,10 +40,10 @@ public :
 	Skill() {};
 	~Skill() {};
 
-	virtual HRESULT init(float x, float y) = 0;
+	virtual HRESULT init() = 0;
 	virtual void release() = 0;
 
-
+	virtual void useSkill(float x, float y) = 0;
 
 	// ====================접근자,설정자==================== //
 	int getDamage() { return _damage; }

@@ -1,12 +1,19 @@
 #include "stdafx.h"
 #include "testScene.h"
 #include "Player.h"
+#include "Enemy.h"
 
 HRESULT testScene::init(Player * player)
 {
 	Scene::init(player);
 
 	CAMERAMANAGER->setBackScreenSize(3840, 2160);
+
+	TURNMANAGER->init();
+	TURNMANAGER->addAllPlayer(player);
+	_testEnemy = new Enemy;
+	_testEnemy->init(3);
+	TURNMANAGER->addAllPlayer(_testEnemy);
 
 	_back = IMAGEMANAGER->addDImage("back", L"img/sample1.jpg", 3840, 2160);
 
@@ -19,16 +26,17 @@ void testScene::release()
 
 void testScene::update()
 {
-	_player->update();
+	//_player->update();
+
+	TURNMANAGER->update();
+	EFFECTMANAGER->update();
+
 	CAMERAMANAGER->updateScreen(_player->getX(), _player->getY());
 	//CAMERAMANAGER->vibrateScreen(_player->getX(), _player->getY());
 }
 
 void testScene::render()
 {
-
-
-
 	//배경(이미지 클리핑)
 	D2D1_RECT_F rc = CAMERAMANAGER->getScreen();
 	_back->render(rc.left, rc.top, rc.left, rc.top,
@@ -42,7 +50,9 @@ void testScene::render()
 			}
 	}
 
-	_player->render();
+	//_player->render();
+	TURNMANAGER->render();
+	EFFECTMANAGER->render();
 }
 
 void testScene::changeScene()
