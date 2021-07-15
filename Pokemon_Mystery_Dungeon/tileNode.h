@@ -43,6 +43,18 @@ enum POS
 	POS_FLAG1, POS_FLAG2, POS_TANK1, POS_TANK2
 };
 
+//컨트롤
+enum CTRL
+{
+	CTRL_SAVE,			//세이브		버튼
+	CTRL_LOAD,			//로드		버튼
+	CTRL_RANDOM,		//랜덤		버튼
+	CTRL_TERRAINDRAW,	//지형		버튼
+	CTRL_OBJDRAW,		//오브젝트	버튼
+	CTRL_ERASER,		//지우개		버튼
+	CTRL_END
+};
+
 //타일 정보 담은 구조체
 struct tagTile
 {

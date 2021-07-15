@@ -25,11 +25,11 @@ void mapToolScene::release()
 
 void mapToolScene::update()
 {
-
-	if (KEYMANAGER->isStayKeyDown('W'))y-=48;
-	if (KEYMANAGER->isStayKeyDown('A'))x-=48;
-	if (KEYMANAGER->isStayKeyDown('S'))y+=48;
-	if (KEYMANAGER->isStayKeyDown('D'))x+=48;
+	_maptool->update();
+	if (KEYMANAGER->isStayKeyDown('W'))y-=47;
+	if (KEYMANAGER->isStayKeyDown('A'))x-=47;
+	if (KEYMANAGER->isStayKeyDown('S'))y+=47;
+	if (KEYMANAGER->isStayKeyDown('D'))x+=47;
 
 	if (x <= 0)x = 0;
 	if (y <= 0)y = 0;
@@ -46,17 +46,17 @@ void mapToolScene::render()
 
 	
 	_maptool->render();
-	
 if (PRINTMANAGER->isDebug())
 {
 	WCHAR str[128];
 	swprintf_s(str, L"_height: %d, _width: %d", _height, _width);
 	DTDMANAGER->printText(str, x + 200, y + 200, 100, 100);
-	swprintf_s(str, L"x: %d, y: %d", x, y);
+	swprintf_s(str, L"x: %d, y: %d, type: %d", x, y,_maptool->getType());
 	DTDMANAGER->printText(str, x + 200, y + 100, 100, 100);
 	_maptool->minimap();
 	
 }
+
 }
 
 void mapToolScene::changeScene()

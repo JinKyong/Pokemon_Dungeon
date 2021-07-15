@@ -13,7 +13,7 @@ HRESULT Maptool::init()
 {
 	_maptile =IMAGEMANAGER->addFrameDImage("maptiles", L"img/map/tiles/maptile.png", 768, 384, 16, 8);
 	_object =IMAGEMANAGER->addFrameDImage("object", L"img/map/tiles/object.png", 864, 576, SAMPLETILEX, SAMPLETILEY);
-	type = 2;
+	type = 1;
 	setup();
 
 
@@ -26,6 +26,21 @@ void Maptool::release()
 
 void Maptool::update()
 {
+	if (KEYMANAGER->isOnceKeyDown('1'))type--;
+	if (KEYMANAGER->isOnceKeyDown('2'))type++;
+	if (KEYMANAGER->isOnceKeyDown('3'))save();
+	if (KEYMANAGER->isOnceKeyDown('4'))load();
+	if (KEYMANAGER->isStayKeyDown(VK_RBUTTON)) { _ctrSelect = CTRL_ERASER; setMap(); }
+
+	if (type == 1 && KEYMANAGER->isStayKeyDown(VK_LBUTTON)) { _ctrSelect = CTRL_TERRAINDRAW; setMap(); }
+	if (type == 2 && KEYMANAGER->isStayKeyDown(VK_LBUTTON)) { _ctrSelect = CTRL_OBJDRAW; setMap(); }
+	
+
+
+	if (type <= 0)type = 1;
+	if (type >= 4)type = 3;
+
+	
 }
 
 void Maptool::render()
@@ -57,14 +72,7 @@ void Maptool::render()
 
 void Maptool::setup()
 {
-	_btnSave = CreateWindow("button", "저장", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 700, 500, 30, 30, _hWnd, HMENU(0), _hInstance, NULL);
-	_btnLoad = CreateWindow("button", "불러오기", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 800, 500, 30, 30, _hWnd, HMENU(1), _hInstance, NULL);
-	_btnRandom = CreateWindow("button", "Random", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 900, 500, 30, 30, _hWnd, HMENU(2), _hInstance, NULL);
-	_btnTerrainDraw = CreateWindow("button", "Terrain", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 700, 560, 30, 30, _hWnd, HMENU(3), _hInstance, NULL);
-	_btnObjectDraw = CreateWindow("button", "Object", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 800, 560, 30, 30, _hWnd, HMENU(4), _hInstance, NULL);
-	_btnEraser = CreateWindow("button", "지우개", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 900, 560, 30, 30, _hWnd, HMENU(5), _hInstance, NULL);
-
-
+	
 	//처음 컨트롤 상태는 지형으로
 	_ctrSelect = CTRL_TERRAINDRAW;
 
@@ -74,7 +82,7 @@ void Maptool::setup()
 		for (int j = 0; j < SAMPLETILEX; ++j)
 		{
 			_sampleTile[i * SAMPLETILEX + j].terrainFrameX = j;
-			_sampleTile[i * SAMPLETILEY + j].terrainFrameY = i;
+			_sampleTile[i * SAMPLETILEX + j].terrainFrameY = i;
 
 			//타일셋에 렉트를 씌움
 			SetRect(&_sampleTile[i * SAMPLETILEX + j].rcTile,
@@ -162,7 +170,6 @@ void Maptool::save()
 	file = CreateFile("tileSave.map", GENERIC_WRITE, NULL, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
 
 	WriteFile(file, _tiles, sizeof(tagTile)*TILEX*TILEX, &write, NULL);
-	WriteFile(file, _pos, sizeof(int) * 2, &write, NULL);
 	CloseHandle(file);
 }
 
@@ -182,15 +189,15 @@ void Maptool::load()
 void Maptool::minimap()
 {
 	D2D1_RECT_F rc = CAMERAMANAGER->getScreen();
-	for (int i = 0; i < TILEX * TILEY; ++i)
+	for (int i = (TILEX * TILEY); i > 0; --i)
 	{
 		_maptile->frameRender(
-			rc.right-(_tiles[i].rc.left/(TILESIZE/MINITILESIZE)), rc.bottom-(_tiles[i].rc.top / (TILESIZE / MINITILESIZE)),
+			rc.right-(_tiles[i].rc.left/(TILESIZE/3)), rc.bottom-(_tiles[i].rc.top / (TILESIZE/3)),
 			_tiles[i].terrainFrameX, _tiles[i].terrainFrameY, MINITILESIZE, MINITILESIZE);
 		
 		if (_tiles[i].obj == OBJ_NONE) continue;
 		_object->frameRender(
-			rc.right - (_tiles[i].rc.left*MINITILESIZE), rc.bottom - (_tiles[i].rc.top*MINITILESIZE),
+			rc.right - (_tiles[i].rc.left / (TILESIZE / 3)), rc.bottom - (_tiles[i].rc.top / (TILESIZE / 3)),
 			_tiles[i].objFrameX, _tiles[i].objFrameY, MINITILESIZE, MINITILESIZE);
 	}
 }

@@ -50,14 +50,9 @@ class Maptool : public gameNode
 {
 
 private:
-	HWND _btnSave;
-	HWND _btnLoad;
-	HWND _btnRandom;
-	HWND _btnTerrainDraw;
-	HWND _btnObjectDraw;
-	HWND _btnEraser;
-
-
+	vector<tagTile>				_vTile;
+	vector<tagTile>::iterator	_viTile;
+	
 	tagCurrentTile _currentTile;
 	tagSampleTile _sampleTile[SAMPLETILEX * SAMPLETILEY];
 	tagTile _tiles[TILEX * TILEY];
@@ -67,6 +62,7 @@ private:
 	dImage* _object;
 	int _pos[2];
 
+	int _ctrSelect;
 	int type;
 
 public:
@@ -89,6 +85,8 @@ public:
 	dImage* getObject() { return _object; }
 	//tagTile getTile() { return _tiles; }
 
+	int getType() { return type; }
+	
 	TERRAIN terrainSelect(int frameX, int frameY);
 	OBJECT objSelect(int frameX, int frameY);
 

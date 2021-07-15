@@ -97,6 +97,9 @@
     <Filter Include="playGround\Skill\SK number 0~9">
       <UniqueIdentifier>{422ee777-311f-4947-8870-ed61dd987b89}</UniqueIdentifier>
     </Filter>
+    <Filter Include="playGround\Maptool\base">
+      <UniqueIdentifier>{234eb1e4-6762-4967-9a22-e50e5736c2cc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -243,9 +246,6 @@
     <ClInclude Include="maptool.h">
       <Filter>playGround\Maptool</Filter>
     </ClInclude>
-    <ClInclude Include="tileNode.h">
-      <Filter>playGround\Maptool</Filter>
-    </ClInclude>
     <ClInclude Include="Enemy.h">
       <Filter>playGround\Pokémon\Player</Filter>
     </ClInclude>
@@ -266,9 +266,6 @@
     </ClInclude>
     <ClInclude Include="TMachine.h">
       <Filter>playGround\Item\TM</Filter>
-    </ClInclude>
-    <ClInclude Include="mapToolScene.h">
-      <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Glass.h">
       <Filter>playGround\Item\hold</Filter>
@@ -320,6 +317,12 @@
     </ClInclude>
     <ClInclude Include="ThunderFang.h">
       <Filter>playGround\Skill\SK number 0~9</Filter>
+    </ClInclude>
+    <ClInclude Include="tileNode.h">
+      <Filter>playGround\Maptool\base</Filter>
+    </ClInclude>
+    <ClInclude Include="mapToolScene.h">
+      <Filter>playGround\Stage</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -467,9 +470,6 @@
     <ClCompile Include="TMachine.cpp">
       <Filter>playGround\Item\TM</Filter>
     </ClCompile>
-    <ClCompile Include="mapToolScene.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Glass.cpp">
       <Filter>playGround\Item\hold</Filter>
     </ClCompile>
@@ -520,6 +520,9 @@
     </ClCompile>
     <ClCompile Include="ThunderFang.cpp">
       <Filter>playGround\Skill\SK number 0~9</Filter>
+    </ClCompile>
+    <ClCompile Include="mapToolScene.cpp">
+      <Filter>playGround\Stage</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
