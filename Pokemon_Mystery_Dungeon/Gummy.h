@@ -1,24 +1,22 @@
 #pragma once
 #include "Item.h"
+#include "PokemonType.h"
 
 class Gummy : public Item
 {
 private:
+	int _num;
 
 public:
 	Gummy() {};
 	~Gummy() {};
 
-	virtual HRESULT init(float x, float y);
-	virtual void release() = 0;
-	virtual void update() = 0;
-	virtual void render(float x, float y);
+	virtual HRESULT init(float x, float y, float angle);
+	virtual void release();
+	virtual void update();
+	virtual void render();
 
 
 	//아이템 사용
-	void eatItem();
-
-	//아이템 던지기
-	void throwItem(float x, float y, float angle);
-	void itemMove(float x, float y, float angle);
+	void eatItem(float value);
 };

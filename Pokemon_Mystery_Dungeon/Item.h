@@ -24,6 +24,8 @@ protected:
 	int _num;				//아이템 넘버
 	int _type;				//아이템 타입
 
+	bool _use;				//아이템 사용 여부
+
 	//====================throw====================//
 	bool _isThrow;			//throw 아이템 던졌는지
 	float _fireX, _fireY;
@@ -34,19 +36,20 @@ public:
 	Item() {};
 	~Item() {};
 
-	virtual HRESULT init(float x, float y) = 0;
+	virtual HRESULT init(float x, float y, float angle) = 0;
 	virtual void release() = 0;
 	virtual void update() = 0;
-	virtual void render(float x, float y) = 0;
+	virtual void render();
 
 	//아이템 사용
 	//void useItem();	//도핑약 X
-	void eatItem();		//return value
-	void giveItem();
+
+	//void eatItem(); //{ return ???; };
+	//Item* giveItem() { return this; }; //반환값이 아이템 포인터
 	
 	//throw
 	void throwItem(float x, float y, float angle);
-	void itemMove(float x, float y, float angle);
+	void itemMove();
 
 	//get-set
 	float getX() { return _x; }
@@ -54,7 +57,10 @@ public:
 	void setX(float x) { _x = x; }
 	void setY(float y) { _y = y; }
 
-	virtual int getType() { return _type; }
+	int getType() { return _type; }
+	wstring getName() { return _name; } 
+
+	bool getUse() { return _use; } //TM에 사용한CD 클래스를 하나더 만들라는거죠?
 
 	RECT getBody() { return _body; }
 	dImage* getImage() { return _img; }

@@ -25,6 +25,8 @@ public:
 	Skill* makeSkill(int num);
 
 	//======================== 스킬 도감 ========================// 
+
+	// ================== 1 ~ 10 ================== //
 	Skill* fireBlast() { return new FireBlast; }
 	Skill* gust() { return new Gust; }
 	Skill* lightning() { return new Lightning; }
@@ -34,5 +36,12 @@ public:
 	Skill* thunderFang() { return new ThunderFang; }
 	Skill* iceFang() { return new IceFang; }
 	Skill* fireFang() { return new FireFang; }
+	Skill* pound() { return new Pound; }
+
+	// ================== 11 ~ 20 ================== //
+	Skill* poisonPowder() { return new PoisonPowder; }
+	Skill* sleepPowder() { return new SleepPowder; }
+	Skill* stunSpore() { return new StunSpore; }
+	Skill* metalClaw() { return new MetalClaw; }
 };
 

@@ -1,10 +1,13 @@
 #include "stdafx.h"
 #include "Apple.h"
 
-HRESULT Apple::init(float x, float y)
+HRESULT Apple::init(float x, float y, float angle)
 {
 	_img = IMAGEMANAGER->addDImage("apple", L"img/item/food/apple1.png", ITEMSIZE, ITEMSIZE);
+	_x = x;
+	_y = y;
 	_body = RectMakeCenter(x, y, ITEMSIZE, ITEMSIZE);
+	_name = L"사과";
 
 	//IMAGEMANAGER->addDImage("gold_apple", L"img/item/food/apple2.png", ITEMSIZE, ITEMSIZE);	//황금사과
 	//IMAGEMANAGER->addDImage("rot_apple", L"img/item/food/apple3.png", ITEMSIZE, ITEMSIZE);	//썩은
@@ -14,12 +17,15 @@ HRESULT Apple::init(float x, float y)
 	return S_OK;
 }
 
-void Apple::render(float x, float y)
+void Apple::release()
 {
-
 }
 
-void Apple::eatItem()
+void Apple::update()
+{
+}
+
+void Apple::eatItem(float value)
 {
 
 }

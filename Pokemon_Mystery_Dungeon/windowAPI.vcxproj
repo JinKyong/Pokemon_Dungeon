@@ -164,12 +164,18 @@
     <ClInclude Include="EF_IceFang.h" />
     <ClInclude Include="EF_LeafBlade.h" />
     <ClInclude Include="EF_Lightning.h" />
+    <ClInclude Include="EF_MetalClaw.h" />
+    <ClInclude Include="EF_PoisonPowder.h" />
+    <ClInclude Include="EF_Pound.h" />
     <ClInclude Include="EF_RockSlide.h" />
+    <ClInclude Include="EF_SleepPowder.h" />
+    <ClInclude Include="EF_StunSpore.h" />
     <ClInclude Include="EF_ThunderFang.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="FireBlast.h" />
     <ClInclude Include="Apple.h" />
     <ClInclude Include="FireFang.h" />
+    <ClInclude Include="GarbageTM.h" />
     <ClInclude Include="Glass.h" />
     <ClInclude Include="Gummy.h" />
     <ClInclude Include="Gust.h" />
@@ -185,14 +191,17 @@
     <ClInclude Include="gameNode.h" />
     <ClInclude Include="maptool.h" />
     <ClInclude Include="mapToolScene.h" />
+    <ClInclude Include="MetalClaw.h" />
     <ClInclude Include="Pichu.h" />
     <ClInclude Include="Pikachu.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="playGround.h" />
+    <ClInclude Include="PoisonPowder.h" />
     <ClInclude Include="pokeDex.h" />
     <ClInclude Include="Pokemon.h" />
     <ClInclude Include="PokemonHeader.h" />
     <ClInclude Include="PokemonType.h" />
+    <ClInclude Include="Pound.h" />
     <ClInclude Include="printManager.h" />
     <ClInclude Include="Raichu.h" />
     <ClInclude Include="randomFunction.h" />
@@ -206,8 +215,10 @@
     <ClInclude Include="Skill.h" />
     <ClInclude Include="skillDex.h" />
     <ClInclude Include="SkillHeader.h" />
+    <ClInclude Include="SleepPowder.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="streamManager.h" />
+    <ClInclude Include="StunSpore.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="testScene.h" />
     <ClInclude Include="ThrowItem.h" />
@@ -240,13 +251,19 @@
     <ClCompile Include="EF_IceFang.cpp" />
     <ClCompile Include="EF_LeafBlade.cpp" />
     <ClCompile Include="EF_Lightning.cpp" />
+    <ClCompile Include="EF_MetalClaw.cpp" />
+    <ClCompile Include="EF_PoisonPowder.cpp" />
+    <ClCompile Include="EF_Pound.cpp" />
     <ClCompile Include="EF_RockSlide.cpp" />
+    <ClCompile Include="EF_SleepPowder.cpp" />
+    <ClCompile Include="EF_StunSpore.cpp" />
     <ClCompile Include="EF_ThunderFang.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="FireBlast.cpp" />
     <ClCompile Include="Apple.cpp" />
     <ClCompile Include="FireFang.cpp" />
     <ClCompile Include="gameNode.cpp" />
+    <ClCompile Include="GarbageTM.cpp" />
     <ClCompile Include="Glass.cpp" />
     <ClCompile Include="Gummy.cpp" />
     <ClCompile Include="Gust.cpp" />
@@ -260,12 +277,15 @@
     <ClCompile Include="Lightning.cpp" />
     <ClCompile Include="maptool.cpp" />
     <ClCompile Include="mapToolScene.cpp" />
+    <ClCompile Include="MetalClaw.cpp" />
     <ClCompile Include="Pichu.cpp" />
     <ClCompile Include="Pikachu.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="playGround.cpp" />
+    <ClCompile Include="PoisonPowder.cpp" />
     <ClCompile Include="pokeDex.cpp" />
     <ClCompile Include="Pokemon.cpp" />
+    <ClCompile Include="Pound.cpp" />
     <ClCompile Include="printManager.cpp" />
     <ClCompile Include="Raichu.cpp" />
     <ClCompile Include="Ribbon.cpp" />
@@ -275,6 +295,7 @@
     <ClCompile Include="Scope.cpp" />
     <ClCompile Include="Skill.cpp" />
     <ClCompile Include="skillDex.cpp" />
+    <ClCompile Include="SleepPowder.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -282,6 +303,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="streamManager.cpp" />
+    <ClCompile Include="StunSpore.cpp" />
     <ClCompile Include="testScene.cpp" />
     <ClCompile Include="ThrowItem.cpp" />
     <ClCompile Include="ThunderFang.cpp" />

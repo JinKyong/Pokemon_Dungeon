@@ -1,35 +1,34 @@
 #include "stdafx.h"
 #include "Item.h"
 
-void Item::eatItem()
+/*
+void Item::eatItem(float value)
 {
+	//¹ÝÈ¯
 }
 
 void Item::giveItem()
 {
 }
+*/
+
+void Item::render()
+{
+	_img->render(_x, _y);
+}
 
 void Item::throwItem(float x, float y, float angle)
 {
-	if (!_isThrow)
-	{
-		_x = _fireX = x;
-		_y = _fireY = y;
+	_x = _fireX = x;
+	_y = _fireY = y;
 
-		_angle = angle;
-		_isThrow = true;
-	}
+	_angle = angle;
 }
 
-void Item::itemMove(float x, float y, float angle)
+void Item::itemMove()
 {
-	if (_isThrow)
-	{
-		_isThrow = false;
+	_x += cosf(_angle);
+	_y += -sinf(_angle);
 
-		_x += cosf(_angle);
-		_y += -sinf(_angle);
-
-		_body = RectMakeCenter(_x, _y, ITEMSIZE, ITEMSIZE);
-	}
+	_body = RectMakeCenter(_x, _y, ITEMSIZE, ITEMSIZE);
 }

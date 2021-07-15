@@ -11,13 +11,28 @@ void ItemManager::release()
 }
 
 void ItemManager::update()
-{
+{																//항상더하지않는다
+//	for (_viItemAdd = _vItemAdd.begin(); _viItemAdd != _vItemAdd.end();)
+//	{
+//		//if ((*_viItemAdd)->/*충돌충돌*/)
+//		//{
+//		//	SAFE_DELETE(*_viItemAdd);
+//		//	_viItemAdd = _vItemAdd.erase(_viItemAdd);
+//		//}
+//		//
+//		//else ++_viItemAdd;
+//	}
 }
 
 void ItemManager::render()
 {
+	for (_viItemAdd = _vItemAdd.begin(); _viItemAdd != _vItemAdd.end(); ++_viItemAdd)
+	{
+		(*_viItemAdd)->render();
+	}
 }
 
-void ItemManager::setItemDrop(float x, float y)
+void ItemManager::addItem(Item * item)
 {
+	_vItemAdd.push_back(item);
 }

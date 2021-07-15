@@ -2,6 +2,8 @@
 #include "testScene.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "Apple.h"
+#include "Gummy.h"
 
 HRESULT testScene::init(Player * player)
 {
@@ -11,12 +13,36 @@ HRESULT testScene::init(Player * player)
 
 	TURNMANAGER->init();
 	TURNMANAGER->addAllPlayer(player);
-	_testEnemy = new Enemy;
-	_testEnemy->init(3);
-	TURNMANAGER->addAllPlayer(_testEnemy);
+	//_testEnemy = new Enemy;
+	//_testEnemy->init(3);
+	//TURNMANAGER->addAllPlayer(_testEnemy);
+
+	_im = new ItemManager;
+	_im->init();
+
+	Apple* apple;
+	apple = new Apple;
+	apple->init(30 * TILEWIDTH, 30 * TILEHEIGHT, PI);
+
+	Gummy* jelly;
+	jelly = new Gummy;
+	jelly->init(35 * TILEWIDTH, 25 * TILEHEIGHT, PI);
+
+	Gummy* jelly2;
+	jelly2 = new Gummy;
+	jelly2->init(35 * TILEWIDTH, 35 * TILEHEIGHT, PI);
+
+	Gummy* jelly3;
+	jelly3 = new Gummy;
+	jelly3->init(35 * TILEWIDTH, 40 * TILEHEIGHT, PI);
+
+	_im->addItem(apple);
+	_im->addItem(jelly);
+	_im->addItem(jelly2);
+	_im->addItem(jelly3); //why,,,
 
 	_back = IMAGEMANAGER->addDImage("back", L"img/sample1.jpg", 3840, 2160);
-
+	
 	return S_OK;
 }
 
@@ -30,6 +56,8 @@ void testScene::update()
 
 	TURNMANAGER->update();
 	EFFECTMANAGER->update();
+
+	_im->update();
 
 	CAMERAMANAGER->updateScreen(_player->getX(), _player->getY());
 	//CAMERAMANAGER->vibrateScreen(_player->getX(), _player->getY());
@@ -53,6 +81,8 @@ void testScene::render()
 	//_player->render();
 	TURNMANAGER->render();
 	EFFECTMANAGER->render();
+
+	_im->render();
 }
 
 void testScene::changeScene()

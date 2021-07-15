@@ -1,9 +1,15 @@
 #include "stdafx.h"
 #include "Gummy.h"
 
-HRESULT Gummy::init(float x, float y)
+HRESULT Gummy::init(float x, float y, float angle)
 {
-	IMAGEMANAGER->addFrameDImage("gummy", L"img/item/food/gummy/1.png", 1, 17, ITEMSIZE, ITEMSIZE);
+	_img = IMAGEMANAGER->addFrameDImage("gummy", L"img/item/food/gummy/0.png", 544, ITEMSIZE, 17, 1);
+	_x = x;
+	_y = y;
+	_body = RectMakeCenter(x, y, ITEMSIZE, ITEMSIZE);
+	_num = RND->getInt(17);
+
+	_name = L"±¸¹Ì";
 
 	//char key[128];
 	//WCHAR str[128];
@@ -18,18 +24,19 @@ HRESULT Gummy::init(float x, float y)
 	return S_OK;
 }
 
-void Gummy::render(float x, float y)
+void Gummy::release()
 {
 }
 
-void Gummy::eatItem()
+void Gummy::update()
 {
 }
 
-void Gummy::throwItem(float x, float y, float angle)
+void Gummy::render()
 {
+	_img->frameRender(_x, _y, _num, 0);
 }
 
-void Gummy::itemMove(float x, float y, float angle)
+void Gummy::eatItem(float value)
 {
 }
