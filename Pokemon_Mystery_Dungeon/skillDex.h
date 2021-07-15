@@ -29,5 +29,10 @@ public:
 	Skill* gust() { return new Gust; }
 	Skill* lightning() { return new Lightning; }
 	Skill* rockSlide() { return new RockSlide; }
+	Skill* dynamicPunch() { return new DynamicPunch; }
+	Skill* leafBlade() { return new LeafBlade; }
+	Skill* thunderFang() { return new ThunderFang; }
+	Skill* iceFang() { return new IceFang; }
+	Skill* fireFang() { return new FireFang; }
 };
 

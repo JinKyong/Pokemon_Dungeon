@@ -5,7 +5,8 @@ class uiManager : public singletonBase<uiManager>
 private:
 	D2D1_RECT_F _screen;
 
-	dImage* _testImage;
+	dImage* _testImage[2];
+	int _testKey;
 	//여기 필요한 이미지 생성하고
 
 public:

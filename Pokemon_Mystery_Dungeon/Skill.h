@@ -29,8 +29,8 @@ class Skill
 protected :
 	wstring _name;
 	int _skillNum;
-	SKILLTYPE _skType;
-	//ATTRIBUTE _att;
+	SKILLTYPE _atkType;
+	POKEMON_TYPE _type;
 	SKILLSCALE _scale;
 	int _damage;
 	float _accuracy;

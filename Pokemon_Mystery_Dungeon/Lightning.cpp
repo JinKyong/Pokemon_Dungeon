@@ -4,12 +4,12 @@
 HRESULT Lightning::init()
 {
 	_name = L"전기충격";
-	_skillNum = 2;
+	_skillNum = 3;
 	_damage = 40;
 	_accuracy = 1.f;
 	_currentPP = _maxPP = 30;
-	_skType = SPECIAL_ATTACK;
-	//_att = T_ELECTRIC;
+	_atkType = SPECIAL_ATTACK;
+	_type = POKEMON_TYPE_ELECTRIC;
 	_scale = SS_FRONT;
 
 	return S_OK;

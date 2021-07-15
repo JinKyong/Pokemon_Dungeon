@@ -4,12 +4,12 @@
 HRESULT RockSlide::init()
 {
 	_name = L"½ºÅæ»þ¿ö";
-	_skillNum = 3;
+	_skillNum = 4;
 	_damage = 75;
 	_accuracy = 0.9f;
 	_currentPP = _maxPP = 10;
-	_skType = PHYSICAL_ATTACK;
-	//_att = T_ROCK;
+	_atkType = PHYSICAL_ATTACK;
+	_type = POKEMON_TYPE_ROCK;
 	_scale = SS_FRONT;
 
 	return S_OK;

@@ -73,9 +73,6 @@
     <Filter Include="playGround\Skill\Effect\base">
       <UniqueIdentifier>{9e797791-43b7-4fb8-aacd-ad4d329e8490}</UniqueIdentifier>
     </Filter>
-    <Filter Include="playGround\Skill\number 0~9">
-      <UniqueIdentifier>{422ee777-311f-4947-8870-ed61dd987b89}</UniqueIdentifier>
-    </Filter>
     <Filter Include="playGround\Maptool">
       <UniqueIdentifier>{f216e278-2dde-4705-b5f6-646449aa534b}</UniqueIdentifier>
     </Filter>
@@ -93,6 +90,12 @@
     </Filter>
     <Filter Include="playGround\Item\TM">
       <UniqueIdentifier>{43f6172a-f0a0-40a6-8294-f1d9a9952f11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="playGround\Skill\Effect\EF number 1~10">
+      <UniqueIdentifier>{98b51059-17f5-4ff4-a137-baa4b712398a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="playGround\Skill\SK number 0~9">
+      <UniqueIdentifier>{422ee777-311f-4947-8870-ed61dd987b89}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -177,18 +180,6 @@
     <ClInclude Include="Skill.h">
       <Filter>playGround\Skill\base</Filter>
     </ClInclude>
-    <ClInclude Include="EF_FireBlast.h">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="EF_Gust.h">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="EF_Lightning.h">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="EF_RockSlide.h">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClInclude>
     <ClInclude Include="EffectManager.h">
       <Filter>playGround\Skill\Effect</Filter>
     </ClInclude>
@@ -223,16 +214,16 @@
       <Filter>playGround\PokéDex</Filter>
     </ClInclude>
     <ClInclude Include="FireBlast.h">
-      <Filter>playGround\Skill\number 0~9</Filter>
+      <Filter>playGround\Skill\SK number 0~9</Filter>
     </ClInclude>
     <ClInclude Include="Gust.h">
-      <Filter>playGround\Skill\number 0~9</Filter>
+      <Filter>playGround\Skill\SK number 0~9</Filter>
     </ClInclude>
     <ClInclude Include="Lightning.h">
-      <Filter>playGround\Skill\number 0~9</Filter>
+      <Filter>playGround\Skill\SK number 0~9</Filter>
     </ClInclude>
     <ClInclude Include="RockSlide.h">
-      <Filter>playGround\Skill\number 0~9</Filter>
+      <Filter>playGround\Skill\SK number 0~9</Filter>
     </ClInclude>
     <ClInclude Include="turnManager.h">
       <Filter>2DGameFramework\Manager</Filter>
@@ -287,6 +278,48 @@
     </ClInclude>
     <ClInclude Include="Scope.h">
       <Filter>playGround\Item\hold</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_DynamicPunch.h">
+      <Filter>playGround\Skill\Effect\EF number 1~10</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_FireBlast.h">
+      <Filter>playGround\Skill\Effect\EF number 1~10</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_FireFang.h">
+      <Filter>playGround\Skill\Effect\EF number 1~10</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_Gust.h">
+      <Filter>playGround\Skill\Effect\EF number 1~10</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_IceFang.h">
+      <Filter>playGround\Skill\Effect\EF number 1~10</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_LeafBlade.h">
+      <Filter>playGround\Skill\Effect\EF number 1~10</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_Lightning.h">
+      <Filter>playGround\Skill\Effect\EF number 1~10</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_RockSlide.h">
+      <Filter>playGround\Skill\Effect\EF number 1~10</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_ThunderFang.h">
+      <Filter>playGround\Skill\Effect\EF number 1~10</Filter>
+    </ClInclude>
+    <ClInclude Include="DynamicPunch.h">
+      <Filter>playGround\Skill\SK number 0~9</Filter>
+    </ClInclude>
+    <ClInclude Include="FireFang.h">
+      <Filter>playGround\Skill\SK number 0~9</Filter>
+    </ClInclude>
+    <ClInclude Include="IceFang.h">
+      <Filter>playGround\Skill\SK number 0~9</Filter>
+    </ClInclude>
+    <ClInclude Include="LeafBlade.h">
+      <Filter>playGround\Skill\SK number 0~9</Filter>
+    </ClInclude>
+    <ClInclude Include="ThunderFang.h">
+      <Filter>playGround\Skill\SK number 0~9</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -359,18 +392,6 @@
     <ClCompile Include="Skill.cpp">
       <Filter>playGround\Skill\base</Filter>
     </ClCompile>
-    <ClCompile Include="EF_FireBlast.cpp">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="EF_Gust.cpp">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="EF_Lightning.cpp">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="EF_RockSlide.cpp">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClCompile>
     <ClCompile Include="EffectManager.cpp">
       <Filter>playGround\Skill\Effect</Filter>
     </ClCompile>
@@ -402,16 +423,16 @@
       <Filter>playGround\PokéDex</Filter>
     </ClCompile>
     <ClCompile Include="FireBlast.cpp">
-      <Filter>playGround\Skill\number 0~9</Filter>
+      <Filter>playGround\Skill\SK number 0~9</Filter>
     </ClCompile>
     <ClCompile Include="Gust.cpp">
-      <Filter>playGround\Skill\number 0~9</Filter>
+      <Filter>playGround\Skill\SK number 0~9</Filter>
     </ClCompile>
     <ClCompile Include="Lightning.cpp">
-      <Filter>playGround\Skill\number 0~9</Filter>
+      <Filter>playGround\Skill\SK number 0~9</Filter>
     </ClCompile>
     <ClCompile Include="RockSlide.cpp">
-      <Filter>playGround\Skill\number 0~9</Filter>
+      <Filter>playGround\Skill\SK number 0~9</Filter>
     </ClCompile>
     <ClCompile Include="turnManager.cpp">
       <Filter>2DGameFramework\Manager</Filter>
@@ -457,6 +478,48 @@
     </ClCompile>
     <ClCompile Include="Scope.cpp">
       <Filter>playGround\Item\hold</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_DynamicPunch.cpp">
+      <Filter>playGround\Skill\Effect\EF number 1~10</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_FireBlast.cpp">
+      <Filter>playGround\Skill\Effect\EF number 1~10</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_FireFang.cpp">
+      <Filter>playGround\Skill\Effect\EF number 1~10</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_Gust.cpp">
+      <Filter>playGround\Skill\Effect\EF number 1~10</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_IceFang.cpp">
+      <Filter>playGround\Skill\Effect\EF number 1~10</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_LeafBlade.cpp">
+      <Filter>playGround\Skill\Effect\EF number 1~10</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_Lightning.cpp">
+      <Filter>playGround\Skill\Effect\EF number 1~10</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_RockSlide.cpp">
+      <Filter>playGround\Skill\Effect\EF number 1~10</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_ThunderFang.cpp">
+      <Filter>playGround\Skill\Effect\EF number 1~10</Filter>
+    </ClCompile>
+    <ClCompile Include="DynamicPunch.cpp">
+      <Filter>playGround\Skill\SK number 0~9</Filter>
+    </ClCompile>
+    <ClCompile Include="FireFang.cpp">
+      <Filter>playGround\Skill\SK number 0~9</Filter>
+    </ClCompile>
+    <ClCompile Include="IceFang.cpp">
+      <Filter>playGround\Skill\SK number 0~9</Filter>
+    </ClCompile>
+    <ClCompile Include="LeafBlade.cpp">
+      <Filter>playGround\Skill\SK number 0~9</Filter>
+    </ClCompile>
+    <ClCompile Include="ThunderFang.cpp">
+      <Filter>playGround\Skill\SK number 0~9</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

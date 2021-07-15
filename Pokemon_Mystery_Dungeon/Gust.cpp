@@ -5,12 +5,12 @@
 HRESULT Gust::init()
 {
 	_name = L"바람일으키기";
-	_skillNum = 1;
+	_skillNum = 2;
 	_damage = 40;
 	_accuracy = 1.f;
 	_currentPP = _maxPP = 35;
-	_skType = SPECIAL_ATTACK;
-	//_att = T_FLY;
+	_atkType = SPECIAL_ATTACK;
+	_type = POKEMON_TYPE_FLYING;
 	_scale = SS_FRONT;
 
 	return S_OK;

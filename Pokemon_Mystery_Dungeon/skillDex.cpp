@@ -28,6 +28,11 @@ void skillDex::setSkillDex()
 	addSkill(&skillDex::gust);
 	addSkill(&skillDex::lightning);
 	addSkill(&skillDex::rockSlide);
+	addSkill(&skillDex::dynamicPunch);
+	addSkill(&skillDex::leafBlade);
+	addSkill(&skillDex::thunderFang);
+	addSkill(&skillDex::iceFang);
+	addSkill(&skillDex::fireFang);
 }
 
 Skill * skillDex::makeSkill(int num)
