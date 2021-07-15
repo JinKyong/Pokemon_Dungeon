@@ -171,9 +171,6 @@
     <ClInclude Include="ThrowItem.h">
       <Filter>playGround\Item</Filter>
     </ClInclude>
-    <ClInclude Include="SkillManager.h">
-      <Filter>playGround\Skill</Filter>
-    </ClInclude>
     <ClInclude Include="Skill.h">
       <Filter>playGround\Skill\base</Filter>
     </ClInclude>
@@ -340,9 +337,6 @@
     </ClCompile>
     <ClCompile Include="ThrowItem.cpp">
       <Filter>playGround\Item</Filter>
-    </ClCompile>
-    <ClCompile Include="SkillManager.cpp">
-      <Filter>playGround\Skill</Filter>
     </ClCompile>
     <ClCompile Include="Skill.cpp">
       <Filter>playGround\Skill\base</Filter>

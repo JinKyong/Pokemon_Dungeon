@@ -24,7 +24,10 @@ public:
 
 	Skill* makeSkill(int num);
 
-	//======================== 스킬 도감 ========================//
-
+	//======================== 스킬 도감 ========================// 
+	Skill* fireBlast() { return new FireBlast; }
+	Skill* gust() { return new Gust; }
+	Skill* lightning() { return new Lightning; }
+	Skill* rockSlide() { return new RockSlide; }
 };
 

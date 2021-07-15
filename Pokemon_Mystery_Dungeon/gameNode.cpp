@@ -33,6 +33,7 @@ HRESULT gameNode::init(bool managerInit)
 		CAMERAMANAGER->init();
 		UIMANAGER->init();
 		POKEDEX->init();
+		SKILLDEX->init();
 	}
 
 	return S_OK;
@@ -69,6 +70,9 @@ void gameNode::release()
 
 		POKEDEX->release();
 		POKEDEX->releaseSingleton();
+
+		SKILLDEX->release();
+		SKILLDEX->releaseSingleton();
 
 		CoUninitialize();
 	}
