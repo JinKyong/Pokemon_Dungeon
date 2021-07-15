@@ -89,13 +89,11 @@ void dtdManager::render(float destX, float destY, float width, float height)
 	_dRenderTarget->Clear(ColorF(ColorF::Aquamarine));
 
 	//위 화면(UI를 불러서 그림)
-	D2D1_RECT_F dest;
-	D2D1_RECT_F sour = UIMANAGER->getScreen();
-	_dRenderTarget->FillRectangle(sour, _dBrush);
+	UIMANAGER->render();
 
 	//아래 화면 (실제 게임 화면)
-	dest = { destX, destY, destX + width, destY + height };
-	sour = CAMERAMANAGER->getScreen();
+	D2D1_RECT_F dest = { destX, destY, destX + width, destY + height };
+	D2D1_RECT_F sour = CAMERAMANAGER->getScreen();
 
 	_dRenderTarget->DrawBitmap(_dBitmap, dest,
 		1.0, D2D1_BITMAP_INTERPOLATION_MODE_LINEAR, sour);

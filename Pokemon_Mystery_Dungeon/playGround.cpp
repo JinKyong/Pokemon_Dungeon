@@ -58,7 +58,6 @@ void playGround::render()
 		return;*/
 
 	DTDMANAGER->beginDraw();
-	//PatBlt(getMemDC(), 0, 0, WINSIZEX, WINSIZEY, BLACKNESS);
 	//================제발 이 사이에 좀 그립시다==========================
 	SCENEMANAGER->render();
 
