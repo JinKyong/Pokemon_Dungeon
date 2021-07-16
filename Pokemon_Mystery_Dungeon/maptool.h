@@ -50,12 +50,11 @@ class Maptool : public gameNode
 {
 
 private:
-	vector<tagTile>				_vTile;
-	vector<tagTile>::iterator	_viTile;
 	
 	tagCurrentTile _currentTile;
 	tagSampleTile _sampleTile[SAMPLETILEX * SAMPLETILEY];
 	tagTile _tiles[TILEX * TILEY];
+	DWORD _attribute[TILEX * TILEY];	//타일속성
 
 	//dungeon* Dungeon;
 	dImage* _maptile;
@@ -80,6 +79,7 @@ public:
 	virtual void save();
 	virtual void load();
 	void minimap();
+	//void example(int TerrainX,int TerrainY,int ObjX,int ObjY, OBJECT obj);
 
 	dImage* getMaptile() { return _maptile; }
 	dImage* getObject() { return _object; }
@@ -87,6 +87,7 @@ public:
 
 	int getType() { return type; }
 	
+	DWORD* getTileAttribute() { return _attribute; }
 	TERRAIN terrainSelect(int frameX, int frameY);
 	OBJECT objSelect(int frameX, int frameY);
 

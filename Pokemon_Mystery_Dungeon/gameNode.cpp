@@ -119,13 +119,12 @@ LRESULT gameNode::MainProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lPara
 {
 	//	PAINTSTRUCT ps;
 	//	HDC         hdc; //얘 찐 중요합니...
-
 	switch (iMessage)
 	{
 		//마우스 움직이면 여기서 메세지 발생
 	case WM_MOUSEMOVE:
-		_ptMouse.x = static_cast<float>(LOWORD(lParam))+100;
-		_ptMouse.y = static_cast<float>(HIWORD(lParam))+100;
+		_ptMouse.x = static_cast<float>(LOWORD(lParam));
+		_ptMouse.y = static_cast<float>(HIWORD(lParam));
 		
 		break;
 	

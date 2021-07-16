@@ -208,6 +208,7 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Ribbon.h" />
     <ClInclude Include="RockSlide.h" />
+    <ClInclude Include="sampleMap.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="sceneManager.h" />
     <ClInclude Include="Scope.h" />
@@ -220,6 +221,7 @@
     <ClInclude Include="streamManager.h" />
     <ClInclude Include="StunSpore.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="testMapScene.h" />
     <ClInclude Include="testScene.h" />
     <ClInclude Include="ThrowItem.h" />
     <ClInclude Include="ThunderFang.h" />
@@ -290,6 +292,7 @@
     <ClCompile Include="Raichu.cpp" />
     <ClCompile Include="Ribbon.cpp" />
     <ClCompile Include="RockSlide.cpp" />
+    <ClCompile Include="sampleMap.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="sceneManager.cpp" />
     <ClCompile Include="Scope.cpp" />
@@ -304,6 +307,7 @@
     </ClCompile>
     <ClCompile Include="streamManager.cpp" />
     <ClCompile Include="StunSpore.cpp" />
+    <ClCompile Include="testMapScene.cpp" />
     <ClCompile Include="testScene.cpp" />
     <ClCompile Include="ThrowItem.cpp" />
     <ClCompile Include="ThunderFang.cpp" />

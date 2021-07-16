@@ -10,7 +10,6 @@ HRESULT mapToolScene::init(Player* player)
 
 	_maptool = new Maptool;
 	_maptool->init();
-
 	
 	x = 0;
 	y = 0;

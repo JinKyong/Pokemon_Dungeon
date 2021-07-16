@@ -1,26 +1,28 @@
 #pragma once
-#include "maptool.h"
 #include "Scene.h"
-#include "gameNode.h"
+#include "sampleMap.h"
 
-class mapToolScene : public Scene
+class testMapScene :
+	public Scene
 {
 private:
-	dImage* _maptiles;
-	dImage* _objects;
-	Maptool* _maptool;
+	vector<tagTile>				_vTile;
+	vector<tagTile>::iterator	_viTile;
+	sampleMap* _sample;
 	int _width;
 	int _height;
 	int x;
 	int y;
-	int cx;
-	int cy;
+	
+
 
 public:
+
 	HRESULT init(Player *player);
 	void release();
 	void update();
 	void render();
 	void changeScene();
+	void mapset();
 };
 
