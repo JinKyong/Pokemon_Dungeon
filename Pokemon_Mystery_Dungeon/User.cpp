@@ -14,7 +14,7 @@ HRESULT User::init(int pokemonNum)
 
 	//ÁÂÇ¥
 	_x = 25 * TILEWIDTH + TILEWIDTH / 2;
-	_y = 25 * TILEHEIGHT + TILEHEIGHT / 2;
+	_y = 17 * TILEHEIGHT + TILEHEIGHT / 2;
 	_destX = _x;
 	_destY = _y;
 	_body = RectMakeCenter(_x, _y, TILEWIDTH, TILEHEIGHT);
@@ -24,9 +24,9 @@ HRESULT User::init(int pokemonNum)
 
 	_selectedSkill = nullptr;
 	_skill[0] = SKILLDEX->makeSkill(1);
-	_skill[1] = SKILLDEX->makeSkill(2);
-	_skill[2] = SKILLDEX->makeSkill(3);
-	_skill[3] = SKILLDEX->makeSkill(4);
+	_skill[1] = SKILLDEX->makeSkill(6);
+	_skill[2] = SKILLDEX->makeSkill(7);
+	_skill[3] = SKILLDEX->makeSkill(8);
 
 	_inDungeon = false;
 
@@ -74,8 +74,6 @@ void User::controlKey()
 	if (KEYMANAGER->isStayKeyDown(VK_RIGHT)) {
 		_direct |= RIGHT;
 		_destX = _x + TILEWIDTH;
-		//ÀÌµ¿º¤ÅÍ¿¡ Ãß°¡
-		//ÀÌµ¿º¤ÅÍ´Â ->move()
 		_playerState = POKEMON_STATE_MOVE;
 	}
 	else if (KEYMANAGER->isStayKeyDown(VK_LEFT)) {
@@ -131,7 +129,7 @@ void User::testKey()
 {
 	if (KEYMANAGER->isOnceKeyDown('1')) {
 		if (_num >= POKEDEX->getIndex()) return;
-		
+
 		SAFE_DELETE(_pokemon);
 		_num++;
 		_pokemon = POKEDEX->makePokemon(_num);

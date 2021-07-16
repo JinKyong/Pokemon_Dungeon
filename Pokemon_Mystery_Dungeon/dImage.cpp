@@ -15,7 +15,7 @@ dImage::~dImage()
 {
 }
 
-HRESULT dImage::init(LPCWCHAR fileName, float width, float height)
+HRESULT dImage::init(LPCWCHAR fileName, int width, int height)
 {
 	if (_imageInfo != NULL) release();
 
@@ -66,7 +66,7 @@ HRESULT dImage::init(LPCWCHAR fileName, float width, float height)
 	return S_OK;
 }
 
-HRESULT dImage::init(LPCWCHAR fileName, float width, float height, int frameX, int frameY)
+HRESULT dImage::init(LPCWCHAR fileName, int width, int height, int frameX, int frameY)
 {
 	if (_imageInfo != NULL) release();
 
@@ -154,7 +154,7 @@ void dImage::render(int destX, int destY, float opacity)
 	DTDMANAGER->getBitRenderTarget()->DrawBitmap(_imageInfo->bitMap, destRect, opacity);
 }
 
-void dImage::render(int destX, int destY, float sourX, float sourY, float sourWidth, float sourHeight, float opacity)
+void dImage::render(int destX, int destY, int sourX, int sourY, int sourWidth, int sourHeight, float opacity)
 {
 	D2D1_RECT_F destRect = dRectMake(destX, destY, sourWidth, sourHeight);
 	D2D1_RECT_F sourRect = dRectMake(sourX, sourY, sourWidth, sourHeight);

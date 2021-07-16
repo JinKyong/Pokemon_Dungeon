@@ -51,7 +51,7 @@ using namespace D2D1;
 //==================================
 
 #define WINNAME (LPTSTR)(TEXT("Pokemon Mystery Dungeon : Explorers of Time"))
-#define WINSTARTX 2050	//윈도우 창 시작좌표 (left)
+#define WINSTARTX 50	//윈도우 창 시작좌표 (left)
 #define WINSTARTY 50	//윈도우 창 시작좌표 (top)
 #define WINSIZEX 1100	//윈도우 가로크기
 #define WINSIZEY 900	//윈도우 세로크기
