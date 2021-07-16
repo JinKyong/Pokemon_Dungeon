@@ -17,4 +17,5 @@ public:
 	void eatItem(float value);
 
 	//get-set
+
 };

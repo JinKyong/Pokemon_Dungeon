@@ -10,6 +10,18 @@ HRESULT Ribbon::init(float x, float y, float angle)
 	return S_OK;
 }
 
+void Ribbon::release()
+{
+}
+
+void Ribbon::update()
+{
+}
+
+void Ribbon::render(float x, float y)
+{
+}
+
 void Ribbon::giveItem()
 {
 }

@@ -10,6 +10,18 @@ HRESULT Scope::init(float x, float y, float angle)
 	return S_OK;
 }
 
+void Scope::release()
+{
+}
+
+void Scope::update()
+{
+}
+
+void Scope::render(float x, float y)
+{
+}
+
 void Scope::giveItem()
 {
 }

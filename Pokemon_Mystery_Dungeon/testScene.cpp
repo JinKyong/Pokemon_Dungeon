@@ -4,6 +4,7 @@
 #include "Enemy.h"
 #include "Apple.h"
 #include "Gummy.h"
+#include "ThrowItem.h"
 
 HRESULT testScene::init(Player * player)
 {
@@ -22,24 +23,19 @@ HRESULT testScene::init(Player * player)
 
 	Apple* apple;
 	apple = new Apple;
-	apple->init(30 * TILEWIDTH, 30 * TILEHEIGHT, PI);
+	apple->init(20 * TILEWIDTH, 20 * TILEHEIGHT, PI);
 
 	Gummy* jelly;
 	jelly = new Gummy;
 	jelly->init(35 * TILEWIDTH, 25 * TILEHEIGHT, PI);
 
-	Gummy* jelly2;
-	jelly2 = new Gummy;
-	jelly2->init(35 * TILEWIDTH, 35 * TILEHEIGHT, PI);
-
-	Gummy* jelly3;
-	jelly3 = new Gummy;
-	jelly3->init(35 * TILEWIDTH, 40 * TILEHEIGHT, PI);
+	ThrowItem* titem;
+	titem = new ThrowItem;
+	titem->init(35, 30, PI);
 
 	_im->addItem(apple);
 	_im->addItem(jelly);
-	_im->addItem(jelly2);
-	_im->addItem(jelly3); //why,,,
+	_im->addItem(titem);
 
 	_back = IMAGEMANAGER->addDImage("back", L"img/sample1.jpg", 3840, 2160);
 	

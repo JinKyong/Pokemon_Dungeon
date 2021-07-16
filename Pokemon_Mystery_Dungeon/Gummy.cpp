@@ -7,6 +7,7 @@ HRESULT Gummy::init(float x, float y, float angle)
 	_x = x;
 	_y = y;
 	_body = RectMakeCenter(x, y, ITEMSIZE, ITEMSIZE);
+
 	_num = RND->getInt(17);
 
 	_name = L"±¸¹Ì";
@@ -35,6 +36,7 @@ void Gummy::update()
 void Gummy::render()
 {
 	_img->frameRender(_x, _y, _num, 0);
+	DTDMANAGER->Rectangle(_body);
 }
 
 void Gummy::eatItem(float value)

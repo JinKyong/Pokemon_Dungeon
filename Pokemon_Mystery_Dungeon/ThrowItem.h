@@ -4,13 +4,14 @@
 class ThrowItem : public Item
 {
 private:
+	int _num;
 
 public:
 	ThrowItem() {};
 	~ThrowItem() {};
 
 	virtual HRESULT init(float x, float y, float angle);
-	virtual void release() = 0;
+	virtual void release();
 	virtual void update();
-	virtual void render(float x, float y);
+	virtual void render();
 };
