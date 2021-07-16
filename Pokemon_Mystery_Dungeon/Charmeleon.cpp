@@ -8,10 +8,14 @@ Charmeleon::Charmeleon()
 	_num = 2;
 
 	//타입 & 특성
-	_type = POKEMON_TYPE_FIRE;
+	_type[0] = POKEMON_TYPE_FIRE;
+	_type[1] = END_POKEMON_TYPE;
 	//특성 _passive;
 
 	//스탯
+
+
+	_jump = false;
 }
 
 Charmeleon::~Charmeleon()
@@ -41,7 +45,7 @@ HRESULT Charmeleon::init()
 	changeState(POKEMON_STATE_DEFAULT);
 
 	//frameCount(포켓몬마다 조정해줘야함)
-	_count[POKEMON_STATE_IDLE] = 0.8 / (_stateImage[POKEMON_STATE_IDLE]->getMaxFrameX() + 1);
+	_count[POKEMON_STATE_IDLE] = 0.6 / (_stateImage[POKEMON_STATE_IDLE]->getMaxFrameX() + 1);
 	_count[POKEMON_STATE_MOVE] = 0.8 / (_stateImage[POKEMON_STATE_MOVE]->getMaxFrameX() + 1);
 	_count[POKEMON_STATE_ATTACK] = 0.8 / (_stateImage[POKEMON_STATE_ATTACK]->getMaxFrameX() + 1);
 	_count[POKEMON_STATE_SATTACK] = 0.8 / (_stateImage[POKEMON_STATE_SATTACK]->getMaxFrameX() + 1);

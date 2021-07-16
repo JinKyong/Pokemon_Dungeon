@@ -146,7 +146,7 @@ void dImage::render(float opacity)
 	DTDMANAGER->getBitRenderTarget()->DrawBitmap(_imageInfo->bitMap, destRect, opacity);
 }
 
-void dImage::render(float destX, float destY, float opacity)
+void dImage::render(int destX, int destY, float opacity)
 {
 	D2D1_RECT_F destRect = dRectMake(destX, destY, _imageInfo->width, _imageInfo->height);
 
@@ -154,7 +154,7 @@ void dImage::render(float destX, float destY, float opacity)
 	DTDMANAGER->getBitRenderTarget()->DrawBitmap(_imageInfo->bitMap, destRect, opacity);
 }
 
-void dImage::render(float destX, float destY, float sourX, float sourY, float sourWidth, float sourHeight, float opacity)
+void dImage::render(int destX, int destY, float sourX, float sourY, float sourWidth, float sourHeight, float opacity)
 {
 	D2D1_RECT_F destRect = dRectMake(destX, destY, sourWidth, sourHeight);
 	D2D1_RECT_F sourRect = dRectMake(sourX, sourY, sourWidth, sourHeight);
@@ -164,7 +164,7 @@ void dImage::render(float destX, float destY, float sourX, float sourY, float so
 		opacity, D2D1_BITMAP_INTERPOLATION_MODE_LINEAR, sourRect);
 }
 
-void dImage::frameRender(float destX, float destY, float opacity)
+void dImage::frameRender(int destX, int destY, float opacity)
 {
 	D2D1_RECT_F destRect = dRectMake(destX, destY, _imageInfo->frameWidth, _imageInfo->frameHeight);
 	D2D1_RECT_F sourRect = dRectMake(
@@ -176,7 +176,7 @@ void dImage::frameRender(float destX, float destY, float opacity)
 		opacity, D2D1_BITMAP_INTERPOLATION_MODE_LINEAR, sourRect);
 }
 
-void dImage::frameRender(float destX, float destY, int currentFrameX, int currentFrameY, float opacity)
+void dImage::frameRender(int destX, int destY, int currentFrameX, int currentFrameY, float opacity)
 {
 	D2D1_RECT_F destRect = dRectMake(destX, destY, _imageInfo->frameWidth, _imageInfo->frameHeight);
 	D2D1_RECT_F sourRect = dRectMake(
@@ -188,7 +188,7 @@ void dImage::frameRender(float destX, float destY, int currentFrameX, int curren
 		opacity, D2D1_BITMAP_INTERPOLATION_MODE_LINEAR, sourRect);
 }
 
-void dImage::frameRender(float destX, float destY, int currentFrameX, int currentFrameY,int sizeX,int sizeY, float opacity)
+void dImage::frameRender(int destX, int destY, int currentFrameX, int currentFrameY,int sizeX,int sizeY, float opacity)
 {
 	D2D1_RECT_F destRect = dRectMake(destX, destY, sizeX, sizeY);
 	D2D1_RECT_F sourRect = dRectMake(

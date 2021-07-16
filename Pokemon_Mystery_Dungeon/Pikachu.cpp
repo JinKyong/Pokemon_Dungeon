@@ -8,10 +8,14 @@ Pikachu::Pikachu()
 	_num = 5;
 
 	//타입 & 특성
-	_type = POKEMON_TYPE_ELECTRIC;
+	_type[0] = POKEMON_TYPE_ELECTRIC;
+	_type[1] = END_POKEMON_TYPE;
 	//특성 _passive;
 
 	//스탯
+
+
+	_jump = true;
 }
 
 Pikachu::~Pikachu()
@@ -47,7 +51,7 @@ HRESULT Pikachu::init()
 	_count[POKEMON_STATE_SATTACK] = 0.8 / (_stateImage[POKEMON_STATE_SATTACK]->getMaxFrameX() + 1);
 	_count[POKEMON_STATE_HURT] = 0.5;
 	_count[POKEMON_STATE_SLEEP] = 0.5;
-	_count[POKEMON_STATE_DEFAULT] = 0.5;
+	_count[POKEMON_STATE_DEFAULT] = 0.8;
 
 	//상태별 미세조정
 	_tuningX = 0;

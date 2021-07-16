@@ -8,10 +8,14 @@ Charizard::Charizard()
 	_num = 3;
 
 	//타입 & 특성
-	_type = POKEMON_TYPE_FIRE;
+	_type[0] = POKEMON_TYPE_FIRE;
+	_type[1] = END_POKEMON_TYPE;
 	//특성 _passive;
 
 	//스탯(개체값)
+
+
+	_jump = true;
 }
 
 Charizard::~Charizard()
@@ -21,10 +25,10 @@ Charizard::~Charizard()
 HRESULT Charizard::init()
 {
 	//이미지
-	_stateImage[POKEMON_STATE_IDLE] = IMAGEMANAGER->addFrameDImage("charizard_idle_move",
-		L"img/pokemon/3. charizard/idle_move.png", 198, 660, 3, 11);
-	_stateImage[POKEMON_STATE_MOVE] = _stateImage[POKEMON_STATE_IDLE];
-
+	_stateImage[POKEMON_STATE_IDLE] = IMAGEMANAGER->addFrameDImage("charizard_idle",
+		L"img/pokemon/3. charizard/idle.png", 198, 660, 3, 11);
+	_stateImage[POKEMON_STATE_MOVE] = IMAGEMANAGER->addFrameDImage("charizard_move",
+		L"img/pokemon/3. charizard/move.png", 264, 660, 4, 11);
 	_stateImage[POKEMON_STATE_ATTACK] = IMAGEMANAGER->addFrameDImage("charizard_attack",
 		L"img/pokemon/3. charizard/attack.png", 328, 726, 4, 11);
 	_stateImage[POKEMON_STATE_SATTACK] = IMAGEMANAGER->addFrameDImage("charizard_sattack",
@@ -41,7 +45,7 @@ HRESULT Charizard::init()
 	changeState(POKEMON_STATE_DEFAULT);
 
 	//frameCount(포켓몬마다 조정해줘야함)
-	_count[POKEMON_STATE_IDLE] = 0.8 / (_stateImage[POKEMON_STATE_IDLE]->getMaxFrameX() + 1);
+	_count[POKEMON_STATE_IDLE] = 0.6 / (_stateImage[POKEMON_STATE_IDLE]->getMaxFrameX() + 1);
 	_count[POKEMON_STATE_MOVE] = 0.8 / (_stateImage[POKEMON_STATE_MOVE]->getMaxFrameX() + 1);
 	_count[POKEMON_STATE_ATTACK] = 0.8 / (_stateImage[POKEMON_STATE_ATTACK]->getMaxFrameX() + 1);
 	_count[POKEMON_STATE_SATTACK] = 0.8 / (_stateImage[POKEMON_STATE_SATTACK]->getMaxFrameX() + 1);

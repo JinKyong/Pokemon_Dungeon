@@ -29,4 +29,16 @@ void pokeDex::setPokeDex()
 	addPokemon(&pokeDex::pichu);
 	addPokemon(&pokeDex::pikachu);
 	addPokemon(&pokeDex::raichu);
+
+	addPokemon(&pokeDex::bulbasaur);
+	addPokemon(&pokeDex::ivysaur);
+	addPokemon(&pokeDex::venusaur);
+
+	addPokemon(&pokeDex::squirtle);
+	addPokemon(&pokeDex::wartortle);
+	addPokemon(&pokeDex::blastoise);
+
+	addPokemon(&pokeDex::dratini);
+	addPokemon(&pokeDex::dragonair);
+	addPokemon(&pokeDex::dragonite);
 }

@@ -8,7 +8,8 @@ HRESULT User::init(int pokemonNum)
 	_playerState = POKEMON_STATE_DEFAULT;
 
 	//Æ÷ÄÏ¸ó
-	_pokemon = POKEDEX->makePokemon(pokemonNum);
+	_num = pokemonNum;
+	_pokemon = POKEDEX->makePokemon(_num);
 	_pokemon->init();
 
 	//ÁÂÇ¥
@@ -21,7 +22,11 @@ HRESULT User::init(int pokemonNum)
 	//½ºÅÈ
 	//°è»êÇØ¼­ ³ÖÀ½ Æ÷ÄÏ¸ó ²¨
 
+	_selectedSkill = nullptr;
 	_skill[0] = SKILLDEX->makeSkill(1);
+	_skill[1] = SKILLDEX->makeSkill(2);
+	_skill[2] = SKILLDEX->makeSkill(3);
+	_skill[3] = SKILLDEX->makeSkill(4);
 
 	_inDungeon = false;
 
@@ -35,7 +40,6 @@ void User::release()
 void User::update()
 {
 	_body = RectMakeCenter(_x, _y, TILEWIDTH, TILEHEIGHT);
-	_pokemon->update();
 }
 
 void User::render()
@@ -92,53 +96,53 @@ void User::controlKey()
 
 	if (KEYMANAGER->isOnceKeyDown('X')) {
 		//_pokemon->changeState(POKEMON_STATE_ATTACK);
-		//°ø°Ýº¤ÅÍ¿¡ Ãß°¡ ->attack()
 		_playerState = POKEMON_STATE_ATTACK;
 	}
-	if (KEYMANAGER->isOnceKeyDown('C')) {
+	if (KEYMANAGER->isOnceKeyDown('Q')) {
 		//_pokemon->changeState(POKEMON_STATE_SATTACK);
-		//½ºÆä¼È°ø°Ýº¤ÅÍ?
-		_playerState = POKEMON_STATE_SATTACK;
+		if (_selectedSkill = _skill[0])
+			_playerState = POKEMON_STATE_SATTACK;
+	}
+	if (KEYMANAGER->isOnceKeyDown('W')) {
+		//_pokemon->changeState(POKEMON_STATE_SATTACK);
+		if (_selectedSkill = _skill[1])
+			_playerState = POKEMON_STATE_SATTACK;
+	}
+	if (KEYMANAGER->isOnceKeyDown('E')) {
+		//_pokemon->changeState(POKEMON_STATE_SATTACK);
+		if (_selectedSkill = _skill[2])
+			_playerState = POKEMON_STATE_SATTACK;
+	}
+	if (KEYMANAGER->isOnceKeyDown('R')) {
+		//_pokemon->changeState(POKEMON_STATE_SATTACK);
+		if (_selectedSkill = _skill[3])
+			_playerState = POKEMON_STATE_SATTACK;
 	}
 
 	if (KEYMANAGER->isOnceKeyDown('D')) {
-		//_pokemon->changeState(POKEMON_STATE_HURT);
+		_pokemon->changeState(POKEMON_STATE_HURT);
 	}
 	if (KEYMANAGER->isOnceKeyDown('S')) {
-		//_pokemon->changeState(POKEMON_STATE_SLEEP);
+		_pokemon->changeState(POKEMON_STATE_SLEEP);
 	}
 }
 
 void User::testKey()
 {
 	if (KEYMANAGER->isOnceKeyDown('1')) {
+		if (_num >= POKEDEX->getIndex()) return;
+		
 		SAFE_DELETE(_pokemon);
-		_pokemon = POKEDEX->makePokemon(1);
+		_num++;
+		_pokemon = POKEDEX->makePokemon(_num);
 		_pokemon->init();
 	}
 	if (KEYMANAGER->isOnceKeyDown('2')) {
+		if (_num <= 1)	return;
+
 		SAFE_DELETE(_pokemon);
-		_pokemon = POKEDEX->makePokemon(2);
-		_pokemon->init();
-	}
-	if (KEYMANAGER->isOnceKeyDown('3')) {
-		SAFE_DELETE(_pokemon);
-		_pokemon = POKEDEX->makePokemon(3);
-		_pokemon->init();
-	}
-	if (KEYMANAGER->isOnceKeyDown('4')) {
-		SAFE_DELETE(_pokemon);
-		_pokemon = POKEDEX->makePokemon(4);
-		_pokemon->init();
-	}
-	if (KEYMANAGER->isOnceKeyDown('5')) {
-		SAFE_DELETE(_pokemon);
-		_pokemon = POKEDEX->makePokemon(5);
-		_pokemon->init();
-	}
-	if (KEYMANAGER->isOnceKeyDown('6')) {
-		SAFE_DELETE(_pokemon);
-		_pokemon = POKEDEX->makePokemon(6);
+		_num--;
+		_pokemon = POKEDEX->makePokemon(_num);
 		_pokemon->init();
 	}
 }

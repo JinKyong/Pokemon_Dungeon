@@ -8,10 +8,14 @@ Pichu::Pichu()
 	_num = 4;
 
 	//타입 & 특성
-	_type = POKEMON_TYPE_ELECTRIC;
+	_type[0] = POKEMON_TYPE_ELECTRIC;
+	_type[1] = END_POKEMON_TYPE;
 	//특성 _passive;
 
 	//스탯
+
+
+	_jump = true;
 }
 
 Pichu::~Pichu()
@@ -26,7 +30,7 @@ HRESULT Pichu::init()
 	_stateImage[POKEMON_STATE_MOVE] = IMAGEMANAGER->addFrameDImage("pichu_move",
 		L"img/pokemon/4. pichu/move.png", 84, 594, 2, 11);
 	_stateImage[POKEMON_STATE_ATTACK] = IMAGEMANAGER->addFrameDImage("pichu_attack_sattack",
-		L"img/pokemon/4. pichu/attack_sattack.png", 46, 528, 1, 11);
+		L"img/pokemon/4. pichu/attack_sattack.png", 92, 572, 2, 11);
 	_stateImage[POKEMON_STATE_SATTACK] = _stateImage[POKEMON_STATE_ATTACK];
 
 	_stateImage[POKEMON_STATE_HURT] = IMAGEMANAGER->addFrameDImage("pichu_hurt",
@@ -41,7 +45,7 @@ HRESULT Pichu::init()
 	changeState(POKEMON_STATE_DEFAULT);
 
 	//frameCount(포켓몬마다 조정해줘야함)
-	_count[POKEMON_STATE_IDLE] = 0.8 / (_stateImage[POKEMON_STATE_IDLE]->getMaxFrameX() + 1);
+	_count[POKEMON_STATE_IDLE] = 0.6 / (_stateImage[POKEMON_STATE_IDLE]->getMaxFrameX() + 1);
 	_count[POKEMON_STATE_MOVE] = 0.8 / (_stateImage[POKEMON_STATE_MOVE]->getMaxFrameX() + 1);
 	_count[POKEMON_STATE_ATTACK] = 0.8 / (_stateImage[POKEMON_STATE_ATTACK]->getMaxFrameX() + 1);
 	_count[POKEMON_STATE_SATTACK] = 0.8 / (_stateImage[POKEMON_STATE_SATTACK]->getMaxFrameX() + 1);

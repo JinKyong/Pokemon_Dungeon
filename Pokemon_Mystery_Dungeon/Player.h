@@ -32,6 +32,7 @@ protected:
 	STAT _realStat;
 
 	//기술(스킬)
+	Skill* _selectedSkill;
 	Skill* _skill[4];
 
 	//지닌도구(아이템)

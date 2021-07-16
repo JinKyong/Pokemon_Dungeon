@@ -4,6 +4,7 @@
 class User : public Player
 {
 private:
+	int _num;
 
 public:
 	virtual HRESULT init(int pokemonNum);
