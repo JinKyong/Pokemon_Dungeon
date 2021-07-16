@@ -21,6 +21,8 @@ void IceFang::release()
 
 void IceFang::useSkill(float x, float y)
 {
+	Skill::useSkill(x, y);
+
 	_iceFangEffect = new EF_IceFang;
 	_iceFangEffect->init(x, y);
 	EFFECTMANAGER->addEffect(_iceFangEffect);

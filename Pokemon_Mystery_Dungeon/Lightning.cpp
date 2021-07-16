@@ -21,6 +21,8 @@ void Lightning::release()
 
 void Lightning::useSkill(float x, float y)
 {
+	Skill::useSkill(x, y);
+
 	_lightningEffect = new EF_Lightning;
 	_lightningEffect->init(x, y);
 	EFFECTMANAGER->addEffect(_lightningEffect);

@@ -21,4 +21,9 @@ void SleepPowder::release()
 
 void SleepPowder::useSkill(float x, float y)
 {
+	Skill::useSkill(x, y);
+
+	_sleepPowderEffect = new EF_SleepPowder;
+	_sleepPowderEffect->init(x, y);
+	EFFECTMANAGER->addEffect(_sleepPowderEffect);
 }

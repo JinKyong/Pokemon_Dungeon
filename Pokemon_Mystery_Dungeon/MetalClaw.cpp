@@ -21,6 +21,8 @@ void MetalClaw::release()
 
 void MetalClaw::useSkill(float x, float y)
 {
+	Skill::useSkill(x, y);
+
 	_metalClawEffect = new EF_MetalClaw;
 	_metalClawEffect->init(x, y);
 	EFFECTMANAGER->addEffect(_metalClawEffect);

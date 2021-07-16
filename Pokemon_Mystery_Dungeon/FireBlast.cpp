@@ -21,6 +21,8 @@ void FireBlast::release()
 
 void FireBlast::useSkill(float x, float y)
 {
+	Skill::useSkill(x, y);
+
 	_fireBlastEffect = new EF_FireBlast;
 	_fireBlastEffect->init(x, y);
 	EFFECTMANAGER->addEffect(_fireBlastEffect);

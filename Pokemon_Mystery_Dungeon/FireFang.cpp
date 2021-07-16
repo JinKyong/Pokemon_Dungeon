@@ -21,6 +21,8 @@ void FireFang::release()
 
 void FireFang::useSkill(float x, float y)
 {
+	Skill::useSkill(x, y);
+
 	_fireFangEffect = new EF_FireFang;
 	_fireFangEffect->init(x, y);
 	EFFECTMANAGER->addEffect(_fireFangEffect);

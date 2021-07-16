@@ -3,7 +3,7 @@
 
 HRESULT EF_FireBlast::init(float x, float y)
 {
-	_img = IMAGEMANAGER->addFrameDImage("FireBlast", L"img/effect/FireBlast.png", 2816, 134, 22, 1);
+	_img = IMAGEMANAGER->addFrameDImage("FireBlast", L"img/effect/FireBlast.png", 2640, 120, 22, 1);
 	_x = x;
 	_y = y;
 	_body = RectMakeCenter(_x, _y, TILEWIDTH, TILEHEIGHT);

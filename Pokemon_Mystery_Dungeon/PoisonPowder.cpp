@@ -21,6 +21,8 @@ void PoisonPowder::release()
 
 void PoisonPowder::useSkill(float x, float y)
 {
+	Skill::useSkill(x, y);
+
 	_poisonPowderEffect = new EF_PoisonPowder;
 	_poisonPowderEffect->init(x, y);
 	EFFECTMANAGER->addEffect(_poisonPowderEffect);

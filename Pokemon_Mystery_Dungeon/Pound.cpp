@@ -21,6 +21,8 @@ void Pound::release()
 
 void Pound::useSkill(float x, float y)
 {
+	Skill::useSkill(x, y);
+
 	_poundEffect = new EF_Pound;
 	_poundEffect->init(x, y);
 	EFFECTMANAGER->addEffect(_poundEffect);
