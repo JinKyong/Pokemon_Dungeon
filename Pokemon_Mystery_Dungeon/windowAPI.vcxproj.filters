@@ -396,6 +396,12 @@
     <ClInclude Include="Wartortle.h">
       <Filter>playGround\Pokémon\No.10 ~ 19</Filter>
     </ClInclude>
+    <ClInclude Include="testMapScene.h">
+      <Filter>playGround\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="sampleMap.h">
+      <Filter>playGround\Maptool</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -655,6 +661,12 @@
     </ClCompile>
     <ClCompile Include="Wartortle.cpp">
       <Filter>playGround\Pokémon\No.10 ~ 19</Filter>
+    </ClCompile>
+    <ClCompile Include="testMapScene.cpp">
+      <Filter>playGround\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="sampleMap.cpp">
+      <Filter>playGround\Maptool</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
