@@ -5,7 +5,12 @@ void Player::attack()
 {
 	_pokemon->changeState(_playerState);
 	if (_playerState == POKEMON_STATE_SATTACK)
-		_skill[0]->useSkill(_x, _y);
+	{
+		if (_selectedSkill) {
+			_selectedSkill->useSkill(_x, _y);
+			_selectedSkill = nullptr;
+		}
+	}
 }
 
 void Player::move()

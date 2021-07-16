@@ -7,13 +7,14 @@ void Pokemon::release()
 
 void Pokemon::update()
 {
-	if (_state == POKEMON_STATE_IDLE)			tuneIdle();
-	else if (_state == POKEMON_STATE_ATTACK)	tuneAttack();
-	else if (_state == POKEMON_STATE_HURT)		tuneHurt();
 }
 
 void Pokemon::render(float x, float y)
 {
+	if (_state == POKEMON_STATE_IDLE)			tuneIdle();
+	else if (_state == POKEMON_STATE_ATTACK)	tuneAttack();
+	else if (_state == POKEMON_STATE_HURT)		tuneHurt();
+
 	controlFrame();
 
 	_currentImage->frameRender(
@@ -111,7 +112,12 @@ void Pokemon::changeState(POKEMON_STATE state)
 void Pokemon::tuneIdle()
 {
 	_tuningX = 0;
-	_tuningY = -4;
+
+	if (_jump)
+		_tuningY = -4;
+	else
+		_tuningY = 0;
+
 }
 
 void Pokemon::tuneAttack()

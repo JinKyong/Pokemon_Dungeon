@@ -46,6 +46,7 @@ protected:
 	//상태별 미세조정
 	float _tuningX;
 	float _tuningY;
+	bool _jump;
 
 	//attack 관련 변수
 	float _interceptX;
@@ -66,7 +67,8 @@ protected:
 	STAT _pokemonValue;
 
 	//타입 & 특성
-	POKEMON_TYPE _type;
+	POKEMON_TYPE _type[2];
+
 	//특성 _passive;
 
 	//상태이상

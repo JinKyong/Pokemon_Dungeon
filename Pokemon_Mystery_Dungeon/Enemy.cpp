@@ -33,8 +33,7 @@ void Enemy::release()
 void Enemy::update()
 {
 	_body = RectMakeCenter(_x, _y, TILEWIDTH, TILEHEIGHT);
-	_pokemon->update();
-	EFFECTMANAGER->update();
+	//_pokemon->update();
 }
 
 void Enemy::render()
@@ -52,7 +51,6 @@ void Enemy::render()
 	}
 
 	_pokemon->render(_x, _y);
-	EFFECTMANAGER->render();
 }
 
 int Enemy::input()

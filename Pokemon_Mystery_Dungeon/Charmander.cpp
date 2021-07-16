@@ -8,10 +8,14 @@ Charmander::Charmander()
 	_num = 1;
 
 	//타입 & 특성
-	_type = POKEMON_TYPE_FIRE;
+	_type[0] = POKEMON_TYPE_FIRE;
+	_type[1] = END_POKEMON_TYPE;
 	//특성 _passive;
 
 	//스탯
+
+
+	_jump = true;
 }
 
 Charmander::~Charmander()
@@ -21,10 +25,10 @@ Charmander::~Charmander()
 HRESULT Charmander::init()
 {
 	//이미지
-	_stateImage[POKEMON_STATE_IDLE] = IMAGEMANAGER->addFrameDImage("charmander_idle_move",
-		L"img/pokemon/1. charmander/idle_move.png", 144, 528, 3, 11);
-	_stateImage[POKEMON_STATE_MOVE] = _stateImage[POKEMON_STATE_IDLE];
-
+	_stateImage[POKEMON_STATE_IDLE] = IMAGEMANAGER->addFrameDImage("charmander_idle",
+		L"img/pokemon/1. charmander/idle.png", 144, 528, 3, 11);
+	_stateImage[POKEMON_STATE_MOVE] = IMAGEMANAGER->addFrameDImage("charmander_move",
+		L"img/pokemon/1. charmander/move.png", 190, 528, 4, 11);
 	_stateImage[POKEMON_STATE_ATTACK] = IMAGEMANAGER->addFrameDImage("charmander_attack",
 		L"img/pokemon/1. charmander/attack.png", 144, 528, 3, 11);
 	_stateImage[POKEMON_STATE_SATTACK] = IMAGEMANAGER->addFrameDImage("charmander_sattack",

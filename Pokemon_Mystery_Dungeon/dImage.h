@@ -75,8 +75,8 @@ public:
 	void release();
 
 	void render(float opacity = 1.0);
-	void render(float destX, float destY, float opacity = 1.0);
-	void render(float destX, float destY, float sourX, float sourY, float sourWidth, float sourHeight, float opacity = 1.0);
+	void render(int destX, int destY, float opacity = 1.0);
+	void render(int destX, int destY, float sourX, float sourY, float sourWidth, float sourHeight, float opacity = 1.0);
 	/*				│			│			│			│			│			│				│					*/
 	/*				│			│			│			│			│			│				└──〉	 투명도			*/
 	/*				│			│			│			│			│			│									*/
@@ -92,8 +92,8 @@ public:
 	/*				│																								*/
 	/*				└──〉 출력할 좌표(x축)																				*/
 
-	void frameRender(float destX, float destY, float opacity = 1.0);
-	void frameRender(float destX, float destY, int currentFrameX, int currentFrameY, float opacity = 1.0);
+	void frameRender(int destX, int destY, float opacity = 1.0);
+	void frameRender(int destX, int destY, int currentFrameX, int currentFrameY, float opacity = 1.0);
 	/*					│			│				│				│					│				*/
 	/*					│			│				│				│					└──〉	 투명도		*/
 	/*					│			│				│				│									*/
@@ -104,7 +104,7 @@ public:
 	/*					│			└──〉	 출력할 좌표(y축)													*/
 	/*					│																				*/
 	/*					└──〉 출력할 좌표(x축)																*/
-	void frameRender(float destX, float destY, int currentFrameX, int currentFrameY,int sizeX,int sizeY, float opacity = 1.0);
+	void frameRender(int destX, int destY, int currentFrameX, int currentFrameY,int sizeX,int sizeY, float opacity = 1.0);
 
 
 	//===============================================

@@ -3,7 +3,6 @@
 #include "testScene.h"
 #include "User.h"
 #include "mapToolScene.h"
-#include "testMapScene.h"
 
 playGround::playGround()
 {
@@ -26,8 +25,7 @@ HRESULT playGround::init()
 
 	SCENEMANAGER->addScene("tool", new mapToolScene);
 	SCENEMANAGER->addScene("test", new testScene);
-	SCENEMANAGER->addScene("map", new testMapScene);
-	SCENEMANAGER->changeScene("map");
+	SCENEMANAGER->changeScene("test");
 
 	_debug = false;
 

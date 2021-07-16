@@ -147,12 +147,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Blastoise.h" />
+    <ClInclude Include="Bulbasaur.h" />
     <ClInclude Include="cameraManager.h" />
     <ClInclude Include="Charizard.h" />
     <ClInclude Include="Charmander.h" />
     <ClInclude Include="Charmeleon.h" />
     <ClInclude Include="collisionManager.h" />
     <ClInclude Include="dImage.h" />
+    <ClInclude Include="Dragonair.h" />
+    <ClInclude Include="Dragonite.h" />
+    <ClInclude Include="Dratini.h" />
     <ClInclude Include="dtdManager.h" />
     <ClInclude Include="DynamicPunch.h" />
     <ClInclude Include="Effect.h" />
@@ -184,6 +189,7 @@
     <ClInclude Include="imageManager.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemManager.h" />
+    <ClInclude Include="Ivysaur.h" />
     <ClInclude Include="keyManager.h" />
     <ClInclude Include="LeafBlade.h" />
     <ClInclude Include="Lightning.h" />
@@ -217,6 +223,7 @@
     <ClInclude Include="skillDex.h" />
     <ClInclude Include="SkillHeader.h" />
     <ClInclude Include="SleepPowder.h" />
+    <ClInclude Include="Squirtle.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="streamManager.h" />
     <ClInclude Include="StunSpore.h" />
@@ -233,15 +240,22 @@
     <ClInclude Include="uiManager.h" />
     <ClInclude Include="User.h" />
     <ClInclude Include="utils.h" />
+    <ClInclude Include="Venusaur.h" />
     <ClInclude Include="video.h" />
+    <ClInclude Include="Wartortle.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Blastoise.cpp" />
+    <ClCompile Include="Bulbasaur.cpp" />
     <ClCompile Include="cameraManager.cpp" />
     <ClCompile Include="Charizard.cpp" />
     <ClCompile Include="Charmander.cpp" />
     <ClCompile Include="Charmeleon.cpp" />
     <ClCompile Include="collisionManager.cpp" />
     <ClCompile Include="dImage.cpp" />
+    <ClCompile Include="Dragonair.cpp" />
+    <ClCompile Include="Dragonite.cpp" />
+    <ClCompile Include="Dratini.cpp" />
     <ClCompile Include="dtdManager.cpp" />
     <ClCompile Include="DynamicPunch.cpp" />
     <ClCompile Include="Effect.cpp" />
@@ -274,6 +288,7 @@
     <ClCompile Include="imageManager.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemManager.cpp" />
+    <ClCompile Include="Ivysaur.cpp" />
     <ClCompile Include="keyManager.cpp" />
     <ClCompile Include="LeafBlade.cpp" />
     <ClCompile Include="Lightning.cpp" />
@@ -299,6 +314,7 @@
     <ClCompile Include="Skill.cpp" />
     <ClCompile Include="skillDex.cpp" />
     <ClCompile Include="SleepPowder.cpp" />
+    <ClCompile Include="Squirtle.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -318,7 +334,9 @@
     <ClCompile Include="uiManager.cpp" />
     <ClCompile Include="User.cpp" />
     <ClCompile Include="utils.cpp" />
+    <ClCompile Include="Venusaur.cpp" />
     <ClCompile Include="video.cpp" />
+    <ClCompile Include="Wartortle.cpp" />
     <ClCompile Include="winMain.cpp" />
   </ItemGroup>
   <ItemGroup>
