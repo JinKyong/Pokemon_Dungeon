@@ -44,8 +44,10 @@ void Maptool::update()
 
 void Maptool::render()
 {
+	
+	D2D1_RECT_F _rc =CAMERAMANAGER->getScreen();
 	RECT rc;
-	rc = RectMakeCenter(_ptMouse.x, _ptMouse.y, 5, 5);
+	rc = RectMakeCenter(_ptMouse.x+_rc.left- 3 * WINSIZEX / 16, _ptMouse.y+_rc.top- 3 * WINSIZEY / 8, 5, 5);
 	for (int i = 0; i < TILEX * TILEY; ++i)
 	{
 	_maptile->frameRender(
@@ -123,6 +125,7 @@ void Maptool::setup()
 
 void Maptool::setMap()
 {
+	
 	//타일셋에 내가 그리고싶은 타일 또는 오브젝트 클릭
 	for (int i = 0; i < SAMPLETILEX * SAMPLETILEY; ++i)
 	{
@@ -210,17 +213,6 @@ void Maptool::minimap()
 			_tiles[i].objFrameX, _tiles[i].objFrameY, MINITILESIZE, MINITILESIZE);
 	}
 }
-
-//void Maptool::example(int TerrainX, int TerrainY, int ObjX, int ObjY, OBJECT obj)
-//{
-//	
-//		_tile.terrainFrameX = TerrainX;
-//		_tile.terrainFrameY = TerrainY;
-//		_tile.objFrameX = ObjX;
-//		_tile.objFrameY = ObjY;
-//		_tile.terrain = terrainSelect(_tile.terrainFrameX, _tile.terrainFrameY);
-//		_tile.obj = obj;
-//}
 
 
 

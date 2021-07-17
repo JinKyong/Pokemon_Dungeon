@@ -13,8 +13,6 @@ private:
 	int _height;
 	int x;
 	int y;
-	int cx;
-	int cy;
 
 public:
 	HRESULT init(Player *player);

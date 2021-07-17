@@ -16,11 +16,11 @@
 #define SAMPLETILEY 12
 
 //비트필드
-#define ATTR_UNMOVE 0x00000001	//못가는 타일
-#define ATTR_SWAMP	0x00000002	//밟으면 느려지는 타일
-#define ATTR_POISON	0x00000004	//유 아 마 포이즌~
-#define ATTR_FROZEN 0x00000008	//레릿꼬~
-#define ATTR_WATER	0x00000016  //물
+#define ATTR_UNMOVE 0x00000016	//못가는 타일
+#define ATTR_SWAMP	0x00000032	//밟으면 느려지는 타일
+#define ATTR_POISON	0x00000064	//유 아 마 포이즌~
+#define ATTR_FROZEN 0x00000128	//레릿꼬~
+#define ATTR_WATER	0x00000256  //물
 
 
 //지형
