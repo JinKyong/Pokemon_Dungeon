@@ -60,7 +60,8 @@ public:
 	int getType() { return _type; }
 	wstring getName() { return _name; } 
 
-	bool getUse() { return _use; } //TM에 사용한CD 클래스를 하나더 만들라는거죠?
+	bool getUse() { return _use; }
+	void setUse() { _use = true; }
 
 	RECT getBody() { return _body; }
 	dImage* getImage() { return _img; }

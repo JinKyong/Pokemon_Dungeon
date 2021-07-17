@@ -13,7 +13,7 @@ HRESULT ThrowItem::init(float x, float y, float angle)
 
 	_num = RND->getInt(10);
 
-	_name = L"나뭇가지"; //ㅋ...
+	_name = L"나뭇가지";
 	
 	return S_OK;
 }

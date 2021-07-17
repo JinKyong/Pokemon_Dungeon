@@ -450,6 +450,9 @@
     <ClInclude Include="SkillMenu.h">
       <Filter>playGround\UI\Menu\DownMenu</Filter>
     </ClInclude>
+    <ClInclude Include="InventoryManager.h">
+      <Filter>2DGameFramework\Manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -736,6 +739,9 @@
     </ClCompile>
     <ClCompile Include="SkillMenu.cpp">
       <Filter>playGround\UI\Menu\DownMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="InventoryManager.cpp">
+      <Filter>2DGameFramework\Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
