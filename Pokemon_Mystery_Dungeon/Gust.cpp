@@ -22,6 +22,8 @@ void Gust::release()
 
 void Gust::useSkill(float x, float y)
 {
+	Skill::useSkill(x, y);
+
 	_gustEffect = new EF_Gust;
 	_gustEffect->init(x, y);
 	EFFECTMANAGER->addEffect(_gustEffect);

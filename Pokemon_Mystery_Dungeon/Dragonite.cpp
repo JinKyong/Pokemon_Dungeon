@@ -15,7 +15,7 @@ Dragonite::Dragonite()
 	//스탯(개체값)
 
 
-	_jump = false;
+	_jump = true;
 }
 
 Dragonite::~Dragonite()

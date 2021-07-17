@@ -21,6 +21,8 @@ void RockSlide::release()
 
 void RockSlide::useSkill(float x, float y)
 {
+	Skill::useSkill(x, y);
+
 	_rockSlideEffect = new EF_RockSlide;
 	_rockSlideEffect->init(x, y);
 	EFFECTMANAGER->addEffect(_rockSlideEffect);

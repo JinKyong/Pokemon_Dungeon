@@ -21,6 +21,8 @@ void ThunderFang::release()
 
 void ThunderFang::useSkill(float x, float y)
 {
+	Skill::useSkill(x, y);
+
 	_thunderFangEffect = new EF_ThunderFang;
 	_thunderFangEffect->init(x, y);
 	EFFECTMANAGER->addEffect(_thunderFangEffect);

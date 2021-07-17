@@ -24,24 +24,55 @@ void sampleMap::release()
 
 void sampleMap::update()
 {
+
+	//이미지 클리핑(렌더 범위/인덱스 설정)
+	//->카메라 스크린 기준으로
+	D2D1_RECT_F screen = CAMERAMANAGER->getScreen();
+
+	_initX = screen.left / TILEWIDTH - 1;
+	_endX = screen.right / TILEWIDTH + 1;
+	_initY = screen.top / TILEHEIGHT - 1;
+	_endY = screen.bottom / TILEHEIGHT + 1;
+
+	if (_initX < 0)
+		_initX = 0;
+	if (_endX >= TILEX)
+		_endX = TILEX - 1;
+	if (_initY < 0)
+		_initY = 0;
+	if (_endY >= TILEY)
+		_endY = TILEY - 1;
+
 }
 
 void sampleMap::render()
 {
-	for (int i = 0; i < TILEX * TILEY; ++i)
-	{
-		_Mapbase->frameRender(
-			_tile[i].rc.left, _tile[i].rc.top,
-			_tile[i].terrainFrameX, _tile[i].terrainFrameY);
-	}
-	for (int i = 0; i < TILEX * TILEY; ++i)
-	{
-		if (_tile[i].obj == OBJ_NONE) continue;
+	//렌더 범위 내 타일만 렌더
+	for(int i= _initY; i<= _endY; i++)
+		for (int j = _initX; j <= _endX; j++) {
+			int index = i * TILEX + j;
 
-		_Obbase->frameRender(
-			_tile[i].rc.left, _tile[i].rc.top,
-			_tile[i].objFrameX, _tile[i].objFrameY);
-	}
+			_Mapbase->frameRender(
+				_tile[index].rc.left, _tile[index].rc.top,
+				_tile[index].terrainFrameX, _tile[index].terrainFrameY);
+
+			if (PRINTMANAGER->isDebug())
+				DTDMANAGER->Rectangle(_tile[index].rc);
+		}
+
+	for (int i = _initY; i <= _endY; i++)
+		for (int j = _initX; j <= _endX; j++) {
+			int index = i * TILEX + j;
+
+			if (_tile[index].obj == OBJ_NONE) continue;
+
+			_Obbase->frameRender(
+				_tile[index].rc.left, _tile[index].rc.top,
+				_tile[index].objFrameX, _tile[index].objFrameY);
+
+			if (PRINTMANAGER->isDebug())
+				DTDMANAGER->Rectangle(_tile[index].rc);
+		}
 }
 
 void sampleMap::load()

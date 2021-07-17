@@ -21,6 +21,8 @@ void LeafBlade::release()
 
 void LeafBlade::useSkill(float x, float y)
 {
+	Skill::useSkill(x, y);
+
 	_leafBladeEffect = new EF_LeafBlade;
 	_leafBladeEffect->init(x, y);
 	EFFECTMANAGER->addEffect(_leafBladeEffect);

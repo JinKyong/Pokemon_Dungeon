@@ -6,6 +6,7 @@ class Gummy : public Item
 {
 private:
 	int _num;
+	POKEMON_TYPE _type;
 
 public:
 	Gummy() {};
@@ -15,7 +16,6 @@ public:
 	virtual void release();
 	virtual void update();
 	virtual void render();
-
 
 	//아이템 사용
 	void eatItem(float value);

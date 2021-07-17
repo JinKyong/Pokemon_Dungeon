@@ -2,8 +2,7 @@
 #include "Scene.h"
 #include "sampleMap.h"
 
-class testMapScene :
-	public Scene
+class testMapScene : public Scene
 {
 private:
 	vector<tagTile>				_vTile;
@@ -13,8 +12,6 @@ private:
 	int _height;
 	int x;
 	int y;
-	
-
 
 public:
 
@@ -23,6 +20,5 @@ public:
 	void update();
 	void render();
 	void changeScene();
-	void mapset();
 };
 

@@ -4,10 +4,26 @@
 void Player::attack()
 {
 	_pokemon->changeState(_playerState);
+
+	//기술 썻을때만
 	if (_playerState == POKEMON_STATE_SATTACK)
 	{
 		if (_selectedSkill) {
-			_selectedSkill->useSkill(_x, _y);
+			float x = _x;
+			float y = _y;
+			int direct = _pokemon->getDirect();
+
+			if ((direct & RIGHT) == RIGHT)
+				x += TILEWIDTH;
+			else if ((direct & LEFT) == LEFT)
+				x -= TILEWIDTH;
+
+			if ((direct & DOWN) == DOWN)
+				y += TILEHEIGHT;
+			else if ((direct & UP) == UP)
+				y -= TILEHEIGHT;
+
+			_selectedSkill->useSkill(x, y);
 			_selectedSkill = nullptr;
 		}
 	}

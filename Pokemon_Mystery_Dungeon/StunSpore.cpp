@@ -21,4 +21,9 @@ void StunSpore::release()
 
 void StunSpore::useSkill(float x, float y)
 {
+	Skill::useSkill(x, y);
+
+	_stunSporeEffect = new EF_StunSpore;
+	_stunSporeEffect->init(x, y);
+	EFFECTMANAGER->addEffect(_stunSporeEffect);
 }

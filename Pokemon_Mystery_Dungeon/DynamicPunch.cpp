@@ -21,6 +21,8 @@ void DynamicPunch::release()
 
 void DynamicPunch::useSkill(float x, float y)
 {
+	Skill::useSkill(x, y);
+
 	_dynamicPunchEffect = new EF_DynamicPunch;
 	_dynamicPunchEffect->init(x, y);
 	EFFECTMANAGER->addEffect(_dynamicPunchEffect);
