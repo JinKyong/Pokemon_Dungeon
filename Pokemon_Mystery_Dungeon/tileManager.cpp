@@ -1,30 +1,26 @@
 #include "stdafx.h"
-#include "sampleMap.h"
+#include "tileManager.h"
 
-sampleMap::sampleMap()
+tileManager::tileManager()
 {
 }
 
-sampleMap::~sampleMap()
+tileManager::~tileManager()
 {
 }
 
-HRESULT sampleMap::init()
+void tileManager::init()
 {
-	_Mapbase=IMAGEMANAGER->addFrameDImage("maptiles", L"img/map/tiles/maptile.png", 768, 384, 16, 8);
-	_Obbase=IMAGEMANAGER->addFrameDImage("object", L"img/map/tiles/object.png", 864, 576, SAMPLETILEX, SAMPLETILEY);
-	load();
-	
-	return S_OK;
+	_Mapbase = IMAGEMANAGER->addFrameDImage("maptiles", L"img/map/tiles/maptile.png", 768, 384, 16, 8);
+	_Obbase = IMAGEMANAGER->addFrameDImage("object", L"img/map/tiles/object.png", 864, 576, SAMPLETILEX, SAMPLETILEY);
 }
 
-void sampleMap::release()
+void tileManager::release()
 {
 }
 
-void sampleMap::update()
+void tileManager::update()
 {
-
 	//이미지 클리핑(렌더 범위/인덱스 설정)
 	//->카메라 스크린 기준으로
 	D2D1_RECT_F screen = CAMERAMANAGER->getScreen();
@@ -42,13 +38,11 @@ void sampleMap::update()
 		_initY = 0;
 	if (_endY >= TILEY)
 		_endY = TILEY - 1;
-
 }
 
-void sampleMap::render()
+void tileManager::render()
 {
-	//렌더 범위 내 타일만 렌더
-	for(int i= _initY; i<= _endY; i++)
+	for (int i = _initY; i <= _endY; i++)
 		for (int j = _initX; j <= _endX; j++) {
 			int index = i * TILEX + j;
 
@@ -75,24 +69,24 @@ void sampleMap::render()
 		}
 }
 
-void sampleMap::load()
+void tileManager::load(const char* mapName)
 {
 	HANDLE file;
 	DWORD read;
 
-	file = CreateFile("tileSave.map", GENERIC_READ, NULL, NULL,
+	file = CreateFile(mapName, GENERIC_READ, NULL, NULL,
 		OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
 
 	ReadFile(file, _tile, sizeof(tagTile) * TILEX * TILEY, &read, NULL);
-	
+
 	memset(_attribute, 0, sizeof(DWORD) * TILEX * TILEY);
-	
+
 	//STEP 01
 	//타일을 불러온 다음 타일이 어떤 지형인지 오브젝트인지 분별해서
 	//해당 타일에 속성을 부여해줍니다
 
 	for (int i = 0; i < TILEX * TILEY; ++i)
-	{	
+	{
 		if (_tile[i].obj == OBJ_BLOCK1) _attribute[i] |= ATTR_UNMOVE;
 		else if (_tile[i].obj == OBJ_BLOCK2) _attribute[i] |= ATTR_UNMOVE;
 		else if (_tile[i].obj == OBJ_BLOCK3) _attribute[i] |= ATTR_UNMOVE;

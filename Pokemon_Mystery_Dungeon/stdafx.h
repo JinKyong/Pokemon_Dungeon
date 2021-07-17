@@ -40,6 +40,7 @@
 #include "pokeDex.h"
 #include "skillDex.h"
 #include "turnManager.h"
+#include "tileManager.h"
 
 
 using namespace std;
@@ -68,7 +69,7 @@ using namespace D2D1;
 #define UIMANAGER uiManager::getSingleton()
 #define EFFECTMANAGER EffectManager::getSingleton()
 //#define INVENTORYMANAGER inventoryManager::getSingleton()
-//#define TILEMANAGER tileManager::getSingleton()
+#define TILEMANAGER tileManager::getSingleton()
 //#define TXTDATA txtData::getSingleton()
 #define STREAMMANAGER streamManager::getSingleton()
 #define DTDMANAGER dtdManager::getSingleton()

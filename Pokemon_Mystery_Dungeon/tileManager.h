@@ -1,4 +1,6 @@
 #pragma once
+#include "singletonBase.h"
+
 
 #define TILESIZE 48
 #define MINITILESIZE 6
@@ -82,5 +84,37 @@ struct tagCurrentTile
 {
 	int x;
 	int y;
+};
+
+
+
+class tileManager: public singletonBase<tileManager>
+{
+private:
+	dImage* _Mapbase;
+	dImage*	_Obbase;
+
+	tagTile _tile[TILEX*TILEY];
+	DWORD _attribute[TILEX*TILEY];
+
+	int _initX;
+	int _endX;
+	int _initY;
+	int _endY;
+
+
+public: 	
+	tileManager();
+	~tileManager();
+	void init();
+	void release();
+	void update();
+	void render();
+
+	void load(const char* mapName);
+
+
+	tagTile* getTile() { return _tile; }
+	DWORD* getTileAttribute() { return _attribute; }
 };
 

@@ -34,6 +34,7 @@ HRESULT gameNode::init(bool managerInit)
 		UIMANAGER->init();
 		POKEDEX->init();
 		SKILLDEX->init();
+		TILEMANAGER->init();
 	}
 
 	return S_OK;
@@ -73,6 +74,9 @@ void gameNode::release()
 
 		SKILLDEX->release();
 		SKILLDEX->releaseSingleton();
+
+		TILEMANAGER->release();
+		TILEMANAGER->releaseSingleton();
 
 		CoUninitialize();
 	}

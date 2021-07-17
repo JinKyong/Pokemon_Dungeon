@@ -220,7 +220,6 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Ribbon.h" />
     <ClInclude Include="RockSlide.h" />
-    <ClInclude Include="sampleMap.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="sceneManager.h" />
     <ClInclude Include="Scope.h" />
@@ -241,7 +240,7 @@
     <ClInclude Include="testScene.h" />
     <ClInclude Include="ThrowItem.h" />
     <ClInclude Include="ThunderFang.h" />
-    <ClInclude Include="tileNode.h" />
+    <ClInclude Include="tileManager.h" />
     <ClInclude Include="timeManager.h" />
     <ClInclude Include="timer.h" />
     <ClInclude Include="TMachine.h" />
@@ -321,7 +320,6 @@
     <ClCompile Include="Raichu.cpp" />
     <ClCompile Include="Ribbon.cpp" />
     <ClCompile Include="RockSlide.cpp" />
-    <ClCompile Include="sampleMap.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="sceneManager.cpp" />
     <ClCompile Include="Scope.cpp" />
@@ -344,6 +342,7 @@
     <ClCompile Include="testScene.cpp" />
     <ClCompile Include="ThrowItem.cpp" />
     <ClCompile Include="ThunderFang.cpp" />
+    <ClCompile Include="tileManager.cpp" />
     <ClCompile Include="timeManager.cpp" />
     <ClCompile Include="timer.cpp" />
     <ClCompile Include="TMachine.cpp" />

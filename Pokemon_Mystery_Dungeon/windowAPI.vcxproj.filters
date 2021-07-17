@@ -360,9 +360,6 @@
     <ClInclude Include="EF_MetalClaw.h">
       <Filter>playGround\Skill\Effect\EF number 11~20</Filter>
     </ClInclude>
-    <ClInclude Include="tileNode.h">
-      <Filter>playGround\Maptool\base</Filter>
-    </ClInclude>
     <ClInclude Include="mapToolScene.h">
       <Filter>playGround\Stage</Filter>
     </ClInclude>
@@ -414,9 +411,6 @@
     <ClInclude Include="testMapScene.h">
       <Filter>playGround\Stage</Filter>
     </ClInclude>
-    <ClInclude Include="sampleMap.h">
-      <Filter>playGround\Maptool</Filter>
-    </ClInclude>
     <ClInclude Include="turnManager.h">
       <Filter>playGround\Battle</Filter>
     </ClInclude>
@@ -452,6 +446,9 @@
     </ClInclude>
     <ClInclude Include="InventoryManager.h">
       <Filter>2DGameFramework\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="tileManager.h">
+      <Filter>playGround\Maptool\base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -710,9 +707,6 @@
     <ClCompile Include="testMapScene.cpp">
       <Filter>playGround\Stage</Filter>
     </ClCompile>
-    <ClCompile Include="sampleMap.cpp">
-      <Filter>playGround\Maptool</Filter>
-    </ClCompile>
     <ClCompile Include="turnManager.cpp">
       <Filter>playGround\Battle</Filter>
     </ClCompile>
@@ -742,6 +736,9 @@
     </ClCompile>
     <ClCompile Include="InventoryManager.cpp">
       <Filter>2DGameFramework\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="tileManager.cpp">
+      <Filter>playGround\Maptool\base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
