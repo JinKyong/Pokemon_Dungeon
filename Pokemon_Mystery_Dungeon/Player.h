@@ -1,5 +1,6 @@
 #pragma once
 #include "Pokemon.h"
+#include "KeyNDirect.h"
 
 enum PLAYER_TYPE {
 	PLAYER_TYPE_USER,

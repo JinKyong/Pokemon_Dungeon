@@ -112,6 +112,27 @@
     <Filter Include="playGround\Pokémon\No.10 ~ 19">
       <UniqueIdentifier>{9ae69de6-7193-4a27-88db-4c33d57235a4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="playGround\Battle">
+      <UniqueIdentifier>{6b762ede-1719-455b-9fe6-a039189fc414}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="playGround\UI">
+      <UniqueIdentifier>{a056f81d-ad8f-4fff-b01c-2807e0658963}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="playGround\UI\Menu">
+      <UniqueIdentifier>{85d88409-3564-4112-a929-9e680f2258c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="playGround\UI\Menu\UpMenu">
+      <UniqueIdentifier>{cc09bea0-680f-4567-b72a-4ccdc6219115}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="playGround\UI\Menu\DownMenu">
+      <UniqueIdentifier>{83e1c70b-0bf6-44e1-92b8-905314716149}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="playGround\UI\Menu\UpMenu\base">
+      <UniqueIdentifier>{0c9d5814-5976-4259-99d2-73c00ad5fa1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="playGround\UI\Menu\DownMenu\base">
+      <UniqueIdentifier>{455a5c6e-d52d-4f39-a8c2-e0cdafedd487}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -201,9 +222,6 @@
     <ClInclude Include="Effect.h">
       <Filter>playGround\Skill\Effect\base</Filter>
     </ClInclude>
-    <ClInclude Include="uiManager.h">
-      <Filter>2DGameFramework\Manager</Filter>
-    </ClInclude>
     <ClInclude Include="PokemonHeader.h">
       <Filter>playGround\Pokémon\base</Filter>
     </ClInclude>
@@ -221,9 +239,6 @@
     </ClInclude>
     <ClInclude Include="RockSlide.h">
       <Filter>playGround\Skill\SK number 1~10</Filter>
-    </ClInclude>
-    <ClInclude Include="turnManager.h">
-      <Filter>2DGameFramework\Manager</Filter>
     </ClInclude>
     <ClInclude Include="skillDex.h">
       <Filter>playGround\PokéDex</Filter>
@@ -402,6 +417,39 @@
     <ClInclude Include="sampleMap.h">
       <Filter>playGround\Maptool</Filter>
     </ClInclude>
+    <ClInclude Include="turnManager.h">
+      <Filter>playGround\Battle</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyNDirect.h">
+      <Filter>playGround\Pokémon\Player\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Team.h">
+      <Filter>playGround\Pokémon\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="uiManager.h">
+      <Filter>playGround\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuHeader.h">
+      <Filter>playGround\UI\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="StatusMenu.h">
+      <Filter>playGround\UI\Menu\UpMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyMenu.h">
+      <Filter>playGround\UI\Menu\UpMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="UpMenu.h">
+      <Filter>playGround\UI\Menu\UpMenu\base</Filter>
+    </ClInclude>
+    <ClInclude Include="DownMenu.h">
+      <Filter>playGround\UI\Menu\DownMenu\base</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenu.h">
+      <Filter>playGround\UI\Menu\DownMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillMenu.h">
+      <Filter>playGround\UI\Menu\DownMenu</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -479,9 +527,6 @@
     <ClCompile Include="Effect.cpp">
       <Filter>playGround\Skill\Effect\base</Filter>
     </ClCompile>
-    <ClCompile Include="uiManager.cpp">
-      <Filter>2DGameFramework\Manager</Filter>
-    </ClCompile>
     <ClCompile Include="pokeDex.cpp">
       <Filter>playGround\PokéDex</Filter>
     </ClCompile>
@@ -496,9 +541,6 @@
     </ClCompile>
     <ClCompile Include="RockSlide.cpp">
       <Filter>playGround\Skill\SK number 1~10</Filter>
-    </ClCompile>
-    <ClCompile Include="turnManager.cpp">
-      <Filter>2DGameFramework\Manager</Filter>
     </ClCompile>
     <ClCompile Include="skillDex.cpp">
       <Filter>playGround\PokéDex</Filter>
@@ -667,6 +709,33 @@
     </ClCompile>
     <ClCompile Include="sampleMap.cpp">
       <Filter>playGround\Maptool</Filter>
+    </ClCompile>
+    <ClCompile Include="turnManager.cpp">
+      <Filter>playGround\Battle</Filter>
+    </ClCompile>
+    <ClCompile Include="Team.cpp">
+      <Filter>playGround\Pokémon\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="uiManager.cpp">
+      <Filter>playGround\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="StatusMenu.cpp">
+      <Filter>playGround\UI\Menu\UpMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyMenu.cpp">
+      <Filter>playGround\UI\Menu\UpMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="UpMenu.cpp">
+      <Filter>playGround\UI\Menu\UpMenu\base</Filter>
+    </ClCompile>
+    <ClCompile Include="DownMenu.cpp">
+      <Filter>playGround\UI\Menu\DownMenu\base</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>playGround\UI\Menu\DownMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillMenu.cpp">
+      <Filter>playGround\UI\Menu\DownMenu</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

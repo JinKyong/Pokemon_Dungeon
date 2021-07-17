@@ -6,6 +6,8 @@ HRESULT turnManager::init()
 	_order = 0;
 	_input = true;
 
+	_currentProgressTurn = POKEMON_STATE_DEFAULT;
+
 	return S_OK;
 }
 
@@ -24,61 +26,43 @@ void turnManager::release()
 			++_playerIter;
 	}
 
-	_attackPlayerList.clear();
+	_allPlayerList.clear();
 }
 
 void turnManager::update()
 {
-	if (_input) {
-		//인풋 받음
-		int state = _allPlayerList[_order]->input();
-
-		//이동 input
-		if (state == POKEMON_STATE_MOVE) {
-			addMovePlayer(_allPlayerList[_order]);
-			_order++;
-		}
-		//공격(특수공격 포함) input
-		else if (state == POKEMON_STATE_ATTACK || state == POKEMON_STATE_SATTACK) {
-			addAttackPlayer(_allPlayerList[_order]);
-			_order++;
-		}
-
-		//턴이 소모되는 입력을 받았으면 다음 입력 받음
-		if (_order >= _allPlayerList.size())
-			_input = false;
-	}
+	if (_input)
+		inputFromPlayer();
 
 	else {	//입력이 끝나면 진행
 
 		playerIter player;
 
-		//공격 
-		if ((player = _attackPlayerList.begin()) != _attackPlayerList.end()) {
-			if ((*player)->getPokemon()->getState() == POKEMON_STATE_DEFAULT) {
-				(*player)->setPlayerState(POKEMON_STATE_DEFAULT);
-				_attackPlayerList.erase(player);
-			}
-			else {
-				(*player)->attack();
-				(*player)->update();
-			}
-		}
+		//앞에서부터 차례대로
+		if ((player = _inputPlayerList.begin()) != _inputPlayerList.end()) {
+			_currentProgressTurn = (*player)->getPlayerState();
 
-		//이동
-		else if ((player = _movePlayerList.begin()) != _movePlayerList.end()) {
-			for (; player != _movePlayerList.end();) {
-				if ((*player)->getPlayerState() == POKEMON_STATE_DEFAULT)
-					player = _movePlayerList.erase(player);
-				else {
+			for (; player != _inputPlayerList.end();) {
+				if ((*player)->getPlayerState() != _currentProgressTurn) break;
+
+				switch ((*player)->getPlayerState()) {
+				case POKEMON_STATE_MOVE:
 					(*player)->move();
 					(*player)->update();
 					++player;
+					break;
+				case POKEMON_STATE_ATTACK:
+				case POKEMON_STATE_SATTACK:
+					(*player)->attack();
+					(*player)->update();
+					//++player;
+					return;
+				case POKEMON_STATE_DEFAULT:
+					player = _inputPlayerList.erase(player);
+					break;
 				}
 			}
 		}
-
-		//공격, 이동이 모두 끝나면 다시 입력턴으로 돌아감
 		else {
 			_order = 0;
 			_input = true;
@@ -95,17 +79,28 @@ void turnManager::render()
 	(*player)->render();
 }
 
+void turnManager::inputFromPlayer()
+{
+	//input 받음
+	int state = _allPlayerList[_order]->input();
+
+	//(턴이 소모되는)input이 있으면 order++
+	if (state != POKEMON_STATE_DEFAULT) {
+		addInputPlayer(_allPlayerList[_order]);
+		_order++;
+	}
+
+	//모든 Player input을 받으면 진행 턴으로
+	if (_order >= _allPlayerList.size())
+		_input = false;
+}
+
 void turnManager::addAllPlayer(Player * player)
 {
 	_allPlayerList.push_back(player);
 }
 
-void turnManager::addAttackPlayer(Player * player)
+void turnManager::addInputPlayer(Player * player)
 {
-	_attackPlayerList.push_back(player);
-}
-
-void turnManager::addMovePlayer(Player * player)
-{
-	_movePlayerList.push_back(player);
+	_inputPlayerList.push_back(player);
 }

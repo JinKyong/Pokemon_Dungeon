@@ -1,85 +1,149 @@
 #include "stdafx.h"
 #include "uiManager.h"
+#include "MenuHeader.h"
+
+UpMenu* uiManager::_currentUpMenu = NULL;
+DownMenu* uiManager::_currentDownMenu = NULL;
 
 HRESULT uiManager::init()
 {
-	_back = IMAGEMANAGER->addDImage("black", L"img/fade_B.png", 800, 600);
+	_screen = dRectMake(5 * WINSIZEX / 16, 0, 3 * WINSIZEX / 8, 3 * WINSIZEY / 8);
 
-	keySetting();
-	status();
+	_currentUpMenu = NULL;
+	_currentDownMenu = NULL;
 
-	//이미지 불러오고 
-	_key = 0;
-	_option = 0;
+	//위 메뉴
+	addUpMenu("keyMenu", new KeyMenu);
+	addUpMenu("statusMenu", new StatusMenu);
+	changeUpMenu("statusMenu");
+
+	//아래 메뉴
+	addDownMenu("mainMenu", new MainMenu);
+
+	_open = false;
+
 	return S_OK;
 }
 
 void uiManager::release()
 {
+	//위 메뉴 release
+	upMenuIter umiList = _upMenu.begin();
+
+	for (; umiList != _upMenu.end();)
+	{
+		if (umiList->second != NULL)
+		{
+			if (umiList->second == _currentUpMenu) umiList->second->release();
+			SAFE_DELETE(umiList->second);
+			umiList = _upMenu.erase(umiList);
+		}
+		else ++umiList;
+	}
+
+	_upMenu.clear();
+
+
+	//아래 메뉴 release
+	downMenuIter dmiList = _downMenu.begin();
+
+	for (; dmiList != _downMenu.end();)
+	{
+		if (dmiList->second != NULL)
+		{
+			if (dmiList->second == _currentDownMenu) dmiList->second->release();
+			SAFE_DELETE(dmiList->second);
+			dmiList = _downMenu.erase(dmiList);
+		}
+		else ++dmiList;
+	}
+
+	_downMenu.clear();
 }
 
 void uiManager::update()
 {
-	if (KEYMANAGER->isOnceKeyDown(VK_F2))
-	{
-		_key++;
-		if (_key > 1) _key = 0;
-	}
-	if (KEYMANAGER->isOnceKeyDown(VK_F3))
-	{					
-		_option++;
-		if (_option > 1) _option = 0;
-	}
-	if (KEYMANAGER->isOnceKeyDown(VK_F4))
-	{
-		_isNull = !_isNull;
-		if (_isNull) _testStat = IMAGEMANAGER->findDImage("statNull");
-		else		 _testStat = IMAGEMANAGER->findDImage("stat");
-	}
+	if (_currentUpMenu) _currentUpMenu->update();
+	if (_currentDownMenu) _currentDownMenu->update();
 }
 
-void uiManager::render()
+void uiManager::renderDown()
 {
-	//테스트키 변수 하나줘서 바꿀수있게
-
-	if (_option == 0)
-	{
-		DTDMANAGER->getRenderTarget()->DrawBitmap(_testKey[_key]->getBitmap(), _screen);
-	}
-
-	else if (_option == 1)
-	{
-		DTDMANAGER->getRenderTarget()->DrawBitmap(_back->getBitmap(), _screen);
-
-		DTDMANAGER->getRenderTarget()->DrawBitmap(_testStat->getBitmap(), _status[0]);
-		DTDMANAGER->getRenderTarget()->DrawBitmap(_testStat->getBitmap(), _status[1]);
-		DTDMANAGER->getRenderTarget()->DrawBitmap(_testStat->getBitmap(), _status[2]);
-		DTDMANAGER->getRenderTarget()->DrawBitmap(_testStat->getBitmap(), _status[3]);
-		DTDMANAGER->getRenderTarget()->DrawBitmap(_pokeNum->getBitmap(), _pokeNumRC);
-	}
-	//이미지 비트맵 스크린 렉트에 그리기만 하면 끝
+	if (_currentDownMenu) _currentDownMenu->render();
 }
 
-void uiManager::keySetting()
+void uiManager::renderUp()
 {
-	_screen = dRectMake(5 * WINSIZEX / 16, 0, 3 * WINSIZEX / 8, 3 * WINSIZEY / 8);
-
-	_testKey[0] = IMAGEMANAGER->addDImage("KeySetting_dungeon", L"img/ui/KeySetting_dungeon.png", 512, 384);
-	_testKey[1] = IMAGEMANAGER->addDImage("KeySetting_town", L"img/ui/KeySetting_town.png", 512, 384);
+	if (_currentUpMenu) _currentUpMenu->render();
 }
 
-void uiManager::status()
+UpMenu * uiManager::addUpMenu(string menuName, UpMenu * menu)
 {
-	_isNull = false;
-	_screen = dRectMake(5 * WINSIZEX / 16, 0, 3 * WINSIZEX / 8, 3 * WINSIZEY / 8);
-	_pokeNumRC = dRectMakeCenter(_screen.left + STATUSWIDTH, (_screen.top + _screen.bottom) / 2, 60, 50);
+	if (!menu) return nullptr;
 
-	_status[0] = dRectMake(_screen.left, _screen.top, STATUSWIDTH, (_screen.top + _screen.bottom) / 2);
-	_status[1] = dRectMake(_status[0].right, _screen.top, STATUSWIDTH, (_screen.top + _screen.bottom) / 2);
-	_status[2] = dRectMake(_screen.left, _status[0].bottom, STATUSWIDTH, (_screen.top + _screen.bottom) / 2);
-	_status[3] = dRectMake(_status[2].right, _status[0].bottom, STATUSWIDTH, (_screen.top + _screen.bottom) / 2);
+	_upMenu.insert(make_pair(menuName, menu));
 
-	IMAGEMANAGER->addDImage("statNull", L"img/ui/stat_nullBox.png", 248, 184);
-	_testStat = IMAGEMANAGER->addDImage("stat", L"img/ui/stat_baseBox.png", 248, 184);
-	_pokeNum = IMAGEMANAGER->addDImage("pokeNum", L"img/ui/stat_number.png", 60, 60);
+	return menu;
+}
+
+DownMenu * uiManager::addDownMenu(string menuName, DownMenu * menu)
+{
+	if (!menu) return nullptr;
+
+	_downMenu.insert(make_pair(menuName, menu));
+
+	return menu;
+}
+
+HRESULT uiManager::changeUpMenu(string menuName)
+{
+	upMenuIter find = _upMenu.find(menuName);
+
+	if (find == _upMenu.end()) return E_FAIL;
+
+	if (find->second == _currentUpMenu) return S_OK;
+
+	if (SUCCEEDED(find->second->init()))
+	{
+		//현재(있던) 씬의 릴리즈 함수를 실행해주고
+		if (_currentUpMenu) _currentUpMenu->release();
+
+		//바꾸려는 씬을 현재씬으로 체인지
+		_currentUpMenu = find->second;
+
+		//CAMERAMANAGER->setFade(FADEIN);
+
+		return S_OK;
+	}
+
+	return E_FAIL;
+}
+
+HRESULT uiManager::changeDownMenu(string menuName)
+{
+	if (menuName == "NULL") {
+		_currentDownMenu->release();
+		_currentDownMenu = NULL;
+	}
+
+	downMenuIter find = _downMenu.find(menuName);
+
+	if (find == _downMenu.end()) return E_FAIL;
+
+	if (find->second == _currentDownMenu) return S_OK;
+
+	if (SUCCEEDED(find->second->init()))
+	{
+		//현재(있던) 씬의 릴리즈 함수를 실행해주고
+		if (_currentDownMenu) _currentDownMenu->release();
+
+		//바꾸려는 씬을 현재씬으로 체인지
+		_currentDownMenu = find->second;
+
+		//CAMERAMANAGER->setFade(FADEIN);
+
+		return S_OK;
+	}
+
+	return E_FAIL;
 }

@@ -40,6 +40,10 @@ HRESULT Pichu::init()
 	_stateImage[POKEMON_STATE_DEFAULT] = IMAGEMANAGER->addFrameDImage("pichu_default",
 		L"img/pokemon/4. pichu/default.png", 42, 572, 1, 11);
 
+	//ÃÊ»óÈ­
+	_portrait = IMAGEMANAGER->addDImage("pichu_portrait",
+		L"img/pokemon/4. pichu/portrait.png", 40, 40);
+
 	//frame
 	changeDirect(DOWN);
 	changeState(POKEMON_STATE_DEFAULT);

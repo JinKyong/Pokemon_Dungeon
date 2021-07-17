@@ -1,10 +1,10 @@
 #include "stdafx.h"
-#include "Enemy.h"
+#include "Team.h"
 
-HRESULT Enemy::init(int pokemonNum)
+HRESULT Team::init(int pokemonNum)
 {
 	//플레이어 타입
-	_playerType = PLAYER_TYPE_ENEMY;
+	_playerType = PLAYER_TYPE_TEAM;
 	_playerState = POKEMON_STATE_DEFAULT;
 
 	//포켓몬
@@ -13,7 +13,7 @@ HRESULT Enemy::init(int pokemonNum)
 
 	//좌표
 	_x = 25 * TILEWIDTH + TILEWIDTH / 2;
-	_y = 15 * TILEHEIGHT + TILEHEIGHT / 2;
+	_y = 13 * TILEHEIGHT + TILEHEIGHT / 2;
 	_destX = _x;
 	_destY = _y;
 	_body = RectMakeCenter(_x, _y, TILEWIDTH, TILEHEIGHT);
@@ -26,17 +26,17 @@ HRESULT Enemy::init(int pokemonNum)
 	return S_OK;
 }
 
-void Enemy::release()
+void Team::release()
 {
 }
 
-void Enemy::update()
+void Team::update()
 {
 	_body = RectMakeCenter(_x, _y, TILEWIDTH, TILEHEIGHT);
 }
 
-void Enemy::render()
-{
+void Team::render()
+{	
 	if (PRINTMANAGER->isDebug()) {
 		WCHAR str[128];
 		swprintf_s(str, L"direct : %d", _pokemon->getDirect());
@@ -52,7 +52,7 @@ void Enemy::render()
 	_pokemon->render(_x, _y);
 }
 
-int Enemy::input()
+int Team::input()
 {
 	_direct = RND->getFromIntTo(RIGHT, LEFT + 2);
 

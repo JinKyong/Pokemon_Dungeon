@@ -40,6 +40,10 @@ HRESULT Charmander::init()
 	_stateImage[POKEMON_STATE_DEFAULT] = IMAGEMANAGER->addFrameDImage("charmander_default",
 		L"img/pokemon/1. charmander/default.png", 48, 528, 1, 11);
 
+	//ÃÊ»óÈ­
+	_portrait = IMAGEMANAGER->addDImage("charmander_portrait",
+		L"img/pokemon/1. charmander/portrait.png", 40, 40);
+
 	//frame
 	changeDirect(DOWN);
 	changeState(POKEMON_STATE_DEFAULT);

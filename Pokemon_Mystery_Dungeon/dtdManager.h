@@ -16,7 +16,8 @@ private:
 
 	//Text
 	IDWriteFactory			*_dWFactory;
-	IDWriteTextFormat		*_dWFormat;
+	IDWriteTextFormat		*_dWDefaultFormat;
+	IDWriteTextFormat		*_dWCustomFormat;
 
 	bool _clear;
 
@@ -28,10 +29,15 @@ public:
 	void beginDraw();
 	void endDraw();
 
+	//사각형
 	void Rectangle(D2D1_RECT_F rc);
 	void Rectangle(RECT rc);
-	void printText(LPCWCHAR text, float x, float y, float width, float height);
+
+	//텍스트 출력
+	void printText(LPCWCHAR text, float x, float y, int width, int height);
+	void printText(LPCWCHAR text, float x, float y, int width, int height, float size);
 	void printText(LPCWCHAR text, D2D1_RECT_F rc);
+	void printText(LPCWCHAR text, D2D1_RECT_F rc, float size);
 
 	//회전
 	void setRotate(float angle, float x, float y);

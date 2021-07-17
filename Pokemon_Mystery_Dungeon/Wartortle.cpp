@@ -39,6 +39,10 @@ HRESULT Wartortle::init()
 		L"img/pokemon/11. wartortle/sleep.png", 92, 46, 2, 1);
 	_stateImage[POKEMON_STATE_DEFAULT] = _stateImage[POKEMON_STATE_IDLE];
 
+	//ÃÊ»óÈ­
+	_portrait = IMAGEMANAGER->addDImage("wartortle_portrait",
+		L"img/pokemon/11. wartortle/portrait.png", 40, 40);
+
 	//frame
 	changeDirect(DOWN);
 	changeState(POKEMON_STATE_DEFAULT);

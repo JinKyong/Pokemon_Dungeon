@@ -40,6 +40,10 @@ HRESULT Charizard::init()
 	_stateImage[POKEMON_STATE_DEFAULT] = IMAGEMANAGER->addFrameDImage("charizard_default",
 		L"img/pokemon/3. charizard/default.png", 66, 660, 1, 11);
 
+	//ÃÊ»óÈ­
+	_portrait = IMAGEMANAGER->addDImage("charizard_portrait",
+		L"img/pokemon/3. charizard/portrait.png", 40, 40);
+
 	//frame
 	changeDirect(DOWN);
 	changeState(POKEMON_STATE_DEFAULT);

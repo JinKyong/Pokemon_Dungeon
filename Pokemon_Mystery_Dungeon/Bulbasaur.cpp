@@ -40,6 +40,10 @@ HRESULT Bulbasaur::init()
 	_stateImage[POKEMON_STATE_DEFAULT] = IMAGEMANAGER->addFrameDImage("bulbasaur_default",
 		L"img/pokemon/7. bulbasaur/default.png", 48, 484, 1, 11);
 
+	//ÃÊ»óÈ­
+	_portrait = IMAGEMANAGER->addDImage("bulbasaur_portrait",
+		L"img/pokemon/7. bulbasaur/portrait.png", 40, 40);
+
 	//frame
 	changeDirect(DOWN);
 	changeState(POKEMON_STATE_DEFAULT);

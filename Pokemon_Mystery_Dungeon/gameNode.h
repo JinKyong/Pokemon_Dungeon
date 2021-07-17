@@ -11,7 +11,7 @@ public:
 	gameNode();
 	virtual ~gameNode();
 
-	
+
 
 	//HRESULT 마소 전용 반환형식인데
 	//S_OK, E_FAIL, SUCCEDED

@@ -1,11 +1,6 @@
 #pragma once
 #include "PokemonType.h"
 
-#define RIGHT	0x00000001
-#define LEFT	0x00000002
-#define UP		0x00000004
-#define DOWN	0x00000008
-
 enum POKEMON_STATE {
 	POKEMON_STATE_IDLE,
 	POKEMON_STATE_MOVE,
@@ -30,10 +25,11 @@ typedef struct tagPokemonStat {
 class Pokemon
 {
 protected:
-	//현재 이미지 & 상태
+	//현재 이미지 & 상태 및 초상화
 	dImage* _currentImage;
 	dImage* _stateImage[END_POKEMON_STATE];
 	POKEMON_STATE _state;
+	dImage* _portrait;
 
 	//이미지 프레임 및 카운트
 	int _frameX;
@@ -106,11 +102,10 @@ public:
 
 	//=================== 접근자 ===================//
 	dImage* getImage() { return _currentImage; }
-
 	POKEMON_STATE getState() { return _state; }
+	dImage* getPortrait() { return _portrait; }
 
 	float getAngle() { return _angle; }
-
 	int getDirect() { return _frameY; }
 	void setDirect(int direct) { _frameY = direct; }
 

@@ -40,6 +40,10 @@ HRESULT Raichu::init()
 	_stateImage[POKEMON_STATE_DEFAULT] = IMAGEMANAGER->addFrameDImage("raichu_default",
 		L"img/pokemon/6. raichu/default.png", 60, 660, 1, 11);
 
+	//ÃÊ»óÈ­
+	_portrait = IMAGEMANAGER->addDImage("raichu_portrait",
+		L"img/pokemon/6. raichu/portrait.png", 40, 40);
+
 	//frame
 	changeDirect(DOWN);
 	changeState(POKEMON_STATE_DEFAULT);

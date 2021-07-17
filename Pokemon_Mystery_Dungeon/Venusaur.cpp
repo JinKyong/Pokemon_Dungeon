@@ -40,6 +40,10 @@ HRESULT Venusaur::init()
 	_stateImage[POKEMON_STATE_DEFAULT] = IMAGEMANAGER->addFrameDImage("venusaur_default",
 		L"img/pokemon/9. venusaur/default.png", 58, 572, 1, 11);
 
+	//ÃÊ»óÈ­
+	_portrait = IMAGEMANAGER->addDImage("venusaur_portrait",
+		L"img/pokemon/9. venusaur/portrait.png", 40, 40);
+
 	//frame
 	changeDirect(DOWN);
 	changeState(POKEMON_STATE_DEFAULT);

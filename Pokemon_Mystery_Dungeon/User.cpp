@@ -71,22 +71,22 @@ void User::controlKey()
 {
 	_direct = 0;
 
-	if (KEYMANAGER->isStayKeyDown(VK_RIGHT)) {
+	if (KEYMANAGER->isStayKeyDown(KEY_RIGHT)) {
 		_direct |= RIGHT;
 		_destX = _x + TILEWIDTH;
 		_playerState = POKEMON_STATE_MOVE;
 	}
-	else if (KEYMANAGER->isStayKeyDown(VK_LEFT)) {
+	else if (KEYMANAGER->isStayKeyDown(KEY_LEFT)) {
 		_direct |= LEFT;
 		_destX = _x - TILEWIDTH;
 		_playerState = POKEMON_STATE_MOVE;
 	}
-	if (KEYMANAGER->isStayKeyDown(VK_UP)) {
+	if (KEYMANAGER->isStayKeyDown(KEY_UP)) {
 		_direct |= UP;
 		_destY = _y - TILEHEIGHT;
 		_playerState = POKEMON_STATE_MOVE;
 	}
-	else if (KEYMANAGER->isStayKeyDown(VK_DOWN)) {
+	else if (KEYMANAGER->isStayKeyDown(KEY_DOWN)) {
 		_direct |= DOWN;
 		_destY = _y + TILEHEIGHT;
 		_playerState = POKEMON_STATE_MOVE;
@@ -117,8 +117,9 @@ void User::controlKey()
 			_playerState = POKEMON_STATE_SATTACK;
 	}
 
-	if (KEYMANAGER->isOnceKeyDown('D')) {
-		_pokemon->changeState(POKEMON_STATE_HURT);
+	if (KEYMANAGER->isOnceKeyDown(KEY_Y)) {
+		UIMANAGER->changeDownMenu("mainMenu");
+		UIMANAGER->setOpen(true);
 	}
 	if (KEYMANAGER->isOnceKeyDown('S')) {
 		_pokemon->changeState(POKEMON_STATE_SLEEP);

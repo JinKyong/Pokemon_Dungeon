@@ -40,6 +40,10 @@ HRESULT Charmeleon::init()
 	_stateImage[POKEMON_STATE_DEFAULT] = IMAGEMANAGER->addFrameDImage("charmeleon_default",
 		L"img/pokemon/2. charmeleon/default.png", 54, 594, 1, 11);
 
+	//ÃÊ»óÈ­
+	_portrait = IMAGEMANAGER->addDImage("charmeleon_portrait",
+		L"img/pokemon/2. charmeleon/portrait.png", 40, 40);
+
 	//frame
 	changeDirect(DOWN);
 	changeState(POKEMON_STATE_DEFAULT);

@@ -188,7 +188,7 @@ void dImage::frameRender(int destX, int destY, int currentFrameX, int currentFra
 		opacity, D2D1_BITMAP_INTERPOLATION_MODE_LINEAR, sourRect);
 }
 
-void dImage::frameRender(int destX, int destY, int currentFrameX, int currentFrameY,int sizeX,int sizeY, float opacity)
+void dImage::frameRender(int destX, int destY, int currentFrameX, int currentFrameY, int sizeX, int sizeY, float opacity)
 {
 	D2D1_RECT_F destRect = dRectMake(destX, destY, sizeX, sizeY);
 	D2D1_RECT_F sourRect = dRectMake(

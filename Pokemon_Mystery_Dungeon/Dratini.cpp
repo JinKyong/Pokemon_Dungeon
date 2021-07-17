@@ -40,6 +40,10 @@ HRESULT Dratini::init()
 	_stateImage[POKEMON_STATE_DEFAULT] = IMAGEMANAGER->addFrameDImage("dratini_default",
 		L"img/pokemon/13. dratini/default.png", 54, 638, 1, 11);
 
+	//ÃÊ»óÈ­
+	_portrait = IMAGEMANAGER->addDImage("dratini_portrait",
+		L"img/pokemon/13. dratini/portrait.png", 40, 40);
+
 	//frame
 	changeDirect(DOWN);
 	changeState(POKEMON_STATE_DEFAULT);

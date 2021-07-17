@@ -40,6 +40,10 @@ HRESULT Ivysaur::init()
 	_stateImage[POKEMON_STATE_DEFAULT] = IMAGEMANAGER->addFrameDImage("ivysaur_default",
 		L"img/pokemon/8. ivysaur/default.png", 50, 484, 1, 11);
 
+	//ÃÊ»óÈ­
+	_portrait = IMAGEMANAGER->addDImage("ivysaur_portrait",
+		L"img/pokemon/8. ivysaur/portrait.png", 40, 40);
+
 	//frame
 	changeDirect(DOWN);
 	changeState(POKEMON_STATE_DEFAULT);

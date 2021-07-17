@@ -18,10 +18,10 @@ HRESULT cameraManager::init()
 	_frontHeight = 5 * WINSIZEY / 8;
 
 	//화면 Rect 생성
-	_screen = dRectMake(0, 0, WINSIZEX, WINSIZEY);
+	_screen = dRectMake(0, 0, 5 * WINSIZEX / 8, 5 * WINSIZEY / 8);
 
 	//fade화면
-	_fadeScreen = IMAGEMANAGER->addDImage("fade_B", L"img/fade_B.png", WINSIZEX, WINSIZEY);
+	_fadeScreen = IMAGEMANAGER->addDImage("fade_B", L"img/fade_B.png", 5 * WINSIZEY / 8, 5 * WINSIZEY / 8);
 
 	_alpha = 1.0;
 	_fade = NORMAL;
@@ -133,8 +133,8 @@ void cameraManager::render(float destX, float destY)
 	int destY: 우리가 보는 화면에서 출력해줄 y좌표
 	*/
 
-	if (_fade == FADEIN)		fadeIn();
-	else if (_fade == FADEOUT)	fadeOut();
+	//if (_fade == FADEIN)		fadeIn();
+	//else if (_fade == FADEOUT)	fadeOut();
 
 	DTDMANAGER->render(destX, destY, _frontWidth, _frontHeight);
 

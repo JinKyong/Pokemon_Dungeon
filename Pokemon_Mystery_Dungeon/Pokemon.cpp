@@ -31,7 +31,7 @@ void Pokemon::controlFrame()
 		if (_frameX >= _currentImage->getMaxFrameX()) {
 			if (_state == POKEMON_STATE_DEFAULT)
 				changeState(POKEMON_STATE_IDLE);
-			else if (_state == POKEMON_STATE_SLEEP)
+			else if (_state == POKEMON_STATE_MOVE || _state == POKEMON_STATE_SLEEP)
 				_frameX = 0;
 			else if (_state == POKEMON_STATE_ATTACK) {
 

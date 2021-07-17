@@ -40,6 +40,10 @@ HRESULT Squirtle::init()
 	_stateImage[POKEMON_STATE_DEFAULT] = IMAGEMANAGER->addFrameDImage("squirtle_default",
 		L"img/pokemon/10. squirtle/default.png", 46, 440, 1, 11);
 
+	//ÃÊ»óÈ­
+	_portrait = IMAGEMANAGER->addDImage("squirtle_portrait",
+		L"img/pokemon/10. squirtle/portrait.png", 40, 40);
+
 	//frame
 	changeDirect(DOWN);
 	changeState(POKEMON_STATE_DEFAULT);

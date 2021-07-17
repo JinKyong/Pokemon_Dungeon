@@ -11,12 +11,14 @@ private:
 
 private:
 	playerList _allPlayerList;		//현재 모든 플레이어
+	playerList _inputPlayerList;	//입력이 끝난 플레이어
 
-	playerList _attackPlayerList;	//공격을 입력한 플레이어
-	playerList _movePlayerList;		//이동을 입력한 플레이어
-
+	//input
 	int _order;
 	bool _input;
+
+	//progress
+	POKEMON_STATE _currentProgressTurn;
 
 public:
 	HRESULT init();
@@ -24,7 +26,11 @@ public:
 	void update();
 	void render();
 
+	void inputFromPlayer();
+
 	void addAllPlayer(Player* player);
-	void addAttackPlayer(Player* player);
-	void addMovePlayer(Player* player);
+	void addInputPlayer(Player* player);
+
+
+	playerList* getAllPlayer() { return &_allPlayerList; }
 };

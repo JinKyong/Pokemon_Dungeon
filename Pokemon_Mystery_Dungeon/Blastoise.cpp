@@ -40,6 +40,10 @@ HRESULT Blastoise::init()
 	_stateImage[POKEMON_STATE_DEFAULT] = IMAGEMANAGER->addFrameDImage("blastoise_default",
 		L"img/pokemon/12. blastoise/default.png", 60, 638, 1, 11);
 
+	//ÃÊ»óÈ­
+	_portrait = IMAGEMANAGER->addDImage("blastoise_portrait",
+		L"img/pokemon/12. blastoise/portrait.png", 40, 40);
+
 	//frame
 	changeDirect(DOWN);
 	changeState(POKEMON_STATE_DEFAULT);

@@ -125,9 +125,9 @@ LRESULT gameNode::MainProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lPara
 	case WM_MOUSEMOVE:
 		_ptMouse.x = static_cast<float>(LOWORD(lParam));
 		_ptMouse.y = static_cast<float>(HIWORD(lParam));
-		
+
 		break;
-	
+
 	case WM_KEYDOWN:
 
 		switch (wParam)

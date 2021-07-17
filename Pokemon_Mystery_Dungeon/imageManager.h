@@ -30,13 +30,13 @@ public:
 	image* addImage(string strKey, const char* fileName, int width, int height, bool trans, COLORREF transColor);
 	image* addImage(string strKey, const char* fileName, int width, int height, bool trans, COLORREF transColor, bool blend);
 
-	dImage* addDImage(string strKey, LPCWSTR fileName, float width, float height);
+	dImage* addDImage(string strKey, LPCWSTR fileName, int width, int height);
 
 	image* addFrameImage(string strKey, const char* fileName, float x, float y, int width, int height, int frameX, int frameY, bool trans, COLORREF transColor);
 	image* addFrameImage(string strKey, const char* fileName, int width, int height, int frameX, int frameY, bool trans, COLORREF transColor);
 	image* addFrameImage(string strKey, const char* fileName, int width, int height, int frameX, int frameY, bool trans, COLORREF transColor, bool blend);
 
-	dImage* addFrameDImage(string strKey, LPCWSTR fileName, float width, float height, int frameX, int frameY);
+	dImage* addFrameDImage(string strKey, LPCWSTR fileName, int width, int height, int frameX, int frameY);
 
 	image* findImage(string strKey);
 	dImage* findDImage(string strKey);

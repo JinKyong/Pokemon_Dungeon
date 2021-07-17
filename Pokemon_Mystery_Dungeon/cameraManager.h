@@ -2,7 +2,7 @@
 #include "singletonBase.h"
 #include "image.h"
 
-#define FADE	300
+#define FADE	1
 
 enum CAMERAFADE {
 	FADEOUT = -1,

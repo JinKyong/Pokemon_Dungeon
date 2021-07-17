@@ -49,7 +49,7 @@ HRESULT dtdManager::init()
 			DWRITE_FONT_STRETCH_NORMAL,
 			15,
 			L"ko-kr",
-			&_dWFormat
+			&_dWDefaultFormat
 		);
 	}
 
@@ -75,10 +75,11 @@ void dtdManager::release()
 	if (_dRenderTarget)		SAFE_RELEASE2(_dRenderTarget);
 	if (_dBitRenderTarget)	SAFE_RELEASE2(_dBitRenderTarget);
 	if (_dBitmap)			SAFE_RELEASE2(_dBitmap);
-	if (_dBrush)				SAFE_RELEASE2(_dBrush);
+	if (_dBrush)			SAFE_RELEASE2(_dBrush);
 
 	if (_dWFactory)			SAFE_RELEASE2(_dWFactory);
-	if (_dWFormat)			SAFE_RELEASE2(_dWFormat);
+	if (_dWDefaultFormat)	SAFE_RELEASE2(_dWDefaultFormat);
+	if (_dWCustomFormat)	SAFE_RELEASE2(_dWCustomFormat);
 }
 
 void dtdManager::render(float destX, float destY, float width, float height)
@@ -88,8 +89,8 @@ void dtdManager::render(float destX, float destY, float width, float height)
 	_dRenderTarget->BeginDraw();
 	_dRenderTarget->Clear(ColorF(ColorF::Aquamarine));
 
-	//위 화면(UI를 불러서 그림)
-	UIMANAGER->render();
+	//위 화면
+	UIMANAGER->renderUp();
 
 	//아래 화면 (실제 게임 화면)
 	D2D1_RECT_F dest = { destX, destY, destX + width, destY + height };
@@ -133,14 +134,82 @@ void dtdManager::Rectangle(RECT rc)
 		_dBitRenderTarget->DrawRectangle(rect, _dBrush);
 }
 
-void dtdManager::printText(LPCWCHAR text, float x, float y, float width, float height)
+void dtdManager::printText(LPCWCHAR text, float x, float y, int width, int height)
 {
-	_dBitRenderTarget->DrawTextA(text, lstrlenW(text), _dWFormat, dRectMakeCenter(x, y, width, height), _dBrush);
+	_dBitRenderTarget->DrawTextA(text, lstrlenW(text), _dWDefaultFormat, dRectMakeCenter(x, y, width, height), _dBrush);
+}
+
+void dtdManager::printText(LPCWCHAR text, float x, float y, int width, int height, float size)
+{
+	if (_dWCustomFormat) {
+		if (_dWCustomFormat->GetFontSize() != size) {
+			SAFE_RELEASE2(_dWCustomFormat);
+
+			_dWFactory->CreateTextFormat(
+				L"돋움",
+				nullptr,
+				DWRITE_FONT_WEIGHT_NORMAL,
+				DWRITE_FONT_STYLE_NORMAL,
+				DWRITE_FONT_STRETCH_NORMAL,
+				size,
+				L"ko-kr",
+				&_dWCustomFormat
+			);
+		}
+	}
+	else {
+		_dWFactory->CreateTextFormat(
+			L"돋움",
+			nullptr,
+			DWRITE_FONT_WEIGHT_NORMAL,
+			DWRITE_FONT_STYLE_NORMAL,
+			DWRITE_FONT_STRETCH_NORMAL,
+			size,
+			L"ko-kr",
+			&_dWCustomFormat
+		);
+	}
+
+	_dBitRenderTarget->DrawTextA(text, lstrlenW(text), _dWCustomFormat, dRectMakeCenter(x, y, width, height), _dBrush);
 }
 
 void dtdManager::printText(LPCWCHAR text, D2D1_RECT_F rc)
 {
-	_dBitRenderTarget->DrawTextA(text, lstrlenW(text), _dWFormat, rc, _dBrush);
+	_dBitRenderTarget->DrawTextA(text, lstrlenW(text), _dWDefaultFormat, rc, _dBrush);
+}
+
+void dtdManager::printText(LPCWCHAR text, D2D1_RECT_F rc, float size)
+{
+	if (_dWCustomFormat) {
+		if (_dWCustomFormat->GetFontSize() != size) {
+			SAFE_RELEASE2(_dWCustomFormat);
+
+			_dWFactory->CreateTextFormat(
+				L"돋움",
+				nullptr,
+				DWRITE_FONT_WEIGHT_NORMAL,
+				DWRITE_FONT_STYLE_NORMAL,
+				DWRITE_FONT_STRETCH_NORMAL,
+				size,
+				L"ko-kr",
+				&_dWCustomFormat
+			);
+		}
+	}
+	else {
+		_dWFactory->CreateTextFormat(
+			L"돋움",
+			nullptr,
+			DWRITE_FONT_WEIGHT_NORMAL,
+			DWRITE_FONT_STYLE_NORMAL,
+			DWRITE_FONT_STRETCH_NORMAL,
+			size,
+			L"ko-kr",
+			&_dWCustomFormat
+		);
+	}
+
+	_dBitRenderTarget->DrawTextA(text, lstrlenW(text), _dWCustomFormat, rc, _dBrush);
 }
 
 void dtdManager::setRotate(float angle, float x, float y)

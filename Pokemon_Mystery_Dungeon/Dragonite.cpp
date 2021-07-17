@@ -40,6 +40,10 @@ HRESULT Dragonite::init()
 	_stateImage[POKEMON_STATE_DEFAULT] = IMAGEMANAGER->addFrameDImage("dragonite_default",
 		L"img/pokemon/15. dragonite/default.png", 62, 770, 1, 11);
 
+	//ÃÊ»óÈ­
+	_portrait = IMAGEMANAGER->addDImage("dragonite_portrait",
+		L"img/pokemon/15. dragonite/portrait.png", 40, 40);
+
 	//frame
 	changeDirect(DOWN);
 	changeState(POKEMON_STATE_DEFAULT);

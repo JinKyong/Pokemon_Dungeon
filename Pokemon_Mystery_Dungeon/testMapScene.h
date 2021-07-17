@@ -13,6 +13,10 @@ private:
 	int x;
 	int y;
 
+	Player* _pokemon1;
+	Player* _pokemon2;
+	Player* _pokemon3;
+
 public:
 
 	HRESULT init(Player *player);

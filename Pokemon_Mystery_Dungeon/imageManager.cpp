@@ -83,7 +83,7 @@ image * imageManager::addImage(string strKey, const char * fileName, int width, 
 	return img;
 }
 
-dImage * imageManager::addDImage(string strKey, LPCWSTR fileName, float width, float height)
+dImage * imageManager::addDImage(string strKey, LPCWSTR fileName, int width, int height)
 {
 	dImage* img = findDImage(strKey);
 
@@ -163,7 +163,7 @@ image * imageManager::addFrameImage(string strKey, const char * fileName, int wi
 	return img;
 }
 
-dImage * imageManager::addFrameDImage(string strKey, LPCWSTR fileName, float width, float height, int frameX, int frameY)
+dImage * imageManager::addFrameDImage(string strKey, LPCWSTR fileName, int width, int height, int frameX, int frameY)
 {
 	dImage* img = findDImage(strKey);
 

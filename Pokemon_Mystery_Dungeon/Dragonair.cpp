@@ -40,6 +40,10 @@ HRESULT Dragonair::init()
 	_stateImage[POKEMON_STATE_DEFAULT] = IMAGEMANAGER->addFrameDImage("dragonair_default",
 		L"img/pokemon/14. dragonair/default.png", 86, 836, 1, 11);
 
+	//ÃÊ»óÈ­
+	_portrait = IMAGEMANAGER->addDImage("dragonair_portrait",
+		L"img/pokemon/14. dragonair/portrait.png", 40, 40);
+
 	//frame
 	changeDirect(DOWN);
 	changeState(POKEMON_STATE_DEFAULT);

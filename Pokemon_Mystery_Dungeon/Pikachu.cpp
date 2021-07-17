@@ -40,6 +40,10 @@ HRESULT Pikachu::init()
 	_stateImage[POKEMON_STATE_DEFAULT] = IMAGEMANAGER->addFrameDImage("pikachu_default",
 		L"img/pokemon/5. pikachu/default.png", 60, 594, 1, 11);
 
+	//ÃÊ»óÈ­
+	_portrait = IMAGEMANAGER->addDImage("pikachu_portrait",
+		L"img/pokemon/5. pikachu/portrait.png", 40, 40);
+
 	//frame
 	changeDirect(DOWN);
 	changeState(POKEMON_STATE_DEFAULT);
