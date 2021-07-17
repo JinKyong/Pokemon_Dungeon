@@ -29,12 +29,13 @@ HRESULT sceneManager::init(Player * player)
 	return S_OK;
 }
 
+//☆
 void sceneManager::release()
 {
 	mapSceneIter miSceneList = _mSceneList.begin();
 
 	for (; miSceneList != _mSceneList.end();)
-	{
+	{					//맵이라 필요한 second
 		if (miSceneList->second != NULL)
 		{
 			if (miSceneList->second == _currentScene) miSceneList->second->release();
