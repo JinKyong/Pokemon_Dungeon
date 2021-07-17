@@ -1,5 +1,4 @@
 #pragma once
-#include "gameNode.h"
 
 enum EFFECTNUMBER
 {
@@ -9,7 +8,7 @@ enum EFFECTNUMBER
 	EF_ROCKSLIDE
 };
 
-class Effect : public gameNode
+class Effect
 {
 protected :
 	RECT _body;
