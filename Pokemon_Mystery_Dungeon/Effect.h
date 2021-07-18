@@ -33,5 +33,6 @@ public:
 	virtual void controlFrame();
 
 	bool getOff() { return _off; }
+	RECT getBody() { return _body; }
 };
 

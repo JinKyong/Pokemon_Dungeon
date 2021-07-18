@@ -21,6 +21,7 @@ HRESULT User::init(int pokemonNum)
 
 	//스탯
 	//계산해서 넣음 포켓몬 꺼
+	_testHP = 200;
 
 	_selectedSkill = nullptr;
 	_skill[0] = SKILLDEX->makeSkill(1);

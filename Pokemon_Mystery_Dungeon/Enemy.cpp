@@ -20,6 +20,7 @@ HRESULT Enemy::init(int pokemonNum)
 
 	//스탯
 	//계산해서 넣음 포켓몬 꺼
+	_testHP = 200;
 
 	_inDungeon = false;
 
@@ -39,6 +40,8 @@ void Enemy::render()
 {
 	if (PRINTMANAGER->isDebug()) {
 		WCHAR str[128];
+		swprintf_s(str, L"HP : %d", _testHP);
+		DTDMANAGER->printText(str, dRectMake(_body.left, _body.top - 80, 100, 20));
 		swprintf_s(str, L"direct : %d", _pokemon->getDirect());
 		DTDMANAGER->printText(str, dRectMake(_body.left, _body.top - 60, 100, 20));
 		swprintf_s(str, L"name : %s", _pokemon->getName().c_str());

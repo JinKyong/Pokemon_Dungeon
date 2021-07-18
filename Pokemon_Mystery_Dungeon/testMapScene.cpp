@@ -2,6 +2,9 @@
 #include "testMapScene.h"
 #include "Team.h"
 #include "Enemy.h"
+#include "Apple.h"
+#include "Gummy.h"
+#include "ThrowItem.h"
 
 HRESULT testMapScene::init(Player * player)
 {
@@ -29,7 +32,27 @@ HRESULT testMapScene::init(Player * player)
 	_pokemon3->init(RND->getInt(15) + 1);
 	TURNMANAGER->addAllPlayer(_pokemon3);
 
-	
+	_im = new ItemManager;
+	_im->init();
+
+	Apple* apple;
+	apple = new Apple;
+	apple->init(25, 20, PI);
+
+	Gummy* jelly;
+	jelly = new Gummy;
+	jelly->init(26, 20, PI);
+
+	ThrowItem* titem;
+	titem = new ThrowItem;
+	titem->init(27, 20, PI);
+
+	_im->addItem(apple);
+	_im->addItem(jelly);
+	_im->addItem(titem);
+
+	COLLISIONMANAGER->init(this, _im);
+
 	return S_OK;
 }
 
@@ -50,6 +73,8 @@ void testMapScene::update()
 	}
 
 	CAMERAMANAGER->updateScreen(_player->getX(), _player->getY());
+
+	_im->update();
 }
 
 void testMapScene::render()
@@ -62,6 +87,8 @@ void testMapScene::render()
 
 	if (UIMANAGER->getOpen())
 		UIMANAGER->renderDown();
+
+	_im->render();
 }
 
 void testMapScene::changeScene()

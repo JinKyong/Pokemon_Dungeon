@@ -33,4 +33,5 @@ public:
 
 
 	playerList* getAllPlayer() { return &_allPlayerList; }
+
 };
