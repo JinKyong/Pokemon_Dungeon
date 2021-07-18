@@ -19,6 +19,8 @@ HRESULT uiManager::init()
 
 	//아래 메뉴
 	addDownMenu("mainMenu", new MainMenu);
+	addDownMenu("logMenu", new LogMenu);
+	changeDownMenu("logMenu");
 
 	_open = false;
 

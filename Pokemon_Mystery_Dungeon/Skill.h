@@ -48,6 +48,7 @@ public:
 	virtual void useSkill(float x, float y, int direct);
 
 	// ====================접근자,설정자==================== //
+	wstring getName() { return _name; }
 	int getDamage() { return _damage; }
 
 	float getAccuracy() { return _accuracy; }

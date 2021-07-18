@@ -450,6 +450,12 @@
     <ClInclude Include="tileManager.h">
       <Filter>playGround\Maptool\base</Filter>
     </ClInclude>
+    <ClInclude Include="LogMenu.h">
+      <Filter>playGround\UI\Menu\DownMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="dialogManager.h">
+      <Filter>playGround\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -739,6 +745,12 @@
     </ClCompile>
     <ClCompile Include="tileManager.cpp">
       <Filter>playGround\Maptool\base</Filter>
+    </ClCompile>
+    <ClCompile Include="LogMenu.cpp">
+      <Filter>playGround\UI\Menu\DownMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="dialogManager.cpp">
+      <Filter>playGround\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

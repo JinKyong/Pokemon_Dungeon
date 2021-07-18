@@ -1,17 +1,6 @@
 #include "stdafx.h"
 #include "Item.h"
 
-/*
-void Item::eatItem(float value)
-{
-	//¹ÝÈ¯
-}
-
-void Item::giveItem()
-{
-}
-*/
-
 void Item::render()
 {
 	if (PRINTMANAGER->isDebug())	DTDMANAGER->Rectangle(_body);

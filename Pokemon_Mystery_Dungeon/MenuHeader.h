@@ -7,3 +7,4 @@
 
 //아래 메뉴
 #include "MainMenu.h"
+#include "LogMenu.h"

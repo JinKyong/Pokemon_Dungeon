@@ -64,33 +64,28 @@ void testMapScene::release()
 
 void testMapScene::update()
 {
-
-	
 	TILEMANAGER->update();
 	if (UIMANAGER->getOpen())
 		UIMANAGER->update();
 	else {
+		_im->update();
 		TURNMANAGER->update();
 		EFFECTMANAGER->update();
 	}
 
 	CAMERAMANAGER->updateScreen(_player->getX(), _player->getY());
 
-	_im->update();
 }
 
 void testMapScene::render()
 {
 	
 	TILEMANAGER->render();
-	//_player->render();
+	_im->render();
 	TURNMANAGER->render();
 	EFFECTMANAGER->render();
-
-	if (UIMANAGER->getOpen())
-		UIMANAGER->renderDown();
-
-	_im->render();
+	
+	UIMANAGER->renderDown();
 }
 
 void testMapScene::changeScene()

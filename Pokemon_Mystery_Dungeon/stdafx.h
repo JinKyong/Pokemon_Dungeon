@@ -33,6 +33,7 @@
 #include "collisionManager.h"
 #include "uiManager.h"
 #include "EffectManager.h"
+#include "tileManager.h"
 //#include "inventoryManager.h"
 //#include "txtData.h"
 #include "streamManager.h"
@@ -40,7 +41,7 @@
 #include "pokeDex.h"
 #include "skillDex.h"
 #include "turnManager.h"
-#include "tileManager.h"
+#include "dialogManager.h"
 
 
 using namespace std;
@@ -76,6 +77,7 @@ using namespace D2D1;
 #define POKEDEX pokeDex::getSingleton()
 #define SKILLDEX skillDex::getSingleton()
 #define TURNMANAGER turnManager::getSingleton()
+#define DIALOGMANAGER dialogManager::getSingleton()
 
 #define SAFE_DELETE(p) { if(p) { delete(p); (p) = nullptr; } }
 #define SAFE_DELETE_ARRAY(p) { if(p) { delete[](p); (p) = nullptr; } }
@@ -91,5 +93,3 @@ using namespace D2D1;
 extern HINSTANCE _hInstance;
 extern HWND _hWnd;
 extern POINT _ptMouse;
-extern BOOL _leftButtonDown;
-extern BOOL _rightButtonDown;

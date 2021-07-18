@@ -25,9 +25,13 @@ HRESULT User::init(int pokemonNum)
 
 	_selectedSkill = nullptr;
 	_skill[0] = SKILLDEX->makeSkill(1);
+	_skill[0]->init();
 	_skill[1] = SKILLDEX->makeSkill(6);
+	_skill[1]->init();
 	_skill[2] = SKILLDEX->makeSkill(3);
+	_skill[2]->init();
 	_skill[3] = SKILLDEX->makeSkill(4);
+	_skill[3]->init();
 
 	_inDungeon = false;
 

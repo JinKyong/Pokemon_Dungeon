@@ -14,11 +14,8 @@ void Player::attack()
 	if (_playerState == POKEMON_STATE_SATTACK)
 	{
 		if (_selectedSkill) {
-			float x = _x;
-			float y = _y;
-			int direct = _pokemon->getDirect();
-
-			_selectedSkill->useSkill(x, y, direct);
+			_selectedSkill->useSkill(_x, _y, _pokemon->getDirect());
+			DIALOGMANAGER->useSkillLog(this, _selectedSkill);
 			_selectedSkill = nullptr;
 		}
 	}

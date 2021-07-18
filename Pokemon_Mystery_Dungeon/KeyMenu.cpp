@@ -7,7 +7,7 @@ HRESULT KeyMenu::init()
 
 	//배경 이미지
 	_back = IMAGEMANAGER->addDImage(
-		"keyMenu_back", L"img/UI/keyMenu/keyMenu_back.png", UPMENU_WIDTH, UPMENU_HEIGHT);
+		"keyMenu_back", L"img/UI/keyMenu/back.png", UPMENU_WIDTH, UPMENU_HEIGHT);
 
 	return S_OK;
 }

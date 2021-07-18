@@ -154,6 +154,7 @@
     <ClInclude Include="Charmander.h" />
     <ClInclude Include="Charmeleon.h" />
     <ClInclude Include="collisionManager.h" />
+    <ClInclude Include="dialogManager.h" />
     <ClInclude Include="dImage.h" />
     <ClInclude Include="DownMenu.h" />
     <ClInclude Include="Dragonair.h" />
@@ -197,6 +198,7 @@
     <ClInclude Include="KeyNDirect.h" />
     <ClInclude Include="LeafBlade.h" />
     <ClInclude Include="Lightning.h" />
+    <ClInclude Include="LogMenu.h" />
     <ClInclude Include="macroFunc.h" />
     <ClInclude Include="gameNode.h" />
     <ClInclude Include="MainMenu.h" />
@@ -261,6 +263,7 @@
     <ClCompile Include="Charmander.cpp" />
     <ClCompile Include="Charmeleon.cpp" />
     <ClCompile Include="collisionManager.cpp" />
+    <ClCompile Include="dialogManager.cpp" />
     <ClCompile Include="dImage.cpp" />
     <ClCompile Include="DownMenu.cpp" />
     <ClCompile Include="Dragonair.cpp" />
@@ -304,6 +307,7 @@
     <ClCompile Include="KeyMenu.cpp" />
     <ClCompile Include="LeafBlade.cpp" />
     <ClCompile Include="Lightning.cpp" />
+    <ClCompile Include="LogMenu.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="maptool.cpp" />
     <ClCompile Include="mapToolScene.cpp" />

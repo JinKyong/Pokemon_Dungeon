@@ -64,7 +64,7 @@ enum Tile
 	OpenDoor = '-',
 	UpStairs = '<',
 	DownStairs = '>',
-	Item = 'I',
+	//Item = 'I',
 	Monster = 'M',
 	Trap = 'T'
 };

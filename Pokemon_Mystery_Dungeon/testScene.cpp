@@ -2,9 +2,6 @@
 #include "testScene.h"
 #include "Player.h"
 #include "Enemy.h"
-#include "Apple.h"
-#include "Gummy.h"
-#include "ThrowItem.h"
 
 HRESULT testScene::init(Player * player)
 {
@@ -17,25 +14,6 @@ HRESULT testScene::init(Player * player)
 	//_testEnemy = new Enemy;
 	//_testEnemy->init(3);
 	//TURNMANAGER->addAllPlayer(_testEnemy);
-
-	_im = new ItemManager;
-	_im->init();
-
-	Apple* apple;
-	apple = new Apple;
-	apple->init(20 * TILEWIDTH, 20 * TILEHEIGHT, PI);
-
-	Gummy* jelly;
-	jelly = new Gummy;
-	jelly->init(35 * TILEWIDTH, 25 * TILEHEIGHT, PI);
-
-	ThrowItem* titem;
-	titem = new ThrowItem;
-	titem->init(35, 30, PI);
-
-	_im->addItem(apple);
-	_im->addItem(jelly);
-	_im->addItem(titem);
 
 	_back = IMAGEMANAGER->addDImage("back", L"img/sample1.jpg", 3840, 2160);
 	
@@ -52,8 +30,6 @@ void testScene::update()
 
 	TURNMANAGER->update();
 	EFFECTMANAGER->update();
-
-	_im->update();
 
 	CAMERAMANAGER->updateScreen(_player->getX(), _player->getY());
 	//CAMERAMANAGER->vibrateScreen(_player->getX(), _player->getY());
@@ -77,8 +53,6 @@ void testScene::render()
 	//_player->render();
 	TURNMANAGER->render();
 	EFFECTMANAGER->render();
-
-	_im->render();
 }
 
 void testScene::changeScene()

@@ -27,7 +27,8 @@ void collisionManager::playerWithTile(Player* player)
 	float x = player->getX();
 	float y = player->getY();
 
-	//플레이어 중심 8타일만 검사
+	//플레이어 x, y기준으로 방향에 따라 1타일만 검사
+	//이동가능하면 true, 아니면 false 반환
 }
 
 void collisionManager::playerWithItem(Player* player)
@@ -37,6 +38,7 @@ void collisionManager::playerWithItem(Player* player)
 		RECT temp;
 		if (IntersectRect(&temp, &player->getBody(), &_im->getVItem()[i]->getBody()))
 		{
+			DIALOGMANAGER->addItemLog(player, _im->getVItem()[i]);
 			_im->removeItem(i);
 		}
 	}

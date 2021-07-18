@@ -42,7 +42,7 @@ HRESULT dtdManager::init()
 	//Text Factory가 생성되었으면 Text Format 생성
 	if (SUCCEEDED(hr)) {
 		hr = _dWFactory->CreateTextFormat(
-			L"돋움",
+			L"모리스9",
 			nullptr,
 			DWRITE_FONT_WEIGHT_NORMAL,
 			DWRITE_FONT_STYLE_NORMAL,
@@ -146,7 +146,7 @@ void dtdManager::printText(LPCWCHAR text, float x, float y, int width, int heigh
 			SAFE_RELEASE2(_dWCustomFormat);
 
 			_dWFactory->CreateTextFormat(
-				L"돋움",
+				L"모리스9",
 				nullptr,
 				DWRITE_FONT_WEIGHT_NORMAL,
 				DWRITE_FONT_STYLE_NORMAL,
@@ -159,7 +159,7 @@ void dtdManager::printText(LPCWCHAR text, float x, float y, int width, int heigh
 	}
 	else {
 		_dWFactory->CreateTextFormat(
-			L"돋움",
+			L"모리스9",
 			nullptr,
 			DWRITE_FONT_WEIGHT_NORMAL,
 			DWRITE_FONT_STYLE_NORMAL,
@@ -185,7 +185,7 @@ void dtdManager::printText(LPCWCHAR text, D2D1_RECT_F rc, float size)
 			SAFE_RELEASE2(_dWCustomFormat);
 
 			_dWFactory->CreateTextFormat(
-				L"돋움",
+				L"모리스9",
 				nullptr,
 				DWRITE_FONT_WEIGHT_NORMAL,
 				DWRITE_FONT_STYLE_NORMAL,
@@ -198,7 +198,7 @@ void dtdManager::printText(LPCWCHAR text, D2D1_RECT_F rc, float size)
 	}
 	else {
 		_dWFactory->CreateTextFormat(
-			L"돋움",
+			L"모리스9",
 			nullptr,
 			DWRITE_FONT_WEIGHT_NORMAL,
 			DWRITE_FONT_STYLE_NORMAL,

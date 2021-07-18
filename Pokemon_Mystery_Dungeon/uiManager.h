@@ -21,6 +21,7 @@ class uiManager : public singletonBase<uiManager>
 private:
 	typedef map<string, UpMenu*>				upMenuList;
 	typedef map<string, UpMenu*>::iterator		upMenuIter;
+
 	typedef map<string, DownMenu*>				downMenuList;
 	typedef map<string, DownMenu*>::iterator	downMenuIter;
 
@@ -28,11 +29,11 @@ private:
 	D2D1_RECT_F _screen;
 
 	//메뉴 리스트
-	upMenuList _upMenu;
+	upMenuList	 _upMenu;
 	downMenuList _downMenu;
 
 	//현재 메뉴
-	static UpMenu* _currentUpMenu;
+	static UpMenu*	 _currentUpMenu;
 	static DownMenu* _currentDownMenu;
 
 
@@ -55,6 +56,10 @@ public:
 
 
 	D2D1_RECT_F getScreen() { return _screen; }
+
+	UpMenu* getCurrentUpMenu() { return _currentUpMenu; }
+	DownMenu* getCurrentDownMenu() { return _currentDownMenu; }
+
 	bool getOpen() { return _open; }
 	void setOpen(bool open) { _open = open; }
 };
