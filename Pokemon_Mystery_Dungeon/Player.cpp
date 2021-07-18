@@ -1,26 +1,6 @@
 #include "stdafx.h"
 #include "Player.h"
 
-void Player::attack()
-{
-	if (_pokemon->getState() == POKEMON_STATE_DEFAULT) {
-		_playerState = _pokemon->getState();
-		return;
-	}
-
-	_pokemon->changeState(_playerState);
-
-	//기술 썻을때만
-	if (_playerState == POKEMON_STATE_SATTACK)
-	{
-		if (_selectedSkill) {
-			_selectedSkill->useSkill(_x, _y, _pokemon->getDirect());
-			DIALOGMANAGER->useSkillLog(this, _selectedSkill);
-			_selectedSkill = nullptr;
-		}
-	}
-}
-
 void Player::move()
 {
 	_pokemon->changeDirect(_direct);
@@ -33,8 +13,29 @@ void Player::move()
 		_x = _destX;
 		_y = _destY;
 
-		_pokemon->changeState(POKEMON_STATE_DEFAULT);
+		//_pokemon->changeState(POKEMON_STATE_DEFAULT);
 		_playerState = POKEMON_STATE_DEFAULT;
+	}
+}
+
+void Player::attack()
+{
+	if (_pokemon->getState() == POKEMON_STATE_DEFAULT) {
+		_playerState = _pokemon->getState();
+		return;
+	}
+
+	_pokemon->changeState(_playerState);
+}
+
+void Player::sattack()
+{
+	_pokemon->changeState(_playerState);
+
+	if (_selectedSkill) {
+		_selectedSkill->useSkill(_x, _y, _pokemon->getDirect());
+		DIALOGMANAGER->useSkillLog(this, _selectedSkill);
+		_selectedSkill = nullptr;
 	}
 }
 

@@ -55,13 +55,19 @@ void Team::render()
 
 int Team::input()
 {
-	_direct = RND->getFromIntTo(RIGHT, LEFT + 2);
+	_direct = RND->getFromIntTo(RIGHT, DOWN + 1);
+	_destX = _x;
+	_destY = _y;
 
 	_playerState = POKEMON_STATE_MOVE;
 	if (_direct == RIGHT)
-		_destX = _x + TILEWIDTH;
+		_destX += TILEWIDTH;
 	else if (_direct == LEFT)
-		_destX = _x - TILEWIDTH;
+		_destX -= TILEWIDTH;
+	else if (_direct == UP)
+		_destY -= TILEHEIGHT;
+	else if (_direct == DOWN)
+		_destY += TILEHEIGHT;
 	else
 		_playerState = POKEMON_STATE_ATTACK;
 

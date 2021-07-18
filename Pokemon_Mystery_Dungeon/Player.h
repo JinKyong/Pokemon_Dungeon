@@ -51,8 +51,9 @@ public:
 
 	virtual int input() = 0;
 
-	void attack();
 	void move();
+	void attack();
+	void sattack();
 
 	void hitDamage(int num);
 

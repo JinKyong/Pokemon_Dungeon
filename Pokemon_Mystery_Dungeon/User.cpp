@@ -75,26 +75,44 @@ int User::input()
 void User::controlKey()
 {
 	_direct = 0;
+	_destX = _x;
+	_destY = _y;
 
 	if (KEYMANAGER->isStayKeyDown(KEY_RIGHT)) {
 		_direct |= RIGHT;
-		_destX = _x + TILEWIDTH;
-		_playerState = POKEMON_STATE_MOVE;
+		_destX += TILEWIDTH;
+
+		if (KEYMANAGER->isStayKeyDown(KEY_L1))
+			_pokemon->changeDirect(_direct);
+		else
+			_playerState = POKEMON_STATE_MOVE;
 	}
 	else if (KEYMANAGER->isStayKeyDown(KEY_LEFT)) {
 		_direct |= LEFT;
-		_destX = _x - TILEWIDTH;
-		_playerState = POKEMON_STATE_MOVE;
+		_destX -= TILEWIDTH;
+
+		if (KEYMANAGER->isStayKeyDown(KEY_L1))
+			_pokemon->changeDirect(_direct);
+		else
+			_playerState = POKEMON_STATE_MOVE;
 	}
 	if (KEYMANAGER->isStayKeyDown(KEY_UP)) {
 		_direct |= UP;
-		_destY = _y - TILEHEIGHT;
-		_playerState = POKEMON_STATE_MOVE;
+		_destY -= TILEHEIGHT;
+
+		if (KEYMANAGER->isStayKeyDown(KEY_L1))
+			_pokemon->changeDirect(_direct);
+		else
+			_playerState = POKEMON_STATE_MOVE;
 	}
 	else if (KEYMANAGER->isStayKeyDown(KEY_DOWN)) {
 		_direct |= DOWN;
-		_destY = _y + TILEHEIGHT;
-		_playerState = POKEMON_STATE_MOVE;
+		_destY += TILEHEIGHT;
+
+		if (KEYMANAGER->isStayKeyDown(KEY_L1))
+			_pokemon->changeDirect(_direct);
+		else
+			_playerState = POKEMON_STATE_MOVE;
 	}
 
 	if (KEYMANAGER->isOnceKeyDown('X')) {

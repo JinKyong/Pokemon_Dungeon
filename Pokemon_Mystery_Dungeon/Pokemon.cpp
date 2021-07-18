@@ -29,13 +29,17 @@ void Pokemon::controlFrame()
 
 	if (_frameCount >= _count[_state]) {
 		if (_frameX >= _currentImage->getMaxFrameX()) {
-			if (_state == POKEMON_STATE_DEFAULT)
+			if (_state == POKEMON_STATE_MOVE || _state == POKEMON_STATE_DEFAULT)
 				changeState(POKEMON_STATE_IDLE);
-			else if (_state == POKEMON_STATE_MOVE || _state == POKEMON_STATE_SLEEP)
-				_frameX = 0;
 			else if (_state == POKEMON_STATE_ATTACK) {
 
 			}
+			else if (_state == POKEMON_STATE_HURT) {
+				changeState(POKEMON_STATE_DEFAULT);
+				TURNMANAGER->setPause(false);
+			}
+			else if (_state == POKEMON_STATE_SLEEP)
+				_frameX = 0;
 			else
 				changeState(POKEMON_STATE_DEFAULT);
 		}

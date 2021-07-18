@@ -19,6 +19,7 @@ private:
 
 	//progress
 	POKEMON_STATE _currentProgressTurn;
+	bool _pause;
 
 public:
 	HRESULT init();
@@ -32,6 +33,11 @@ public:
 	void addInputPlayer(Player* player);
 
 
-	playerList* getAllPlayer() { return &_allPlayerList; }
 
+
+	playerList* getAllPlayer() { return &_allPlayerList; }
+	Player* getCurrentPlayer() { return _inputPlayerList[0]; }
+
+	bool getPause() { return _pause; }
+	void setPause(bool pause) { _pause = pause; }
 };

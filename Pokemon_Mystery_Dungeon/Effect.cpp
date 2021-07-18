@@ -16,9 +16,9 @@ void Effect::controlFrame()
 		if (_img->getFrameX() >= _img->getMaxFrameX())
 		{
 			COLLISIONMANAGER->effectWithEnemy(this);
+			TURNMANAGER->getCurrentPlayer()->setPlayerState(POKEMON_STATE_DEFAULT);
 			_off = true;
 		}
-		// + 이펙트 플레이어 충돌 collisionmanager->this
 		else
 			_img->setFrameX(_img->getFrameX() + 1);
 

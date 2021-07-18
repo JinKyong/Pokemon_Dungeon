@@ -5,7 +5,7 @@
 class testMapScene : public Scene
 {
 private:
-	
+
 	int _width;
 	int _height;
 

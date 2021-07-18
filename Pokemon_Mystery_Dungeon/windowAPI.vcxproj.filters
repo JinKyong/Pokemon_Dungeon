@@ -444,9 +444,6 @@
     <ClInclude Include="SkillMenu.h">
       <Filter>playGround\UI\Menu\DownMenu</Filter>
     </ClInclude>
-    <ClInclude Include="InventoryManager.h">
-      <Filter>2DGameFramework\Manager</Filter>
-    </ClInclude>
     <ClInclude Include="tileManager.h">
       <Filter>playGround\Maptool\base</Filter>
     </ClInclude>
@@ -455,6 +452,9 @@
     </ClInclude>
     <ClInclude Include="dialogManager.h">
       <Filter>playGround\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryManager.h">
+      <Filter>playGround\Item</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -740,9 +740,6 @@
     <ClCompile Include="SkillMenu.cpp">
       <Filter>playGround\UI\Menu\DownMenu</Filter>
     </ClCompile>
-    <ClCompile Include="InventoryManager.cpp">
-      <Filter>2DGameFramework\Manager</Filter>
-    </ClCompile>
     <ClCompile Include="tileManager.cpp">
       <Filter>playGround\Maptool\base</Filter>
     </ClCompile>
@@ -751,6 +748,9 @@
     </ClCompile>
     <ClCompile Include="dialogManager.cpp">
       <Filter>playGround\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="InventoryManager.cpp">
+      <Filter>playGround\Item</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

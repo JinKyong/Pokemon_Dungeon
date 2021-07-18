@@ -7,6 +7,7 @@ HRESULT turnManager::init()
 	_input = true;
 
 	_currentProgressTurn = POKEMON_STATE_DEFAULT;
+	_pause = false;
 
 	return S_OK;
 }
@@ -36,6 +37,9 @@ void turnManager::update()
 
 	else {	//입력이 끝나면 진행
 
+		//턴 일시정지
+		if (_pause) return;
+
 		playerIter player;
 
 		//앞에서부터 차례대로
@@ -52,10 +56,12 @@ void turnManager::update()
 					++player;
 					break;
 				case POKEMON_STATE_ATTACK:
-				case POKEMON_STATE_SATTACK:
 					(*player)->attack();
 					(*player)->update();
-					//++player;
+					return;
+				case POKEMON_STATE_SATTACK:
+					(*player)->sattack();
+					(*player)->update();
 					return;
 				case POKEMON_STATE_DEFAULT:
 					COLLISIONMANAGER->collisionPlayer((*player));

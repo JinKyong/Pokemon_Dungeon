@@ -63,7 +63,9 @@ void collisionManager::effectWithEnemy(Effect * effect)
 	{
 		if (IntersectRect(&temp, &(*playerIter)->getBody(), &effect->getBody()))
 		{
+			(*playerIter)->getPokemon()->changeState(POKEMON_STATE_HURT);
 			(*playerIter)->hitDamage(40);
+			TURNMANAGER->setPause(true);
 		}
 	}
 }

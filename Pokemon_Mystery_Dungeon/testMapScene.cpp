@@ -10,9 +10,9 @@ HRESULT testMapScene::init(Player * player)
 {
 	Scene::init(player);
 
-	_width = 40;
-	_height = 40;
-	CAMERAMANAGER->setBackScreenSize(TILEWIDTH*_width, TILEHEIGHT*_height);
+	_width = 41;
+	_height = 41;
+	CAMERAMANAGER->setBackScreenSize((_width - 1) * TILEWIDTH, (_height - 1) * TILEHEIGHT);
 
 	TILEMANAGER->setHeight(_height);
 	TILEMANAGER->setWidth(_width);
@@ -22,10 +22,10 @@ HRESULT testMapScene::init(Player * player)
 	TURNMANAGER->init();
 	TURNMANAGER->addAllPlayer(player);
 
-	//_pokemon1 = new Enemy;
-	//_pokemon1->init(RND->getInt(15) + 1);
-	//TURNMANAGER->addAllPlayer(_pokemon1);
-	//
+	_pokemon1 = new Enemy;
+	_pokemon1->init(RND->getInt(15) + 1);
+	TURNMANAGER->addAllPlayer(_pokemon1);
+
 	//_pokemon2 = new Enemy;
 	//_pokemon2->init(RND->getInt(15) + 1);
 	//TURNMANAGER->addAllPlayer(_pokemon2);
@@ -39,15 +39,15 @@ HRESULT testMapScene::init(Player * player)
 
 	Apple* apple;
 	apple = new Apple;
-	apple->init(25, 20, PI);
+	apple->init(25, 15, PI);
 
 	Gummy* jelly;
 	jelly = new Gummy;
-	jelly->init(26, 20, PI);
+	jelly->init(26, 15, PI);
 
 	ThrowItem* titem;
 	titem = new ThrowItem;
-	titem->init(27, 20, PI);
+	titem->init(27, 15, PI);
 
 	_im->addItem(apple);
 	_im->addItem(jelly);
@@ -79,12 +79,12 @@ void testMapScene::update()
 
 void testMapScene::render()
 {
-	
+
 	TILEMANAGER->render();
 	_im->render();
 	TURNMANAGER->render();
 	EFFECTMANAGER->render();
-	
+
 	UIMANAGER->renderDown();
 }
 
