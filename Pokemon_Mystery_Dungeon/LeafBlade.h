@@ -5,16 +5,16 @@
 class LeafBlade :
 	public Skill
 {
-private :
+private:
 	EF_LeafBlade* _leafBladeEffect;
 
-public :
+public:
 	LeafBlade() {};
 	~LeafBlade() {};
 
 	virtual HRESULT init();
 	virtual void release();
 
-	void useSkill(float x, float y);
+	void useSkill(float x, float y, int direct);
 };
 

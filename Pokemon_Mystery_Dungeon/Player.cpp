@@ -18,17 +18,7 @@ void Player::attack()
 			float y = _y;
 			int direct = _pokemon->getDirect();
 
-			if ((direct & RIGHT) == RIGHT)
-				x += TILEWIDTH;
-			else if ((direct & LEFT) == LEFT)
-				x -= TILEWIDTH;
-
-			if ((direct & DOWN) == DOWN)
-				y += TILEHEIGHT;
-			else if ((direct & UP) == UP)
-				y -= TILEHEIGHT;
-
-			_selectedSkill->useSkill(x, y);
+			_selectedSkill->useSkill(x, y, direct);
 			_selectedSkill = nullptr;
 		}
 	}

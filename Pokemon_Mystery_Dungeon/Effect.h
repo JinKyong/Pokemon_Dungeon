@@ -1,4 +1,5 @@
 #pragma once
+#include "gameNode.h"
 
 enum EFFECTNUMBER
 {
@@ -8,25 +9,28 @@ enum EFFECTNUMBER
 	EF_ROCKSLIDE
 };
 
-class Effect
+class Effect : public gameNode
 {
-protected :
+protected:
 	RECT _body;
 	dImage* _img;
 	float _x, _y;
+	float _tuningX, _tuningY;
 	float _count;
+	float _renderCount;
 	bool _off;
+	//이펙트에 실 데미지 추가
 
-public :
+public:
 	Effect() {};
 	~Effect() {};
 
 	virtual HRESULT init(float x, float y) = 0;
 	virtual void release() = 0;
 	virtual void update() = 0;
-	virtual void render() = 0;
-	
-	virtual void controlFrame() = 0;
+	virtual void render();
+
+	virtual void controlFrame();
 
 	bool getOff() { return _off; }
 };

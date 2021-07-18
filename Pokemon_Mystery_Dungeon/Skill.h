@@ -26,8 +26,10 @@ enum SKILLSCALE	//타격범위
 
 class Skill
 {
-protected :
+protected:
 	wstring _name;
+	float _x, _y;
+	int _direct;
 	int _skillNum;
 	SKILLTYPE _atkType;
 	POKEMON_TYPE _type;
@@ -36,14 +38,14 @@ protected :
 	float _accuracy;
 	int _currentPP, _maxPP;
 
-public :
+public:
 	Skill() {};
 	~Skill() {};
 
 	virtual HRESULT init() = 0;
 	virtual void release() = 0;
 
-	virtual void useSkill(float x, float y);
+	virtual void useSkill(float x, float y, int direct);
 
 	// ====================접근자,설정자==================== //
 	int getDamage() { return _damage; }
@@ -55,8 +57,6 @@ public :
 
 	int getMaxPP() { return _maxPP; }
 	void setMaxPP(int plusMaxPP) { _maxPP = plusMaxPP; }
-	//virtual SKILLTYPE getType() = 0;
-	//useSkill -> 이펙트매니저 불러서 벡터에 넣는식으로
-	
+
 };
 

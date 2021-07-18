@@ -5,16 +5,16 @@
 class DynamicPunch :
 	public Skill
 {
-private :
+private:
 	EF_DynamicPunch* _dynamicPunchEffect;
 
-public :
+public:
 	DynamicPunch() {};
 	~DynamicPunch() {};
 
 	virtual HRESULT init();
 	virtual void release();
 
-	void useSkill(float x, float y);
+	void useSkill(float x, float y, int direct);
 };
 

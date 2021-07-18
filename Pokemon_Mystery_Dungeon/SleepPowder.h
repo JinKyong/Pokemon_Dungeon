@@ -5,16 +5,16 @@
 class SleepPowder :
 	public Skill
 {
-private :
+private:
 	EF_SleepPowder* _sleepPowderEffect;
 
-public :
+public:
 	SleepPowder() {};
 	~SleepPowder() {};
 
 	virtual HRESULT init();
 	virtual void release();
 
-	void useSkill(float x, float y);
+	void useSkill(float x, float y, int direct);
 };
 

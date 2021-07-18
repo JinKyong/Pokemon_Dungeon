@@ -5,16 +5,16 @@
 class MetalClaw :
 	public Skill
 {
-private :
+private:
 	EF_MetalClaw* _metalClawEffect;
 
-public :
+public:
 	MetalClaw() {};
 	~MetalClaw() {};
 
 	virtual HRESULT init();
 	virtual void release();
 
-	void useSkill(float x, float y);
+	void useSkill(float x, float y, int direct);
 };
 

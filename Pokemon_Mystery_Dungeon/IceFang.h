@@ -5,16 +5,16 @@
 class IceFang :
 	public Skill
 {
-private :
+private:
 	EF_IceFang* _iceFangEffect;
 
-public :
+public:
 	IceFang() {};
 	~IceFang() {};
 
 	virtual HRESULT init();
 	virtual void release();
 
-	void useSkill(float x, float y);
+	void useSkill(float x, float y, int direct);
 };
 

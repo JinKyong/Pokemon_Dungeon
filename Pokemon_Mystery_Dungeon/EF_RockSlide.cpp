@@ -11,6 +11,9 @@ HRESULT EF_RockSlide::init(float x, float y)
 	_count = 0;
 	_off = false;
 
+	_tuningX = -(_img->getFrameWidth() / 2);
+	_tuningY = -(_img->getFrameHeight() / 2 + 150);
+	_renderCount = 0.05f;
 	return S_OK;
 }
 
@@ -20,25 +23,4 @@ void EF_RockSlide::release()
 
 void EF_RockSlide::update()
 {
-}
-
-void EF_RockSlide::render()
-{
-	//DTDMANAGER->Rectangle(_body);
-	_img->frameRender(_x - 70, _y - 370);
-	controlFrame();
-}
-
-void EF_RockSlide::controlFrame()
-{
-	_count += TIMEMANAGER->getElapsedTime();
-	if (_count >= 0.05)
-	{
-		if (_img->getFrameX() >= _img->getMaxFrameX())
-			_off = true;
-		else
-			_img->setFrameX(_img->getFrameX() + 1);
-
-		_count = 0;
-	}
 }

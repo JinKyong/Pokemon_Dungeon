@@ -11,6 +11,9 @@ HRESULT EF_Pound::init(float x, float y)
 	_count = 0;
 	_off = false;
 
+	_tuningX = -(_img->getFrameWidth() / 2);
+	_tuningY = -(_img->getFrameHeight() / 2);
+	_renderCount = 0.05f;
 	return S_OK;
 }
 
@@ -20,25 +23,4 @@ void EF_Pound::release()
 
 void EF_Pound::update()
 {
-}
-
-void EF_Pound::render()
-{
-	//DTDMANAGER->Rectangle(_body);
-	_img->frameRender(_x - 30, _y - 70);
-	controlFrame();
-}
-
-void EF_Pound::controlFrame()
-{
-	_count += TIMEMANAGER->getElapsedTime();
-	if (_count >= 0.05)
-	{
-		if (_img->getFrameX() >= _img->getMaxFrameX())
-			_off = true;
-		else
-			_img->setFrameX(_img->getFrameX() + 1);
-
-		_count = 0;
-	}
 }

@@ -5,16 +5,16 @@
 class ThunderFang :
 	public Skill
 {
-private :
+private:
 	EF_ThunderFang* _thunderFangEffect;
 
-public :
+public:
 	ThunderFang() {};
 	~ThunderFang() {};
 
 	virtual HRESULT init();
 	virtual void release();
 
-	void useSkill(float x, float y);
+	void useSkill(float x, float y, int direct);
 };
 

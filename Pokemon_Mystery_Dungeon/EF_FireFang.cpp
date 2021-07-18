@@ -11,6 +11,9 @@ HRESULT EF_FireFang::init(float x, float y)
 	_count = 0;
 	_off = false;
 
+	_tuningX = -(_img->getFrameWidth() / 2);
+	_tuningY = -(_img->getFrameHeight() / 2);
+	_renderCount = 0.05f;
 	return S_OK;
 }
 
@@ -20,25 +23,4 @@ void EF_FireFang::release()
 
 void EF_FireFang::update()
 {
-}
-
-void EF_FireFang::render()
-{
-	//DTDMANAGER->Rectangle(_body);
-	_img->frameRender(_x - 50, _y - 70);
-	controlFrame();
-}
-
-void EF_FireFang::controlFrame()
-{
-	_count += TIMEMANAGER->getElapsedTime();
-	if (_count >= 0.05f)
-	{
-		if (_img->getFrameX() >= _img->getMaxFrameX())
-			_off = true;
-		else
-			_img->setFrameX(_img->getFrameX() + 1);
-
-		_count = 0;
-	}
 }
