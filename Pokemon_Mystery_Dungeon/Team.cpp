@@ -20,6 +20,7 @@ HRESULT Team::init(int pokemonNum)
 
 	//스탯
 	//계산해서 넣음 포켓몬 꺼
+	_testHP = 200;
 
 	_inDungeon = false;
 

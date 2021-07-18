@@ -40,3 +40,8 @@ void Player::move()
 		_playerState = POKEMON_STATE_DEFAULT;
 	}
 }
+
+void Player::hitDamage(int num)
+{
+	_testHP -= num;
+}

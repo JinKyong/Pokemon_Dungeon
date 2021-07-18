@@ -31,6 +31,7 @@ protected:
 
 	//스탯 (실제 값)
 	STAT _realStat;
+	int _testHP;
 
 	//기술(스킬)
 	Skill* _selectedSkill;
@@ -53,7 +54,7 @@ public:
 	void attack();
 	void move();
 
-
+	void hitDamage(int num);
 
 	//=================== 접근자 ===================//
 	PLAYER_TYPE getPlayerType() { return _playerType; }
@@ -78,4 +79,7 @@ public:
 
 	STAT getRealStat() { return _realStat; }
 	void setRealStat(STAT realStat) { _realStat = realStat; }
+
+	int getTestHP() { return _testHP; }
+	RECT getBody() { return _body; }
 };

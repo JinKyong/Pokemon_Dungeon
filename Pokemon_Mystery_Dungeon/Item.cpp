@@ -14,7 +14,8 @@ void Item::giveItem()
 
 void Item::render()
 {
-	_img->render(_x, _y);
+	if (PRINTMANAGER->isDebug())	DTDMANAGER->Rectangle(_body);
+	_img->render(_x * TILEWIDTH + TILEWIDTH / 2 - _img->getWidth() / 2, _y * TILEHEIGHT + TILEHEIGHT / 2 - _img->getHeight() / 2);
 }
 
 void Item::throwItem(float x, float y, float angle)

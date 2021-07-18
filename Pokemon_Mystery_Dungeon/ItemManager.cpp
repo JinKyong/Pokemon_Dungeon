@@ -36,3 +36,9 @@ void ItemManager::addItem(Item * item)
 {
 	_vItemAdd.push_back(item);
 }
+
+void ItemManager::removeItem(int num)
+{
+	_vItemAdd[num]->getImage()->release();
+	_vItemAdd.erase(_vItemAdd.begin() + num);
+}

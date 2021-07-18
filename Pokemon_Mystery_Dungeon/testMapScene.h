@@ -1,5 +1,6 @@
 #pragma once
 #include "Scene.h"
+#include "ItemManager.h"
 
 class testMapScene : public Scene
 {
@@ -11,6 +12,8 @@ private:
 	Player* _pokemon1;
 	Player* _pokemon2;
 	Player* _pokemon3;
+
+	ItemManager* _im;
 
 public:
 
