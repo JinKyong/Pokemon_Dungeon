@@ -10,13 +10,8 @@ HRESULT testMapScene::init(Player * player)
 {
 	Scene::init(player);
 
-	_width = 41;
-	_height = 41;
-	CAMERAMANAGER->setBackScreenSize((_width - 1) * TILEWIDTH, (_height - 1) * TILEHEIGHT);
-
-	TILEMANAGER->setHeight(_height);
-	TILEMANAGER->setWidth(_width);
-	TILEMANAGER->init();
+	TILEMANAGER->init(MAPWIDTH, MAPHEIGHT);
+	CAMERAMANAGER->setBackScreenSize((MAPWIDTH - 1) * TILEWIDTH, (MAPHEIGHT - 1) * TILEHEIGHT);
 	//TILEMANAGER->load("tileSave.map");
 
 	TURNMANAGER->init();
@@ -60,6 +55,7 @@ HRESULT testMapScene::init(Player * player)
 
 void testMapScene::release()
 {
+	TILEMANAGER->release();
 }
 
 void testMapScene::update()

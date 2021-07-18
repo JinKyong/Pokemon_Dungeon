@@ -9,12 +9,22 @@ tileManager::~tileManager()
 {
 }
 
-void tileManager::init()
+HRESULT tileManager::init()
 {
+	return S_OK;
+}
+
+HRESULT tileManager::init(int width, int height)
+{
+	_width = width;
+	_height = height;
+
 	_Mapbase = IMAGEMANAGER->addFrameDImage("maptiles", L"img/map/tiles/maptile.png", 768, 384, 16, 8);
 	_Obbase = IMAGEMANAGER->addFrameDImage("object", L"img/map/tiles/object.png", 864, 576, SAMPLETILEX, SAMPLETILEY);
 	dungeon(_width, _height);
 	setup();
+	
+	return S_OK;
 }
 
 void tileManager::release()

@@ -2,6 +2,9 @@
 #include "Scene.h"
 #include "ItemManager.h"
 
+#define MAPWIDTH	41
+#define MAPHEIGHT	41
+
 class testMapScene : public Scene
 {
 private:

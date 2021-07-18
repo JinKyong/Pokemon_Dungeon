@@ -143,7 +143,9 @@ private:
 public: 	
 	tileManager();
 	~tileManager();
-	void init();
+
+	HRESULT init();
+	HRESULT init(int width, int height);
 	void release();
 	void update();
 	void render();
