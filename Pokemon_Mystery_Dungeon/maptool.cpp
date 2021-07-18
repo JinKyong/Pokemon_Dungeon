@@ -27,8 +27,6 @@ void Maptool::update()
 {
 	if (KEYMANAGER->isOnceKeyDown('1'))type--;
 	if (KEYMANAGER->isOnceKeyDown('2'))type++;
-	if (KEYMANAGER->isOnceKeyDown('3'))save();
-	if (KEYMANAGER->isOnceKeyDown('4'))load();
 	if (KEYMANAGER->isStayKeyDown(VK_RBUTTON)) { _ctrSelect = CTRL_ERASER; setMap(); }
 
 	if (type == 1 && KEYMANAGER->isStayKeyDown(VK_LBUTTON)) { _ctrSelect = CTRL_TERRAINDRAW; setMap(); }
@@ -47,20 +45,20 @@ void Maptool::render()
 	
 	D2D1_RECT_F _rc =CAMERAMANAGER->getScreen();
 	RECT rc;
-	rc = RectMakeCenter(_ptMouse.x+_rc.left- 3 * WINSIZEX / 16, _ptMouse.y+_rc.top- 3 * WINSIZEY / 8, 5, 5);
+	rc = RectMakeCenter(_ptMouse.x, _ptMouse.y, 5, 5);
 	for (int i = 0; i < TILEX * TILEY; ++i)
 	{
 	_maptile->frameRender(
-			_tiles[i].rc.left, _tiles[i].rc.top,
-			_tiles[i].terrainFrameX, _tiles[i].terrainFrameY);
+			_vTile[i]->rc.left, _vTile[i]->rc.top,
+			_vTile[i]->terrainFrameX, _vTile[i]->terrainFrameY);
 	}
 	for (int i = 0; i < TILEX * TILEY; ++i)
 	{
-		if (_tiles[i].obj == OBJ_NONE) continue;
+		if (_vTile[i]->obj == OBJ_NONE) continue;
 
 		_object->frameRender(
-			_tiles[i].rc.left, _tiles[i].rc.top,
-			_tiles[i].objFrameX, _tiles[i].objFrameY);
+			_vTile[i]->rc.left, _vTile[i]->rc.top,
+			_vTile[i]->objFrameX, _vTile[i]->objFrameY);
 	}
 
 	if (type==1)
@@ -86,15 +84,19 @@ void Maptool::setup()
 	{
 		for (int j = 0; j < SAMPLETILEX; ++j)
 		{
-			_sampleTile[i * SAMPLETILEX + j].terrainFrameX = j;
-			_sampleTile[i * SAMPLETILEX + j].terrainFrameY = i;
-
+			PSTILE sampleTile;
+			sampleTile = new STILE;
+			
+			sampleTile->terrainFrameX = j;
+			sampleTile->terrainFrameY = i;
+			
 			//타일셋에 렉트를 씌움
-			SetRect(&_sampleTile[i * SAMPLETILEX + j].rcTile,
+			SetRect(&sampleTile->rcTile,
 				(WINSIZEX - IMAGEMANAGER->findDImage("object")->getWidth()) + j * TILESIZE,
 				i * TILESIZE,
 				(WINSIZEX - IMAGEMANAGER->findDImage("object")->getWidth()) + j * TILESIZE + TILESIZE,
 				i * TILESIZE + TILESIZE);
+			_vSampleTile.push_back(sampleTile);
 		}
 	}
 
@@ -103,23 +105,26 @@ void Maptool::setup()
 	{
 		for (int j = 0; j < TILEX; ++j)
 		{
-			SetRect(&_tiles[i * TILEX + j].rc,
+			PTILE Tile;
+			Tile = new TILE;
+			SetRect(&Tile->rc,
 				j * TILESIZE,
 				i * TILESIZE,
 				j * TILESIZE + TILESIZE,
 				i * TILESIZE + TILESIZE);
+			_vTile.push_back(Tile);
 		}
 	}
 
 
 	for (int i = 0; i < TILEX * TILEY; ++i)
 	{
-		_tiles[i].terrainFrameX = 1;
-		_tiles[i].terrainFrameY = 0;
-		_tiles[i].objFrameX = 0;
-		_tiles[i].objFrameY = 0;
-		_tiles[i].terrain = terrainSelect(_tiles[i].terrainFrameX, _tiles[i].terrainFrameY);
-		_tiles[i].obj = OBJ_NONE;
+		_vTile[i]->terrainFrameX = 1;
+		_vTile[i]->terrainFrameY = 0;
+		_vTile[i]->objFrameX = 0;
+		_vTile[i]->objFrameY = 0;
+		_vTile[i]->terrain = terrainSelect(_vTile[i]->terrainFrameX, _vTile[i]->terrainFrameY);
+		_vTile[i]->obj = OBJ_NONE;
 	}
 }
 
@@ -129,37 +134,37 @@ void Maptool::setMap()
 	//타일셋에 내가 그리고싶은 타일 또는 오브젝트 클릭
 	for (int i = 0; i < SAMPLETILEX * SAMPLETILEY; ++i)
 	{
-		if (PtInRect(&_sampleTile[i].rcTile, _ptMouse))
+		if (PtInRect(&_vSampleTile[i]->rcTile, _ptMouse))
 		{
-			_currentTile.x = _sampleTile[i].terrainFrameX;
-			_currentTile.y = _sampleTile[i].terrainFrameY;
+			_currentTile.x = _vSampleTile[i]->terrainFrameX;
+			_currentTile.y = _vSampleTile[i]->terrainFrameY;
 			break;
 		}
 	}
 
 	for (int i = 0; i < TILEX * TILEY; ++i)
 	{
-		if (PtInRect(&_tiles[i].rc, _ptMouse))
+		if (PtInRect(&_vTile[i]->rc, _ptMouse))
 		{
 			if (_ctrSelect == CTRL_TERRAINDRAW)
 			{
-				_tiles[i].terrainFrameX = _currentTile.x;
-				_tiles[i].terrainFrameY = _currentTile.y;
+				_vTile[i]->terrainFrameX = _currentTile.x;
+				_vTile[i]->terrainFrameY = _currentTile.y;
 
-				_tiles[i].terrain = terrainSelect(_currentTile.x, _currentTile.y);
+				_vTile[i]->terrain = terrainSelect(_currentTile.x, _currentTile.y);
 			}
 			else if (_ctrSelect == CTRL_OBJDRAW)
 			{
-				_tiles[i].objFrameX = _currentTile.x;
-				_tiles[i].objFrameY = _currentTile.y;
+				_vTile[i]->objFrameX = _currentTile.x;
+				_vTile[i]->objFrameY = _currentTile.y;
 
-				_tiles[i].obj = objSelect(_currentTile.x, _currentTile.y);
+				_vTile[i]->obj = objSelect(_currentTile.x, _currentTile.y);
 			}
 			else if (_ctrSelect == CTRL_ERASER)
 			{
-				_tiles[i].objFrameX = NULL;
-				_tiles[i].objFrameY = NULL;
-				_tiles[i].obj = OBJ_NONE;
+				_vTile[i]->objFrameX = NULL;
+				_vTile[i]->objFrameY = NULL;
+				_vTile[i]->obj = OBJ_NONE;
 			}
 
 			InvalidateRect(_hWnd, NULL, false);
@@ -168,50 +173,25 @@ void Maptool::setMap()
 	}
 }
 
-void Maptool::save()
-{
-	HANDLE file;
-	DWORD write;
 
-	file = CreateFile("tileSave.map", GENERIC_WRITE, NULL, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
-
-	WriteFile(file, _tiles, sizeof(tagTile)*TILEX*TILEY, &write, NULL);
-	CloseHandle(file);
-}
-
-void Maptool::load()
-{
-	HANDLE file;
-	DWORD read;
-
-	file = CreateFile("tileSave.map", GENERIC_READ, NULL, NULL,
-		OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
-
-	ReadFile(file, _tiles, sizeof(tagTile)*TILEX*TILEY, &read, NULL);
-
-	memset(_attribute, 0, sizeof(DWORD) * TILEX * TILEY);
-	memset(_pos, 0, sizeof(int) * 2);
-
-	CloseHandle(file);
-}
 
 void Maptool::minimap()
 {
 	
 
-	D2D1_RECT_F rc = CAMERAMANAGER->getScreen();
-
-	for (int i = 0; i < TILEX * TILEY; ++i)
-	{
-		_maptile->frameRender(
-			rc.right-(_tiles[i].rc.left/(TILESIZE/3)), rc.bottom-(_tiles[i].rc.top / (TILESIZE/3)),
-			_tiles[i].terrainFrameX, _tiles[i].terrainFrameY, MINITILESIZE, MINITILESIZE);
-		
-		if (_tiles[i].obj == OBJ_NONE) continue;
-		_object->frameRender(
-			rc.right - (_tiles[i].rc.left / (TILESIZE / 3)), rc.bottom - (_tiles[i].rc.top / (TILESIZE / 3)),
-			_tiles[i].objFrameX, _tiles[i].objFrameY, MINITILESIZE, MINITILESIZE);
-	}
+	//D2D1_RECT_F rc = CAMERAMANAGER->getScreen();
+	//
+	//for (int i = 0; i < TILEX * TILEY; ++i)
+	//{
+	//	_maptile->frameRender(
+	//		rc.right-(_vTile[i]->rc.left/(TILESIZE/3)), rc.bottom-(_vTile[i]->rc.top / (TILESIZE/3)),
+	//		_vTile[i]->terrainFrameX, _vTile[i]->terrainFrameY, MINITILESIZE, MINITILESIZE);
+	//	
+	//	if (_vTile[i]->obj == OBJ_NONE) continue;
+	//	_object->frameRender(
+	//		rc.right - (_vTile[i]->rc.left / (TILESIZE / 3)), rc.bottom - (_vTile[i]->rc.top / (TILESIZE / 3)),
+	//		_vTile[i]->objFrameX, _vTile[i]->objFrameY, MINITILESIZE, MINITILESIZE);
+	//}
 }
 
 

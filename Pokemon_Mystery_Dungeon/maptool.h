@@ -1,8 +1,5 @@
 #pragma once
 #include "gameNode.h"
-#include <vector>
-
-
 //·£´ý ·ë »ý¼º
 struct tagRoom
 {
@@ -45,11 +42,19 @@ struct Body
 	int height;
 };
 
-class Maptool : public gameNode
+class Maptool :public gameNode
 {
 
 private:
 	
+	vector<tagTile*>					_vTile;
+	vector<tagTile*>::iterator			_viTile;
+	vector<tagSampleTile*>				_vSampleTile;
+	vector<tagSampleTile*>::iterator	_viSampleTile;
+	vector<DWORD*>						_vAttribute;
+	vector<DWORD*>::iterator			_viAttribute;
+
+
 	tagCurrentTile _currentTile;
 	tagSampleTile _sampleTile[SAMPLETILEX * SAMPLETILEY];
 	tagTile _tiles[TILEX * TILEY];
@@ -74,8 +79,6 @@ public:
 	virtual void setup();
 	virtual void setMap();
 
-	virtual void save();
-	virtual void load();
 	void minimap();
 
 	dImage* getMaptile() { return _maptile; }

@@ -1,6 +1,6 @@
 #pragma once
 #include "singletonBase.h"
-
+#include <vector>
 
 #define TILESIZE 48
 #define MINITILESIZE 6
@@ -41,26 +41,46 @@ enum OBJECT
 	OBJ_NONE
 };
 
-//포지션
-enum POS
-{
-	POS_FLAG1, POS_FLAG2, POS_TANK1, POS_TANK2
-};
-
 //컨트롤
 enum CTRL
 {
-	CTRL_SAVE,			//세이브		버튼
-	CTRL_LOAD,			//로드		버튼
-	CTRL_RANDOM,		//랜덤		버튼
-	CTRL_TERRAINDRAW,	//지형		버튼
-	CTRL_OBJDRAW,		//오브젝트	버튼
-	CTRL_ERASER,		//지우개		버튼
+	CTRL_SAVE,			//세이브		
+	CTRL_LOAD,			//로드		
+	CTRL_RANDOM,		//랜덤		
+	CTRL_TERRAINDRAW,	//지형		
+	CTRL_OBJDRAW,		//오브젝트	
+	CTRL_ERASER,		//지우개		
 	CTRL_END
 };
 
+//타일 글자타입
+enum Tile
+{
+	Unused = ' ',
+	Floor = '.',
+	Corridor = ',',
+	Wall = '#',
+	ClosedDoor = '+',
+	OpenDoor = '-',
+	UpStairs = '<',
+	DownStairs = '>',
+	Item = 'I',
+	Monster = 'M',
+	Trap = 'T'
+};
+
+//각객체 방향
+enum Direction
+{
+	North,
+	South,
+	West,
+	East,
+	DirectionCount
+};
+
 //타일 정보 담은 구조체
-struct tagTile
+typedef struct tagTile
 {
 	TERRAIN		terrain;
 	OBJECT		obj;
@@ -69,15 +89,15 @@ struct tagTile
 	int			terrainFrameY;
 	int			objFrameX;
 	int			objFrameY;
-};
+}TILE,*PTILE;
 
 //타일셋 정보 담을 구조체
-struct tagSampleTile
+typedef struct tagSampleTile
 {
 	RECT rcTile;
 	int terrainFrameX;
 	int terrainFrameY;
-};
+}STILE,*PSTILE;
 
 //현재 타일 받아올 구조체
 struct tagCurrentTile
@@ -85,22 +105,39 @@ struct tagCurrentTile
 	int x;
 	int y;
 };
-
+typedef struct tagRect
+{
+	int x, y;
+	int width, height;
+};
 
 
 class tileManager: public singletonBase<tileManager>
 {
 private:
+	vector<tagTile*>					_vTile;
+	vector<tagTile*>::iterator			_viTile;
+	vector<tagSampleTile*>				_vSampleTile;
+	//vector<tagSampleTile*>::iterator	_viSampleTile;
+	vector<DWORD*>						_vAttribute;
+	//vector<DWORD*>::iterator			_viAttribute;
+	vector<char>						_vChar;
+	vector<char>::iterator				_viChar;
+	vector<tagRect>						_vRoom;
+	vector<tagRect>::iterator			_viRoom;
+	vector<tagRect>						_vExit;
+	vector<tagRect>::iterator			_viExit;
+
 	dImage* _Mapbase;
 	dImage*	_Obbase;
-
-	tagTile _tile[TILEX*TILEY];
-	DWORD _attribute[TILEX*TILEY];
 
 	int _initX;
 	int _endX;
 	int _initY;
 	int _endY;
+
+	int _width;
+	int _height;
 
 
 public: 	
@@ -110,11 +147,34 @@ public:
 	void release();
 	void update();
 	void render();
+	void setup();
 
-	void load(const char* mapName);
+	//void save(const char* mapName);
+	//void load(const char* mapName);
+	void minimap();
 
+	void dungeon(int width, int height);
+	void generate(int maxFeatures);
+	bool createFeature();
+	bool createFeature(int x, int y, Direction dir);
+	bool makeRoom(int x, int y, Direction dir, bool firstRoom = false);
+	bool makeCorridor(int x, int y, Direction dir);
+	bool placeRect(const tagRect& tag, char Char);
+	bool placeObject(char Char);
+	   
+	TERRAIN terrainSelect(int frameX, int frameY);
+	OBJECT objSelect(int frameX, int frameY);
 
-	tagTile* getTile() { return _tile; }
-	DWORD* getTileAttribute() { return _attribute; }
+	
+	
+	void setChar(int x, int y, char Char) { _vChar[x + y * _width] = Char; }
+	void setWidth(int Width) { _width = Width; }
+	void setHeight(int Height) { _height = Height; }
+	
+	int getWidth() { return _width; }
+	int getHeight() { return _height; }
+	char getChar(int x, int y) { return _vChar[x + y * _width]; }
+	vector<tagTile*>* getvTile() { return &_vTile; }
+
 };
 

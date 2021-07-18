@@ -7,27 +7,29 @@ HRESULT testMapScene::init(Player * player)
 {
 	Scene::init(player);
 
-	_width = 80;
-	_height = 45;
+	_width = 40;
+	_height = 40;
 	CAMERAMANAGER->setBackScreenSize(TILEWIDTH*_width, TILEHEIGHT*_height);
 
+	TILEMANAGER->setHeight(_height);
+	TILEMANAGER->setWidth(_width);
 	TILEMANAGER->init();
-	TILEMANAGER->load("tileSave.map");
+	//TILEMANAGER->load("tileSave.map");
 
 	TURNMANAGER->init();
 	TURNMANAGER->addAllPlayer(player);
 
-	_pokemon1 = new Enemy;
-	_pokemon1->init(RND->getInt(15) + 1);
-	TURNMANAGER->addAllPlayer(_pokemon1);
-
-	_pokemon2 = new Enemy;
-	_pokemon2->init(RND->getInt(15) + 1);
-	TURNMANAGER->addAllPlayer(_pokemon2);
-
-	_pokemon3 = new Enemy;
-	_pokemon3->init(RND->getInt(15) + 1);
-	TURNMANAGER->addAllPlayer(_pokemon3);
+	//_pokemon1 = new Enemy;
+	//_pokemon1->init(RND->getInt(15) + 1);
+	//TURNMANAGER->addAllPlayer(_pokemon1);
+	//
+	//_pokemon2 = new Enemy;
+	//_pokemon2->init(RND->getInt(15) + 1);
+	//TURNMANAGER->addAllPlayer(_pokemon2);
+	//
+	//_pokemon3 = new Enemy;
+	//_pokemon3->init(RND->getInt(15) + 1);
+	//TURNMANAGER->addAllPlayer(_pokemon3);
 
 	
 	return S_OK;

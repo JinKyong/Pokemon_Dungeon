@@ -123,12 +123,13 @@ LRESULT gameNode::MainProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lPara
 {
 	//	PAINTSTRUCT ps;
 	//	HDC         hdc; //얘 찐 중요합니...
+	D2D1_RECT_F _rc = CAMERAMANAGER->getScreen();
 	switch (iMessage)
 	{
 		//마우스 움직이면 여기서 메세지 발생
 	case WM_MOUSEMOVE:
-		_ptMouse.x = static_cast<float>(LOWORD(lParam));
-		_ptMouse.y = static_cast<float>(HIWORD(lParam));
+		_ptMouse.x = static_cast<float>(LOWORD(lParam) + _rc.left - 3 * WINSIZEX / 16);
+		_ptMouse.y = static_cast<float>(HIWORD(lParam) + _rc.top - 3 * WINSIZEY / 8);
 
 		break;
 

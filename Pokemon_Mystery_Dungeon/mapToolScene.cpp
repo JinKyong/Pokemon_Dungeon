@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "mapToolScene.h"
-
+#include "Enemy.h"
 HRESULT mapToolScene::init(Player* player)
 {
 	Scene::init(player);
@@ -13,8 +13,7 @@ HRESULT mapToolScene::init(Player* player)
 	
 	x = 0;
 	y = 0;
-	_maptiles = IMAGEMANAGER->findDImage("maptiles");
-	_objects = IMAGEMANAGER->findDImage("object");
+
 	return S_OK;
 }
 
@@ -53,7 +52,6 @@ if (PRINTMANAGER->isDebug())
 	swprintf_s(str, L"x: %d, y: %d, type: %d", x, y,_maptool->getType());
 	DTDMANAGER->printText(str, x + 200, y + 100, 100, 100);
 	_maptool->minimap();
-	
 }
 
 }
