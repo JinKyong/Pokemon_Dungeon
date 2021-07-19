@@ -17,10 +17,11 @@ class Item
 protected:
 	RECT _body;				//충돌 사각형
 	dImage* _img;			//이미지
-	//*구미 -> 이미지 붙여서 프레임렌더
 	float _x, _y;			//x, y 좌표
 	int _value;				//status에 변화 줄
 	wstring _name;			//인벤토리 이름표시용
+	wstring _itemInfo;		//인벤토리 아이템 한줄소개
+	wstring _itemInfoLong;	//인벤토리 아이템 설명란 소개
 	int _num;				//아이템 넘버
 	int _type;				//아이템 타입
 
@@ -58,7 +59,10 @@ public:
 	void setY(float y) { _y = y; }
 
 	int getType() { return _type; }
-	wstring getName() { return _name; } 
+
+	wstring getName() { return _name; }
+	wstring getItemInfo() { return _itemInfo; }
+	wstring getitemInfoLong() { return _itemInfoLong; }
 
 	bool getUse() { return _use; }
 	void setUse() { _use = true; }

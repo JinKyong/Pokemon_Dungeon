@@ -15,7 +15,4 @@ public:
 
 	//아이템 사용
 	void eatItem(float value);
-
-	//get-set
-
 };

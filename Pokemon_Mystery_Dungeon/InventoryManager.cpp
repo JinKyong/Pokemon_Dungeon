@@ -6,9 +6,16 @@ HRESULT InventoryManager::init()
 	return S_OK;
 }
 
-void InventoryManager::release()
+void InventoryManager::release()	//sceneManager ☆ 참고
 {
-	//sceneManager ☆ 참고
+	itemListIter viItem = _vItem.begin();
+
+	for (; viItem != _vItem.end();)
+	{
+		viItem = _vItem.erase(viItem);
+	}
+
+	_vItem.clear();
 }
 
 void InventoryManager::useItem(int num)

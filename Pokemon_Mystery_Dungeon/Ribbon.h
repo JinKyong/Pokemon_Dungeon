@@ -1,9 +1,19 @@
 #pragma once
 #include "Item.h"
 
+enum ribbonType
+{
+	RIBBONTYPE_POWERBAND,
+	RIBBONTYPE_SHIELDSCARF,
+	//RIBBONTYPE_SPECIALRIBBON,
+	//RIBBONTYPE_KETOACIDBAND,
+	ENDRIBBONTYPE
+};
+
 class Ribbon : public Item
 {
 private:
+	int _ribbonNum;
 
 public:
 	Ribbon() {};

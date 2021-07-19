@@ -21,7 +21,6 @@ public:
 	virtual void render();
 
 
-
 	bool getHidden() { return _hidden; }
 	void setHidden(bool hidden) { _hidden = hidden; }
 };
