@@ -83,4 +83,6 @@ public:
 
 	int getTestHP() { return _testHP; }
 	RECT getBody() { return _body; }
+
+	int getDirect() { return _direct; }
 };

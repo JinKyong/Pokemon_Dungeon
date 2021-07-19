@@ -80,12 +80,16 @@ void User::controlKey()
 
 	if (KEYMANAGER->isStayKeyDown(KEY_RIGHT)) {
 		_direct |= RIGHT;
-		_destX += TILEWIDTH;
+		if (COLLISIONMANAGER->playerWithTile(this))			//2. 저 불값을 어떻게 키 전부 적용해서 사용할지..?
+		{
 
-		if (KEYMANAGER->isStayKeyDown(KEY_L1))
-			_pokemon->changeDirect(_direct);
-		else
-			_playerState = POKEMON_STATE_MOVE;
+			_destX += TILEWIDTH;
+
+			if (KEYMANAGER->isStayKeyDown(KEY_L1))
+				_pokemon->changeDirect(_direct);
+			else
+				_playerState = POKEMON_STATE_MOVE;
+		}
 	}
 	else if (KEYMANAGER->isStayKeyDown(KEY_LEFT)) {
 		_direct |= LEFT;

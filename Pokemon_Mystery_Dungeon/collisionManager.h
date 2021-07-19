@@ -29,7 +29,7 @@ public:
 	HRESULT init(Scene* scene, ItemManager* im);
 
 	void collisionPlayer(Player* player);
-	void playerWithTile(Player* player);
+	bool playerWithTile(Player* player);
 	void playerWithItem(Player* player);
 	void playerWithEnemy(Player* player, Player* enemy);
 
