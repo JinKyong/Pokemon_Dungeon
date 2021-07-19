@@ -3,9 +3,13 @@
 
 HRESULT Scope::init(float x, float y, float angle)
 {
-	//제어불가스코프랑 불면스코프중 고민
 	_img = IMAGEMANAGER->addDImage("hold3", L"img/item/hold/hold3.png", ITEMSIZE, ITEMSIZE);
 	_body = RectMakeCenter(x, y, ITEMSIZE, ITEMSIZE);
+	_name = L"제어불가스코프"; //도구를 던지는 방향이 랜덤이 된다.
+	_itemInfo = L"아이템 설명이 없습니다";
+	_itemInfoLong = L"아이템 설명이 없습니다";
+	_type = ITEM_HOLD;
+	_num = 24;
 
 	return S_OK;
 }

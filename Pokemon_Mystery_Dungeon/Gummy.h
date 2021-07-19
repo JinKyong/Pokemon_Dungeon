@@ -5,7 +5,7 @@
 class Gummy : public Item
 {
 private:
-	int _num;
+	int _gummyNum;
 	POKEMON_TYPE _gummyType;
 
 public:

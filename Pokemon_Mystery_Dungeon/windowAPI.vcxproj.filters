@@ -456,6 +456,9 @@
     <ClInclude Include="InventoryManager.h">
       <Filter>playGround\Item</Filter>
     </ClInclude>
+    <ClInclude Include="InvenMenu.h">
+      <Filter>playGround\UI\Menu\DownMenu</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -751,6 +754,9 @@
     </ClCompile>
     <ClCompile Include="InventoryManager.cpp">
       <Filter>playGround\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="InvenMenu.cpp">
+      <Filter>playGround\UI\Menu\DownMenu</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

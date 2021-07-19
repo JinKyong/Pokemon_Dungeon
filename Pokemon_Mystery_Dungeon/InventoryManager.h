@@ -11,8 +11,6 @@ private:
 
 private:
 	itemList		_vItem;
-	itemListIter	_viItem;
-
 	itemList		_vItemStorage;
 
 public:
@@ -29,5 +27,7 @@ public:
 
 	void addItemStorage(item* itemName);
 	void removeItemStorage(int arrNum);
-};
 
+	//get
+	//*인벤토리 벡터 겟함수 추가하기
+};
