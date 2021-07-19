@@ -9,7 +9,7 @@ void Player::move()
 	if (_x != _destX)	_x += cosf(_pokemon->getAngle()) / 16;
 	if (_y != _destY)	_y += -sinf(_pokemon->getAngle()) / 16;
 
-	if (getDistance(_x, _y, _destX, _destY) <= 1 / 8) {
+	if (getDistance(_x, _y, _destX, _destY) <= (float)1 / 16) {
 		_x = _destX;
 		_y = _destY;
 

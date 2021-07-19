@@ -30,7 +30,7 @@ void dialogManager::release()
 
 void dialogManager::update()
 {
-	if (KEYMANAGER->isOnceKeyDown(VK_SPACE)) {
+	if (KEYMANAGER->isOnceKeyDown(KEY_A)) {
 		if (_size >= 128) {
 			//다음으로
 			loadScript();

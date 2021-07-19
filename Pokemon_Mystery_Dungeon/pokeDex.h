@@ -21,6 +21,7 @@ public:
 
 	void addPokemon(func f);
 	void setPokeDex();
+	void setPokemonImg();
 
 	Pokemon* makePokemon(int num) { return (this->*_pokemonList[num])(); }
 

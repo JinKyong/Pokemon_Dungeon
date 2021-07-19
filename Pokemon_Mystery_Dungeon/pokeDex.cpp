@@ -6,6 +6,7 @@ HRESULT pokeDex::init()
 	_index = 0;
 
 	setPokeDex();
+	setPokemonImg();
 
 	return S_OK;
 }
@@ -41,4 +42,14 @@ void pokeDex::setPokeDex()
 	addPokemon(&pokeDex::dratini);
 	addPokemon(&pokeDex::dragonair);
 	addPokemon(&pokeDex::dragonite);
+}
+
+void pokeDex::setPokemonImg()
+{
+	Pokemon* pokemon;
+	for (int i = 1; i <= _index; i++) {
+		pokemon = makePokemon(i);
+		pokemon->init();
+		SAFE_DELETE(pokemon);
+	}
 }
