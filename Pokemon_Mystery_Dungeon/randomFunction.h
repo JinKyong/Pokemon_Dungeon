@@ -31,5 +31,5 @@ public:
 		return (rnd * (toFloat - fromFloat) + fromFloat);
 	}
 
-	bool getBool() { return ((float)rand() / (float)RAND_MAX)*0.5; }
+	bool getBool() { return rand()%2; }
 };

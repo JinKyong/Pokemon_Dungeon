@@ -244,21 +244,23 @@ void tileManager::dungeon(int width, int height)
 {
 	_vExit.clear();
 	_vRoom.clear();
-	for (int i = 0; i < width*height; i++)
+	for (int i = 0; i < width*height; ++i)
 	{
 		_vChar.push_back(Unused);
 	}
-	generate((width*height / 3));
+	generate((width+height) / 15);
 }
 
 void tileManager::generate(int maxFeatures)
 {
 	// place the first room in the center
-	if (!makeRoom(_width / 2, _height / 2, static_cast<Direction>(RND->getInt(4), true)))
+	//_width에 비율 주는걸로 첫방 X위치 조절가능, _height는 Y위치, 기본은 중앙인 1/2
+	if (!makeRoom(_width/2 , _height/2, static_cast<Direction>(RND->getInt(4), true)))
 	{
 		return;
 	}
 	// we already placed 1 feature (the first room)
+	//2번째 구조 생성(1번째는 무조건 첫방)
 	for (int i = 1; i < maxFeatures; ++i)
 	{
 		if (!createFeature())
@@ -266,11 +268,12 @@ void tileManager::generate(int maxFeatures)
 			break;
 		}
 	}
+	//윗계단 생성자 
 	if (!placeObject(UpStairs))
 	{
 		return;
 	}
-
+	//아랫계단 생성자
 	if (!placeObject(DownStairs))
 	{
 		return;
@@ -290,6 +293,7 @@ bool tileManager::createFeature()
 		int y = RND->getFromIntTo(_vExit[r].y-1, _vExit[r].y + _vExit[r].height-1 );
 
 		// north, south, west, east
+		//j= 방향, 방향에 따른 방/복도 생성
 		for (int j = 0; j < DirectionCount; ++j)
 		{
 			if (createFeature(x, y, static_cast<Direction>(j)))
@@ -305,6 +309,7 @@ bool tileManager::createFeature()
 
 bool tileManager::createFeature(int x, int y, Direction dir)
 {
+	//방 생성 확률
 	static const int roomChance = 50; // corridorChance = 100 - roomChance
 
 	int dx = 0;
@@ -320,6 +325,7 @@ bool tileManager::createFeature(int x, int y, Direction dir)
 	else if (dir == East)
 		dx = -1;
 
+	//출구가 있나 없나 확인
 	if (getChar(x + dx, y + dy) != Floor && getChar(x + dx, y + dy) != Corridor)
 		return false;
 
@@ -350,8 +356,8 @@ bool tileManager::createFeature(int x, int y, Direction dir)
 
 bool tileManager::makeRoom(int x, int y, Direction dir, bool firstRoom)
 {
-	static const int minRoomSize = 5;
-	static const int maxRoomSize = 10;
+	static const int minRoomSize = 2;
+	static const int maxRoomSize = 5;
 
 	tagRect room;
 	room.width = RND->getFromIntTo(minRoomSize, maxRoomSize);
@@ -385,13 +391,13 @@ bool tileManager::makeRoom(int x, int y, Direction dir, bool firstRoom)
 	{
 		_vRoom.emplace_back(room);
 
-		if (dir != South) // north side
-			_vExit.emplace_back(tagRect{ room.x, room.y - 1, room.width, 1 });
-		if (dir != North) // south side
+		if (dir!= South) // north side
+			_vExit.emplace_back(tagRect{ room.x, room.y - 1, RND->getInt(room.width), 1 });
+		 if (dir != North) // south side
 			_vExit.emplace_back(tagRect{ room.x, room.y + room.height, room.width, 1 });
-		if (dir != East) // west side
+		 if (dir != East) // west side
 			_vExit.emplace_back(tagRect{ room.x - 1, room.y, 1, room.height });
-		if (dir != West) // east side
+		 if (dir != West) // east side
 			_vExit.emplace_back(tagRect{ room.x + room.width, room.y, 1, room.height });
 
 		return true;
@@ -401,14 +407,16 @@ bool tileManager::makeRoom(int x, int y, Direction dir, bool firstRoom)
 
 bool tileManager::makeCorridor(int x, int y, Direction dir)
 {
-	static const int minCorridorLength = 10;
-	static const int maxCorridorLength = 20;
+	static const int minCorridorLength = 5;
+	static const int maxCorridorLength = 8;
 
 	tagRect corridor;
 	corridor.x = x;
 	corridor.y = y;
+	//확률로 왼/오 윗/아래 설정
+	bool k = RND->getBool();
 
-	if (RND->getBool()) // horizontal corridor
+	if (k) // horizontal corridor
 	{
 		corridor.width = RND->getFromIntTo(minCorridorLength, maxCorridorLength);
 		corridor.height = 1;
@@ -416,16 +424,16 @@ bool tileManager::makeCorridor(int x, int y, Direction dir)
 		if (dir == North)
 		{
 			corridor.y = y - 1;
-
-			if (RND->getBool()) // west
+			k = RND->getBool();
+			if (k) // west
 				corridor.x = x - corridor.width + 1;
 		}
 
 		else if (dir == South)
 		{
 			corridor.y = y + 1;
-
-			if (RND->getBool()) // west
+			k = RND->getBool();
+			if (k) // west
 				corridor.x = x - corridor.width + 1;
 		}
 
@@ -450,16 +458,16 @@ bool tileManager::makeCorridor(int x, int y, Direction dir)
 		else if (dir == West)
 		{
 			corridor.x = x - 1;
-
-			if (RND->getBool()) // north
+			k = RND->getBool();
+			if (k) // north
 				corridor.y = y - corridor.height + 1;
 		}
 
 		else if (dir == East)
 		{
 			corridor.x = x + 1;
-
-			if (RND->getBool()) // north
+			k = RND->getBool();
+			if (k) // north
 				corridor.y = y - corridor.height + 1;
 		}
 	}
