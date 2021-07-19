@@ -52,6 +52,13 @@ public:
 	void throwItem(float x, float y, float angle);
 	void itemMove();
 
+
+
+
+
+
+
+
 	//get-set
 	float getX() { return _x; }
 	float getY() { return _y; }

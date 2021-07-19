@@ -25,7 +25,7 @@ public:
 	Effect() {};
 	~Effect() {};
 
-	virtual HRESULT init(float x, float y) = 0;
+	virtual HRESULT init(float x, float y);
 	virtual void release() = 0;
 	virtual void update() = 0;
 	virtual void render();

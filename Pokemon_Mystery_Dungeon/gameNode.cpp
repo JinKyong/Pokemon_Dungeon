@@ -32,6 +32,7 @@ HRESULT gameNode::init(bool managerInit)
 		DTDMANAGER->init();
 		CAMERAMANAGER->init();
 		UIMANAGER->init();
+		TXTDATA->init();
 		POKEDEX->init();
 		SKILLDEX->init();
 		TILEMANAGER->init();
@@ -68,6 +69,9 @@ void gameNode::release()
 
 		UIMANAGER->release();
 		UIMANAGER->releaseSingleton();
+
+		TXTDATA->release();
+		TXTDATA->releaseSingleton();
 
 		POKEDEX->release();
 		POKEDEX->releaseSingleton();

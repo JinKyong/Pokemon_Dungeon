@@ -12,11 +12,12 @@ HRESULT Enemy::init(int pokemonNum)
 	_pokemon->init();
 
 	//ÁÂÇ¥
-	_x = 25 * TILEWIDTH + TILEWIDTH / 2;
-	_y = 15 * TILEHEIGHT + TILEHEIGHT / 2;
+	_x = 25;
+	_y = 15;
 	_destX = _x;
 	_destY = _y;
-	_body = RectMakeCenter(_x, _y, TILEWIDTH, TILEHEIGHT);
+	_body = RectMakeCenter(_x * TILEWIDTH + TILEWIDTH / 2, _y * TILEHEIGHT + TILEHEIGHT / 2,
+		TILEWIDTH, TILEHEIGHT);
 
 	//½ºÅÈ
 	//°è»êÇØ¼­ ³ÖÀ½ Æ÷ÄÏ¸ó ²¨
@@ -33,7 +34,8 @@ void Enemy::release()
 
 void Enemy::update()
 {
-	_body = RectMakeCenter(_x, _y, TILEWIDTH, TILEHEIGHT);
+	_body = RectMakeCenter(_x * TILEWIDTH + TILEWIDTH / 2, _y * TILEHEIGHT + TILEHEIGHT / 2,
+		TILEWIDTH, TILEHEIGHT);
 }
 
 void Enemy::render()
@@ -63,13 +65,13 @@ int Enemy::input()
 
 	_playerState = POKEMON_STATE_MOVE;
 	if (_direct == RIGHT)
-		_destX += TILEWIDTH;
+		_destX++;
 	else if (_direct == LEFT)
-		_destX -= TILEWIDTH;
+		_destX--;
 	else if (_direct == UP)
-		_destY -= TILEHEIGHT;
+		_destY--;
 	else if (_direct == DOWN)
-		_destY += TILEHEIGHT;
+		_destY++;
 	else
 		_playerState = POKEMON_STATE_ATTACK;
 

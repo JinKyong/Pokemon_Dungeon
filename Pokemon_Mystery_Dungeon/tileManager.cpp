@@ -289,8 +289,8 @@ bool tileManager::createFeature()
 
 		// choose a random side of a random room or corridor
 		int r = RND->getInt(_vExit.size());
-		int x = RND->getFromIntTo(_vExit[r].x-1, _vExit[r].x + _vExit[r].width-1 );
-		int y = RND->getFromIntTo(_vExit[r].y-1, _vExit[r].y + _vExit[r].height-1 );
+		int x = RND->getFromIntTo(_vExit[r].x-1, _vExit[r].x + _vExit[r].width);
+		int y = RND->getFromIntTo(_vExit[r].y-1, _vExit[r].y + _vExit[r].height);
 
 		// north, south, west, east
 		//j= 방향, 방향에 따른 방/복도 생성
@@ -392,7 +392,7 @@ bool tileManager::makeRoom(int x, int y, Direction dir, bool firstRoom)
 		_vRoom.emplace_back(room);
 
 		if (dir!= South) // north side
-			_vExit.emplace_back(tagRect{ room.x, room.y - 1, RND->getInt(room.width), 1 });
+			_vExit.emplace_back(tagRect{ room.x, room.y - 1, RND->getInt(room.width) + 1, 1 });
 		 if (dir != North) // south side
 			_vExit.emplace_back(tagRect{ room.x, room.y + room.height, room.width, 1 });
 		 if (dir != East) // west side
@@ -518,8 +518,8 @@ bool tileManager::placeObject(char Char)
 		return false;
 
 	int r = RND->getInt(_vRoom.size()); // choose a random room
-	int x = RND->getFromIntTo(_vRoom[r].x + 1, _vRoom[r].x + _vRoom[r].width - 1);
-	int y = RND->getFromIntTo(_vRoom[r].y, _vRoom[r].y + _vRoom[r].height - 1);
+	int x = RND->getFromIntTo(_vRoom[r].x + 1, _vRoom[r].x + _vRoom[r].width);
+	int y = RND->getFromIntTo(_vRoom[r].y, _vRoom[r].y + _vRoom[r].height);
 
 	if (getChar(x, y) == Floor)
 	{

@@ -4,7 +4,8 @@
 void Item::render()
 {
 	if (PRINTMANAGER->isDebug())	DTDMANAGER->Rectangle(_body);
-	_img->render(_x * TILEWIDTH + TILEWIDTH / 2 - _img->getWidth() / 2, _y * TILEHEIGHT + TILEHEIGHT / 2 - _img->getHeight() / 2);
+	_img->render(_x * TILEWIDTH + TILEWIDTH / 2 - _img->getWidth() / 2, 
+		_y * TILEHEIGHT + TILEHEIGHT / 2 - _img->getHeight() / 2);
 }
 
 void Item::throwItem(float x, float y, float angle)
@@ -20,5 +21,6 @@ void Item::itemMove()
 	_x += cosf(_angle);
 	_y += -sinf(_angle);
 
-	_body = RectMakeCenter(_x, _y, ITEMSIZE, ITEMSIZE);
+	_body = RectMakeCenter(_x * TILEWIDTH + TILEWIDTH / 2, _y * TILEHEIGHT + TILEHEIGHT / 2,
+		ITEMSIZE, ITEMSIZE);
 }

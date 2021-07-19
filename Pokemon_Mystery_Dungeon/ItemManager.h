@@ -24,7 +24,6 @@ public:
 	void addItem(Item* item);
 	void removeItem(int num);
 
-	vector<Item*> getVItem() { return _vItemAdd; }
-	vector<Item*>::iterator getVIItem() { return _viItemAdd; }
+	vector<Item*>* getVItem() { return &_vItemAdd; }
 };
 

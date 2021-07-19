@@ -20,7 +20,7 @@ HRESULT playGround::init()
 	gameNode::init(true);
 
 	_player = new User;
-	_player->init(1);
+	_player->init(RND->getInt(15) + 1);
 
 	SCENEMANAGER->init(_player);
 

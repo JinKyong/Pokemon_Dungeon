@@ -4,17 +4,16 @@
 
 class Player;
 class Scene;
-class ItemManager;
+class Item;
 class Effect;
 
 class collisionManager : public singletonBase<collisionManager>
 {
 private:
-	Player* _player;
 	Scene* _scene;
-	ItemManager* _im;
-
-	vector<Player*> *_allPlayer;
+	//vector<tagTile*> *_allTile;		//타일 목록
+	vector<Item*> *_allItem;		//아이템 목록
+	vector<Player*> *_allPlayer;	//플레이어 목록
 
 	//충돌하는 객체들 파악하기
 	//플레이어랑 에너미
@@ -24,14 +23,14 @@ public:
 	collisionManager() {};
 	~collisionManager() {};
 
+	HRESULT init(Scene* scene);
 	void release();
 
-	HRESULT init(Scene* scene, ItemManager* im);
+	bool collisionInputPlayer(Player* player);
 
-	void collisionPlayer(Player* player);
-	bool playerWithTile(Player* player);
+	void collisionEndTurnPlayer(Player* player);
 	void playerWithItem(Player* player);
-	void playerWithEnemy(Player* player, Player* enemy);
+
 
 	void effectWithEnemy(Effect* effect);
 };

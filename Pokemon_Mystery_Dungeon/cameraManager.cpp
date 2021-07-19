@@ -49,8 +49,8 @@ void cameraManager::updateScreen(float standardX, float standardY)
 	if (!_onMove)
 		resetCam();
 
-	float x = standardX;
-	float y = standardY + _camY;
+	float x = standardX * TILEWIDTH + TILEWIDTH / 2;
+	float y = standardY * TILEHEIGHT + TILEHEIGHT / 2 + _camY;
 
 	onWindow(x, y);
 	//°»½Å

@@ -1,14 +1,6 @@
 #pragma once
 #include "PokemonType.h"
 
-enum SKILLKEYVALUE	//傍拜加己
-{
-	FIREBLAST,
-	GUST,
-	LIGHTNING,
-	ROCKSLIDE
-};
-
 enum SKILLTYPE	//傍拜加己
 {
 	PHYSICAL_ATTACK,

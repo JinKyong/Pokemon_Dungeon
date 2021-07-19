@@ -11,12 +11,12 @@ void Skill::useSkill(float x, float y, int direct)
 	_y = y;
 
 	if ((direct & RIGHT) == RIGHT)
-		_x += TILEWIDTH;
+		_x++;
 	else if ((direct & LEFT) == LEFT)
-		_x -= TILEWIDTH;
+		_x--;
 
 	if ((direct & DOWN) == DOWN)
-		_y += TILEHEIGHT;
+		_y++;
 	else if ((direct & UP) == UP)
-		_y -= TILEHEIGHT;
+		_y--;
 }

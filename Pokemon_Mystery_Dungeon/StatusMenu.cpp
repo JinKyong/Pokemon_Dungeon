@@ -39,9 +39,9 @@ void StatusMenu::render()
 	D2D1_RECT_F rc = dRectMake(_screen.left + 5, _screen.top + 5, width / 2 - 10, height / 2 - 10);
 	D2D1_RECT_F port = dRectMake(rc.left + 12, rc.top + 15, 60, 65);
 
-	if(i >= _teamList->size())
+	if (i >= _teamList->size())
 		DTDMANAGER->getRenderTarget()->DrawBitmap(_nullStatusBox->getBitmap(), rc);
-	else if((*_teamList)[i]->getPlayerType() <= PLAYER_TYPE_TEAM) {
+	else if ((*_teamList)[i]->getPlayerType() <= PLAYER_TYPE_TEAM) {
 		DTDMANAGER->getRenderTarget()->DrawBitmap(_baseStatusBox->getBitmap(), rc);
 		DTDMANAGER->getRenderTarget()->DrawBitmap((*_teamList)[i]->getPokemon()->getPortrait()->getBitmap(), port);
 	}

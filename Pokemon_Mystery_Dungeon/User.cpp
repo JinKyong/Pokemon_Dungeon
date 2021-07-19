@@ -13,11 +13,12 @@ HRESULT User::init(int pokemonNum)
 	_pokemon->init();
 
 	//좌표
-	_x = 25 * TILEWIDTH + TILEWIDTH / 2;
-	_y = 17 * TILEHEIGHT + TILEHEIGHT / 2;
+	_x = 25;
+	_y = 17;
 	_destX = _x;
 	_destY = _y;
-	_body = RectMakeCenter(_x, _y, TILEWIDTH, TILEHEIGHT);
+	_body = RectMakeCenter(_x * TILEWIDTH + TILEWIDTH / 2, _y * TILEHEIGHT + TILEHEIGHT / 2,
+		TILEWIDTH, TILEHEIGHT);
 
 	//스탯
 	//계산해서 넣음 포켓몬 꺼
@@ -44,7 +45,8 @@ void User::release()
 
 void User::update()
 {
-	_body = RectMakeCenter(_x, _y, TILEWIDTH, TILEHEIGHT);
+	_body = RectMakeCenter(_x * TILEWIDTH + TILEWIDTH / 2, _y * TILEHEIGHT + TILEHEIGHT / 2,
+		TILEWIDTH, TILEHEIGHT);
 }
 
 void User::render()
@@ -80,10 +82,9 @@ void User::controlKey()
 
 	if (KEYMANAGER->isStayKeyDown(KEY_RIGHT)) {
 		_direct |= RIGHT;
-		if (COLLISIONMANAGER->playerWithTile(this))			//2. 저 불값을 어떻게 키 전부 적용해서 사용할지..?
+		if (COLLISIONMANAGER->collisionInputPlayer(this))			//2. 저 불값을 어떻게 키 전부 적용해서 사용할지..?
 		{
-
-			_destX += TILEWIDTH;
+			_destX++;
 
 			if (KEYMANAGER->isStayKeyDown(KEY_L1))
 				_pokemon->changeDirect(_direct);
@@ -93,7 +94,7 @@ void User::controlKey()
 	}
 	else if (KEYMANAGER->isStayKeyDown(KEY_LEFT)) {
 		_direct |= LEFT;
-		_destX -= TILEWIDTH;
+		_destX--;
 
 		if (KEYMANAGER->isStayKeyDown(KEY_L1))
 			_pokemon->changeDirect(_direct);
@@ -102,7 +103,7 @@ void User::controlKey()
 	}
 	if (KEYMANAGER->isStayKeyDown(KEY_UP)) {
 		_direct |= UP;
-		_destY -= TILEHEIGHT;
+		_destY--;
 
 		if (KEYMANAGER->isStayKeyDown(KEY_L1))
 			_pokemon->changeDirect(_direct);
@@ -111,7 +112,7 @@ void User::controlKey()
 	}
 	else if (KEYMANAGER->isStayKeyDown(KEY_DOWN)) {
 		_direct |= DOWN;
-		_destY += TILEHEIGHT;
+		_destY++;
 
 		if (KEYMANAGER->isStayKeyDown(KEY_L1))
 			_pokemon->changeDirect(_direct);

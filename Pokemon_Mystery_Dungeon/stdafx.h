@@ -33,9 +33,9 @@
 #include "collisionManager.h"
 #include "uiManager.h"
 #include "EffectManager.h"
+#include "inventoryManager.h"
 #include "tileManager.h"
-//#include "inventoryManager.h"
-//#include "txtData.h"
+#include "txtData.h"
 #include "streamManager.h"
 #include "dtdManager.h"
 #include "pokeDex.h"
@@ -69,9 +69,9 @@ using namespace D2D1;
 #define COLLISIONMANAGER collisionManager::getSingleton()
 #define UIMANAGER uiManager::getSingleton()
 #define EFFECTMANAGER EffectManager::getSingleton()
-//#define INVENTORYMANAGER inventoryManager::getSingleton()
+#define INVENTORYMANAGER inventoryManager::getSingleton()
 #define TILEMANAGER tileManager::getSingleton()
-//#define TXTDATA txtData::getSingleton()
+#define TXTDATA txtData::getSingleton()
 #define STREAMMANAGER streamManager::getSingleton()
 #define DTDMANAGER dtdManager::getSingleton()
 #define POKEDEX pokeDex::getSingleton()

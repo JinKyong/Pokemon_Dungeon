@@ -1,4 +1,5 @@
 #pragma once
+#include "ItemManager.h"
 #include <vector>
 
 class Player;
@@ -7,6 +8,7 @@ class Scene
 {
 protected:
 	static Player* _player;
+	ItemManager* _itemManager;
 
 public:
 	Scene() {};
@@ -18,4 +20,6 @@ public:
 	virtual void render() = 0;
 
 	virtual void changeScene() = 0;
+
+	ItemManager* getItemManager() { return _itemManager; }
 };

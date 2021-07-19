@@ -8,6 +8,7 @@ HRESULT testScene::init(Player * player)
 	Scene::init(player);
 
 	CAMERAMANAGER->setBackScreenSize(3840, 2160);
+	_back = IMAGEMANAGER->addDImage("back", L"img/sample1.jpg", 3840, 2160);
 
 	TURNMANAGER->init();
 	TURNMANAGER->addAllPlayer(player);
@@ -15,7 +16,8 @@ HRESULT testScene::init(Player * player)
 	//_testEnemy->init(3);
 	//TURNMANAGER->addAllPlayer(_testEnemy);
 
-	_back = IMAGEMANAGER->addDImage("back", L"img/sample1.jpg", 3840, 2160);
+	DIALOGMANAGER->init();
+	DIALOGMANAGER->loadMetaData(L"data/test3");
 	
 	return S_OK;
 }
@@ -28,8 +30,12 @@ void testScene::update()
 {
 	//_player->update();
 
-	TURNMANAGER->update();
-	EFFECTMANAGER->update();
+	if (DIALOGMANAGER->getPrint())
+		DIALOGMANAGER->update();
+	else {
+		TURNMANAGER->update();
+		EFFECTMANAGER->update();
+	}
 
 	CAMERAMANAGER->updateScreen(_player->getX(), _player->getY());
 	//CAMERAMANAGER->vibrateScreen(_player->getX(), _player->getY());
@@ -53,6 +59,8 @@ void testScene::render()
 	//_player->render();
 	TURNMANAGER->render();
 	EFFECTMANAGER->render();
+	if (DIALOGMANAGER->getPrint())
+		DIALOGMANAGER->render();
 }
 
 void testScene::changeScene()

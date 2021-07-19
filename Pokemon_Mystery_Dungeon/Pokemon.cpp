@@ -18,8 +18,8 @@ void Pokemon::render(float x, float y)
 	controlFrame();
 
 	_currentImage->frameRender(
-		x + _tuningX - _currentImage->getFrameWidth() / 2,
-		y + _tuningY - _currentImage->getFrameHeight() / 2,
+		x *TILEWIDTH + TILEWIDTH / 2 + _tuningX - _currentImage->getFrameWidth() / 2,
+		y *TILEHEIGHT + TILEHEIGHT / 2 + _tuningY - _currentImage->getFrameHeight() / 2,
 		_frameX, _frameY);
 }
 

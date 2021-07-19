@@ -53,6 +53,11 @@ HRESULT dtdManager::init()
 		);
 	}
 
+	//Text Format이 생성되었으면 Text Brush 생성
+	if (SUCCEEDED(hr)) {
+		hr = _dRenderTarget->CreateSolidColorBrush(ColorF(ColorF::White), &_tBrush);
+	}
+
 	//Text Format이 생성되었으면 기본값(가운데 정렬) 설정
 	/*if (SUCCEEDED(hr)) {
 		hr = _dWFormat->SetTextAlignment(DWRITE_TEXT_ALIGNMENT_CENTER);
@@ -80,6 +85,7 @@ void dtdManager::release()
 	if (_dWFactory)			SAFE_RELEASE2(_dWFactory);
 	if (_dWDefaultFormat)	SAFE_RELEASE2(_dWDefaultFormat);
 	if (_dWCustomFormat)	SAFE_RELEASE2(_dWCustomFormat);
+	if (_tBrush)			SAFE_RELEASE2(_tBrush);
 }
 
 void dtdManager::render(float destX, float destY, float width, float height)
@@ -136,7 +142,7 @@ void dtdManager::Rectangle(RECT rc)
 
 void dtdManager::printText(LPCWCHAR text, float x, float y, int width, int height)
 {
-	_dBitRenderTarget->DrawTextA(text, lstrlenW(text), _dWDefaultFormat, dRectMakeCenter(x, y, width, height), _dBrush);
+	_dBitRenderTarget->DrawTextA(text, lstrlenW(text), _dWDefaultFormat, dRectMakeCenter(x, y, width, height), _tBrush);
 }
 
 void dtdManager::printText(LPCWCHAR text, float x, float y, int width, int height, float size)
@@ -170,12 +176,12 @@ void dtdManager::printText(LPCWCHAR text, float x, float y, int width, int heigh
 		);
 	}
 
-	_dBitRenderTarget->DrawTextA(text, lstrlenW(text), _dWCustomFormat, dRectMakeCenter(x, y, width, height), _dBrush);
+	_dBitRenderTarget->DrawTextA(text, lstrlenW(text), _dWCustomFormat, dRectMakeCenter(x, y, width, height), _tBrush);
 }
 
 void dtdManager::printText(LPCWCHAR text, D2D1_RECT_F rc)
 {
-	_dBitRenderTarget->DrawTextA(text, lstrlenW(text), _dWDefaultFormat, rc, _dBrush);
+	_dBitRenderTarget->DrawTextA(text, lstrlenW(text), _dWDefaultFormat, rc, _tBrush);
 }
 
 void dtdManager::printText(LPCWCHAR text, D2D1_RECT_F rc, float size)
@@ -209,7 +215,7 @@ void dtdManager::printText(LPCWCHAR text, D2D1_RECT_F rc, float size)
 		);
 	}
 
-	_dBitRenderTarget->DrawTextA(text, lstrlenW(text), _dWCustomFormat, rc, _dBrush);
+	_dBitRenderTarget->DrawTextA(text, lstrlenW(text), _dWCustomFormat, rc, _tBrush);
 }
 
 void dtdManager::setRotate(float angle, float x, float y)

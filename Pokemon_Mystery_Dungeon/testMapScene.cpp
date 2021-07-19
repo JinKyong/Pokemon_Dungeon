@@ -29,8 +29,8 @@ HRESULT testMapScene::init(Player * player)
 	//_pokemon3->init(RND->getInt(15) + 1);
 	//TURNMANAGER->addAllPlayer(_pokemon3);
 
-	_im = new ItemManager;
-	_im->init();
+	_itemManager = new ItemManager;
+	_itemManager->init();
 
 	Apple* apple;
 	apple = new Apple;
@@ -44,11 +44,14 @@ HRESULT testMapScene::init(Player * player)
 	titem = new ThrowItem;
 	titem->init(27, 15, PI);
 
-	_im->addItem(apple);
-	_im->addItem(jelly);
-	_im->addItem(titem);
+	_itemManager->addItem(apple);
+	_itemManager->addItem(jelly);
+	_itemManager->addItem(titem);
 
-	COLLISIONMANAGER->init(this, _im);
+	DIALOGMANAGER->init();
+	DIALOGMANAGER->loadMetaData(L"data/test");
+
+	COLLISIONMANAGER->init(this);
 
 	return S_OK;
 }
@@ -61,12 +64,17 @@ void testMapScene::release()
 void testMapScene::update()
 {
 	TILEMANAGER->update();
-	if (UIMANAGER->getOpen())
-		UIMANAGER->update();
+
+	if (DIALOGMANAGER->getPrint())
+		DIALOGMANAGER->update();
 	else {
-		_im->update();
-		TURNMANAGER->update();
-		EFFECTMANAGER->update();
+		if (UIMANAGER->getOpen())
+			UIMANAGER->update();
+		else {
+			_itemManager->update();
+			TURNMANAGER->update();
+			EFFECTMANAGER->update();
+		}
 	}
 
 	CAMERAMANAGER->updateScreen(_player->getX(), _player->getY());
@@ -75,13 +83,15 @@ void testMapScene::update()
 
 void testMapScene::render()
 {
-
 	TILEMANAGER->render();
-	_im->render();
+	_itemManager->render();
 	TURNMANAGER->render();
 	EFFECTMANAGER->render();
 
 	UIMANAGER->renderDown();
+
+	if (DIALOGMANAGER->getPrint())
+		DIALOGMANAGER->render();
 }
 
 void testMapScene::changeScene()

@@ -64,7 +64,7 @@ void turnManager::update()
 					(*player)->update();
 					return;
 				case POKEMON_STATE_DEFAULT:
-					COLLISIONMANAGER->collisionPlayer((*player));
+					COLLISIONMANAGER->collisionEndTurnPlayer((*player));
 					player = _inputPlayerList.erase(player);
 					break;
 				}
@@ -88,11 +88,8 @@ void turnManager::render()
 
 void turnManager::inputFromPlayer()
 {
-	//input 받음
-	int state = _allPlayerList[_order]->input();
-
 	//(턴이 소모되는)input이 있으면 order++
-	if (state != POKEMON_STATE_DEFAULT) {
+	if (_allPlayerList[_order]->input() != POKEMON_STATE_DEFAULT) {
 		addInputPlayer(_allPlayerList[_order]);
 		_order++;
 	}
