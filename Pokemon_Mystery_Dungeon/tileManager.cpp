@@ -108,20 +108,12 @@ void tileManager::setup()
 			{
 				_vTile[i]->terrainFrameX = 3;
 				_vTile[i]->terrainFrameY = 1;
-				_vTile[i]->objFrameX = 0;
-				_vTile[i]->objFrameY = 0;
-				_vTile[i]->terrain = terrainSelect(_vTile[i] ->terrainFrameX, _vTile[i]->terrainFrameY);
-				_vTile[i]->obj = OBJ_NONE;
-			}
-			else if ((*_viChar) == Wall)
-			{
-				_vTile[i]->terrainFrameX = 1;
-				_vTile[i]->terrainFrameY = 0;
 				_vTile[i]->objFrameX = 1;
-				_vTile[i]->objFrameY = 0;
-				_vTile[i]->terrain = terrainSelect(_vTile[i]->terrainFrameX, _vTile[i]->terrainFrameY);
+				_vTile[i]->objFrameY = 1;
+				_vTile[i]->terrain = terrainSelect(_vTile[i] ->terrainFrameX, _vTile[i]->terrainFrameY);
 				_vTile[i]->obj = objSelect(_vTile[i]->objFrameX, _vTile[i]->objFrameY);
 			}
+			
 			else if ((*_viChar) == UpStairs)
 			{
 				_vTile[i]->terrainFrameX = 1;
@@ -137,6 +129,60 @@ void tileManager::setup()
 				_vTile[i]->terrainFrameY = 0;
 				_vTile[i]->objFrameX = 6;
 				_vTile[i]->objFrameY = 3;
+				_vTile[i]->terrain = terrainSelect(_vTile[i]->terrainFrameX, _vTile[i]->terrainFrameY);
+				_vTile[i]->obj = objSelect(_vTile[i]->objFrameX, _vTile[i]->objFrameY);
+			}
+			else if ((*_viChar) == LeftCorner)
+			{
+				_vTile[i]->terrainFrameX = 1;
+				_vTile[i]->terrainFrameY = 0;
+				_vTile[i]->objFrameX = 6;
+				_vTile[i]->objFrameY = 0;
+				_vTile[i]->terrain = terrainSelect(_vTile[i]->terrainFrameX, _vTile[i]->terrainFrameY);
+				_vTile[i]->obj = objSelect(_vTile[i]->objFrameX, _vTile[i]->objFrameY);
+			}
+			else if ((*_viChar) == RightCorner)
+			{
+				_vTile[i]->terrainFrameX = 1;
+				_vTile[i]->terrainFrameY = 0;
+				_vTile[i]->objFrameX = 8;
+				_vTile[i]->objFrameY = 0;
+				_vTile[i]->terrain = terrainSelect(_vTile[i]->terrainFrameX, _vTile[i]->terrainFrameY);
+				_vTile[i]->obj = objSelect(_vTile[i]->objFrameX, _vTile[i]->objFrameY);
+			}
+			else if ((*_viChar) == LeftBottom)
+			{
+				_vTile[i]->terrainFrameX = 1;
+				_vTile[i]->terrainFrameY = 0;
+				_vTile[i]->objFrameX = 6;
+				_vTile[i]->objFrameY = 2;
+				_vTile[i]->terrain = terrainSelect(_vTile[i]->terrainFrameX, _vTile[i]->terrainFrameY);
+				_vTile[i]->obj = objSelect(_vTile[i]->objFrameX, _vTile[i]->objFrameY);
+			}
+			else if ((*_viChar) == RightBottom)
+			{
+				_vTile[i]->terrainFrameX = 1;
+				_vTile[i]->terrainFrameY = 0;
+				_vTile[i]->objFrameX = 8;
+				_vTile[i]->objFrameY = 2;
+				_vTile[i]->terrain = terrainSelect(_vTile[i]->terrainFrameX, _vTile[i]->terrainFrameY);
+				_vTile[i]->obj = objSelect(_vTile[i]->objFrameX, _vTile[i]->objFrameY);
+			}
+			else if ((*_viChar) == VerticalWall)
+			{
+				_vTile[i]->terrainFrameX = 1;
+				_vTile[i]->terrainFrameY = 0;
+				_vTile[i]->objFrameX = 6;
+				_vTile[i]->objFrameY = 1;
+				_vTile[i]->terrain = terrainSelect(_vTile[i]->terrainFrameX, _vTile[i]->terrainFrameY);
+				_vTile[i]->obj = objSelect(_vTile[i]->objFrameX, _vTile[i]->objFrameY);
+			}
+			else if ((*_viChar) == HorizontalWall)
+			{
+				_vTile[i]->terrainFrameX = 1;
+				_vTile[i]->terrainFrameY = 0;
+				_vTile[i]->objFrameX = 7;
+				_vTile[i]->objFrameY = 0;
 				_vTile[i]->terrain = terrainSelect(_vTile[i]->terrainFrameX, _vTile[i]->terrainFrameY);
 				_vTile[i]->obj = objSelect(_vTile[i]->objFrameX, _vTile[i]->objFrameY);
 			}
@@ -251,7 +297,7 @@ void tileManager::dungeon(int width, int height)
 		_vChar.push_back(Unused);
 	}
 
-	generate(30);
+	generate(15);
 }
 
 void tileManager::generate(int maxFeatures)
@@ -518,15 +564,27 @@ bool tileManager::placeRect(RECT rc, char Char)
 			if (getChar(x, y) != Unused)
 				return false; // the area already used
 		}
-
+	
 	for (int y = rc.top - 1; y <= rc.bottom; ++y)
 		for (int x = rc.left - 1; x <= rc.right; ++x)
 		{
-			if (x == rc.left - 1 || y == rc.top - 1 || x == rc.right || y == rc.bottom)
-				setChar(x, y, Wall);
+			
+			if (x == rc.left - 1 && y == rc.top - 1) 
+				setChar(x, y, LeftCorner);
+			else if (x == rc.right&& y == rc.top - 1)
+				setChar(x, y, RightCorner);
+			else if (x == rc.left - 1 && y == rc.bottom) 
+				setChar(x, y, LeftBottom);
+			else if (x == rc.right&&y == rc.bottom) 
+				setChar(x, y, RightBottom);
+			else if (x == rc.left - 1 || x == rc.right)
+				setChar(x, y, VerticalWall);
+			else if(y == rc.top - 1 ||y == rc.bottom)
+				setChar(x, y, HorizontalWall);
 			else
 				setChar(x, y, Char);
 		}
+	
 
 	return true;
 }
@@ -537,8 +595,8 @@ bool tileManager::placeObject(char Char)
 		return false;
 
 	int index = RND->getInt(_vRoom.size()); // choose a random room
-	int x = RND->getFromIntTo(_vRoom[index].left, _vRoom[index].right);
-	int y = RND->getFromIntTo(_vRoom[index].top, _vRoom[index].bottom);
+	int x = RND->getFromIntTo(_vRoom[index].left+2, _vRoom[index].right-2);
+	int y = RND->getFromIntTo(_vRoom[index].top+2, _vRoom[index].bottom-2);
 
 	if (getChar(x, y) == Floor)
 	{

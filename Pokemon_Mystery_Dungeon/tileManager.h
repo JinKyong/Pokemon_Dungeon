@@ -65,7 +65,13 @@ enum Tile
 	UpStairs = '<',
 	DownStairs = '>',
 	Monster = 'M',
-	Trap = 'T'
+	Trap = 'T',
+	LeftCorner = '!',
+	RightCorner = '~',
+	LeftBottom = '$',
+	RightBottom = '%',
+	VerticalWall = '^',
+	HorizontalWall = '*'
 };
 
 //∞¢∞¥√º πÊ«‚
