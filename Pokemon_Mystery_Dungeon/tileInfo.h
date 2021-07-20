@@ -66,6 +66,8 @@ typedef struct tagTile
 	TERRAIN		terrain;
 	OBJECT		obj;
 	RECT		rc;
+	int			x;
+	int			y;
 	int			terrainFrameX;
 	int			terrainFrameY;
 	int			objFrameX;

@@ -60,6 +60,37 @@ bool collisionManager::collisionInputPlayer(Player * player)		// User, Enemy 안�
 	if (((direct & LEFT) == LEFT && (direct & UP) == UP) &&
 		(*tile)[cornerIndex[3]]->obj <= OBJ_BLOCK8) return false;
 
+	//if ((direct & RIGHT) == RIGHT && (*tile)[index[0]]->x == x) return false;
+
+	vector<Player*>::iterator playerIter;
+
+	for (playerIter = _allPlayer->begin(); playerIter != _allPlayer->end(); ++playerIter)
+	{
+		int x, y;
+		if ((*playerIter)->getPlayerType() == PLAYER_TYPE_ENEMY)
+		{
+			x = (*playerIter)->getDestX();
+			y = (*playerIter)->getDestY();
+		}
+		else
+		{
+			x = (*playerIter)->getX();
+			y = (*playerIter)->getY();
+		}
+
+
+		if ((direct & RIGHT) == RIGHT && (*tile)[index[0]]->x == x && (*tile)[index[0]]->y == y) return false;
+
+		if ((direct & LEFT) == LEFT && (*tile)[index[1]]->x == x && (*tile)[index[1]]->y == y) return false;
+
+		if ((direct & DOWN) == DOWN && (*tile)[index[2]]->x == x && (*tile)[index[2]]->y == y) return false;
+
+		if ((direct & UP) == UP && (*tile)[index[3]]->x == x && (*tile)[index[3]]->y == y) return false;
+
+	}
+
+	//플레이어 destX, destY
+
 	return true;
 
 	//플레이어 x, y기준으로 방향에 따라 1타일만 검사

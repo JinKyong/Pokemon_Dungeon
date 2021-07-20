@@ -95,6 +95,8 @@ void tileManager::setup()
 				i * TILESIZE,
 				j * TILESIZE + TILESIZE,
 				i * TILESIZE + TILESIZE);
+			Tile->x = j;
+			Tile->y = i;
 			_vTile.push_back(Tile);
 		}
 	}
