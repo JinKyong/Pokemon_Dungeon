@@ -4,7 +4,7 @@
 class ThrowItem : public Item
 {
 private:
-	int _num;
+	int _throwNum;
 
 public:
 	ThrowItem() {};

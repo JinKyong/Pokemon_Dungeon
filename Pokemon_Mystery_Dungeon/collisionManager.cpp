@@ -79,6 +79,9 @@ void collisionManager::playerWithItem(Player* player)
 		if (IntersectRect(&temp, &player->getBody(), &(*_allItem)[i]->getBody()))
 		{
 			DIALOGMANAGER->addItemLog(player, (*_allItem)[i]);
+
+			INVENTORYMANAGER->addItem((*_allItem)[i]);
+
 			_scene->getItemManager()->removeItem(i);
 		}
 	}

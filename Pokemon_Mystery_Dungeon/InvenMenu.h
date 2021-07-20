@@ -1,17 +1,13 @@
 #pragma once
 #include "DownMenu.h"
-//#include "Item.h"
 
 #define INVENMENU_WIDTH		624 * 2
-#define INVENMENU_HEIGHT	528 * 2
-
-class Item;
+#define INVENMENU_HEIGHT	528
 
 class InvenMenu : public DownMenu
 {
 private:
-	//
-	Item* _invenItem;
+	vector<Item*>* _invItem;
 
 public:
 	virtual HRESULT init();

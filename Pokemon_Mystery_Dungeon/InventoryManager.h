@@ -6,11 +6,12 @@ class item;
 class InventoryManager : public singletonBase<InventoryManager>
 {
 private:
-	typedef vector<item*>			itemList;
-	typedef vector<item*>::iterator	itemListIter; 
+	typedef vector<Item*>			itemList;
+	typedef vector<Item*>::iterator	itemListIter; 
 
 private:
 	itemList		_vItem;
+	//itemListIter	_viItem;
 	itemList		_vItemStorage;
 
 public:
@@ -22,12 +23,14 @@ public:
 
 	void useItem(int num);
 
-	void addItem(item* itemName);
+	void addItem(Item* itemName);
 	void removeItem(int arrNum);
 
-	void addItemStorage(item* itemName);
+	void addItemStorage(Item* itemName);
 	void removeItemStorage(int arrNum);
 
+
 	//get
-	//*인벤토리 벡터 겟함수 추가하기
+	vector<Item*>* getVItem() { return &_vItem; }
+	vector<Item*>* getVitemStorage() { return &_vItemStorage; }
 };

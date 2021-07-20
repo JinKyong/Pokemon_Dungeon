@@ -10,7 +10,7 @@ HRESULT MainMenu::init()
 		"mainMenu_border", L"img/UI/mainMenu/border.png", MAINMENU_WIDTH, MAINMENU_HEIGHT);
 
 	//선택 화살표
-	//_arrow = IMAGEMANAGER->addFrameDImage();
+	_arrow = IMAGEMANAGER->addDImage("selectTri", L"img/UI/mainMenu/tri.png", 10, 22);
 
 	_tuningX = 2 * TILEWIDTH / 3;
 	_tuningY = TILEHEIGHT / 2;
@@ -37,7 +37,7 @@ void MainMenu::update()
 		if (_index == MAINMENU_OPTION_SKILL)
 			UIMANAGER->changeDownMenu("SkillMenu");
 		else if (_index == MAINMENU_OPTION_INVENTORY)
-			UIMANAGER->changeDownMenu("InvenMenu");
+			UIMANAGER->changeDownMenu("invenMenu");
 	}
 
 	if (KEYMANAGER->isOnceKeyDown(KEY_B)) {
@@ -49,7 +49,7 @@ void MainMenu::update()
 void MainMenu::render()
 {
 	DownMenu::render();
-
+	
 	//LEFT(메뉴 목록)
 	printTextLeft();
 
@@ -67,17 +67,19 @@ void MainMenu::printTextLeft()
 	D2D1_RECT_F dest = dRectMake(rc.left + _tuningX + TILEWIDTH, rc.top + _tuningY + TILEHEIGHT / 2,
 		TILEWIDTH * 2, TILEHEIGHT);
 
-	DTDMANAGER->setBrushColor(ColorF(ColorF::White));
 	DTDMANAGER->printText(L"기술", dest, 25);
 
 	dest.top += TILEHEIGHT;
 	dest.bottom += TILEHEIGHT;
 	DTDMANAGER->printText(L"도구", dest, 25);
-	DTDMANAGER->setBrushColor(ColorF(ColorF::Black));
+
+	//화살표
+	_arrow->render(dest.left - 20, dest.top - 40 + _index * TILEHEIGHT);
 }
 
 void MainMenu::printTextRight()
 {
+
 }
 
 void MainMenu::printTextDown()

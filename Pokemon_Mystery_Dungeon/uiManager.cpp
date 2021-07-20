@@ -20,6 +20,7 @@ HRESULT uiManager::init()
 	//아래 메뉴
 	addDownMenu("mainMenu", new MainMenu);
 	addDownMenu("logMenu", new LogMenu);
+	addDownMenu("invenMenu", new InvenMenu);
 	changeDownMenu("logMenu");
 
 	_open = false;

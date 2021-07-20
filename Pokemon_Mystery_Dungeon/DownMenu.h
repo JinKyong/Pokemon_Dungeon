@@ -19,7 +19,7 @@ public:
 	virtual void release() = 0;
 	virtual void update() = 0;
 	virtual void render();
-
+	
 
 	bool getHidden() { return _hidden; }
 	void setHidden(bool hidden) { _hidden = hidden; }

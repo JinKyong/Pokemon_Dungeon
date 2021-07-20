@@ -23,7 +23,7 @@ void InventoryManager::useItem(int num)
 	//210717 º¸·ù
 }
 
-void InventoryManager::addItem(item* itemName)
+void InventoryManager::addItem(Item* itemName)
 {
 	_vItem.push_back(itemName);
 }
@@ -33,7 +33,7 @@ void InventoryManager::removeItem(int arrNum)
 	_vItem.erase(_vItem.begin() + arrNum);
 }
 
-void InventoryManager::addItemStorage(item * itemName)
+void InventoryManager::addItemStorage(Item * itemName)
 {
 	_vItemStorage.push_back(itemName);
 }

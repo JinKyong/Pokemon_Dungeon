@@ -69,7 +69,7 @@ using namespace D2D1;
 #define COLLISIONMANAGER collisionManager::getSingleton()
 #define UIMANAGER uiManager::getSingleton()
 #define EFFECTMANAGER EffectManager::getSingleton()
-#define INVENTORYMANAGER inventoryManager::getSingleton()
+#define INVENTORYMANAGER InventoryManager::getSingleton()
 #define TILEMANAGER tileManager::getSingleton()
 #define TXTDATA txtData::getSingleton()
 #define STREAMMANAGER streamManager::getSingleton()
