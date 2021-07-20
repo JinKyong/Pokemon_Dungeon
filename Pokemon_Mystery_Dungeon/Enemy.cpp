@@ -63,18 +63,20 @@ int Enemy::input()
 	_destX = _x;
 	_destY = _y;
 
-	_playerState = POKEMON_STATE_MOVE;
-	if (_direct == RIGHT)
-		_destX++;
-	else if (_direct == LEFT)
-		_destX--;
-	else if (_direct == UP)
-		_destY--;
-	else if (_direct == DOWN)
-		_destY++;
-	else
-		_playerState = POKEMON_STATE_ATTACK;
-
+	if (COLLISIONMANAGER->collisionInputPlayer(this))
+	{
+		_playerState = POKEMON_STATE_MOVE;
+		if (_direct == RIGHT)
+			_destX++;
+		else if (_direct == LEFT)
+			_destX--;
+		else if (_direct == UP)
+			_destY--;
+		else if (_direct == DOWN)
+			_destY++;
+		else
+			_playerState = POKEMON_STATE_ATTACK;
+	}
 
 	return _playerState;
 }

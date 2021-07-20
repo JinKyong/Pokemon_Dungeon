@@ -20,37 +20,45 @@ void collisionManager::release()
 {
 }
 
-bool collisionManager::collisionInputPlayer(Player * player)
+bool collisionManager::collisionInputPlayer(Player * player)		// User, Enemy 안에 함수 부름
 {
 	vector<PTILE>* tile = TILEMANAGER->getvTile();
 
-	float x = player->getX();					//플레이어 x좌표
-	float y = player->getY();					//플레이어 y좌표
+	int x = player->getX();						//플레이어 x좌표
+	int y = player->getY();						//플레이어 y좌표
 	int direct = player->getDirect();			//방향마다 다음타일 하나만 검사
 
 	int tileWidth = TILEMANAGER->getWidth();	//가로 타일 갯수
 
-	int index[4];
+	int index[4];								//4방향 타일 검출용
+	int cornerIndex[4];							//대각선 타일 검출용
 
-	//대각선 방향 예외처리 어떻게 할지
+	index[0] = x + y * tileWidth + 1;						//오른쪽
+	index[1] = x + y * tileWidth - 1;						//왼쪽
+	index[2] = x + y * tileWidth + tileWidth;				//아래
+	index[3] = x + y * tileWidth - tileWidth;				//위
 
-	//1. 방향별로 인덱스를 어떻게 줘야할지..?
+	cornerIndex[0] = x + 1 + y * tileWidth + tileWidth;		//오른쪽 아래
+	cornerIndex[1] = x - 1 + y * tileWidth + tileWidth;		//왼쪽 아래
+	cornerIndex[2] = x + 1 + y * tileWidth - tileWidth;		//오른쪽 위
+	cornerIndex[3] = x - 1 + y * tileWidth - tileWidth;		//왼쪽 위
 
-	//if ((direct & RIGHT) == RIGHT)		index = tileX + tileY * tileWidth + 1;
-	//if ((direct & LEFT) == LEFT)		index = tileX + tileY * tileWidth - 1;
-	//if ((direct & UP) == UP)			index = tileX + tileY * tileWidth + tileWidth;
-	//if ((direct & DOWN) == DOWN)		index = tileX + tileY * tileWidth - tileWidth;
+	if ((direct & RIGHT) == RIGHT && (*tile)[index[0]]->obj <= OBJ_BLOCK8)	return false;
+	if ((direct & LEFT) == LEFT && (*tile)[index[1]]->obj <= OBJ_BLOCK8)	return false;
+	if ((direct & DOWN) == DOWN && (*tile)[index[2]]->obj <= OBJ_BLOCK8)	return false;
+	if ((direct & UP) == UP && (*tile)[index[3]]->obj <= OBJ_BLOCK8)		return false;
 
-	// 이렇게 방향을 줬더니 멤버 이니셜라이즈를 선언하지 않았다고 나오면서 터짐
+	if (((direct & RIGHT) == RIGHT && (direct & DOWN) == DOWN) &&
+		(*tile)[cornerIndex[0]]->obj <= OBJ_BLOCK8) return false;
 
+	if (((direct & LEFT) == LEFT && (direct & DOWN) == DOWN) &&
+		(*tile)[cornerIndex[1]]->obj <= OBJ_BLOCK8) return false;
 
-	index[0] = x + y * tileWidth + 1;
-	index[1] = x + y * tileWidth - 1;
-	index[2] = x + y * tileWidth + tileWidth;
-	index[3] = x + y * tileWidth - tileWidth;
+	if (((direct & RIGHT) == RIGHT && (direct & UP) == UP) &&
+		(*tile)[cornerIndex[2]]->obj <= OBJ_BLOCK8) return false;
 
-	if ((*tile)[index[0]]->obj <= OBJ_BLOCK8)
-		return false;
+	if (((direct & LEFT) == LEFT && (direct & UP) == UP) &&
+		(*tile)[cornerIndex[3]]->obj <= OBJ_BLOCK8) return false;
 
 	return true;
 

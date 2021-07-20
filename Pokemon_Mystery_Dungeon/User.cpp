@@ -82,7 +82,7 @@ void User::controlKey()
 
 	if (KEYMANAGER->isStayKeyDown(KEY_RIGHT)) {
 		_direct |= RIGHT;
-		if (COLLISIONMANAGER->collisionInputPlayer(this))			//2. 저 불값을 어떻게 키 전부 적용해서 사용할지..?
+		if (COLLISIONMANAGER->collisionInputPlayer(this))
 		{
 			_destX++;
 
@@ -94,30 +94,39 @@ void User::controlKey()
 	}
 	else if (KEYMANAGER->isStayKeyDown(KEY_LEFT)) {
 		_direct |= LEFT;
-		_destX--;
+		if (COLLISIONMANAGER->collisionInputPlayer(this))
+		{
+			_destX--;
 
-		if (KEYMANAGER->isStayKeyDown(KEY_L1))
-			_pokemon->changeDirect(_direct);
-		else
-			_playerState = POKEMON_STATE_MOVE;
+			if (KEYMANAGER->isStayKeyDown(KEY_L1))
+				_pokemon->changeDirect(_direct);
+			else
+				_playerState = POKEMON_STATE_MOVE;
+		}
 	}
 	if (KEYMANAGER->isStayKeyDown(KEY_UP)) {
 		_direct |= UP;
-		_destY--;
+		if (COLLISIONMANAGER->collisionInputPlayer(this))
+		{
+			_destY--;
 
-		if (KEYMANAGER->isStayKeyDown(KEY_L1))
-			_pokemon->changeDirect(_direct);
-		else
-			_playerState = POKEMON_STATE_MOVE;
+			if (KEYMANAGER->isStayKeyDown(KEY_L1))
+				_pokemon->changeDirect(_direct);
+			else
+				_playerState = POKEMON_STATE_MOVE;
+		}
 	}
 	else if (KEYMANAGER->isStayKeyDown(KEY_DOWN)) {
 		_direct |= DOWN;
-		_destY++;
+		if (COLLISIONMANAGER->collisionInputPlayer(this))
+		{
+			_destY++;
 
-		if (KEYMANAGER->isStayKeyDown(KEY_L1))
-			_pokemon->changeDirect(_direct);
-		else
-			_playerState = POKEMON_STATE_MOVE;
+			if (KEYMANAGER->isStayKeyDown(KEY_L1))
+				_pokemon->changeDirect(_direct);
+			else
+				_playerState = POKEMON_STATE_MOVE;
+		}
 	}
 
 	if (KEYMANAGER->isOnceKeyDown('X')) {
