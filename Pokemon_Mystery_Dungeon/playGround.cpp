@@ -54,7 +54,6 @@ void playGround::update()
 	}
 
 	SCENEMANAGER->update();
-	UIMANAGER->update();
 }
 
 

@@ -33,7 +33,7 @@
 #include "collisionManager.h"
 #include "uiManager.h"
 #include "EffectManager.h"
-#include "inventoryManager.h"
+#include "InventoryManager.h"
 #include "tileManager.h"
 #include "txtData.h"
 #include "streamManager.h"

@@ -86,6 +86,25 @@ void turnManager::render()
 	(*player)->render();
 }
 
+void turnManager::randomSetting()
+{
+	vector<RECT>* room = TILEMANAGER->getvRoom();
+
+	int index = RND->getInt(room->size());
+
+	float x = RND->getFromIntTo((*room)[index].left, (*room)[index].right);
+	float y = RND->getFromIntTo((*room)[index].top, (*room)[index].bottom);
+
+	playerIter player = _allPlayerList.begin();
+
+	for (; player != _allPlayerList.end();) {
+		(*player)->init(x, y);
+		++player;
+	}
+
+
+}
+
 void turnManager::inputFromPlayer()
 {
 	//(턴이 소모되는)input이 있으면 order++

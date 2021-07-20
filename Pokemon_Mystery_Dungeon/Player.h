@@ -1,6 +1,9 @@
 #pragma once
 #include "Pokemon.h"
 #include "KeyNDirect.h"
+#include <vector>
+
+class Atile;
 
 enum PLAYER_TYPE {
 	PLAYER_TYPE_USER,
@@ -21,6 +24,7 @@ protected:
 
 	//좌표
 	float _x, _y;
+	float _initX, _initY;
 	float _destX, _destY;
 	int _direct;
 	RECT _body;
@@ -43,8 +47,11 @@ protected:
 	//맵 상태(마을 또는 던전)
 	bool _inDungeon;
 
+	vector<Atile*> _pathList;
+
 public:
-	virtual HRESULT init(int pokemonNum) = 0;
+	virtual HRESULT init(int pokemonNum);
+	virtual HRESULT init(float x, float y);
 	virtual void release() = 0;
 	virtual void update() = 0;
 	virtual void render() = 0;
@@ -85,4 +92,7 @@ public:
 	RECT getBody() { return _body; }
 
 	int getDirect() { return _direct; }
+
+	vector<Atile*> getPathList() { return _pathList; }
+	void setPathList(vector<Atile*> pathList) { _pathList = pathList; }
 };

@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Atile.h" />
     <ClInclude Include="Blastoise.h" />
     <ClInclude Include="Bulbasaur.h" />
     <ClInclude Include="cameraManager.h" />
@@ -207,6 +208,9 @@
     <ClInclude Include="mapToolScene.h" />
     <ClInclude Include="MenuHeader.h" />
     <ClInclude Include="MetalClaw.h" />
+    <ClInclude Include="PathFinder.h" />
+    <ClInclude Include="Pattern.h" />
+    <ClInclude Include="PatternPathFinder.h" />
     <ClInclude Include="Pichu.h" />
     <ClInclude Include="Pikachu.h" />
     <ClInclude Include="Player.h" />
@@ -243,6 +247,7 @@
     <ClInclude Include="testScene.h" />
     <ClInclude Include="ThrowItem.h" />
     <ClInclude Include="ThunderFang.h" />
+    <ClInclude Include="tileInfo.h" />
     <ClInclude Include="tileManager.h" />
     <ClInclude Include="timeManager.h" />
     <ClInclude Include="timer.h" />
@@ -258,6 +263,7 @@
     <ClInclude Include="Wartortle.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Atile.cpp" />
     <ClCompile Include="Blastoise.cpp" />
     <ClCompile Include="Bulbasaur.cpp" />
     <ClCompile Include="cameraManager.cpp" />
@@ -315,6 +321,9 @@
     <ClCompile Include="maptool.cpp" />
     <ClCompile Include="mapToolScene.cpp" />
     <ClCompile Include="MetalClaw.cpp" />
+    <ClCompile Include="PathFinder.cpp" />
+    <ClCompile Include="Pattern.cpp" />
+    <ClCompile Include="PatternPathFinder.cpp" />
     <ClCompile Include="Pichu.cpp" />
     <ClCompile Include="Pikachu.cpp" />
     <ClCompile Include="Player.cpp" />

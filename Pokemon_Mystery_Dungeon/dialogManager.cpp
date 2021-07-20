@@ -102,6 +102,7 @@ void dialogManager::render()
 	lstrcatW(text, TXTDATA->loadDataString(_currentFileName,
 		&_storyMetaData[_metaDataNum][0], tmp, _size));
 
+
 	//인스턴스 해제
 	if (pokeNum > 0)
 		SAFE_DELETE(pokemon);

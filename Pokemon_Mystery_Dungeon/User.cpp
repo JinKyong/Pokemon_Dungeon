@@ -3,22 +3,11 @@
 
 HRESULT User::init(int pokemonNum)
 {
+	Player::init(pokemonNum);
+
 	//플레이어 타입
 	_playerType = PLAYER_TYPE_USER;
 	_playerState = POKEMON_STATE_DEFAULT;
-
-	//포켓몬
-	_num = pokemonNum;
-	_pokemon = POKEDEX->makePokemon(_num);
-	_pokemon->init();
-
-	//좌표
-	_x = 25;
-	_y = 17;
-	_destX = _x;
-	_destY = _y;
-	_body = RectMakeCenter(_x * TILEWIDTH + TILEWIDTH / 2, _y * TILEHEIGHT + TILEHEIGHT / 2,
-		TILEWIDTH, TILEHEIGHT);
 
 	//스탯
 	//계산해서 넣음 포켓몬 꺼
@@ -34,7 +23,7 @@ HRESULT User::init(int pokemonNum)
 	_skill[3] = SKILLDEX->makeSkill(4);
 	_skill[3]->init();
 
-	_inDungeon = false;
+	//_inDungeon = false;
 
 	return S_OK;
 }
@@ -77,8 +66,8 @@ int User::input()
 void User::controlKey()
 {
 	_direct = 0;
-	_destX = _x;
-	_destY = _y;
+	_initX = _destX = _x;
+	_initY = _destY = _y;
 
 	if (KEYMANAGER->isStayKeyDown(KEY_RIGHT)) {
 		_direct |= RIGHT;

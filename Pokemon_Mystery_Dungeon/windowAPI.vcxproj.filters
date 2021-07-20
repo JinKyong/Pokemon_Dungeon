@@ -133,6 +133,15 @@
     <Filter Include="playGround\UI\Menu\DownMenu\base">
       <UniqueIdentifier>{455a5c6e-d52d-4f39-a8c2-e0cdafedd487}</UniqueIdentifier>
     </Filter>
+    <Filter Include="playGround\Pokémon\Player\Pattern">
+      <UniqueIdentifier>{660d9a65-2091-4d63-ac0a-a2dc055de1cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="playGround\Pokémon\Player\Pattern\base">
+      <UniqueIdentifier>{e1e50deb-594e-481a-a658-18a0c1c0dba2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="playGround\Pokémon\Player\Pattern\PathFinder%28A%2a%29">
+      <UniqueIdentifier>{02a49474-9802-45c0-b850-0c599782b3fc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -462,6 +471,21 @@
     <ClInclude Include="txtData.h">
       <Filter>2DGameFramework\Manager</Filter>
     </ClInclude>
+    <ClInclude Include="tileInfo.h">
+      <Filter>playGround\Maptool\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Pattern.h">
+      <Filter>playGround\Pokémon\Player\Pattern\base</Filter>
+    </ClInclude>
+    <ClInclude Include="Atile.h">
+      <Filter>playGround\Pokémon\Player\Pattern\PathFinder%28A%2a%29</Filter>
+    </ClInclude>
+    <ClInclude Include="PathFinder.h">
+      <Filter>playGround\Pokémon\Player\Pattern\PathFinder%28A%2a%29</Filter>
+    </ClInclude>
+    <ClInclude Include="PatternPathFinder.h">
+      <Filter>playGround\Pokémon\Player\Pattern\PathFinder%28A%2a%29</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -763,6 +787,18 @@
     </ClCompile>
     <ClCompile Include="txtData.cpp">
       <Filter>2DGameFramework\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Pattern.cpp">
+      <Filter>playGround\Pokémon\Player\Pattern\base</Filter>
+    </ClCompile>
+    <ClCompile Include="Atile.cpp">
+      <Filter>playGround\Pokémon\Player\Pattern\PathFinder%28A%2a%29</Filter>
+    </ClCompile>
+    <ClCompile Include="PathFinder.cpp">
+      <Filter>playGround\Pokémon\Player\Pattern\PathFinder%28A%2a%29</Filter>
+    </ClCompile>
+    <ClCompile Include="PatternPathFinder.cpp">
+      <Filter>playGround\Pokémon\Player\Pattern\PathFinder%28A%2a%29</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

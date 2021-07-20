@@ -27,6 +27,10 @@ public:
 	void update();
 	void render();
 
+	void randomSetting();
+
+
+	//ют╥б
 	void inputFromPlayer();
 
 	void addAllPlayer(Player* player);
