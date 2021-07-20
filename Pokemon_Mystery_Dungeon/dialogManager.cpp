@@ -6,6 +6,8 @@ HRESULT dialogManager::init()
 {
 	_back = IMAGEMANAGER->addDImage("dialog_back", L"img/ui/dialog/back.png", 687, 562);
 	_border = IMAGEMANAGER->addDImage("dialog_border", L"img/ui/dialog/border.png", 687, 562);
+	_leftBorder = IMAGEMANAGER->addDImage("dialog_left_border", L"img/ui/dialog/left_border.png", 687, 562);
+	_rightBorder = IMAGEMANAGER->addDImage("dialog_right_border", L"img/ui/dialog/right_border.png", 687, 562);
 
 	_currentFileName = NULL;
 
@@ -44,6 +46,7 @@ void dialogManager::update()
 
 void dialogManager::render()
 {
+	//문자크기 조절
 	_count += TIMEMANAGER->getElapsedTime();
 	if (_count >= 0.1) {
 		if (_size < 128)
@@ -51,25 +54,68 @@ void dialogManager::render()
 		_count = 0;
 	}
 
-	WCHAR tmp[128];
-	swprintf_s(tmp, L"%d", _scriptNum);
 
+	//화면기준으로 render
 	D2D1_RECT_F screen = CAMERAMANAGER->getScreen();
 	_back->render(screen.left, screen.top);
 	_border->render(screen.left, screen.top);
 
-	//초상화도 나와야함
 
-	//출력위치 조정	
-	DTDMANAGER->printText(TXTDATA->loadDataString(_currentFileName, &_storyMetaData[_metaDataNum][0], tmp, _size),
-		screen.left + 344, screen.top + 374, 490, 120, 30);
+	//포켓몬 정보 가져오기
+	int pokeNum = _wtoi(_storyMetaData[_metaDataNum]);
+	Pokemon* pokemon;
+	switch (pokeNum) {
+	case 0:		//player
+		pokemon = TURNMANAGER->getAllPlayer()->at(0)->getPokemon();
+		break;
+	case -1:	//team
+		pokemon = POKEDEX->makePokemon(pokeNum);
+		pokemon->init();
+		break;
+	default:
+		pokemon = POKEDEX->makePokemon(pokeNum);
+		pokemon->init();
+		break;
+	}
+
+
+	//초상화 출력
+	if (!wcscmp(_storyMetaData[_metaDataNum + 1], L"LEFT")) {
+		//왼쪽에 초상화
+		pokemon->getPortrait()->render(screen.left + 100, screen.top + 125, 0, 0, 120, 120);
+		_leftBorder->render(screen.left, screen.top + 25);
+	}
+	else if (!wcscmp(_storyMetaData[_metaDataNum + 1], L"RIGHT")) {
+		//오른쪽에 초상화
+		DTDMANAGER->setReverse(0, (screen.right - 220) * 2 + 120, 0);
+		pokemon->getPortrait()->render(screen.right - 220, screen.top + 125, 0, 0, 120, 120);
+		_rightBorder->render(screen.left, screen.top + 25);
+		DTDMANAGER->resetTransform();
+	}
+
+
+	//텍스트 불러오기
+	WCHAR tmp[128];
+	swprintf_s(tmp, L"%d", _scriptNum);
+	WCHAR text[128];
+	swprintf_s(text, L"%s: ", pokemon->getName().c_str());
+	lstrcatW(text, TXTDATA->loadDataString(_currentFileName,
+		&_storyMetaData[_metaDataNum][0], tmp, _size));
+
+	//인스턴스 해제
+	if (pokeNum > 0)
+		SAFE_DELETE(pokemon);
+
+
+	//출력위치 조정
+	DTDMANAGER->printText(text, screen.left + 344, screen.top + 374, 490, 120, 30);
 }
 
 void dialogManager::loadMetaData(LPCWCHAR fileName)
 {
 	//메타데이터 읽어와서 벡터에 넣어주기
 	_currentFileName = fileName;
-	
+
 	WCHAR dir[256];
 	ZeroMemory(dir, sizeof(dir));
 	swprintf_s(dir, L"%s.txt", _currentFileName);

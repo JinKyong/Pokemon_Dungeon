@@ -82,6 +82,7 @@ void User::controlKey()
 
 	if (KEYMANAGER->isStayKeyDown(KEY_RIGHT)) {
 		_direct |= RIGHT;
+
 		if (COLLISIONMANAGER->collisionInputPlayer(this))
 		{
 			_destX++;
@@ -91,9 +92,12 @@ void User::controlKey()
 			else
 				_playerState = POKEMON_STATE_MOVE;
 		}
+		else
+			_pokemon->changeDirect(_direct);
 	}
 	else if (KEYMANAGER->isStayKeyDown(KEY_LEFT)) {
 		_direct |= LEFT;
+
 		if (COLLISIONMANAGER->collisionInputPlayer(this))
 		{
 			_destX--;
@@ -103,9 +107,12 @@ void User::controlKey()
 			else
 				_playerState = POKEMON_STATE_MOVE;
 		}
+		else
+			_pokemon->changeDirect(_direct);
 	}
 	if (KEYMANAGER->isStayKeyDown(KEY_UP)) {
 		_direct |= UP;
+
 		if (COLLISIONMANAGER->collisionInputPlayer(this))
 		{
 			_destY--;
@@ -115,9 +122,12 @@ void User::controlKey()
 			else
 				_playerState = POKEMON_STATE_MOVE;
 		}
+		else
+			_pokemon->changeDirect(_direct);
 	}
 	else if (KEYMANAGER->isStayKeyDown(KEY_DOWN)) {
 		_direct |= DOWN;
+
 		if (COLLISIONMANAGER->collisionInputPlayer(this))
 		{
 			_destY++;
@@ -127,6 +137,8 @@ void User::controlKey()
 			else
 				_playerState = POKEMON_STATE_MOVE;
 		}
+		else
+			_pokemon->changeDirect(_direct);
 	}
 
 	if (KEYMANAGER->isOnceKeyDown('X')) {

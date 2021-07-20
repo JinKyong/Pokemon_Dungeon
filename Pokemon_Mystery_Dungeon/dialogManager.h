@@ -18,6 +18,8 @@ private:
 	//대화창
 	dImage* _back;
 	dImage* _border;
+	dImage* _leftBorder;
+	dImage* _rightBorder;
 
 
 	//대화 log가 담기는 vector

@@ -100,6 +100,8 @@ void tileManager::setup()
 	}
 
 	int i = 0;
+	vector<char>::iterator _viChar;
+
 	for (_viChar=_vChar.begin(); _viChar != _vChar.end(); ++_viChar,i++)
 		{
 			if ((*_viChar) == Unused)
@@ -244,11 +246,12 @@ void tileManager::dungeon(int width, int height)
 {
 	_vExit.clear();
 	_vRoom.clear();
-	for (int i = 0; i < width*height; ++i)
+	for (int i = 0; i < width * height; ++i)
 	{
 		_vChar.push_back(Unused);
 	}
-	generate((width+height) / 15);
+
+	generate(30);
 }
 
 void tileManager::generate(int maxFeatures)
@@ -288,9 +291,9 @@ bool tileManager::createFeature()
 			break;
 
 		// choose a random side of a random room or corridor
-		int r = RND->getInt(_vExit.size());
-		int x = RND->getFromIntTo(_vExit[r].x-1, _vExit[r].x + _vExit[r].width);
-		int y = RND->getFromIntTo(_vExit[r].y-1, _vExit[r].y + _vExit[r].height);
+		int index = RND->getInt(_vExit.size());
+		int x = RND->getFromIntTo(_vExit[index].left - 1, _vExit[index].right);
+		int y = RND->getFromIntTo(_vExit[index].top - 1, _vExit[index].bottom);
 
 		// north, south, west, east
 		//j= 방향, 방향에 따른 방/복도 생성
@@ -298,7 +301,7 @@ bool tileManager::createFeature()
 		{
 			if (createFeature(x, y, static_cast<Direction>(j)))
 			{
-				_vExit.erase(_vExit.begin() + r);
+				//_vExit.erase(_vExit.begin() + r);
 				return true;
 			}
 		}
@@ -310,7 +313,7 @@ bool tileManager::createFeature()
 bool tileManager::createFeature(int x, int y, Direction dir)
 {
 	//방 생성 확률
-	static const int roomChance = 50; // corridorChance = 100 - roomChance
+	static const int roomChance = 20; // corridorChance = 100 - roomChance
 
 	int dx = 0;
 	int dy = 0;
@@ -356,154 +359,170 @@ bool tileManager::createFeature(int x, int y, Direction dir)
 
 bool tileManager::makeRoom(int x, int y, Direction dir, bool firstRoom)
 {
-	static const int minRoomSize = 2;
-	static const int maxRoomSize = 5;
+	static const int minRoomSize = 7;
+	static const int maxRoomSize = 15;
 
-	tagRect room;
-	room.width = RND->getFromIntTo(minRoomSize, maxRoomSize);
-	room.height = RND->getFromIntTo(minRoomSize, maxRoomSize);
+	
+	//방 생성
+	int width, height;
+	int tmpX, tmpY;
+
+	width = RND->getFromIntTo(minRoomSize, maxRoomSize);
+	height = RND->getFromIntTo(minRoomSize, maxRoomSize);
 
 	if (dir == North)
 	{
-		room.x = x - room.width / 2;
-		room.y = y - room.height;
+		tmpX = x - RND->getInt(width);
+		tmpY = y - height;
 	}
 
 	else if (dir == South)
 	{
-		room.x = x - room.width / 2;
-		room.y = y + 1;
+		tmpX = x - RND->getInt(width);
+		tmpY = y + 1;
 	}
 
 	else if (dir == West)
 	{
-		room.x = x - room.width;
-		room.y = y - room.height / 2;
+		tmpX = x - width;
+		tmpY = y - RND->getInt(height);
 	}
 
 	else if (dir == East)
 	{
-		room.x = x + 1;
-		room.y = y - room.height / 2;
+		tmpX = x + 1;
+		tmpY = y - RND->getInt(height);
 	}
+	RECT room = RectMake(tmpX, tmpY, width, height);
 
+
+	//방이 생성되면
 	if (placeRect(room, Floor))
 	{
 		_vRoom.emplace_back(room);
 
-		if (dir!= South) // north side
-			_vExit.emplace_back(tagRect{ room.x, room.y - 1, RND->getInt(room.width) + 1, 1 });
+		if (dir != South) // north side
+			_vExit.emplace_back(RECT{ RND->getFromIntTo(room.left, room.right), room.top - 1, room.right, room.top });
 		 if (dir != North) // south side
-			_vExit.emplace_back(tagRect{ room.x, room.y + room.height, room.width, 1 });
+			_vExit.emplace_back(RECT{ RND->getFromIntTo(room.left, room.right), room.bottom, room.right, room.bottom + 1 });
 		 if (dir != East) // west side
-			_vExit.emplace_back(tagRect{ room.x - 1, room.y, 1, room.height });
+			_vExit.emplace_back(RECT{ room.left - 1, RND->getFromIntTo(room.top, room.bottom), room.left, room.bottom });
 		 if (dir != West) // east side
-			_vExit.emplace_back(tagRect{ room.x + room.width, room.y, 1, room.height });
+			_vExit.emplace_back(RECT{ room.right, RND->getFromIntTo(room.top, room.bottom), room.right + 1, room.bottom });
 
 		return true;
 	}
+
 	return false;
 }
 
 bool tileManager::makeCorridor(int x, int y, Direction dir)
 {
-	static const int minCorridorLength = 5;
-	static const int maxCorridorLength = 8;
+	static const int minCorridorLength = 8;
+	static const int maxCorridorLength = 15;
 
-	tagRect corridor;
-	corridor.x = x;
-	corridor.y = y;
+	int tmpX, tmpY;
+	tmpX = x;
+	tmpY = y;
+
+	int width, height;
+
 	//확률로 왼/오 윗/아래 설정
 	bool k = RND->getBool();
 
+
+	//복도 생성
 	if (k) // horizontal corridor
 	{
-		corridor.width = RND->getFromIntTo(minCorridorLength, maxCorridorLength);
-		corridor.height = 1;
+		width = RND->getFromIntTo(minCorridorLength, maxCorridorLength);
+		height = 1;
 
 		if (dir == North)
 		{
-			corridor.y = y - 1;
+			tmpY = y - 1;
 			k = RND->getBool();
 			if (k) // west
-				corridor.x = x - corridor.width + 1;
+				tmpX = x - width + 1;
 		}
 
 		else if (dir == South)
 		{
-			corridor.y = y + 1;
+			tmpY = y + 1;
 			k = RND->getBool();
 			if (k) // west
-				corridor.x = x - corridor.width + 1;
+				tmpX = x - width + 1;
 		}
 
 		else if (dir == West)
-			corridor.x = x - corridor.width;
+			tmpX = x - width;
 
 		else if (dir == East)
-			corridor.x = x + 1;
+			tmpX = x + 1;
 	}
 
 	else // vertical corridor
 	{
-		corridor.width = 1;
-		corridor.height = RND->getFromIntTo(minCorridorLength, maxCorridorLength);
+		width = 1;
+		height = RND->getFromIntTo(minCorridorLength, maxCorridorLength);
 
 		if (dir == North)
-			corridor.y = y - corridor.height;
+			tmpY = y - height;
 
 		else if (dir == South)
-			corridor.y = y + 1;
+			tmpY = y + 1;
 
 		else if (dir == West)
 		{
-			corridor.x = x - 1;
+			tmpX = x - 1;
 			k = RND->getBool();
 			if (k) // north
-				corridor.y = y - corridor.height + 1;
+				tmpY = y - height + 1;
 		}
 
 		else if (dir == East)
 		{
-			corridor.x = x + 1;
+			tmpX = x + 1;
 			k = RND->getBool();
 			if (k) // north
-				corridor.y = y - corridor.height + 1;
+				tmpY = y - height + 1;
 		}
 	}
+	RECT corridor = RectMake(tmpX, tmpY, width, height);
 
+
+	//복도가 생성되면 출구 생성
 	if (placeRect(corridor, Corridor))
 	{
-		if (dir != South && corridor.width != 1) // north side
-			_vExit.emplace_back(tagRect{ corridor.x, corridor.y - 1, corridor.width, 1 });
-		if (dir != North && corridor.width != 1) // south side
-			_vExit.emplace_back(tagRect{ corridor.x, corridor.y + corridor.height, corridor.width, 1 });
-		if (dir != East && corridor.height != 1) // west side
-			_vExit.emplace_back(tagRect{ corridor.x - 1, corridor.y, 1, corridor.height });
-		if (dir != West && corridor.height != 1) // east side
-			_vExit.emplace_back(tagRect{ corridor.x + corridor.width, corridor.y, 1, corridor.height });
+		if (dir != South && width != 1) // north side
+			_vExit.emplace_back(RECT{ corridor.left, corridor.top - 1, corridor.left + 1, corridor.top });
+		if (dir != North && width != 1) // south side
+			_vExit.emplace_back(RECT{ corridor.left, corridor.bottom, corridor.left + 1, corridor.bottom + 1 });
+		if (dir != East && height != 1) // west side
+			_vExit.emplace_back(RECT{ corridor.left - 1, corridor.top, corridor.left, corridor.top + 1 });
+		if (dir != West && height != 1) // east side
+			_vExit.emplace_back(RECT{ corridor.right, corridor.top, corridor.right + 1, corridor.top + 1 });
 
 		return true;
 	}
 	return false;
 }
 
-bool tileManager::placeRect(const tagRect & tag, char Char)
+bool tileManager::placeRect(RECT rc, char Char)
 {
-	if (tag.x < 1 || tag.y < 1 || tag.x + tag.width > _width - 1 || tag.y + tag.height > _height - 1)
+	if (rc.left < 1 || rc.top < 1 || rc.right > _width - 1 || rc.bottom > _height - 1)
 		return false;
 
-	for (int y = tag.y; y < tag.y + tag.height; ++y)
-		for (int x = tag.x; x < tag.x + tag.width; ++x)
+	for (int y = rc.top; y < rc.bottom; ++y)
+		for (int x = rc.left; x < rc.right; ++x)
 		{
 			if (getChar(x, y) != Unused)
 				return false; // the area already used
 		}
 
-	for (int y = tag.y - 1; y < tag.y + tag.height + 1; ++y)
-		for (int x = tag.x - 1; x < tag.x + tag.width + 1; ++x)
+	for (int y = rc.top - 1; y <= rc.bottom; ++y)
+		for (int x = rc.left - 1; x <= rc.right; ++x)
 		{
-			if (x == tag.x - 1 || y == tag.y - 1 || x == tag.x + tag.width || y == tag.y + tag.height)
+			if (x == rc.left - 1 || y == rc.top - 1 || x == rc.right || y == rc.bottom)
 				setChar(x, y, Wall);
 			else
 				setChar(x, y, Char);
@@ -517,16 +536,13 @@ bool tileManager::placeObject(char Char)
 	if (_vRoom.empty())
 		return false;
 
-	int r = RND->getInt(_vRoom.size()); // choose a random room
-	int x = RND->getFromIntTo(_vRoom[r].x + 1, _vRoom[r].x + _vRoom[r].width);
-	int y = RND->getFromIntTo(_vRoom[r].y, _vRoom[r].y + _vRoom[r].height);
+	int index = RND->getInt(_vRoom.size()); // choose a random room
+	int x = RND->getFromIntTo(_vRoom[index].left, _vRoom[index].right);
+	int y = RND->getFromIntTo(_vRoom[index].top, _vRoom[index].bottom);
 
 	if (getChar(x, y) == Floor)
 	{
 		setChar(x, y, Char);
-
-		// place one object in one room (optional)
-		_vRoom.erase(_vRoom.begin() + r);
 
 		return true;
 	}

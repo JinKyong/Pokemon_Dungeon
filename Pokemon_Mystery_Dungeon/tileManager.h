@@ -104,28 +104,17 @@ struct tagCurrentTile
 	int x;
 	int y;
 };
-typedef struct tagRect
-{
-	int x, y;
-	int width, height;
-};
-
 
 class tileManager: public singletonBase<tileManager>
 {
 private:
 	vector<tagTile*>					_vTile;
-	vector<tagTile*>::iterator			_viTile;
 	vector<tagSampleTile*>				_vSampleTile;
-	//vector<tagSampleTile*>::iterator	_viSampleTile;
 	vector<DWORD*>						_vAttribute;
-	//vector<DWORD*>::iterator			_viAttribute;
+
 	vector<char>						_vChar;
-	vector<char>::iterator				_viChar;
-	vector<tagRect>						_vRoom;
-	vector<tagRect>::iterator			_viRoom;
-	vector<tagRect>						_vExit;
-	vector<tagRect>::iterator			_viExit;
+	vector<RECT>						_vRoom;
+	vector<RECT>						_vExit;
 
 	dImage* _Mapbase;
 	dImage*	_Obbase;
@@ -160,7 +149,7 @@ public:
 	bool createFeature(int x, int y, Direction dir);
 	bool makeRoom(int x, int y, Direction dir, bool firstRoom = false);
 	bool makeCorridor(int x, int y, Direction dir);
-	bool placeRect(const tagRect& tag, char Char);
+	bool placeRect(RECT rc, char Char);
 	bool placeObject(char Char);
 	   
 	TERRAIN terrainSelect(int frameX, int frameY);

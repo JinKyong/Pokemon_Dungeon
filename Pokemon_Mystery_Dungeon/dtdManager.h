@@ -40,10 +40,10 @@ public:
 	void printText(LPCWCHAR text, D2D1_RECT_F rc);
 	void printText(LPCWCHAR text, D2D1_RECT_F rc, float size);
 
-	//회전
-	void setRotate(float angle, float x, float y);
-	//크기조절
-	void setScale(float sizeX, float sizeY, float x, float y);
+	//각종 변환
+	void setRotate(float angle, float x, float y);					//회전
+	void setReverse(int axis, float x, float y);					//반전
+	void setScale(float sizeX, float sizeY, float x, float y);		//크기조절
 	//리셋
 	void resetTransform();
 

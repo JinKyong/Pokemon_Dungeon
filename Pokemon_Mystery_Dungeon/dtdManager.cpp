@@ -223,6 +223,26 @@ void dtdManager::setRotate(float angle, float x, float y)
 	_dBitRenderTarget->SetTransform(Matrix3x2F::Rotation(angle, Point2F(x, y)));
 }
 
+void dtdManager::setReverse(int axis, float offsetX, float offsetY)
+{
+	//axis == 0 y축 (좌우 반전)
+	//axis == 1 x축 (상하 반전)
+
+	D2D1_MATRIX_3X2_F m;
+
+	if (axis == 0) {
+		m._11 = -1; m._12 = 0;
+		m._21 = 0; m._22 = 1;
+	}
+	else if (axis == 1) {
+		m._11 = 1; m._12 = 0;
+		m._21 = 0; m._22 = -1;
+	}
+	m._31 = offsetX; m._32 = offsetY;
+
+	_dBitRenderTarget->SetTransform(m);
+}
+
 void dtdManager::setScale(float sizeX, float sizeY, float x, float y)
 {
 	_dBitRenderTarget->SetTransform(Matrix3x2F::Scale(SizeF(sizeX, sizeY), Point2F(x, y)));
