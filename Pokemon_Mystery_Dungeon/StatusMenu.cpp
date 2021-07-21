@@ -33,17 +33,17 @@ void StatusMenu::render()
 	float width = _screen.right - _screen.left;
 	float height = _screen.bottom - _screen.top;
 
-	vector<Player*>* _teamList = TURNMANAGER->getAllPlayer();
+	vector<Player*> _teamList = TURNMANAGER->getAllPlayer();
 	int i = 0;
 
 	D2D1_RECT_F rc = dRectMake(_screen.left + 5, _screen.top + 5, width / 2 - 10, height / 2 - 10);
 	D2D1_RECT_F port = dRectMake(rc.left + 12, rc.top + 15, 60, 65);
 
-	if (i >= _teamList->size())
+	if (i >= _teamList.size())
 		DTDMANAGER->getRenderTarget()->DrawBitmap(_nullStatusBox->getBitmap(), rc);
-	else if ((*_teamList)[i]->getPlayerType() <= PLAYER_TYPE_TEAM) {
+	else if (_teamList[i]->getPlayerType() <= PLAYER_TYPE_TEAM) {
 		DTDMANAGER->getRenderTarget()->DrawBitmap(_baseStatusBox->getBitmap(), rc);
-		DTDMANAGER->getRenderTarget()->DrawBitmap((*_teamList)[i]->getPokemon()->getPortrait()->getBitmap(), port);
+		DTDMANAGER->getRenderTarget()->DrawBitmap(_teamList[i]->getPokemon()->getPortrait()->getBitmap(), port);
 	}
 	else
 		DTDMANAGER->getRenderTarget()->DrawBitmap(_nullStatusBox->getBitmap(), rc);
@@ -52,11 +52,11 @@ void StatusMenu::render()
 	rc.left += width / 2;
 	rc.right += width / 2;
 	port = dRectMake(rc.left + 12, rc.top + 15, 60, 65);
-	if (i >= _teamList->size())
+	if (i >= _teamList.size())
 		DTDMANAGER->getRenderTarget()->DrawBitmap(_nullStatusBox->getBitmap(), rc);
-	else if ((*_teamList)[i]->getPlayerType() <= PLAYER_TYPE_TEAM) {
+	else if (_teamList[i]->getPlayerType() <= PLAYER_TYPE_TEAM) {
 		DTDMANAGER->getRenderTarget()->DrawBitmap(_baseStatusBox->getBitmap(), rc);
-		DTDMANAGER->getRenderTarget()->DrawBitmap((*_teamList)[i]->getPokemon()->getPortrait()->getBitmap(), port);
+		DTDMANAGER->getRenderTarget()->DrawBitmap(_teamList[i]->getPokemon()->getPortrait()->getBitmap(), port);
 	}
 	else
 		DTDMANAGER->getRenderTarget()->DrawBitmap(_nullStatusBox->getBitmap(), rc);
@@ -67,11 +67,11 @@ void StatusMenu::render()
 	rc.top += height / 2;
 	rc.bottom += height / 2;
 	port = dRectMake(rc.left + 12, rc.top + 15, 60, 65);
-	if (i >= _teamList->size())
+	if (i >= _teamList.size())
 		DTDMANAGER->getRenderTarget()->DrawBitmap(_nullStatusBox->getBitmap(), rc);
-	else if ((*_teamList)[i]->getPlayerType() <= PLAYER_TYPE_TEAM) {
+	else if (_teamList[i]->getPlayerType() <= PLAYER_TYPE_TEAM) {
 		DTDMANAGER->getRenderTarget()->DrawBitmap(_baseStatusBox->getBitmap(), rc);
-		DTDMANAGER->getRenderTarget()->DrawBitmap((*_teamList)[i]->getPokemon()->getPortrait()->getBitmap(), port);
+		DTDMANAGER->getRenderTarget()->DrawBitmap(_teamList[i]->getPokemon()->getPortrait()->getBitmap(), port);
 	}
 	else
 		DTDMANAGER->getRenderTarget()->DrawBitmap(_nullStatusBox->getBitmap(), rc);
@@ -80,11 +80,11 @@ void StatusMenu::render()
 	rc.left += width / 2;
 	rc.right += width / 2;
 	port = dRectMake(rc.left + 12, rc.top + 15, 60, 65);
-	if (i >= _teamList->size())
+	if (i >= _teamList.size())
 		DTDMANAGER->getRenderTarget()->DrawBitmap(_nullStatusBox->getBitmap(), rc);
-	else if ((*_teamList)[i]->getPlayerType() <= PLAYER_TYPE_TEAM) {
+	else if (_teamList[i]->getPlayerType() <= PLAYER_TYPE_TEAM) {
 		DTDMANAGER->getRenderTarget()->DrawBitmap(_baseStatusBox->getBitmap(), rc);
-		DTDMANAGER->getRenderTarget()->DrawBitmap((*_teamList)[i]->getPokemon()->getPortrait()->getBitmap(), port);
+		DTDMANAGER->getRenderTarget()->DrawBitmap(_teamList[i]->getPokemon()->getPortrait()->getBitmap(), port);
 	}
 	else
 		DTDMANAGER->getRenderTarget()->DrawBitmap(_nullStatusBox->getBitmap(), rc);

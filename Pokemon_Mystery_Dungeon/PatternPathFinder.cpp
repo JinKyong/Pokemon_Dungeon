@@ -18,7 +18,7 @@ void PatternPathFinder::release()
 void PatternPathFinder::update()
 {
 	_pathfinder->update();
-	_player->setPathList(_pathfinder->getCloseList());
+	_player->setPathList(_pathfinder->getPathList());
 }
 
 void PatternPathFinder::render()

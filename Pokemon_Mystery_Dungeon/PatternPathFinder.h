@@ -12,7 +12,5 @@ public:
 	virtual void release();
 	virtual void update();
 	virtual void render();
-
-	vector<Atile*> getCloseList() { return _pathfinder->getCloseList(); }
 };
 

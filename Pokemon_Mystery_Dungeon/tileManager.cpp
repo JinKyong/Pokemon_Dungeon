@@ -16,12 +16,17 @@ HRESULT tileManager::init()
 
 HRESULT tileManager::init(int width, int height)
 {
+	//전체 맵 크기 설정
 	_width = width;
 	_height = height;
 
+	//타일맵 이미지 등록
 	_Mapbase = IMAGEMANAGER->addFrameDImage("maptiles", L"img/map/tiles/maptile.png", 768, 384, 16, 8);
 	_Obbase = IMAGEMANAGER->addFrameDImage("object", L"img/map/tiles/object.png", 864, 576, SAMPLETILEX, SAMPLETILEY);
+
+	//던전 랜덤 생성
 	dungeon(_width, _height);
+	//생성된 맵 -> 타일로 변환
 	setup();
 	
 	return S_OK;
@@ -54,6 +59,7 @@ void tileManager::update()
 
 void tileManager::render()
 {
+	//정해진 범위의 타일만 render
 	for (int i = _initY; i <= _endY; i++)
 		for (int j = _initX; j <= _endX; j++) {
 			int index = i * _width + j;
@@ -79,11 +85,14 @@ void tileManager::render()
 			if (PRINTMANAGER->isDebug())
 				DTDMANAGER->Rectangle(_vTile[index]->rc);
 		}
+
+	//미니맵(이거 키면 (진경 컴퓨터 기준)렉 걸림)
 	if (PRINTMANAGER->isDebug())
 		minimap();
 }
 void tileManager::setup()
 {
+	//타일 rect생성해서 넣어주고
 	for (int i = 0; i < _height; ++i)
 	{
 		for (int j = 0; j < _width; ++j)
@@ -104,6 +113,7 @@ void tileManager::setup()
 	int i = 0;
 	vector<char>::iterator _viChar;
 
+	//랜던생성된 맵 정보 기반으로 타일 이미지와 속성 매핑
 	for (_viChar=_vChar.begin(); _viChar != _vChar.end(); ++_viChar,i++)
 		{
 			if ((*_viChar) == Unused)
@@ -292,13 +302,19 @@ void tileManager::minimap()
 
 void tileManager::dungeon(int width, int height)
 {
+	//출구와 방 vector 비우기
 	_vExit.clear();
 	_vRoom.clear();
+	_vChar.clear();
+
+	//맵 크기에 맞춰서 랜덤 맵(Unused)상태로 초기화
 	for (int i = 0; i < width * height; ++i)
 	{
 		_vChar.push_back(Unused);
 	}
 
+	//최대 몇 개 feature 생성할지 정해서 랜덤 생성
+	//(feature == 방 || 복도)
 	generate(15);
 }
 
@@ -306,24 +322,24 @@ void tileManager::generate(int maxFeatures)
 {
 	// place the first room in the center
 	//_width에 비율 주는걸로 첫방 X위치 조절가능, _height는 Y위치, 기본은 중앙인 1/2
-	if (!makeRoom(_width/2 , _height/2, static_cast<Direction>(RND->getInt(4), true)))
-	{
+	if ( !makeRoom(_width/2 , _height/2, static_cast<Direction>(RND->getInt(4)) ) )
 		return;
-	}
+
+
 	// we already placed 1 feature (the first room)
 	//2번째 구조 생성(1번째는 무조건 첫방)
 	for (int i = 1; i < maxFeatures; ++i)
 	{
-		if (!createFeature())
-		{
+		if (!createFeature()) 
 			break;
-		}
 	}
+
 	//윗계단 생성자 
 	if (!placeObject(UpStairs))
 	{
 		return;
 	}
+
 	//아랫계단 생성자
 	if (!placeObject(DownStairs))
 	{
@@ -335,13 +351,14 @@ bool tileManager::createFeature()
 {
 	for (int i = 0; i < 1000; ++i)
 	{
+		//Exit가 없으면 중단
 		if (_vExit.empty())
 			break;
 
 		// choose a random side of a random room or corridor
 		int index = RND->getInt(_vExit.size());
-		int x = RND->getFromIntTo(_vExit[index].left - 1, _vExit[index].right);
-		int y = RND->getFromIntTo(_vExit[index].top - 1, _vExit[index].bottom);
+		int x = RND->getFromIntTo(_vExit[index].left - 1, _vExit[index].right + 1);
+		int y = RND->getFromIntTo(_vExit[index].top - 1, _vExit[index].bottom + 1);
 
 		// north, south, west, east
 		//j= 방향, 방향에 따른 방/복도 생성
@@ -349,7 +366,7 @@ bool tileManager::createFeature()
 		{
 			if (createFeature(x, y, static_cast<Direction>(j)))
 			{
-				//_vExit.erase(_vExit.begin() + r);
+				_vExit.erase(_vExit.begin() + index);
 				return true;
 			}
 		}
@@ -361,7 +378,7 @@ bool tileManager::createFeature()
 bool tileManager::createFeature(int x, int y, Direction dir)
 {
 	//방 생성 확률
-	static const int roomChance = 20; // corridorChance = 100 - roomChance
+	float roomChance = 0.2; // corridorChance = 1.0 - roomChance
 
 	int dx = 0;
 	int dy = 0;
@@ -376,22 +393,12 @@ bool tileManager::createFeature(int x, int y, Direction dir)
 	else if (dir == East)
 		dx = -1;
 
-	//출구가 있나 없나 확인
+	//방 || 복도에 연결되어 있나 확인
 	if (getChar(x + dx, y + dy) != Floor && getChar(x + dx, y + dy) != Corridor)
 		return false;
 
-	if (RND->getInt(100) < roomChance)
-	{
-		if (makeRoom(x, y, dir))
-		{
-			setChar(x, y, ClosedDoor);
-
-			return true;
-		}
-	}
-
-	else
-	{
+	//방과 연결되어 있으면 무조건 복도로 생성
+	if (getChar(x + dx, y + dy) == Floor) {
 		if (makeCorridor(x, y, dir))
 		{
 			if (getChar(x + dx, y + dy) == Floor)
@@ -402,11 +409,40 @@ bool tileManager::createFeature(int x, int y, Direction dir)
 			return true;
 		}
 	}
+	//복도와 연결되어 있으면 방 또는 복도 생성
+	else {
+		//확률에 따라 방 생성
+		if (RND->getFloat(1.0) < roomChance)
+		{
+			if (makeRoom(x, y, dir))
+			{
+				setChar(x, y, ClosedDoor);
+
+				return true;
+			}
+		}
+		//복도 생성
+		else
+		{
+			if (makeCorridor(x, y, dir))
+			{
+				if (getChar(x + dx, y + dy) == Floor)
+					setChar(x, y, ClosedDoor);
+				else // don't place a door between corridors
+					setChar(x, y, Corridor);
+
+				return true;
+			}
+		}
+	}
+
+	//방 || 복도가 생성 안되었으면 return false
 	return false;
 }
 
-bool tileManager::makeRoom(int x, int y, Direction dir, bool firstRoom)
+bool tileManager::makeRoom(int x, int y, Direction dir)
 {
+	//방 최소, 최대 size 설정
 	static const int minRoomSize = 7;
 	static const int maxRoomSize = 15;
 
@@ -415,8 +451,9 @@ bool tileManager::makeRoom(int x, int y, Direction dir, bool firstRoom)
 	int width, height;
 	int tmpX, tmpY;
 
-	width = RND->getFromIntTo(minRoomSize, maxRoomSize);
-	height = RND->getFromIntTo(minRoomSize, maxRoomSize);
+	//방 크기 랜덤 설정 (범위 최소 ~ 최대)
+	width = RND->getFromIntTo(minRoomSize, maxRoomSize + 1);
+	height = RND->getFromIntTo(minRoomSize, maxRoomSize + 1);
 
 	if (dir == North)
 	{
@@ -449,23 +486,26 @@ bool tileManager::makeRoom(int x, int y, Direction dir, bool firstRoom)
 	{
 		_vRoom.emplace_back(room);
 
+		//Exit RECT 생성
 		if (dir != South) // north side
-			_vExit.emplace_back(RECT{ RND->getFromIntTo(room.left, room.right), room.top - 1, room.right, room.top });
-		 if (dir != North) // south side
-			_vExit.emplace_back(RECT{ RND->getFromIntTo(room.left, room.right), room.bottom, room.right, room.bottom + 1 });
-		 if (dir != East) // west side
-			_vExit.emplace_back(RECT{ room.left - 1, RND->getFromIntTo(room.top, room.bottom), room.left, room.bottom });
-		 if (dir != West) // east side
-			_vExit.emplace_back(RECT{ room.right, RND->getFromIntTo(room.top, room.bottom), room.right + 1, room.bottom });
+			_vExit.emplace_back(RECT{ room.left, room.top - 1, room.right, room.top });
+		if (dir != North) // south side
+			_vExit.emplace_back(RECT{ room.left, room.bottom, room.right, room.bottom + 1 });
+		if (dir != East) // west side
+			_vExit.emplace_back(RECT{ room.left - 1, room.top, room.left, room.bottom });
+		if (dir != West) // east side
+			_vExit.emplace_back(RECT{ room.right, room.top, room.right + 1, room.bottom });
 
 		return true;
 	}
 
+	//방이 생성 안되었으면 return true;
 	return false;
 }
 
 bool tileManager::makeCorridor(int x, int y, Direction dir)
 {
+	//복도 최소 최대 길이 설정
 	static const int minCorridorLength = 8;
 	static const int maxCorridorLength = 15;
 
@@ -475,91 +515,64 @@ bool tileManager::makeCorridor(int x, int y, Direction dir)
 
 	int width, height;
 
-	//확률로 왼/오 윗/아래 설정
-	bool k = RND->getBool();
-
-
 	//복도 생성
-	if (k) // horizontal corridor
+	if (dir == West || dir == East) // horizontal corridor
 	{
-		width = RND->getFromIntTo(minCorridorLength, maxCorridorLength);
+		//복도 길이 랜덤 설정 (범위 최소 ~ 최대)
+		width = RND->getFromIntTo(minCorridorLength, maxCorridorLength + 1);
 		height = 1;
 
-		if (dir == North)
-		{
-			tmpY = y - 1;
-			k = RND->getBool();
-			if (k) // west
-				tmpX = x - width + 1;
-		}
+		tmpY = y;
 
-		else if (dir == South)
-		{
-			tmpY = y + 1;
-			k = RND->getBool();
-			if (k) // west
-				tmpX = x - width + 1;
-		}
-
-		else if (dir == West)
+		if (dir == West)	//West
 			tmpX = x - width;
-
-		else if (dir == East)
-			tmpX = x + 1;
+		else				//East
+			tmpX = x;
 	}
 
 	else // vertical corridor
 	{
+		//복도 길이 랜덤 설정 (범위 최소 ~ 최대)
 		width = 1;
-		height = RND->getFromIntTo(minCorridorLength, maxCorridorLength);
+		height = RND->getFromIntTo(minCorridorLength, maxCorridorLength + 1);
 
-		if (dir == North)
+		tmpX = x;
+
+		if (dir == North)	//North
 			tmpY = y - height;
-
-		else if (dir == South)
-			tmpY = y + 1;
-
-		else if (dir == West)
-		{
-			tmpX = x - 1;
-			k = RND->getBool();
-			if (k) // north
-				tmpY = y - height + 1;
-		}
-
-		else if (dir == East)
-		{
-			tmpX = x + 1;
-			k = RND->getBool();
-			if (k) // north
-				tmpY = y - height + 1;
-		}
+		else				//South
+			tmpY = y;
 	}
 	RECT corridor = RectMake(tmpX, tmpY, width, height);
 
 
-	//복도가 생성되면 출구 생성
+	//복도가 생성되면
 	if (placeRect(corridor, Corridor))
 	{
+		//Exit RECT 생성
 		if (dir != South && width != 1) // north side
-			_vExit.emplace_back(RECT{ corridor.left, corridor.top - 1, corridor.left + 1, corridor.top });
+			_vExit.emplace_back(RECT{ corridor.left, corridor.top - 1, corridor.right, corridor.top });
 		if (dir != North && width != 1) // south side
-			_vExit.emplace_back(RECT{ corridor.left, corridor.bottom, corridor.left + 1, corridor.bottom + 1 });
+			_vExit.emplace_back(RECT{ corridor.left, corridor.bottom, corridor.right, corridor.bottom + 1 });
 		if (dir != East && height != 1) // west side
-			_vExit.emplace_back(RECT{ corridor.left - 1, corridor.top, corridor.left, corridor.top + 1 });
+			_vExit.emplace_back(RECT{ corridor.left - 1, corridor.top, corridor.left, corridor.bottom });
 		if (dir != West && height != 1) // east side
-			_vExit.emplace_back(RECT{ corridor.right, corridor.top, corridor.right + 1, corridor.top + 1 });
+			_vExit.emplace_back(RECT{ corridor.right, corridor.top, corridor.right + 1, corridor.bottom });
 
 		return true;
 	}
+
+	//복도가 생성 안되었으면 return false
 	return false;
 }
 
 bool tileManager::placeRect(RECT rc, char Char)
 {
+	//RECT 범위가 맵 보다 크면 false
 	if (rc.left < 1 || rc.top < 1 || rc.right > _width - 1 || rc.bottom > _height - 1)
 		return false;
 
+	//RECT 범위 내 이미 타일이 깔려 있으면 (== 타일이 Unused상태가 아니면) false
 	for (int y = rc.top; y < rc.bottom; ++y)
 		for (int x = rc.left; x < rc.right; ++x)
 		{
@@ -567,6 +580,7 @@ bool tileManager::placeRect(RECT rc, char Char)
 				return false; // the area already used
 		}
 	
+	//RECT 테두리에 벽 설정
 	for (int y = rc.top - 1; y <= rc.bottom; ++y)
 		for (int x = rc.left - 1; x <= rc.right; ++x)
 		{
@@ -587,26 +601,31 @@ bool tileManager::placeRect(RECT rc, char Char)
 				setChar(x, y, Char);
 		}
 	
-
+	//생성 가능하면 true
 	return true;
 }
 
 bool tileManager::placeObject(char Char)
 {
+	//방이 없으면 false
 	if (_vRoom.empty())
 		return false;
 
+	//방을 랜덤으로 선택해서 방 내에 x, y 랜덤 설정
 	int index = RND->getInt(_vRoom.size()); // choose a random room
-	int x = RND->getFromIntTo(_vRoom[index].left+2, _vRoom[index].right-2);
-	int y = RND->getFromIntTo(_vRoom[index].top+2, _vRoom[index].bottom-2);
+	int x = RND->getFromIntTo(_vRoom[index].left + 1, _vRoom[index].right - 1);
+	int y = RND->getFromIntTo(_vRoom[index].top + 1, _vRoom[index].bottom - 1);
 
+	//x, y타일이 Floor일 경우
 	if (getChar(x, y) == Floor)
 	{
+		//object 생성
 		setChar(x, y, Char);
 
 		return true;
 	}
 
+	//object가 생성 안되었으면 false
 	return false;
 }
 

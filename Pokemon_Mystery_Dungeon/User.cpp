@@ -69,65 +69,36 @@ void User::controlKey()
 	_initX = _destX = _x;
 	_initY = _destY = _y;
 
+	//방향전환
 	if (KEYMANAGER->isStayKeyDown(KEY_RIGHT)) {
 		_direct |= RIGHT;
-
-		if (COLLISIONMANAGER->collisionInputPlayer(this))
-		{
-			_destX++;
-
-			if (KEYMANAGER->isStayKeyDown(KEY_L1))
-				_pokemon->changeDirect(_direct);
-			else
-				_playerState = POKEMON_STATE_MOVE;
-		}
-		else
-			_pokemon->changeDirect(_direct);
+		_pokemon->changeDirect(_direct);
 	}
 	else if (KEYMANAGER->isStayKeyDown(KEY_LEFT)) {
 		_direct |= LEFT;
-
-		if (COLLISIONMANAGER->collisionInputPlayer(this))
-		{
-			_destX--;
-
-			if (KEYMANAGER->isStayKeyDown(KEY_L1))
-				_pokemon->changeDirect(_direct);
-			else
-				_playerState = POKEMON_STATE_MOVE;
-		}
-		else
-			_pokemon->changeDirect(_direct);
+		_pokemon->changeDirect(_direct);
 	}
 	if (KEYMANAGER->isStayKeyDown(KEY_UP)) {
 		_direct |= UP;
-
-		if (COLLISIONMANAGER->collisionInputPlayer(this))
-		{
-			_destY--;
-
-			if (KEYMANAGER->isStayKeyDown(KEY_L1))
-				_pokemon->changeDirect(_direct);
-			else
-				_playerState = POKEMON_STATE_MOVE;
-		}
-		else
-			_pokemon->changeDirect(_direct);
+		_pokemon->changeDirect(_direct);
 	}
 	else if (KEYMANAGER->isStayKeyDown(KEY_DOWN)) {
 		_direct |= DOWN;
+		_pokemon->changeDirect(_direct);
+	}
 
-		if (COLLISIONMANAGER->collisionInputPlayer(this))
+	//방향 입력이 있을 시 (_direct != 0)
+	if (!KEYMANAGER->isStayKeyDown(KEY_L1)) {
+		if (_direct && COLLISIONMANAGER->collisionInputPlayer(this))
 		{
-			_destY++;
+			if ((_direct & RIGHT) == RIGHT) _destX++;
+			else if ((_direct & LEFT) == LEFT) _destX--;
 
-			if (KEYMANAGER->isStayKeyDown(KEY_L1))
-				_pokemon->changeDirect(_direct);
-			else
-				_playerState = POKEMON_STATE_MOVE;
+			if ((_direct & UP) == UP) _destY--;
+			else if ((_direct & DOWN) == DOWN) _destY++;
+
+			_playerState = POKEMON_STATE_MOVE;
 		}
-		else
-			_pokemon->changeDirect(_direct);
 	}
 
 	if (KEYMANAGER->isOnceKeyDown('X')) {

@@ -50,6 +50,7 @@ void PathFinder::release()
 	_vTotalList.clear();
 	_vOpenList.clear();
 	_vCloseList.clear();
+	_vPathList.clear();
 }
 
 void PathFinder::update()
@@ -110,7 +111,31 @@ vector<Atile*> PathFinder::addOpenList(Atile * currentTile)
 			//예외처리
 			if (!node->getIsOpen()) continue;
 			if (node->getAttribute() == "start") continue;
-			if ((*_allTileList)[index]->obj <= OBJ_BLOCK8) continue;
+			if (_allTileList[index]->obj <= OBJ_BLOCK8) continue;
+
+			//대각 예외처리
+			if (i == startY) {					//위
+				if (j == endX) {				//오른쪽
+					if (_allTileList[index - 1]->obj <= OBJ_BLOCK8) continue;
+					if (_allTileList[index + _mapWidth]->obj <= OBJ_BLOCK8) continue;
+				}
+
+				if (j == startX) {				//왼쪽
+					if (_allTileList[index + 1]->obj <= OBJ_BLOCK8) continue;
+					if (_allTileList[index + _mapWidth]->obj <= OBJ_BLOCK8) continue;
+				}
+			}
+			else if (i == endY) {				//아래
+				if (j == endX) {				//오른쪽
+					if (_allTileList[index - 1]->obj <= OBJ_BLOCK8) continue;
+					if (_allTileList[index - _mapWidth]->obj <= OBJ_BLOCK8) continue;
+				}
+
+				if (j == startX) {				//왼쪽
+					if (_allTileList[index + 1]->obj <= OBJ_BLOCK8) continue;
+					if (_allTileList[index - _mapWidth]->obj <= OBJ_BLOCK8) continue;
+				}
+			}
 
 			//현재 타일 계속 갱신해준다
 			node->setParentNode(_currentTile);
@@ -189,8 +214,16 @@ void PathFinder::findPath(Atile * currentTile)
 	}
 
 	//목적지에 도달하면 중단
-	if (tempTile->getAttribute() == "end")
+	if (tempTile->getAttribute() == "end") {
+
+		//최단 경로를 저장
+		while (_currentTile->getParentNode() != NULL)
+		{
+			_vPathList.insert(_vPathList.begin(), _currentTile);
+			_currentTile = _currentTile->getParentNode();
+		}
 		return;
+	}
 
 
 	//최단 경로를 뽑아주자

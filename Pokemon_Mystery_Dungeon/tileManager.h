@@ -25,6 +25,7 @@
 #define ATTR_FROZEN 0x00000128	//·¹¸´²¿~
 #define ATTR_WATER	0x00000256  //¹°
 
+
 class tileManager: public singletonBase<tileManager>
 {
 private:
@@ -67,7 +68,7 @@ public:
 	void generate(int maxFeatures);
 	bool createFeature();
 	bool createFeature(int x, int y, Direction dir);
-	bool makeRoom(int x, int y, Direction dir, bool firstRoom = false);
+	bool makeRoom(int x, int y, Direction dir);
 	bool makeCorridor(int x, int y, Direction dir);
 	bool placeRect(RECT rc, char Char);
 	bool placeObject(char Char);
@@ -84,7 +85,7 @@ public:
 	int getWidth() { return _width; }
 	int getHeight() { return _height; }
 	char getChar(int x, int y) { return _vChar[x + y * _width]; }
-	vector<tagTile*>* getvTile() { return &_vTile; }
+	vector<tagTile*>& getvTile() { return _vTile; }
 	vector<RECT>* getvRoom() { return &_vRoom; }
 
 };

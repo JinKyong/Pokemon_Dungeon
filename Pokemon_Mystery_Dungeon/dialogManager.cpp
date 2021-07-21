@@ -66,7 +66,7 @@ void dialogManager::render()
 	Pokemon* pokemon;
 	switch (pokeNum) {
 	case 0:		//player
-		pokemon = TURNMANAGER->getAllPlayer()->at(0)->getPokemon();
+		pokemon = TURNMANAGER->getAllPlayer()[0]->getPokemon();
 		break;
 	case -1:	//team
 		pokemon = POKEDEX->makePokemon(pokeNum);

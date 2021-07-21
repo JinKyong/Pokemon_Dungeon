@@ -13,7 +13,7 @@ private:
 
 private:
 	//전체 타일 벡터
-	vector<PTILE>*	_allTileList;
+	vector<PTILE>	_allTileList;
 	int _mapWidth;
 	int _mapHeight;
 
@@ -28,6 +28,9 @@ private:
 	//가장 가까운 경로를 담을 벡터
 	tileList	_vCloseList;
 	tileIter	_viCloseList;
+
+	//최종 경로
+	tileList	_vPathList;
 
 	//시작, 끝, 현재 타일
 	Atile*		_startTile;
@@ -53,5 +56,5 @@ public:
 
 
 
-	tileList getCloseList() { return _vCloseList; }
+	tileList getPathList() { return _vPathList; }
 };

@@ -28,9 +28,6 @@ public:
 	~Atile();
 
 	HRESULT init(int x, int y);
-	void release();
-	void update();
-	void render();
 
 	//============ 편리를 위한 접근자 & 설정자 ===============
 

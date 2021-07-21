@@ -1,5 +1,6 @@
 #pragma once
 #include "singletonBase.h"
+#include "tileInfo.h"
 #include <vector>
 
 class Player;
@@ -11,9 +12,9 @@ class collisionManager : public singletonBase<collisionManager>
 {
 private:
 	Scene* _scene;
-	//vector<tagTile*> *_allTile;		//타일 목록
-	vector<Item*> *_allItem;		//아이템 목록
-	vector<Player*> *_allPlayer;	//플레이어 목록
+	vector<tagTile*> _allTile;		//타일 목록
+	vector<Item*> _allItem;		//아이템 목록
+	vector<Player*> _allPlayer;	//플레이어 목록
 
 	//충돌하는 객체들 파악하기
 	//플레이어랑 에너미
@@ -27,6 +28,8 @@ public:
 	void release();
 
 	bool collisionInputPlayer(Player* player);
+	bool playerWithTile(Player* player);
+	bool playerWithPlayer(Player* player);
 
 	void collisionEndTurnPlayer(Player* player);
 	void playerWithItem(Player* player);

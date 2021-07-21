@@ -24,16 +24,3 @@ HRESULT Atile::init(int x, int y)
 
 	return S_OK;
 }
-
-void Atile::release()
-{
-
-}
-
-void Atile::update()
-{
-}
-
-void Atile::render()
-{
-}

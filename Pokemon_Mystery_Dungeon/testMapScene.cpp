@@ -51,7 +51,7 @@ HRESULT testMapScene::init(Player * player)
 	_itemManager->addItem(titem);
 
 	DIALOGMANAGER->init();
-	DIALOGMANAGER->loadMetaData(L"data/test");
+	//DIALOGMANAGER->loadMetaData(L"data/test");
 
 	COLLISIONMANAGER->init(this);
 
