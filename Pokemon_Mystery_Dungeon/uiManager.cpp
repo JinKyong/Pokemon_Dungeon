@@ -21,6 +21,7 @@ HRESULT uiManager::init()
 	addDownMenu("mainMenu", new MainMenu);
 	addDownMenu("logMenu", new LogMenu);
 	addDownMenu("invenMenu", new InvenMenu);
+	addDownMenu("SkillMenu", new SkillMenu);
 	changeDownMenu("logMenu");
 
 	_open = false;

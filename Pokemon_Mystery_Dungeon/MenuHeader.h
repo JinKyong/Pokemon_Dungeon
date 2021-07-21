@@ -9,3 +9,4 @@
 #include "MainMenu.h"
 #include "LogMenu.h"
 #include "InvenMenu.h"
+#include "SkillMenu.h"
