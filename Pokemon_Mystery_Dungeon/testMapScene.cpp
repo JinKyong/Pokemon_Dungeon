@@ -10,7 +10,7 @@ HRESULT testMapScene::init(Player * player)
 {
 	Scene::init(player);
 
-	TILEMANAGER->init(MAPWIDTH, MAPHEIGHT);
+	TILEMANAGER->init(MAPWIDTH, MAPHEIGHT,0);
 	CAMERAMANAGER->setBackScreenSize((MAPWIDTH - 1) * TILEWIDTH, (MAPHEIGHT - 1) * TILEHEIGHT);
 	//TILEMANAGER->load("tileSave.map");
 

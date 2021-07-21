@@ -14,15 +14,22 @@ HRESULT tileManager::init()
 	return S_OK;
 }
 
-HRESULT tileManager::init(int width, int height)
+HRESULT tileManager::init(int width, int height, int type)
 {
 	//전체 맵 크기 설정
 	_width = width;
 	_height = height;
-
+	_type = type;
 	//타일맵 이미지 등록
-	_Mapbase = IMAGEMANAGER->addFrameDImage("maptiles", L"img/map/tiles/maptile.png", 768, 384, 16, 8);
-	_Obbase = IMAGEMANAGER->addFrameDImage("object", L"img/map/tiles/object.png", 864, 576, 18, 12);
+	_Mapbase[0] = IMAGEMANAGER->addFrameDImage("terrain0", L"img/map/tiles/terrain_0.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
+	_Mapbase[1] = IMAGEMANAGER->addFrameDImage("terrain1", L"img/map/tiles/terrain_1.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
+	_Mapbase[2] = IMAGEMANAGER->addFrameDImage("terrain2", L"img/map/tiles/terrain_2.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
+	_Mapbase[3] = IMAGEMANAGER->addFrameDImage("terrain3", L"img/map/tiles/terrain_3.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
+	_Mapbase[4] = IMAGEMANAGER->addFrameDImage("terrain4", L"img/map/tiles/terrain_4.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
+	_Mapbase[5] = IMAGEMANAGER->addFrameDImage("terrain5", L"img/map/tiles/terrain_5.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
+	_Mapbase[6] = IMAGEMANAGER->addFrameDImage("terrain6", L"img/map/tiles/terrain_6.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
+	_Mapbase[7] = IMAGEMANAGER->addFrameDImage("terrain7", L"img/map/tiles/terrain_7.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
+	_Obbase = IMAGEMANAGER->addFrameDImage("object", L"img/map/tiles/object_all.png", 720, 144, SAMPLETILEX, 3);
 
 	//던전 랜덤 생성
 	dungeon(_width, _height);
@@ -64,7 +71,7 @@ void tileManager::render()
 		for (int j = _initX; j <= _endX; j++) {
 			int index = i * _width + j;
 
-			_Mapbase->frameRender(
+			_Mapbase[_type]->frameRender(
 				_vTile[index]->rc.left, _vTile[index]->rc.top,
 				_vTile[index]->terrainFrameX, _vTile[index]->terrainFrameY);
 
@@ -118,93 +125,102 @@ void tileManager::setup()
 		{
 			if ((*_viChar) == Unused)
 			{
-				_vTile[i]->terrainFrameX = 3;
+				_vTile[i]->terrainFrameX = 10;
 				_vTile[i]->terrainFrameY = 1;
-				_vTile[i]->objFrameX = 1;
-				_vTile[i]->objFrameY = 1;
-				_vTile[i]->terrain = terrainSelect(_vTile[i] ->terrainFrameX, _vTile[i]->terrainFrameY);
-				_vTile[i]->obj = objSelect(_vTile[i]->objFrameX, _vTile[i]->objFrameY);
+				_vTile[i]->objFrameX = 0;
+				_vTile[i]->objFrameY = 0;
+				_vTile[i]->terrain = TR_BLOCK;
+				_vTile[i]->obj = OBJ_NONE;
 			}
 			
 			else if ((*_viChar) == UpStairs)
 			{
-				_vTile[i]->terrainFrameX = 1;
+				_vTile[i]->terrainFrameX = 0;
 				_vTile[i]->terrainFrameY = 0;
-				_vTile[i]->objFrameX = 3;
-				_vTile[i]->objFrameY = 2;
-				_vTile[i]->terrain = terrainSelect(_vTile[i]->terrainFrameX, _vTile[i]->terrainFrameY);
-				_vTile[i]->obj = OBJ_BLOCK1;
+				_vTile[i]->objFrameX = 13;
+				_vTile[i]->objFrameY = 0;
+				_vTile[i]->terrain = TR_GRASS;
+				_vTile[i]->obj = OBJ_STAIR;
 			}
 			else if ((*_viChar) == DownStairs)
 			{
 				_vTile[i]->terrainFrameX = 1;
 				_vTile[i]->terrainFrameY = 0;
-				_vTile[i]->objFrameX = 6;
-				_vTile[i]->objFrameY = 3;
-				_vTile[i]->terrain = terrainSelect(_vTile[i]->terrainFrameX, _vTile[i]->terrainFrameY);
-				_vTile[i]->obj = OBJ_BLOCK1;
-			}
-			else if ((*_viChar) == LeftCorner)
-			{
-				_vTile[i]->terrainFrameX = 1;
-				_vTile[i]->terrainFrameY = 0;
-				_vTile[i]->objFrameX = 6;
+				_vTile[i]->objFrameX = 14;
 				_vTile[i]->objFrameY = 0;
-				_vTile[i]->terrain = terrainSelect(_vTile[i]->terrainFrameX, _vTile[i]->terrainFrameY);
-				_vTile[i]->obj = OBJ_BLOCK1;
+				_vTile[i]->terrain = TR_GRASS;
+				_vTile[i]->obj = OBJ_STAIR;
 			}
-			else if ((*_viChar) == RightCorner)
+			else if ((*_viChar) == LeftOpenCorner)
 			{
-				_vTile[i]->terrainFrameX = 1;
-				_vTile[i]->terrainFrameY = 0;
-				_vTile[i]->objFrameX = 8;
-				_vTile[i]->objFrameY = 0;
-				_vTile[i]->terrain = terrainSelect(_vTile[i]->terrainFrameX, _vTile[i]->terrainFrameY);
-				_vTile[i]->obj = OBJ_BLOCK1;
-			}
-			else if ((*_viChar) == LeftBottom)
-			{
-				_vTile[i]->terrainFrameX = 1;
-				_vTile[i]->terrainFrameY = 0;
-				_vTile[i]->objFrameX = 6;
-				_vTile[i]->objFrameY = 2;
-				_vTile[i]->terrain = terrainSelect(_vTile[i]->terrainFrameX, _vTile[i]->terrainFrameY);
-				_vTile[i]->obj = OBJ_BLOCK1;
-			}
-			else if ((*_viChar) == RightBottom)
-			{
-				_vTile[i]->terrainFrameX = 1;
-				_vTile[i]->terrainFrameY = 0;
-				_vTile[i]->objFrameX = 8;
-				_vTile[i]->objFrameY = 2;
-				_vTile[i]->terrain = terrainSelect(_vTile[i]->terrainFrameX, _vTile[i]->terrainFrameY);
-				_vTile[i]->obj = OBJ_BLOCK1;
-			}
-			else if ((*_viChar) == VerticalWall)
-			{
-				_vTile[i]->terrainFrameX = 1;
-				_vTile[i]->terrainFrameY = 0;
-				_vTile[i]->objFrameX = 6;
-				_vTile[i]->objFrameY = 1;
-				_vTile[i]->terrain = terrainSelect(_vTile[i]->terrainFrameX, _vTile[i]->terrainFrameY);
-				_vTile[i]->obj = OBJ_BLOCK1;
-			}
-			else if ((*_viChar) == HorizontalWall)
-			{
-				_vTile[i]->terrainFrameX = 1;
-				_vTile[i]->terrainFrameY = 0;
-				_vTile[i]->objFrameX = 7;
-				_vTile[i]->objFrameY = 0;
-				_vTile[i]->terrain = terrainSelect(_vTile[i]->terrainFrameX, _vTile[i]->terrainFrameY);
-				_vTile[i]->obj = OBJ_BLOCK1;
-			}
-			else
-			{
-				_vTile[i]->terrainFrameX = 1;
+				_vTile[i]->terrainFrameX = 6;
 				_vTile[i]->terrainFrameY = 0;
 				_vTile[i]->objFrameX = 0;
 				_vTile[i]->objFrameY = 0;
-				_vTile[i]->terrain = terrainSelect(_vTile[i]->terrainFrameX, _vTile[i]->terrainFrameY);
+				_vTile[i]->terrain = TR_BLOCK;
+				_vTile[i]->obj = OBJ_NONE;
+			}
+			else if ((*_viChar) == LeftCorner)
+			{
+				_vTile[i]->terrainFrameX = 3;
+				_vTile[i]->terrainFrameY = 0;
+				_vTile[i]->objFrameX = 0;
+				_vTile[i]->objFrameY = 0;
+				_vTile[i]->terrain = TR_BLOCK;
+				_vTile[i]->obj = OBJ_NONE;
+			}
+			else if ((*_viChar) == RightCorner)
+			{
+				_vTile[i]->terrainFrameX = 5;
+				_vTile[i]->terrainFrameY = 0;
+				_vTile[i]->objFrameX = 0;
+				_vTile[i]->objFrameY = 0;
+				_vTile[i]->terrain = TR_BLOCK;
+				_vTile[i]->obj = OBJ_NONE;
+			}
+			else if ((*_viChar) == LeftBottom)
+			{
+				_vTile[i]->terrainFrameX = 3;
+				_vTile[i]->terrainFrameY = 2;
+				_vTile[i]->objFrameX = 0;
+				_vTile[i]->objFrameY = 0;
+				_vTile[i]->terrain = TR_BLOCK;
+				_vTile[i]->obj = OBJ_NONE;
+			}
+			else if ((*_viChar) == RightBottom)
+			{
+				_vTile[i]->terrainFrameX = 5;
+				_vTile[i]->terrainFrameY = 2;
+				_vTile[i]->objFrameX = 0;
+				_vTile[i]->objFrameY = 0;
+				_vTile[i]->terrain = TR_BLOCK;
+				_vTile[i]->obj = OBJ_NONE;
+			}
+			else if ((*_viChar) == VerticalWall)
+			{
+				_vTile[i]->terrainFrameX = 3;
+				_vTile[i]->terrainFrameY = 1;
+				_vTile[i]->objFrameX = 0;
+				_vTile[i]->objFrameY = 0;
+				_vTile[i]->terrain = TR_BLOCK;
+				_vTile[i]->obj = OBJ_NONE;
+			}
+			else if ((*_viChar) == HorizontalWall)
+			{
+				_vTile[i]->terrainFrameX = 4;
+				_vTile[i]->terrainFrameY = 0;
+				_vTile[i]->objFrameX = 0;
+				_vTile[i]->objFrameY = 0;
+				_vTile[i]->terrain = TR_BLOCK;
+				_vTile[i]->obj = OBJ_NONE;
+			}
+			else
+			{
+				_vTile[i]->terrainFrameX = RND->getInt(3);
+				_vTile[i]->terrainFrameY = RND->getInt(3);
+				_vTile[i]->objFrameX = 0;
+				_vTile[i]->objFrameY = 0;
+				_vTile[i]->terrain = TR_GRASS;
 				_vTile[i]->obj = OBJ_NONE;
 			}
 		}
@@ -289,7 +305,7 @@ void tileManager::minimap()
 	for (int i = 0; i < _width * _height; ++i)
 	{
 		
-		_Mapbase->frameRender(
+		_Mapbase[_type]->frameRender(
 			rc.right - (_vTile[i]->rc.left / (TILESIZE / 3)), rc.bottom - (_vTile[i]->rc.top / (TILESIZE / 3)),
 			_vTile[i]->terrainFrameX, _vTile[i]->terrainFrameY, MINITILESIZE, MINITILESIZE);
 
@@ -584,13 +600,28 @@ bool tileManager::placeRect(RECT rc, char Char)
 	for (int y = rc.top - 1; y <= rc.bottom; ++y)
 		for (int x = rc.left - 1; x <= rc.right; ++x)
 		{
-			
-			if (x == rc.left - 1 && y == rc.top - 1) 
+			if (x== rc.left - 1 &&y== rc.top - 1&&
+				(getChar(x, y-1) ==Unused|| 
+					getChar(x-1, y ) == Unused))
+				setChar(x, y, LeftOpenCorner);
+			else if (x == rc.left - 1 && y == rc.top - 1) 
 				setChar(x, y, LeftCorner);
+			else if (x == rc.right && y == rc.top - 1 &&
+				(getChar(x, y - 1) == Unused || 
+					getChar(x+1, y) == Unused))
+				setChar(x, y, RightOpenCorner);
 			else if (x == rc.right&& y == rc.top - 1)
 				setChar(x, y, RightCorner);
+			else if (x == rc.left - 1 && y == rc.bottom && 
+				(getChar(x, y +1) == Unused || 
+					getChar(x-1, y ) == Unused))
+				setChar(x, y, LeftOpenBottom);
 			else if (x == rc.left - 1 && y == rc.bottom) 
 				setChar(x, y, LeftBottom);
+			else if (x == rc.right && y == rc.bottom &&
+				(getChar(x, y + 1) == Unused ||
+					getChar(x +1, y) == Unused))
+				setChar(x, y, RightOpenBottom);
 			else if (x == rc.right&&y == rc.bottom) 
 				setChar(x, y, RightBottom);
 			else if (x == rc.left - 1 || x == rc.right)
@@ -631,15 +662,7 @@ bool tileManager::placeObject(char Char)
 
 TERRAIN tileManager::terrainSelect(int frameX, int frameY)
 {
-	if (frameX == 1 && frameY == 0)
-	{
-		return TR_CEMENT;
-	}
-	else if (frameX == 2 && frameY == 0)
-	{
-		return TR_DESERT;
-	}
-	else if (frameX == 3 && frameY == 0)
+	if (frameX == 3 && frameY == 0)
 	{
 		return TR_GRASS;
 	}
@@ -662,165 +685,9 @@ OBJECT tileManager::objSelect(int frameX, int frameY)
 		(frameX == 15 && frameY == 6) &&
 		(frameX == 15 && frameY == 9))
 	{
-		return OBJ_BLOCK1;
+		return OBJ_BLOCK;
 	}
-	else if ((frameX == 7 && frameY == 0) &&
-		(frameX == 7 && frameY == 3) &&
-		(frameX == 7 && frameY == 6) &&
-		(frameX == 7 && frameY == 9) &&
-		(frameX == 7 && frameY == 2) &&
-		(frameX == 7 && frameY == 5) &&
-		(frameX == 7 && frameY == 8) &&
-		(frameX == 7 && frameY == 11) &&
-		(frameX == 16 && frameY == 0) &&
-		(frameX == 16 && frameY == 3) &&
-		(frameX == 16 && frameY == 6) &&
-		(frameX == 16 && frameY == 9) &&
-		(frameX == 16 && frameY == 2) &&
-		(frameX == 16 && frameY == 5) &&
-		(frameX == 16 && frameY == 8) &&
-		(frameX == 16 && frameY == 11))
-	{
-		return OBJ_BLOCK2;
-	}
-	else if ((frameX == 8 && frameY == 0) &&
-		(frameX == 8 && frameY == 3) &&
-		(frameX == 8 && frameY == 6) &&
-		(frameX == 8 && frameY == 9) &&
-		(frameX == 17 && frameY == 0) &&
-		(frameX == 17 && frameY == 3) &&
-		(frameX == 17 && frameY == 6) &&
-		(frameX == 17 && frameY == 9))
-	{
-		return OBJ_BLOCK3;
-	}
-	else if ((frameX == 6 && frameY == 1) &&
-		(frameX == 6 && frameY == 4) &&
-		(frameX == 6 && frameY == 7) &&
-		(frameX == 6 && frameY == 10) &&
-		(frameX == 8 && frameY == 1) &&
-		(frameX == 8 && frameY == 4) &&
-		(frameX == 8 && frameY == 7) &&
-		(frameX == 8 && frameY == 10) &&
-		(frameX == 15 && frameY == 1) &&
-		(frameX == 15 && frameY == 4) &&
-		(frameX == 15 && frameY == 7) &&
-		(frameX == 15 && frameY == 10) &&
-		(frameX == 17 && frameY == 1) &&
-		(frameX == 17 && frameY == 4) &&
-		(frameX == 17 && frameY == 7) &&
-		(frameX == 17 && frameY == 10))
-	{
-		return OBJ_BLOCK4;
-	}
-	else if ((frameX == 7 && frameY == 1) &&
-		(frameX == 7 && frameY == 4) &&
-		(frameX == 7 && frameY == 7) &&
-		(frameX == 7 && frameY == 10) &&
-		(frameX == 16 && frameY == 1) &&
-		(frameX == 16 && frameY == 4) &&
-		(frameX == 16 && frameY == 7) &&
-		(frameX == 16 && frameY == 10))
-	{
-		return OBJ_BLOCK5;
-	}
-	else if ((frameX == 6 && frameY == 2) &&
-		(frameX == 6 && frameY == 5) &&
-		(frameX == 6 && frameY == 8) &&
-		(frameX == 6 && frameY == 11) &&
-		(frameX == 15 && frameY == 2) &&
-		(frameX == 15 && frameY == 5) &&
-		(frameX == 15 && frameY == 8) &&
-		(frameX == 15 && frameY == 11))
-	{
-		return OBJ_BLOCK6;
-	}
-	else if ((frameX == 8 && frameY == 2) &&
-		(frameX == 8 && frameY == 5) &&
-		(frameX == 8 && frameY == 8) &&
-		(frameX == 8 && frameY == 11) &&
-		(frameX == 17 && frameY == 2) &&
-		(frameX == 17 && frameY == 5) &&
-		(frameX == 17 && frameY == 8) &&
-		(frameX == 17 && frameY == 11))
-	{
-		return OBJ_BLOCK7;
-	}
-	else if ((frameX == 3 && frameY == 0) &&
-		(frameX == 3 && frameY == 1) &&
-		(frameX == 3 && frameY == 2) &&
-		(frameX == 4 && frameY == 0) &&
-		(frameX == 4 && frameY == 1) &&
-		(frameX == 4 && frameY == 2) &&
-		(frameX == 5 && frameY == 0) &&
-		(frameX == 5 && frameY == 1) &&
-		(frameX == 5 && frameY == 2) &&
-		(frameX == 3 && frameY == 3) &&
-		(frameX == 3 && frameY == 4) &&
-		(frameX == 3 && frameY == 5) &&
-		(frameX == 4 && frameY == 3) &&
-		(frameX == 4 && frameY == 4) &&
-		(frameX == 4 && frameY == 5) &&
-		(frameX == 5 && frameY == 3) &&
-		(frameX == 5 && frameY == 4) &&
-		(frameX == 5 && frameY == 5) &&
-		(frameX == 3 && frameY == 6) &&
-		(frameX == 3 && frameY == 7) &&
-		(frameX == 3 && frameY == 8) &&
-		(frameX == 4 && frameY == 6) &&
-		(frameX == 4 && frameY == 7) &&
-		(frameX == 4 && frameY == 8) &&
-		(frameX == 5 && frameY == 6) &&
-		(frameX == 5 && frameY == 7) &&
-		(frameX == 5 && frameY == 8) &&
-		(frameX == 3 && frameY == 9) &&
-		(frameX == 3 && frameY == 10) &&
-		(frameX == 3 && frameY == 11) &&
-		(frameX == 4 && frameY == 9) &&
-		(frameX == 4 && frameY == 10) &&
-		(frameX == 4 && frameY == 11) &&
-		(frameX == 5 && frameY == 9) &&
-		(frameX == 5 && frameY == 10) &&
-		(frameX == 5 && frameY == 11) &&
-		(frameX == 12 && frameY == 0) &&
-		(frameX == 12 && frameY == 1) &&
-		(frameX == 12 && frameY == 2) &&
-		(frameX == 13 && frameY == 0) &&
-		(frameX == 13 && frameY == 1) &&
-		(frameX == 13 && frameY == 2) &&
-		(frameX == 14 && frameY == 0) &&
-		(frameX == 14 && frameY == 1) &&
-		(frameX == 14 && frameY == 2) &&
-		(frameX == 12 && frameY == 3) &&
-		(frameX == 12 && frameY == 4) &&
-		(frameX == 12 && frameY == 5) &&
-		(frameX == 13 && frameY == 3) &&
-		(frameX == 13 && frameY == 4) &&
-		(frameX == 13 && frameY == 5) &&
-		(frameX == 14 && frameY == 3) &&
-		(frameX == 14 && frameY == 4) &&
-		(frameX == 14 && frameY == 5) &&
-		(frameX == 12 && frameY == 6) &&
-		(frameX == 12 && frameY == 7) &&
-		(frameX == 12 && frameY == 8) &&
-		(frameX == 13 && frameY == 6) &&
-		(frameX == 13 && frameY == 7) &&
-		(frameX == 13 && frameY == 8) &&
-		(frameX == 14 && frameY == 6) &&
-		(frameX == 14 && frameY == 7) &&
-		(frameX == 14 && frameY == 8) &&
-		(frameX == 12 && frameY == 9) &&
-		(frameX == 12 && frameY == 10) &&
-		(frameX == 12 && frameY == 11) &&
-		(frameX == 13 && frameY == 9) &&
-		(frameX == 13 && frameY == 10) &&
-		(frameX == 13 && frameY == 11) &&
-		(frameX == 14 && frameY == 9) &&
-		(frameX == 14 && frameY == 10) &&
-		(frameX == 14 && frameY == 11))
-	{
-		return OBJ_WATER;
-	}
+	
 
-	return OBJ_BLOCK8;
+	return OBJ_BLOCK;
 }

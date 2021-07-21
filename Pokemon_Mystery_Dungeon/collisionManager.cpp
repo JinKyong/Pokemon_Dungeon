@@ -52,26 +52,26 @@ bool collisionManager::playerWithTile(Player * player)
 	int direct = player->getDirect();			//방향마다 다음타일 하나만 검사
 	//좌우
 	if ((direct & RIGHT) == RIGHT) {
-		if ((*_allTile)[index[RIGHT]]->obj <= OBJ_BLOCK8)		return false;
+		if ((*_allTile)[index[RIGHT]]->terrain <= TR_BLOCK)		return false;
 		directCount += RIGHT;
 	}
 	else if ((direct & LEFT) == LEFT) {
-		if ((*_allTile)[index[LEFT]]->obj <= OBJ_BLOCK8)		return false;
+		if ((*_allTile)[index[LEFT]]->terrain <= TR_BLOCK)		return false;
 		directCount += LEFT;
 	}
 
 	//상하
 	if ((direct & UP) == UP) {
-		if ((*_allTile)[index[UP]]->obj <= OBJ_BLOCK8)		return false;
+		if ((*_allTile)[index[UP]]->terrain <= TR_BLOCK)		return false;
 		directCount += UP;
 	}
 	else if ((direct & DOWN) == DOWN) {
-		if ((*_allTile)[index[DOWN]]->obj <= OBJ_BLOCK8)		return false;
+		if ((*_allTile)[index[DOWN]]->terrain <= TR_BLOCK)		return false;
 		directCount += DOWN;
 	}
 
 	//대각
-	if ((*_allTile)[index[directCount]]->obj <= OBJ_BLOCK8)	return false;
+	if ((*_allTile)[index[directCount]]->terrain <= TR_BLOCK)	return false;
 
 
 	return true;

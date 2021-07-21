@@ -182,11 +182,7 @@ void Maptool::setup()
 				i * TILESIZE + TILESIZE);
 			_vTile.push_back(Tile);
 
-			SetRect(&_tiles[i * TILEX + j].rc,
-				j * TILESIZE,
-				i * TILESIZE,
-				j * TILESIZE + TILESIZE,
-				i * TILESIZE + TILESIZE);
+			
 		}
 	}
 
@@ -313,15 +309,15 @@ void Maptool::minimap()
 
 TERRAIN Maptool::terrainSelect(int frameX, int frameY)
 {
-	if (frameX == 1 && frameY == 0)
-	{
-		return TR_CEMENT;
-	}
-	else if (frameX == 2 && frameY == 0)
-	{
-		return TR_DESERT;
-	}
-	else if (frameX == 3 && frameY == 0)
+
+
+
+
+
+
+
+
+	if (frameX == 3 && frameY == 0)
 	{
 		return TR_GRASS;
 	}
@@ -344,166 +340,10 @@ OBJECT Maptool::objSelect(int frameX, int frameY)
 		(frameX == 15 && frameY == 6) &&
 		(frameX == 15 && frameY == 9))
 	{
-		return OBJ_BLOCK1;
+		return OBJ_BLOCK;
 	}
-	else if ((frameX ==7 && frameY == 0) &&
-			(frameX == 7 && frameY == 3) &&
-			(frameX == 7 && frameY == 6) &&
-			(frameX == 7 && frameY == 9)&&
-			(frameX == 7 && frameY == 2) &&
-			(frameX == 7 && frameY == 5) &&
-			(frameX == 7 && frameY == 8) &&
-			(frameX == 7 && frameY == 11)&&
-		(frameX == 16 && frameY == 0) &&
-		(frameX == 16 && frameY == 3) &&
-		(frameX == 16 && frameY == 6) &&
-		(frameX == 16 && frameY == 9) &&
-		(frameX == 16 && frameY == 2) &&
-		(frameX == 16 && frameY == 5) &&
-		(frameX == 16 && frameY == 8) &&
-		(frameX == 16 && frameY == 11))
-	{
-		return OBJ_BLOCK2;
-	}
-	else if ((frameX ==8 && frameY == 0) &&
-			(frameX ==8 && frameY == 3) &&
-			(frameX ==8 && frameY == 6) &&
-			(frameX ==8 && frameY == 9)&&
-		(frameX == 17 && frameY == 0) &&
-		(frameX == 17 && frameY == 3) &&
-		(frameX == 17 && frameY == 6) &&
-		(frameX == 17 && frameY == 9))
-	{
-		return OBJ_BLOCK3;
-	}
-	else if ((frameX == 6 && frameY == 1) &&
-			(frameX == 6 && frameY == 4) &&
-			(frameX == 6 && frameY == 7) &&
-			(frameX == 6 && frameY == 10) &&
-			(frameX == 8 && frameY == 1) &&
-			(frameX == 8 && frameY == 4) &&
-			(frameX == 8 && frameY == 7) &&
-			(frameX == 8 && frameY == 10)&&
-		(frameX == 15 && frameY == 1) &&
-		(frameX == 15 && frameY == 4) &&
-		(frameX == 15 && frameY == 7) &&
-		(frameX == 15 && frameY == 10) &&
-		(frameX == 17 && frameY == 1) &&
-		(frameX == 17 && frameY == 4) &&
-		(frameX == 17 && frameY == 7) &&
-		(frameX == 17 && frameY == 10))
-	{
-		return OBJ_BLOCK4;
-	}
-	else if ((frameX ==7 && frameY == 1) &&
-			(frameX == 7 && frameY == 4) &&
-			(frameX == 7 && frameY == 7) &&
-			(frameX == 7 && frameY == 10)&&
-		(frameX == 16 && frameY == 1) &&
-		(frameX == 16 && frameY == 4) &&
-		(frameX == 16 && frameY == 7) &&
-		(frameX == 16 && frameY == 10))
-	{
-		return OBJ_BLOCK5;
-	}
-	else if ((frameX ==6 && frameY == 2) &&
-			(frameX == 6 && frameY == 5) &&
-			(frameX == 6 && frameY == 8) &&
-			(frameX == 6 && frameY == 11)&&
-		(frameX == 15 && frameY == 2) &&
-		(frameX == 15 && frameY == 5) &&
-		(frameX == 15 && frameY == 8) &&
-		(frameX == 15 && frameY == 11))
-	{
-		return OBJ_BLOCK6;
-	}
-	else if ((frameX ==8 && frameY == 2) &&
-			(frameX == 8 && frameY == 5) &&
-			(frameX == 8 && frameY == 8) &&
-			(frameX == 8 && frameY == 11)&&
-		(frameX == 17 && frameY == 2) &&
-		(frameX == 17 && frameY == 5) &&
-		(frameX == 17 && frameY == 8) &&
-		(frameX == 17 && frameY == 11))
-	{
-		return OBJ_BLOCK7;
-	}
-	else if ((frameX == 3 && frameY == 0) &&
-		(frameX == 3 && frameY == 1) &&
-		(frameX == 3 && frameY == 2) &&
-		(frameX == 4 && frameY == 0) &&
-		(frameX == 4 && frameY == 1) &&
-		(frameX == 4 && frameY == 2) &&
-		(frameX == 5 && frameY == 0) &&
-		(frameX == 5 && frameY == 1) && 
-		(frameX == 5 && frameY == 2)&&
-		(frameX == 3 && frameY == 3) &&
-		(frameX == 3 && frameY == 4) &&
-		(frameX == 3 && frameY == 5) &&
-		(frameX == 4 && frameY == 3) &&
-		(frameX == 4 && frameY == 4) &&
-		(frameX == 4 && frameY == 5) &&
-		(frameX == 5 && frameY == 3) &&
-		(frameX == 5 && frameY == 4) &&
-		(frameX == 5 && frameY == 5) &&
-		(frameX == 3 && frameY == 6) &&
-		(frameX == 3 && frameY == 7) &&
-		(frameX == 3 && frameY == 8) &&
-		(frameX == 4 && frameY == 6) &&
-		(frameX == 4 && frameY == 7) &&
-		(frameX == 4 && frameY == 8) &&
-		(frameX == 5 && frameY == 6) &&
-		(frameX == 5 && frameY == 7) &&
-		(frameX == 5 && frameY == 8) &&
-		(frameX == 3 && frameY == 9) &&
-		(frameX == 3 && frameY == 10) &&
-		(frameX == 3 && frameY == 11) &&
-		(frameX == 4 && frameY == 9) &&
-		(frameX == 4 && frameY == 10) &&
-		(frameX == 4 && frameY == 11) &&
-		(frameX == 5 && frameY == 9) &&
-		(frameX == 5 && frameY == 10) &&
-		(frameX == 5 && frameY == 11) &&
-		(frameX == 12 && frameY == 0) &&
-		(frameX == 12 && frameY == 1) &&
-		(frameX == 12 && frameY == 2) &&
-		(frameX == 13 && frameY == 0) &&
-		(frameX == 13 && frameY == 1) &&
-		(frameX == 13 && frameY == 2) &&
-		(frameX == 14 && frameY == 0) &&
-		(frameX == 14 && frameY == 1) &&
-		(frameX == 14 && frameY == 2) &&
-		(frameX == 12 && frameY == 3) &&
-		(frameX == 12 && frameY == 4) &&
-		(frameX == 12 && frameY == 5) &&
-		(frameX == 13 && frameY == 3) &&
-		(frameX == 13 && frameY == 4) &&
-		(frameX == 13 && frameY == 5) &&
-		(frameX == 14 && frameY == 3) &&
-		(frameX == 14 && frameY == 4) &&
-		(frameX == 14 && frameY == 5) &&
-		(frameX == 12 && frameY == 6) &&
-		(frameX == 12 && frameY == 7) &&
-		(frameX == 12 && frameY == 8) &&
-		(frameX == 13 && frameY == 6) &&
-		(frameX == 13 && frameY == 7) &&
-		(frameX == 13 && frameY == 8) &&
-		(frameX == 14 && frameY == 6) &&
-		(frameX == 14 && frameY == 7) &&
-		(frameX == 14 && frameY == 8) &&
-		(frameX == 12 && frameY == 9) &&
-		(frameX == 12 && frameY == 10) &&
-		(frameX == 12 && frameY == 11) &&
-		(frameX == 13 && frameY == 9) &&
-		(frameX == 13 && frameY == 10) &&
-		(frameX == 13 && frameY == 11) &&
-		(frameX == 14 && frameY == 9) &&
-		(frameX == 14 && frameY == 10) &&
-		(frameX == 14 && frameY == 11))
-	{
-		return OBJ_WATER;
-	}
+	else
 
-	return OBJ_BLOCK8;
+	return OBJ_BLOCK;
 }
 

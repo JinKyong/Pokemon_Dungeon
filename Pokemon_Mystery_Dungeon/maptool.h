@@ -1,11 +1,12 @@
 #pragma once
-#include "gameNode.h"
+#include "tileInfo.h"
 
-class Maptool :public gameNode
+
+class Maptool
 {
 
 private:
-	
+
 	vector<tagTile*>					_vTile;
 	vector<tagTile*>::iterator			_viTile;
 	vector<tagSampleTile*>				_vSampleTile;
@@ -23,7 +24,7 @@ private:
 	dImage* _object;
 	int _pos[2];
 
-	
+
 	int _ctrSelect;
 	int type;
 
@@ -49,9 +50,9 @@ public:
 
 	dImage* getMaptile() { return _maptile[8]; }
 	dImage* getObject() { return _object; }
-	
+
 	int getType() { return type; }
-	
+
 	DWORD* getTileAttribute() { return _attribute; }
 	TERRAIN terrainSelect(int frameX, int frameY);
 	OBJECT objSelect(int frameX, int frameY);

@@ -145,29 +145,29 @@ vector<Atile*> PathFinder::addOpenList(Atile * currentTile)
 			//예외처리
 			if (!node->getIsOpen()) continue;
 			if (node->getAttribute() == "start") continue;
-			if ((*_allTileList)[index]->obj <= OBJ_BLOCK8) continue;
+			if ((*_allTileList)[index]->obj <= TR_BLOCK) continue;
 
 			//대각 예외처리
 			if (i == startY) {					//위
 				if (j == endX) {				//오른쪽
-					if ((*_allTileList)[index - 1]->obj <= OBJ_BLOCK8) continue;
-					if ((*_allTileList)[index + _mapWidth]->obj <= OBJ_BLOCK8) continue;
+					if ((*_allTileList)[index - 1]->obj <= TR_BLOCK) continue;
+					if ((*_allTileList)[index + _mapWidth]->obj <= TR_BLOCK) continue;
 				}
 
 				if (j == startX) {				//왼쪽
-					if ((*_allTileList)[index + 1]->obj <= OBJ_BLOCK8) continue;
-					if ((*_allTileList)[index + _mapWidth]->obj <= OBJ_BLOCK8) continue;
+					if ((*_allTileList)[index + 1]->obj <= TR_BLOCK) continue;
+					if ((*_allTileList)[index + _mapWidth]->obj <= TR_BLOCK) continue;
 				}
 			}
 			else if (i == endY) {				//아래
 				if (j == endX) {				//오른쪽
-					if ((*_allTileList)[index - 1]->obj <= OBJ_BLOCK8) continue;
-					if ((*_allTileList)[index - _mapWidth]->obj <= OBJ_BLOCK8) continue;
+					if ((*_allTileList)[index - 1]->obj <= TR_BLOCK) continue;
+					if ((*_allTileList)[index - _mapWidth]->obj <= TR_BLOCK) continue;
 				}
 
 				if (j == startX) {				//왼쪽
-					if ((*_allTileList)[index + 1]->obj <= OBJ_BLOCK8) continue;
-					if ((*_allTileList)[index - _mapWidth]->obj <= OBJ_BLOCK8) continue;
+					if ((*_allTileList)[index + 1]->obj <= TR_BLOCK) continue;
+					if ((*_allTileList)[index - _mapWidth]->obj <= TR_BLOCK) continue;
 				}
 			}
 

@@ -26,7 +26,7 @@
 #define ATTR_WATER	0x00000256  //¹°
 
 
-class tileManager: public singletonBase<tileManager>
+class tileManager : public singletonBase<tileManager>
 {
 private:
 	vector<tagTile*>					_vTile;
@@ -37,7 +37,7 @@ private:
 	vector<RECT>						_vRoom;
 	vector<RECT>						_vExit;
 
-	dImage* _Mapbase;
+	dImage* _Mapbase[8];
 	dImage*	_Obbase;
 
 	int _initX;
@@ -47,14 +47,14 @@ private:
 
 	int _width;
 	int _height;
+	int _type;
 
-
-public: 	
+public:
 	tileManager();
 	~tileManager();
 
 	HRESULT init();
-	HRESULT init(int width, int height);
+	HRESULT init(int width, int height, int type);
 	void release();
 	void update();
 	void render();
@@ -72,16 +72,16 @@ public:
 	bool makeCorridor(int x, int y, Direction dir);
 	bool placeRect(RECT rc, char Char);
 	bool placeObject(char Char);
-	   
+
 	TERRAIN terrainSelect(int frameX, int frameY);
 	OBJECT objSelect(int frameX, int frameY);
 
-	
-	
+
+
 	void setChar(int x, int y, char Char) { _vChar[x + y * _width] = Char; }
 	void setWidth(int Width) { _width = Width; }
 	void setHeight(int Height) { _height = Height; }
-	
+
 	int getWidth() { return _width; }
 	int getHeight() { return _height; }
 	char getChar(int x, int y) { return _vChar[x + y * _width]; }
