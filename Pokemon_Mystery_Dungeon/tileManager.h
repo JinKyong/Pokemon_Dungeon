@@ -85,7 +85,8 @@ public:
 	int getWidth() { return _width; }
 	int getHeight() { return _height; }
 	char getChar(int x, int y) { return _vChar[x + y * _width]; }
-	vector<tagTile*>& getvTile() { return _vTile; }
+
+	vector<tagTile*>* getvTile() { return &_vTile; }
 	vector<RECT>* getvRoom() { return &_vRoom; }
 
 };

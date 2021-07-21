@@ -55,7 +55,5 @@ public:
 	DWORD* getTileAttribute() { return _attribute; }
 	TERRAIN terrainSelect(int frameX, int frameY);
 	OBJECT objSelect(int frameX, int frameY);
-
-
 };
 

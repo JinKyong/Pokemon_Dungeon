@@ -4,7 +4,7 @@
 
 class Atile;
 
-class PatternPathFinder : public Pattern
+class PatternOnAttack : public Pattern
 {
 private:
 	PathFinder* _pathFinder;

@@ -10,28 +10,11 @@ PathFinder::~PathFinder()
 {
 }
 
-HRESULT PathFinder::init(Player * player)
+HRESULT PathFinder::init()
 {
-	release();
-
 	_allTileList = TILEMANAGER->getvTile();
 	_mapWidth = TILEMANAGER->getWidth();
 	_mapHeight = TILEMANAGER->getHeight();
-
-	_startTile = new Atile;
-	_startTile->init(player->getX(), player->getY());
-	_startTile->setAttribute("start");
-
-	//방 랜덤으로 잡음
-	vector<RECT>* rooms = TILEMANAGER->getvRoom();
-	int roomNum = RND->getInt(rooms->size());
-
-	_endTile = new Atile;
-	_endTile->init(RND->getFromIntTo((*rooms)[roomNum].left, (*rooms)[roomNum].right),
-		RND->getFromIntTo((*rooms)[roomNum].top, (*rooms)[roomNum].bottom));
-	_endTile->setAttribute("end");
-
-	setTiles();
 
 	return S_OK;
 }
@@ -58,8 +41,59 @@ void PathFinder::update()
 	findPath(_currentTile);
 }
 
-void PathFinder::setTiles()
+void PathFinder::setTiles(Player* player)
 {
+	release();
+
+	_startTile = new Atile;
+	_startTile->init(player->getX(), player->getY());
+	_startTile->setAttribute("start");
+
+	//방 랜덤으로 잡음
+	vector<RECT>* rooms = TILEMANAGER->getvRoom();
+	int roomNum = RND->getInt(rooms->size());
+
+	_endTile = new Atile;
+	_endTile->init(RND->getFromIntTo((*rooms)[roomNum].left, (*rooms)[roomNum].right),
+		RND->getFromIntTo((*rooms)[roomNum].top, (*rooms)[roomNum].bottom));
+	_endTile->setAttribute("end");
+
+	//현재 타일은 시작타일로
+	_currentTile = _startTile;
+
+	//타일 셋팅
+	for (int i = 0; i < _mapHeight; i++) {
+		for (int j = 0; j < _mapWidth; j++) {
+			if (j == _startTile->getIdX() && i == _startTile->getIdY())
+			{
+				_vTotalList.push_back(_startTile);
+				continue;
+			}
+			if (j == _endTile->getIdX() && i == _endTile->getIdY())
+			{
+				_vTotalList.push_back(_endTile);
+				continue;
+			}
+
+			Atile* node = new Atile;
+			node->init(j, i);
+			_vTotalList.push_back(node);
+		}
+	}
+}
+
+void PathFinder::setTiles(Player * startPlayer, Player * destPlayer)
+{
+	release();
+
+	_startTile = new Atile;
+	_startTile->init(startPlayer->getX(), startPlayer->getY());
+	_startTile->setAttribute("start");
+
+	_endTile = new Atile;
+	_endTile->init(destPlayer->getDestX(), destPlayer->getDestY());
+	_endTile->setAttribute("end");
+
 	//현재 타일은 시작타일로
 	_currentTile = _startTile;
 
@@ -111,29 +145,29 @@ vector<Atile*> PathFinder::addOpenList(Atile * currentTile)
 			//예외처리
 			if (!node->getIsOpen()) continue;
 			if (node->getAttribute() == "start") continue;
-			if (_allTileList[index]->obj <= OBJ_BLOCK8) continue;
+			if ((*_allTileList)[index]->obj <= OBJ_BLOCK8) continue;
 
 			//대각 예외처리
 			if (i == startY) {					//위
 				if (j == endX) {				//오른쪽
-					if (_allTileList[index - 1]->obj <= OBJ_BLOCK8) continue;
-					if (_allTileList[index + _mapWidth]->obj <= OBJ_BLOCK8) continue;
+					if ((*_allTileList)[index - 1]->obj <= OBJ_BLOCK8) continue;
+					if ((*_allTileList)[index + _mapWidth]->obj <= OBJ_BLOCK8) continue;
 				}
 
 				if (j == startX) {				//왼쪽
-					if (_allTileList[index + 1]->obj <= OBJ_BLOCK8) continue;
-					if (_allTileList[index + _mapWidth]->obj <= OBJ_BLOCK8) continue;
+					if ((*_allTileList)[index + 1]->obj <= OBJ_BLOCK8) continue;
+					if ((*_allTileList)[index + _mapWidth]->obj <= OBJ_BLOCK8) continue;
 				}
 			}
 			else if (i == endY) {				//아래
 				if (j == endX) {				//오른쪽
-					if (_allTileList[index - 1]->obj <= OBJ_BLOCK8) continue;
-					if (_allTileList[index - _mapWidth]->obj <= OBJ_BLOCK8) continue;
+					if ((*_allTileList)[index - 1]->obj <= OBJ_BLOCK8) continue;
+					if ((*_allTileList)[index - _mapWidth]->obj <= OBJ_BLOCK8) continue;
 				}
 
 				if (j == startX) {				//왼쪽
-					if (_allTileList[index + 1]->obj <= OBJ_BLOCK8) continue;
-					if (_allTileList[index - _mapWidth]->obj <= OBJ_BLOCK8) continue;
+					if ((*_allTileList)[index + 1]->obj <= OBJ_BLOCK8) continue;
+					if ((*_allTileList)[index - _mapWidth]->obj <= OBJ_BLOCK8) continue;
 				}
 			}
 
@@ -216,6 +250,7 @@ void PathFinder::findPath(Atile * currentTile)
 	//목적지에 도달하면 중단
 	if (tempTile->getAttribute() == "end") {
 
+		_vPathList.push_back(_endTile);
 		//최단 경로를 저장
 		while (_currentTile->getParentNode() != NULL)
 		{

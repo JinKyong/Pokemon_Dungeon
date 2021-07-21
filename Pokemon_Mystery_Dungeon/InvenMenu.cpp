@@ -70,7 +70,7 @@ void InvenMenu::printTextLeft()
 	_arrow->render(dest.left - 20, dest.top + 8 + _index * TILEHEIGHT);
 
 	vector<Item*>::iterator viInvItem;
-	for (viInvItem = (*_invItem).begin(); viInvItem != (*_invItem).end(); ++viInvItem)
+	for (viInvItem = _invItem->begin(); viInvItem != _invItem->end(); ++viInvItem)
 	{
 		(*viInvItem)->getName();
 											//stringÀº c_str
@@ -100,16 +100,16 @@ void InvenMenu::printTextDown()
 
 void InvenMenu::plusIndex()
 {
-	if ((*_invItem).size() > 0)
+	if (_invItem->size() > 0)
 	{
-		_index = (_index + 1) % (*_invItem).size();
+		_index = (_index + 1) % _invItem->size();
 	}
 }
 
 void InvenMenu::minusIndex()
 {
-	if ((*_invItem).size() > 0)
+	if (_invItem->size() > 0)
 	{
-		_index = (_index - 1 + (*_invItem).size()) % (*_invItem).size();
+		_index = (_index - 1 + _invItem->size()) % _invItem->size();
 	}
 }

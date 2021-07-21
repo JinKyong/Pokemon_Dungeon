@@ -46,9 +46,9 @@ HRESULT testMapScene::init(Player * player)
 	titem = new ThrowItem;
 	titem->init(27, 15, PI);
 
-	INVENTORYMANAGER->addItem(apple);
-	INVENTORYMANAGER->addItem(jelly);
-	INVENTORYMANAGER->addItem(titem);
+	_itemManager->addItem(apple);
+	_itemManager->addItem(jelly);
+	_itemManager->addItem(titem);
 
 	DIALOGMANAGER->init();
 	//DIALOGMANAGER->loadMetaData(L"data/test");
@@ -80,6 +80,7 @@ void testMapScene::update()
 	}
 
 	CAMERAMANAGER->updateScreen(_player->getX(), _player->getY());
+
 }
 
 void testMapScene::render()

@@ -13,7 +13,7 @@ private:
 
 private:
 	//전체 타일 벡터
-	vector<PTILE>	_allTileList;
+	vector<PTILE>*	_allTileList;
 	int _mapWidth;
 	int _mapHeight;
 
@@ -41,12 +41,13 @@ public:
 	PathFinder();
 	~PathFinder();
 
-	HRESULT init(Player* player);
+	HRESULT init();
 	void release();
 	void update();
 
 	//타일 셋팅 함수
-	void setTiles();
+	void setTiles(Player* player);
+	void setTiles(Player* startPlayer, Player* destPlayer);
 	//갈 수 있는 길을 찾아 담아줄 함수
 	vector<Atile*> addOpenList(Atile* currentTile);
 	//길 찾는 함수
@@ -56,5 +57,5 @@ public:
 
 
 
-	tileList getPathList() { return _vPathList; }
+	tileList& getPathList() { return _vPathList; }
 };

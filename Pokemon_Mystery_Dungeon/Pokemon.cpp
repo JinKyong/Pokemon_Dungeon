@@ -121,7 +121,6 @@ void Pokemon::tuneIdle()
 		_tuningY = -4;
 	else
 		_tuningY = 0;
-
 }
 
 void Pokemon::tuneAttack()
@@ -137,6 +136,7 @@ void Pokemon::tuneAttack()
 	if (_tmpCount < 0) {
 		_tmpCount = 0;
 		changeState(POKEMON_STATE_DEFAULT);
+		_attack = false;
 	}
 }
 

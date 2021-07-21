@@ -1,7 +1,7 @@
 #include "stdafx.h"
-#include "PatternPathFinder.h"
+#include "PatternOnAttack.h"
 
-HRESULT PatternPathFinder::init(Player * player)
+HRESULT PatternOnAttack::init(Player * player)
 {
 	Pattern::init(player);
 
@@ -11,18 +11,18 @@ HRESULT PatternPathFinder::init(Player * player)
 	return S_OK;
 }
 
-void PatternPathFinder::release()
+void PatternOnAttack::release()
 {
 }
 
-void PatternPathFinder::update()
+void PatternOnAttack::update()
 {
 	//저장된 경로가 없으면 새로 길 찾기
-	if (_pathList.size() <= 0) {
-		_pathFinder->setTiles(_player);
-		_pathFinder->update();
-		_pathList = _pathFinder->getPathList();
-	}
+	//if(collisionmanager->room player) true면 실시간으로 찾고
+	//else false면 경로 한번 찾고
+	_pathFinder->setTiles(_player, (*TURNMANAGER->getAllPlayer())[0]);
+	_pathFinder->update();
+	_pathList = _pathFinder->getPathList();
 
 	//목적지 정하고 방향 설정
 	_player->setDestX(_pathList[0]->getIdX());
@@ -35,13 +35,11 @@ void PatternPathFinder::update()
 		_player->setPlayerState(POKEMON_STATE_MOVE);
 	}
 	else {
-		_player->changePattern(PLAYER_PATTERN_ONATTACK);
 		_player->setPlayerState(POKEMON_STATE_ATTACK);
 		_player->getPokemon()->setAttack(true);
 	}
 }
 
-void PatternPathFinder::render()
+void PatternOnAttack::render()
 {
-
 }

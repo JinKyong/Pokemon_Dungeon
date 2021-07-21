@@ -52,26 +52,26 @@ bool collisionManager::playerWithTile(Player * player)
 	int direct = player->getDirect();			//방향마다 다음타일 하나만 검사
 	//좌우
 	if ((direct & RIGHT) == RIGHT) {
-		if (_allTile[index[RIGHT]]->obj <= OBJ_BLOCK8)		return false;
+		if ((*_allTile)[index[RIGHT]]->obj <= OBJ_BLOCK8)		return false;
 		directCount += RIGHT;
 	}
 	else if ((direct & LEFT) == LEFT) {
-		if (_allTile[index[LEFT]]->obj <= OBJ_BLOCK8)		return false;
+		if ((*_allTile)[index[LEFT]]->obj <= OBJ_BLOCK8)		return false;
 		directCount += LEFT;
 	}
 
 	//상하
 	if ((direct & UP) == UP) {
-		if (_allTile[index[UP]]->obj <= OBJ_BLOCK8)		return false;
+		if ((*_allTile)[index[UP]]->obj <= OBJ_BLOCK8)		return false;
 		directCount += UP;
 	}
 	else if ((direct & DOWN) == DOWN) {
-		if (_allTile[index[DOWN]]->obj <= OBJ_BLOCK8)		return false;
+		if ((*_allTile)[index[DOWN]]->obj <= OBJ_BLOCK8)		return false;
 		directCount += DOWN;
 	}
 
 	//대각
-	if (_allTile[index[directCount]]->obj <= OBJ_BLOCK8)	return false;
+	if ((*_allTile)[index[directCount]]->obj <= OBJ_BLOCK8)	return false;
 
 
 	return true;
@@ -97,7 +97,7 @@ bool collisionManager::playerWithPlayer(Player * player)
 
 	vector<Player*>::iterator playerIter;
 
-	for (playerIter = _allPlayer.begin(); playerIter != _allPlayer.end(); ++playerIter)
+	for (playerIter = _allPlayer->begin(); playerIter != _allPlayer->end(); ++playerIter)
 	{
 		if ((*playerIter) == player) continue;
 
@@ -118,31 +118,31 @@ bool collisionManager::playerWithPlayer(Player * player)
 		int direct = player->getDirect();			//방향마다 다음타일 하나만 검사
 		//좌우
 		if ((direct & RIGHT) == RIGHT) {
-			if (_allTile[index[RIGHT]]->x == destX &&
-				_allTile[index[RIGHT]]->y == destY)		return false;
+			if ((*_allTile)[index[RIGHT]]->x == destX &&
+				(*_allTile)[index[RIGHT]]->y == destY)		return false;
 			directCount += RIGHT;
 		}
 		else if ((direct & LEFT) == LEFT) {
-			if (_allTile[index[LEFT]]->x == destX &&
-				_allTile[index[LEFT]]->y == destY)		return false;
+			if ((*_allTile)[index[LEFT]]->x == destX &&
+				(*_allTile)[index[LEFT]]->y == destY)		return false;
 			directCount += LEFT;
 		}
 
 		//상하
 		if ((direct & UP) == UP) {
-			if (_allTile[index[UP]]->x == destX &&
-				_allTile[index[UP]]->y == destY)		return false;
+			if ((*_allTile)[index[UP]]->x == destX &&
+				(*_allTile)[index[UP]]->y == destY)		return false;
 			directCount += UP;
 		}
 		else if ((direct & DOWN) == DOWN) {
-			if (_allTile[index[DOWN]]->x == destX &&
-				_allTile[index[DOWN]]->y == destY)		return false;
+			if ((*_allTile)[index[DOWN]]->x == destX &&
+				(*_allTile)[index[DOWN]]->y == destY)		return false;
 			directCount += DOWN;
 		}
 
 		//대각
-		if (_allTile[index[directCount]]->x == destX &&
-			_allTile[index[directCount]]->y == destY)	return false;
+		if ((*_allTile)[index[directCount]]->x == destX &&
+			(*_allTile)[index[directCount]]->y == destY)	return false;
 	}
 
 	return true;
@@ -155,14 +155,14 @@ void collisionManager::collisionEndTurnPlayer(Player* player)
 
 void collisionManager::playerWithItem(Player* player)
 {
-	for (int i = 0; i < _allItem.size(); i++)
+	for (int i = 0; i < _allItem->size(); i++)
 	{
 		RECT temp;
-		if (IntersectRect(&temp, &player->getBody(), &_allItem[i]->getBody()))
+		if (IntersectRect(&temp, &player->getBody(), &(*_allItem)[i]->getBody()))
 		{
-			DIALOGMANAGER->addItemLog(player, _allItem[i]);
+			DIALOGMANAGER->addItemLog(player, (*_allItem)[i]);
 			if(player->getPlayerType() <= PLAYER_TYPE_TEAM)
-				INVENTORYMANAGER->addItem(_allItem[i]);
+				INVENTORYMANAGER->addItem((*_allItem)[i]);
 			_scene->getItemManager()->removeItem(i);
 		}
 	}
@@ -174,7 +174,7 @@ void collisionManager::effectWithEnemy(Effect * effect)
 
 	vector<Player*>::iterator playerIter;
 
-	for (playerIter = _allPlayer.begin(); playerIter != _allPlayer.end(); ++playerIter)
+	for (playerIter = _allPlayer->begin(); playerIter != _allPlayer->end(); ++playerIter)
 	{
 		if (IntersectRect(&temp, &(*playerIter)->getBody(), &effect->getBody()))
 		{

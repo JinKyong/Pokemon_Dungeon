@@ -8,7 +8,6 @@ class Atile;
 class Enemy : public Player
 {
 private:
-	Pattern* _pattern;
 
 public:
 	virtual HRESULT init(int pokemonNum);
@@ -17,7 +16,5 @@ public:
 	virtual void render();
 
 	virtual	int input();
-
-	void setDirect();
 };
 

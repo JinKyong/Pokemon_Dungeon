@@ -8,10 +8,13 @@ HRESULT User::init(int pokemonNum)
 	//플레이어 타입
 	_playerType = PLAYER_TYPE_USER;
 	_playerState = POKEMON_STATE_DEFAULT;
+	//패턴 없음
+	for (int i = 0; i < END_PLAYER_PATTERN; i++)
+		_pattern[i] = nullptr;
+	_currentPattern = END_PLAYER_PATTERN;
 
 	//스탯
 	//계산해서 넣음 포켓몬 꺼
-	_testHP = 200;
 
 	_selectedSkill = nullptr;
 	_skill[0] = SKILLDEX->makeSkill(1);
@@ -104,6 +107,7 @@ void User::controlKey()
 	if (KEYMANAGER->isOnceKeyDown('X')) {
 		//_pokemon->changeState(POKEMON_STATE_ATTACK);
 		_playerState = POKEMON_STATE_ATTACK;
+		_pokemon->setAttack(true);
 	}
 	if (KEYMANAGER->isOnceKeyDown('Q')) {
 		//_pokemon->changeState(POKEMON_STATE_SATTACK);

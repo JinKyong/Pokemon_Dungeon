@@ -4,6 +4,7 @@
 #include <vector>
 
 class Atile;
+class Pattern;
 
 enum PLAYER_TYPE {
 	PLAYER_TYPE_USER,
@@ -12,12 +13,21 @@ enum PLAYER_TYPE {
 	END_PLAYER_TYPE
 };
 
+enum PLAYER_PATTERN {
+	PLAYER_PATTERN_PATHFINDER,
+	PLAYER_PATTERN_ONATTACK,
+	END_PLAYER_PATTERN
+};
+
 class Player
 {
 protected:
-	//플레이어 타입 & 상태
+	//플레이어 타입 & 상태 & 패턴(알고리즘)
 	PLAYER_TYPE _playerType;
 	POKEMON_STATE _playerState;
+
+	Pattern* _pattern[END_PLAYER_PATTERN];
+	PLAYER_PATTERN _currentPattern = END_PLAYER_PATTERN;
 
 	//플레이어 포켓몬
 	Pokemon* _pokemon;
@@ -35,7 +45,6 @@ protected:
 
 	//스탯 (실제 값)
 	STAT _realStat;
-	int _testHP;
 
 	//기술(스킬)
 	Skill* _selectedSkill;
@@ -47,8 +56,6 @@ protected:
 	//맵 상태(마을 또는 던전)
 	bool _inDungeon;
 
-	vector<Atile*> _pathList;
-
 public:
 	virtual HRESULT init(int pokemonNum);
 	virtual HRESULT init(float x, float y);
@@ -57,6 +64,9 @@ public:
 	virtual void render() = 0;
 
 	virtual int input() = 0;
+
+	void changePattern(PLAYER_PATTERN pattern);
+	void setDirect();
 
 	void move();
 	void attack();
@@ -77,6 +87,11 @@ public:
 	float getY() { return _y; }
 	void setY(float y) { _y = y; }
 
+	float getInitX() { return _initX; }
+	void setInitX(float initX) { _initX = initX; }
+	float getInitY() { return _initY; }
+	void setInitY(float initY) { _initY = initY; }
+
 	float getDestX() { return _destX; }
 	void setDestX(float destX) { _destX = destX; }
 	float getDestY() { return _destY; }
@@ -88,11 +103,9 @@ public:
 	STAT getRealStat() { return _realStat; }
 	void setRealStat(STAT realStat) { _realStat = realStat; }
 
-	int getTestHP() { return _testHP; }
 	RECT getBody() { return _body; }
 
 	int getDirect() { return _direct; }
 
-	vector<Atile*> getPathList() { return _pathList; }
-	void setPathList(vector<Atile*> pathList) { _pathList = pathList; }
+	Skill** getSkill() { return _skill; }
 };

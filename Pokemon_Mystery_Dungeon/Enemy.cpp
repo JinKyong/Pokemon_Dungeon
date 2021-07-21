@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Enemy.h"
 #include "PatternPathFinder.h"
+#include "PatternOnAttack.h"
 
 HRESULT Enemy::init(int pokemonNum)
 {
@@ -9,14 +10,16 @@ HRESULT Enemy::init(int pokemonNum)
 	//플레이어 타입
 	_playerType = PLAYER_TYPE_ENEMY;
 	_playerState = POKEMON_STATE_DEFAULT;
+	//패턴
+	_pattern[PLAYER_PATTERN_PATHFINDER] = new PatternPathFinder;
+	_pattern[PLAYER_PATTERN_ONATTACK] = new PatternOnAttack;
+	changePattern(PLAYER_PATTERN_PATHFINDER);
 
 	//스탯
 	//계산해서 넣음 포켓몬 꺼
-	_testHP = 200;
+	_realStat.hp = 200;
 
 	//_inDungeon = false;
-
-	_pattern = new PatternPathFinder;
 
 	return S_OK;
 }
@@ -27,6 +30,8 @@ void Enemy::release()
 
 void Enemy::update()
 {
+	//패턴 정하기
+
 	_body = RectMakeCenter(_x * TILEWIDTH + TILEWIDTH / 2, _y * TILEHEIGHT + TILEHEIGHT / 2,
 		TILEWIDTH, TILEHEIGHT);
 }
@@ -35,7 +40,7 @@ void Enemy::render()
 {
 	if (PRINTMANAGER->isDebug()) {
 		WCHAR str[128];
-		swprintf_s(str, L"HP : %d", _testHP);
+		swprintf_s(str, L"HP : %d", _realStat.hp);
 		DTDMANAGER->printText(str, dRectMake(_body.left, _body.top - 80, 100, 20));
 		swprintf_s(str, L"direct : %d", _pokemon->getDirect());
 		DTDMANAGER->printText(str, dRectMake(_body.left, _body.top - 60, 100, 20));
@@ -52,37 +57,11 @@ void Enemy::render()
 
 int Enemy::input()
 {
-	if (_pathList.size() <= 0) {
-		_pattern->init(this);
-		_pattern->update();
-	}
-
-	_playerState = POKEMON_STATE_MOVE;
+	//시작지점 설정
 	_initX = _x;
 	_initY = _y;
-	_destX = _pathList[0]->getIdX();
-	_destY = _pathList[0]->getIdY();
-	_pathList.erase(_pathList.begin());
-	setDirect();
+
+	_pattern[_currentPattern]->update();
 
 	return _playerState;
-}
-
-void Enemy::setDirect()
-{
-	_direct = 0;
-
-	if (_x != _destX) {
-		if (_x < _destX)
-			_direct |= RIGHT;
-		else
-			_direct |= LEFT;
-	}
-
-	if (_y != _destY) {
-		if (_y > _destY)
-			_direct |= UP;
-		else
-			_direct |= DOWN;
-	}
 }

@@ -69,4 +69,3 @@ public:
 
 	battleLog* getBattleLog() { return &_battleLog; }
 };
-

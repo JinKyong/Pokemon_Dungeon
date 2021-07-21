@@ -13,12 +13,12 @@ enum POKEMON_STATE {
 };
 
 typedef struct tagPokemonStat {
-	int _hp;
-	int _attack;
-	int _defense;
-	int _sattack;
-	int _sdefense;
-	int _speed;
+	int hp;
+	int attack;
+	int defense;
+	int sattack;
+	int sdefense;
+	int speed;
 }STAT, *PSTAT;
 
 
@@ -49,6 +49,7 @@ protected:
 	float _interceptY;
 	float _gradient;
 	float _tmpCount;
+	bool _attack;
 
 
 
@@ -108,6 +109,9 @@ public:
 	float getAngle() { return _angle; }
 	int getDirect() { return _frameY; }
 	void setDirect(int direct) { _frameY = direct; }
+
+	bool getAttack() { return _attack; }
+	void setAttack(bool attack) { _attack = attack; }
 
 	wstring getName() { return _name; }
 	int getNum() { return _num; }

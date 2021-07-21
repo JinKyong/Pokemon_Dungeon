@@ -90,18 +90,17 @@ void turnManager::randomSetting()
 {
 	vector<RECT>* room = TILEMANAGER->getvRoom();
 
-	int index = RND->getInt(room->size());
-
-	float x = RND->getFromIntTo((*room)[index].left, (*room)[index].right);
-	float y = RND->getFromIntTo((*room)[index].top, (*room)[index].bottom);
-
 	playerIter player = _allPlayerList.begin();
 
 	for (; player != _allPlayerList.end();) {
+		int index = RND->getInt(room->size());
+
+		float x = RND->getFromIntTo((*room)[index].left, (*room)[index].right);
+		float y = RND->getFromIntTo((*room)[index].top, (*room)[index].bottom);
+
 		(*player)->init(x, y);
 		++player;
 	}
-
 
 }
 

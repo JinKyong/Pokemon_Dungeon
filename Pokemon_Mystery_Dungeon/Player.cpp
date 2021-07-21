@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Player.h"
+#include "Pattern.h"
 
 HRESULT Player::init(int pokemonNum)
 {
@@ -23,9 +24,39 @@ HRESULT Player::init(float x, float y)
 	return S_OK;
 }
 
+void Player::changePattern(PLAYER_PATTERN pattern)
+{
+	if (_currentPattern == pattern) return;
+
+
+	//패턴 갱신
+	_currentPattern = pattern;
+	_pattern[_currentPattern]->init(this);
+}
+
+void Player::setDirect()
+{
+	_direct = 0;
+
+	if (_x != _destX) {
+		if (_x < _destX)
+			_direct |= RIGHT;
+		else
+			_direct |= LEFT;
+	}
+
+	if (_y != _destY) {
+		if (_y > _destY)
+			_direct |= UP;
+		else
+			_direct |= DOWN;
+	}
+
+	_pokemon->changeDirect(_direct);
+}
+
 void Player::move()
 {
-	_pokemon->changeDirect(_direct);
 	_pokemon->changeState(_playerState);
 
 	if (_x != _destX)	_x += cosf(_pokemon->getAngle()) / 16;
@@ -47,8 +78,8 @@ void Player::move()
 
 void Player::attack()
 {
-	if (_pokemon->getState() == POKEMON_STATE_DEFAULT) {
-		_playerState = _pokemon->getState();
+	if (!_pokemon->getAttack()) {
+		_playerState = POKEMON_STATE_DEFAULT;
 		return;
 	}
 
@@ -57,16 +88,16 @@ void Player::attack()
 
 void Player::sattack()
 {
-	_pokemon->changeState(_playerState);
-
 	if (_selectedSkill) {
 		_selectedSkill->useSkill(_x, _y, _pokemon->getDirect());
 		DIALOGMANAGER->useSkillLog(this, _selectedSkill);
 		_selectedSkill = nullptr;
 	}
+
+	_pokemon->changeState(_playerState);
 }
 
 void Player::hitDamage(int num)
 {
-	_testHP -= num;
+	_realStat.hp -= num;
 }

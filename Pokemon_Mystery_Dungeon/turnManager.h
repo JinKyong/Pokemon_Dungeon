@@ -39,7 +39,7 @@ public:
 
 
 
-	playerList& getAllPlayer() { return _allPlayerList; }
+	playerList* getAllPlayer() { return &_allPlayerList; }
 	Player* getCurrentPlayer() { return _inputPlayerList[0]; }
 
 	bool getPause() { return _pause; }

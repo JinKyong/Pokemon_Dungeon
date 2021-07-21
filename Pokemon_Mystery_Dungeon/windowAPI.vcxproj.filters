@@ -139,8 +139,14 @@
     <Filter Include="playGround\Pokémon\Player\Pattern\base">
       <UniqueIdentifier>{e1e50deb-594e-481a-a658-18a0c1c0dba2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="playGround\Pokémon\Player\Pattern\PathFinder%28A%2a%29">
+    <Filter Include="playGround\Pokémon\Player\Pattern\PathFinder">
       <UniqueIdentifier>{02a49474-9802-45c0-b850-0c599782b3fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="playGround\Pokémon\Player\Pattern\A%2a">
+      <UniqueIdentifier>{6edc43bd-c09a-4aa1-9fa7-bc39301b53a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="playGround\Pokémon\Player\Pattern\OnAttack">
+      <UniqueIdentifier>{f9d7504c-c14a-46d8-b4fd-ef31829a966e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -474,20 +480,23 @@
     <ClInclude Include="tileInfo.h">
       <Filter>playGround\Maptool\base</Filter>
     </ClInclude>
+    <ClInclude Include="battleManager.h">
+      <Filter>playGround\Battle</Filter>
+    </ClInclude>
     <ClInclude Include="Pattern.h">
       <Filter>playGround\Pokémon\Player\Pattern\base</Filter>
     </ClInclude>
+    <ClInclude Include="PatternPathFinder.h">
+      <Filter>playGround\Pokémon\Player\Pattern\PathFinder</Filter>
+    </ClInclude>
     <ClInclude Include="Atile.h">
-      <Filter>playGround\Pokémon\Player\Pattern\PathFinder%28A%2a%29</Filter>
+      <Filter>playGround\Pokémon\Player\Pattern\A%2a</Filter>
     </ClInclude>
     <ClInclude Include="PathFinder.h">
-      <Filter>playGround\Pokémon\Player\Pattern\PathFinder%28A%2a%29</Filter>
+      <Filter>playGround\Pokémon\Player\Pattern\A%2a</Filter>
     </ClInclude>
-    <ClInclude Include="PatternPathFinder.h">
-      <Filter>playGround\Pokémon\Player\Pattern\PathFinder%28A%2a%29</Filter>
-    </ClInclude>
-    <ClInclude Include="battleManager.h">
-      <Filter>playGround\Battle</Filter>
+    <ClInclude Include="PatternOnAttack.h">
+      <Filter>playGround\Pokémon\Player\Pattern\OnAttack</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -791,20 +800,23 @@
     <ClCompile Include="txtData.cpp">
       <Filter>2DGameFramework\Manager</Filter>
     </ClCompile>
+    <ClCompile Include="battleManager.cpp">
+      <Filter>playGround\Battle</Filter>
+    </ClCompile>
     <ClCompile Include="Pattern.cpp">
       <Filter>playGround\Pokémon\Player\Pattern\base</Filter>
     </ClCompile>
+    <ClCompile Include="PatternPathFinder.cpp">
+      <Filter>playGround\Pokémon\Player\Pattern\PathFinder</Filter>
+    </ClCompile>
     <ClCompile Include="Atile.cpp">
-      <Filter>playGround\Pokémon\Player\Pattern\PathFinder%28A%2a%29</Filter>
+      <Filter>playGround\Pokémon\Player\Pattern\A%2a</Filter>
     </ClCompile>
     <ClCompile Include="PathFinder.cpp">
-      <Filter>playGround\Pokémon\Player\Pattern\PathFinder%28A%2a%29</Filter>
+      <Filter>playGround\Pokémon\Player\Pattern\A%2a</Filter>
     </ClCompile>
-    <ClCompile Include="PatternPathFinder.cpp">
-      <Filter>playGround\Pokémon\Player\Pattern\PathFinder%28A%2a%29</Filter>
-    </ClCompile>
-    <ClCompile Include="battleManager.cpp">
-      <Filter>playGround\Battle</Filter>
+    <ClCompile Include="PatternOnAttack.cpp">
+      <Filter>playGround\Pokémon\Player\Pattern\OnAttack</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
