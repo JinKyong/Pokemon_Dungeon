@@ -67,11 +67,13 @@ bool collisionManager::collisionInputPlayer(Player * player)		// User, Enemy ¾È¿
 	for (playerIter = _allPlayer->begin(); playerIter != _allPlayer->end(); ++playerIter)
 	{
 		int x, y;
-		if ((*playerIter)->getPlayerType() == PLAYER_TYPE_ENEMY)
+
+		if (player->getPlayerType() == PLAYER_TYPE_ENEMY)
 		{
 			x = (*playerIter)->getDestX();
 			y = (*playerIter)->getDestY();
 		}
+
 		else
 		{
 			x = (*playerIter)->getX();
