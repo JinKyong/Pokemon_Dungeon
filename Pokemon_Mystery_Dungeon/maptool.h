@@ -1,46 +1,5 @@
 #pragma once
 #include "gameNode.h"
-//·£´ý ·ë »ý¼º
-struct tagRoom
-{
-	TERRAIN		terrain;
-	OBJECT		obj;
-	RECT		rc;
-	int			terrainFrameX;
-	int			terrainFrameY;
-	int			objFrameX;
-	int			objFrameY;
-};
-//·£´ý Å»Ãâ±¸
-struct tagExit
-{
-	TERRAIN		terrain;
-	OBJECT		obj;
-	RECT		rc;
-	int			terrainFrameX;
-	int			terrainFrameY;
-	int			objFrameX;
-	int			objFrameY;
-};
-//·£´ý º¹µµ
-struct tagCorridor
-{
-	TERRAIN		terrain;
-	OBJECT		obj;
-	RECT		rc;
-	int			terrainFrameX;
-	int			terrainFrameY;
-	int			objFrameX;
-	int			objFrameY;
-};
-
-struct Body
-{
-	int x;
-	int y;
-	int width;
-	int height;
-};
 
 class Maptool :public gameNode
 {
@@ -60,12 +19,15 @@ private:
 	tagTile _tiles[TILEX * TILEY];
 	DWORD _attribute[TILEX * TILEY];	//Å¸ÀÏ¼Ó¼º
 
-	dImage* _maptile;
+	dImage* _maptile[8];
 	dImage* _object;
 	int _pos[2];
 
+	
 	int _ctrSelect;
 	int type;
+
+	bool mode;
 
 public:
 	Maptool();
@@ -76,12 +38,16 @@ public:
 	virtual void update();
 	virtual void render();
 
+
+	void save(const char * mapName);
+	void load(const char * mapName);
 	virtual void setup();
+	virtual void setSample();
 	virtual void setMap();
 
 	void minimap();
 
-	dImage* getMaptile() { return _maptile; }
+	dImage* getMaptile() { return _maptile[8]; }
 	dImage* getObject() { return _object; }
 	
 	int getType() { return type; }

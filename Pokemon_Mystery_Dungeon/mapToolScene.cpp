@@ -24,10 +24,10 @@ void mapToolScene::release()
 void mapToolScene::update()
 {
 	_maptool->update();
-	if (KEYMANAGER->isStayKeyDown('W'))y-=47;
-	if (KEYMANAGER->isStayKeyDown('A'))x-=47;
-	if (KEYMANAGER->isStayKeyDown('S'))y+=47;
-	if (KEYMANAGER->isStayKeyDown('D'))x+=47;
+	if (KEYMANAGER->isStayKeyDown('W'))y-=1;
+	if (KEYMANAGER->isStayKeyDown('A'))x-=1;
+	if (KEYMANAGER->isStayKeyDown('S'))y+=1;
+	if (KEYMANAGER->isStayKeyDown('D'))x+=1;
 
 	if (x <= 0)x = 0;
 	if (y <= 0)y = 0;

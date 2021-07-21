@@ -11,10 +11,19 @@ Maptool::~Maptool()
 
 HRESULT Maptool::init()
 {
-	_maptile=IMAGEMANAGER->addFrameDImage("maptiles", L"img/map/tiles/maptile.png", 768, 384, 16, 8);
-	_object =IMAGEMANAGER->addFrameDImage("object", L"img/map/tiles/object.png", 864, 576, SAMPLETILEX, SAMPLETILEY);
+	_maptile[0]=IMAGEMANAGER->addFrameDImage("terrain0", L"img/map/tiles/terrain_0.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
+	_maptile[1] = IMAGEMANAGER->addFrameDImage("terrain1", L"img/map/tiles/terrain_1.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
+	_maptile[2] = IMAGEMANAGER->addFrameDImage("terrain2", L"img/map/tiles/terrain_2.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
+	_maptile[3] = IMAGEMANAGER->addFrameDImage("terrain3", L"img/map/tiles/terrain_3.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
+	_maptile[4] = IMAGEMANAGER->addFrameDImage("terrain4", L"img/map/tiles/terrain_4.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
+	_maptile[5] = IMAGEMANAGER->addFrameDImage("terrain5", L"img/map/tiles/terrain_5.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
+	_maptile[6] = IMAGEMANAGER->addFrameDImage("terrain6", L"img/map/tiles/terrain_6.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
+	_maptile[7] = IMAGEMANAGER->addFrameDImage("terrain7", L"img/map/tiles/terrain_7.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
+	_object =IMAGEMANAGER->addFrameDImage("object", L"img/map/tiles/object_all.png", 720, 144, SAMPLETILEX, 3);
 	setup();
-
+	setSample();
+	type = 0;
+	mode = true;
 
 	return S_OK;
 }
@@ -27,16 +36,23 @@ void Maptool::update()
 {
 	if (KEYMANAGER->isOnceKeyDown('1'))type--;
 	if (KEYMANAGER->isOnceKeyDown('2'))type++;
+	if (KEYMANAGER->isOnceKeyDown('3')) 
+	{ 
+		if(mode)mode=false;
+		else if (!mode)mode = true;
+	}
+	if (KEYMANAGER->isOnceKeyDown('4')) { save("tilemap.map");}
+	if (KEYMANAGER->isOnceKeyDown('5')) { load("tilemap.map");}
 	if (KEYMANAGER->isStayKeyDown(VK_RBUTTON)) { _ctrSelect = CTRL_ERASER; setMap(); }
-
-	if (type == 1 && KEYMANAGER->isStayKeyDown(VK_LBUTTON)) { _ctrSelect = CTRL_TERRAINDRAW; setMap(); }
-	if (type == 2 && KEYMANAGER->isStayKeyDown(VK_LBUTTON)) { _ctrSelect = CTRL_OBJDRAW; setMap(); }
+	if (PRINTMANAGER->isDebug())
+	{
+		if (mode&& KEYMANAGER->isStayKeyDown(VK_LBUTTON)) { _ctrSelect = CTRL_TERRAINDRAW; setMap(); }
+		if (!mode && KEYMANAGER->isStayKeyDown(VK_LBUTTON)) { _ctrSelect = CTRL_OBJDRAW; setMap(); }
+	}
 	
-
-
-	if (type <= 0)type = 1;
-	if (type >= 4)type = 3;
-
+	if (type < 0)type = 0;
+	if (type >=8 )type = 7;
+	setSample();
 	
 }
 
@@ -48,7 +64,7 @@ void Maptool::render()
 	rc = RectMakeCenter(_ptMouse.x, _ptMouse.y, 5, 5);
 	for (int i = 0; i < TILEX * TILEY; ++i)
 	{
-	_maptile->frameRender(
+	_maptile[type]->frameRender(
 			_vTile[i]->rc.left, _vTile[i]->rc.top,
 			_vTile[i]->terrainFrameX, _vTile[i]->terrainFrameY);
 	}
@@ -60,47 +76,44 @@ void Maptool::render()
 			_vTile[i]->rc.left, _vTile[i]->rc.top,
 			_vTile[i]->objFrameX, _vTile[i]->objFrameY);
 	}
-
-	if (type==1)
+	if (PRINTMANAGER->isDebug())
 	{
-		_maptile->render(WINSIZEX - IMAGEMANAGER->findDImage("object")->getWidth(), 0);
-	}
-	else if (type==2)
-	{
-		_object->render(WINSIZEX - IMAGEMANAGER->findDImage("object")->getWidth(), 0);
+		if (mode)
+		{
+			_maptile[type]->render(_rc.right - IMAGEMANAGER->findDImage("object")->getWidth(), _rc.top);
+		}
+		else if (!mode)
+		{
+			_object->render(_rc.right - IMAGEMANAGER->findDImage("object")->getWidth(), _rc.top);
+		}
 	}
 	DTDMANAGER->Rectangle(rc);
 	
 }
 
-void Maptool::setup()
+void Maptool::save(const char * mapName)
 {
-	
-	//처음 컨트롤 상태는 지형으로
-	_ctrSelect = CTRL_TERRAINDRAW;
+	HANDLE file;
+	DWORD write;
 
-	//타일셋 먼저 세팅
-	for (int i = 0; i < SAMPLETILEY; ++i)
-	{
-		for (int j = 0; j < SAMPLETILEX; ++j)
-		{
-			PSTILE sampleTile;
-			sampleTile = new STILE;
-			
-			sampleTile->terrainFrameX = j;
-			sampleTile->terrainFrameY = i;
-			
-			//타일셋에 렉트를 씌움
-			SetRect(&sampleTile->rcTile,
-				(WINSIZEX - IMAGEMANAGER->findDImage("object")->getWidth()) + j * TILESIZE,
-				i * TILESIZE,
-				(WINSIZEX - IMAGEMANAGER->findDImage("object")->getWidth()) + j * TILESIZE + TILESIZE,
-				i * TILESIZE + TILESIZE);
-			_vSampleTile.push_back(sampleTile);
-		}
-	}
+	file = CreateFile(mapName, GENERIC_WRITE, NULL, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
 
-	//타일 영역
+	WriteFile(file, _tiles, sizeof(tagTile)*TILEX*TILEY, &write, NULL);
+	CloseHandle(file);
+}
+
+void Maptool::load(const char * mapName)
+{
+	HANDLE file;
+	DWORD read;
+
+	file = CreateFile(mapName, GENERIC_READ, NULL, NULL,
+		OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+
+	ReadFile(file, _tiles, sizeof(tagTile) * TILEX * TILEY, &read, NULL);
+
+	memset(_attribute, 0, sizeof(DWORD) * TILEX * TILEY);
+	_vTile.clear();
 	for (int i = 0; i < TILEY; ++i)
 	{
 		for (int j = 0; j < TILEX; ++j)
@@ -116,6 +129,66 @@ void Maptool::setup()
 		}
 	}
 
+	for (int i = 0; i < TILEX*TILEY; ++i)
+	{
+		_vTile[i]->terrainFrameX= _tiles[i].terrainFrameX;
+		_vTile[i]->terrainFrameY= _tiles[i].terrainFrameY;
+		_vTile[i]->objFrameX=_tiles[i].objFrameX;
+		_vTile[i]->objFrameY=_tiles[i].objFrameY;
+		_vTile[i]->terrain=_tiles[i].terrain;
+		_vTile[i]->obj=_tiles[i].obj;
+	}
+	//STEP 01
+	//타일을 불러온 다음 타일이 어떤 지형인지 오브젝트인지 분별해서
+	//해당 타일에 속성을 부여해줍니다
+
+	//for (int i = 0; i < TILEX * TILEY; ++i)
+	//{
+	//	if (_tiles[i].obj == OBJ_BLOCK1) _attribute[i] |= ATTR_UNMOVE;
+	//	else if (_tiles[i].obj == OBJ_BLOCK2) _attribute[i] |= ATTR_UNMOVE;
+	//	else if (_tiles[i].obj == OBJ_BLOCK3) _attribute[i] |= ATTR_UNMOVE;
+	//	else if (_tiles[i].obj == OBJ_BLOCK4) _attribute[i] |= ATTR_UNMOVE;
+	//	else if (_tiles[i].obj == OBJ_BLOCK5) _attribute[i] |= ATTR_UNMOVE;
+	//	else if (_tiles[i].obj == OBJ_BLOCK6) _attribute[i] |= ATTR_UNMOVE;
+	//	else if (_tiles[i].obj == OBJ_BLOCK7) _attribute[i] |= ATTR_UNMOVE;
+	//	else if (_tiles[i].obj == OBJ_BLOCK8) _attribute[i] |= ATTR_UNMOVE;
+	//	else if (_tiles[i].obj == OBJ_WATER) _attribute[i] |= ATTR_WATER;
+	//}
+
+
+
+	CloseHandle(file);
+}
+
+void Maptool::setup()
+{
+	
+	//처음 컨트롤 상태는 지형으로
+	_ctrSelect = CTRL_TERRAINDRAW;
+	
+	
+
+	//타일 영역
+	for (int i = 0; i < TILEY; ++i)
+	{
+		for (int j = 0; j < TILEX; ++j)
+		{
+			PTILE Tile;
+			Tile = new TILE;
+			SetRect(&Tile->rc,
+				j * TILESIZE,
+				i * TILESIZE,
+				j * TILESIZE + TILESIZE,
+				i * TILESIZE + TILESIZE);
+			_vTile.push_back(Tile);
+
+			SetRect(&_tiles[i * TILEX + j].rc,
+				j * TILESIZE,
+				i * TILESIZE,
+				j * TILESIZE + TILESIZE,
+				i * TILESIZE + TILESIZE);
+		}
+	}
 
 	for (int i = 0; i < TILEX * TILEY; ++i)
 	{
@@ -125,6 +198,40 @@ void Maptool::setup()
 		_vTile[i]->objFrameY = 0;
 		_vTile[i]->terrain = terrainSelect(_vTile[i]->terrainFrameX, _vTile[i]->terrainFrameY);
 		_vTile[i]->obj = OBJ_NONE;
+
+		_tiles[i].terrainFrameX = _vTile[i]->terrainFrameX;
+		_tiles[i].terrainFrameY = _vTile[i]->terrainFrameY;
+		_tiles[i].objFrameX = _vTile[i]->objFrameX;
+		_tiles[i].objFrameY = _vTile[i]->objFrameY;
+		_tiles[i].terrain = _vTile[i]->terrain;
+		_tiles[i].obj = _vTile[i]->obj;
+	}
+}
+
+void Maptool::setSample()
+{
+	_vSampleTile.clear();
+	//카메라 기준점
+	D2D1_RECT_F _rc = CAMERAMANAGER->getScreen();
+	//타일셋 먼저 세팅
+	for (int i = 0; i < SAMPLETILEY; ++i)
+	{
+		for (int j = 0; j < SAMPLETILEX; ++j)
+		{
+			PSTILE sampleTile;
+			sampleTile = new STILE;
+
+			sampleTile->terrainFrameX = j;
+			sampleTile->terrainFrameY = i;
+
+			//타일셋에 렉트를 씌움
+			SetRect(&sampleTile->rcTile,
+				(_rc.right - IMAGEMANAGER->findDImage("object")->getWidth()) + j * TILESIZE,
+				_rc.top,
+				(_rc.right - IMAGEMANAGER->findDImage("object")->getWidth()) + j * TILESIZE + TILESIZE,
+				_rc.top + (i * TILESIZE + TILESIZE));
+			_vSampleTile.push_back(sampleTile);
+		}
 	}
 }
 
@@ -162,6 +269,8 @@ void Maptool::setMap()
 			}
 			else if (_ctrSelect == CTRL_ERASER)
 			{
+				_vTile[i]->terrainFrameX = NULL;
+				_vTile[i]->terrainFrameY = NULL;
 				_vTile[i]->objFrameX = NULL;
 				_vTile[i]->objFrameY = NULL;
 				_vTile[i]->obj = OBJ_NONE;
@@ -170,6 +279,12 @@ void Maptool::setMap()
 			InvalidateRect(_hWnd, NULL, false);
 			break;
 		}
+		_tiles[i].terrainFrameX = _vTile[i]->terrainFrameX;
+		_tiles[i].terrainFrameY = _vTile[i]->terrainFrameY;
+		_tiles[i].objFrameX = _vTile[i]->objFrameX;
+		_tiles[i].objFrameY = _vTile[i]->objFrameY;
+		_tiles[i].terrain = _vTile[i]->terrain;
+		_tiles[i].obj = _vTile[i]->obj;
 	}
 }
 
@@ -179,19 +294,19 @@ void Maptool::minimap()
 {
 	
 
-	//D2D1_RECT_F rc = CAMERAMANAGER->getScreen();
-	//
-	//for (int i = 0; i < TILEX * TILEY; ++i)
-	//{
-	//	_maptile->frameRender(
-	//		rc.right-(_vTile[i]->rc.left/(TILESIZE/3)), rc.bottom-(_vTile[i]->rc.top / (TILESIZE/3)),
-	//		_vTile[i]->terrainFrameX, _vTile[i]->terrainFrameY, MINITILESIZE, MINITILESIZE);
-	//	
-	//	if (_vTile[i]->obj == OBJ_NONE) continue;
-	//	_object->frameRender(
-	//		rc.right - (_vTile[i]->rc.left / (TILESIZE / 3)), rc.bottom - (_vTile[i]->rc.top / (TILESIZE / 3)),
-	//		_vTile[i]->objFrameX, _vTile[i]->objFrameY, MINITILESIZE, MINITILESIZE);
-	//}
+	D2D1_RECT_F rc = CAMERAMANAGER->getScreen();
+	
+	for (int i = 0; i < TILEX * TILEY; ++i)
+	{
+		_maptile[type]->frameRender(
+			rc.left+(_vTile[i]->rc.left/(TILESIZE/3)), rc.bottom - (TILESIZE * 3) +(_vTile[i]->rc.top / (TILESIZE/3)),
+			_vTile[i]->terrainFrameX, _vTile[i]->terrainFrameY, MINITILESIZE, MINITILESIZE);
+		
+		if (_vTile[i]->obj == OBJ_NONE) continue;
+		_object->frameRender(
+			rc.left + (_vTile[i]->rc.left / (TILESIZE / 3)), rc.bottom  -(TILESIZE*3)+ (_vTile[i]->rc.top / (TILESIZE / 3)),
+			_vTile[i]->objFrameX, _vTile[i]->objFrameY, MINITILESIZE, MINITILESIZE);
+	}
 }
 
 

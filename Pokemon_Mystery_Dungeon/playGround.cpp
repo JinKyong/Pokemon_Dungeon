@@ -28,7 +28,7 @@ HRESULT playGround::init()
 	SCENEMANAGER->addScene("test", new testScene);
 	SCENEMANAGER->addScene("map", new testMapScene);
 
-	SCENEMANAGER->changeScene("map");
+	SCENEMANAGER->changeScene("tool");
 
 	_debug = false;
 

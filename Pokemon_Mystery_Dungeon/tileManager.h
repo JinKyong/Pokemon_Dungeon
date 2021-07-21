@@ -15,8 +15,8 @@
 #define TILESIZEY TILESIZE * TILEY	//620 31 * 20
 
 //타일셋 정의
-#define SAMPLETILEX 18
-#define SAMPLETILEY 12
+#define SAMPLETILEX 15
+#define SAMPLETILEY 3
 
 //비트필드
 #define ATTR_UNMOVE 0x00000016	//못가는 타일
