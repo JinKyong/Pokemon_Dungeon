@@ -22,7 +22,7 @@ HRESULT tileManager::init(int width, int height)
 
 	//타일맵 이미지 등록
 	_Mapbase = IMAGEMANAGER->addFrameDImage("maptiles", L"img/map/tiles/maptile.png", 768, 384, 16, 8);
-	_Obbase = IMAGEMANAGER->addFrameDImage("object", L"img/map/tiles/object.png", 864, 576, SAMPLETILEX, SAMPLETILEY);
+	_Obbase = IMAGEMANAGER->addFrameDImage("object", L"img/map/tiles/object.png", 864, 576, 18, 12);
 
 	//던전 랜덤 생성
 	dungeon(_width, _height);
@@ -133,7 +133,7 @@ void tileManager::setup()
 				_vTile[i]->objFrameX = 3;
 				_vTile[i]->objFrameY = 2;
 				_vTile[i]->terrain = terrainSelect(_vTile[i]->terrainFrameX, _vTile[i]->terrainFrameY);
-				_vTile[i]->obj = objSelect(_vTile[i]->objFrameX, _vTile[i]->objFrameY);
+				_vTile[i]->obj = OBJ_BLOCK1;
 			}
 			else if ((*_viChar) == DownStairs)
 			{
@@ -142,7 +142,7 @@ void tileManager::setup()
 				_vTile[i]->objFrameX = 6;
 				_vTile[i]->objFrameY = 3;
 				_vTile[i]->terrain = terrainSelect(_vTile[i]->terrainFrameX, _vTile[i]->terrainFrameY);
-				_vTile[i]->obj = objSelect(_vTile[i]->objFrameX, _vTile[i]->objFrameY);
+				_vTile[i]->obj = OBJ_BLOCK1;
 			}
 			else if ((*_viChar) == LeftCorner)
 			{
@@ -151,7 +151,7 @@ void tileManager::setup()
 				_vTile[i]->objFrameX = 6;
 				_vTile[i]->objFrameY = 0;
 				_vTile[i]->terrain = terrainSelect(_vTile[i]->terrainFrameX, _vTile[i]->terrainFrameY);
-				_vTile[i]->obj = objSelect(_vTile[i]->objFrameX, _vTile[i]->objFrameY);
+				_vTile[i]->obj = OBJ_BLOCK1;
 			}
 			else if ((*_viChar) == RightCorner)
 			{
@@ -160,7 +160,7 @@ void tileManager::setup()
 				_vTile[i]->objFrameX = 8;
 				_vTile[i]->objFrameY = 0;
 				_vTile[i]->terrain = terrainSelect(_vTile[i]->terrainFrameX, _vTile[i]->terrainFrameY);
-				_vTile[i]->obj = objSelect(_vTile[i]->objFrameX, _vTile[i]->objFrameY);
+				_vTile[i]->obj = OBJ_BLOCK1;
 			}
 			else if ((*_viChar) == LeftBottom)
 			{
@@ -169,7 +169,7 @@ void tileManager::setup()
 				_vTile[i]->objFrameX = 6;
 				_vTile[i]->objFrameY = 2;
 				_vTile[i]->terrain = terrainSelect(_vTile[i]->terrainFrameX, _vTile[i]->terrainFrameY);
-				_vTile[i]->obj = objSelect(_vTile[i]->objFrameX, _vTile[i]->objFrameY);
+				_vTile[i]->obj = OBJ_BLOCK1;
 			}
 			else if ((*_viChar) == RightBottom)
 			{
@@ -178,7 +178,7 @@ void tileManager::setup()
 				_vTile[i]->objFrameX = 8;
 				_vTile[i]->objFrameY = 2;
 				_vTile[i]->terrain = terrainSelect(_vTile[i]->terrainFrameX, _vTile[i]->terrainFrameY);
-				_vTile[i]->obj = objSelect(_vTile[i]->objFrameX, _vTile[i]->objFrameY);
+				_vTile[i]->obj = OBJ_BLOCK1;
 			}
 			else if ((*_viChar) == VerticalWall)
 			{
@@ -187,7 +187,7 @@ void tileManager::setup()
 				_vTile[i]->objFrameX = 6;
 				_vTile[i]->objFrameY = 1;
 				_vTile[i]->terrain = terrainSelect(_vTile[i]->terrainFrameX, _vTile[i]->terrainFrameY);
-				_vTile[i]->obj = objSelect(_vTile[i]->objFrameX, _vTile[i]->objFrameY);
+				_vTile[i]->obj = OBJ_BLOCK1;
 			}
 			else if ((*_viChar) == HorizontalWall)
 			{
@@ -196,7 +196,7 @@ void tileManager::setup()
 				_vTile[i]->objFrameX = 7;
 				_vTile[i]->objFrameY = 0;
 				_vTile[i]->terrain = terrainSelect(_vTile[i]->terrainFrameX, _vTile[i]->terrainFrameY);
-				_vTile[i]->obj = objSelect(_vTile[i]->objFrameX, _vTile[i]->objFrameY);
+				_vTile[i]->obj = OBJ_BLOCK1;
 			}
 			else
 			{
