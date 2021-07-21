@@ -486,6 +486,9 @@
     <ClInclude Include="PatternPathFinder.h">
       <Filter>playGround\Pokémon\Player\Pattern\PathFinder%28A%2a%29</Filter>
     </ClInclude>
+    <ClInclude Include="battleManager.h">
+      <Filter>playGround\Battle</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -799,6 +802,9 @@
     </ClCompile>
     <ClCompile Include="PatternPathFinder.cpp">
       <Filter>playGround\Pokémon\Player\Pattern\PathFinder%28A%2a%29</Filter>
+    </ClCompile>
+    <ClCompile Include="battleManager.cpp">
+      <Filter>playGround\Battle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

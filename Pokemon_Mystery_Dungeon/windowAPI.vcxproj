@@ -148,6 +148,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Atile.h" />
+    <ClInclude Include="battleManager.h" />
     <ClInclude Include="Blastoise.h" />
     <ClInclude Include="Bulbasaur.h" />
     <ClInclude Include="cameraManager.h" />
@@ -264,6 +265,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Atile.cpp" />
+    <ClCompile Include="battleManager.cpp" />
     <ClCompile Include="Blastoise.cpp" />
     <ClCompile Include="Bulbasaur.cpp" />
     <ClCompile Include="cameraManager.cpp" />
