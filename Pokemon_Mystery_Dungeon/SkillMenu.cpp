@@ -43,7 +43,7 @@ void SkillMenu::render()
 
 	printTextLeft();
 
-	printTextRight();
+	if(_hidden)	printTextRight();
 
 	printTextDown();
 }
@@ -67,6 +67,8 @@ void SkillMenu::printTextRight()
 
 	_back2->render(screen.left + _tuningX, screen.top + _tuningY, 0.5);
 	_border2->render(screen.left + _tuningX, screen.top + _tuningY);
+
+	
 }
 
 void SkillMenu::printTextDown()

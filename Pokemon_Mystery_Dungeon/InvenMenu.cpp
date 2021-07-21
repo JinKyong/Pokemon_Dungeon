@@ -63,6 +63,7 @@ void InvenMenu::printTextLeft()
 	D2D1_RECT_F dest = dRectMake(rc.left + _tuningX + TILEWIDTH, rc.top + _tuningY + TILEHEIGHT + TILEHEIGHT / 2,
 		TILEWIDTH * 10, TILEHEIGHT);
 
+
 	//DTDMANAGER->printText(L"트레저백", dest, 25);
 
 	//화살표
@@ -80,6 +81,9 @@ void InvenMenu::printTextLeft()
 
 		//★예외처리: 보류중
 	}
+
+	//아이템설명:: index 기준으로 해야할 것 같음
+	DTDMANAGER->printText((*_invItem)[_index]->getItemInfo().c_str(), dest, 25);
 }
 
 void InvenMenu::printTextRight()
