@@ -1,7 +1,7 @@
 #pragma once
 #include "DownMenu.h"
 
-#define INVENMENU_WIDTH		624 * 2
+#define INVENMENU_WIDTH		624
 #define INVENMENU_HEIGHT	528
 
 class InvenMenu : public DownMenu

@@ -5,9 +5,13 @@
 HRESULT InvenMenu::init()
 {
 	_back = IMAGEMANAGER->addDImage(
-		"mainMenu_back", L"img/UI/mainMenu/back.png", INVENMENU_WIDTH, INVENMENU_HEIGHT);
+		"invenMenu_back", L"img/UI/invenMenu/back1.png", INVENMENU_WIDTH, INVENMENU_HEIGHT);
+	_back2 = IMAGEMANAGER->addDImage(
+		"invenMenu_back2", L"img/UI/invenMenu/back2.png", INVENMENU_WIDTH, INVENMENU_HEIGHT);
 	_border = IMAGEMANAGER->addDImage(
-		"mainMenu_border", L"img/UI/mainMenu/border.png", INVENMENU_WIDTH, INVENMENU_HEIGHT);
+		"invenMenu_border", L"img/UI/invenMenu/border1.png", INVENMENU_WIDTH, INVENMENU_HEIGHT);
+	_border2 = IMAGEMANAGER->addDImage(
+		"invenMenu_border", L"img/UI/invenMenu/border2.png", INVENMENU_WIDTH, INVENMENU_HEIGHT);
 	_arrow = IMAGEMANAGER->findDImage("selectTri");
 
 	_invItem = INVENTORYMANAGER->getVItem();
