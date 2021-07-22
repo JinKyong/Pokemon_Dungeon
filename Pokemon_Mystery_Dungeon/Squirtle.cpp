@@ -7,13 +7,19 @@ Squirtle::Squirtle()
 	_name = L"꼬부기";
 	_num = 10;
 
+
+	//스탯(개체값)
+	_pokemonValue.hp = 44;
+	_pokemonValue.attack = 48;
+	_pokemonValue.defense = 65;
+	_pokemonValue.sattack = 50;
+	_pokemonValue.sdefense = 64;
+	_pokemonValue.speed = 43;
+
+
 	//타입 & 특성
 	_type[0] = POKEMON_TYPE_WATER;
 	_type[1] = END_POKEMON_TYPE;
-	//특성 _passive;
-
-	//스탯(개체값)
-
 
 	_jump = true;
 }

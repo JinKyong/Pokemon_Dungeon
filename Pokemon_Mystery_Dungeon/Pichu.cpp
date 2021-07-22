@@ -7,13 +7,19 @@ Pichu::Pichu()
 	_name = L"피츄";
 	_num = 4;
 
+
+	//스탯(개체값)
+	_pokemonValue.hp = 20;
+	_pokemonValue.attack = 40;
+	_pokemonValue.defense = 15;
+	_pokemonValue.sattack = 35;
+	_pokemonValue.sdefense = 35;
+	_pokemonValue.speed = 60;
+
+
 	//타입 & 특성
 	_type[0] = POKEMON_TYPE_ELECTRIC;
 	_type[1] = END_POKEMON_TYPE;
-	//특성 _passive;
-
-	//스탯
-
 
 	_jump = true;
 }

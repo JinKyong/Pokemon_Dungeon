@@ -1,25 +1,7 @@
 #pragma once
 #include "PokemonType.h"
 
-enum POKEMON_STATE {
-	POKEMON_STATE_IDLE,
-	POKEMON_STATE_MOVE,
-	POKEMON_STATE_ATTACK,
-	POKEMON_STATE_SATTACK,
-	POKEMON_STATE_HURT,
-	POKEMON_STATE_SLEEP,
-	POKEMON_STATE_DEFAULT,
-	END_POKEMON_STATE
-};
 
-typedef struct tagPokemonStat {
-	int hp;
-	int attack;
-	int defense;
-	int sattack;
-	int sdefense;
-	int speed;
-}STAT, *PSTAT;
 
 
 class Pokemon

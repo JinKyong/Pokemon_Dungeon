@@ -8,6 +8,11 @@ HRESULT Player::init(int pokemonNum)
 	_pokemon = POKEDEX->makePokemon(pokemonNum);
 	_pokemon->init();
 
+	_level = 5;
+	_EXP = 0;
+
+	_realStat = BATTLEMANAGER->statCalculatior(this);
+
 	return S_OK;
 }
 

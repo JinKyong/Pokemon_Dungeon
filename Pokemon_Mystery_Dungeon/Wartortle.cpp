@@ -7,13 +7,19 @@ Wartortle::Wartortle()
 	_name = L"어니부기";
 	_num = 11;
 
+
+	//스탯(개체값)
+	_pokemonValue.hp = 59;
+	_pokemonValue.attack = 63;
+	_pokemonValue.defense = 80;
+	_pokemonValue.sattack = 65;
+	_pokemonValue.sdefense = 80;
+	_pokemonValue.speed = 58;
+
+
 	//타입 & 특성
 	_type[0] = POKEMON_TYPE_WATER;
 	_type[1] = END_POKEMON_TYPE;
-	//특성 _passive;
-
-	//스탯(개체값)
-
 
 	_jump = true;
 }

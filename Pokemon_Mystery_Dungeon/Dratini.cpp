@@ -7,13 +7,19 @@ Dratini::Dratini()
 	_name = L"미뇽";
 	_num = 13;
 
+
+	//스탯(개체값)
+	_pokemonValue.hp = 41;
+	_pokemonValue.attack = 64;
+	_pokemonValue.defense = 45;
+	_pokemonValue.sattack = 50;
+	_pokemonValue.sdefense = 50;
+	_pokemonValue.speed = 50;
+
+
 	//타입 & 특성
 	_type[0] = POKEMON_TYPE_DRAGON;
 	_type[1] = END_POKEMON_TYPE;
-	//특성 _passive;
-
-	//스탯(개체값)
-
 
 	_jump = false;
 }

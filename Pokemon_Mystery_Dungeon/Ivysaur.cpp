@@ -7,13 +7,19 @@ Ivysaur::Ivysaur()
 	_name = L"이상해풀";
 	_num = 8;
 
+
+	//스탯(개체값)
+	_pokemonValue.hp = 60;
+	_pokemonValue.attack = 62;
+	_pokemonValue.defense = 63;
+	_pokemonValue.sattack = 80;
+	_pokemonValue.sdefense = 80;
+	_pokemonValue.speed = 60;
+
+
 	//타입 & 특성
 	_type[0] = POKEMON_TYPE_GRASS;
 	_type[1] = POKEMON_TYPE_POISON;
-	//특성 _passive;
-
-	//스탯(개체값)
-
 
 	_jump = false;
 }

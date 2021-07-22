@@ -7,13 +7,19 @@ Venusaur::Venusaur()
 	_name = L"이상해꽃";
 	_num = 9;
 
+
+	//스탯(개체값)
+	_pokemonValue.hp = 80;
+	_pokemonValue.attack = 82;
+	_pokemonValue.defense = 83;
+	_pokemonValue.sattack = 100;
+	_pokemonValue.sdefense = 100;
+	_pokemonValue.speed = 80;
+
+
 	//타입 & 특성
 	_type[0] = POKEMON_TYPE_GRASS;
 	_type[1] = POKEMON_TYPE_POISON;
-	//특성 _passive;
-
-	//스탯(개체값)
-
 
 	_jump = false;
 }

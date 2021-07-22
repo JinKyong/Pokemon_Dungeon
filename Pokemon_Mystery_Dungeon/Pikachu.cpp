@@ -7,13 +7,19 @@ Pikachu::Pikachu()
 	_name = L"피카츄";
 	_num = 5;
 
+
+	//스탯(개체값)
+	_pokemonValue.hp = 35;
+	_pokemonValue.attack = 55;
+	_pokemonValue.defense = 30;
+	_pokemonValue.sattack = 50;
+	_pokemonValue.sdefense = 40;
+	_pokemonValue.speed = 90;
+
+
 	//타입 & 특성
 	_type[0] = POKEMON_TYPE_ELECTRIC;
 	_type[1] = END_POKEMON_TYPE;
-	//특성 _passive;
-
-	//스탯
-
 
 	_jump = true;
 }

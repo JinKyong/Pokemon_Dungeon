@@ -27,6 +27,24 @@ void battleManager::render()
 {
 }
 
+STAT battleManager::statCalculatior(Player * player)
+{
+	//종족값, 레벨
+	STAT baseStat = player->getPokemon()->getPokemonValue();
+	int level = player->getLevel();
+	//실능력치
+	STAT realStat;
+
+	realStat.hp = STAT_CALCULATION(baseStat.hp, level);
+	realStat.attack = STAT_CALCULATION(baseStat.attack, level);
+	realStat.defense = STAT_CALCULATION(baseStat.defense, level);
+	realStat.sattack = STAT_CALCULATION(baseStat.sattack, level);
+	realStat.sdefense = STAT_CALCULATION(baseStat.sdefense, level);
+	realStat.speed = STAT_CALCULATION(baseStat.speed, level);
+
+	return realStat;
+}
+
 int battleManager::damageCalculation()								//이펙트 데미지용
 {
 	_rndNum = RND->getFromIntTo(217, 256) * 100 / 255;									//랜덤수

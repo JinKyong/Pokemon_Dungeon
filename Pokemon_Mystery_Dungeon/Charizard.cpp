@@ -7,13 +7,19 @@ Charizard::Charizard()
 	_name = L"리자몽";
 	_num = 3;
 
+
+	//스탯(개체값)
+	_pokemonValue.hp = 78;
+	_pokemonValue.attack = 84;
+	_pokemonValue.defense = 78;
+	_pokemonValue.sattack = 109;
+	_pokemonValue.sdefense = 85;
+	_pokemonValue.speed = 100;
+
+
 	//타입 & 특성
 	_type[0] = POKEMON_TYPE_FIRE;
 	_type[1] = END_POKEMON_TYPE;
-	//특성 _passive;
-
-	//스탯(개체값)
-
 
 	_jump = true;
 }

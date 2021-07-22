@@ -15,10 +15,17 @@ HRESULT Enemy::init(int pokemonNum)
 	_pattern[PLAYER_PATTERN_ONATTACK] = new PatternOnAttack;
 	changePattern(PLAYER_PATTERN_PATHFINDER);
 
-	//스탯
-	//계산해서 넣음 포켓몬 꺼
-	_realStat.hp = 200;
 
+	//기술
+	//_selectedSkill = nullptr;
+	//_skill[0] = SKILLDEX->makeSkill(1);
+	//_skill[0]->init();
+	//_skill[1] = SKILLDEX->makeSkill(6);
+	//_skill[1]->init();
+	//_skill[2] = SKILLDEX->makeSkill(3);
+	//_skill[2]->init();
+	//_skill[3] = SKILLDEX->makeSkill(4);
+	//_skill[3]->init();
 	//_inDungeon = false;
 
 	return S_OK;
@@ -40,13 +47,11 @@ void Enemy::render()
 {
 	if (PRINTMANAGER->isDebug()) {
 		WCHAR str[128];
-		swprintf_s(str, L"HP : %d", _realStat.hp);
-		DTDMANAGER->printText(str, dRectMake(_body.left, _body.top - 80, 100, 20));
-		swprintf_s(str, L"direct : %d", _pokemon->getDirect());
+		swprintf_s(str, L"x : %f", _x);
 		DTDMANAGER->printText(str, dRectMake(_body.left, _body.top - 60, 100, 20));
-		swprintf_s(str, L"name : %s", _pokemon->getName().c_str());
+		swprintf_s(str, L"y : %f", _y);
 		DTDMANAGER->printText(str, dRectMake(_body.left, _body.top - 40, 100, 20));
-		swprintf_s(str, L"state : %d", _pokemon->getState());
+		swprintf_s(str, L"name : %s", _pokemon->getName().c_str());
 		DTDMANAGER->printText(str, dRectMake(_body.left, _body.top - 20, 100, 20));
 
 		DTDMANAGER->Rectangle(_body);

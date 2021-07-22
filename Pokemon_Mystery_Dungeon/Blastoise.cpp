@@ -7,13 +7,19 @@ Blastoise::Blastoise()
 	_name = L"거북왕";
 	_num = 12;
 
+
+	//스탯(개체값)
+	_pokemonValue.hp = 79;
+	_pokemonValue.attack = 83;
+	_pokemonValue.defense = 100;
+	_pokemonValue.sattack = 85;
+	_pokemonValue.sdefense = 105;
+	_pokemonValue.speed = 78;
+
+
 	//타입 & 특성
 	_type[0] = POKEMON_TYPE_WATER;
 	_type[1] = END_POKEMON_TYPE;
-	//특성 _passive;
-
-	//스탯(개체값)
-
 
 	_jump = false;
 }

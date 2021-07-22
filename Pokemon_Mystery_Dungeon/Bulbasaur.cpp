@@ -7,12 +7,20 @@ Bulbasaur::Bulbasaur()
 	_name = L"이상해씨";
 	_num = 7;
 
+
+	//스탯(개체값)
+	_pokemonValue.hp = 45;
+	_pokemonValue.attack = 49;
+	_pokemonValue.defense = 49;
+	_pokemonValue.sattack = 65;
+	_pokemonValue.sdefense = 65;
+	_pokemonValue.speed = 45;
+
+
 	//타입 & 특성
 	_type[0] = POKEMON_TYPE_GRASS;
 	_type[1] = POKEMON_TYPE_POISON;
-	//특성 _passive;
 
-	//스탯(개체값)
 
 
 	_jump = true;

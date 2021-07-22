@@ -32,13 +32,6 @@ protected:
 	//플레이어 포켓몬
 	Pokemon* _pokemon;
 
-	//좌표
-	float _x, _y;
-	float _initX, _initY;
-	float _destX, _destY;
-	int _direct;
-	RECT _body;
-
 	//레벨 & 경험치
 	int _level;
 	int _EXP;
@@ -49,6 +42,14 @@ protected:
 	//기술(스킬)
 	Skill* _selectedSkill;
 	Skill* _skill[4];
+
+
+	//좌표
+	float _x, _y;
+	float _initX, _initY;
+	float _destX, _destY;
+	int _direct;
+	RECT _body;
 
 	//지닌도구(아이템)
 	//Item _item;

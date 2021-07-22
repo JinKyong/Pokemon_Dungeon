@@ -7,13 +7,19 @@ Dragonair::Dragonair()
 	_name = L"신뇽";
 	_num = 14;
 
+
+	//스탯(개체값)
+	_pokemonValue.hp = 61;
+	_pokemonValue.attack = 84;
+	_pokemonValue.defense = 65;
+	_pokemonValue.sattack = 70;
+	_pokemonValue.sdefense = 70;
+	_pokemonValue.speed = 70;
+
+
 	//타입 & 특성
 	_type[0] = POKEMON_TYPE_DRAGON;
 	_type[1] = END_POKEMON_TYPE;
-	//특성 _passive;
-
-	//스탯(개체값)
-
 
 	_jump = false;
 }

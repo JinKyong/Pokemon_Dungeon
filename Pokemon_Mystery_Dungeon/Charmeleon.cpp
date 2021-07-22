@@ -7,13 +7,19 @@ Charmeleon::Charmeleon()
 	_name = L"리자드";
 	_num = 2;
 
+
+	//스탯(개체값)
+	_pokemonValue.hp = 58;
+	_pokemonValue.attack = 64;
+	_pokemonValue.defense = 58;
+	_pokemonValue.sattack = 80;
+	_pokemonValue.sdefense = 65;
+	_pokemonValue.speed = 80;
+
+
 	//타입 & 특성
 	_type[0] = POKEMON_TYPE_FIRE;
 	_type[1] = END_POKEMON_TYPE;
-	//특성 _passive;
-
-	//스탯
-
 
 	_jump = false;
 }

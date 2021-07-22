@@ -13,9 +13,8 @@ HRESULT User::init(int pokemonNum)
 		_pattern[i] = nullptr;
 	_currentPattern = END_PLAYER_PATTERN;
 
-	//스탯
-	//계산해서 넣음 포켓몬 꺼
 
+	//기술
 	_selectedSkill = nullptr;
 	_skill[0] = SKILLDEX->makeSkill(1);
 	_skill[0]->init();
@@ -45,11 +44,11 @@ void User::render()
 {
 	if (PRINTMANAGER->isDebug()) {
 		WCHAR str[128];
-		swprintf_s(str, L"direct : %d", _pokemon->getDirect());
+		swprintf_s(str, L"x : %f", _x);
 		DTDMANAGER->printText(str, dRectMake(_body.left, _body.top - 60, 100, 20));
-		swprintf_s(str, L"name : %s", _pokemon->getName().c_str());
+		swprintf_s(str, L"y : %f", _y);
 		DTDMANAGER->printText(str, dRectMake(_body.left, _body.top - 40, 100, 20));
-		swprintf_s(str, L"state : %d", _pokemon->getState());
+		swprintf_s(str, L"name : %s", _pokemon->getName().c_str());
 		DTDMANAGER->printText(str, dRectMake(_body.left, _body.top - 20, 100, 20));
 
 		DTDMANAGER->Rectangle(_body);

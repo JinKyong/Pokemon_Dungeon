@@ -43,79 +43,167 @@ void PathFinder::update()
 
 void PathFinder::setTiles(Player* player)
 {
-	release();
+	//release();
+	//벡터 클리어
+	_vOpenList.clear();
+	_vCloseList.clear();
+	_vPathList.clear();
 
-	_startTile = new Atile;
-	_startTile->init(player->getX(), player->getY());
-	_startTile->setAttribute("start");
+	if (_vTotalList.size() <= 0) {
 
-	//방 랜덤으로 잡음
-	vector<RECT>* rooms = TILEMANAGER->getvRoom();
-	int roomNum = RND->getInt(rooms->size());
+		_startTile = new Atile;
+		_startTile->init(player->getX(), player->getY());
 
-	_endTile = new Atile;
-	_endTile->init(RND->getFromIntTo((*rooms)[roomNum].left, (*rooms)[roomNum].right),
-		RND->getFromIntTo((*rooms)[roomNum].top, (*rooms)[roomNum].bottom));
-	_endTile->setAttribute("end");
+		//방 랜덤으로 잡음
+		vector<RECT>* rooms = TILEMANAGER->getvRoom();
+		int roomNum = RND->getInt(rooms->size());
+
+		_endTile = new Atile;
+		_endTile->init(RND->getFromIntTo((*rooms)[roomNum].left, (*rooms)[roomNum].right),
+			RND->getFromIntTo((*rooms)[roomNum].top, (*rooms)[roomNum].bottom));
+
+		//타일 셋팅
+		for (int i = 0; i < _mapHeight; i++) {
+			for (int j = 0; j < _mapWidth; j++) {
+				Atile* node = new Atile;
+				node->init(j, i);
+				_vTotalList.push_back(node);
+
+				if (j == _startTile->getIdX() && i == _startTile->getIdY())
+				{
+					SAFE_DELETE(_startTile);
+					_startTile = node;
+					_startTile->setAttribute("start");
+					continue;
+				}
+				if (j == _endTile->getIdX() && i == _endTile->getIdY())
+				{
+					SAFE_DELETE(_endTile);
+					_endTile = node;
+					_endTile->setAttribute("end");
+					continue;
+				}
+			}
+		}
+	}
+
+	else {
+
+		_startTile = new Atile;
+		_startTile->init(player->getX(), player->getY());
+
+		//방 랜덤으로 잡음
+		vector<RECT>* rooms = TILEMANAGER->getvRoom();
+		int roomNum = RND->getInt(rooms->size());
+
+		_endTile = new Atile;
+		_endTile->init(RND->getFromIntTo((*rooms)[roomNum].left, (*rooms)[roomNum].right),
+			RND->getFromIntTo((*rooms)[roomNum].top, (*rooms)[roomNum].bottom));
+
+		//타일 셋팅
+		for (int i = 0; i < _mapHeight; i++) {
+			for (int j = 0; j < _mapWidth; j++) {
+				int index = i * _mapWidth + j;
+				_vTotalList[index]->init(j, i);
+
+				if (j == _startTile->getIdX() && i == _startTile->getIdY())
+				{
+					SAFE_DELETE(_startTile);
+					_startTile = _vTotalList[index];
+					_startTile->setAttribute("start");
+					continue;
+				}
+				if (j == _endTile->getIdX() && i == _endTile->getIdY())
+				{
+					SAFE_DELETE(_endTile);
+					_endTile = _vTotalList[index];
+					_endTile->setAttribute("end");
+					continue;
+				}
+			}
+		}
+	}
 
 	//현재 타일은 시작타일로
 	_currentTile = _startTile;
-
-	//타일 셋팅
-	for (int i = 0; i < _mapHeight; i++) {
-		for (int j = 0; j < _mapWidth; j++) {
-			if (j == _startTile->getIdX() && i == _startTile->getIdY())
-			{
-				_vTotalList.push_back(_startTile);
-				continue;
-			}
-			if (j == _endTile->getIdX() && i == _endTile->getIdY())
-			{
-				_vTotalList.push_back(_endTile);
-				continue;
-			}
-
-			Atile* node = new Atile;
-			node->init(j, i);
-			_vTotalList.push_back(node);
-		}
-	}
 }
 
 void PathFinder::setTiles(Player * startPlayer, Player * destPlayer)
 {
-	release();
+	//release();
+	//벡터 클리어
+	_vOpenList.clear();
+	_vCloseList.clear();
+	_vPathList.clear();
 
-	_startTile = new Atile;
-	_startTile->init(startPlayer->getX(), startPlayer->getY());
-	_startTile->setAttribute("start");
+	if (_vTotalList.size() <= 0) {
 
-	_endTile = new Atile;
-	_endTile->init(destPlayer->getDestX(), destPlayer->getDestY());
-	_endTile->setAttribute("end");
+		_startTile = new Atile;
+		_startTile->init(startPlayer->getX(), startPlayer->getY());
+
+		_endTile = new Atile;
+		_endTile->init(destPlayer->getX(), destPlayer->getY());
+
+		//타일 셋팅
+		for (int i = 0; i < _mapHeight; i++) {
+			for (int j = 0; j < _mapWidth; j++) {
+				Atile* node = new Atile;
+				node->init(j, i);
+				_vTotalList.push_back(node);
+
+				if (j == _startTile->getIdX() && i == _startTile->getIdY())
+				{
+					SAFE_DELETE(_startTile);
+					_startTile = node;
+					_startTile->setAttribute("start");
+					continue;
+				}
+				if (j == _endTile->getIdX() && i == _endTile->getIdY())
+				{
+					SAFE_DELETE(_endTile);
+					_endTile = node;
+					_endTile->setAttribute("end");
+					continue;
+				}
+
+			}
+		}
+	}
+
+	else {
+
+		_startTile = new Atile;
+		_startTile->init(startPlayer->getX(), startPlayer->getY());
+
+		_endTile = new Atile;
+		_endTile->init(destPlayer->getX(), destPlayer->getY());
+
+		//타일 셋팅
+		for (int i = 0; i < _mapHeight; i++) {
+			for (int j = 0; j < _mapWidth; j++) {
+				int index = i * _mapWidth + j;
+				_vTotalList[index]->init(j, i);
+
+				if (j == _startTile->getIdX() && i == _startTile->getIdY())
+				{
+					SAFE_DELETE(_startTile);
+					_startTile = _vTotalList[index];
+					_startTile->setAttribute("start");
+					continue;
+				}
+				if (j == _endTile->getIdX() && i == _endTile->getIdY())
+				{
+					SAFE_DELETE(_endTile);
+					_endTile = _vTotalList[index];
+					_endTile->setAttribute("end");
+					continue;
+				}
+			}
+		}
+	}
 
 	//현재 타일은 시작타일로
 	_currentTile = _startTile;
-
-	//타일 셋팅
-	for (int i = 0; i < _mapHeight; i++) {
-		for (int j = 0; j < _mapWidth; j++) {
-			if (j == _startTile->getIdX() && i == _startTile->getIdY())
-			{
-				_vTotalList.push_back(_startTile);
-				continue;
-			}
-			if (j == _endTile->getIdX() && i == _endTile->getIdY())
-			{
-				_vTotalList.push_back(_endTile);
-				continue;
-			}
-
-			Atile* node = new Atile;
-			node->init(j, i);
-			_vTotalList.push_back(node);
-		}
-	}
 }
 
 vector<Atile*> PathFinder::addOpenList(Atile * currentTile)
@@ -145,29 +233,29 @@ vector<Atile*> PathFinder::addOpenList(Atile * currentTile)
 			//예외처리
 			if (!node->getIsOpen()) continue;
 			if (node->getAttribute() == "start") continue;
-			if ((*_allTileList)[index]->obj <= TR_BLOCK) continue;
+			if ((*_allTileList)[index]->terrain <= TR_WATER) continue;
 
 			//대각 예외처리
 			if (i == startY) {					//위
 				if (j == endX) {				//오른쪽
-					if ((*_allTileList)[index - 1]->obj <= TR_BLOCK) continue;
-					if ((*_allTileList)[index + _mapWidth]->obj <= TR_BLOCK) continue;
+					if ((*_allTileList)[index - 1]->terrain <= TR_WATER) continue;
+					if ((*_allTileList)[index + _mapWidth]->terrain <= TR_WATER) continue;
 				}
 
 				if (j == startX) {				//왼쪽
-					if ((*_allTileList)[index + 1]->obj <= TR_BLOCK) continue;
-					if ((*_allTileList)[index + _mapWidth]->obj <= TR_BLOCK) continue;
+					if ((*_allTileList)[index + 1]->terrain <= TR_WATER) continue;
+					if ((*_allTileList)[index + _mapWidth]->terrain <= TR_WATER) continue;
 				}
 			}
 			else if (i == endY) {				//아래
 				if (j == endX) {				//오른쪽
-					if ((*_allTileList)[index - 1]->obj <= TR_BLOCK) continue;
-					if ((*_allTileList)[index - _mapWidth]->obj <= TR_BLOCK) continue;
+					if ((*_allTileList)[index - 1]->terrain <= TR_WATER) continue;
+					if ((*_allTileList)[index - _mapWidth]->terrain <= TR_WATER) continue;
 				}
 
 				if (j == startX) {				//왼쪽
-					if ((*_allTileList)[index + 1]->obj <= TR_BLOCK) continue;
-					if ((*_allTileList)[index - _mapWidth]->obj <= TR_BLOCK) continue;
+					if ((*_allTileList)[index + 1]->terrain <= TR_WATER) continue;
+					if ((*_allTileList)[index - _mapWidth]->terrain <= TR_WATER) continue;
 				}
 			}
 

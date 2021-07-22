@@ -7,13 +7,19 @@ Raichu::Raichu()
 	_name = L"라이츄";
 	_num = 6;
 
+
+	//스탯(개체값)
+	_pokemonValue.hp = 60;
+	_pokemonValue.attack = 90;
+	_pokemonValue.defense = 55;
+	_pokemonValue.sattack = 90;
+	_pokemonValue.sdefense = 80;
+	_pokemonValue.speed = 100;
+
+
 	//타입 & 특성
 	_type[0] = POKEMON_TYPE_ELECTRIC;
 	_type[1] = END_POKEMON_TYPE;
-	//특성 _passive;
-
-	//스탯
-
 
 	_jump = true;
 }
