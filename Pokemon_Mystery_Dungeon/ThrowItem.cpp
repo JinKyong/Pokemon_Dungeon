@@ -14,6 +14,8 @@ HRESULT ThrowItem::init(float x, float y, float angle)
 	_num = RND->getInt(10);
 
 	_name = L"나뭇가지";
+	_itemInfo = L"아이템 설명이 없습니다";
+	_itemInfoLong = L"아이템 설명이 없습니다";
 	
 	return S_OK;
 }

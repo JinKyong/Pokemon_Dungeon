@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "SkillMenu.h"
+#include "Skill.h"
 
 HRESULT SkillMenu::init()
 {
@@ -17,6 +18,8 @@ HRESULT SkillMenu::init()
 	_tuningY = TILEHEIGHT / 2;
 
 	_index = 0;
+	
+	_skill = (*TURNMANAGER->getAllPlayer())[0]->getSkill();
 
 	return S_OK;
 }
@@ -59,6 +62,12 @@ void SkillMenu::printTextLeft()
 	//화살표
 	_arrow->render(dest.left - 20, dest.top + 8 + _index * TILEHEIGHT);
 
+	//스킬이 있는지 검사->출력->검사->출력
+	
+	//왼쪽아닐까요?아니그게아니라 창 생긴 모양대로면요ㄱㅋㄱㅋㅋㅋㅋㅋㅋㅋㅋ 네왼쪽
+
+	//사용하면...... 스킬이 써지겠죠.... 창이꺼지고.. useskill이 쓸 index..
+	//헐... qwer이에요...? ㅇㅎ...
 }
 
 void SkillMenu::printTextRight()

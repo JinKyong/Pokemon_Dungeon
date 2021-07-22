@@ -15,6 +15,8 @@ enum SKILLMENU_OPTION {
 class SkillMenu : public DownMenu
 {
 private:
+	Skill** _skill;
+
 	dImage* _back2;
 	dImage* _border2;
 

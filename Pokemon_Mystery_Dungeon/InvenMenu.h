@@ -4,6 +4,13 @@
 #define INVENMENU_WIDTH		624
 #define INVENMENU_HEIGHT	528
 
+enum INVENMENU_OPTION{
+	INVENMENU_OPTION_DUMP,
+	INVENMENU_OPTION_INFO,
+	INVENMENU_OPTION_BACK,
+	END_INVENMENU_OPTION
+};
+
 class InvenMenu : public DownMenu
 {
 private:
@@ -11,6 +18,8 @@ private:
 
 	dImage* _back2;
 	dImage* _border2;
+
+	int _index2;
 
 public:
 	virtual HRESULT init();

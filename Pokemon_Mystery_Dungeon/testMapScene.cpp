@@ -46,9 +46,13 @@ HRESULT testMapScene::init(Player * player)
 	titem = new ThrowItem;
 	titem->init(27, 15, PI);
 
-	_itemManager->addItem(apple);
-	_itemManager->addItem(jelly);
-	_itemManager->addItem(titem);
+	INVENTORYMANAGER->addItem(apple);
+	INVENTORYMANAGER->addItem(jelly);
+	INVENTORYMANAGER->addItem(titem);
+	INVENTORYMANAGER->addItem(apple);
+	INVENTORYMANAGER->addItem(jelly);
+	INVENTORYMANAGER->addItem(titem);
+	INVENTORYMANAGER->addItem(apple);
 
 	DIALOGMANAGER->init();
 	//DIALOGMANAGER->loadMetaData(L"data/test");

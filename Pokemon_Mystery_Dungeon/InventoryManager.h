@@ -14,6 +14,8 @@ private:
 	//itemListIter	_viItem;
 	itemList		_vItemStorage;
 
+	Player* _player;
+
 public:
 	InventoryManager() {};
 	~InventoryManager() {};
@@ -21,7 +23,7 @@ public:
 	virtual HRESULT init();
 	void release();
 
-	void useItem(int num);
+	void useItem(int index);
 
 	void addItem(Item* itemName);
 	void removeItem(int arrNum);
