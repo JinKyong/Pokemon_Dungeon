@@ -82,6 +82,9 @@ void gameNode::release()
 		TILEMANAGER->release();
 		TILEMANAGER->releaseSingleton();
 
+		BATTLEMANAGER->release();
+		BATTLEMANAGER->releaseSingleton();
+
 		CoUninitialize();
 	}
 }

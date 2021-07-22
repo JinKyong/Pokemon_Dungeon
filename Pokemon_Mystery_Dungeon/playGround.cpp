@@ -29,7 +29,7 @@ HRESULT playGround::init()
 	SCENEMANAGER->addScene("map", new testMapScene);
 
 	SCENEMANAGER->changeScene("map");
-
+	BATTLEMANAGER->init();
 	_debug = false;
 
 	return S_OK;

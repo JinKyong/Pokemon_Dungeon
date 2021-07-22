@@ -42,6 +42,7 @@
 #include "skillDex.h"
 #include "turnManager.h"
 #include "dialogManager.h"
+#include "battleManager.h"
 
 
 using namespace std;
@@ -78,6 +79,7 @@ using namespace D2D1;
 #define SKILLDEX skillDex::getSingleton()
 #define TURNMANAGER turnManager::getSingleton()
 #define DIALOGMANAGER dialogManager::getSingleton()
+#define BATTLEMANAGER battleManager::getSingleton()
 
 #define SAFE_DELETE(p) { if(p) { delete(p); (p) = nullptr; } }
 #define SAFE_DELETE_ARRAY(p) { if(p) { delete[](p); (p) = nullptr; } }

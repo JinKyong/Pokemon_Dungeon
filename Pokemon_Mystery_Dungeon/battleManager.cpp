@@ -3,7 +3,7 @@
 
 HRESULT battleManager::init()
 {
-	//_allPlayer = TURNMANAGER->getAllPlayer();
+	_allPlayer = TURNMANAGER->getAllPlayer();
 
 	vector<Player*>::iterator playerIter;
 
