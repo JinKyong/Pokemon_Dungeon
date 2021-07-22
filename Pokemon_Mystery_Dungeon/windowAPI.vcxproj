@@ -150,6 +150,7 @@
     <ClInclude Include="Atile.h" />
     <ClInclude Include="battleManager.h" />
     <ClInclude Include="Blastoise.h" />
+    <ClInclude Include="bossMapScene.h" />
     <ClInclude Include="Bulbasaur.h" />
     <ClInclude Include="cameraManager.h" />
     <ClInclude Include="Charizard.h" />
@@ -268,6 +269,7 @@
     <ClCompile Include="Atile.cpp" />
     <ClCompile Include="battleManager.cpp" />
     <ClCompile Include="Blastoise.cpp" />
+    <ClCompile Include="bossMapScene.cpp" />
     <ClCompile Include="Bulbasaur.cpp" />
     <ClCompile Include="cameraManager.cpp" />
     <ClCompile Include="Charizard.cpp" />

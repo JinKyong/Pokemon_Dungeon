@@ -11,7 +11,7 @@ enum TERRAIN
 enum OBJECT
 {
 	OBJ_BLOCK,
-	OBJ_TRAP, OBJ_TRAP1,
+	OBJ_TRAP, OBJ_TRAP1,OBJ_TRAP2,
 	OBJ_STAIR,
 	OBJ_NONE
 };
@@ -44,13 +44,15 @@ enum Tile
 	RightOpenBottom = '/',
 	RightBottom = '0',
 	VerticalWall = '1',
-	VerticalTopWall = '2',
-	VerticalBottomWall = '3',
-	HorizontalLeftWall = '4',
-	HorizontalRightWall = '5',
+	VerticalLeftWall = '2',
+	VerticalRightWall = '3',
+	HorizontalTopWall = '4',
+	HorizontalBottomWall = '5',
 	HorizontalWall = '6',
 	LeftBlockWall='7',
 	RightBlockWall='8',
+	ClearTrap='9',
+	PowerTrap='a',
 	
 };
 

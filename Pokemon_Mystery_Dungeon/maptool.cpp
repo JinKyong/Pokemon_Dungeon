@@ -20,8 +20,11 @@ HRESULT Maptool::init()
 	_maptile[6] = IMAGEMANAGER->addFrameDImage("terrain6", L"img/map/tiles/terrain_6.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
 	_maptile[7] = IMAGEMANAGER->addFrameDImage("terrain7", L"img/map/tiles/terrain_7.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
 	_object =IMAGEMANAGER->addFrameDImage("object", L"img/map/tiles/object_all.png", 720, 144, SAMPLETILEX, 3);
+	_width = TILEMANAGER->getWidth();
+	_height = TILEMANAGER->getHeight();
 	setup();
 	setSample();
+	
 	type = 0;
 	mode = true;
 
@@ -41,8 +44,8 @@ void Maptool::update()
 		if(mode)mode=false;
 		else if (!mode)mode = true;
 	}
-	if (KEYMANAGER->isOnceKeyDown('4')) { save("tilemap.map");}
-	if (KEYMANAGER->isOnceKeyDown('5')) { load("tilemap.map");}
+	if (KEYMANAGER->isOnceKeyDown('4')) { save("bossmap1.map");}
+	if (KEYMANAGER->isOnceKeyDown('5')) { load("bossmap1.map");}
 	if (KEYMANAGER->isStayKeyDown(VK_RBUTTON)) { _ctrSelect = CTRL_ERASER; setMap(); }
 	if (PRINTMANAGER->isDebug())
 	{
@@ -62,13 +65,13 @@ void Maptool::render()
 	D2D1_RECT_F _rc =CAMERAMANAGER->getScreen();
 	RECT rc;
 	rc = RectMakeCenter(_ptMouse.x, _ptMouse.y, 5, 5);
-	for (int i = 0; i < TILEX * TILEY; ++i)
+	for (int i = 0; i < _width * _height; ++i)
 	{
 	_maptile[type]->frameRender(
 			_vTile[i]->rc.left, _vTile[i]->rc.top,
 			_vTile[i]->terrainFrameX, _vTile[i]->terrainFrameY);
 	}
-	for (int i = 0; i < TILEX * TILEY; ++i)
+	for (int i = 0; i < _width * _height; ++i)
 	{
 		if (_vTile[i]->obj == OBJ_NONE) continue;
 
@@ -98,7 +101,7 @@ void Maptool::save(const char * mapName)
 
 	file = CreateFile(mapName, GENERIC_WRITE, NULL, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
 
-	WriteFile(file, _tiles, sizeof(tagTile)*TILEX*TILEY, &write, NULL);
+	WriteFile(file, _tiles, sizeof(tagTile)*_width*_height, &write, NULL);
 	CloseHandle(file);
 }
 
@@ -110,13 +113,13 @@ void Maptool::load(const char * mapName)
 	file = CreateFile(mapName, GENERIC_READ, NULL, NULL,
 		OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
 
-	ReadFile(file, _tiles, sizeof(tagTile) * TILEX * TILEY, &read, NULL);
+	ReadFile(file, _tiles, sizeof(tagTile) * _width * _height, &read, NULL);
 
-	memset(_attribute, 0, sizeof(DWORD) * TILEX * TILEY);
+	memset(_attribute, 0, sizeof(DWORD) *  _width * _height);
 	_vTile.clear();
-	for (int i = 0; i < TILEY; ++i)
+	for (int i = 0; i < _height; ++i)
 	{
-		for (int j = 0; j < TILEX; ++j)
+		for (int j = 0; j < _width; ++j)
 		{
 			PTILE Tile;
 			Tile = new TILE;
@@ -129,7 +132,7 @@ void Maptool::load(const char * mapName)
 		}
 	}
 
-	for (int i = 0; i < TILEX*TILEY; ++i)
+	for (int i = 0; i < _width*_height; ++i)
 	{
 		_vTile[i]->terrainFrameX= _tiles[i].terrainFrameX;
 		_vTile[i]->terrainFrameY= _tiles[i].terrainFrameY;
@@ -142,7 +145,7 @@ void Maptool::load(const char * mapName)
 	//타일을 불러온 다음 타일이 어떤 지형인지 오브젝트인지 분별해서
 	//해당 타일에 속성을 부여해줍니다
 
-	//for (int i = 0; i < TILEX * TILEY; ++i)
+	//for (int i = 0; i < _width * _height; ++i)
 	//{
 	//	if (_tiles[i].obj == OBJ_BLOCK1) _attribute[i] |= ATTR_UNMOVE;
 	//	else if (_tiles[i].obj == OBJ_BLOCK2) _attribute[i] |= ATTR_UNMOVE;
@@ -169,9 +172,9 @@ void Maptool::setup()
 	
 
 	//타일 영역
-	for (int i = 0; i < TILEY; ++i)
+	for (int i = 0; i < _height; ++i)
 	{
-		for (int j = 0; j < TILEX; ++j)
+		for (int j = 0; j < _width; ++j)
 		{
 			PTILE Tile;
 			Tile = new TILE;
@@ -186,7 +189,7 @@ void Maptool::setup()
 		}
 	}
 
-	for (int i = 0; i < TILEX * TILEY; ++i)
+	for (int i = 0; i <_width * _height; ++i)
 	{
 		_vTile[i]->terrainFrameX = 1;
 		_vTile[i]->terrainFrameY = 0;
@@ -245,7 +248,7 @@ void Maptool::setMap()
 		}
 	}
 
-	for (int i = 0; i < TILEX * TILEY; ++i)
+	for (int i = 0; i < _width * _height; ++i)
 	{
 		if (PtInRect(&_vTile[i]->rc, _ptMouse))
 		{
@@ -292,7 +295,7 @@ void Maptool::minimap()
 
 	D2D1_RECT_F rc = CAMERAMANAGER->getScreen();
 	
-	for (int i = 0; i < TILEX * TILEY; ++i)
+	for (int i = 0; i < _width * _height; ++i)
 	{
 		_maptile[type]->frameRender(
 			rc.left+(_vTile[i]->rc.left/(TILESIZE/3)), rc.bottom - (TILESIZE * 3) +(_vTile[i]->rc.top / (TILESIZE/3)),
@@ -309,23 +312,17 @@ void Maptool::minimap()
 
 TERRAIN Maptool::terrainSelect(int frameX, int frameY)
 {
-
-
-
-
-
-
-
-
-	if (frameX == 3 && frameY == 0)
+	for (int i = 0; i < 3; i++)
 	{
-		return TR_GRASS;
+		for (int j = 3; j < 12; j++)
+		{
+			if (frameX==j && frameY==i)
+			{
+				return TR_BLOCK;
+			}
+		}
 	}
-	else if (frameX == 4 && frameY == 0)
-	{
-		return TR_WATER;
-	}
-
+	
 	return TR_GRASS;
 }
 

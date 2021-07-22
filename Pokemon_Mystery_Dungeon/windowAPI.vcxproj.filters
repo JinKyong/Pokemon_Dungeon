@@ -498,6 +498,9 @@
     <ClInclude Include="PatternOnAttack.h">
       <Filter>playGround\Pokémon\Player\Pattern\OnAttack</Filter>
     </ClInclude>
+    <ClInclude Include="bossMapScene.h">
+      <Filter>playGround\Stage</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -817,6 +820,9 @@
     </ClCompile>
     <ClCompile Include="PatternOnAttack.cpp">
       <Filter>playGround\Pokémon\Player\Pattern\OnAttack</Filter>
+    </ClCompile>
+    <ClCompile Include="bossMapScene.cpp">
+      <Filter>playGround\Stage</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

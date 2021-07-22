@@ -4,10 +4,11 @@
 HRESULT mapToolScene::init(Player* player)
 {
 	Scene::init(player);
-	_width = 80;
-	_height = 45;
+	_width = 16;
+	_height = 18;
 	CAMERAMANAGER->setBackScreenSize(TILEWIDTH*_width, TILEHEIGHT*_height);
-
+	TILEMANAGER->setWidth(_width);
+	TILEMANAGER->setHeight(_height);
 	_maptool = new Maptool;
 	_maptool->init();
 	
@@ -31,8 +32,8 @@ void mapToolScene::update()
 
 	if (x <= 0)x = 0;
 	if (y <= 0)y = 0;
-	if (x >= 3840)x = 3840;
-	if (y >= 2160)y = 2160;
+	if (x >= TILEWIDTH * _width)x = TILEWIDTH*_width;
+	if (y >= TILEHEIGHT * _height)y = TILEHEIGHT*_height;
 	CAMERAMANAGER->updateScreen(x, y);
 }
 
@@ -48,9 +49,9 @@ if (PRINTMANAGER->isDebug())
 {
 	WCHAR str[128];
 	swprintf_s(str, L"_height: %d, _width: %d", _height, _width);
-	DTDMANAGER->printText(str, x + 200, y + 200, 100, 100);
-	swprintf_s(str, L"x: %d, y: %d, type: %d", x, y,_maptool->getType());
-	DTDMANAGER->printText(str, x + 200, y + 100, 100, 100);
+	DTDMANAGER->printText(str, _ptMouse.x, _ptMouse.y, 150, 0);
+	swprintf_s(str, L"x: %d, y: %d, type: %d", _ptMouse.x, _ptMouse.y,_maptool->getType());
+	DTDMANAGER->printText(str, _ptMouse.x, _ptMouse.y, 150, 200);
 	_maptool->minimap();
 }
 

@@ -4,6 +4,7 @@
 #include "User.h"
 #include "mapToolScene.h"
 #include "testMapScene.h"
+#include "bossMapScene.h"
 
 playGround::playGround()
 {
@@ -27,8 +28,9 @@ HRESULT playGround::init()
 	SCENEMANAGER->addScene("tool", new mapToolScene);
 	SCENEMANAGER->addScene("test", new testScene);
 	SCENEMANAGER->addScene("map", new testMapScene);
+	SCENEMANAGER->addScene("boss", new bossMapScene);
 
-	SCENEMANAGER->changeScene("map");
+	SCENEMANAGER->changeScene("boss");
 	BATTLEMANAGER->init();
 	_debug = false;
 

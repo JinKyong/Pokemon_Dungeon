@@ -17,14 +17,15 @@ private:
 
 	tagCurrentTile _currentTile;
 	tagSampleTile _sampleTile[SAMPLETILEX * SAMPLETILEY];
-	tagTile _tiles[TILEX * TILEY];
-	DWORD _attribute[TILEX * TILEY];	//鸥老加己
+	tagTile _tiles[TILEX*TILEY];
+	DWORD _attribute[TILEX*TILEY];	//鸥老加己
 
 	dImage* _maptile[8];
 	dImage* _object;
 	int _pos[2];
 
-
+	int _width;
+	int _height;
 	int _ctrSelect;
 	int type;
 

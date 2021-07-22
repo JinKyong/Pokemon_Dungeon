@@ -11,6 +11,26 @@ tileManager::~tileManager()
 
 HRESULT tileManager::init()
 {
+
+	return S_OK;
+}
+
+HRESULT tileManager::init(int width, int height)
+{
+	//맵 크기 설정
+	_width = width;
+	_height = height;
+	//타일맵 이미지 등록
+	_Mapbase[0] = IMAGEMANAGER->addFrameDImage("terrain0", L"img/map/tiles/terrain_0.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
+	_Mapbase[1] = IMAGEMANAGER->addFrameDImage("terrain1", L"img/map/tiles/terrain_1.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
+	_Mapbase[2] = IMAGEMANAGER->addFrameDImage("terrain2", L"img/map/tiles/terrain_2.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
+	_Mapbase[3] = IMAGEMANAGER->addFrameDImage("terrain3", L"img/map/tiles/terrain_3.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
+	_Mapbase[4] = IMAGEMANAGER->addFrameDImage("terrain4", L"img/map/tiles/terrain_4.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
+	_Mapbase[5] = IMAGEMANAGER->addFrameDImage("terrain5", L"img/map/tiles/terrain_5.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
+	_Mapbase[6] = IMAGEMANAGER->addFrameDImage("terrain6", L"img/map/tiles/terrain_6.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
+	_Mapbase[7] = IMAGEMANAGER->addFrameDImage("terrain7", L"img/map/tiles/terrain_7.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
+	_Obbase = IMAGEMANAGER->addFrameDImage("object", L"img/map/tiles/object_all.png", 720, 144, SAMPLETILEX, 3);
+
 	return S_OK;
 }
 
@@ -97,6 +117,25 @@ void tileManager::render()
 	if (PRINTMANAGER->isDebug())
 		minimap();
 }
+void tileManager::maprender()
+{
+	for (int i = 0; i < _width * _height; ++i)
+	{
+		_Mapbase[_type]->frameRender(
+			_vTile[i]->rc.left, _vTile[i]->rc.top,
+			_vTile[i]->terrainFrameX, _vTile[i]->terrainFrameY);
+	}
+	for (int i = 0; i < _width * _height; ++i)
+	{
+		if (_vTile[i]->obj == OBJ_NONE) continue;
+
+		_Obbase->frameRender(
+			_vTile[i]->rc.left, _vTile[i]->rc.top,
+			_vTile[i]->objFrameX, _vTile[i]->objFrameY);
+	}
+	if (PRINTMANAGER->isDebug())
+		minimap();
+}
 void tileManager::setup()
 {
 	//타일 rect생성해서 넣어주고
@@ -151,9 +190,90 @@ void tileManager::setup()
 				_vTile[i]->terrain = TR_GRASS;
 				_vTile[i]->obj = OBJ_STAIR;
 			}
+			else if ((*_viChar) == ClearTrap)
+			{
+				_vTile[i]->terrainFrameX = 1;
+				_vTile[i]->terrainFrameY = 0;
+				_vTile[i]->objFrameX = 0;
+				_vTile[i]->objFrameY = 0;
+				_vTile[i]->terrain = TR_GRASS;
+				_vTile[i]->obj = OBJ_TRAP;
+			}
+			else if ((*_viChar) == PowerTrap)
+			{
+				_vTile[i]->terrainFrameX = 1;
+				_vTile[i]->terrainFrameY = 0;
+				_vTile[i]->objFrameX = 1;
+				_vTile[i]->objFrameY = 0;
+				_vTile[i]->terrain = TR_GRASS;
+				_vTile[i]->obj = OBJ_TRAP1;
+			}
 			else if ((*_viChar) == LeftOpenCorner)
 			{
 				_vTile[i]->terrainFrameX = 6;
+				_vTile[i]->terrainFrameY = 0;
+				_vTile[i]->objFrameX = 0;
+				_vTile[i]->objFrameY = 0;
+				_vTile[i]->terrain = TR_BLOCK;
+				_vTile[i]->obj = OBJ_NONE;
+			}
+			else if ((*_viChar) == RightOpenCorner)
+			{
+				_vTile[i]->terrainFrameX = 8;
+				_vTile[i]->terrainFrameY = 0;
+				_vTile[i]->objFrameX = 0;
+				_vTile[i]->objFrameY = 0;
+				_vTile[i]->terrain = TR_BLOCK;
+				_vTile[i]->obj = OBJ_NONE;
+			}
+			else if ((*_viChar) == LeftOpenBottom)
+			{
+				_vTile[i]->terrainFrameX = 6;
+				_vTile[i]->terrainFrameY = 2;
+				_vTile[i]->objFrameX = 0;
+				_vTile[i]->objFrameY = 0;
+				_vTile[i]->terrain = TR_BLOCK;
+				_vTile[i]->obj = OBJ_NONE;
+			}
+			else if ((*_viChar) == RightOpenBottom)
+			{
+				_vTile[i]->terrainFrameX = 8;
+				_vTile[i]->terrainFrameY = 2;
+				_vTile[i]->objFrameX = 0;
+				_vTile[i]->objFrameY = 0;
+				_vTile[i]->terrain = TR_BLOCK;
+				_vTile[i]->obj = OBJ_NONE;
+			}
+			else if ((*_viChar) == VerticalLeftWall)
+			{
+				_vTile[i]->terrainFrameX = 11;
+				_vTile[i]->terrainFrameY = 1;
+				_vTile[i]->objFrameX = 0;
+				_vTile[i]->objFrameY = 0;
+				_vTile[i]->terrain = TR_BLOCK;
+				_vTile[i]->obj = OBJ_NONE;
+			}
+			else if ((*_viChar) == VerticalRightWall)
+			{
+				_vTile[i]->terrainFrameX = 9;
+				_vTile[i]->terrainFrameY = 1;
+				_vTile[i]->objFrameX = 0;
+				_vTile[i]->objFrameY = 0;
+				_vTile[i]->terrain = TR_BLOCK;
+				_vTile[i]->obj = OBJ_NONE;
+			}
+			else if ((*_viChar) == HorizontalTopWall)
+			{
+				_vTile[i]->terrainFrameX = 10;
+				_vTile[i]->terrainFrameY = 2;
+				_vTile[i]->objFrameX = 0;
+				_vTile[i]->objFrameY = 0;
+				_vTile[i]->terrain = TR_BLOCK;
+				_vTile[i]->obj = OBJ_NONE;
+			}
+			else if ((*_viChar) == HorizontalBottomWall)
+			{
+				_vTile[i]->terrainFrameX = 10;
 				_vTile[i]->terrainFrameY = 0;
 				_vTile[i]->objFrameX = 0;
 				_vTile[i]->objFrameY = 0;
@@ -227,76 +347,63 @@ void tileManager::setup()
 	
 }
 
+void tileManager::load(const char * mapName)
+{
+	HANDLE file;
+	DWORD read;
 
-//void tileManager::save(const char* mapName)
-//{
-//	HANDLE file;
-//	DWORD write;
-//
-//	file = CreateFile(mapName, GENERIC_WRITE, NULL, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
-//
-//	WriteFile(file, &_vTile, sizeof(tagTile)*TILEX*TILEY, &write, NULL);
-//	CloseHandle(file);
-//}
-//
-//void tileManager::load(const char* mapName)
-//{
-//	HANDLE file;
-//	DWORD read;
-//
-//	file = CreateFile(mapName, GENERIC_READ, NULL, NULL,
-//		OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
-//
-//	ReadFile(file, &_vTile, sizeof(tagTile)*TILEX*TILEY, &read, NULL);
-//
-//	memset(_attribute, 0, sizeof(DWORD) * TILEX * TILEY);
-//
-//	CloseHandle(file);
-//}
-//void tileManager::save(const char * mapName)
-//{
-//	HANDLE file;
-//	DWORD write;
-//
-//	file = CreateFile(mapName, GENERIC_WRITE, NULL, NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
-//
-//	WriteFile(file, _tile, sizeof(tagTile)*TILEX*TILEY, &write, NULL);
-//	CloseHandle(file);
-//}
-//
-//void tileManager::load(const char* mapName)
-//{
-//	HANDLE file;
-//	DWORD read;
-//
-//	file = CreateFile(mapName, GENERIC_READ, NULL, NULL,
-//		OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
-//
-//	ReadFile(file, _tile, sizeof(tagTile) * TILEX * TILEY, &read, NULL);
-//
-//	memset(_attribute, 0, sizeof(DWORD) * TILEX * TILEY);
-//
-//	//STEP 01
-//	//타일을 불러온 다음 타일이 어떤 지형인지 오브젝트인지 분별해서
-//	//해당 타일에 속성을 부여해줍니다
-//
-//	for (int i = 0; i < TILEX * TILEY; ++i)
-//	{
-//		if (_tile[i].obj == OBJ_BLOCK1) _attribute[i] |= ATTR_UNMOVE;
-//		else if (_tile[i].obj == OBJ_BLOCK2) _attribute[i] |= ATTR_UNMOVE;
-//		else if (_tile[i].obj == OBJ_BLOCK3) _attribute[i] |= ATTR_UNMOVE;
-//		else if (_tile[i].obj == OBJ_BLOCK4) _attribute[i] |= ATTR_UNMOVE;
-//		else if (_tile[i].obj == OBJ_BLOCK5) _attribute[i] |= ATTR_UNMOVE;
-//		else if (_tile[i].obj == OBJ_BLOCK6) _attribute[i] |= ATTR_UNMOVE;
-//		else if (_tile[i].obj == OBJ_BLOCK7) _attribute[i] |= ATTR_UNMOVE;
-//		else if (_tile[i].obj == OBJ_BLOCK8) _attribute[i] |= ATTR_UNMOVE;
-//		else if (_tile[i].obj == OBJ_WATER) _attribute[i] |= ATTR_WATER;
-//	}
-//
-//
-//
-//	CloseHandle(file);
-//}
+	file = CreateFile(mapName, GENERIC_READ, NULL, NULL,
+		OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+
+	ReadFile(file, _tiles, sizeof(tagTile) * _width * _height, &read, NULL);
+
+	memset(_attribute, 0, sizeof(DWORD) *  _width * _height);
+	_vTile.clear();
+	for (int i = 0; i < _height; ++i)
+	{
+		for (int j = 0; j < _width; ++j)
+		{
+			PTILE Tile;
+			Tile = new TILE;
+			SetRect(&Tile->rc,
+				j * TILESIZE,
+				i * TILESIZE,
+				j * TILESIZE + TILESIZE,
+				i * TILESIZE + TILESIZE);
+			_vTile.push_back(Tile);
+		}
+	}
+
+	for (int i = 0; i < _width*_height; ++i)
+	{
+		_vTile[i]->terrainFrameX = _tiles[i].terrainFrameX;
+		_vTile[i]->terrainFrameY = _tiles[i].terrainFrameY;
+		_vTile[i]->objFrameX = _tiles[i].objFrameX;
+		_vTile[i]->objFrameY = _tiles[i].objFrameY;
+		_vTile[i]->terrain = _tiles[i].terrain;
+		_vTile[i]->obj = _tiles[i].obj;
+	}
+	//STEP 01
+	//타일을 불러온 다음 타일이 어떤 지형인지 오브젝트인지 분별해서
+	//해당 타일에 속성을 부여해줍니다
+
+	//for (int i = 0; i < _width * _height; ++i)
+	//{
+	//	if (_tiles[i].obj == OBJ_BLOCK1) _attribute[i] |= ATTR_UNMOVE;
+	//	else if (_tiles[i].obj == OBJ_BLOCK2) _attribute[i] |= ATTR_UNMOVE;
+	//	else if (_tiles[i].obj == OBJ_BLOCK3) _attribute[i] |= ATTR_UNMOVE;
+	//	else if (_tiles[i].obj == OBJ_BLOCK4) _attribute[i] |= ATTR_UNMOVE;
+	//	else if (_tiles[i].obj == OBJ_BLOCK5) _attribute[i] |= ATTR_UNMOVE;
+	//	else if (_tiles[i].obj == OBJ_BLOCK6) _attribute[i] |= ATTR_UNMOVE;
+	//	else if (_tiles[i].obj == OBJ_BLOCK7) _attribute[i] |= ATTR_UNMOVE;
+	//	else if (_tiles[i].obj == OBJ_BLOCK8) _attribute[i] |= ATTR_UNMOVE;
+	//	else if (_tiles[i].obj == OBJ_WATER) _attribute[i] |= ATTR_WATER;
+	//}
+
+
+
+	CloseHandle(file);
+}
 
 void tileManager::minimap()
 {
@@ -306,12 +413,12 @@ void tileManager::minimap()
 	{
 		
 		_Mapbase[_type]->frameRender(
-			rc.right - (_vTile[i]->rc.left / (TILESIZE / 3)), rc.bottom - (_vTile[i]->rc.top / (TILESIZE / 3)),
+			rc.left + (_vTile[i]->rc.left / (TILESIZE / 3)), rc.top+200 + (_vTile[i]->rc.top / (TILESIZE / 3)),
 			_vTile[i]->terrainFrameX, _vTile[i]->terrainFrameY, MINITILESIZE, MINITILESIZE);
 
 		if (_vTile[i]->obj == OBJ_NONE) continue;
 		_Obbase->frameRender(
-			rc.right - (_vTile[i]->rc.left / (TILESIZE / 3)), rc.bottom - (_vTile[i]->rc.top / (TILESIZE / 3)),
+			rc.left + (_vTile[i]->rc.left / (TILESIZE / 3)), rc.top+200 + (_vTile[i]->rc.top / (TILESIZE / 3)),
 			_vTile[i]->objFrameX, _vTile[i]->objFrameY, MINITILESIZE, MINITILESIZE);
 	}
 }
@@ -328,14 +435,17 @@ void tileManager::dungeon(int width, int height)
 	{
 		_vChar.push_back(Unused);
 	}
-
+	//함정갯수
+	_trapCount = 5;
 	//최대 몇 개 feature 생성할지 정해서 랜덤 생성
 	//(feature == 방 || 복도)
 	generate(15);
+	
 }
 
 void tileManager::generate(int maxFeatures)
 {
+	_trapCount--;
 	// place the first room in the center
 	//_width에 비율 주는걸로 첫방 X위치 조절가능, _height는 Y위치, 기본은 중앙인 1/2
 	if ( !makeRoom(_width/2 , _height/2, static_cast<Direction>(RND->getInt(4)) ) )
@@ -361,6 +471,25 @@ void tileManager::generate(int maxFeatures)
 	{
 		return;
 	}
+	//함정 생성
+	for (int j = 0; j <_trapCount; j++)
+	{
+		int i = RND->getInt(5);
+		int trap = 0;
+		if (i < 2)
+		{
+			trap = ClearTrap;
+		}
+		else 
+		{
+			trap = PowerTrap;
+		}
+		if (!placeObject(trap))
+		{
+			return;
+		}
+	}
+	
 }
 
 bool tileManager::createFeature()
@@ -601,7 +730,7 @@ bool tileManager::placeRect(RECT rc, char Char)
 		for (int x = rc.left - 1; x <= rc.right; ++x)
 		{
 			if (x== rc.left - 1 &&y== rc.top - 1&&
-				(getChar(x, y-1) ==Unused|| 
+				(getChar(x, y-1) ==Unused&& 
 					getChar(x-1, y ) == Unused))
 				setChar(x, y, LeftOpenCorner);
 			else if (x == rc.left - 1 && y == rc.top - 1) 
@@ -624,8 +753,24 @@ bool tileManager::placeRect(RECT rc, char Char)
 				setChar(x, y, RightOpenBottom);
 			else if (x == rc.right&&y == rc.bottom) 
 				setChar(x, y, RightBottom);
+			else if (x == rc.left-1 &&
+				getChar(x-1, y) == Unused)
+				setChar(x, y, VerticalLeftWall);
+			else if (x == rc.right &&
+				(getChar(x+1, y) == Unused &&
+					(getChar(x-1, y) == Floor|| 
+						getChar(x - 1, y) == Corridor)))
+				setChar(x, y, VerticalRightWall);
 			else if (x == rc.left - 1 || x == rc.right)
 				setChar(x, y, VerticalWall);
+			else if (y == rc.top - 1 &&
+				getChar(x, y-1) == Unused)
+				setChar(x, y, HorizontalTopWall);
+			else if (y == rc.bottom &&
+				((getChar(x, y - 1) == Floor|| 
+					getChar(x, y - 1) == Corridor) &&
+					getChar(x, y + 1) == Unused))
+				setChar(x, y, HorizontalBottomWall);
 			else if(y == rc.top - 1 ||y == rc.bottom)
 				setChar(x, y, HorizontalWall);
 			else

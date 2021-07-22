@@ -40,6 +40,9 @@ private:
 	dImage* _Mapbase[8];
 	dImage*	_Obbase;
 
+	tagTile _tiles[TILEX*TILEY];
+	DWORD _attribute[TILEX*TILEY];
+
 	int _initX;
 	int _endX;
 	int _initY;
@@ -48,20 +51,22 @@ private:
 	int _width;
 	int _height;
 	int _type;
+	int _trapCount;
 
 public:
 	tileManager();
 	~tileManager();
 
-	HRESULT init();
-	HRESULT init(int width, int height, int type);
+	HRESULT init();										//기본 이니셜라이즈
+	HRESULT init(int width, int height);				//맵로드용 이니셜라이즈
+	HRESULT init(int width, int height, int type);		//던전용 이니셜라이즈
 	void release();
 	void update();
 	void render();
+	void maprender();
 	void setup();
 
-	//void save(const char* mapName);
-	//void load(const char* mapName);
+	void load(const char* mapName);
 	void minimap();
 
 	void dungeon(int width, int height);
@@ -81,6 +86,7 @@ public:
 	void setChar(int x, int y, char Char) { _vChar[x + y * _width] = Char; }
 	void setWidth(int Width) { _width = Width; }
 	void setHeight(int Height) { _height = Height; }
+	void setType(int type) { _type = type; }
 
 	int getWidth() { return _width; }
 	int getHeight() { return _height; }
