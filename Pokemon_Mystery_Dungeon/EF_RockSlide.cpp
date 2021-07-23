@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "EF_RockSlide.h"
 
-HRESULT EF_RockSlide::init(float x, float y)
+HRESULT EF_RockSlide::init(float x, float y, int damage, int skillScale, int atkType)
 {
-	Effect::init(x, y);
+	Effect::init(x, y, damage, skillScale, atkType);
 
 	_img = IMAGEMANAGER->addFrameDImage("RockSlide", L"img/effect/RockSlide.png", 4224, 448, 24, 1);
 	_img->setFrameX(0);

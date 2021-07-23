@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "EF_Gust.h"
 
-HRESULT EF_Gust::init(float x, float y)
+HRESULT EF_Gust::init(float x, float y, int damage, int skillScale, int atkType)
 {
-	Effect::init(x, y);
+	Effect::init(x, y, damage, skillScale, atkType);
 
 	_img = IMAGEMANAGER->addFrameDImage("Gust", L"img/effect/Gust.png", 5824, 160, 52, 1);
 	_img->setFrameX(0);

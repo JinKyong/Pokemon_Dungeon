@@ -1,8 +1,9 @@
 #include "stdafx.h"
 #include "Lightning.h"
 
-HRESULT Lightning::init()
+HRESULT Lightning::init(Player* player)
 {
+	Skill::init(player);
 	_name = L"전기충격";
 	_skillNum = 3;
 	_damage = 40;
@@ -19,11 +20,11 @@ void Lightning::release()
 {
 }
 
-void Lightning::useSkill(float x, float y, int direct)
+void Lightning::useSkill()
 {
-	Skill::useSkill(x, y, direct);
+	Skill::useSkill();
 
 	_lightningEffect = new EF_Lightning;
-	_lightningEffect->init(_x, _y);
+	_lightningEffect->init(_x, _y, _finalDamage, _scale, _atkType);
 	EFFECTMANAGER->addEffect(_lightningEffect);
 }

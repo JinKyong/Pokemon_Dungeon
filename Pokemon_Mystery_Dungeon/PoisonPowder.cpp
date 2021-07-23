@@ -1,8 +1,9 @@
 #include "stdafx.h"
 #include "PoisonPowder.h"
 
-HRESULT PoisonPowder::init()
+HRESULT PoisonPowder::init(Player* player)
 {
+	Skill::init(player);
 	_name = L"µ¶°¡·ç";
 	_skillNum = 11;
 	_damage = 0;
@@ -19,11 +20,11 @@ void PoisonPowder::release()
 {
 }
 
-void PoisonPowder::useSkill(float x, float y, int direct)
+void PoisonPowder::useSkill()
 {
-	Skill::useSkill(x, y, direct);
+	Skill::useSkill();
 
 	_poisonPowderEffect = new EF_PoisonPowder;
-	_poisonPowderEffect->init(_x, _y);
+	_poisonPowderEffect->init(_x, _y, _finalDamage, _scale, _atkType);
 	EFFECTMANAGER->addEffect(_poisonPowderEffect);
 }

@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "EF_FireFang.h"
 
-HRESULT EF_FireFang::init(float x, float y)
+HRESULT EF_FireFang::init(float x, float y, int damage, int skillScale, int atkType)
 {
-	Effect::init(x, y);
+	Effect::init(x, y, damage, skillScale, atkType);
 
 	_img = IMAGEMANAGER->addFrameDImage("FireFang", L"img/effect/FireFang.png", 1440, 112, 10, 1);
 	_img->setFrameX(0);

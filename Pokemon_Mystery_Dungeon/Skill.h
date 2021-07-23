@@ -1,7 +1,8 @@
 #pragma once
 #include "PokemonType.h"
+class Player;
 
-enum SKILLTYPE	//공격속성
+enum ATTACKTYPE	//공격속성
 {
 	PHYSICAL_ATTACK,
 	SPECIAL_ATTACK,
@@ -23,21 +24,23 @@ protected:
 	float _x, _y;
 	int _direct;
 	int _skillNum;
-	SKILLTYPE _atkType;
+	ATTACKTYPE _atkType;
 	POKEMON_TYPE _type;
 	SKILLSCALE _scale;
+	Player* _player;
 	int _damage;
 	float _accuracy;
 	int _currentPP, _maxPP;
+	int _finalDamage;
 
 public:
 	Skill() {};
 	~Skill() {};
 
-	virtual HRESULT init() = 0;
+	virtual HRESULT init(Player* player);
 	virtual void release() = 0;
 
-	virtual void useSkill(float x, float y, int direct);
+	virtual void useSkill();
 
 	// ====================접근자,설정자==================== //
 	wstring getName() { return _name; }
@@ -51,5 +54,7 @@ public:
 	int getMaxPP() { return _maxPP; }
 	void setMaxPP(int plusMaxPP) { _maxPP = plusMaxPP; }
 
+	ATTACKTYPE getAtkType() { return _atkType; }
+	POKEMON_TYPE getSkillType() { return _type; }
 };
 

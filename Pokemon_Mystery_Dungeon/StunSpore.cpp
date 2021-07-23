@@ -1,8 +1,9 @@
 #include "stdafx.h"
 #include "StunSpore.h"
 
-HRESULT StunSpore::init()
+HRESULT StunSpore::init(Player* player)
 {
+	Skill::init(player);
 	_name = L"저리가루";
 	_skillNum = 13;
 	_damage = 0;
@@ -19,11 +20,11 @@ void StunSpore::release()
 {
 }
 
-void StunSpore::useSkill(float x, float y, int direct)
+void StunSpore::useSkill()
 {
-	Skill::useSkill(x, y, direct);
+	Skill::useSkill();
 
 	_stunSporeEffect = new EF_StunSpore;
-	_stunSporeEffect->init(_x, _y);
+	_stunSporeEffect->init(_x, _y, _finalDamage, _scale, _atkType);
 	EFFECTMANAGER->addEffect(_stunSporeEffect);
 }

@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Effect.h"
 
-HRESULT Effect::init(float x, float y)
+HRESULT Effect::init(float x, float y, int damage, int skillScale, int atkType)
 {
 	_x = x;
 	_y = y;
@@ -9,6 +9,10 @@ HRESULT Effect::init(float x, float y)
 		TILEWIDTH, TILEHEIGHT);
 	_count = 0;
 	_off = false;
+
+	_scale = skillScale; // 타격범위로
+	_damage = damage;
+	_atkType = atkType;
 
 	return S_OK;
 }

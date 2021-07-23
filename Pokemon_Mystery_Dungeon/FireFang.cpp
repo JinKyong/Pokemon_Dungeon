@@ -1,8 +1,9 @@
 #include "stdafx.h"
 #include "FireFang.h"
 
-HRESULT FireFang::init()
+HRESULT FireFang::init(Player* player)
 {
+	Skill::init(player);
 	_name = L"ºÒ²É¾ö´Ï";
 	_skillNum = 8;
 	_damage = 65;
@@ -19,11 +20,11 @@ void FireFang::release()
 {
 }
 
-void FireFang::useSkill(float x, float y, int direct)
+void FireFang::useSkill()
 {
-	Skill::useSkill(x, y, direct);
+	Skill::useSkill();
 
 	_fireFangEffect = new EF_FireFang;
-	_fireFangEffect->init(_x, _y);
+	_fireFangEffect->init(_x, _y, _finalDamage, _scale, _atkType);
 	EFFECTMANAGER->addEffect(_fireFangEffect);
 }

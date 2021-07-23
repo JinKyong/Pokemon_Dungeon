@@ -3,13 +3,13 @@
 class EF_RockSlide :
 	public Effect
 {
-private :
+private:
 
-public :
+public:
 	EF_RockSlide() {};
 	~EF_RockSlide() {};
 
-	virtual HRESULT init(float x, float y);
+	virtual HRESULT init(float x, float y, int damage, int skillScale, int atkType);
 	virtual void release();
 	virtual void update();
 };

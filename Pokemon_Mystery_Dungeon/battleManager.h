@@ -48,6 +48,6 @@ public:
 	STAT statCalculation(Player* player);
 
 	//내구력 계산
-	int defenceCalculation(Player* player, Effect* effect);
+	float defenceCalculation(Player* player, Effect* effect);
 };
 

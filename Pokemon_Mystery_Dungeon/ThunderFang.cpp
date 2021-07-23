@@ -1,8 +1,9 @@
 #include "stdafx.h"
 #include "ThunderFang.h"
 
-HRESULT ThunderFang::init()
+HRESULT ThunderFang::init(Player* player)
 {
+	Skill::init(player);
 	_name = L"번개엄니";
 	_skillNum = 7;
 	_damage = 65;
@@ -19,11 +20,11 @@ void ThunderFang::release()
 {
 }
 
-void ThunderFang::useSkill(float x, float y, int direct)
+void ThunderFang::useSkill()
 {
-	Skill::useSkill(x, y, direct);
+	Skill::useSkill();
 
 	_thunderFangEffect = new EF_ThunderFang;
-	_thunderFangEffect->init(_x, _y);
+	_thunderFangEffect->init(_x, _y, _finalDamage, _scale, _atkType);
 	EFFECTMANAGER->addEffect(_thunderFangEffect);
 }

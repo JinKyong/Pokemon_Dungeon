@@ -1,8 +1,9 @@
 #include "stdafx.h"
 #include "LeafBlade.h"
 
-HRESULT LeafBlade::init()
+HRESULT LeafBlade::init(Player* player)
 {
+	Skill::init(player);
 	_name = L"리프블레이드";
 	_skillNum = 6;
 	_damage = 90;
@@ -19,11 +20,11 @@ void LeafBlade::release()
 {
 }
 
-void LeafBlade::useSkill(float x, float y, int direct)
+void LeafBlade::useSkill()
 {
-	Skill::useSkill(x, y, direct);
+	Skill::useSkill();
 
 	_leafBladeEffect = new EF_LeafBlade;
-	_leafBladeEffect->init(_x, _y);
+	_leafBladeEffect->init(_x, _y, _finalDamage, _scale, _atkType);
 	EFFECTMANAGER->addEffect(_leafBladeEffect);
 }

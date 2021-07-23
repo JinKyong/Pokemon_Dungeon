@@ -102,5 +102,8 @@ public:
 	int getNum() { return _num; }
 
 	STAT getPokemonValue() { return _pokemonValue; }
+
+	POKEMON_TYPE getPokemonType1() { return _type[0]; }
+	POKEMON_TYPE getPokemonType2() { return _type[1]; }
 };
 

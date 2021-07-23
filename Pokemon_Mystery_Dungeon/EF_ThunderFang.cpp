@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "EF_ThunderFang.h"
 
-HRESULT EF_ThunderFang::init(float x, float y)
+HRESULT EF_ThunderFang::init(float x, float y, int damage, int skillScale, int atkType)
 {
-	Effect::init(x, y);
+	Effect::init(x, y, damage, skillScale, atkType);
 
 	_img = IMAGEMANAGER->addFrameDImage("ThunderFang", L"img/effect/ThunderFang.png", 1024, 132, 8, 1);
 	_img->setFrameX(0);

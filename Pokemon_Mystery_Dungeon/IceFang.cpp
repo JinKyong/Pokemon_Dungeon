@@ -1,8 +1,9 @@
 #include "stdafx.h"
 #include "IceFang.h"
 
-HRESULT IceFang::init()
+HRESULT IceFang::init(Player* player)
 {
+	Skill::init(player);
 	_name = L"얼음엄니";
 	_skillNum = 8;
 	_damage = 65;
@@ -19,11 +20,11 @@ void IceFang::release()
 {
 }
 
-void IceFang::useSkill(float x, float y, int direct)
+void IceFang::useSkill()
 {
-	Skill::useSkill(x, y, direct);
+	Skill::useSkill();
 
 	_iceFangEffect = new EF_IceFang;
-	_iceFangEffect->init(_x, _y);
+	_iceFangEffect->init(_x, _y, _finalDamage, _scale, _atkType);
 	EFFECTMANAGER->addEffect(_iceFangEffect);
 }

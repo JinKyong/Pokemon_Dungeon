@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "EF_IceFang.h"
 
-HRESULT EF_IceFang::init(float x, float y)
+HRESULT EF_IceFang::init(float x, float y, int damage, int skillScale, int atkType)
 {
-	Effect::init(x, y);
+	Effect::init(x, y, damage, skillScale, atkType);
 
 	_img = IMAGEMANAGER->addFrameDImage("IceFang", L"img/effect/IceFang.png", 1476, 114, 9, 1);
 	_img->setFrameX(0);

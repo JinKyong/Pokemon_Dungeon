@@ -3,13 +3,13 @@
 class EF_ThunderFang :
 	public Effect
 {
-private :
+private:
 
-public :
+public:
 	EF_ThunderFang() {};
 	~EF_ThunderFang() {};
 
-	virtual HRESULT init(float x, float y);
+	virtual HRESULT init(float x, float y, int damage, int skillScale, int atkType);
 	virtual void release();
 	virtual void update();
 };

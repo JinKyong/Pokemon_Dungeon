@@ -1,8 +1,9 @@
 #include "stdafx.h"
 #include "SleepPowder.h"
 
-HRESULT SleepPowder::init()
+HRESULT SleepPowder::init(Player* player)
 {
+	Skill::init(player);
 	_name = L"수면가루";
 	_skillNum = 12;
 	_damage = 0;
@@ -19,11 +20,11 @@ void SleepPowder::release()
 {
 }
 
-void SleepPowder::useSkill(float x, float y, int direct)
+void SleepPowder::useSkill()
 {
-	Skill::useSkill(x, y, direct);
+	Skill::useSkill();
 
 	_sleepPowderEffect = new EF_SleepPowder;
-	_sleepPowderEffect->init(_x, _y);
+	_sleepPowderEffect->init(_x, _y, _finalDamage, _scale, _atkType);
 	EFFECTMANAGER->addEffect(_sleepPowderEffect);
 }

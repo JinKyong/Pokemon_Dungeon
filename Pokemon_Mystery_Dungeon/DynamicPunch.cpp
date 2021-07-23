@@ -1,8 +1,9 @@
 #include "stdafx.h"
 #include "DynamicPunch.h"
 
-HRESULT DynamicPunch::init()
+HRESULT DynamicPunch::init(Player* player)
 {
+	Skill::init(player);
 	_name = L"Æø¹ßÆÝÄ¡";
 	_skillNum = 5;
 	_damage = 100;
@@ -19,11 +20,11 @@ void DynamicPunch::release()
 {
 }
 
-void DynamicPunch::useSkill(float x, float y, int direct)
+void DynamicPunch::useSkill()
 {
-	Skill::useSkill(x, y, direct);
+	Skill::useSkill();
 
 	_dynamicPunchEffect = new EF_DynamicPunch;
-	_dynamicPunchEffect->init(_x, _y);
+	_dynamicPunchEffect->init(_x, _y, _finalDamage, _scale, _atkType);
 	EFFECTMANAGER->addEffect(_dynamicPunchEffect);
 }

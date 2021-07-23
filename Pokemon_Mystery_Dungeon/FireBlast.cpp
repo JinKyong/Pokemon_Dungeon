@@ -1,8 +1,9 @@
 #include "stdafx.h"
 #include "FireBlast.h"
 
-HRESULT FireBlast::init()
+HRESULT FireBlast::init(Player* player)
 {
+	Skill::init(player);
 	_name = L"불대문자";
 	_skillNum = 1;
 	_damage = 120;
@@ -19,11 +20,11 @@ void FireBlast::release()
 {
 }
 
-void FireBlast::useSkill(float x, float y, int direct)
+void FireBlast::useSkill()
 {
-	Skill::useSkill(x, y, direct);
+	Skill::useSkill();
 
 	_fireBlastEffect = new EF_FireBlast;
-	_fireBlastEffect->init(_x, _y);
+	_fireBlastEffect->init(_x, _y, _finalDamage, _scale, _atkType);
 	EFFECTMANAGER->addEffect(_fireBlastEffect);
 }

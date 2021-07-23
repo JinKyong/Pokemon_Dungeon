@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "EF_PoisonPowder.h"
 
-HRESULT EF_PoisonPowder::init(float x, float y)
+HRESULT EF_PoisonPowder::init(float x, float y, int damage, int skillScale, int atkType)
 {
-	Effect::init(x, y);
+	Effect::init(x, y, damage, skillScale, atkType);
 
 	_img = IMAGEMANAGER->addFrameDImage("PoisonPowder", L"img/effect/PoisonPowder.png", 1496, 128, 22, 1);
 	_img->setFrameX(0);

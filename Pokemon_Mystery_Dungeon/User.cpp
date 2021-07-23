@@ -17,13 +17,13 @@ HRESULT User::init(int pokemonNum)
 	//±â¼ú
 	_selectedSkill = nullptr;
 	_skill[0] = SKILLDEX->makeSkill(1);
-	_skill[0]->init();
+	_skill[0]->init(this);
 	_skill[1] = SKILLDEX->makeSkill(6);
-	_skill[1]->init();
+	_skill[1]->init(this);
 	_skill[2] = SKILLDEX->makeSkill(3);
-	_skill[2]->init();
+	_skill[2]->init(this);
 	_skill[3] = SKILLDEX->makeSkill(4);
-	_skill[3]->init();
+	_skill[3]->init(this);
 
 	//_inDungeon = false;
 

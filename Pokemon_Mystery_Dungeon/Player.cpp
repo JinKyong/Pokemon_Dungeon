@@ -110,7 +110,7 @@ void Player::sattack()
 	}
 
 	if (_selectedSkill) {
-		_selectedSkill->useSkill(_x, _y, _pokemon->getDirect());
+		_selectedSkill->useSkill();
 		DIALOGMANAGER->useSkillLog(this, _selectedSkill);
 		_selectedSkill = nullptr;
 	}

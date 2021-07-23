@@ -1,8 +1,9 @@
 #include "stdafx.h"
 #include "Pound.h"
 
-HRESULT Pound::init()
+HRESULT Pound::init(Player* player)
 {
+	Skill::init(player);
 	_name = L"¸·Ä¡±â";
 	_skillNum = 10;
 	_damage = 40;
@@ -19,11 +20,11 @@ void Pound::release()
 {
 }
 
-void Pound::useSkill(float x, float y, int direct)
+void Pound::useSkill()
 {
-	Skill::useSkill(x, y, direct);
+	Skill::useSkill();
 
 	_poundEffect = new EF_Pound;
-	_poundEffect->init(_x, _y);
+	_poundEffect->init(_x, _y, _finalDamage, _scale, _atkType);
 	EFFECTMANAGER->addEffect(_poundEffect);
 }

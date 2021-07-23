@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "EF_StunSpore.h"
 
-HRESULT EF_StunSpore::init(float x, float y)
+HRESULT EF_StunSpore::init(float x, float y, int damage, int skillScale, int atkType)
 {
-	Effect::init(x, y);
+	Effect::init(x, y, damage, skillScale, atkType);
 
 	_img = IMAGEMANAGER->addFrameDImage("StunSpore", L"img/effect/StunSpore.png", 1496, 128, 22, 1);
 	_img->setFrameX(0);

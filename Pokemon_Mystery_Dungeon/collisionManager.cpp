@@ -229,6 +229,7 @@ bool collisionManager::detectionWith8Tiles(Player * startPlayer, Player * destPl
 void collisionManager::effectWithEnemy(Effect * effect)
 {
 	RECT temp;
+	int rndNum = RND->getFromIntTo(85, 101);
 
 	vector<Player*>::iterator playerIter;
 
@@ -237,7 +238,7 @@ void collisionManager::effectWithEnemy(Effect * effect)
 		if (IntersectRect(&temp, &(*playerIter)->getBody(), &effect->getBody()))
 		{
 			(*playerIter)->getPokemon()->changeState(POKEMON_STATE_HURT);
-			(*playerIter)->hitDamage(40);
+			(*playerIter)->hitDamage(effect->getDamage() / BATTLEMANAGER->defenceCalculation((*playerIter), effect) * rndNum);
 			TURNMANAGER->setPause(true);
 		}
 	}

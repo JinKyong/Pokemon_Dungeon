@@ -1,8 +1,9 @@
 #include "stdafx.h"
 #include "MetalClaw.h"
 
-HRESULT MetalClaw::init()
+HRESULT MetalClaw::init(Player* player)
 {
+	Skill::init(player);
 	_name = L"¸ÞÅ»Å©·Î¿ì";
 	_skillNum = 14;
 	_damage = 50;
@@ -19,11 +20,11 @@ void MetalClaw::release()
 {
 }
 
-void MetalClaw::useSkill(float x, float y, int direct)
+void MetalClaw::useSkill()
 {
-	Skill::useSkill(x, y, direct);
+	Skill::useSkill();
 
 	_metalClawEffect = new EF_MetalClaw;
-	_metalClawEffect->init(_x, _y);
+	_metalClawEffect->init(_x, _y, _finalDamage, _scale, _atkType);
 	EFFECTMANAGER->addEffect(_metalClawEffect);
 }

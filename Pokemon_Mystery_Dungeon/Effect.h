@@ -19,13 +19,16 @@ protected:
 	float _count;
 	float _renderCount;
 	bool _off;
+	int _damage;
+	int _scale;
+	int _atkType;
 	//이펙트에 실 데미지 추가
 
 public:
 	Effect() {};
 	~Effect() {};
 
-	virtual HRESULT init(float x, float y);
+	virtual HRESULT init(float x, float y, int damage, int skillScale, int atkType);
 	virtual void release() = 0;
 	virtual void update() = 0;
 	virtual void render();
@@ -34,5 +37,9 @@ public:
 
 	bool getOff() { return _off; }
 	RECT getBody() { return _body; }
+
+	int getDamage() { return _damage; }
+	int getScale() { return _scale; }
+	int getAtkType() { return _atkType; }
 };
 

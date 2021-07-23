@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "EF_DynamicPunch.h"
 
-HRESULT EF_DynamicPunch::init(float x, float y)
+HRESULT EF_DynamicPunch::init(float x, float y, int damage, int skillScale, int atkType)
 {
-	Effect::init(x, y);
+	Effect::init(x, y, damage, skillScale, atkType);
 
 	_img = IMAGEMANAGER->addFrameDImage("DynamicPunch", L"img/effect/DynamicPunch.png", 2714, 112, 23, 1);
 	_img->setFrameX(0);

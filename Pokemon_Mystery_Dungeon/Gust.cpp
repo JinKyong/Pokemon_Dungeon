@@ -2,8 +2,9 @@
 #include "Gust.h"
 #include "EF_Gust.h"
 
-HRESULT Gust::init()
+HRESULT Gust::init(Player* player)
 {
+	Skill::init(player);
 	_name = L"바람일으키기";
 	_skillNum = 2;
 	_damage = 40;
@@ -20,11 +21,11 @@ void Gust::release()
 {
 }
 
-void Gust::useSkill(float x, float y, int direct)
+void Gust::useSkill()
 {
-	Skill::useSkill(x, y, direct);
+	Skill::useSkill();
 
 	_gustEffect = new EF_Gust;
-	_gustEffect->init(_x, _y);
+	_gustEffect->init(_x, _y, _finalDamage, _scale, _atkType);
 	EFFECTMANAGER->addEffect(_gustEffect);
 }

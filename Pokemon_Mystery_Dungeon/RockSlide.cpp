@@ -1,8 +1,9 @@
 #include "stdafx.h"
 #include "RockSlide.h"
 
-HRESULT RockSlide::init()
+HRESULT RockSlide::init(Player* player)
 {
+	Skill::init(player);
 	_name = L"½ºÅæ»þ¿ö";
 	_skillNum = 4;
 	_damage = 75;
@@ -19,11 +20,11 @@ void RockSlide::release()
 {
 }
 
-void RockSlide::useSkill(float x, float y, int direct)
+void RockSlide::useSkill()
 {
-	Skill::useSkill(x, y, direct);
+	Skill::useSkill();
 
 	_rockSlideEffect = new EF_RockSlide;
-	_rockSlideEffect->init(_x, _y);
+	_rockSlideEffect->init(_x, _y, _finalDamage, _scale, _atkType);
 	EFFECTMANAGER->addEffect(_rockSlideEffect);
 }

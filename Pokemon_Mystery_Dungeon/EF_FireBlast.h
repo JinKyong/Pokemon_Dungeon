@@ -3,13 +3,13 @@
 class EF_FireBlast :
 	public Effect
 {
-private :
+private:
 
-public :
+public:
 	EF_FireBlast() {};
 	~EF_FireBlast() {};
 
-	virtual HRESULT init(float x, float y);
+	virtual HRESULT init(float x, float y, int damage, int skillScale, int atkType);
 	virtual void release();
 	virtual void update();
 };

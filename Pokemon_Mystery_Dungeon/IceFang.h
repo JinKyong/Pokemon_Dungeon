@@ -12,9 +12,9 @@ public:
 	IceFang() {};
 	~IceFang() {};
 
-	virtual HRESULT init();
+	virtual HRESULT init(Player* player);
 	virtual void release();
 
-	void useSkill(float x, float y, int direct);
+	void useSkill();
 };
 

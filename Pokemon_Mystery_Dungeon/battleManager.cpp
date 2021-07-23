@@ -45,21 +45,21 @@ STAT battleManager::statCalculation(Player * player)
 	return realStat;
 }
 
-int battleManager::defenceCalculation(Player * player, Effect * effect)
+float battleManager::defenceCalculation(Player * player, Effect * effect)
 {
 	int defType;
 
-	//if (effect->getAtkType() == PHYSICAL_ATTACK) defType = player->getRealStat().defense;
-	//else										 defType = player->getRealStat().sdefense;
+	if (effect->getAtkType() == PHYSICAL_ATTACK) defType = player->getRealStat().defense;
+	else										 defType = player->getRealStat().sdefense;
 
-	return 0;
+	return DEFENCE_CALCULATION(player->getRealStat().hp, defType);
 }
 
 
 
 //최종 데미지용 함수 추가
 
-//스킬 계산식 : 공격실능 or 특공실능 * 기술위력 * 자속 * 특성 * 도구 * 날씨	
+
 //내구력 공식 : HP 실능 x 방 or 특방 실능 / 0.411
 //데미지 공식 : 스킬공격력 / 내구력 * 랜덤수(85~100)
 
