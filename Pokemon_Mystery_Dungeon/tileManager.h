@@ -16,7 +16,7 @@
 
 //타일셋 정의
 #define SAMPLETILEX 15
-#define SAMPLETILEY 3
+#define SAMPLETILEY 4
 
 //비트필드
 #define ATTR_UNMOVE 0x00000016	//못가는 타일

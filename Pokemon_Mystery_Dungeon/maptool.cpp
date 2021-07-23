@@ -11,15 +11,15 @@ Maptool::~Maptool()
 
 HRESULT Maptool::init()
 {
-	_maptile[0]=IMAGEMANAGER->addFrameDImage("terrain0", L"img/map/tiles/terrain_0.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
-	_maptile[1] = IMAGEMANAGER->addFrameDImage("terrain1", L"img/map/tiles/terrain_1.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
-	_maptile[2] = IMAGEMANAGER->addFrameDImage("terrain2", L"img/map/tiles/terrain_2.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
-	_maptile[3] = IMAGEMANAGER->addFrameDImage("terrain3", L"img/map/tiles/terrain_3.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
-	_maptile[4] = IMAGEMANAGER->addFrameDImage("terrain4", L"img/map/tiles/terrain_4.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
-	_maptile[5] = IMAGEMANAGER->addFrameDImage("terrain5", L"img/map/tiles/terrain_5.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
-	_maptile[6] = IMAGEMANAGER->addFrameDImage("terrain6", L"img/map/tiles/terrain_6.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
-	_maptile[7] = IMAGEMANAGER->addFrameDImage("terrain7", L"img/map/tiles/terrain_7.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
-	_object =IMAGEMANAGER->addFrameDImage("object", L"img/map/tiles/object_all.png", 720, 144, SAMPLETILEX, 3);
+	_maptile[0] = IMAGEMANAGER->addFrameDImage("terrain0", L"img/map/tiles/terrain_0.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
+	_maptile[1] = IMAGEMANAGER->addFrameDImage("terrain1", L"img/map/tiles/terrain_1.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
+	_maptile[2] = IMAGEMANAGER->addFrameDImage("terrain2", L"img/map/tiles/terrain_2.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
+	_maptile[3] = IMAGEMANAGER->addFrameDImage("terrain3", L"img/map/tiles/terrain_3.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
+	_maptile[4] = IMAGEMANAGER->addFrameDImage("terrain4", L"img/map/tiles/terrain_4.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
+	_maptile[5] = IMAGEMANAGER->addFrameDImage("terrain5", L"img/map/tiles/terrain_5.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
+	_maptile[6] = IMAGEMANAGER->addFrameDImage("terrain6", L"img/map/tiles/terrain_6.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
+	_maptile[7] = IMAGEMANAGER->addFrameDImage("terrain7", L"img/map/tiles/terrain_7.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
+	_object     = IMAGEMANAGER->addFrameDImage("object", L"img/map/tiles/object_all.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
 	_width = TILEMANAGER->getWidth();
 	_height = TILEMANAGER->getHeight();
 	setup();
@@ -312,7 +312,7 @@ void Maptool::minimap()
 
 TERRAIN Maptool::terrainSelect(int frameX, int frameY)
 {
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < 4; i++)
 	{
 		for (int j = 3; j < 12; j++)
 		{

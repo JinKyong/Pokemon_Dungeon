@@ -21,15 +21,15 @@ HRESULT tileManager::init(int width, int height)
 	_width = width;
 	_height = height;
 	//타일맵 이미지 등록
-	_Mapbase[0] = IMAGEMANAGER->addFrameDImage("terrain0", L"img/map/tiles/terrain_0.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
-	_Mapbase[1] = IMAGEMANAGER->addFrameDImage("terrain1", L"img/map/tiles/terrain_1.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
-	_Mapbase[2] = IMAGEMANAGER->addFrameDImage("terrain2", L"img/map/tiles/terrain_2.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
-	_Mapbase[3] = IMAGEMANAGER->addFrameDImage("terrain3", L"img/map/tiles/terrain_3.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
-	_Mapbase[4] = IMAGEMANAGER->addFrameDImage("terrain4", L"img/map/tiles/terrain_4.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
-	_Mapbase[5] = IMAGEMANAGER->addFrameDImage("terrain5", L"img/map/tiles/terrain_5.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
-	_Mapbase[6] = IMAGEMANAGER->addFrameDImage("terrain6", L"img/map/tiles/terrain_6.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
-	_Mapbase[7] = IMAGEMANAGER->addFrameDImage("terrain7", L"img/map/tiles/terrain_7.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
-	_Obbase = IMAGEMANAGER->addFrameDImage("object", L"img/map/tiles/object_all.png", 720, 144, SAMPLETILEX, 3);
+	_Mapbase[0] = IMAGEMANAGER->addFrameDImage("terrain0", L"img/map/tiles/terrain_0.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
+	_Mapbase[1] = IMAGEMANAGER->addFrameDImage("terrain1", L"img/map/tiles/terrain_1.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
+	_Mapbase[2] = IMAGEMANAGER->addFrameDImage("terrain2", L"img/map/tiles/terrain_2.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
+	_Mapbase[3] = IMAGEMANAGER->addFrameDImage("terrain3", L"img/map/tiles/terrain_3.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
+	_Mapbase[4] = IMAGEMANAGER->addFrameDImage("terrain4", L"img/map/tiles/terrain_4.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
+	_Mapbase[5] = IMAGEMANAGER->addFrameDImage("terrain5", L"img/map/tiles/terrain_5.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
+	_Mapbase[6] = IMAGEMANAGER->addFrameDImage("terrain6", L"img/map/tiles/terrain_6.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
+	_Mapbase[7] = IMAGEMANAGER->addFrameDImage("terrain7", L"img/map/tiles/terrain_7.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
+	_Obbase = IMAGEMANAGER->addFrameDImage("object", L"img/map/tiles/object_all.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
 
 	return S_OK;
 }
@@ -41,15 +41,15 @@ HRESULT tileManager::init(int width, int height, int type)
 	_height = height;
 	_type = type;
 	//타일맵 이미지 등록
-	_Mapbase[0] = IMAGEMANAGER->addFrameDImage("terrain0", L"img/map/tiles/terrain_0.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
-	_Mapbase[1] = IMAGEMANAGER->addFrameDImage("terrain1", L"img/map/tiles/terrain_1.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
-	_Mapbase[2] = IMAGEMANAGER->addFrameDImage("terrain2", L"img/map/tiles/terrain_2.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
-	_Mapbase[3] = IMAGEMANAGER->addFrameDImage("terrain3", L"img/map/tiles/terrain_3.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
-	_Mapbase[4] = IMAGEMANAGER->addFrameDImage("terrain4", L"img/map/tiles/terrain_4.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
-	_Mapbase[5] = IMAGEMANAGER->addFrameDImage("terrain5", L"img/map/tiles/terrain_5.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
-	_Mapbase[6] = IMAGEMANAGER->addFrameDImage("terrain6", L"img/map/tiles/terrain_6.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
-	_Mapbase[7] = IMAGEMANAGER->addFrameDImage("terrain7", L"img/map/tiles/terrain_7.png", 720, 144, SAMPLETILEX, SAMPLETILEY);
-	_Obbase = IMAGEMANAGER->addFrameDImage("object", L"img/map/tiles/object_all.png", 720, 144, SAMPLETILEX, 3);
+	_Mapbase[0] = IMAGEMANAGER->addFrameDImage("terrain0", L"img/map/tiles/terrain_0.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
+	_Mapbase[1] = IMAGEMANAGER->addFrameDImage("terrain1", L"img/map/tiles/terrain_1.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
+	_Mapbase[2] = IMAGEMANAGER->addFrameDImage("terrain2", L"img/map/tiles/terrain_2.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
+	_Mapbase[3] = IMAGEMANAGER->addFrameDImage("terrain3", L"img/map/tiles/terrain_3.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
+	_Mapbase[4] = IMAGEMANAGER->addFrameDImage("terrain4", L"img/map/tiles/terrain_4.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
+	_Mapbase[5] = IMAGEMANAGER->addFrameDImage("terrain5", L"img/map/tiles/terrain_5.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
+	_Mapbase[6] = IMAGEMANAGER->addFrameDImage("terrain6", L"img/map/tiles/terrain_6.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
+	_Mapbase[7] = IMAGEMANAGER->addFrameDImage("terrain7", L"img/map/tiles/terrain_7.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
+	_Obbase = IMAGEMANAGER->addFrameDImage("object", L"img/map/tiles/object_all.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
 
 	//던전 랜덤 생성
 	dungeon(_width, _height);
@@ -726,50 +726,118 @@ bool tileManager::placeRect(RECT rc, char Char)
 		}
 	
 	//RECT 테두리에 벽 설정
-	for (int y = rc.top - 1; y <= rc.bottom; ++y)
-		for (int x = rc.left - 1; x <= rc.right; ++x)
+	for (int y = rc.top - 1; y <= rc.bottom; y++)
+		for (int x = rc.left - 1; x <= rc.right; x++)
 		{
-			if (x== rc.left - 1 &&y== rc.top - 1&&
-				(getChar(x, y-1) ==Unused&& 
-					getChar(x-1, y ) == Unused))
+			if (x == rc.left - 1 &&
+				(getChar(x, y - 1) >= LeftTriWall) &&
+				(getChar(x - 1, y) == (Floor || Corridor)) &&
+				(getChar(x + 1, y) >= TopTriWall) &&
+				(getChar(x, y + 1) >= LeftTriWall))
+				setChar(x, y, LeftTriWall);
+			else if (x == rc.right &&
+				(getChar(x, y - 1) >= LeftTriWall) &&
+				(getChar(x + 1, y) == (Floor || Corridor)) &&
+				(getChar(x - 1, y) >= TopTriWall) &&
+				(getChar(x, y + 1) >= LeftTriWall))
+				setChar(x, y, RightTriWall);
+			else if (y == rc.top - 1 &&
+				(getChar(x - 1, y) >= LeftTriWall) &&
+				(getChar(x, y - 1) == (Floor || Corridor)) &&
+				(getChar(x, y + 1) >= LeftTriWall) &&
+				(getChar(x + 1, y) >= LeftTriWall))
+				setChar(x, y, TopTriWall);
+			else if (y == rc.bottom &&
+				(getChar(x - 1, y) >= LeftTriWall) &&
+				(getChar(x, y + 1) == (Floor || Corridor)) &&
+				(getChar(x, y - 1) >= LeftTriWall) &&
+				(getChar(x + 1, y) >= LeftTriWall))
+				setChar(x, y, BottomTriWall);
+			else if (x == rc.left - 1 &&
+				(getChar(x, y - 1) == (VerticalLeftWall || LeftOpenWall)) &&
+				(getChar(x - 1, y) == Unused) &&
+				(getChar(x + 1, y) >= TopTriWall) &&
+				(getChar(x, y + 1) == (VerticalLeftWall || LeftOpenWall)))
+				setChar(x, y, LeftOpenWall);
+			else if (x == rc.right &&
+				(getChar(x, y - 1) == (VerticalRightWall || RightOpenWall)) &&
+				(getChar(x + 1, y) == Unused) &&
+				(getChar(x - 1, y) >= TopTriWall) &&
+				(getChar(x, y + 1) == (VerticalRightWall || RightOpenWall)))
+				setChar(x, y, RightOpenWall);
+			else if (y == rc.top - 1 &&
+				(getChar(x - 1, y) == (HorizontalTopWall || TopOpenWall)) &&
+				getChar(x, y - 1) == Unused &&
+				getChar(x, y + 1) >= LeftTriWall &&
+				(getChar(x + 1, y) == (HorizontalTopWall || TopOpenWall)))
+				setChar(x, y, TopOpenWall);
+			else if (y == rc.bottom &&
+				(getChar(x - 1, y) == (HorizontalBottomWall || BottomOpenWall)) &&
+				getChar(x, y + 1) == Unused &&
+				getChar(x, y - 1) >= LeftTriWall &&
+				(getChar(x + 1, y) == (HorizontalBottomWall || BottomOpenWall)))
+				setChar(x, y, BottomOpenWall);
+			else if (getChar(x, y - 1) == Unused &&
+					getChar(x - 1, y) == Unused &&
+					getChar(x + 1, y) != (Floor || Corridor) &&
+					getChar(x, y + 1) != (Floor || Corridor))
 				setChar(x, y, LeftOpenCorner);
-			else if (x == rc.left - 1 && y == rc.top - 1) 
-				setChar(x, y, LeftCorner);
-			else if (x == rc.right && y == rc.top - 1 &&
-				(getChar(x, y - 1) == Unused || 
-					getChar(x+1, y) == Unused))
+			else if (x==rc.right&&y==rc.top-1&&
+				getChar(x, y - 1) == Unused &&
+					getChar(x + 1, y) == Unused)
 				setChar(x, y, RightOpenCorner);
-			else if (x == rc.right&& y == rc.top - 1)
-				setChar(x, y, RightCorner);
-			else if (x == rc.left - 1 && y == rc.bottom && 
-				(getChar(x, y +1) == Unused || 
+			
+			else if (x==rc.left-1&&y==rc.bottom&&
+				(getChar(x, y +1) == Unused && 
 					getChar(x-1, y ) == Unused))
 				setChar(x, y, LeftOpenBottom);
-			else if (x == rc.left - 1 && y == rc.bottom) 
-				setChar(x, y, LeftBottom);
-			else if (x == rc.right && y == rc.bottom &&
-				(getChar(x, y + 1) == Unused ||
-					getChar(x +1, y) == Unused))
+			else if (x==rc.right&&y==rc.bottom&&
+				(getChar(x, y + 1) == Unused &&
+				getChar(x + 1, y) == Unused ))
 				setChar(x, y, RightOpenBottom);
-			else if (x == rc.right&&y == rc.bottom) 
+			else if (getChar(x - 1, y) == (Floor || Corridor) &&
+				getChar(x + 1, y) != (Floor || Corridor || Unused) &&
+				getChar(x, y - 1) == (Floor || Corridor) &&
+				getChar(x, y + 1) != (Floor || Corridor || Unused))
+				setChar(x, y, LeftCorner);
+			else if (getChar(x - 1, y) != (Floor || Corridor) &&
+				getChar(x + 1, y) == (Floor || Corridor || Unused) &&
+				getChar(x, y - 1) == (Floor || Corridor) &&
+				getChar(x, y + 1) != (Floor || Corridor || Unused))
+				setChar(x, y, RightCorner);
+			else if (getChar(x - 1, y) == (Floor || Corridor) &&
+				getChar(x, y + 1) == (Floor || Corridor) &&
+				getChar(x, y - 1) != (Floor || Corridor || Unused) &&
+				getChar(x + 1, y) != (Floor || Corridor || Unused))
+				setChar(x, y, LeftBottom);
+			else if (getChar(x-1,y)!=(Floor||Corridor||Unused)&&
+				getChar(x,y+1)!=(Floor||Corridor||Unused)&&
+				getChar(x,y-1)==(Floor||Corridor)&&
+				getChar(x+1,y)==(Floor||Corridor)) 
 				setChar(x, y, RightBottom);
 			else if (x == rc.left-1 &&
-				getChar(x-1, y) == Unused)
+				(getChar(x-1, y) == Unused|| 
+				getChar(x - 1, y) == VerticalRightWall||
+					getChar(x-1,y)==RightOpenCorner))
 				setChar(x, y, VerticalLeftWall);
 			else if (x == rc.right &&
-				(getChar(x+1, y) == Unused &&
-					(getChar(x-1, y) == Floor|| 
-						getChar(x - 1, y) == Corridor)))
+				((getChar(x+1, y) == Unused||
+					getChar(x+1,y)==VerticalLeftWall||
+					getChar(x+1,y)==LeftOpenCorner)))
 				setChar(x, y, VerticalRightWall);
-			else if (x == rc.left - 1 || x == rc.right)
+			else if ((getChar(x - 1, y) == Floor||
+				getChar(x-1,y)==Corridor)&&
+				(getChar(x+1,y)==Floor||
+				getChar(x+1,y)==Corridor)
+				)
 				setChar(x, y, VerticalWall);
 			else if (y == rc.top - 1 &&
-				getChar(x, y-1) == Unused)
+				(getChar(x, y-1) == Unused||
+				getChar(x,y-1)==HorizontalBottomWall))
 				setChar(x, y, HorizontalTopWall);
 			else if (y == rc.bottom &&
-				((getChar(x, y - 1) == Floor|| 
-					getChar(x, y - 1) == Corridor) &&
-					getChar(x, y + 1) == Unused))
+				(getChar(x, y + 1) == Unused||
+				getChar(x,y+1)==HorizontalTopWall))
 				setChar(x, y, HorizontalBottomWall);
 			else if(y == rc.top - 1 ||y == rc.bottom)
 				setChar(x, y, HorizontalWall);
