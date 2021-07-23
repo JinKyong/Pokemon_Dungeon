@@ -62,11 +62,6 @@ void Enemy::render()
 
 int Enemy::input()
 {
-	//뱡향 및 시작지점 초기화
-	//_direct = 0;
-	_initX = _destX = _x;
-	_initY = _destY = _y;
-
 	_pattern[_currentPattern]->update();
 
 	return _playerState;

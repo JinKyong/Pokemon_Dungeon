@@ -68,8 +68,6 @@ int User::input()
 void User::controlKey()
 {
 	_direct = 0;
-	_initX = _destX = _x;
-	_initY = _destY = _y;
 
 	//방향전환
 	if (KEYMANAGER->isStayKeyDown(KEY_RIGHT)) {

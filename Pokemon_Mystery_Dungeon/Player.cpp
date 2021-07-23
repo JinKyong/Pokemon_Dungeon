@@ -64,6 +64,12 @@ void Player::setDirect()
 		_pokemon->changeDirect(_direct);
 }
 
+void Player::resetXY()
+{
+	_initX = _destX = _x;
+	_initY = _destY = _y;
+}
+
 void Player::move()
 {
 	_pokemon->changeState(_playerState);

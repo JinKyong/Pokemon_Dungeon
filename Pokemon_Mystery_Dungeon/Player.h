@@ -68,6 +68,7 @@ public:
 
 	void changePattern(PLAYER_PATTERN pattern);
 	void setDirect();
+	void resetXY();
 
 	void move();
 	void attack();

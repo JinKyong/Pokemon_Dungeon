@@ -34,7 +34,7 @@ HRESULT Charmander::init()
 	_stateImage[POKEMON_STATE_IDLE] = IMAGEMANAGER->addFrameDImage("charmander_idle",
 		L"img/pokemon/1. charmander/idle.png", 144, 528, 3, 11);
 	_stateImage[POKEMON_STATE_MOVE] = IMAGEMANAGER->addFrameDImage("charmander_move",
-		L"img/pokemon/1. charmander/move.png", 190, 528, 4, 11);
+		L"img/pokemon/1. charmander/move.png", 192, 528, 4, 11);
 	_stateImage[POKEMON_STATE_ATTACK] = IMAGEMANAGER->addFrameDImage("charmander_attack",
 		L"img/pokemon/1. charmander/attack.png", 144, 528, 3, 11);
 	_stateImage[POKEMON_STATE_SATTACK] = IMAGEMANAGER->addFrameDImage("charmander_sattack",

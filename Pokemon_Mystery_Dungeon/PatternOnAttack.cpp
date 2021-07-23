@@ -9,7 +9,7 @@ HRESULT PatternOnAttack::init(Player * player)
 		_pathFinder = new PathFinder;
 		_pathFinder->init();
 	}
-	_pathFinder->setTiles(_player, (*TURNMANAGER->getAllPlayer())[0]);
+	_pathFinder->resetPathList();
 
 	return S_OK;
 }

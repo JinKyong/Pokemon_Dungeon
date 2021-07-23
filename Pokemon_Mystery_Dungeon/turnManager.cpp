@@ -69,6 +69,7 @@ void turnManager::update()
 				case POKEMON_STATE_DEFAULT:
 					COLLISIONMANAGER->collisionEndTurnPlayer((*player));
 					//(*player)->getPokemon()->changeState(POKEMON_STATE_DEFAULT);
+					(*player)->resetXY();
 					player = _inputPlayerList.erase(player);
 					break;
 				}

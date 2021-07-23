@@ -16,6 +16,10 @@ HRESULT PathFinder::init()
 	_mapWidth = TILEMANAGER->getWidth();
 	_mapHeight = TILEMANAGER->getHeight();
 
+	//전체타일노드 채워주기
+	for (int i = 0; i < _mapHeight * _mapWidth; i++)
+		_vTotalList.push_back(new Atile);
+
 	return S_OK;
 }
 
@@ -41,83 +45,6 @@ void PathFinder::update()
 	findPath(_currentTile);
 }
 
-void PathFinder::setTiles(Player* player)
-{
-	//release();
-	//벡터 클리어
-	_vOpenList.clear();
-	_vCloseList.clear();
-	_vPathList.clear();
-
-	//시작지점 목표지점 설정
-	_startTile = new Atile;
-	_startTile->init(player->getX(), player->getY());
-
-	//방 랜덤으로 잡음
-	vector<RECT>* rooms = TILEMANAGER->getvRoom();
-	int roomNum = RND->getInt(rooms->size());
-
-	_endTile = new Atile;
-	_endTile->init(RND->getFromIntTo((*rooms)[roomNum].left, (*rooms)[roomNum].right),
-		RND->getFromIntTo((*rooms)[roomNum].top, (*rooms)[roomNum].bottom));
-
-	if (_vTotalList.size() <= 0) {
-
-		//타일 셋팅
-		for (int i = 0; i < _mapHeight; i++) {
-			for (int j = 0; j < _mapWidth; j++) {
-				Atile* node = new Atile;
-				node->init(j, i);
-				_vTotalList.push_back(node);
-
-				if (j == _startTile->getIdX() && i == _startTile->getIdY())
-				{
-					SAFE_DELETE(_startTile);
-					_startTile = node;
-					_startTile->setAttribute("start");
-					continue;
-				}
-				if (j == _endTile->getIdX() && i == _endTile->getIdY())
-				{
-					SAFE_DELETE(_endTile);
-					_endTile = node;
-					_endTile->setAttribute("end");
-					continue;
-				}
-			}
-		}
-	}
-
-	else {
-
-		//타일 셋팅
-		for (int i = 0; i < _mapHeight; i++) {
-			for (int j = 0; j < _mapWidth; j++) {
-				int index = i * _mapWidth + j;
-				_vTotalList[index]->init(j, i);
-
-				if (j == _startTile->getIdX() && i == _startTile->getIdY())
-				{
-					SAFE_DELETE(_startTile);
-					_startTile = _vTotalList[index];
-					_startTile->setAttribute("start");
-					continue;
-				}
-				if (j == _endTile->getIdX() && i == _endTile->getIdY())
-				{
-					SAFE_DELETE(_endTile);
-					_endTile = _vTotalList[index];
-					_endTile->setAttribute("end");
-					continue;
-				}
-			}
-		}
-	}
-
-	//현재 타일은 시작타일로
-	_currentTile = _startTile;
-}
-
 void PathFinder::setTiles(Player * startPlayer, Player * destPlayer)
 {
 	//release();
@@ -130,57 +57,44 @@ void PathFinder::setTiles(Player * startPlayer, Player * destPlayer)
 	_startTile = new Atile;
 	_startTile->init(startPlayer->getX(), startPlayer->getY());
 
-	_endTile = new Atile;
-	_endTile->init(destPlayer->getDestX(), destPlayer->getDestY());
+	if (destPlayer) {
+		//목표지점이 인수로 들어오면
+		_endTile = new Atile;
+		_endTile->init(destPlayer->getDestX(), destPlayer->getDestY());
+	}
+	else {
+		//아니면 랜덤방 아무데나
+		while (true) {
+			vector<RECT>* rooms = TILEMANAGER->getvRoom();
+			int roomNum = RND->getInt(rooms->size());
 
-	if (_vTotalList.size() <= 0) {
-		//타일 셋팅
-		for (int i = 0; i < _mapHeight; i++) {
-			for (int j = 0; j < _mapWidth; j++) {
-				Atile* node = new Atile;
-				node->init(j, i);
-				_vTotalList.push_back(node);
+			_endTile = new Atile;
+			_endTile->init(RND->getFromIntTo((*rooms)[roomNum].left, (*rooms)[roomNum].right),
+				RND->getFromIntTo((*rooms)[roomNum].top, (*rooms)[roomNum].bottom));
 
-				if (j == _startTile->getIdX() && i == _startTile->getIdY())
-				{
-					SAFE_DELETE(_startTile);
-					_startTile = node;
-					_startTile->setAttribute("start");
-					continue;
-				}
-				if (j == _endTile->getIdX() && i == _endTile->getIdY())
-				{
-					SAFE_DELETE(_endTile);
-					_endTile = node;
-					_endTile->setAttribute("end");
-					continue;
-				}
-
-			}
+			if (_endTile->getIdX() != startPlayer->getX() && _endTile->getIdY() != startPlayer->getY()) break;
 		}
 	}
 
-	else {
-		//타일 셋팅
-		for (int i = 0; i < _mapHeight; i++) {
-			for (int j = 0; j < _mapWidth; j++) {
-				int index = i * _mapWidth + j;
-				_vTotalList[index]->init(j, i);
+	//타일 셋팅
+	for (int i = 0; i < _mapHeight; i++) {
+		for (int j = 0; j < _mapWidth; j++) {
+			int index = i * _mapWidth + j;
+			_vTotalList[index]->init(j, i);
 
-				if (j == _startTile->getIdX() && i == _startTile->getIdY())
-				{
-					SAFE_DELETE(_startTile);
-					_startTile = _vTotalList[index];
-					_startTile->setAttribute("start");
-					continue;
-				}
-				if (j == _endTile->getIdX() && i == _endTile->getIdY())
-				{
-					SAFE_DELETE(_endTile);
-					_endTile = _vTotalList[index];
-					_endTile->setAttribute("end");
-					continue;
-				}
+			if (j == _startTile->getIdX() && i == _startTile->getIdY())
+			{
+				SAFE_DELETE(_startTile);
+				_startTile = _vTotalList[index];
+				_startTile->setAttribute("start");
+				continue;
+			}
+			if (j == _endTile->getIdX() && i == _endTile->getIdY())
+			{
+				SAFE_DELETE(_endTile);
+				_endTile = _vTotalList[index];
+				_endTile->setAttribute("end");
+				continue;
 			}
 		}
 	}
@@ -352,4 +266,9 @@ void PathFinder::findPath(Atile * currentTile)
 	//한 번 호출시 Stack메모리가 쌓이는데, 1.2메가 이상 오버되면
 	//스택오버플로우 현상이 생긴다
 	findPath(_currentTile);
+}
+
+void PathFinder::resetPathList()
+{
+	_vPathList.clear();
 }

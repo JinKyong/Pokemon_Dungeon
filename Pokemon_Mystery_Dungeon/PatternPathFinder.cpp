@@ -9,8 +9,7 @@ HRESULT PatternPathFinder::init(Player * player)
 		_pathFinder = new PathFinder;
 		_pathFinder->init();
 	}
-	_pathFinder->setTiles(_player);
-	_pathList.clear();
+	_pathFinder->resetPathList();
 
 	return S_OK;
 }

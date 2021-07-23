@@ -46,12 +46,12 @@ public:
 	void update();
 
 	//타일 셋팅 함수
-	void setTiles(Player* player);
-	void setTiles(Player* startPlayer, Player* destPlayer);
+	void setTiles(Player* startPlayer, Player* destPlayer = nullptr);
 	//갈 수 있는 길을 찾아 담아줄 함수
 	vector<Atile*> addOpenList(Atile* currentTile);
 	//길 찾는 함수
 	void findPath(Atile* currentTile);
+	void resetPathList();
 
 
 
