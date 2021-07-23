@@ -8,7 +8,7 @@ enum SKILLMENU_OPTION {
 	SKILLMENU_OPTION_FIRST,
 	SKILLMENU_OPTION_SECOND,
 	SKILLMENU_OPTION_THIRD,
-	SKILLMENU_OPTION_FOURTH,
+	//SKILLMENU_OPTION_FOURTH,
 	END_SKILLMENU_OPTION
 };
 
@@ -19,6 +19,8 @@ private:
 
 	dImage* _back2;
 	dImage* _border2;
+
+	int _index2;
 
 public:
 	virtual HRESULT init();

@@ -74,7 +74,7 @@ void MainMenu::printTextLeft()
 	DTDMANAGER->printText(L"도구", dest, 25);
 
 	//화살표
-	_arrow->render(dest.left - 20, dest.top - 40 + _index * TILEHEIGHT);
+	_arrow->render(dest.left - 20, dest.top - 45 + _index * TILEHEIGHT);
 }
 
 void MainMenu::printTextRight()

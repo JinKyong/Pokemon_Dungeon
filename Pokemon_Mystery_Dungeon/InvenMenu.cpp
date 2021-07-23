@@ -37,6 +37,8 @@ void InvenMenu::update()
 {
 	if (KEYMANAGER->isOnceKeyDown(KEY_UP)) minusIndex();
 	if (KEYMANAGER->isOnceKeyDown(KEY_DOWN)) plusIndex();
+	//if (KEYMANAGER->isOnceKeyDown(KEY_LEFT)) leftIndex();
+	//if (KEYMANAGER->isOnceKeyDown(KEY_RIGHT)) rightIndex();
 
 	if (KEYMANAGER->isOnceKeyDown(KEY_B))
 	{
@@ -80,10 +82,9 @@ void InvenMenu::printTextLeft()
 	D2D1_RECT_F dest = dRectMake(rc.left + _tuningX + TILEWIDTH, rc.top + _tuningY + TILEHEIGHT + TILEHEIGHT / 2,
 		TILEWIDTH * 10, TILEHEIGHT);
 
-	//DTDMANAGER->printText(L"트레저백", dest, 25);
-
 	//화살표
-	if(!_hidden) _arrow->render(dest.left - 20, dest.top + 8 + _index * TILEHEIGHT, _opacity);
+	if(!_hidden) _arrow->render(dest.left - 20, dest.top + _index * TILEHEIGHT, _opacity);
+
 	for (_viInvItem = _invItem->begin(); _viInvItem != _invItem->end(); ++_viInvItem)
 	{
 		(*_viInvItem)->getName();
@@ -92,6 +93,8 @@ void InvenMenu::printTextLeft()
 
 		dest.top += TILEHEIGHT;
 		dest.bottom += TILEHEIGHT;
+
+		if (_invItem->size() % 7 == 0) DTDMANAGER->printText((*_viInvItem)->getName().c_str(), dest, 25);
 	}
 }
 
@@ -102,25 +105,49 @@ void InvenMenu::printTextRight()
 	_back2->render(rc.left + _tuningX, rc.top + _tuningY, 0.5);
 	_border2->render(rc.left + _tuningX, rc.top + _tuningY);
 
-	D2D1_RECT_F dest3 = dRectMake(rc.left + _tuningX + TILEWIDTH * 9 + 10, rc.top + _tuningY + 12,
+	D2D1_RECT_F dest3 = dRectMake(rc.left + _tuningX + TILEWIDTH * 9 + 25, rc.top + _tuningY + 12,
 		TILEWIDTH * 10, TILEHEIGHT);
 
-
-	DTDMANAGER->printText(L"먹는다", dest3, 25);
-
-	dest3.top += 36;
-	dest3.bottom += 36;
-	DTDMANAGER->printText(L"버린다", dest3, 25);
+	if ((*_invItem)[_index]->getType() == ITEM_FOOD) DTDMANAGER->printText(L"먹는다", dest3, 25);
+	else if ((*_invItem)[_index]->getType() == ITEM_THROW) DTDMANAGER->printText(L"쏜다", dest3, 25);
+	else if ((*_invItem)[_index]->getType() == ITEM_HOLD) DTDMANAGER->printText(L"건네준다", dest3, 25);
 
 	dest3.top += 36;
 	dest3.bottom += 36;
-	DTDMANAGER->printText(L"설명", dest3, 25);
 
-	dest3.top += 36;
-	dest3.bottom += 36;
-	DTDMANAGER->printText(L"돌아간다", dest3, 25);
 
-	if (_hidden) _arrow->render(dest3.left - 20, (dest3.top) + _index2 * 36); 
+	if ((*_invItem)[_index]->getType() == ITEM_FOOD || (*_invItem)[_index]->getType() == ITEM_THROW)
+	{
+		DTDMANAGER->printText(L"건네준다", dest3, 25);
+
+		dest3.top += 36;
+		dest3.bottom += 36;
+
+		DTDMANAGER->printText(L"버린다", dest3, 25);
+
+		dest3.top += 36;
+		dest3.bottom += 36;
+		DTDMANAGER->printText(L"설명", dest3, 25);
+
+		dest3.top += 36;
+		dest3.bottom += 36;
+		DTDMANAGER->printText(L"돌아간다", dest3, 25);
+	}
+
+	else if ((*_invItem)[_index]->getType() == ITEM_HOLD)
+	{
+		DTDMANAGER->printText(L"버린다", dest3, 25);
+
+		dest3.top += 36;
+		dest3.bottom += 36;
+		DTDMANAGER->printText(L"설명", dest3, 25);
+
+		dest3.top += 36;
+		dest3.bottom += 36;
+		DTDMANAGER->printText(L"돌아간다", dest3, 25);
+	}
+
+	if (_hidden) _arrow->render(dest3.left - 20, (dest3.top - TILEHEIGHT * 3) + _index2 * 36); 
 }
 
 void InvenMenu::printTextDown()
@@ -156,5 +183,27 @@ void InvenMenu::minusIndex()
 	if (_hidden)
 	{
 		_index2 = (_index2 - 1 + END_INVENMENU_OPTION) % END_INVENMENU_OPTION;
+	}
+}
+
+void InvenMenu::leftIndex()
+{
+	if (_invItem->size() > 0 && (!_hidden))
+	{
+		//_index = (_index - 7 + _invItem->size()) % _invItem->size();
+		_index -= 7;
+
+		if (_index < 0) _index = 0;
+	}
+}
+
+void InvenMenu::rightIndex()
+{
+	if (_invItem->size() > 0 && (!_hidden))
+	{
+		//_index = (_index + 7) % _invItem->size();
+		_index += 7;
+
+		if (_invItem->size() < _index) _index = 0;
 	}
 }

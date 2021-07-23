@@ -4,6 +4,7 @@
 #include "Enemy.h"
 #include "Apple.h"
 #include "Gummy.h"
+#include "Ribbon.h"
 #include "ThrowItem.h"
 
 HRESULT testMapScene::init(Player * player)
@@ -42,6 +43,10 @@ HRESULT testMapScene::init(Player * player)
 	jelly = new Gummy;
 	jelly->init(26, 15, PI);
 
+	Ribbon* ribbon;
+	ribbon = new Ribbon;
+	ribbon->init(28, 15, PI);
+
 	ThrowItem* titem;
 	titem = new ThrowItem;
 	titem->init(27, 15, PI);
@@ -49,10 +54,28 @@ HRESULT testMapScene::init(Player * player)
 	INVENTORYMANAGER->addItem(apple);
 	INVENTORYMANAGER->addItem(jelly);
 	INVENTORYMANAGER->addItem(titem);
-	INVENTORYMANAGER->addItem(apple);
+	INVENTORYMANAGER->addItem(ribbon);
 	INVENTORYMANAGER->addItem(jelly);
 	INVENTORYMANAGER->addItem(titem);
 	INVENTORYMANAGER->addItem(apple);
+
+	
+	INVENTORYMANAGER->addItem(apple);
+	INVENTORYMANAGER->addItem(jelly);
+	INVENTORYMANAGER->addItem(titem);
+	INVENTORYMANAGER->addItem(ribbon);
+	INVENTORYMANAGER->addItem(jelly);
+	INVENTORYMANAGER->addItem(titem);
+	INVENTORYMANAGER->addItem(apple);
+
+	INVENTORYMANAGER->addItem(apple);
+	INVENTORYMANAGER->addItem(jelly);
+	INVENTORYMANAGER->addItem(titem);
+	INVENTORYMANAGER->addItem(ribbon);
+	INVENTORYMANAGER->addItem(jelly);
+	INVENTORYMANAGER->addItem(titem);
+	INVENTORYMANAGER->addItem(apple);
+	
 
 	DIALOGMANAGER->init();
 	//DIALOGMANAGER->loadMetaData(L"data/test");

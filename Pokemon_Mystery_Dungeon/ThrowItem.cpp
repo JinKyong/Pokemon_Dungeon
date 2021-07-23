@@ -12,10 +12,11 @@ HRESULT ThrowItem::init(float x, float y, float angle)
 	//_angle = angle;
 
 	_num = RND->getInt(10);
+	_type = ITEM_THROW;
 
 	_name = L"나뭇가지";
-	_itemInfo = L"아이템 설명이 없습니다";
-	_itemInfoLong = L"아이템 설명이 없습니다";
+	_itemInfo = L"상대에게 쏘아서 공격";
+	_itemInfoLong = L"쏘면 곧장 날아가서 맞은 포켓몬에게 데미지를 준다";
 	
 	return S_OK;
 }
