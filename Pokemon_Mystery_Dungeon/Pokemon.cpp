@@ -29,19 +29,32 @@ void Pokemon::controlFrame()
 
 	if (_frameCount >= _count[_state]) {
 		if (_frameX >= _currentImage->getMaxFrameX()) {
-			if (_state == POKEMON_STATE_DEFAULT)
-				changeState(POKEMON_STATE_IDLE);
-			else if (_state == POKEMON_STATE_ATTACK) {
+			switch (_state) {
+			case POKEMON_STATE_ATTACK:
+				break;
 
-			}
-			else if (_state == POKEMON_STATE_HURT) {
+			case POKEMON_STATE_SATTACK:
+				//_sattack = false;	-> 요게 이펙트 끝날때 가야함
+				changeState(POKEMON_STATE_DEFAULT);
+				break;
+
+			case POKEMON_STATE_HURT:
 				changeState(POKEMON_STATE_DEFAULT);
 				TURNMANAGER->setPause(false);
-			}
-			else if (_state == POKEMON_STATE_SLEEP)
+				break;
+
+			case POKEMON_STATE_SLEEP:
 				_frameX = 0;
-			else
+				break;
+
+			case POKEMON_STATE_DEFAULT:
+				changeState(POKEMON_STATE_IDLE);
+				break;
+
+			default:
 				changeState(POKEMON_STATE_DEFAULT);
+				break;
+			}
 		}
 		else {
 			_frameX++;

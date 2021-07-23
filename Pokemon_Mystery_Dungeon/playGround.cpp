@@ -30,7 +30,7 @@ HRESULT playGround::init()
 	SCENEMANAGER->addScene("map", new testMapScene);
 	SCENEMANAGER->addScene("boss", new bossMapScene);
 
-	SCENEMANAGER->changeScene("boss");
+	SCENEMANAGER->changeScene("map");
 	BATTLEMANAGER->init();
 	_debug = false;
 

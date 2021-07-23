@@ -38,11 +38,11 @@ protected:
 
 	//스탯 (실제 값)
 	STAT _realStat;
+	int _starve;
 
 	//기술(스킬)
 	Skill* _selectedSkill;
 	Skill* _skill[4];
-
 
 	//좌표
 	float _x, _y;
@@ -52,7 +52,7 @@ protected:
 	RECT _body;
 
 	//지닌도구(아이템)
-	//Item _item;
+	Item* _item;
 
 	//맵 상태(마을 또는 던전)
 	bool _inDungeon;
@@ -72,6 +72,9 @@ public:
 	void move();
 	void attack();
 	void sattack();
+	void useSkill(int num);
+
+
 
 	void hitDamage(int num);
 
@@ -82,6 +85,19 @@ public:
 
 	Pokemon* getPokemon() { return _pokemon; }
 	void setPokemon(Pokemon* pokemon) { _pokemon = pokemon; }
+
+	int getLevel() { return _level; }
+	void setLevel(float level) { _level = level; }
+	int getEXP() { return _EXP; }
+	void setEXP(int EXP) { _EXP = EXP; }
+
+	STAT getRealStat() { return _realStat; }
+	void setRealStat(STAT realStat) { _realStat = realStat; }
+
+	int getStarve() { return _starve; }
+	void setStarve(int starve) { _starve = starve; }
+
+	Skill** getSkill() { return _skill; }
 
 	float getX() { return _x; }
 	void setX(float x) { _x = x; }
@@ -98,15 +114,10 @@ public:
 	float getDestY() { return _destY; }
 	void setDestY(float destY) { _destY = destY; }
 
-	int getLevel() { return _level; }
-	void setLevel(float level) { _level = level; }
-
-	STAT getRealStat() { return _realStat; }
-	void setRealStat(STAT realStat) { _realStat = realStat; }
+	int getDirect() { return _direct; }
 
 	RECT getBody() { return _body; }
 
-	int getDirect() { return _direct; }
-
-	Skill** getSkill() { return _skill; }
+	Item* getItem() { return _item; }
+	void setItem(Item* item) { _item = item; }
 };

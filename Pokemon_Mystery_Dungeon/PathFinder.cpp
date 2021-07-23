@@ -49,18 +49,19 @@ void PathFinder::setTiles(Player* player)
 	_vCloseList.clear();
 	_vPathList.clear();
 
+	//시작지점 목표지점 설정
+	_startTile = new Atile;
+	_startTile->init(player->getX(), player->getY());
+
+	//방 랜덤으로 잡음
+	vector<RECT>* rooms = TILEMANAGER->getvRoom();
+	int roomNum = RND->getInt(rooms->size());
+
+	_endTile = new Atile;
+	_endTile->init(RND->getFromIntTo((*rooms)[roomNum].left, (*rooms)[roomNum].right),
+		RND->getFromIntTo((*rooms)[roomNum].top, (*rooms)[roomNum].bottom));
+
 	if (_vTotalList.size() <= 0) {
-
-		_startTile = new Atile;
-		_startTile->init(player->getX(), player->getY());
-
-		//방 랜덤으로 잡음
-		vector<RECT>* rooms = TILEMANAGER->getvRoom();
-		int roomNum = RND->getInt(rooms->size());
-
-		_endTile = new Atile;
-		_endTile->init(RND->getFromIntTo((*rooms)[roomNum].left, (*rooms)[roomNum].right),
-			RND->getFromIntTo((*rooms)[roomNum].top, (*rooms)[roomNum].bottom));
 
 		//타일 셋팅
 		for (int i = 0; i < _mapHeight; i++) {
@@ -88,17 +89,6 @@ void PathFinder::setTiles(Player* player)
 	}
 
 	else {
-
-		_startTile = new Atile;
-		_startTile->init(player->getX(), player->getY());
-
-		//방 랜덤으로 잡음
-		vector<RECT>* rooms = TILEMANAGER->getvRoom();
-		int roomNum = RND->getInt(rooms->size());
-
-		_endTile = new Atile;
-		_endTile->init(RND->getFromIntTo((*rooms)[roomNum].left, (*rooms)[roomNum].right),
-			RND->getFromIntTo((*rooms)[roomNum].top, (*rooms)[roomNum].bottom));
 
 		//타일 셋팅
 		for (int i = 0; i < _mapHeight; i++) {
@@ -136,14 +126,14 @@ void PathFinder::setTiles(Player * startPlayer, Player * destPlayer)
 	_vCloseList.clear();
 	_vPathList.clear();
 
+	//시작지점, 목표지점 설정
+	_startTile = new Atile;
+	_startTile->init(startPlayer->getX(), startPlayer->getY());
+
+	_endTile = new Atile;
+	_endTile->init(destPlayer->getDestX(), destPlayer->getDestY());
+
 	if (_vTotalList.size() <= 0) {
-
-		_startTile = new Atile;
-		_startTile->init(startPlayer->getX(), startPlayer->getY());
-
-		_endTile = new Atile;
-		_endTile->init(destPlayer->getX(), destPlayer->getY());
-
 		//타일 셋팅
 		for (int i = 0; i < _mapHeight; i++) {
 			for (int j = 0; j < _mapWidth; j++) {
@@ -171,13 +161,6 @@ void PathFinder::setTiles(Player * startPlayer, Player * destPlayer)
 	}
 
 	else {
-
-		_startTile = new Atile;
-		_startTile->init(startPlayer->getX(), startPlayer->getY());
-
-		_endTile = new Atile;
-		_endTile->init(destPlayer->getX(), destPlayer->getY());
-
 		//타일 셋팅
 		for (int i = 0; i < _mapHeight; i++) {
 			for (int j = 0; j < _mapWidth; j++) {

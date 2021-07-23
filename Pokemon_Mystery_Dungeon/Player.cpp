@@ -18,6 +18,9 @@ HRESULT Player::init(int pokemonNum)
 
 HRESULT Player::init(float x, float y)
 {
+	//허기
+	_starve = 100;
+
 	//좌표
 	_x = x;
 	_y = y;
@@ -57,7 +60,8 @@ void Player::setDirect()
 			_direct |= DOWN;
 	}
 
-	_pokemon->changeDirect(_direct);
+	if (_direct)
+		_pokemon->changeDirect(_direct);
 }
 
 void Player::move()
@@ -72,7 +76,8 @@ void Player::move()
 
 	//이동 시작지점과 현재 위치 거리가 타일 1칸이상이 되면 (== 이동거리가 타일 1칸이상되면) 이동 끝
 	//이전에는 이동 목적지와 현재 위치 거리가 일정 거리만큼 가까워지면 이동 끝
-	if (getDistance(_initX, _initY, _x, _y) >= limit) {
+	if (getDistance(_initX, _initY, _x, _y) >= limit ||
+		getDistance(_destX, _destY, _x, _y) <= limit / 16) {
 		_x = _destX;
 		_y = _destY;
 
@@ -93,6 +98,11 @@ void Player::attack()
 
 void Player::sattack()
 {
+	if (!_pokemon->getSattack()) {
+		_playerState = POKEMON_STATE_DEFAULT;
+		return;
+	}
+
 	if (_selectedSkill) {
 		_selectedSkill->useSkill(_x, _y, _pokemon->getDirect());
 		DIALOGMANAGER->useSkillLog(this, _selectedSkill);
@@ -100,6 +110,11 @@ void Player::sattack()
 	}
 
 	_pokemon->changeState(_playerState);
+}
+
+void Player::useSkill(int num)
+{
+	_selectedSkill = _skill[num];
 }
 
 void Player::hitDamage(int num)

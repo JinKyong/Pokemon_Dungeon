@@ -27,13 +27,20 @@ public:
 	HRESULT init(Scene* scene);
 	void release();
 
+	//Player 충돌(입력 턴)
 	bool collisionInputPlayer(Player* player);
 	bool playerWithTile(Player* player);
 	bool playerWithPlayer(Player* player);
-
+	
+	//Player 충돌(엔드 턴)
 	void collisionEndTurnPlayer(Player* player);
 	void playerWithItem(Player* player);
 
+	//감지범위 충돌
+	void collisionDetection(Player* player);
+	bool detectionWithRoom(Player* startPlayer, Player* destPlayer);
+	bool detectionWith8Tiles(Player* startPlayer, Player* destPlayer);
 
+	//이펙트 충돌
 	void effectWithEnemy(Effect* effect);
 };

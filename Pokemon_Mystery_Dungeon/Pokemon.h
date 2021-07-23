@@ -32,6 +32,7 @@ protected:
 	float _gradient;
 	float _tmpCount;
 	bool _attack;
+	bool _sattack;
 
 
 
@@ -94,6 +95,8 @@ public:
 
 	bool getAttack() { return _attack; }
 	void setAttack(bool attack) { _attack = attack; }
+	bool getSattack() { return _sattack; }
+	void setSattack(bool sattack) { _sattack = sattack; }
 
 	wstring getName() { return _name; }
 	int getNum() { return _num; }

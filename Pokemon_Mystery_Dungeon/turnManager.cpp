@@ -51,20 +51,24 @@ void turnManager::update()
 
 				switch ((*player)->getPlayerState()) {
 				case POKEMON_STATE_MOVE:
+					(*player)->setDirect();
 					(*player)->move();
 					(*player)->update();
 					++player;
 					break;
 				case POKEMON_STATE_ATTACK:
+					(*player)->setDirect();
 					(*player)->attack();
 					(*player)->update();
 					return;
 				case POKEMON_STATE_SATTACK:
+					(*player)->setDirect();
 					(*player)->sattack();
 					(*player)->update();
 					return;
 				case POKEMON_STATE_DEFAULT:
 					COLLISIONMANAGER->collisionEndTurnPlayer((*player));
+					//(*player)->getPokemon()->changeState(POKEMON_STATE_DEFAULT);
 					player = _inputPlayerList.erase(player);
 					break;
 				}

@@ -5,8 +5,12 @@ HRESULT PatternPathFinder::init(Player * player)
 {
 	Pattern::init(player);
 
-	_pathFinder = new PathFinder;
-	_pathFinder->init();
+	if (!_pathFinder) {
+		_pathFinder = new PathFinder;
+		_pathFinder->init();
+	}
+	_pathFinder->setTiles(_player);
+	_pathList.clear();
 
 	return S_OK;
 }
@@ -24,20 +28,20 @@ void PatternPathFinder::update()
 		_pathList = _pathFinder->getPathList();
 	}
 
-	//목적지 정하고 방향 설정
-	_player->setDestX(_pathList[0]->getIdX());
-	_player->setDestY(_pathList[0]->getIdY());
-	_player->setDirect();
-
 	//충돌 검사
 	if (COLLISIONMANAGER->playerWithPlayer(_player)) {
+		//목적지 설정
+		_player->setDestX(_pathList[0]->getIdX());
+		_player->setDestY(_pathList[0]->getIdY());
+
 		_pathList.erase(_pathList.begin());
 		_player->setPlayerState(POKEMON_STATE_MOVE);
 	}
 	else {
-		_player->changePattern(PLAYER_PATTERN_ONATTACK);
-		_player->setPlayerState(POKEMON_STATE_ATTACK);
-		_player->getPokemon()->setAttack(true);
+		//_player->setDirect();
+
+		//_pathList.erase(_pathList.begin());
+		_player->setPlayerState(POKEMON_STATE_MOVE);
 	}
 }
 

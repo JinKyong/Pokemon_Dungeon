@@ -101,19 +101,8 @@ bool collisionManager::playerWithPlayer(Player * player)
 	{
 		if ((*playerIter) == player) continue;
 
-		int destX, destY;
-
-		if (player->getPlayerType() == PLAYER_TYPE_ENEMY)
-		{
-			destX = (*playerIter)->getDestX();
-			destY = (*playerIter)->getDestY();
-		}
-		else
-		{
-			destX = (*playerIter)->getX();
-			destY = (*playerIter)->getY();
-		}
-
+		int destX = (*playerIter)->getDestX();
+		int	destY = (*playerIter)->getDestY();
 
 		int direct = player->getDirect();			//방향마다 다음타일 하나만 검사
 		//좌우
@@ -151,6 +140,9 @@ bool collisionManager::playerWithPlayer(Player * player)
 void collisionManager::collisionEndTurnPlayer(Player* player)
 {
 	playerWithItem(player);
+
+	if (player->getPlayerType() == PLAYER_TYPE_ENEMY)
+		collisionDetection(player);
 }
 
 void collisionManager::playerWithItem(Player* player)
@@ -166,6 +158,71 @@ void collisionManager::playerWithItem(Player* player)
 			_scene->getItemManager()->removeItem(i);
 		}
 	}
+}
+
+void collisionManager::collisionDetection(Player * player)
+{
+	Player* user = (*TURNMANAGER->getAllPlayer())[0];
+
+	//주변 8타일 검사
+	if (!detectionWith8Tiles(player, user)) {
+		//방 충돌 검사
+		detectionWithRoom(player, user);
+	}
+}
+
+bool collisionManager::detectionWithRoom(Player * startPlayer, Player * destPlayer)
+{
+	vector<RECT>* rooms = TILEMANAGER->getvRoom();
+	vector<RECT>::iterator room = rooms->begin();
+
+	RECT tmp;
+	for (; room != rooms->end(); ++room) {
+		//현재 방 안에 있으면
+		RECT rc = RectMake(room->left * TILEWIDTH, room->top * TILEHEIGHT,
+			(room->right - room->left) * TILEWIDTH, (room->bottom - room->top) * TILEHEIGHT);
+		if (IntersectRect(&tmp, &startPlayer->getBody(), &rc)) {
+			//해당 방 안에 플레이어가 있는지 검사
+			if (IntersectRect(&tmp, &destPlayer->getBody(), &rc)) {
+				startPlayer->changePattern(PLAYER_PATTERN_ONATTACK);
+				return true;
+			}
+		}
+	}
+
+	//방안이 아니거나 방에 유저가 없거나
+	return false;
+}
+
+bool collisionManager::detectionWith8Tiles(Player * startPlayer, Player * destPlayer)
+{
+	int tileWidth = TILEMANAGER->getWidth();	//가로 타일 갯수
+
+	//8방향 인덱스
+	int initX = startPlayer->getX() - 1;
+	int endX = startPlayer->getX() + 1;
+	int initY = startPlayer->getY() - 1;
+	int endY = startPlayer->getY() + 1;
+
+	int destX = destPlayer->getDestX();
+	int destY = destPlayer->getDestY();
+
+	for (int i = initY; i <= endY; i++) {
+		for (int j = initX; j <= endX; j++) {
+			if (i == startPlayer->getY() && j == startPlayer->getX()) continue;
+
+			if ((*_allTile)[i * tileWidth + j]->x == destX &&
+				(*_allTile)[i * tileWidth + j]->y == destY) {
+				startPlayer->setDestX(destX);
+				startPlayer->setDestY(destY);
+				startPlayer->changePattern(PLAYER_PATTERN_ONATTACK);
+
+				return true;
+			}
+		}
+	}
+
+	return false;
 }
 
 void collisionManager::effectWithEnemy(Effect * effect)

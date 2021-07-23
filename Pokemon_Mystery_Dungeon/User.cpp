@@ -103,30 +103,38 @@ void User::controlKey()
 		}
 	}
 
-	if (KEYMANAGER->isOnceKeyDown('X')) {
+	if (KEYMANAGER->isOnceKeyDown(KEY_A)) {
 		//_pokemon->changeState(POKEMON_STATE_ATTACK);
 		_playerState = POKEMON_STATE_ATTACK;
 		_pokemon->setAttack(true);
 	}
 	if (KEYMANAGER->isOnceKeyDown('Q')) {
 		//_pokemon->changeState(POKEMON_STATE_SATTACK);
-		if (_selectedSkill = _skill[0])
+		if (_selectedSkill = _skill[0]) {
 			_playerState = POKEMON_STATE_SATTACK;
+			_pokemon->setSattack(true);
+		}
 	}
 	if (KEYMANAGER->isOnceKeyDown('W')) {
 		//_pokemon->changeState(POKEMON_STATE_SATTACK);
-		if (_selectedSkill = _skill[1])
+		if (_selectedSkill = _skill[1]) {
 			_playerState = POKEMON_STATE_SATTACK;
+			_pokemon->setSattack(true);
+		}
 	}
 	if (KEYMANAGER->isOnceKeyDown('E')) {
 		//_pokemon->changeState(POKEMON_STATE_SATTACK);
-		if (_selectedSkill = _skill[2])
+		if (_selectedSkill = _skill[2]) {
 			_playerState = POKEMON_STATE_SATTACK;
+			_pokemon->setSattack(true);
+		}
 	}
 	if (KEYMANAGER->isOnceKeyDown('R')) {
 		//_pokemon->changeState(POKEMON_STATE_SATTACK);
-		if (_selectedSkill = _skill[3])
+		if (_selectedSkill = _skill[3]) {
 			_playerState = POKEMON_STATE_SATTACK;
+			_pokemon->setSattack(true);
+		}
 	}
 
 	if (KEYMANAGER->isOnceKeyDown(KEY_Y)) {
@@ -135,6 +143,9 @@ void User::controlKey()
 	}
 	if (KEYMANAGER->isOnceKeyDown('S')) {
 		_pokemon->changeState(POKEMON_STATE_SLEEP);
+	}
+	if (KEYMANAGER->isOnceKeyDown('A')) {
+		_pokemon->changeState(POKEMON_STATE_HURT);
 	}
 }
 

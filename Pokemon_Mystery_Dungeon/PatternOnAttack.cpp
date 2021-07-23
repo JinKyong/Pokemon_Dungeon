@@ -5,8 +5,11 @@ HRESULT PatternOnAttack::init(Player * player)
 {
 	Pattern::init(player);
 
-	_pathFinder = new PathFinder;
-	_pathFinder->init();
+	if (!_pathFinder) {
+		_pathFinder = new PathFinder;
+		_pathFinder->init();
+	}
+	_pathFinder->setTiles(_player, (*TURNMANAGER->getAllPlayer())[0]);
 
 	return S_OK;
 }
@@ -24,19 +27,28 @@ void PatternOnAttack::update()
 	_pathFinder->update();
 	_pathList = _pathFinder->getPathList();
 
-	//목적지 정하고 방향 설정
-	_player->setDestX(_pathList[0]->getIdX());
-	_player->setDestY(_pathList[0]->getIdY());
-	_player->setDirect();
-
 	//충돌 검사
-	if (COLLISIONMANAGER->playerWithPlayer(_player)) {
-		_pathList.erase(_pathList.begin());
-		_player->setPlayerState(POKEMON_STATE_MOVE);
-	}
-	else {
+	//주변 8타일에 있으면 공격
+	if (COLLISIONMANAGER->detectionWith8Tiles(_player, (*TURNMANAGER->getAllPlayer())[0])) {
 		_player->setPlayerState(POKEMON_STATE_ATTACK);
 		_player->getPokemon()->setAttack(true);
+	}
+	else {
+		//없으면 찾아감
+		if (COLLISIONMANAGER->playerWithPlayer(_player)) {
+			//목적지 설정
+			_player->setDestX(_pathList[0]->getIdX());
+			_player->setDestY(_pathList[0]->getIdY());
+
+			_pathList.erase(_pathList.begin());
+			_player->setPlayerState(POKEMON_STATE_MOVE);
+		}
+		else {
+			//_player->setDirect();
+
+			//_pathList.erase(_pathList.begin());
+			_player->setPlayerState(POKEMON_STATE_MOVE);
+		}
 	}
 }
 
