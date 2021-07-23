@@ -5,6 +5,8 @@
 #include "mapToolScene.h"
 #include "testMapScene.h"
 #include "bossMapScene.h"
+#include "dungeonSelectScene.h"
+#include "dungeonScene.h"
 
 playGround::playGround()
 {
@@ -29,8 +31,10 @@ HRESULT playGround::init()
 	SCENEMANAGER->addScene("test", new testScene);
 	SCENEMANAGER->addScene("map", new testMapScene);
 	SCENEMANAGER->addScene("boss", new bossMapScene);
+	SCENEMANAGER->addScene("select", new dungeonSelectScene);
+	SCENEMANAGER->addScene("dungeon", new dungeonScene);
 
-	SCENEMANAGER->changeScene("map");
+	SCENEMANAGER->changeScene("select");
 	BATTLEMANAGER->init();
 	_debug = false;
 

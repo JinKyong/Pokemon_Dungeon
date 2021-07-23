@@ -501,6 +501,12 @@
     <ClInclude Include="bossMapScene.h">
       <Filter>playGround\Stage</Filter>
     </ClInclude>
+    <ClInclude Include="dungeonScene.h">
+      <Filter>playGround\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="dungeonSelectScene.h">
+      <Filter>playGround\Stage</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -822,6 +828,12 @@
       <Filter>playGround\Pokémon\Player\Pattern\OnAttack</Filter>
     </ClCompile>
     <ClCompile Include="bossMapScene.cpp">
+      <Filter>playGround\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="dungeonScene.cpp">
+      <Filter>playGround\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="dungeonSelectScene.cpp">
       <Filter>playGround\Stage</Filter>
     </ClCompile>
   </ItemGroup>

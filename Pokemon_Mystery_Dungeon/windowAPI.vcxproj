@@ -164,6 +164,8 @@
     <ClInclude Include="Dragonite.h" />
     <ClInclude Include="Dratini.h" />
     <ClInclude Include="dtdManager.h" />
+    <ClInclude Include="dungeonScene.h" />
+    <ClInclude Include="dungeonSelectScene.h" />
     <ClInclude Include="DynamicPunch.h" />
     <ClInclude Include="Effect.h" />
     <ClInclude Include="EffectManager.h" />
@@ -283,6 +285,8 @@
     <ClCompile Include="Dragonite.cpp" />
     <ClCompile Include="Dratini.cpp" />
     <ClCompile Include="dtdManager.cpp" />
+    <ClCompile Include="dungeonScene.cpp" />
+    <ClCompile Include="dungeonSelectScene.cpp" />
     <ClCompile Include="DynamicPunch.cpp" />
     <ClCompile Include="Effect.cpp" />
     <ClCompile Include="EffectManager.cpp" />

@@ -15,6 +15,7 @@ private:
 private:
 	static Player* _player;
 	static Scene* _currentScene;
+	int _sceneCount;
 
 	mapSceneList _mSceneList;
 
@@ -32,4 +33,7 @@ public:
 	HRESULT changeScene(string sceneName);
 
 	Scene* getCurrentScene() { return _currentScene; }
+
+	void setSceneCount(int SceneCount) { _sceneCount = SceneCount; }
+	int getSceneCount() { return _sceneCount; }
 };

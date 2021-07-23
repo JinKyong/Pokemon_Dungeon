@@ -4,8 +4,8 @@
 HRESULT mapToolScene::init(Player* player)
 {
 	Scene::init(player);
-	_width = 16;
-	_height = 18;
+	_width = 80;
+	_height = 45;
 	CAMERAMANAGER->setBackScreenSize(TILEWIDTH*_width, TILEHEIGHT*_height);
 	TILEMANAGER->setWidth(_width);
 	TILEMANAGER->setHeight(_height);

@@ -90,6 +90,7 @@ public:
 
 	int getWidth() { return _width; }
 	int getHeight() { return _height; }
+	int getType() { return _type; }
 	char getChar(int x, int y) { return _vChar[x + y * _width]; }
 
 	vector<tagTile*>* getvTile() { return &_vTile; }

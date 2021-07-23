@@ -208,6 +208,79 @@ void tileManager::setup()
 				_vTile[i]->terrain = TR_GRASS;
 				_vTile[i]->obj = OBJ_TRAP1;
 			}
+			else if ((*_viChar) == LeftTriWall)
+			{
+				_vTile[i]->terrainFrameX = 2;
+				_vTile[i]->terrainFrameY = 3;
+				_vTile[i]->objFrameX = 0;
+				_vTile[i]->objFrameY = 0;
+				_vTile[i]->terrain = TR_BLOCK;
+				_vTile[i]->obj = OBJ_NONE;
+			}
+			else if ((*_viChar) == RightTriWall)
+			{
+				_vTile[i]->terrainFrameX = 3;
+				_vTile[i]->terrainFrameY = 3;
+				_vTile[i]->objFrameX = 0;
+				_vTile[i]->objFrameY = 0;
+				_vTile[i]->terrain = TR_BLOCK;
+				_vTile[i]->obj = OBJ_NONE;
+			}
+			else if ((*_viChar) == TopTriWall)
+			{
+				_vTile[i]->terrainFrameX = 0;
+				_vTile[i]->terrainFrameY = 3;
+				_vTile[i]->objFrameX = 0;
+				_vTile[i]->objFrameY = 0;
+				_vTile[i]->terrain = TR_BLOCK;
+				_vTile[i]->obj = OBJ_NONE;
+			}
+			else if ((*_viChar) == BottomTriWall)
+			{
+				_vTile[i]->terrainFrameX = 1;
+				_vTile[i]->terrainFrameY = 3;
+				_vTile[i]->objFrameX = 0;
+				_vTile[i]->objFrameY = 0;
+				_vTile[i]->terrain = TR_BLOCK;
+				_vTile[i]->obj = OBJ_NONE;
+			}
+			else if ((*_viChar) == LeftOpenWall)
+			{
+				_vTile[i]->terrainFrameX = 6;
+				_vTile[i]->terrainFrameY = 3;
+				_vTile[i]->objFrameX = 0;
+				_vTile[i]->objFrameY = 0;
+				_vTile[i]->terrain = TR_BLOCK;
+				_vTile[i]->obj = OBJ_NONE;
+			}
+			else if ((*_viChar) == RightOpenWall)
+			{
+				_vTile[i]->terrainFrameX = 7;
+				_vTile[i]->terrainFrameY = 3;
+				_vTile[i]->objFrameX = 0;
+				_vTile[i]->objFrameY = 0;
+				_vTile[i]->terrain = TR_BLOCK;
+				_vTile[i]->obj = OBJ_NONE;
+			}
+			else if ((*_viChar) == TopOpenWall)
+			{
+				_vTile[i]->terrainFrameX = 4;
+				_vTile[i]->terrainFrameY = 3;
+				_vTile[i]->objFrameX = 0;
+				_vTile[i]->objFrameY = 0;
+				_vTile[i]->terrain = TR_BLOCK;
+				_vTile[i]->obj = OBJ_NONE;
+			}
+			else if ((*_viChar) == BottomOpenWall)
+			{
+			_vTile[i]->terrainFrameX = 5;
+			_vTile[i]->terrainFrameY = 3;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+			}
+
 			else if ((*_viChar) == LeftOpenCorner)
 			{
 				_vTile[i]->terrainFrameX = 6;
@@ -731,56 +804,70 @@ bool tileManager::placeRect(RECT rc, char Char)
 		{
 			if (x == rc.left - 1 &&
 				(getChar(x, y - 1) >= LeftTriWall) &&
-				(getChar(x - 1, y) == (Floor || Corridor)) &&
+				(getChar(x - 1, y) == Floor || 
+				getChar(x - 1, y)==Corridor) &&
 				(getChar(x + 1, y) >= TopTriWall) &&
 				(getChar(x, y + 1) >= LeftTriWall))
 				setChar(x, y, LeftTriWall);
 			else if (x == rc.right &&
 				(getChar(x, y - 1) >= LeftTriWall) &&
-				(getChar(x + 1, y) == (Floor || Corridor)) &&
+				(getChar(x + 1, y) == Floor || 
+				getChar(x + 1, y) == Corridor) &&
 				(getChar(x - 1, y) >= TopTriWall) &&
 				(getChar(x, y + 1) >= LeftTriWall))
 				setChar(x, y, RightTriWall);
 			else if (y == rc.top - 1 &&
 				(getChar(x - 1, y) >= LeftTriWall) &&
-				(getChar(x, y - 1) == (Floor || Corridor)) &&
+				(getChar(x, y - 1) == Floor || 
+				getChar(x, y - 1) == Corridor) &&
 				(getChar(x, y + 1) >= LeftTriWall) &&
 				(getChar(x + 1, y) >= LeftTriWall))
 				setChar(x, y, TopTriWall);
 			else if (y == rc.bottom &&
 				(getChar(x - 1, y) >= LeftTriWall) &&
-				(getChar(x, y + 1) == (Floor || Corridor)) &&
+				(getChar(x, y + 1) == Floor || 
+				getChar(x, y + 1) == Corridor) &&
 				(getChar(x, y - 1) >= LeftTriWall) &&
 				(getChar(x + 1, y) >= LeftTriWall))
 				setChar(x, y, BottomTriWall);
 			else if (x == rc.left - 1 &&
-				(getChar(x, y - 1) == (VerticalLeftWall || LeftOpenWall)) &&
+				(getChar(x, y - 1) == VerticalLeftWall || 
+				getChar(x, y - 1) == LeftOpenWall) &&
 				(getChar(x - 1, y) == Unused) &&
 				(getChar(x + 1, y) >= TopTriWall) &&
-				(getChar(x, y + 1) == (VerticalLeftWall || LeftOpenWall)))
+				(getChar(x, y + 1) == VerticalLeftWall || 
+				getChar(x, y + 1) == LeftOpenWall))
 				setChar(x, y, LeftOpenWall);
 			else if (x == rc.right &&
-				(getChar(x, y - 1) == (VerticalRightWall || RightOpenWall)) &&
+				(getChar(x, y - 1) == VerticalRightWall || 
+				getChar(x, y - 1) == RightOpenWall) &&
 				(getChar(x + 1, y) == Unused) &&
 				(getChar(x - 1, y) >= TopTriWall) &&
-				(getChar(x, y + 1) == (VerticalRightWall || RightOpenWall)))
+				(getChar(x, y + 1) == VerticalRightWall || 
+				getChar(x, y + 1) == RightOpenWall))
 				setChar(x, y, RightOpenWall);
 			else if (y == rc.top - 1 &&
-				(getChar(x - 1, y) == (HorizontalTopWall || TopOpenWall)) &&
+				(getChar(x - 1, y) == HorizontalTopWall || 
+					getChar(x - 1, y) == TopOpenWall) &&
 				getChar(x, y - 1) == Unused &&
 				getChar(x, y + 1) >= LeftTriWall &&
-				(getChar(x + 1, y) == (HorizontalTopWall || TopOpenWall)))
+				(getChar(x + 1, y) == HorizontalTopWall || 
+					getChar(x + 1, y) == TopOpenWall))
 				setChar(x, y, TopOpenWall);
 			else if (y == rc.bottom &&
-				(getChar(x - 1, y) == (HorizontalBottomWall || BottomOpenWall)) &&
+				(getChar(x - 1, y) == HorizontalBottomWall || 
+					getChar(x - 1, y) == BottomOpenWall) &&
 				getChar(x, y + 1) == Unused &&
 				getChar(x, y - 1) >= LeftTriWall &&
-				(getChar(x + 1, y) == (HorizontalBottomWall || BottomOpenWall)))
+				(getChar(x + 1, y) == HorizontalBottomWall || 
+					getChar(x + 1, y) == BottomOpenWall))
 				setChar(x, y, BottomOpenWall);
 			else if (getChar(x, y - 1) == Unused &&
 					getChar(x - 1, y) == Unused &&
-					getChar(x + 1, y) != (Floor || Corridor) &&
-					getChar(x, y + 1) != (Floor || Corridor))
+					(getChar(x + 1, y) != Floor || 
+					getChar(x + 1, y) != Corridor) &&
+					(getChar(x, y + 1) != Floor || 
+					getChar(x, y + 1) != Corridor))
 				setChar(x, y, LeftOpenCorner);
 			else if (x==rc.right&&y==rc.top-1&&
 				getChar(x, y - 1) == Unused &&

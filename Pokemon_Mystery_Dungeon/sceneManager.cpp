@@ -18,7 +18,7 @@ sceneManager::~sceneManager()
 HRESULT sceneManager::init()
 {
 	_currentScene = NULL;
-
+	_sceneCount = 0;
 	return S_OK;
 }
 
