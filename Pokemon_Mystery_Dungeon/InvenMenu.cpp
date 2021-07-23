@@ -42,12 +42,23 @@ void InvenMenu::update()
 	{
 		UIMANAGER->changeDownMenu("logMenu");
 		UIMANAGER->setOpen(false);
+
+		_hidden = false;
 	}
 
 	if (KEYMANAGER->isOnceKeyDown(KEY_A))
 	{
-		_hidden = true;
+		if(!_hidden) _hidden = true;
+		else
+		{
+			UIMANAGER->changeDownMenu("logMenu");
+			UIMANAGER->setOpen(false);
+
+			_hidden = false;
+		}
 	}
+
+	_opacity = !_opacity;
 }
 
 void InvenMenu::render()
@@ -72,14 +83,12 @@ void InvenMenu::printTextLeft()
 	//DTDMANAGER->printText(L"트레저백", dest, 25);
 
 	//화살표
-	if(!_hidden) _arrow->render(dest.left - 20, dest.top + 8 + _index * TILEHEIGHT);
-
-	vector<Item*>::iterator viInvItem;
-	for (viInvItem = _invItem->begin(); viInvItem != _invItem->end(); ++viInvItem)
+	if(!_hidden) _arrow->render(dest.left - 20, dest.top + 8 + _index * TILEHEIGHT, _opacity);
+	for (_viInvItem = _invItem->begin(); _viInvItem != _invItem->end(); ++_viInvItem)
 	{
-		(*viInvItem)->getName();
+		(*_viInvItem)->getName();
 											//string은 c_str
-		DTDMANAGER->printText((*viInvItem)->getName().c_str(), dest, 25);
+		DTDMANAGER->printText((*_viInvItem)->getName().c_str(), dest, 25);
 
 		dest.top += TILEHEIGHT;
 		dest.bottom += TILEHEIGHT;
@@ -96,6 +105,11 @@ void InvenMenu::printTextRight()
 	D2D1_RECT_F dest3 = dRectMake(rc.left + _tuningX + TILEWIDTH * 9 + 10, rc.top + _tuningY + 12,
 		TILEWIDTH * 10, TILEHEIGHT);
 
+
+	DTDMANAGER->printText(L"먹는다", dest3, 25);
+
+	dest3.top += 36;
+	dest3.bottom += 36;
 	DTDMANAGER->printText(L"버린다", dest3, 25);
 
 	dest3.top += 36;
@@ -106,7 +120,7 @@ void InvenMenu::printTextRight()
 	dest3.bottom += 36;
 	DTDMANAGER->printText(L"돌아간다", dest3, 25);
 
-	if (_hidden) _arrow->render(dest3.left - 20, dest3.top + _index2 * 36);
+	if (_hidden) _arrow->render(dest3.left - 20, (dest3.top) + _index2 * 36); 
 }
 
 void InvenMenu::printTextDown()

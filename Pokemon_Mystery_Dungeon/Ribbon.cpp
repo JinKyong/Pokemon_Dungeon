@@ -31,7 +31,7 @@ HRESULT Ribbon::init(float x, float y, float angle)
 	//case RIBBONTYPE_SPECIALRIBBON:
 	//	_name = L"스페셜리본";
 	//	_itemInfo = L"특수공격이 올라간다";
-	//	_itemInfoLong = L"아이템 설명이 없습니다";
+	//	_itemInfoLong = L"지니고 있는 포켓몬은 특수공격이 올라간다";
 	//
 	//	_num = 22;
 	//
