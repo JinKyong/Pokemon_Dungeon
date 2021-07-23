@@ -11,7 +11,7 @@ HRESULT Player::init(int pokemonNum)
 	_level = 5;
 	_EXP = 0;
 
-	_realStat = BATTLEMANAGER->statCalculatior(this);
+	_realStat = BATTLEMANAGER->statCalculation(this);
 
 	return S_OK;
 }

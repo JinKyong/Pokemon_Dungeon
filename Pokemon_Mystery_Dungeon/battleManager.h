@@ -9,16 +9,26 @@
 #define STAT_CALCULATION(baseStat, level)\
 	((baseStat) * 2 + 28) * ((float)(level) / 100) + 10 + (level);
 
+// 스킬 계산식
+// 공격실능 or 특공실능 * 기술위력 * 자속 * 특성 * 도구 * 날씨		
+// 특성, 도구, 날씨는 현재 1로고정
+#define SKILL_CALCULATION(atkType, skillPower, stab)\
+	atkType * skillPower * stab * 1 * 1 * 1;
+
+// 내구력 계산식
+// HP실능 * 방어실능 or 특방실능 / 0.411
+#define DEFENCE_CALCULATION(realHP, defType)\
+	realHP * defType / 0.411f;
+
+// 총 데미지 계산식
+// 스킬공격력 / 내구력 * 랜덤수(85 ~ 100)
+
 class Player;
+class Effect;
 
 class battleManager : public singletonBase<battleManager>
 {
 private:
-	int _damage;
-	int _rndNum;
-	int _critical;
-	int _type;
-	int _pokemonType;
 	vector<Player*> *_allPlayer;
 
 	Player* _player;
@@ -35,11 +45,9 @@ public:
 
 
 	//실능력치 계산
-	STAT statCalculatior(Player* player);
+	STAT statCalculation(Player* player);
 
-
-
-	//데미지 계산
-	int damageCalculation();
+	//내구력 계산
+	int defenceCalculation(Player* player, Effect* effect);
 };
 
