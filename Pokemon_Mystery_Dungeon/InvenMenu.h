@@ -14,7 +14,6 @@ enum INVENMENU_OPTION{
 };
 
 enum INVENMENU_GIVE_OPTION {
-	INVENMENU_GIVE_OPTION_EACH,
 	INVENMENU_GIVE_OPTION_GIVE,
 	INVENMENU_GIVE_OPTION_DUMP,
 	INVENMENU_GIVE_OPTION_INFO,
@@ -31,6 +30,9 @@ private:
 	dImage* _back2;
 	dImage* _border2;
 
+	dImage* _back3;
+	dImage* _border3;
+
 	int _index2;
 	bool _opacity;
 
@@ -42,6 +44,7 @@ public:
 
 	void printTextLeft();
 	void printTextRight();
+	void printTextRight2();
 	void printTextDown();
 
 	void plusIndex();

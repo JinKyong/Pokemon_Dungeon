@@ -4,14 +4,14 @@
 
 HRESULT InvenMenu::init()
 {
-	_back = IMAGEMANAGER->addDImage(
-		"invenMenu_back", L"img/UI/invenMenu/back1.png", INVENMENU_WIDTH, INVENMENU_HEIGHT);
-	_back2 = IMAGEMANAGER->addDImage(
-		"invenMenu_back2", L"img/UI/invenMenu/back2.png", INVENMENU_WIDTH, INVENMENU_HEIGHT);
-	_border = IMAGEMANAGER->addDImage(
-		"invenMenu_border", L"img/UI/invenMenu/border1.png", INVENMENU_WIDTH, INVENMENU_HEIGHT);
-	_border2 = IMAGEMANAGER->addDImage(
-		"invenMenu_border2", L"img/UI/invenMenu/border2.png", INVENMENU_WIDTH, INVENMENU_HEIGHT);
+	_back = IMAGEMANAGER->addDImage("invenMenu_back", L"img/UI/invenMenu/back1.png", INVENMENU_WIDTH, INVENMENU_HEIGHT);
+	_back2 = IMAGEMANAGER->addDImage("invenMenu_back2", L"img/UI/invenMenu/back2.png", INVENMENU_WIDTH, INVENMENU_HEIGHT);
+	_back3 = IMAGEMANAGER->addDImage("invenMenu_back3", L"img/UI/invenMenu/back3.png", INVENMENU_WIDTH, INVENMENU_HEIGHT);
+
+	_border = IMAGEMANAGER->addDImage("invenMenu_border", L"img/UI/invenMenu/border1.png", INVENMENU_WIDTH, INVENMENU_HEIGHT);
+	_border2 = IMAGEMANAGER->addDImage("invenMenu_border2", L"img/UI/invenMenu/border2.png", INVENMENU_WIDTH, INVENMENU_HEIGHT);
+	_border3 = IMAGEMANAGER->addDImage("invenMenu_border3", L"img/UI/invenMenu/border3.png", INVENMENU_WIDTH, INVENMENU_HEIGHT);
+
 	_arrow = IMAGEMANAGER->findDImage("selectTri");
 
 	_invItem = INVENTORYMANAGER->getVItem();
@@ -21,10 +21,6 @@ HRESULT InvenMenu::init()
 
 	_index = 0;
 	_index2 = 0;
-
-	//위아래로 갈때마다 인덱스 +- (사이즈보다 커져도X 0보다 작아도 X)
-	//옆으로 넘기면 +- 8 (*예외처리 필수)
-	// if 인벤토리아이템 벡터사이즈 < 8이면 키 안먹게
 
 	return S_OK;
 }
@@ -42,22 +38,17 @@ void InvenMenu::update()
 
 	if (KEYMANAGER->isOnceKeyDown(KEY_B))
 	{
-		UIMANAGER->changeDownMenu("logMenu");
-		UIMANAGER->setOpen(false);
-
-		_hidden = false;
+		if (_hidden) _hidden = false;
+		else
+		{
+			UIMANAGER->changeDownMenu("logMenu");
+			UIMANAGER->setOpen(false);
+		}
 	}
 
 	if (KEYMANAGER->isOnceKeyDown(KEY_A))
 	{
 		if(!_hidden) _hidden = true;
-		else
-		{
-			UIMANAGER->changeDownMenu("logMenu");
-			UIMANAGER->setOpen(false);
-
-			_hidden = false;
-		}
 	}
 
 	_opacity = !_opacity;
@@ -67,18 +58,19 @@ void InvenMenu::render()
 {
 	DownMenu::render();
 
-	//LEFT(메뉴 목록)
 	if((*_invItem).size() > 0) printTextLeft();
 
-	if (_hidden) printTextRight();
-
+	if (_hidden)
+	{
+		if ((*_invItem)[_index]->getType() == ITEM_HOLD) printTextRight2();
+		else printTextRight();
+	}
 	printTextDown();
 }
 
 void InvenMenu::printTextLeft()
 {
 	D2D1_RECT_F rc = CAMERAMANAGER->getScreen();
-
 	D2D1_RECT_F dest = dRectMake(rc.left + _tuningX + TILEWIDTH, rc.top + _tuningY + TILEHEIGHT + TILEHEIGHT / 2,
 		TILEWIDTH * 10, TILEHEIGHT);
 
@@ -101,53 +93,60 @@ void InvenMenu::printTextLeft()
 void InvenMenu::printTextRight()
 {
 	D2D1_RECT_F rc = CAMERAMANAGER->getScreen();
+	D2D1_RECT_F dest3 = dRectMake(rc.left + _tuningX + TILEWIDTH * 9 + 25, rc.top + _tuningY + 12,
+		TILEWIDTH * 10, TILEHEIGHT);
 
 	_back2->render(rc.left + _tuningX, rc.top + _tuningY, 0.5);
 	_border2->render(rc.left + _tuningX, rc.top + _tuningY);
 
-	D2D1_RECT_F dest3 = dRectMake(rc.left + _tuningX + TILEWIDTH * 9 + 25, rc.top + _tuningY + 12,
-		TILEWIDTH * 10, TILEHEIGHT);
-
 	if ((*_invItem)[_index]->getType() == ITEM_FOOD) DTDMANAGER->printText(L"먹는다", dest3, 25);
 	else if ((*_invItem)[_index]->getType() == ITEM_THROW) DTDMANAGER->printText(L"쏜다", dest3, 25);
-	else if ((*_invItem)[_index]->getType() == ITEM_HOLD) DTDMANAGER->printText(L"건네준다", dest3, 25);
 
 	dest3.top += 36;
 	dest3.bottom += 36;
 
+	DTDMANAGER->printText(L"건네준다", dest3, 25);
 
-	if ((*_invItem)[_index]->getType() == ITEM_FOOD || (*_invItem)[_index]->getType() == ITEM_THROW)
-	{
-		DTDMANAGER->printText(L"건네준다", dest3, 25);
+	dest3.top += 36;
+	dest3.bottom += 36;
 
-		dest3.top += 36;
-		dest3.bottom += 36;
+	DTDMANAGER->printText(L"버린다", dest3, 25);
 
-		DTDMANAGER->printText(L"버린다", dest3, 25);
+	dest3.top += 36;
+	dest3.bottom += 36;
+	DTDMANAGER->printText(L"설명", dest3, 25);
 
-		dest3.top += 36;
-		dest3.bottom += 36;
-		DTDMANAGER->printText(L"설명", dest3, 25);
+	dest3.top += 36;
+	dest3.bottom += 36;
+	DTDMANAGER->printText(L"돌아간다", dest3, 25);
 
-		dest3.top += 36;
-		dest3.bottom += 36;
-		DTDMANAGER->printText(L"돌아간다", dest3, 25);
-	}
+	if (_hidden) _arrow->render(dest3.left - 20, (dest3.top - TILEHEIGHT * 3) + _index2 * 36);
+}
 
-	else if ((*_invItem)[_index]->getType() == ITEM_HOLD)
-	{
-		DTDMANAGER->printText(L"버린다", dest3, 25);
+void InvenMenu::printTextRight2()
+{
+	D2D1_RECT_F rc = CAMERAMANAGER->getScreen();
+	D2D1_RECT_F dest3 = dRectMake(rc.left + _tuningX + TILEWIDTH * 9 + 25, rc.top + _tuningY + 12,
+		TILEWIDTH * 10, TILEHEIGHT);
 
-		dest3.top += 36;
-		dest3.bottom += 36;
-		DTDMANAGER->printText(L"설명", dest3, 25);
+	_back3->render(rc.left + _tuningX, rc.top + _tuningY, 0.5);
+	_border3->render(rc.left + _tuningX, rc.top + _tuningY);	
 
-		dest3.top += 36;
-		dest3.bottom += 36;
-		DTDMANAGER->printText(L"돌아간다", dest3, 25);
-	}
+	DTDMANAGER->printText(L"건네준다", dest3, 25);
 
-	if (_hidden) _arrow->render(dest3.left - 20, (dest3.top - TILEHEIGHT * 3) + _index2 * 36); 
+	dest3.top += 36;
+	dest3.bottom += 36;
+	DTDMANAGER->printText(L"버린다", dest3, 25);
+
+	dest3.top += 36;
+	dest3.bottom += 36;
+	DTDMANAGER->printText(L"설명", dest3, 25);
+
+	dest3.top += 36;
+	dest3.bottom += 36;
+	DTDMANAGER->printText(L"돌아간다", dest3, 25);
+
+	if (_hidden) _arrow->render(dest3.left - 20, (dest3.top - 10 - TILEHEIGHT * 2) + _index2 * 36);
 }
 
 void InvenMenu::printTextDown()
@@ -169,8 +168,10 @@ void InvenMenu::plusIndex()
 
 	if (_hidden)
 	{
-		_index2 = (_index2 + 1) % END_INVENMENU_OPTION;
+		if ((*_invItem)[_index]->getType() == ITEM_HOLD) _index2 = (_index2 + 1) % END_INVENMENU_GIVE_OPTION;
+		else _index2 = (_index2 + 1) % END_INVENMENU_OPTION;
 	}
+	else _index2 = 0;
 }
 
 void InvenMenu::minusIndex()
@@ -182,8 +183,10 @@ void InvenMenu::minusIndex()
 
 	if (_hidden)
 	{
-		_index2 = (_index2 - 1 + END_INVENMENU_OPTION) % END_INVENMENU_OPTION;
+		if ((*_invItem)[_index]->getType() == ITEM_HOLD) _index2 = (_index2 - 1 + END_INVENMENU_GIVE_OPTION) % END_INVENMENU_GIVE_OPTION;
+		else _index2 = (_index2 - 1 + END_INVENMENU_OPTION) % END_INVENMENU_OPTION;
 	}
+	else _index2 = 0;
 }
 
 void InvenMenu::leftIndex()
