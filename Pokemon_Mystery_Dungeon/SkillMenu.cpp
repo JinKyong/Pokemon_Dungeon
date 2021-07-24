@@ -75,7 +75,7 @@ void SkillMenu::update()
 			else if (_index2 == SKILL_SELECTMENU_OPTION_BACK) _hidden = false;
 		}
 
-		if (!_hidden) _hidden = true;
+		else _hidden = true;
 	}
 }
 
@@ -170,6 +170,7 @@ void SkillMenu::plusIndex()
 	{
 		_index2 = (_index2 + 1) % END_SKILL_SELECTMENU_OPTION;
 	}
+	else _index2 = 0;
 }
 
 void SkillMenu::minusIndex()
@@ -184,4 +185,5 @@ void SkillMenu::minusIndex()
 	{
 		_index2 = (_index2 - 1 + END_SKILL_SELECTMENU_OPTION) % END_SKILL_SELECTMENU_OPTION;
 	}
+	else _index2 = 0;
 }
