@@ -19,7 +19,7 @@ HRESULT testMapScene::init(Player * player)
 	TURNMANAGER->addAllPlayer(player);
 
 	_pokemon1 = new Enemy;
-	_pokemon1->init(3);//RND->getInt(28) + 1);
+	_pokemon1->init(RND->getInt(28) + 1);
 	TURNMANAGER->addAllPlayer(_pokemon1);
 
 	TURNMANAGER->randomSetting();

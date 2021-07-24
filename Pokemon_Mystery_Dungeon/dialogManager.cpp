@@ -216,3 +216,12 @@ void dialogManager::noneSkillLog()
 	WCHAR log[128] = L"효과가 없는 듯 하다...";
 	_battleLog.push_back(log);
 }
+
+void dialogManager::hitDamageLog(Player * player, int damage)
+{
+	resetTimer();
+
+	WCHAR log[128];
+	swprintf_s(log, L"%s(이)가 %d의 피해를 입었다.", player->getPokemon()->getName().c_str(), damage);
+	_battleLog.push_back(log);
+}

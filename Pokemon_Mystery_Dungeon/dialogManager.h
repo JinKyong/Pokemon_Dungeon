@@ -63,6 +63,8 @@ public:
 	void worseSkillLog();
 	void noneSkillLog();
 
+	void hitDamageLog(Player* player, int damage);
+
 
 
 

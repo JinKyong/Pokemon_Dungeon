@@ -126,15 +126,24 @@ float battleManager::damageCalculation(Player * player, Effect * effect)
 	if (playerType[1] < END_POKEMON_TYPE)
 		counter *= _counter[skillType][playerType[1]];
 
+	
+
+	float finalDamage = (float)skillDamage / defense * RND->getFromIntTo(8.5, 10) * counter;
+	
+	//최소 데미지 1
+	if (finalDamage <= 1)
+		finalDamage = 1;
+	
 	//로그 추가
+	DIALOGMANAGER->hitDamageLog(player, finalDamage);
 	if (counter >= 2)
 		DIALOGMANAGER->greatSkillLog();
-	else if(0 < counter && counter <= 0.5)
+	else if (0 < counter && counter <= 0.5)
 		DIALOGMANAGER->worseSkillLog();
 	else if (counter <= 0)
 		DIALOGMANAGER->noneSkillLog();
 
-	return (float)skillDamage / defense * RND->getFromIntTo(85, 101) * counter;
+	return finalDamage;
 }
 
 
