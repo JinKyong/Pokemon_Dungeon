@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "EF_FireBlast.h"
 
-HRESULT EF_FireBlast::init(float x, float y, int damage, int skillScale, int atkType)
+HRESULT EF_FireBlast::init(float x, float y, int damage, int skillScale, int atkType, POKEMON_TYPE type)
 {
-	Effect::init(x, y, damage, skillScale, atkType);
+	Effect::init(x, y, damage, skillScale, atkType, type);
 
 	_img = IMAGEMANAGER->addFrameDImage("FireBlast", L"img/effect/FireBlast.png", 2640, 120, 22, 1);
 	_img->setFrameX(0);

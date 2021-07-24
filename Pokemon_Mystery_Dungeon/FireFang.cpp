@@ -25,6 +25,6 @@ void FireFang::useSkill()
 	Skill::useSkill();
 
 	_fireFangEffect = new EF_FireFang;
-	_fireFangEffect->init(_x, _y, _finalDamage, _scale, _atkType);
+	_fireFangEffect->init(_x, _y, _finalDamage, _scale, _atkType, _type);
 	EFFECTMANAGER->addEffect(_fireFangEffect);
 }

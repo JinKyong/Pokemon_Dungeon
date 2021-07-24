@@ -120,6 +120,8 @@ void Player::sattack()
 void Player::useSkill(int num)
 {
 	_selectedSkill = _skill[num];
+	_playerState = POKEMON_STATE_SATTACK;
+	_pokemon->setSattack(true);
 }
 
 void Player::hitDamage(int num)

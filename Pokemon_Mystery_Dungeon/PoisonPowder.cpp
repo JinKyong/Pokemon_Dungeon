@@ -25,6 +25,6 @@ void PoisonPowder::useSkill()
 	Skill::useSkill();
 
 	_poisonPowderEffect = new EF_PoisonPowder;
-	_poisonPowderEffect->init(_x, _y, _finalDamage, _scale, _atkType);
+	_poisonPowderEffect->init(_x, _y, _finalDamage, _scale, _atkType, _type);
 	EFFECTMANAGER->addEffect(_poisonPowderEffect);
 }

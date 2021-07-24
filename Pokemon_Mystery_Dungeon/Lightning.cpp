@@ -25,6 +25,6 @@ void Lightning::useSkill()
 	Skill::useSkill();
 
 	_lightningEffect = new EF_Lightning;
-	_lightningEffect->init(_x, _y, _finalDamage, _scale, _atkType);
+	_lightningEffect->init(_x, _y, _finalDamage, _scale, _atkType, _type);
 	EFFECTMANAGER->addEffect(_lightningEffect);
 }

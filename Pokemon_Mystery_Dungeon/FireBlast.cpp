@@ -25,6 +25,6 @@ void FireBlast::useSkill()
 	Skill::useSkill();
 
 	_fireBlastEffect = new EF_FireBlast;
-	_fireBlastEffect->init(_x, _y, _finalDamage, _scale, _atkType);
+	_fireBlastEffect->init(_x, _y, _finalDamage, _scale, _atkType, _type);
 	EFFECTMANAGER->addEffect(_fireBlastEffect);
 }

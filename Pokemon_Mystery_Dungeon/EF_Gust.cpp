@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "EF_Gust.h"
 
-HRESULT EF_Gust::init(float x, float y, int damage, int skillScale, int atkType)
+HRESULT EF_Gust::init(float x, float y, int damage, int skillScale, int atkType, POKEMON_TYPE type)
 {
-	Effect::init(x, y, damage, skillScale, atkType);
+	Effect::init(x, y, damage, skillScale, atkType, type);
 
 	_img = IMAGEMANAGER->addFrameDImage("Gust", L"img/effect/Gust.png", 5824, 160, 52, 1);
 	_img->setFrameX(0);

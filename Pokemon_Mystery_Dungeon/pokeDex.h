@@ -64,4 +64,14 @@ public:
 	Pokemon* flareon() { return new Flareon; }
 	Pokemon* espeon() { return new Espeon; }
 	Pokemon* umbreon() { return new Umbreon; }
+
+	Pokemon* diglett() { return new Diglett; }
+	Pokemon* dugtrio() { return new Dugtrio; }
+
+	Pokemon* lapras() { return new Lapras; }
+
+	Pokemon* mawile() { return new Mawile; }
+
+
+	//No.30 ~ 39
 };

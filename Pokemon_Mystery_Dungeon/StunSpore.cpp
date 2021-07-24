@@ -25,6 +25,6 @@ void StunSpore::useSkill()
 	Skill::useSkill();
 
 	_stunSporeEffect = new EF_StunSpore;
-	_stunSporeEffect->init(_x, _y, _finalDamage, _scale, _atkType);
+	_stunSporeEffect->init(_x, _y, _finalDamage, _scale, _atkType, _type);
 	EFFECTMANAGER->addEffect(_stunSporeEffect);
 }

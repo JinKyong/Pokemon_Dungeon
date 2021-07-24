@@ -543,14 +543,17 @@
     <ClInclude Include="Umbreon.h">
       <Filter>playGround\Pokémon\No.20 ~ 29</Filter>
     </ClInclude>
-    <ClInclude Include="crossroadScene.h">
-      <Filter>playGround\Stage</Filter>
+    <ClInclude Include="Diglett.h">
+      <Filter>playGround\Pokémon\No.20 ~ 29</Filter>
     </ClInclude>
-    <ClInclude Include="guildMapScene.h">
-      <Filter>playGround\Stage</Filter>
+    <ClInclude Include="Dugtrio.h">
+      <Filter>playGround\Pokémon\No.20 ~ 29</Filter>
     </ClInclude>
-    <ClInclude Include="townMapScene.h">
-      <Filter>playGround\Stage</Filter>
+    <ClInclude Include="Lapras.h">
+      <Filter>playGround\Pokémon\No.20 ~ 29</Filter>
+    </ClInclude>
+    <ClInclude Include="Mawile.h">
+      <Filter>playGround\Pokémon\No.20 ~ 29</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -911,14 +914,17 @@
     <ClCompile Include="Umbreon.cpp">
       <Filter>playGround\Pokémon\No.20 ~ 29</Filter>
     </ClCompile>
-    <ClCompile Include="crossroadScene.cpp">
-      <Filter>playGround\Stage</Filter>
+    <ClCompile Include="Diglett.cpp">
+      <Filter>playGround\Pokémon\No.20 ~ 29</Filter>
     </ClCompile>
-    <ClCompile Include="guildMapScene.cpp">
-      <Filter>playGround\Stage</Filter>
+    <ClCompile Include="Dugtrio.cpp">
+      <Filter>playGround\Pokémon\No.20 ~ 29</Filter>
     </ClCompile>
-    <ClCompile Include="townMapScene.cpp">
-      <Filter>playGround\Stage</Filter>
+    <ClCompile Include="Lapras.cpp">
+      <Filter>playGround\Pokémon\No.20 ~ 29</Filter>
+    </ClCompile>
+    <ClCompile Include="Mawile.cpp">
+      <Filter>playGround\Pokémon\No.20 ~ 29</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

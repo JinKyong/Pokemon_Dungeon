@@ -26,6 +26,6 @@ void Gust::useSkill()
 	Skill::useSkill();
 
 	_gustEffect = new EF_Gust;
-	_gustEffect->init(_x, _y, _finalDamage, _scale, _atkType);
+	_gustEffect->init(_x, _y, _finalDamage, _scale, _atkType, _type);
 	EFFECTMANAGER->addEffect(_gustEffect);
 }

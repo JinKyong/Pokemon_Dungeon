@@ -25,6 +25,6 @@ void MetalClaw::useSkill()
 	Skill::useSkill();
 
 	_metalClawEffect = new EF_MetalClaw;
-	_metalClawEffect->init(_x, _y, _finalDamage, _scale, _atkType);
+	_metalClawEffect->init(_x, _y, _finalDamage, _scale, _atkType, _type);
 	EFFECTMANAGER->addEffect(_metalClawEffect);
 }

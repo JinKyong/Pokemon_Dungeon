@@ -2,6 +2,10 @@
 #include "singletonBase.h"
 #include "PokemonType.h"
 
+#define G	2.0f	//GREAT		== 효과가 좋다
+#define C	1.0f	//COMMON	== 일반
+#define W	0.5f	//WORSE		== 효과가 별로
+#define N	0.0f	//NONE		== 효과가 없다
 
 // 계산식
 // ( (종족값x2 + 개체값 + 노력치/4) x 레벨/100 + 10 + 레벨 ) x 성격보정
@@ -30,10 +34,12 @@ class Item;
 class battleManager : public singletonBase<battleManager>
 {
 private:
+	float _counter[END_POKEMON_TYPE][END_POKEMON_TYPE];
+	int _test[5][5];
 
 public:
-	battleManager() {};
-	~battleManager() {};
+	battleManager();
+	~battleManager();
 
 	HRESULT init();
 	void release();
