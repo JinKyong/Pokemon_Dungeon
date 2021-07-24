@@ -34,11 +34,18 @@ public:
 	void Rectangle(D2D1_RECT_F rc);
 	void Rectangle(RECT rc);
 
-	//텍스트 출력
+	//텍스트 출력(front)
+	void printTextF(LPCWCHAR text, float x, float y, int width, int height);
+	void printTextF(LPCWCHAR text, float x, float y, int width, int height, float size);
+	void printTextF(LPCWCHAR text, D2D1_RECT_F rc);
+	void printTextF(LPCWCHAR text, D2D1_RECT_F rc, float size);
+
+	//텍스트 출력(backBuffer)
 	void printText(LPCWCHAR text, float x, float y, int width, int height);
 	void printText(LPCWCHAR text, float x, float y, int width, int height, float size);
 	void printText(LPCWCHAR text, D2D1_RECT_F rc);
 	void printText(LPCWCHAR text, D2D1_RECT_F rc, float size);
+
 
 	//각종 변환
 	void setRotate(float angle, float x, float y);					//회전

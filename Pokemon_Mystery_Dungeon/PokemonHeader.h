@@ -21,3 +21,26 @@
 #include "Dratini.h"
 #include "Dragonair.h"
 #include "Dragonite.h"
+
+#include "Zubat.h"
+#include "Golbat.h"
+#include "Crobat.h"
+
+#include "Darkrai.h"
+
+//No. 20 ~ 29
+#include "Eevee.h"
+#include "Vaporeon.h"
+#include "Jolteon.h"
+#include "Flareon.h"
+#include "Espeon.h"
+#include "Umbreon.h"
+
+#include "Diglett.h"
+#include "Dugtrio.h"
+
+#include "Lapras.h"
+
+#include "Mawile.h"
+
+//No. 30 ~ 39

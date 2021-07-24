@@ -38,6 +38,7 @@ protected:
 
 	//스탯 (실제 값)
 	STAT _realStat;
+	int _currentHP;
 	int _starve;
 
 	//기술(스킬)
@@ -94,6 +95,9 @@ public:
 
 	STAT getRealStat() { return _realStat; }
 	void setRealStat(STAT realStat) { _realStat = realStat; }
+
+	int getCurrentHP() { return _currentHP; }
+	void setCurrentHP(int currentHP) { _currentHP = currentHP; }
 
 	int getStarve() { return _starve; }
 	void setStarve(int starve) { _starve = starve; }

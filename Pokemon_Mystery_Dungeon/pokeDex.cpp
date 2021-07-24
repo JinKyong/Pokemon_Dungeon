@@ -34,6 +34,8 @@ void pokeDex::setPokeDex()
 	addPokemon(&pokeDex::ivysaur);
 	addPokemon(&pokeDex::venusaur);
 
+
+
 	addPokemon(&pokeDex::squirtle);
 	addPokemon(&pokeDex::wartortle);
 	addPokemon(&pokeDex::blastoise);
@@ -41,4 +43,26 @@ void pokeDex::setPokeDex()
 	addPokemon(&pokeDex::dratini);
 	addPokemon(&pokeDex::dragonair);
 	addPokemon(&pokeDex::dragonite);
+
+	addPokemon(&pokeDex::zubat);
+	addPokemon(&pokeDex::golbat);
+	addPokemon(&pokeDex::crobat);
+
+	addPokemon(&pokeDex::darkrai);
+
+
+
+	addPokemon(&pokeDex::eevee);
+	addPokemon(&pokeDex::vaporeon);
+	addPokemon(&pokeDex::jolteon);
+	addPokemon(&pokeDex::flareon);
+	addPokemon(&pokeDex::espeon);
+	addPokemon(&pokeDex::umbreon);
+
+	addPokemon(&pokeDex::diglett);
+	addPokemon(&pokeDex::dugtrio);
+
+	addPokemon(&pokeDex::lapras);
+
+	addPokemon(&pokeDex::mawile);
 }

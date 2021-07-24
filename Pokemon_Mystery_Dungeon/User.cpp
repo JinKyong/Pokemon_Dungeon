@@ -27,6 +27,8 @@ HRESULT User::init(int pokemonNum)
 
 	//_inDungeon = false;
 
+	_num = POKEDEX->getIndex();
+
 	return S_OK;
 }
 

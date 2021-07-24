@@ -140,6 +140,84 @@ void dtdManager::Rectangle(RECT rc)
 		_dBitRenderTarget->DrawRectangle(rect, _dBrush);
 }
 
+void dtdManager::printTextF(LPCWCHAR text, float x, float y, int width, int height)
+{
+	_dRenderTarget->DrawTextA(text, lstrlenW(text), _dWDefaultFormat, dRectMakeCenter(x, y, width, height), _tBrush);
+}
+
+void dtdManager::printTextF(LPCWCHAR text, float x, float y, int width, int height, float size)
+{
+	if (_dWCustomFormat) {
+		if (_dWCustomFormat->GetFontSize() != size) {
+			SAFE_RELEASE2(_dWCustomFormat);
+
+			_dWFactory->CreateTextFormat(
+				L"모리스9",
+				nullptr,
+				DWRITE_FONT_WEIGHT_NORMAL,
+				DWRITE_FONT_STYLE_NORMAL,
+				DWRITE_FONT_STRETCH_NORMAL,
+				size,
+				L"ko-kr",
+				&_dWCustomFormat
+			);
+		}
+	}
+	else {
+		_dWFactory->CreateTextFormat(
+			L"모리스9",
+			nullptr,
+			DWRITE_FONT_WEIGHT_NORMAL,
+			DWRITE_FONT_STYLE_NORMAL,
+			DWRITE_FONT_STRETCH_NORMAL,
+			size,
+			L"ko-kr",
+			&_dWCustomFormat
+		);
+	}
+
+	_dRenderTarget->DrawTextA(text, lstrlenW(text), _dWCustomFormat, dRectMakeCenter(x, y, width, height), _tBrush);
+}
+
+void dtdManager::printTextF(LPCWCHAR text, D2D1_RECT_F rc)
+{
+	_dRenderTarget->DrawTextA(text, lstrlenW(text), _dWDefaultFormat, rc, _tBrush);
+}
+
+void dtdManager::printTextF(LPCWCHAR text, D2D1_RECT_F rc, float size)
+{
+	if (_dWCustomFormat) {
+		if (_dWCustomFormat->GetFontSize() != size) {
+			SAFE_RELEASE2(_dWCustomFormat);
+
+			_dWFactory->CreateTextFormat(
+				L"모리스9",
+				nullptr,
+				DWRITE_FONT_WEIGHT_NORMAL,
+				DWRITE_FONT_STYLE_NORMAL,
+				DWRITE_FONT_STRETCH_NORMAL,
+				size,
+				L"ko-kr",
+				&_dWCustomFormat
+			);
+		}
+	}
+	else {
+		_dWFactory->CreateTextFormat(
+			L"모리스9",
+			nullptr,
+			DWRITE_FONT_WEIGHT_NORMAL,
+			DWRITE_FONT_STYLE_NORMAL,
+			DWRITE_FONT_STRETCH_NORMAL,
+			size,
+			L"ko-kr",
+			&_dWCustomFormat
+		);
+	}
+
+	_dRenderTarget->DrawTextA(text, lstrlenW(text), _dWCustomFormat, rc, _tBrush);
+}
+
 void dtdManager::printText(LPCWCHAR text, float x, float y, int width, int height)
 {
 	_dBitRenderTarget->DrawTextA(text, lstrlenW(text), _dWDefaultFormat, dRectMakeCenter(x, y, width, height), _tBrush);
