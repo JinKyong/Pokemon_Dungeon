@@ -9,8 +9,8 @@
 HRESULT dungeonScene::init(Player * player)
 {
 	Scene::init(player);
-	_width = 121;
-	_height = 121; 
+	_width = 151;
+	_height = 151; 
 	_type=TILEMANAGER->getType();
 	TILEMANAGER->init(_width, _height, _type);
 	CAMERAMANAGER->setBackScreenSize((_width - 1) * TILEWIDTH, (_height - 1) * TILEHEIGHT);
@@ -31,11 +31,11 @@ HRESULT dungeonScene::init(Player * player)
 	_pokemon3->init(RND->getInt(15) + 1);
 	TURNMANAGER->addAllPlayer(_pokemon3);
 
-	TURNMANAGER->randomSetting();
+	
 
 	_itemManager = new ItemManager;
 	_itemManager->init();
-
+	TURNMANAGER->randomSetting();
 	COLLISIONMANAGER->init(this);
 
 	return S_OK;
@@ -54,6 +54,7 @@ void dungeonScene::update()
 		if (SCENEMANAGER->getSceneCount() >= 5)
 		{
 			this->release();
+			TURNMANAGER->release();
 			SCENEMANAGER->changeScene("boss");
 		}
 		else

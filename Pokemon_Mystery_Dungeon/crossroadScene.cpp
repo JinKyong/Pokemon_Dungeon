@@ -45,21 +45,18 @@ void crossroadScene::update()
 	CAMERAMANAGER->updateScreen(_player->getX(), _player->getY());
 	if (_player->getX() < 1)
 	{
-		this->release();
-		_player->release();
+		TURNMANAGER->release();
 		SCENEMANAGER->changeScene("town");
 
 	}
 	if (_player->getY() > 8)
 	{
-		this->release();
-		_player->release();
+		TURNMANAGER->release();
 		SCENEMANAGER->changeScene("select");
 	}
 	if (_player->getY() < 1)
 	{
-		this->release();
-		_player->release();
+		TURNMANAGER->release();
 		SCENEMANAGER->changeScene("guild");
 	}
 	if (_player->getX() > 8)
