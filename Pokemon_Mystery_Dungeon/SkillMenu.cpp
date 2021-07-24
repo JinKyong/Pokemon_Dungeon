@@ -20,7 +20,7 @@ HRESULT SkillMenu::init()
 	_index = 0;
 	_index2 = 0;
 	
-	//_skill = (*TURNMANAGER->getAllPlayer())[0]->getSkill();
+	_skill = (*TURNMANAGER->getAllPlayer())[0]->getSkill();
 
 	return S_OK;
 }
@@ -36,10 +36,7 @@ void SkillMenu::update()
 
 	if (KEYMANAGER->isOnceKeyDown(KEY_B))
 	{
-		if (_hidden)
-		{
-			_hidden = false;
-		}
+		if (_hidden) _hidden = false;
 
 		else
 		{
@@ -58,19 +55,19 @@ void SkillMenu::update()
 				
 				if (_index == SKILLMENU_OPTION_FIRST)
 				{
-					(*TURNMANAGER->getAllPlayer())[0]->getSkill()[0]->useSkill();
+					_skill[0]->useSkill();
 				}
 				else if(_index == SKILLMENU_OPTION_SECOND)
 				{
-					(*TURNMANAGER->getAllPlayer())[0]->getSkill()[1]->useSkill();
+					_skill[1]->useSkill();
 				}
 				else if(_index == SKILLMENU_OPTION_THIRD)
 				{
-					(*TURNMANAGER->getAllPlayer())[0]->getSkill()[2]->useSkill();
+					_skill[2]->useSkill();
 				}
 				else if(_index == SKILLMENU_OPTION_FOURTH)
 				{
-					(*TURNMANAGER->getAllPlayer())[0]->getSkill()[3]->useSkill();
+					_skill[3]->useSkill();
 				}
 			}
 
@@ -113,22 +110,22 @@ void SkillMenu::printTextLeft()
 	//화살표
 	if (!_hidden) _arrow->render(dest.left - 20, dest.top + _index * TILEHEIGHT);
 
-	DTDMANAGER->printText((*TURNMANAGER->getAllPlayer())[0]->getSkill()[0]->getName().c_str(), dest, 25);
+	DTDMANAGER->printText(_skill[0]->getName().c_str(), dest, 25);
 
 	dest.top += TILEHEIGHT;
 	dest.bottom += TILEHEIGHT;
 
-	DTDMANAGER->printText((*TURNMANAGER->getAllPlayer())[0]->getSkill()[1]->getName().c_str(), dest, 25);
+	DTDMANAGER->printText(_skill[1]->getName().c_str(), dest, 25);
 
 	dest.top += TILEHEIGHT;
 	dest.bottom += TILEHEIGHT;
 
-	DTDMANAGER->printText((*TURNMANAGER->getAllPlayer())[0]->getSkill()[2]->getName().c_str(), dest, 25);
+	DTDMANAGER->printText(_skill[2]->getName().c_str(), dest, 25);
 
 	dest.top += TILEHEIGHT;
 	dest.bottom += TILEHEIGHT;
 
-	DTDMANAGER->printText((*TURNMANAGER->getAllPlayer())[0]->getSkill()[3]->getName().c_str(), dest, 25);
+	DTDMANAGER->printText(_skill[3]->getName().c_str(), dest, 25);
 
 	//스킬이 있는지 검사->출력->검사->출력
 }
