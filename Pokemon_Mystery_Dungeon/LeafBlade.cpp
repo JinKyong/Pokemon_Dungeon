@@ -25,6 +25,6 @@ void LeafBlade::useSkill()
 	Skill::useSkill();
 
 	_leafBladeEffect = new EF_LeafBlade;
-	_leafBladeEffect->init(_x, _y, _finalDamage, _scale, _atkType);
+	_leafBladeEffect->init(_x, _y, _finalDamage, _scale, _atkType, _type);
 	EFFECTMANAGER->addEffect(_leafBladeEffect);
 }

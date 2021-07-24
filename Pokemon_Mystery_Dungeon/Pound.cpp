@@ -25,6 +25,6 @@ void Pound::useSkill()
 	Skill::useSkill();
 
 	_poundEffect = new EF_Pound;
-	_poundEffect->init(_x, _y, _finalDamage, _scale, _atkType);
+	_poundEffect->init(_x, _y, _finalDamage, _scale, _atkType, _type);
 	EFFECTMANAGER->addEffect(_poundEffect);
 }

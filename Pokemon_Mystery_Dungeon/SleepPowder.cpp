@@ -25,6 +25,6 @@ void SleepPowder::useSkill()
 	Skill::useSkill();
 
 	_sleepPowderEffect = new EF_SleepPowder;
-	_sleepPowderEffect->init(_x, _y, _finalDamage, _scale, _atkType);
+	_sleepPowderEffect->init(_x, _y, _finalDamage, _scale, _atkType, _type);
 	EFFECTMANAGER->addEffect(_sleepPowderEffect);
 }

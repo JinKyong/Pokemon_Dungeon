@@ -25,6 +25,6 @@ void IceFang::useSkill()
 	Skill::useSkill();
 
 	_iceFangEffect = new EF_IceFang;
-	_iceFangEffect->init(_x, _y, _finalDamage, _scale, _atkType);
+	_iceFangEffect->init(_x, _y, _finalDamage, _scale, _atkType, _type);
 	EFFECTMANAGER->addEffect(_iceFangEffect);
 }

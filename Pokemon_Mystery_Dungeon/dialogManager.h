@@ -59,6 +59,10 @@ public:
 	void useSkillLog(Player* player, Skill* skill);
 	void failSkillLog();
 
+	void greatSkillLog();
+	void worseSkillLog();
+	void noneSkillLog();
+
 
 
 

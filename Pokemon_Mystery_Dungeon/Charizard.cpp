@@ -19,7 +19,7 @@ Charizard::Charizard()
 
 	//타입 & 특성
 	_type[0] = POKEMON_TYPE_FIRE;
-	_type[1] = END_POKEMON_TYPE;
+	_type[1] = POKEMON_TYPE_FLYING;
 
 	_jump = true;
 }

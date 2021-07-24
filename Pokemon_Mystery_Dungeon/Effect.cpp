@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Effect.h"
 
-HRESULT Effect::init(float x, float y, int damage, int skillScale, int atkType)
+HRESULT Effect::init(float x, float y, int damage, int skillScale, int atkType, POKEMON_TYPE type)
 {
 	_x = x;
 	_y = y;
@@ -13,6 +13,7 @@ HRESULT Effect::init(float x, float y, int damage, int skillScale, int atkType)
 	_scale = skillScale; // 타격범위로
 	_damage = damage;
 	_atkType = atkType;
+	_type = type;
 
 	return S_OK;
 }

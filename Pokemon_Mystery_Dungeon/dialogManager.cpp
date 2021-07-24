@@ -192,3 +192,27 @@ void dialogManager::failSkillLog()
 	swprintf_s(log, L"기술은 실패했다.");
 	_battleLog.push_back(log);
 }
+
+void dialogManager::greatSkillLog()
+{
+	resetTimer();
+
+	WCHAR log[128] = L"효과가 굉장했다!!!";
+	_battleLog.push_back(log);
+}
+
+void dialogManager::worseSkillLog()
+{
+	resetTimer();
+
+	WCHAR log[128] = L"효과가 별로인 듯 하다...";
+	_battleLog.push_back(log);
+}
+
+void dialogManager::noneSkillLog()
+{
+	resetTimer();
+
+	WCHAR log[128] = L"효과가 없는 듯 하다...";
+	_battleLog.push_back(log);
+}

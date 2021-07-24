@@ -25,6 +25,6 @@ void ThunderFang::useSkill()
 	Skill::useSkill();
 
 	_thunderFangEffect = new EF_ThunderFang;
-	_thunderFangEffect->init(_x, _y, _finalDamage, _scale, _atkType);
+	_thunderFangEffect->init(_x, _y, _finalDamage, _scale, _atkType, _type);
 	EFFECTMANAGER->addEffect(_thunderFangEffect);
 }

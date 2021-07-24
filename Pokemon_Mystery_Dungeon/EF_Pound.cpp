@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "EF_Pound.h"
 
-HRESULT EF_Pound::init(float x, float y, int damage, int skillScale, int atkType)
+HRESULT EF_Pound::init(float x, float y, int damage, int skillScale, int atkType, POKEMON_TYPE type)
 {
-	Effect::init(x, y, damage, skillScale, atkType);
+	Effect::init(x, y, damage, skillScale, atkType, type);
 
 	_img = IMAGEMANAGER->addFrameDImage("Pound", L"img/effect/Pound.png", 2268, 116, 21, 1);
 	_img->setFrameX(0);

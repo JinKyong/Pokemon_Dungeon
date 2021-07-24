@@ -1,5 +1,5 @@
 #pragma once
-#include "gameNode.h"
+#include "PokemonType.h"
 
 enum EFFECTNUMBER
 {
@@ -9,7 +9,7 @@ enum EFFECTNUMBER
 	EF_ROCKSLIDE
 };
 
-class Effect : public gameNode
+class Effect
 {
 protected:
 	RECT _body;
@@ -22,13 +22,14 @@ protected:
 	int _damage;
 	int _scale;
 	int _atkType;
+	POKEMON_TYPE _type;
 	//이펙트에 실 데미지 추가
 
 public:
 	Effect() {};
 	~Effect() {};
 
-	virtual HRESULT init(float x, float y, int damage, int skillScale, int atkType);
+	virtual HRESULT init(float x, float y, int damage, int skillScale, int atkType, POKEMON_TYPE type);
 	virtual void release() = 0;
 	virtual void update() = 0;
 	virtual void render();
@@ -41,5 +42,7 @@ public:
 	int getDamage() { return _damage; }
 	int getScale() { return _scale; }
 	int getAtkType() { return _atkType; }
+
+	POKEMON_TYPE getType() { return _type; }
 };
 

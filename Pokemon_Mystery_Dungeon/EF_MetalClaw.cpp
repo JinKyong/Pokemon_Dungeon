@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "EF_MetalClaw.h"
 
-HRESULT EF_MetalClaw::init(float x, float y, int damage, int skillScale, int atkType)
+HRESULT EF_MetalClaw::init(float x, float y, int damage, int skillScale, int atkType, POKEMON_TYPE type)
 {
-	Effect::init(x, y, damage, skillScale, atkType);
+	Effect::init(x, y, damage, skillScale, atkType, type);
 
 	_img = IMAGEMANAGER->addFrameDImage("MetalClaw", L"img/effect/MetalClaw.png", 968, 78, 11, 1);
 	_img->setFrameX(0);

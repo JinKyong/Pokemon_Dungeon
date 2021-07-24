@@ -2,6 +2,34 @@
 #include "battleManager.h"
 #include "Item.h"
 
+battleManager::battleManager() :
+	_counter{
+/*			노말	격투	독	땅	비행	벌레	바위	고스	강철	불	물	전기	풀	얼음	에스	드래	악			*/
+		{	C,	C,	C,	C,	C,	C,	W,	N,	W,	C,	C,	C,	C,	C,	C,	C,	C	},	//노말
+		{	G,	C,	W,	C,	W,	W,	G,	N,	G,	C,	C,	C,	C,	G,	W,	C,	G	},  //격투
+		{	C,	C,	W,	W,	C,	C,	W,	W,	N,	C,	C,	C,	G,	C,	C,	C,	C	},  //독
+		{	C,	C,	G,	C,	N,	W,	G,	C,	G,	G,	C,	G,	W,	C,	C,	C,	C	},  //땅
+		{	C,	G,	C,	C,	C,	G,	W,	C,	W,	C,	C,	W,	G,	C,	C,	C,	C	},  //비행
+		{	C,	W,	W,	C,	W,	C,	C,	W,	W,	W,	C,	C,	G,	C,	G,	C,	G	},  //벌레
+		{	C,	W,	C,	W,	G,	G,	C,	C,	W,	G,	C,	C,	C,	G,	C,	C,	C	},  //바위
+		{	N,	C,	C,	C,	C,	C,	C,	G,	C,	C,	C,	C,	C,	C,	G,	C,	W	},  //고스트
+		{	C,	C,	C,	C,	C,	C,	G,	C,	W,	W,	W,	W,	C,	G,	C,	C,	C	},  //강철
+		{	C,	C,	C,	C,	C,	G,	W,	C,	G,	W,	W,	C,	G,	G,	C,	W,	C	},  //불
+		{	C,	C,	C,	G,	C,	C,	G,	C,	C,	G,	W,	C,	W,	C,	C,	W,	C	},  //물
+		{	C,	C,	C,	N,	G,	C,	C,	C,	C,	C,	G,	W,	W,	C,	C,	W,	C	},  //전기
+		{	C,	C,	W,	G,	W,	W,	G,	C,	W,	W,	G,	C,	W,	C,	C,	W,	C	},  //풀
+		{	C,	C,	C,	G,	G,	C,	C,	C,	W,	W,	W,	C,	G,	W,	C,	G,	C	},  //얼음
+		{	C,	G,	G,	C,	C,	C,	C,	C,	W,	C,	C,	C,	C,	C,	W,	C,	N	},  //에스퍼
+		{	C,	C,	C,	C,	C,	C,	C,	C,	W,	C,	C,	C,	C,	C,	C,	G,	C	},  //드래곤
+		{	C,	W,	C,	C,	C,	C,	C,	G,	C,	C,	C,	C,	C,	C,	G,	C,	W	},  //악
+	}
+{
+}
+
+battleManager::~battleManager()
+{
+}
+
 HRESULT battleManager::init()
 {
 
@@ -88,7 +116,25 @@ float battleManager::damageCalculation(Player * player, Effect * effect)
 	skillDamage = effect->getDamage();
 	defense = defenceCalculation(player, effect);
 
-	return (float)skillDamage / defense * RND->getFromIntTo(85, 101);
+	//상성
+	float counter = 1.0f;
+	POKEMON_TYPE*	playerType = player->getPokemon()->getPokemonType();
+	POKEMON_TYPE	skillType = effect->getType();
+
+	if (playerType[0] < END_POKEMON_TYPE)
+		counter *= _counter[skillType][playerType[0]];
+	if (playerType[1] < END_POKEMON_TYPE)
+		counter *= _counter[skillType][playerType[1]];
+
+	//로그 추가
+	if (counter >= 2)
+		DIALOGMANAGER->greatSkillLog();
+	else if(0 < counter && counter <= 0.5)
+		DIALOGMANAGER->worseSkillLog();
+	else if (counter <= 0)
+		DIALOGMANAGER->noneSkillLog();
+
+	return (float)skillDamage / defense * RND->getFromIntTo(85, 101) * counter;
 }
 
 

@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "EF_Lightning.h"
 
-HRESULT EF_Lightning::init(float x, float y, int damage, int skillScale, int atkType)
+HRESULT EF_Lightning::init(float x, float y, int damage, int skillScale, int atkType, POKEMON_TYPE type)
 {
-	Effect::init(x, y, damage, skillScale, atkType);
+	Effect::init(x, y, damage, skillScale, atkType, type);
 
 	_img = IMAGEMANAGER->addFrameDImage("Lightning", L"img/effect/Lightning.png", 816, 286, 12, 1);
 	_img->setFrameX(0);

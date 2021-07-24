@@ -25,6 +25,6 @@ void RockSlide::useSkill()
 	Skill::useSkill();
 
 	_rockSlideEffect = new EF_RockSlide;
-	_rockSlideEffect->init(_x, _y, _finalDamage, _scale, _atkType);
+	_rockSlideEffect->init(_x, _y, _finalDamage, _scale, _atkType, _type);
 	EFFECTMANAGER->addEffect(_rockSlideEffect);
 }
