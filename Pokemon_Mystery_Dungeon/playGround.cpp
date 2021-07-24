@@ -7,6 +7,10 @@
 #include "bossMapScene.h"
 #include "dungeonSelectScene.h"
 #include "dungeonScene.h"
+#include "townMapScene.h"
+#include "guildMapScene.h"
+#include "crossroadScene.h"
+
 
 playGround::playGround()
 {
@@ -33,6 +37,9 @@ HRESULT playGround::init()
 	SCENEMANAGER->addScene("boss", new bossMapScene);
 	SCENEMANAGER->addScene("select", new dungeonSelectScene);
 	SCENEMANAGER->addScene("dungeon", new dungeonScene);
+	SCENEMANAGER->addScene("crossroad", new crossroadScene);
+	SCENEMANAGER->addScene("town", new townMapScene);
+	SCENEMANAGER->addScene("guild", new guildMapScene);
 
 	SCENEMANAGER->changeScene("map");
 	BATTLEMANAGER->init();

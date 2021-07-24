@@ -105,7 +105,8 @@ void testMapScene::update()
 			EFFECTMANAGER->update();
 		}
 	}
-
+	TILEMANAGER->setPlayerX(_player->getX());
+	TILEMANAGER->setPlayerY(_player->getY());
 	CAMERAMANAGER->updateScreen(_player->getX(), _player->getY());
 
 }

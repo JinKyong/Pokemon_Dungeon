@@ -61,8 +61,22 @@ enum Tile
 	RightBlockWall='@',
 	TopBlockWall='A',
 	BottomBlockWall='B',
-	ClearTrap='C',
-	PowerTrap='D',
+	VerticalTopRight='C',
+	VerticalTopLeft='D',
+	VerticalBottomRight='E',
+	VerticalBottomLeft='F',
+	HorizontalTopRight='G',
+	HorizontalTopLeft='H',
+	HorizontalBottomRight='I',
+	HorizontalBottomLeft='J',
+	AllOpenRight='K',
+	AllOpenLeft='L',
+	OpenConnectTopLeft='M',
+	OpenConnectTopRight='N',
+	OpenConnectBottomLeft='O',
+	OpenConnectBottomRight='P',
+	ClearTrap = 'Q',
+	PowerTrap = 'R'
 	
 };
 

@@ -44,14 +44,17 @@ void Maptool::update()
 		if(mode)mode=false;
 		else if (!mode)mode = true;
 	}
-	if (KEYMANAGER->isOnceKeyDown('4')) { save("bossmap1.map");}
-	if (KEYMANAGER->isOnceKeyDown('5')) { load("bossmap1.map");}
+	if (KEYMANAGER->isOnceKeyDown('4')) { save("samplemap.map");}
+	if (KEYMANAGER->isOnceKeyDown('5')) { load("samplemap.map");}
 	if (KEYMANAGER->isStayKeyDown(VK_RBUTTON)) { _ctrSelect = CTRL_ERASER; setMap(); }
-	if (PRINTMANAGER->isDebug())
-	{
-		if (mode&& KEYMANAGER->isStayKeyDown(VK_LBUTTON)) { _ctrSelect = CTRL_TERRAINDRAW; setMap(); }
-		if (!mode && KEYMANAGER->isStayKeyDown(VK_LBUTTON)) { _ctrSelect = CTRL_OBJDRAW; setMap(); }
-	}
+	if (KEYMANAGER->isStayKeyDown(VK_MBUTTON)) { _ctrSelect = CTRL_END; setMap(); }
+if (PRINTMANAGER->isDebug())
+{
+	if (mode&& KEYMANAGER->isStayKeyDown(VK_LBUTTON)) { _ctrSelect = CTRL_TERRAINDRAW; setMap(); }
+	if (!mode && KEYMANAGER->isStayKeyDown(VK_LBUTTON)) { _ctrSelect = CTRL_OBJDRAW; setMap(); }
+}
+	if (mode&& KEYMANAGER->isStayKeyDown(VK_LBUTTON)) { setMap(); }
+	if (!mode && KEYMANAGER->isStayKeyDown(VK_LBUTTON)) { setMap(); }
 	
 	if (type < 0)type = 0;
 	if (type >=8 )type = 7;
@@ -250,22 +253,26 @@ void Maptool::setMap()
 
 	for (int i = 0; i < _width * _height; ++i)
 	{
+
 		if (PtInRect(&_vTile[i]->rc, _ptMouse))
 		{
 			if (_ctrSelect == CTRL_TERRAINDRAW)
 			{
+			
 				_vTile[i]->terrainFrameX = _currentTile.x;
 				_vTile[i]->terrainFrameY = _currentTile.y;
-
+			
 				_vTile[i]->terrain = terrainSelect(_currentTile.x, _currentTile.y);
 			}
 			else if (_ctrSelect == CTRL_OBJDRAW)
 			{
+			
 				_vTile[i]->objFrameX = _currentTile.x;
 				_vTile[i]->objFrameY = _currentTile.y;
-
+			
 				_vTile[i]->obj = objSelect(_currentTile.x, _currentTile.y);
 			}
+
 			else if (_ctrSelect == CTRL_ERASER)
 			{
 				_vTile[i]->terrainFrameX = NULL;
@@ -273,6 +280,14 @@ void Maptool::setMap()
 				_vTile[i]->objFrameX = NULL;
 				_vTile[i]->objFrameY = NULL;
 				_vTile[i]->obj = OBJ_NONE;
+			}
+			else if (_ctrSelect == CTRL_END)
+			{
+				_vTile[i]->terrainFrameX = _vSampleTile[5]->terrainFrameX;
+				_vTile[i]->terrainFrameY = _vSampleTile[0]->terrainFrameY;
+				_vTile[i]->objFrameX = NULL;
+				_vTile[i]->objFrameY = NULL;
+				_vTile[i]->terrain = TR_BLOCK;
 			}
 
 			InvalidateRect(_hWnd, NULL, false);
@@ -285,6 +300,7 @@ void Maptool::setMap()
 		_tiles[i].terrain = _vTile[i]->terrain;
 		_tiles[i].obj = _vTile[i]->obj;
 	}
+
 }
 
 
@@ -314,7 +330,7 @@ TERRAIN Maptool::terrainSelect(int frameX, int frameY)
 {
 	for (int i = 0; i < 4; i++)
 	{
-		for (int j = 3; j < 12; j++)
+		for (int j = 3; j < 15; j++)
 		{
 			if (frameX==j && frameY==i)
 			{

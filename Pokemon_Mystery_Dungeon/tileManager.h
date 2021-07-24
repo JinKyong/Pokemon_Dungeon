@@ -6,8 +6,8 @@
 #define TILESIZE 48
 #define MINITILESIZE 6
 
-#define TILEX 80	//가로 타일 갯수
-#define TILEY 45	//세로 타일 갯수
+#define TILEX 151	//가로 타일 갯수
+#define TILEY 151	//세로 타일 갯수
 
 
 
@@ -39,14 +39,21 @@ private:
 
 	dImage* _Mapbase[8];
 	dImage*	_Obbase;
+	dImage* _minibase;
 
 	tagTile _tiles[TILEX*TILEY];
+	tagTile _mini[TILEX*TILEY];
 	DWORD _attribute[TILEX*TILEY];
+	
 
 	int _initX;
 	int _endX;
 	int _initY;
 	int _endY;
+
+
+	int _playerX;
+	int _playerY;
 
 	int _width;
 	int _height;
@@ -87,10 +94,14 @@ public:
 	void setWidth(int Width) { _width = Width; }
 	void setHeight(int Height) { _height = Height; }
 	void setType(int type) { _type = type; }
+	void setPlayerX(int playerX) { _playerX = playerX; }
+	void setPlayerY(int playerY) { _playerY = playerY; }
 
 	int getWidth() { return _width; }
 	int getHeight() { return _height; }
 	int getType() { return _type; }
+	int getPlayerX() { return _playerX;}
+	int getPlayerY() { return _playerY; }
 	char getChar(int x, int y) { return _vChar[x + y * _width]; }
 
 	vector<tagTile*>* getvTile() { return &_vTile; }

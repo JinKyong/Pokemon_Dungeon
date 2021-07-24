@@ -543,6 +543,15 @@
     <ClInclude Include="Umbreon.h">
       <Filter>playGround\Pokémon\No.20 ~ 29</Filter>
     </ClInclude>
+    <ClInclude Include="crossroadScene.h">
+      <Filter>playGround\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="guildMapScene.h">
+      <Filter>playGround\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="townMapScene.h">
+      <Filter>playGround\Stage</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -901,6 +910,15 @@
     </ClCompile>
     <ClCompile Include="Umbreon.cpp">
       <Filter>playGround\Pokémon\No.20 ~ 29</Filter>
+    </ClCompile>
+    <ClCompile Include="crossroadScene.cpp">
+      <Filter>playGround\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="guildMapScene.cpp">
+      <Filter>playGround\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="townMapScene.cpp">
+      <Filter>playGround\Stage</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
