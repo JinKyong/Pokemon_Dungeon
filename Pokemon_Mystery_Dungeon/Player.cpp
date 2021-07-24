@@ -12,6 +12,7 @@ HRESULT Player::init(int pokemonNum)
 	_EXP = 0;
 
 	_realStat = BATTLEMANAGER->statCalculation(this);
+	_currentHP = _realStat.hp;
 
 	return S_OK;
 }
@@ -123,5 +124,5 @@ void Player::useSkill(int num)
 
 void Player::hitDamage(int num)
 {
-	_realStat.hp -= num;
+	_currentHP -= num;
 }

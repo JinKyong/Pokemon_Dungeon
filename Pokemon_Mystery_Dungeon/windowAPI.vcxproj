@@ -157,6 +157,8 @@
     <ClInclude Include="Charmander.h" />
     <ClInclude Include="Charmeleon.h" />
     <ClInclude Include="collisionManager.h" />
+    <ClInclude Include="Crobat.h" />
+    <ClInclude Include="Darkrai.h" />
     <ClInclude Include="dialogManager.h" />
     <ClInclude Include="dImage.h" />
     <ClInclude Include="DownMenu.h" />
@@ -167,6 +169,7 @@
     <ClInclude Include="dungeonScene.h" />
     <ClInclude Include="dungeonSelectScene.h" />
     <ClInclude Include="DynamicPunch.h" />
+    <ClInclude Include="Eevee.h" />
     <ClInclude Include="Effect.h" />
     <ClInclude Include="EffectManager.h" />
     <ClInclude Include="EF_DynamicPunch.h" />
@@ -184,11 +187,14 @@
     <ClInclude Include="EF_StunSpore.h" />
     <ClInclude Include="EF_ThunderFang.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Espeon.h" />
     <ClInclude Include="FireBlast.h" />
     <ClInclude Include="Apple.h" />
     <ClInclude Include="FireFang.h" />
+    <ClInclude Include="Flareon.h" />
     <ClInclude Include="GarbageTM.h" />
     <ClInclude Include="Glass.h" />
+    <ClInclude Include="Golbat.h" />
     <ClInclude Include="Gummy.h" />
     <ClInclude Include="Gust.h" />
     <ClInclude Include="IceFang.h" />
@@ -199,6 +205,7 @@
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemManager.h" />
     <ClInclude Include="Ivysaur.h" />
+    <ClInclude Include="Jolteon.h" />
     <ClInclude Include="keyManager.h" />
     <ClInclude Include="KeyMenu.h" />
     <ClInclude Include="KeyNDirect.h" />
@@ -260,12 +267,15 @@
     <ClInclude Include="turnManager.h" />
     <ClInclude Include="txtData.h" />
     <ClInclude Include="uiManager.h" />
+    <ClInclude Include="Umbreon.h" />
     <ClInclude Include="UpMenu.h" />
     <ClInclude Include="User.h" />
     <ClInclude Include="utils.h" />
+    <ClInclude Include="Vaporeon.h" />
     <ClInclude Include="Venusaur.h" />
     <ClInclude Include="video.h" />
     <ClInclude Include="Wartortle.h" />
+    <ClInclude Include="Zubat.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Atile.cpp" />
@@ -278,6 +288,8 @@
     <ClCompile Include="Charmander.cpp" />
     <ClCompile Include="Charmeleon.cpp" />
     <ClCompile Include="collisionManager.cpp" />
+    <ClCompile Include="Crobat.cpp" />
+    <ClCompile Include="Darkrai.cpp" />
     <ClCompile Include="dialogManager.cpp" />
     <ClCompile Include="dImage.cpp" />
     <ClCompile Include="DownMenu.cpp" />
@@ -288,6 +300,7 @@
     <ClCompile Include="dungeonScene.cpp" />
     <ClCompile Include="dungeonSelectScene.cpp" />
     <ClCompile Include="DynamicPunch.cpp" />
+    <ClCompile Include="Eevee.cpp" />
     <ClCompile Include="Effect.cpp" />
     <ClCompile Include="EffectManager.cpp" />
     <ClCompile Include="EF_DynamicPunch.cpp" />
@@ -305,12 +318,15 @@
     <ClCompile Include="EF_StunSpore.cpp" />
     <ClCompile Include="EF_ThunderFang.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Espeon.cpp" />
     <ClCompile Include="FireBlast.cpp" />
     <ClCompile Include="Apple.cpp" />
     <ClCompile Include="FireFang.cpp" />
+    <ClCompile Include="Flareon.cpp" />
     <ClCompile Include="gameNode.cpp" />
     <ClCompile Include="GarbageTM.cpp" />
     <ClCompile Include="Glass.cpp" />
+    <ClCompile Include="Golbat.cpp" />
     <ClCompile Include="Gummy.cpp" />
     <ClCompile Include="Gust.cpp" />
     <ClCompile Include="IceFang.cpp" />
@@ -321,6 +337,7 @@
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemManager.cpp" />
     <ClCompile Include="Ivysaur.cpp" />
+    <ClCompile Include="Jolteon.cpp" />
     <ClCompile Include="keyManager.cpp" />
     <ClCompile Include="KeyMenu.cpp" />
     <ClCompile Include="LeafBlade.cpp" />
@@ -375,13 +392,16 @@
     <ClCompile Include="turnManager.cpp" />
     <ClCompile Include="txtData.cpp" />
     <ClCompile Include="uiManager.cpp" />
+    <ClCompile Include="Umbreon.cpp" />
     <ClCompile Include="UpMenu.cpp" />
     <ClCompile Include="User.cpp" />
     <ClCompile Include="utils.cpp" />
+    <ClCompile Include="Vaporeon.cpp" />
     <ClCompile Include="Venusaur.cpp" />
     <ClCompile Include="video.cpp" />
     <ClCompile Include="Wartortle.cpp" />
     <ClCompile Include="winMain.cpp" />
+    <ClCompile Include="Zubat.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="windowAPI.rc" />

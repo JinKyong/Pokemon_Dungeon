@@ -33,63 +33,47 @@ void StatusMenu::render()
 	float width = _screen.right - _screen.left;
 	float height = _screen.bottom - _screen.top;
 
-	vector<Player*>* _teamList = TURNMANAGER->getAllPlayer();
+	vector<Player*>* teamList = TURNMANAGER->getAllPlayer();
+	vector<Player*>::iterator teamIter;
 	int i = 0;
 
-	D2D1_RECT_F rc = dRectMake(_screen.left + 5, _screen.top + 5, width / 2 - 10, height / 2 - 10);
-	D2D1_RECT_F port = dRectMake(rc.left + 12, rc.top + 15, 60, 65);
+	//뿌릴 위치 생성
+	D2D1_RECT_F box[4];
+	D2D1_RECT_F port[4];
 
-	if (i >= _teamList->size())
-		DTDMANAGER->getRenderTarget()->DrawBitmap(_nullStatusBox->getBitmap(), rc);
-	else if ((*_teamList)[i]->getPlayerType() <= PLAYER_TYPE_TEAM) {
-		DTDMANAGER->getRenderTarget()->DrawBitmap(_baseStatusBox->getBitmap(), rc);
-		DTDMANAGER->getRenderTarget()->DrawBitmap((*_teamList)[i]->getPokemon()->getPortrait()->getBitmap(), port);
+	box[0] = dRectMake(_screen.left + 5, _screen.top + 5, width / 2 - 10, height / 2 - 10);
+	box[1] = dRectMake(_screen.left + 5 + width / 2, _screen.top + 5, width / 2 - 10, height / 2 - 10);
+	box[2] = dRectMake(_screen.left + 5, _screen.top + 5 + height / 2, width / 2 - 10, height / 2 - 10);
+	box[3] = dRectMake(_screen.left + 5 + width / 2, _screen.top + 5 + height / 2, width / 2 - 10, height / 2 - 10);
+
+	port[0] = dRectMake(box[0].left + 12, box[0].top + 15, 60, 65);
+	port[1] = dRectMake(box[1].left + 12, box[1].top + 15, 60, 65);
+	port[2] = dRectMake(box[2].left + 12, box[2].top + 15, 60, 65);
+	port[3] = dRectMake(box[3].left + 12, box[3].top + 15, 60, 65);
+
+	teamIter = teamList->begin();
+	for (; teamIter != teamList->end(); ++teamIter, ++i) {
+		//팀 동료가 아니면(== 에너미) break;
+		if ((*teamIter)->getPlayerType() > PLAYER_TYPE_TEAM) break;
+
+		DTDMANAGER->getRenderTarget()->DrawBitmap(_baseStatusBox->getBitmap(), box[i]);
+		DTDMANAGER->getRenderTarget()->DrawBitmap((*teamIter)->getPokemon()->getPortrait()->getBitmap(), port[i]);
+
+		//레벨, 체력 출력
+		WCHAR tmp[128];
+		swprintf_s(tmp, L"%d", (*teamIter)->getLevel());
+		DTDMANAGER->printTextF(tmp, box[i].left + 90, box[i].bottom, 100, 70);
+		swprintf_s(tmp, L"%d", (*teamIter)->getCurrentHP());
+		DTDMANAGER->printTextF(tmp, box[i].left + 130, box[i].bottom, 100, 70);
+		swprintf_s(tmp, L"%d", (*teamIter)->getRealStat().hp);
+		DTDMANAGER->printTextF(tmp, box[i].left + 180, box[i].bottom, 100, 70);
 	}
-	else
-		DTDMANAGER->getRenderTarget()->DrawBitmap(_nullStatusBox->getBitmap(), rc);
-	i++;
 
-	rc.left += width / 2;
-	rc.right += width / 2;
-	port = dRectMake(rc.left + 12, rc.top + 15, 60, 65);
-	if (i >= _teamList->size())
-		DTDMANAGER->getRenderTarget()->DrawBitmap(_nullStatusBox->getBitmap(), rc);
-	else if ((*_teamList)[i]->getPlayerType() <= PLAYER_TYPE_TEAM) {
-		DTDMANAGER->getRenderTarget()->DrawBitmap(_baseStatusBox->getBitmap(), rc);
-		DTDMANAGER->getRenderTarget()->DrawBitmap((*_teamList)[i]->getPokemon()->getPortrait()->getBitmap(), port);
-	}
-	else
-		DTDMANAGER->getRenderTarget()->DrawBitmap(_nullStatusBox->getBitmap(), rc);
-	i++;
+	//남은 스테이터스박스 널 박스로 채우기
+	for (; i < 4; ++i)
+		DTDMANAGER->getRenderTarget()->DrawBitmap(_nullStatusBox->getBitmap(), box[i]);
 
-	rc.left -= width / 2;
-	rc.right -= width / 2;
-	rc.top += height / 2;
-	rc.bottom += height / 2;
-	port = dRectMake(rc.left + 12, rc.top + 15, 60, 65);
-	if (i >= _teamList->size())
-		DTDMANAGER->getRenderTarget()->DrawBitmap(_nullStatusBox->getBitmap(), rc);
-	else if ((*_teamList)[i]->getPlayerType() <= PLAYER_TYPE_TEAM) {
-		DTDMANAGER->getRenderTarget()->DrawBitmap(_baseStatusBox->getBitmap(), rc);
-		DTDMANAGER->getRenderTarget()->DrawBitmap((*_teamList)[i]->getPokemon()->getPortrait()->getBitmap(), port);
-	}
-	else
-		DTDMANAGER->getRenderTarget()->DrawBitmap(_nullStatusBox->getBitmap(), rc);
-	i++;
-
-	rc.left += width / 2;
-	rc.right += width / 2;
-	port = dRectMake(rc.left + 12, rc.top + 15, 60, 65);
-	if (i >= _teamList->size())
-		DTDMANAGER->getRenderTarget()->DrawBitmap(_nullStatusBox->getBitmap(), rc);
-	else if ((*_teamList)[i]->getPlayerType() <= PLAYER_TYPE_TEAM) {
-		DTDMANAGER->getRenderTarget()->DrawBitmap(_baseStatusBox->getBitmap(), rc);
-		DTDMANAGER->getRenderTarget()->DrawBitmap((*_teamList)[i]->getPokemon()->getPortrait()->getBitmap(), port);
-	}
-	else
-		DTDMANAGER->getRenderTarget()->DrawBitmap(_nullStatusBox->getBitmap(), rc);
-	i++;
-
-	rc = dRectMakeCenter((_screen.left + _screen.right) / 2, (_screen.top + _screen.bottom) / 2, 60, 60);
+	//가운데 넘버링
+	D2D1_RECT_F rc = dRectMakeCenter((_screen.left + _screen.right) / 2, (_screen.top + _screen.bottom) / 2, 60, 60);
 	DTDMANAGER->getRenderTarget()->DrawBitmap(_statusNumber->getBitmap(), rc);
 }
