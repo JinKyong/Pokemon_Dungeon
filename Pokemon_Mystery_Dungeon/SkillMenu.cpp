@@ -22,6 +22,8 @@ HRESULT SkillMenu::init()
 	
 	_skill = (*TURNMANAGER->getAllPlayer())[0]->getSkill();
 
+	_hidden = false;
+
 	return S_OK;
 }
 
@@ -40,7 +42,7 @@ void SkillMenu::update()
 
 		else
 		{
-			UIMANAGER->changeDownMenu("logMenu");
+			UIMANAGER->changeDownMenu("mainMenu");
 			UIMANAGER->setOpen(false);
 		}
 	}
@@ -51,24 +53,10 @@ void SkillMenu::update()
 		{
 			if (_index2 == SKILL_SELECTMENU_OPTION_USE)
 			{
-				_hidden = false;
-				
-				if (_index == SKILLMENU_OPTION_FIRST)
-				{
-					_skill[0]->useSkill();
-				}
-				else if(_index == SKILLMENU_OPTION_SECOND)
-				{
-					_skill[1]->useSkill();
-				}
-				else if(_index == SKILLMENU_OPTION_THIRD)
-				{
-					_skill[2]->useSkill();
-				}
-				else if(_index == SKILLMENU_OPTION_FOURTH)
-				{
-					_skill[3]->useSkill();
-				}
+				(*TURNMANAGER->getAllPlayer())[0]->useSkill(_index);
+
+				UIMANAGER->changeDownMenu("logMenu");
+				UIMANAGER->setOpen(false);
 			}
 
 			else if (_index2 == SKILL_SELECTMENU_OPTION_INFO) _hidden = false;
