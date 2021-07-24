@@ -30,6 +30,7 @@ HRESULT tileManager::init(int width, int height)
 	_Mapbase[6] = IMAGEMANAGER->addFrameDImage("terrain6", L"img/map/tiles/terrain_6.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
 	_Mapbase[7] = IMAGEMANAGER->addFrameDImage("terrain7", L"img/map/tiles/terrain_7.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
 	_Obbase = IMAGEMANAGER->addFrameDImage("object", L"img/map/tiles/object_all.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
+	_minibase = IMAGEMANAGER->addFrameDImage("minimap", L"img/map/tiles/minimap temp.png", 136, 8, 17, 1);
 
 	return S_OK;
 }
@@ -50,6 +51,7 @@ HRESULT tileManager::init(int width, int height, int type)
 	_Mapbase[6] = IMAGEMANAGER->addFrameDImage("terrain6", L"img/map/tiles/terrain_6.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
 	_Mapbase[7] = IMAGEMANAGER->addFrameDImage("terrain7", L"img/map/tiles/terrain_7.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
 	_Obbase = IMAGEMANAGER->addFrameDImage("object", L"img/map/tiles/object_all.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
+	_minibase = IMAGEMANAGER->addFrameDImage("minimap", L"img/map/tiles/minimap temp.png", 136, 8, 17, 1);
 
 	//던전 랜덤 생성
 	dungeon(_width, _height);
@@ -68,7 +70,6 @@ void tileManager::update()
 	//이미지 클리핑(렌더 범위/인덱스 설정)
 	//->카메라 스크린 기준으로
 	D2D1_RECT_F screen = CAMERAMANAGER->getScreen();
-
 	_initX = screen.left / TILEWIDTH - 1;
 	_endX = screen.right / TILEWIDTH + 1;
 	_initY = screen.top / TILEHEIGHT - 1;
@@ -153,6 +154,12 @@ void tileManager::setup()
 			Tile->x = j;
 			Tile->y = i;
 			_vTile.push_back(Tile);
+
+			SetRect(&_mini[i*_width+j].rc,
+				j * (TILESIZE / 6),
+				i * (TILESIZE / 6),
+				j * (TILESIZE / 6) + (TILESIZE / 6),
+				i * (TILESIZE / 6) + (TILESIZE / 6));
 		}
 	}
 
@@ -407,6 +414,15 @@ void tileManager::setup()
 				_vTile[i]->terrain = TR_BLOCK;
 				_vTile[i]->obj = OBJ_NONE;
 			}
+			else if ((*_viChar) == ClosedDoor)
+			{
+			_vTile[i]->terrainFrameX = RND->getInt(3);
+			_vTile[i]->terrainFrameY = RND->getInt(3);
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_GRASS;
+			_vTile[i]->obj = OBJ_NONE;
+			}
 			else
 			{
 				_vTile[i]->terrainFrameX = RND->getInt(3);
@@ -484,15 +500,37 @@ void tileManager::minimap()
 
 	for (int i = 0; i < _width * _height; ++i)
 	{
-		
-		_Mapbase[_type]->frameRender(
-			rc.left + (_vTile[i]->rc.left / (TILESIZE / 3)), rc.top+200 + (_vTile[i]->rc.top / (TILESIZE / 3)),
-			_vTile[i]->terrainFrameX, _vTile[i]->terrainFrameY, MINITILESIZE, MINITILESIZE);
+	
 
-		if (_vTile[i]->obj == OBJ_NONE) continue;
-		_Obbase->frameRender(
-			rc.left + (_vTile[i]->rc.left / (TILESIZE / 3)), rc.top+200 + (_vTile[i]->rc.top / (TILESIZE / 3)),
-			_vTile[i]->objFrameX, _vTile[i]->objFrameY, MINITILESIZE, MINITILESIZE);
+		_mini[i].terrainFrameX= _vTile[i]->terrainFrameX;
+		_mini[i].terrainFrameY = _vTile[i]->terrainFrameY;
+		_mini[i].objFrameX= _vTile[i]->objFrameX;
+		_mini[i].objFrameY = _vTile[i]->objFrameY;
+		_mini[i].terrain= _vTile[i]->terrain;
+		_mini[i].obj= _vTile[i]->obj;
+
+		
+		if ((_mini[i].terrainFrameX == 0 && _mini[i].terrainFrameY == 0) ||
+			(_mini[i].terrainFrameX == 1 && _mini[i].terrainFrameY == 0) ||
+			(_mini[i].terrainFrameX == 2 && _mini[i].terrainFrameY == 0) ||
+			(_mini[i].terrainFrameX == 0 && _mini[i].terrainFrameY == 1) ||
+			(_mini[i].terrainFrameX == 1 && _mini[i].terrainFrameY == 1) ||
+			(_mini[i].terrainFrameX == 2 && _mini[i].terrainFrameY == 1) ||
+			(_mini[i].terrainFrameX == 0 && _mini[i].terrainFrameY == 2) ||
+			(_mini[i].terrainFrameX == 1 && _mini[i].terrainFrameY == 2) ||
+			(_mini[i].terrainFrameX == 2 && _mini[i].terrainFrameY == 2))_mini[i].terrainFrameX = 16;
+		if (_mini[i].terrainFrameY >= 0)_mini[i].terrainFrameY = 0;
+		if (_mini[i].terrainFrameX == 10)_mini[i].terrainFrameX = 16;
+		if (_mini[i].rc.left == (_playerX * 8) && _mini[i].rc.top == (_playerY * 8))_mini[i].terrainFrameX = 0;
+	//	if (_mini[i].terrainFrameX > 16)_mini[i].terrainFrameX = 15;
+		
+		
+		
+		_minibase->frameRender(
+			rc.left + (_mini[i].rc.left/2), rc.top+200 + (_mini[i].rc.top/2),
+			_mini[i].terrainFrameX, _mini[i].terrainFrameY);
+
+	
 	}
 }
 

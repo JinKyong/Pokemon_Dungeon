@@ -10,7 +10,12 @@ HRESULT dungeonSelectScene::init(Player * player)
 
 	_x = 0;
 	_y = 0;
-		
+	
+	TURNMANAGER->init();
+	player->init(4, 5);
+
+
+	TURNMANAGER->addAllPlayer(player);
 	_selector = RectMake(_x,_y, 12, 12);
 	_d0 = RectMake(72, 72, 24, 24);
 	_d1 = RectMake(72, 200, 24, 24);
@@ -41,41 +46,49 @@ void dungeonSelectScene::update()
 	if (_y >= TILEHEIGHT * _height)_y = TILEHEIGHT * _height;
 	if (IntersectRect(&tmp,&_d0,&_selector))
 	{
+		TURNMANAGER->release();
 		TILEMANAGER->setType(6);
 		SCENEMANAGER->changeScene("dungeon");
 	}
 	if (IntersectRect(&tmp, &_d1, &_selector))
 	{
+		TURNMANAGER->release();
 		TILEMANAGER->setType(7);
 		SCENEMANAGER->changeScene("dungeon");
 	}
 	if (IntersectRect(&tmp, &_d2, &_selector))
 	{
+		TURNMANAGER->release();
 		TILEMANAGER->setType(2);
 		SCENEMANAGER->changeScene("dungeon");
 	}
 	if (IntersectRect(&tmp, &_d3, &_selector))
 	{
+		TURNMANAGER->release();
 		TILEMANAGER->setType(1);
 		SCENEMANAGER->changeScene("dungeon");
 	}
 	if (IntersectRect(&tmp, &_d4, &_selector))
 	{
+		TURNMANAGER->release();
 		TILEMANAGER->setType(4);
 		SCENEMANAGER->changeScene("dungeon");
 	}
 	if (IntersectRect(&tmp, &_d5, &_selector))
 	{
+		TURNMANAGER->release();
 		TILEMANAGER->setType(0);
 		SCENEMANAGER->changeScene("dungeon");
 	}
 	if (IntersectRect(&tmp, &_d6, &_selector))
 	{
+		TURNMANAGER->release();
 		TILEMANAGER->setType(5);
 		SCENEMANAGER->changeScene("dungeon");
 	}
 	if (IntersectRect(&tmp, &_d7, &_selector))
 	{
+		TURNMANAGER->release();
 		TILEMANAGER->setType(3);
 		SCENEMANAGER->changeScene("dungeon");
 	}

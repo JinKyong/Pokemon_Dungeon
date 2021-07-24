@@ -158,6 +158,7 @@
     <ClInclude Include="Charmeleon.h" />
     <ClInclude Include="collisionManager.h" />
     <ClInclude Include="Crobat.h" />
+    <ClInclude Include="crossroadScene.h" />
     <ClInclude Include="Darkrai.h" />
     <ClInclude Include="dialogManager.h" />
     <ClInclude Include="Diglett.h" />
@@ -197,6 +198,7 @@
     <ClInclude Include="GarbageTM.h" />
     <ClInclude Include="Glass.h" />
     <ClInclude Include="Golbat.h" />
+    <ClInclude Include="guildMapScene.h" />
     <ClInclude Include="Gummy.h" />
     <ClInclude Include="Gust.h" />
     <ClInclude Include="IceFang.h" />
@@ -268,6 +270,7 @@
     <ClInclude Include="timeManager.h" />
     <ClInclude Include="timer.h" />
     <ClInclude Include="TMachine.h" />
+    <ClInclude Include="townMapScene.h" />
     <ClInclude Include="turnManager.h" />
     <ClInclude Include="txtData.h" />
     <ClInclude Include="uiManager.h" />
@@ -293,6 +296,7 @@
     <ClCompile Include="Charmeleon.cpp" />
     <ClCompile Include="collisionManager.cpp" />
     <ClCompile Include="Crobat.cpp" />
+    <ClCompile Include="crossroadScene.cpp" />
     <ClCompile Include="Darkrai.cpp" />
     <ClCompile Include="dialogManager.cpp" />
     <ClCompile Include="Diglett.cpp" />
@@ -333,6 +337,7 @@
     <ClCompile Include="GarbageTM.cpp" />
     <ClCompile Include="Glass.cpp" />
     <ClCompile Include="Golbat.cpp" />
+    <ClCompile Include="guildMapScene.cpp" />
     <ClCompile Include="Gummy.cpp" />
     <ClCompile Include="Gust.cpp" />
     <ClCompile Include="IceFang.cpp" />
@@ -397,6 +402,7 @@
     <ClCompile Include="timeManager.cpp" />
     <ClCompile Include="timer.cpp" />
     <ClCompile Include="TMachine.cpp" />
+    <ClCompile Include="townMapScene.cpp" />
     <ClCompile Include="turnManager.cpp" />
     <ClCompile Include="txtData.cpp" />
     <ClCompile Include="uiManager.cpp" />
