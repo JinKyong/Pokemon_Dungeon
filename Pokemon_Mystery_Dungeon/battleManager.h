@@ -11,9 +11,9 @@
 
 // 스킬 계산식
 // 공격실능 or 특공실능 * 기술위력 * 자속 * 특성 * 도구 * 날씨		
-// 특성, 도구, 날씨는 현재 1로고정
-#define SKILL_CALCULATION(atkType, skillPower, stab)\
-	atkType * skillPower * stab * 1 * 1 * 1;
+// 특성, 날씨는 현재 1로고정
+#define SKILL_CALCULATION(atkType, skillPower, stab, equip)\
+	atkType * skillPower * stab * equip * 1 * 1;
 
 // 내구력 계산식
 // HP실능 * 방어실능 or 특방실능 / 0.411
@@ -25,14 +25,11 @@
 
 class Player;
 class Effect;
+class Item;
 
 class battleManager : public singletonBase<battleManager>
 {
 private:
-	vector<Player*> *_allPlayer;
-
-	Player* _player;
-	Player* _enemy;
 
 public:
 	battleManager() {};
@@ -47,7 +44,11 @@ public:
 	//실능력치 계산
 	STAT statCalculation(Player* player);
 
+	//결정력 계산
+	float skillCalculation(Player* player, Skill* skill);
 	//내구력 계산
 	float defenceCalculation(Player* player, Effect* effect);
+	//최종데미지 계산
+	float damageCalculation(Player* player, Effect* effect);
 };
 

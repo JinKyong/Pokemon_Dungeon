@@ -34,8 +34,9 @@ HRESULT playGround::init()
 	SCENEMANAGER->addScene("select", new dungeonSelectScene);
 	SCENEMANAGER->addScene("dungeon", new dungeonScene);
 
-	SCENEMANAGER->changeScene("select");
+	SCENEMANAGER->changeScene("map");
 	BATTLEMANAGER->init();
+
 	_debug = false;
 
 	return S_OK;

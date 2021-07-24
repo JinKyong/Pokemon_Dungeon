@@ -12,8 +12,6 @@ void Skill::useSkill()		//플레이어 포인트를 받아와서		+	최종결정력 담을 변수			/
 	if (_currentPP <= 0) return;
 
 	int direct = _player->getPokemon()->getDirect();
-	int atkType;
-	float steb = 1.f;
 
 	_currentPP--;
 
@@ -30,17 +28,7 @@ void Skill::useSkill()		//플레이어 포인트를 받아와서		+	최종결정력 담을 변수			/
 	else if ((direct & UP) == UP)
 		_y--;
 
-	if (_atkType == PHYSICAL_ATTACK)	atkType = _player->getRealStat().attack;
-	else								atkType = _player->getRealStat().sattack;
-
-	if (_player->getPokemon()->getPokemonType1() == _type || _player->getPokemon()->getPokemonType2() == _type) steb = 1.5f;
-	else																										steb = 1.f;
-
-	//결정력계산
-	_finalDamage = atkType * _damage * steb;
-
-	if (_player->getPlayerType() == PLAYER_TYPE_ENEMY)	_finalDamage = _finalDamage * -1;		//적 데미지		(음수)
-	else											    _finalDamage = _finalDamage;			//아군 데미지	(양수)
+	_finalDamage = BATTLEMANAGER->skillCalculation(_player, this);
 }
 
 /*

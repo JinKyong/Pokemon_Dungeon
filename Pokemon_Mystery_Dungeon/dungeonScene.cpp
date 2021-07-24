@@ -22,7 +22,6 @@ HRESULT dungeonScene::init(Player * player)
 	_pokemon1->init(RND->getInt(15) + 1);
 	TURNMANAGER->addAllPlayer(_pokemon1);
 
-	TURNMANAGER->randomSetting();
 
 	_pokemon2 = new Enemy;
 	_pokemon2->init(RND->getInt(15) + 1);
@@ -31,6 +30,8 @@ HRESULT dungeonScene::init(Player * player)
 	_pokemon3 = new Enemy;
 	_pokemon3->init(RND->getInt(15) + 1);
 	TURNMANAGER->addAllPlayer(_pokemon3);
+
+	TURNMANAGER->randomSetting();
 
 	_itemManager = new ItemManager;
 	_itemManager->init();

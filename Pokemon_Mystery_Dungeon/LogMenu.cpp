@@ -39,8 +39,13 @@ void LogMenu::render()
 
 	D2D1_RECT_F screen = CAMERAMANAGER->getScreen();
 
-	logIter iter = _logList->begin();
+	logIter iter;
 	int count = 0;
+
+	if (_logList->size() > 6)
+		iter = _logList->end() - 6;
+	else
+		iter = _logList->begin();
 
 	for (; iter != _logList->end(); ++iter) {
 

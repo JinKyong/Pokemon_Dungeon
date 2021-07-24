@@ -1,17 +1,10 @@
 #include "stdafx.h"
 #include "battleManager.h"
+#include "Item.h"
 
 HRESULT battleManager::init()
 {
-	_allPlayer = TURNMANAGER->getAllPlayer();
 
-	vector<Player*>::iterator playerIter;
-
-	for (playerIter = _allPlayer->begin(); playerIter != _allPlayer->end(); ++playerIter)
-	{
-		if ((*playerIter)->getPlayerType() == PLAYER_TYPE_USER) _player = (*playerIter);
-		else if ((*playerIter)->getPlayerType() == PLAYER_TYPE_ENEMY) _enemy = (*playerIter);
-	}
 	return S_OK;
 }
 
@@ -45,6 +38,36 @@ STAT battleManager::statCalculation(Player * player)
 	return realStat;
 }
 
+float battleManager::skillCalculation(Player * player, Skill * skill)
+{
+	int atkType;
+	float stab;
+	float equip;
+
+	//포켓몬 실능(물공 || 특공)
+	if (skill->getAtkType() == PHYSICAL_ATTACK)	atkType = player->getRealStat().attack;
+	else										atkType = player->getRealStat().sattack;
+
+	//자속 여부 확인
+	POKEMON_TYPE* playerType = player->getPokemon()->getPokemonType();
+	POKEMON_TYPE  skillType = skill->getSkillType();
+	if (playerType[0] == skillType || playerType[1] == skillType)	stab = 1.5f;
+	else															stab = 1.f;
+
+	//도구 확인
+	//if(player->getItem())
+	//	equip = player->getItem()->
+	//일단은 1
+
+
+	//결정력계산
+	float finalDamage = SKILL_CALCULATION(atkType, skill->getDamage(), stab, 1, 1, 1);
+
+	//enemy가 쓴 스킬은 음수, team이 쓴 스킬은 양수
+	if (player->getPlayerType() == PLAYER_TYPE_ENEMY)	return -finalDamage;
+	else											    return finalDamage;
+}
+
 float battleManager::defenceCalculation(Player * player, Effect * effect)
 {
 	int defType;
@@ -53,6 +76,19 @@ float battleManager::defenceCalculation(Player * player, Effect * effect)
 	else										 defType = player->getRealStat().sdefense;
 
 	return DEFENCE_CALCULATION(player->getRealStat().hp, defType);
+}
+
+float battleManager::damageCalculation(Player * player, Effect * effect)
+{
+	// 총 데미지 계산식
+	// 스킬공격력 / 내구력 * 랜덤수(85 ~ 100)
+	int skillDamage;
+	int defense;
+
+	skillDamage = effect->getDamage();
+	defense = defenceCalculation(player, effect);
+
+	return (float)skillDamage / defense * RND->getFromIntTo(85, 101);
 }
 
 

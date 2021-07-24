@@ -22,10 +22,8 @@ HRESULT Player::init(float x, float y)
 	_starve = 100;
 
 	//ÁÂÇ¥
-	_x = x;
-	_y = y;
-	_destX = _x;
-	_destY = _y;
+	_initX = _destX = _x = x;
+	_initY = _destY = _y = y;
 	_body = RectMakeCenter(_x * TILEWIDTH + TILEWIDTH / 2, _y * TILEHEIGHT + TILEHEIGHT / 2,
 		TILEWIDTH, TILEHEIGHT);
 
