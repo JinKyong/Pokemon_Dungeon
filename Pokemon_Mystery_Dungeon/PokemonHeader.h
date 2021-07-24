@@ -36,6 +36,11 @@
 #include "Espeon.h"
 #include "Umbreon.h"
 
+#include "Diglett.h"
+#include "Dugtrio.h"
 
+#include "Lapras.h"
+
+#include "Mawile.h"
 
 //No. 30 ~ 39

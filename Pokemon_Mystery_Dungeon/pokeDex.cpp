@@ -58,4 +58,11 @@ void pokeDex::setPokeDex()
 	addPokemon(&pokeDex::flareon);
 	addPokemon(&pokeDex::espeon);
 	addPokemon(&pokeDex::umbreon);
+
+	addPokemon(&pokeDex::diglett);
+	addPokemon(&pokeDex::dugtrio);
+
+	addPokemon(&pokeDex::lapras);
+
+	addPokemon(&pokeDex::mawile);
 }
