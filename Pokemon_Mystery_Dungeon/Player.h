@@ -29,6 +29,8 @@ protected:
 	Pattern* _pattern[END_PLAYER_PATTERN];
 	PLAYER_PATTERN _currentPattern = END_PLAYER_PATTERN;
 
+	bool _death;
+
 	//플레이어 포켓몬
 	Pokemon* _pokemon;
 
@@ -61,9 +63,9 @@ protected:
 public:
 	virtual HRESULT init(int pokemonNum);
 	virtual HRESULT init(float x, float y);
-	virtual void release() = 0;
-	virtual void update() = 0;
-	virtual void render() = 0;
+	virtual void release();
+	virtual void update();
+	virtual void render();
 
 	virtual int input() = 0;
 
@@ -84,6 +86,9 @@ public:
 	PLAYER_TYPE getPlayerType() { return _playerType; }
 	POKEMON_STATE getPlayerState() { return _playerState; }
 	void setPlayerState(POKEMON_STATE playerState) { _playerState = playerState; }
+
+	bool getDeath() { return _death; }
+	void setDeath(bool death) { _death = death; }
 
 	Pokemon* getPokemon() { return _pokemon; }
 	void setPokemon(Pokemon* pokemon) { _pokemon = pokemon; }

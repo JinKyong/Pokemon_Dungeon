@@ -31,35 +31,6 @@ HRESULT Enemy::init(int pokemonNum)
 	return S_OK;
 }
 
-void Enemy::release()
-{
-}
-
-void Enemy::update()
-{
-	//패턴 정하기
-
-	_body = RectMakeCenter(_x * TILEWIDTH + TILEWIDTH / 2, _y * TILEHEIGHT + TILEHEIGHT / 2,
-		TILEWIDTH, TILEHEIGHT);
-}
-
-void Enemy::render()
-{
-	if (PRINTMANAGER->isDebug()) {
-		WCHAR str[128];
-		swprintf_s(str, L"x : %f", _x);
-		DTDMANAGER->printText(str, dRectMake(_body.left, _body.top - 60, 100, 20));
-		swprintf_s(str, L"y : %f", _y);
-		DTDMANAGER->printText(str, dRectMake(_body.left, _body.top - 40, 100, 20));
-		swprintf_s(str, L"name : %s", _pokemon->getName().c_str());
-		DTDMANAGER->printText(str, dRectMake(_body.left, _body.top - 20, 100, 20));
-
-		DTDMANAGER->Rectangle(_body);
-	}
-
-	_pokemon->render(_x, _y);
-}
-
 int Enemy::input()
 {
 	_pattern[_currentPattern]->update();

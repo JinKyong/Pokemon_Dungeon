@@ -14,6 +14,8 @@ HRESULT Player::init(int pokemonNum)
 	_realStat = BATTLEMANAGER->statCalculation(this);
 	_currentHP = _realStat.hp;
 
+	_death = false;
+
 	return S_OK;
 }
 
@@ -29,6 +31,58 @@ HRESULT Player::init(float x, float y)
 		TILEWIDTH, TILEHEIGHT);
 
 	return S_OK;
+}
+
+void Player::release()
+{
+}
+
+void Player::update()
+{
+	//방향 설정하고 포켓몬 상태 업데이트
+	setDirect();
+
+	//죽으면...
+	if (_death) {
+	}
+
+	//상태에 따라 함수 호출
+	switch (_playerState) {
+	case POKEMON_STATE_MOVE:
+		_pokemon->changeState(_playerState);
+		move();
+		break;
+	case POKEMON_STATE_ATTACK:
+		_pokemon->changeState(_playerState);
+		attack();
+		break;
+	case POKEMON_STATE_SATTACK:
+		_pokemon->changeState(_playerState);
+		sattack();
+		break;
+	default:
+		break;
+	}
+
+	_body = RectMakeCenter(_x * TILEWIDTH + TILEWIDTH / 2, _y * TILEHEIGHT + TILEHEIGHT / 2,
+		TILEWIDTH, TILEHEIGHT);
+}
+
+void Player::render()
+{
+	if (PRINTMANAGER->isDebug()) {
+		WCHAR str[128];
+		swprintf_s(str, L"x : %f", _x);
+		DTDMANAGER->printText(str, dRectMake(_body.left, _body.top - 60, 100, 20));
+		swprintf_s(str, L"y : %f", _y);
+		DTDMANAGER->printText(str, dRectMake(_body.left, _body.top - 40, 100, 20));
+		swprintf_s(str, L"name : %s", _pokemon->getName().c_str());
+		DTDMANAGER->printText(str, dRectMake(_body.left, _body.top - 20, 100, 20));
+
+		DTDMANAGER->Rectangle(_body);
+	}
+
+	_pokemon->render(_x, _y);
 }
 
 void Player::changePattern(PLAYER_PATTERN pattern)
@@ -71,8 +125,6 @@ void Player::resetXY()
 
 void Player::move()
 {
-	_pokemon->changeState(_playerState);
-
 	if (_x != _destX)	_x += cosf(_pokemon->getAngle()) / 16;
 	if (_y != _destY)	_y += -sinf(_pokemon->getAngle()) / 16;
 
@@ -97,8 +149,6 @@ void Player::attack()
 		_playerState = POKEMON_STATE_DEFAULT;
 		return;
 	}
-
-	_pokemon->changeState(_playerState);
 }
 
 void Player::sattack()
@@ -113,8 +163,6 @@ void Player::sattack()
 		DIALOGMANAGER->useSkillLog(this, _selectedSkill);
 		_selectedSkill = nullptr;
 	}
-
-	_pokemon->changeState(_playerState);
 }
 
 void Player::useSkill(int num)

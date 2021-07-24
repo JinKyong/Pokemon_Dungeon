@@ -49,30 +49,21 @@ void turnManager::update()
 			for (; player != _inputPlayerList.end();) {
 				if ((*player)->getPlayerState() != _currentProgressTurn) break;
 
-				switch ((*player)->getPlayerState()) {
-				case POKEMON_STATE_MOVE:
-					(*player)->setDirect();
-					(*player)->move();
-					(*player)->update();
-					++player;
+				(*player)->update();
+
+				if (_currentProgressTurn == POKEMON_STATE_ATTACK ||
+					_currentProgressTurn == POKEMON_STATE_SATTACK)
 					break;
-				case POKEMON_STATE_ATTACK:
-					(*player)->setDirect();
-					(*player)->attack();
-					(*player)->update();
-					return;
-				case POKEMON_STATE_SATTACK:
-					(*player)->setDirect();
-					(*player)->sattack();
-					(*player)->update();
-					return;
-				case POKEMON_STATE_DEFAULT:
+
+				else if (_currentProgressTurn == POKEMON_STATE_DEFAULT) {
 					COLLISIONMANAGER->collisionEndTurnPlayer((*player));
 					//(*player)->getPokemon()->changeState(POKEMON_STATE_DEFAULT);
 					(*player)->resetXY();
 					player = _inputPlayerList.erase(player);
-					break;
 				}
+
+				else
+					++player;
 			}
 		}
 		else {

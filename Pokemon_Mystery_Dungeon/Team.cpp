@@ -27,33 +27,6 @@ HRESULT Team::init(int pokemonNum)
 	return S_OK;
 }
 
-void Team::release()
-{
-}
-
-void Team::update()
-{
-	_body = RectMakeCenter(_x * TILEWIDTH + TILEWIDTH / 2, _y * TILEHEIGHT + TILEHEIGHT / 2,
-		TILEWIDTH, TILEHEIGHT);
-}
-
-void Team::render()
-{	
-	if (PRINTMANAGER->isDebug()) {
-		WCHAR str[128];
-		swprintf_s(str, L"direct : %d", _pokemon->getDirect());
-		DTDMANAGER->printText(str, dRectMake(_body.left, _body.top - 60, 100, 20));
-		swprintf_s(str, L"name : %s", _pokemon->getName().c_str());
-		DTDMANAGER->printText(str, dRectMake(_body.left, _body.top - 40, 100, 20));
-		swprintf_s(str, L"state : %d", _pokemon->getState());
-		DTDMANAGER->printText(str, dRectMake(_body.left, _body.top - 20, 100, 20));
-
-		DTDMANAGER->Rectangle(_body);
-	}
-
-	_pokemon->render(_x, _y);
-}
-
 int Team::input()
 {
 	_direct = RND->getFromIntTo(RIGHT, DOWN + 1);

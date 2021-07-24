@@ -25,10 +25,7 @@ void LogMenu::release()
 
 void LogMenu::update()
 {
-	if (TIMEMANAGER->clock() >= 4) {
-		_hidden = true;
-		TIMEMANAGER->endTimer();
-	}
+	
 }
 
 void LogMenu::render()
@@ -36,6 +33,12 @@ void LogMenu::render()
 	if (_hidden) return;
 
 	DownMenu::render();
+	//Å¸ÀÌ¸Ó
+	if (TIMEMANAGER->clock() >= 4) {
+		_hidden = true;
+		TIMEMANAGER->endTimer();
+	}
+
 
 	D2D1_RECT_F screen = CAMERAMANAGER->getScreen();
 

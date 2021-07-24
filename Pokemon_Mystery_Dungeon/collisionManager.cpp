@@ -236,10 +236,23 @@ void collisionManager::effectWithEnemy(Effect * effect)
 	{
 		if (IntersectRect(&temp, &(*playerIter)->getBody(), &effect->getBody()))
 		{
-			(*playerIter)->getPokemon()->changeState(POKEMON_STATE_HURT);
-			(*playerIter)->hitDamage(BATTLEMANAGER->damageCalculation((*playerIter), effect));
-			TURNMANAGER->setPause(true);
-			fail = false;
+			//결정력이 양수(팀) -> 에너미
+			//결정력이 음수(적) -> 팀(유저 포함)
+			//두 경우에만 충돌로 처리
+			if ((effect->getDamage() > 0 && (*playerIter)->getPlayerType() == PLAYER_TYPE_ENEMY) ||
+				(effect->getDamage() < 0 && (*playerIter)->getPlayerType() <= PLAYER_TYPE_TEAM)) {
+
+				(*playerIter)->getPokemon()->changeState(POKEMON_STATE_HURT);
+				(*playerIter)->hitDamage(BATTLEMANAGER->damageCalculation((*playerIter), effect));
+
+				//HP가 0보다 낮아지면 -> 바로 지우면 ㅈ됨
+				if ((*playerIter)->getCurrentHP() <= 0)
+					(*playerIter)->setDeath(true);
+
+				TURNMANAGER->setPause(true);
+				fail = false;
+				break;
+			}
 		}
 	}
 
