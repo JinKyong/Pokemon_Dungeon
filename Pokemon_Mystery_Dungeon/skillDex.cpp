@@ -40,6 +40,18 @@ void skillDex::setSkillDex()
 	addSkill(&skillDex::sleepPowder);
 	addSkill(&skillDex::stunSpore);
 	addSkill(&skillDex::metalClaw);
+	addSkill(&skillDex::bind);
+	addSkill(&skillDex::crossChop);
+	addSkill(&skillDex::feintAttack);
+	addSkill(&skillDex::rockSmash);
+	addSkill(&skillDex::shadowClaw);
+	addSkill(&skillDex::triAttack);
+
+	addSkill(&skillDex::wakeUpSlap);
+	addSkill(&skillDex::wingAttack);
+	addSkill(&skillDex::vineWhip);
+	addSkill(&skillDex::waterfall);
+	addSkill(&skillDex::sheerCold);
 }
 
 Skill * skillDex::makeSkill(int num)
