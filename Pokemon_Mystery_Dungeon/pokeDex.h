@@ -74,4 +74,17 @@ public:
 
 
 	//No.30 ~ 39
+	Pokemon* lunatone() { return new Lunatone; }
+	Pokemon* solrock() { return new Solrock; }
+
+	Pokemon* regirock() { return new Regirock; }
+	Pokemon* regice() { return new Regice; }
+	Pokemon* registeel() { return new Registeel; }
+
+	Pokemon* makuhita() { return new Makuhita; }
+	Pokemon* hariyama() { return new Hariyama; }
+
+	Pokemon* celebi() { return new Celebi; }
+
+	Pokemon* giratina() { return new Giratina; }
 };

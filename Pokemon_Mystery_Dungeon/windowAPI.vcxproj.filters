@@ -570,6 +570,33 @@
     <ClInclude Include="EF_Default.h">
       <Filter>playGround\Skill\Effect</Filter>
     </ClInclude>
+    <ClInclude Include="Lunatone.h">
+      <Filter>playGround\Pokémon\No.30 ~ 39</Filter>
+    </ClInclude>
+    <ClInclude Include="Regice.h">
+      <Filter>playGround\Pokémon\No.30 ~ 39</Filter>
+    </ClInclude>
+    <ClInclude Include="Regirock.h">
+      <Filter>playGround\Pokémon\No.30 ~ 39</Filter>
+    </ClInclude>
+    <ClInclude Include="Registeel.h">
+      <Filter>playGround\Pokémon\No.30 ~ 39</Filter>
+    </ClInclude>
+    <ClInclude Include="Solrock.h">
+      <Filter>playGround\Pokémon\No.30 ~ 39</Filter>
+    </ClInclude>
+    <ClInclude Include="Celebi.h">
+      <Filter>playGround\Pokémon\No.30 ~ 39</Filter>
+    </ClInclude>
+    <ClInclude Include="Giratina.h">
+      <Filter>playGround\Pokémon\No.30 ~ 39</Filter>
+    </ClInclude>
+    <ClInclude Include="Hariyama.h">
+      <Filter>playGround\Pokémon\No.30 ~ 39</Filter>
+    </ClInclude>
+    <ClInclude Include="Makuhita.h">
+      <Filter>playGround\Pokémon\No.30 ~ 39</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -955,6 +982,33 @@
     </ClCompile>
     <ClCompile Include="EF_Default.cpp">
       <Filter>playGround\Skill\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Lunatone.cpp">
+      <Filter>playGround\Pokémon\No.30 ~ 39</Filter>
+    </ClCompile>
+    <ClCompile Include="Regice.cpp">
+      <Filter>playGround\Pokémon\No.30 ~ 39</Filter>
+    </ClCompile>
+    <ClCompile Include="Regirock.cpp">
+      <Filter>playGround\Pokémon\No.30 ~ 39</Filter>
+    </ClCompile>
+    <ClCompile Include="Registeel.cpp">
+      <Filter>playGround\Pokémon\No.30 ~ 39</Filter>
+    </ClCompile>
+    <ClCompile Include="Solrock.cpp">
+      <Filter>playGround\Pokémon\No.30 ~ 39</Filter>
+    </ClCompile>
+    <ClCompile Include="Celebi.cpp">
+      <Filter>playGround\Pokémon\No.30 ~ 39</Filter>
+    </ClCompile>
+    <ClCompile Include="Giratina.cpp">
+      <Filter>playGround\Pokémon\No.30 ~ 39</Filter>
+    </ClCompile>
+    <ClCompile Include="Hariyama.cpp">
+      <Filter>playGround\Pokémon\No.30 ~ 39</Filter>
+    </ClCompile>
+    <ClCompile Include="Makuhita.cpp">
+      <Filter>playGround\Pokémon\No.30 ~ 39</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

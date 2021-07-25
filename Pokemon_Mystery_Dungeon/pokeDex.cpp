@@ -65,4 +65,21 @@ void pokeDex::setPokeDex()
 	addPokemon(&pokeDex::lapras);
 
 	addPokemon(&pokeDex::mawile);
+
+
+
+
+	addPokemon(&pokeDex::lunatone);
+	addPokemon(&pokeDex::solrock);
+
+	addPokemon(&pokeDex::regirock);
+	addPokemon(&pokeDex::regice);
+	addPokemon(&pokeDex::registeel);
+
+	addPokemon(&pokeDex::makuhita);
+	addPokemon(&pokeDex::hariyama);
+
+	addPokemon(&pokeDex::celebi);
+
+	addPokemon(&pokeDex::giratina);
 }

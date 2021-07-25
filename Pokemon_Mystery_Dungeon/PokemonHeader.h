@@ -44,3 +44,16 @@
 #include "Mawile.h"
 
 //No. 30 ~ 39
+#include "Lunatone.h"
+#include "Solrock.h"
+
+#include "Regirock.h"
+#include "Regice.h"
+#include "Registeel.h"
+
+#include "Makuhita.h"
+#include "Hariyama.h"
+
+#include "Celebi.h"
+
+#include "Giratina.h"
