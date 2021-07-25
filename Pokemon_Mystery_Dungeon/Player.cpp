@@ -14,8 +14,6 @@ HRESULT Player::init(int pokemonNum)
 	_realStat = BATTLEMANAGER->statCalculation(this);
 	_currentHP = _realStat.hp;
 
-	_death = false;
-
 	return S_OK;
 }
 
@@ -42,10 +40,6 @@ void Player::update()
 	//방향 설정하고 포켓몬 상태 업데이트
 	setDirect();
 
-	//죽으면...
-	if (_death) {
-	}
-
 	//상태에 따라 함수 호출
 	switch (_playerState) {
 	case POKEMON_STATE_MOVE:
@@ -53,12 +47,12 @@ void Player::update()
 		move();
 		break;
 	case POKEMON_STATE_ATTACK:
-		_pokemon->changeState(_playerState);
 		attack();
+		_pokemon->changeState(_playerState);
 		break;
 	case POKEMON_STATE_SATTACK:
-		_pokemon->changeState(_playerState);
 		sattack();
+		_pokemon->changeState(_playerState);
 		break;
 	default:
 		break;
@@ -66,6 +60,8 @@ void Player::update()
 
 	_body = RectMakeCenter(_x * TILEWIDTH + TILEWIDTH / 2, _y * TILEHEIGHT + TILEHEIGHT / 2,
 		TILEWIDTH, TILEHEIGHT);
+
+	_pokemon->update();
 }
 
 void Player::render()
@@ -149,6 +145,7 @@ void Player::attack()
 		_playerState = POKEMON_STATE_DEFAULT;
 		return;
 	}
+
 }
 
 void Player::sattack()
@@ -163,6 +160,7 @@ void Player::sattack()
 		DIALOGMANAGER->useSkillLog(this, _selectedSkill);
 		_selectedSkill = nullptr;
 	}
+
 }
 
 void Player::useSkill(int num)

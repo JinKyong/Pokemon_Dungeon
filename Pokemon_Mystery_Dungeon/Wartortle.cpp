@@ -30,6 +30,8 @@ Wartortle::~Wartortle()
 
 HRESULT Wartortle::init()
 {
+	Pokemon::init();
+
 	//ÀÌ¹ÌÁö
 	_stateImage[POKEMON_STATE_IDLE] = IMAGEMANAGER->addFrameDImage("wartortle_idle_default",
 		L"img/pokemon/11. wartortle/idle_default.png", 48, 550, 1, 11);
@@ -58,7 +60,7 @@ HRESULT Wartortle::init()
 	_count[POKEMON_STATE_MOVE] = 0.8 / (_stateImage[POKEMON_STATE_MOVE]->getMaxFrameX() + 1);
 	_count[POKEMON_STATE_ATTACK] = 0.8 / (_stateImage[POKEMON_STATE_ATTACK]->getMaxFrameX() + 1);
 	_count[POKEMON_STATE_SATTACK] = 0.8 / (_stateImage[POKEMON_STATE_SATTACK]->getMaxFrameX() + 1);
-	_count[POKEMON_STATE_HURT] = 0.5;
+	_count[POKEMON_STATE_HURT] = 1.0;
 	_count[POKEMON_STATE_SLEEP] = 0.5;
 	_count[POKEMON_STATE_DEFAULT] = 0.5;
 
@@ -73,8 +75,4 @@ HRESULT Wartortle::init()
 
 
 	return S_OK;
-}
-
-void Wartortle::release()
-{
 }

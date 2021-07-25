@@ -8,6 +8,5 @@ public:
 	~Espeon();
 
 	HRESULT init();
-	void release();
 };
 

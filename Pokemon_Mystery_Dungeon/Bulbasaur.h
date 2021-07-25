@@ -8,6 +8,5 @@ public:
 	~Bulbasaur();
 
 	HRESULT init();
-	void release();
 };
 

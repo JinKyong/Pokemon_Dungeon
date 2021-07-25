@@ -9,6 +9,5 @@ public:
 	~Jolteon();
 
 	HRESULT init();
-	void release();
 };
 

@@ -8,6 +8,5 @@ public:
 	~Venusaur();
 
 	HRESULT init();
-	void release();
 };
 

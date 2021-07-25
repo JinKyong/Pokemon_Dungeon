@@ -30,6 +30,8 @@ Charizard::~Charizard()
 
 HRESULT Charizard::init()
 {
+	Pokemon::init();
+
 	//ÀÌ¹ÌÁö
 	_stateImage[POKEMON_STATE_IDLE] = IMAGEMANAGER->addFrameDImage("charizard_idle",
 		L"img/pokemon/3. charizard/idle.png", 198, 660, 3, 11);
@@ -59,7 +61,7 @@ HRESULT Charizard::init()
 	_count[POKEMON_STATE_MOVE] = 0.8 / (_stateImage[POKEMON_STATE_MOVE]->getMaxFrameX() + 1);
 	_count[POKEMON_STATE_ATTACK] = 0.8 / (_stateImage[POKEMON_STATE_ATTACK]->getMaxFrameX() + 1);
 	_count[POKEMON_STATE_SATTACK] = 0.8 / (_stateImage[POKEMON_STATE_SATTACK]->getMaxFrameX() + 1);
-	_count[POKEMON_STATE_HURT] = 0.5;
+	_count[POKEMON_STATE_HURT] = 1.0;
 	_count[POKEMON_STATE_SLEEP] = 0.5;
 	_count[POKEMON_STATE_DEFAULT] = 0.3;
 
@@ -74,8 +76,4 @@ HRESULT Charizard::init()
 
 
 	return S_OK;
-}
-
-void Charizard::release()
-{
 }

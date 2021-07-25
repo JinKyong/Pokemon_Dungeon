@@ -30,6 +30,8 @@ Pikachu::~Pikachu()
 
 HRESULT Pikachu::init()
 {
+	Pokemon::init();
+
 	//ÀÌ¹ÌÁö
 	_stateImage[POKEMON_STATE_IDLE] = IMAGEMANAGER->addFrameDImage("pikachu_idle",
 		L"img/pokemon/5. pikachu/idle.png", 60, 594, 1, 11);
@@ -59,7 +61,7 @@ HRESULT Pikachu::init()
 	_count[POKEMON_STATE_MOVE] = 0.8 / (_stateImage[POKEMON_STATE_MOVE]->getMaxFrameX() + 1);
 	_count[POKEMON_STATE_ATTACK] = 0.8 / (_stateImage[POKEMON_STATE_ATTACK]->getMaxFrameX() + 1);
 	_count[POKEMON_STATE_SATTACK] = 0.8 / (_stateImage[POKEMON_STATE_SATTACK]->getMaxFrameX() + 1);
-	_count[POKEMON_STATE_HURT] = 0.5;
+	_count[POKEMON_STATE_HURT] = 1.0;
 	_count[POKEMON_STATE_SLEEP] = 0.5;
 	_count[POKEMON_STATE_DEFAULT] = 0.8;
 
@@ -74,8 +76,4 @@ HRESULT Pikachu::init()
 
 
 	return S_OK;
-}
-
-void Pikachu::release()
-{
 }

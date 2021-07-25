@@ -30,6 +30,8 @@ Lapras::~Lapras()
 
 HRESULT Lapras::init()
 {
+	Pokemon::init();
+
 	//ÀÌ¹ÌÁö
 	_stateImage[POKEMON_STATE_IDLE] = IMAGEMANAGER->addFrameDImage("lapras_idle",
 		L"img/pokemon/28. lapras/idle.png", 98, 1078, 1, 11);
@@ -59,7 +61,7 @@ HRESULT Lapras::init()
 	_count[POKEMON_STATE_MOVE] = 0.8 / (_stateImage[POKEMON_STATE_MOVE]->getMaxFrameX() + 1);
 	_count[POKEMON_STATE_ATTACK] = 0.8 / (_stateImage[POKEMON_STATE_ATTACK]->getMaxFrameX() + 1);
 	_count[POKEMON_STATE_SATTACK] = 0.8 / (_stateImage[POKEMON_STATE_SATTACK]->getMaxFrameX() + 1);
-	_count[POKEMON_STATE_HURT] = 0.5;
+	_count[POKEMON_STATE_HURT] = 1.0;
 	_count[POKEMON_STATE_SLEEP] = 0.5;
 	_count[POKEMON_STATE_DEFAULT] = 0.5;
 
@@ -74,8 +76,4 @@ HRESULT Lapras::init()
 
 
 	return S_OK;
-}
-
-void Lapras::release()
-{
 }

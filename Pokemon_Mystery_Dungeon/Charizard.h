@@ -10,6 +10,5 @@ public:
 	~Charizard();
 
 	HRESULT init();
-	void release();
 };
 

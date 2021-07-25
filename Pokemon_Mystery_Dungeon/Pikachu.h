@@ -10,6 +10,5 @@ public:
 	~Pikachu();
 
 	HRESULT init();
-	void release();
 };
 

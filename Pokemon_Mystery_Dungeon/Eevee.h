@@ -8,6 +8,5 @@ public:
 	~Eevee();
 
 	HRESULT init();
-	void release();
 };
 

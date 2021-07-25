@@ -8,6 +8,5 @@ public:
 	~Dugtrio();
 
 	HRESULT init();
-	void release();
 };
 

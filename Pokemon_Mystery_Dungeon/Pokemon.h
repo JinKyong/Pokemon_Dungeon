@@ -13,6 +13,9 @@ protected:
 	POKEMON_STATE _state;
 	dImage* _portrait;
 
+	bool _death;
+	float _opacity;
+
 	//이미지 프레임 및 카운트
 	int _frameX;
 	int _frameY;	//(== direct)
@@ -65,8 +68,8 @@ protected:
 	//int _revolution = 16; (16에 진화한다는 뜻) -> 0이면 진화 안함
 
 public:
-	virtual HRESULT init() = 0;
-	virtual void release() = 0;
+	virtual HRESULT init();
+	void release();
 
 	void update();
 	void render(float x, float y);
@@ -88,6 +91,9 @@ public:
 	dImage* getImage() { return _currentImage; }
 	POKEMON_STATE getState() { return _state; }
 	dImage* getPortrait() { return _portrait; }
+
+	bool getDeath() { return _death; }
+	void setDeath(bool death) { _death = death; }
 
 	float getAngle() { return _angle; }
 	int getDirect() { return _frameY; }

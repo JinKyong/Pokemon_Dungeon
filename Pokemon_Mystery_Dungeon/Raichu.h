@@ -10,6 +10,5 @@ public:
 	~Raichu();
 
 	HRESULT init();
-	void release();
 };
 

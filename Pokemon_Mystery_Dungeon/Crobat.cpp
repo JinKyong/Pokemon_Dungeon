@@ -30,6 +30,8 @@ Crobat::~Crobat()
 
 HRESULT Crobat::init()
 {
+	Pokemon::init();
+
 	//ÀÌ¹ÌÁö
 	_stateImage[POKEMON_STATE_IDLE] = IMAGEMANAGER->addFrameDImage("crobat_idle",
 		L"img/pokemon/18. crobat/idle.png", 204, 748, 3, 11);
@@ -59,7 +61,7 @@ HRESULT Crobat::init()
 	_count[POKEMON_STATE_MOVE] = 0.8 / (_stateImage[POKEMON_STATE_MOVE]->getMaxFrameX() + 1);
 	_count[POKEMON_STATE_ATTACK] = 0.8 / (_stateImage[POKEMON_STATE_ATTACK]->getMaxFrameX() + 1);
 	_count[POKEMON_STATE_SATTACK] = 0.8 / (_stateImage[POKEMON_STATE_SATTACK]->getMaxFrameX() + 1);
-	_count[POKEMON_STATE_HURT] = 0.5;
+	_count[POKEMON_STATE_HURT] = 1.0;
 	_count[POKEMON_STATE_SLEEP] = 0.5;
 	_count[POKEMON_STATE_DEFAULT] = 0.5;
 
@@ -74,8 +76,4 @@ HRESULT Crobat::init()
 
 
 	return S_OK;
-}
-
-void Crobat::release()
-{
 }

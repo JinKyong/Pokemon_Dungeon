@@ -8,6 +8,5 @@ public:
 	~Ivysaur();
 
 	HRESULT init();
-	void release();
 };
 

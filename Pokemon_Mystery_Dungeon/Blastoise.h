@@ -8,6 +8,5 @@ public:
 	~Blastoise();
 
 	HRESULT init();
-	void release();
 };
 

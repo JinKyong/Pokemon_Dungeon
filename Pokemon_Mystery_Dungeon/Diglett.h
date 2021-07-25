@@ -8,6 +8,5 @@ public:
 	~Diglett();
 
 	HRESULT init();
-	void release();
 };
 

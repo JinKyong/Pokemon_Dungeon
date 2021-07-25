@@ -8,6 +8,5 @@ public:
 	~Dratini();
 
 	HRESULT init();
-	void release();
 };
 

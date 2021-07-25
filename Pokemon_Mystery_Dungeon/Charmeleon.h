@@ -10,6 +10,5 @@ public:
 	~Charmeleon();
 
 	HRESULT init();
-	void release();
 };
 

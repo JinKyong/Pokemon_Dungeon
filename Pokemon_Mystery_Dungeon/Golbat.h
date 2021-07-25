@@ -8,6 +8,5 @@ public:
 	~Golbat();
 
 	HRESULT init();
-	void release();
 };
 

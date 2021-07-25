@@ -8,6 +8,5 @@ public:
 	~Lapras();
 
 	HRESULT init();
-	void release();
 };
 

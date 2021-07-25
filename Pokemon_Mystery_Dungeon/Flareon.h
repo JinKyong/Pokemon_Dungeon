@@ -8,6 +8,5 @@ public:
 	~Flareon();
 
 	HRESULT init();
-	void release();
 };
 

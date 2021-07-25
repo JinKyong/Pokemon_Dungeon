@@ -8,6 +8,5 @@ public:
 	~Mawile();
 
 	HRESULT init();
-	void release();
 };
 

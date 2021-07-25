@@ -49,6 +49,13 @@ void turnManager::update()
 			for (; player != _inputPlayerList.end();) {
 				if ((*player)->getPlayerState() != _currentProgressTurn) break;
 
+				//죽으면 삭제
+				if ((*player)->getPokemon()->getDeath()) {
+					player = _inputPlayerList.erase(player);
+					//경험치 로그
+					break;
+				}
+
 				(*player)->update();
 
 				if (_currentProgressTurn == POKEMON_STATE_ATTACK ||
@@ -69,6 +76,17 @@ void turnManager::update()
 		else {
 			_order = 0;
 			_input = true;
+
+			//포켓몬이 죽은 상태면 삭제
+			player = _allPlayerList.begin();
+			for (; player != _allPlayerList.end();) {
+				if ((*player)->getPokemon()->getDeath()) {
+					player = _allPlayerList.erase(player);
+					//경험치 로그
+				}
+				else
+					++player;
+			}
 		}
 	}
 }

@@ -8,6 +8,5 @@ public:
 	~Dragonair();
 
 	HRESULT init();
-	void release();
 };
 

@@ -10,6 +10,5 @@ public:
 	~Pichu();
 
 	HRESULT init();
-	void release();
 };
 

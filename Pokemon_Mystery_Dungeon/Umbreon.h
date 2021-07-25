@@ -8,6 +8,5 @@ public:
 	~Umbreon();
 
 	HRESULT init();
-	void release();
 };
 

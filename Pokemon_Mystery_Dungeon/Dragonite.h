@@ -8,6 +8,5 @@ public:
 	~Dragonite();
 
 	HRESULT init();
-	void release();
 };
 

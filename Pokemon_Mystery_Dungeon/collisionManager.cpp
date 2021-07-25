@@ -247,7 +247,7 @@ void collisionManager::effectWithEnemy(Effect * effect)
 
 				//HP가 0보다 낮아지면 -> 바로 지우면 ㅈ됨
 				if ((*playerIter)->getCurrentHP() <= 0)
-					(*playerIter)->setDeath(true);
+					(*playerIter)->getPokemon()->setDeath(true);
 
 				TURNMANAGER->setPause(true);
 				fail = false;

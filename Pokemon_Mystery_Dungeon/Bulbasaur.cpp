@@ -32,6 +32,8 @@ Bulbasaur::~Bulbasaur()
 
 HRESULT Bulbasaur::init()
 {
+	Pokemon::init();
+
 	//ÀÌ¹ÌÁö
 	_stateImage[POKEMON_STATE_IDLE] = IMAGEMANAGER->addFrameDImage("bulbasaur_idle_attack",
 		L"img/pokemon/7. bulbasaur/idle_attack.png", 96, 484, 2, 11);
@@ -61,7 +63,7 @@ HRESULT Bulbasaur::init()
 	_count[POKEMON_STATE_MOVE] = 0.8 / (_stateImage[POKEMON_STATE_MOVE]->getMaxFrameX() + 1);
 	_count[POKEMON_STATE_ATTACK] = 0.8 / (_stateImage[POKEMON_STATE_ATTACK]->getMaxFrameX() + 1);
 	_count[POKEMON_STATE_SATTACK] = 0.8 / (_stateImage[POKEMON_STATE_SATTACK]->getMaxFrameX() + 1);
-	_count[POKEMON_STATE_HURT] = 0.5;
+	_count[POKEMON_STATE_HURT] = 1.0;
 	_count[POKEMON_STATE_SLEEP] = 0.5;
 	_count[POKEMON_STATE_DEFAULT] = 0.5;
 
@@ -76,8 +78,4 @@ HRESULT Bulbasaur::init()
 
 
 	return S_OK;
-}
-
-void Bulbasaur::release()
-{
 }

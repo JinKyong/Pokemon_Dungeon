@@ -8,6 +8,5 @@ public:
 	~Vaporeon();
 
 	HRESULT init();
-	void release();
 };
 

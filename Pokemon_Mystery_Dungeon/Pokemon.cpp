@@ -1,6 +1,14 @@
 #include "stdafx.h"
 #include "Pokemon.h"
 
+HRESULT Pokemon::init()
+{
+	_death = false;
+	_opacity = 1.0f;
+
+	return S_OK;
+}
+
 void Pokemon::release()
 {
 }
@@ -11,6 +19,9 @@ void Pokemon::update()
 
 void Pokemon::render(float x, float y)
 {
+	if (_death)
+		_opacity = 1 - _opacity;
+
 	if (_state == POKEMON_STATE_IDLE)			tuneIdle();
 	else if (_state == POKEMON_STATE_ATTACK)	tuneAttack();
 	else if (_state == POKEMON_STATE_HURT)		tuneHurt();
@@ -20,7 +31,7 @@ void Pokemon::render(float x, float y)
 	_currentImage->frameRender(
 		x *TILEWIDTH + TILEWIDTH / 2 + _tuningX - _currentImage->getFrameWidth() / 2,
 		y *TILEHEIGHT + TILEHEIGHT / 2 + _tuningY - _currentImage->getFrameHeight() / 2,
-		_frameX, _frameY);
+		_frameX, _frameY, _opacity);
 }
 
 void Pokemon::controlFrame()

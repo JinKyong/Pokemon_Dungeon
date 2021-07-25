@@ -8,6 +8,5 @@ public:
 	~Squirtle();
 
 	HRESULT init();
-	void release();
 };
 

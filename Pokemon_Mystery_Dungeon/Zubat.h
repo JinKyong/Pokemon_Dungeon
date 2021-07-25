@@ -8,6 +8,5 @@ public:
 	~Zubat();
 
 	HRESULT init();
-	void release();
 };
 

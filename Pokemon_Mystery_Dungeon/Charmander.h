@@ -10,6 +10,5 @@ public:
 	~Charmander();
 
 	HRESULT init();
-	void release();
 };
 

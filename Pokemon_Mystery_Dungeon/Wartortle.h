@@ -8,6 +8,5 @@ public:
 	~Wartortle();
 
 	HRESULT init();
-	void release();
 };
 

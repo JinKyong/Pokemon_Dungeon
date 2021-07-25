@@ -7,6 +7,5 @@ public:
 	~Darkrai();
 
 	HRESULT init();
-	void release();
 };
 

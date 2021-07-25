@@ -8,6 +8,5 @@ public:
 	~Crobat();
 
 	HRESULT init();
-	void release();
 };
 
