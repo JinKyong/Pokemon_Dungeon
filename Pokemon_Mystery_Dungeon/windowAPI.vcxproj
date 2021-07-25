@@ -265,6 +265,7 @@
     <ClInclude Include="SkillMenu.h" />
     <ClInclude Include="SleepPowder.h" />
     <ClInclude Include="Solrock.h" />
+    <ClInclude Include="soundManager.h" />
     <ClInclude Include="Squirtle.h" />
     <ClInclude Include="StatusMenu.h" />
     <ClInclude Include="stdafx.h" />
@@ -405,6 +406,7 @@
     <ClCompile Include="SkillMenu.cpp" />
     <ClCompile Include="SleepPowder.cpp" />
     <ClCompile Include="Solrock.cpp" />
+    <ClCompile Include="soundManager.cpp" />
     <ClCompile Include="Squirtle.cpp" />
     <ClCompile Include="StatusMenu.cpp" />
     <ClCompile Include="stdafx.cpp">

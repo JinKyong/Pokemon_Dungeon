@@ -36,6 +36,8 @@ HRESULT gameNode::init(bool managerInit)
 		POKEDEX->init();
 		SKILLDEX->init();
 		TILEMANAGER->init();
+		BATTLEMANAGER->init();
+		SOUNDMANAGER->init();
 	}
 
 	return S_OK;
@@ -84,6 +86,9 @@ void gameNode::release()
 
 		BATTLEMANAGER->release();
 		BATTLEMANAGER->releaseSingleton();
+
+		SOUNDMANAGER->release();
+		SOUNDMANAGER->releaseSingleton();
 
 		CoUninitialize();
 	}

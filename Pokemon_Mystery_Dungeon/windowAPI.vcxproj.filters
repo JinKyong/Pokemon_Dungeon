@@ -597,6 +597,9 @@
     <ClInclude Include="Makuhita.h">
       <Filter>playGround\Pokémon\No.30 ~ 39</Filter>
     </ClInclude>
+    <ClInclude Include="soundManager.h">
+      <Filter>2DGameFramework\Manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -1009,6 +1012,9 @@
     </ClCompile>
     <ClCompile Include="Makuhita.cpp">
       <Filter>playGround\Pokémon\No.30 ~ 39</Filter>
+    </ClCompile>
+    <ClCompile Include="soundManager.cpp">
+      <Filter>2DGameFramework\Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

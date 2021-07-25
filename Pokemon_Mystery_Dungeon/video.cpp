@@ -37,7 +37,6 @@ HRESULT video::setVideo(const char * fileName)
 
 	MCIWndClose(_hWndAVI);
 
-
 	return S_OK;
 }
 

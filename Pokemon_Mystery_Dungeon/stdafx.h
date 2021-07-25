@@ -43,6 +43,7 @@
 #include "turnManager.h"
 #include "dialogManager.h"
 #include "battleManager.h"
+#include "soundManager.h"
 
 
 using namespace std;
@@ -80,6 +81,7 @@ using namespace D2D1;
 #define TURNMANAGER turnManager::getSingleton()
 #define DIALOGMANAGER dialogManager::getSingleton()
 #define BATTLEMANAGER battleManager::getSingleton()
+#define SOUNDMANAGER soundManager::getSingleton()
 
 #define SAFE_DELETE(p) { if(p) { delete(p); (p) = nullptr; } }
 #define SAFE_DELETE_ARRAY(p) { if(p) { delete[](p); (p) = nullptr; } }
