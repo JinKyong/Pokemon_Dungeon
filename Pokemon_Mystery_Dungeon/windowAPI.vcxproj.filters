@@ -567,6 +567,9 @@
     <ClInclude Include="DefaultAttack.h">
       <Filter>playGround\Skill</Filter>
     </ClInclude>
+    <ClInclude Include="EF_Default.h">
+      <Filter>playGround\Skill\Effect</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -949,6 +952,9 @@
     </ClCompile>
     <ClCompile Include="DefaultAttack.cpp">
       <Filter>playGround\Skill</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_Default.cpp">
+      <Filter>playGround\Skill\Effect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

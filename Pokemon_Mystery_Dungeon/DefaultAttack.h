@@ -1,11 +1,11 @@
 #pragma once
 #include "Skill.h"
-#include "EF_DynamicPunch.h"
+#include "EF_Default.h"
 
 class DefaultAttack : public Skill
 {
 private:
-	EF_DynamicPunch* _dynamicPunchEffect;
+	Effect* _defaultEffect;
 
 public:
 	DefaultAttack() {};

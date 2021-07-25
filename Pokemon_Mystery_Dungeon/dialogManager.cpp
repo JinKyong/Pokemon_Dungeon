@@ -189,7 +189,7 @@ void dialogManager::failSkillLog()
 	resetTimer();
 
 	WCHAR log[128];
-	swprintf_s(log, L"기술은 실패했다.");
+	swprintf_s(log, L"공격은 실패했다.");
 	_battleLog.push_back(log);
 }
 

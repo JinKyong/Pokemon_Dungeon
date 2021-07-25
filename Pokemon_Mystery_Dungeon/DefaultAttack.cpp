@@ -25,7 +25,7 @@ void DefaultAttack::useSkill()
 {
 	Skill::useSkill();
 
-	_dynamicPunchEffect = new EF_DynamicPunch;
-	_dynamicPunchEffect->init(_x, _y, _finalDamage, _scale, _atkType, _type);
-	EFFECTMANAGER->addEffect(_dynamicPunchEffect);
+	_defaultEffect = new EF_Default;
+	_defaultEffect->init(_x, _y, _finalDamage, _scale, _atkType, _type);
+	EFFECTMANAGER->addEffect(_defaultEffect);
 }

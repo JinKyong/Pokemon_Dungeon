@@ -176,6 +176,7 @@
     <ClInclude Include="Eevee.h" />
     <ClInclude Include="Effect.h" />
     <ClInclude Include="EffectManager.h" />
+    <ClInclude Include="EF_Default.h" />
     <ClInclude Include="EF_DynamicPunch.h" />
     <ClInclude Include="EF_FireBlast.h" />
     <ClInclude Include="EF_FireFang.h" />
@@ -315,6 +316,7 @@
     <ClCompile Include="Eevee.cpp" />
     <ClCompile Include="Effect.cpp" />
     <ClCompile Include="EffectManager.cpp" />
+    <ClCompile Include="EF_Default.cpp" />
     <ClCompile Include="EF_DynamicPunch.cpp" />
     <ClCompile Include="EF_FireBlast.cpp" />
     <ClCompile Include="EF_FireFang.cpp" />
