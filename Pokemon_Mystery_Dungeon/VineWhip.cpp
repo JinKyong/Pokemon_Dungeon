@@ -25,6 +25,6 @@ void VineWhip::useSkill()
 	Skill::useSkill();
 
 	_vineWhipEffect = new EF_VineWhip;
-	_vineWhipEffect->init(_x, _y, _damage, _scale, _atkType);
+	_vineWhipEffect->init(_x, _y, _damage, _scale, _atkType, _type);
 	EFFECTMANAGER->addEffect(_vineWhipEffect);
 }

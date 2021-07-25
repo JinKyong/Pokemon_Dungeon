@@ -25,6 +25,6 @@ void ShadowClaw::useSkill()
 	Skill::useSkill();
 
 	_shadowClawEffect = new EF_ShadowClaw;
-	_shadowClawEffect->init(_x, _y, _damage, _scale, _atkType);
+	_shadowClawEffect->init(_x, _y, _damage, _scale, _atkType, _type);
 	EFFECTMANAGER->addEffect(_shadowClawEffect);
 }

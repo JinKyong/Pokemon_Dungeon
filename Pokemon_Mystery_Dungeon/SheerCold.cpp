@@ -25,6 +25,6 @@ void SheerCold::useSkill()
 	Skill::useSkill();
 
 	_sheerColdEffect = new EF_SheerCold;
-	_sheerColdEffect->init(_x, _y, _damage, _scale, _atkType);
+	_sheerColdEffect->init(_x, _y, _damage, _scale, _atkType, _type);
 	EFFECTMANAGER->addEffect(_sheerColdEffect);
 }

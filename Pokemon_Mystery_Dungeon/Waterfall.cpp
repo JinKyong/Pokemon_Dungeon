@@ -25,6 +25,6 @@ void Waterfall::useSkill()
 	Skill::useSkill();
 
 	_waterfallEffect = new EF_Waterfall;
-	_waterfallEffect->init(_x, _y, _damage, _scale, _atkType);
+	_waterfallEffect->init(_x, _y, _damage, _scale, _atkType, _type);
 	EFFECTMANAGER->addEffect(_waterfallEffect);
 }

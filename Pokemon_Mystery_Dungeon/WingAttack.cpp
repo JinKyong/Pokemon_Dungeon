@@ -25,6 +25,6 @@ void WingAttack::useSkill()
 	Skill::useSkill();
 
 	_wingAttackEffect = new EF_WingAttack;
-	_wingAttackEffect->init(_x, _y, _damage, _scale, _atkType);
+	_wingAttackEffect->init(_x, _y, _damage, _scale, _atkType, _type);
 	EFFECTMANAGER->addEffect(_wingAttackEffect);
 }

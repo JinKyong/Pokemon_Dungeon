@@ -25,6 +25,6 @@ void Bind::useSkill()
 	Skill::useSkill();
 
 	_bindEffect = new EF_Bind;
-	_bindEffect->init(_x, _y, _finalDamage, _scale, _atkType);
+	_bindEffect->init(_x, _y, _finalDamage, _scale, _atkType, _type);
 	EFFECTMANAGER->addEffect(_bindEffect);
 }

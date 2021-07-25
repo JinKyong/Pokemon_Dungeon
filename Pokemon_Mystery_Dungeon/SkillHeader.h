@@ -1,4 +1,6 @@
 #pragma once
+#include "DefaultAttack.h"
+
 #include "FireBlast.h"
 #include "Gust.h"
 #include "Lightning.h"

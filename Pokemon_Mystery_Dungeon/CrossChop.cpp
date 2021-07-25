@@ -25,6 +25,6 @@ void CrossChop::useSkill()
 	Skill::useSkill();
 
 	_crossChopEffect = new EF_CrossChop;
-	_crossChopEffect->init(_x, _y, _damage, _scale, _atkType);
+	_crossChopEffect->init(_x, _y, _damage, _scale, _atkType, _type);
 	EFFECTMANAGER->addEffect(_crossChopEffect);
 }
