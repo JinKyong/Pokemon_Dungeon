@@ -48,6 +48,15 @@ void battleManager::render()
 {
 }
 
+int battleManager::EXPCalculation(Player * player)
+{
+	STAT stat = player->getPokemon()->getPokemonValue();
+
+	int sum = stat.hp + stat.attack + stat.defense + stat.sattack + stat.sdefense + stat.speed;
+
+	return sum / (float)(100 - player->getLevel()) * 10;
+}
+
 STAT battleManager::statCalculation(Player * player)
 {
 	//종족값, 레벨

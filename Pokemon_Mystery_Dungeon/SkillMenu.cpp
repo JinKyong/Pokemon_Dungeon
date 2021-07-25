@@ -43,7 +43,6 @@ void SkillMenu::update()
 		else
 		{
 			UIMANAGER->changeDownMenu("mainMenu");
-			UIMANAGER->setOpen(false);
 		}
 	}
 

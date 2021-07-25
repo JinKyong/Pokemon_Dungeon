@@ -55,6 +55,7 @@ public:
 	//==================  로그 추가  ==================//
 	void addItemLog(Player* player, Item* item);
 	void addExpLog(Player* player, int exp);
+	void levelUPLog(Player* player, int level);
 
 	void useSkillLog(Player* player, Skill* skill);
 	void failSkillLog();

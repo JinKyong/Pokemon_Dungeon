@@ -185,3 +185,24 @@ void Player::hitDamage(int num)
 {
 	_currentHP -= num;
 }
+
+void Player::addEXP(int num)
+{
+	_EXP += num;
+
+	if (_EXP >= (_level) * (_level) * 100)
+		levelUP();
+}
+
+void Player::levelUP()
+{
+	_level++;
+	_realStat = BATTLEMANAGER->statCalculation(this);
+
+	//레벨업하면 잠시 메뉴를 띄워야함
+	//레벨업 로그
+	DIALOGMANAGER->levelUPLog(this, _level);
+	UIMANAGER->getCurrentDownMenu()->setHidden(true);
+	DIALOGMANAGER->loadMetaData(L"data/levelUP");
+
+}

@@ -80,6 +80,8 @@ public:
 
 
 	void hitDamage(int num);
+	void addEXP(int num);
+	void levelUP();
 
 	//=================== Á¢±ÙÀÚ ===================//
 	PLAYER_TYPE getPlayerType() { return _playerType; }

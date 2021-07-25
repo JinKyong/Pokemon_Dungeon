@@ -68,9 +68,8 @@ void dialogManager::render()
 	case 0:		//player
 		pokemon = (*TURNMANAGER->getAllPlayer())[0]->getPokemon();
 		break;
-	case -1:	//team
-		pokemon = POKEDEX->makePokemon(pokeNum);
-		pokemon->init();
+	case -5:	//NONE
+		pokemon = nullptr;
 		break;
 	default:
 		pokemon = POKEDEX->makePokemon(pokeNum);
@@ -92,13 +91,19 @@ void dialogManager::render()
 		_rightBorder->render(screen.left, screen.top + 25);
 		DTDMANAGER->resetTransform();
 	}
+	else {
+		//초상화 없음
+	}
 
 
 	//텍스트 불러오기
 	WCHAR tmp[128];
 	swprintf_s(tmp, L"%d", _scriptNum);
 	WCHAR text[128];
-	swprintf_s(text, L"%s: ", pokemon->getName().c_str());
+	if (pokemon)
+		swprintf_s(text, L"%s: ", pokemon->getName().c_str());
+	else
+		swprintf_s(text, L"");
 	lstrcatW(text, TXTDATA->loadDataString(_currentFileName,
 		&_storyMetaData[_metaDataNum][0], tmp, _size));
 
@@ -171,6 +176,15 @@ void dialogManager::addExpLog(Player * player, int exp)
 
 	WCHAR log[128];
 	swprintf_s(log, L"%s(이)가 %d경험치를 획득했다.", player->getPokemon()->getName().c_str(), exp);
+	_battleLog.push_back(log);
+}
+
+void dialogManager::levelUPLog(Player * player, int level)
+{
+	resetTimer();
+
+	WCHAR log[128];
+	swprintf_s(log, L"%s(이)가 %d레벨이 되었다.", player->getPokemon()->getName().c_str(), level);
 	_battleLog.push_back(log);
 }
 

@@ -46,6 +46,8 @@ public:
 	void update();
 	void render();
 
+	//경험치 계산
+	int EXPCalculation(Player* player);
 
 	//실능력치 계산
 	STAT statCalculation(Player* player);

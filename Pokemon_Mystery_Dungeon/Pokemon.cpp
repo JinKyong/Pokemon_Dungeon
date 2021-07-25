@@ -42,6 +42,8 @@ void Pokemon::controlFrame()
 		if (_frameX >= _currentImage->getMaxFrameX()) {
 			switch (_state) {
 			case POKEMON_STATE_ATTACK:
+				changeState(POKEMON_STATE_DEFAULT);
+				break;
 			case POKEMON_STATE_SATTACK:
 				break;
 

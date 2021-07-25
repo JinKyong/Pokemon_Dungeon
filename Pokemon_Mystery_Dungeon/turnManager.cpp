@@ -42,19 +42,35 @@ void turnManager::update()
 
 		playerIter player;
 
+		//죽으면 삭제
+		player = _allPlayerList.begin();
+		for (; player != _allPlayerList.end(); ++player) {
+			if ((*player)->getPokemon()->getDeath()) {
+				//경험치 획득
+				if ((*player)->getPlayerType() == PLAYER_TYPE_ENEMY) {
+					int exp = BATTLEMANAGER->EXPCalculation(*player);
+					DIALOGMANAGER->addExpLog(_allPlayerList[0], exp);
+					_allPlayerList[0]->addEXP(exp);
+				}
+
+				_allPlayerList.erase(player);
+				break;
+			}
+		}
+		player = _inputPlayerList.begin();
+		for (; player != _inputPlayerList.end(); ++player) {
+			if ((*player)->getPokemon()->getDeath()) {
+				_inputPlayerList.erase(player);
+				break;
+			}
+		}
+
 		//앞에서부터 차례대로
 		if ((player = _inputPlayerList.begin()) != _inputPlayerList.end()) {
 			_currentProgressTurn = (*player)->getPlayerState();
 
 			for (; player != _inputPlayerList.end();) {
 				if ((*player)->getPlayerState() != _currentProgressTurn) break;
-
-				//죽으면 삭제
-				if ((*player)->getPokemon()->getDeath()) {
-					player = _inputPlayerList.erase(player);
-					//경험치 로그
-					break;
-				}
 
 				(*player)->update();
 
@@ -76,17 +92,6 @@ void turnManager::update()
 		else {
 			_order = 0;
 			_input = true;
-
-			//포켓몬이 죽은 상태면 삭제
-			player = _allPlayerList.begin();
-			for (; player != _allPlayerList.end();) {
-				if ((*player)->getPokemon()->getDeath()) {
-					player = _allPlayerList.erase(player);
-					//경험치 로그
-				}
-				else
-					++player;
-			}
 		}
 	}
 }
