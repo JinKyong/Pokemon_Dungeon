@@ -44,5 +44,18 @@ public:
 	Skill* sleepPowder() { return new SleepPowder; }
 	Skill* stunSpore() { return new StunSpore; }
 	Skill* metalClaw() { return new MetalClaw; }
+	Skill* bind() { return new Bind; }
+	Skill* crossChop() { return new CrossChop; }
+	Skill* feintAttack() { return new FeintAttack; }
+	Skill* rockSmash() { return new RockSmash; }
+	Skill* shadowClaw() { return new ShadowClaw; }
+	Skill* triAttack() { return new TriAttack; }
+
+	// ================== 21 ~ 30 ================== //
+	Skill* wakeUpSlap() { return new WakeUpSlap; }
+	Skill* wingAttack() { return new WingAttack; }
+	Skill* vineWhip() { return new VineWhip; }
+	Skill* waterfall() { return new Waterfall; }
+	Skill* sheerCold() { return new SheerCold; }
 };
 

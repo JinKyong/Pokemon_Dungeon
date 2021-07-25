@@ -149,6 +149,7 @@
   <ItemGroup>
     <ClInclude Include="Atile.h" />
     <ClInclude Include="battleManager.h" />
+    <ClInclude Include="Bind.h" />
     <ClInclude Include="Blastoise.h" />
     <ClInclude Include="bossMapScene.h" />
     <ClInclude Include="Bulbasaur.h" />
@@ -159,6 +160,7 @@
     <ClInclude Include="Charmeleon.h" />
     <ClInclude Include="collisionManager.h" />
     <ClInclude Include="Crobat.h" />
+    <ClInclude Include="CrossChop.h" />
     <ClInclude Include="crossroadScene.h" />
     <ClInclude Include="Darkrai.h" />
     <ClInclude Include="DefaultAttack.h" />
@@ -177,8 +179,11 @@
     <ClInclude Include="Eevee.h" />
     <ClInclude Include="Effect.h" />
     <ClInclude Include="EffectManager.h" />
+    <ClInclude Include="EF_Bind.h" />
+    <ClInclude Include="EF_CrossChop.h" />
     <ClInclude Include="EF_Default.h" />
     <ClInclude Include="EF_DynamicPunch.h" />
+    <ClInclude Include="EF_FeintAttack.h" />
     <ClInclude Include="EF_FireBlast.h" />
     <ClInclude Include="EF_FireFang.h" />
     <ClInclude Include="EF_Gust.h" />
@@ -189,11 +194,20 @@
     <ClInclude Include="EF_PoisonPowder.h" />
     <ClInclude Include="EF_Pound.h" />
     <ClInclude Include="EF_RockSlide.h" />
+    <ClInclude Include="EF_RockSmash.h" />
+    <ClInclude Include="EF_ShadowClaw.h" />
+    <ClInclude Include="EF_SheerCold.h" />
     <ClInclude Include="EF_SleepPowder.h" />
     <ClInclude Include="EF_StunSpore.h" />
     <ClInclude Include="EF_ThunderFang.h" />
+    <ClInclude Include="EF_TriAttack.h" />
+    <ClInclude Include="EF_VineWhip.h" />
+    <ClInclude Include="EF_WakeUpSlap.h" />
+    <ClInclude Include="EF_Waterfall.h" />
+    <ClInclude Include="EF_WingAttack.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Espeon.h" />
+    <ClInclude Include="FeintAttack.h" />
     <ClInclude Include="FireBlast.h" />
     <ClInclude Include="Apple.h" />
     <ClInclude Include="FireFang.h" />
@@ -255,9 +269,12 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Ribbon.h" />
     <ClInclude Include="RockSlide.h" />
+    <ClInclude Include="RockSmash.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="sceneManager.h" />
     <ClInclude Include="Scope.h" />
+    <ClInclude Include="ShadowClaw.h" />
+    <ClInclude Include="SheerCold.h" />
     <ClInclude Include="singletonBase.h" />
     <ClInclude Include="Skill.h" />
     <ClInclude Include="skillDex.h" />
@@ -283,6 +300,7 @@
     <ClInclude Include="timer.h" />
     <ClInclude Include="TMachine.h" />
     <ClInclude Include="townMapScene.h" />
+    <ClInclude Include="TriAttack.h" />
     <ClInclude Include="turnManager.h" />
     <ClInclude Include="txtData.h" />
     <ClInclude Include="uiManager.h" />
@@ -293,12 +311,17 @@
     <ClInclude Include="Vaporeon.h" />
     <ClInclude Include="Venusaur.h" />
     <ClInclude Include="video.h" />
+    <ClInclude Include="VineWhip.h" />
+    <ClInclude Include="WakeUpSlap.h" />
     <ClInclude Include="Wartortle.h" />
+    <ClInclude Include="Waterfall.h" />
+    <ClInclude Include="WingAttack.h" />
     <ClInclude Include="Zubat.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Atile.cpp" />
     <ClCompile Include="battleManager.cpp" />
+    <ClCompile Include="Bind.cpp" />
     <ClCompile Include="Blastoise.cpp" />
     <ClCompile Include="bossMapScene.cpp" />
     <ClCompile Include="Bulbasaur.cpp" />
@@ -309,6 +332,7 @@
     <ClCompile Include="Charmeleon.cpp" />
     <ClCompile Include="collisionManager.cpp" />
     <ClCompile Include="Crobat.cpp" />
+    <ClCompile Include="CrossChop.cpp" />
     <ClCompile Include="crossroadScene.cpp" />
     <ClCompile Include="Darkrai.cpp" />
     <ClCompile Include="DefaultAttack.cpp" />
@@ -327,8 +351,11 @@
     <ClCompile Include="Eevee.cpp" />
     <ClCompile Include="Effect.cpp" />
     <ClCompile Include="EffectManager.cpp" />
+    <ClCompile Include="EF_Bind.cpp" />
+    <ClCompile Include="EF_CrossChop.cpp" />
     <ClCompile Include="EF_Default.cpp" />
     <ClCompile Include="EF_DynamicPunch.cpp" />
+    <ClCompile Include="EF_FeintAttack.cpp" />
     <ClCompile Include="EF_FireBlast.cpp" />
     <ClCompile Include="EF_FireFang.cpp" />
     <ClCompile Include="EF_Gust.cpp" />
@@ -339,11 +366,20 @@
     <ClCompile Include="EF_PoisonPowder.cpp" />
     <ClCompile Include="EF_Pound.cpp" />
     <ClCompile Include="EF_RockSlide.cpp" />
+    <ClCompile Include="EF_RockSmash.cpp" />
+    <ClCompile Include="EF_ShadowClaw.cpp" />
+    <ClCompile Include="EF_SheerCold.cpp" />
     <ClCompile Include="EF_SleepPowder.cpp" />
     <ClCompile Include="EF_StunSpore.cpp" />
     <ClCompile Include="EF_ThunderFang.cpp" />
+    <ClCompile Include="EF_TriAttack.cpp" />
+    <ClCompile Include="EF_VineWhip.cpp" />
+    <ClCompile Include="EF_WakeUpSlap.cpp" />
+    <ClCompile Include="EF_Waterfall.cpp" />
+    <ClCompile Include="EF_WingAttack.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Espeon.cpp" />
+    <ClCompile Include="FeintAttack.cpp" />
     <ClCompile Include="FireBlast.cpp" />
     <ClCompile Include="Apple.cpp" />
     <ClCompile Include="FireFang.cpp" />
@@ -398,9 +434,12 @@
     <ClCompile Include="Registeel.cpp" />
     <ClCompile Include="Ribbon.cpp" />
     <ClCompile Include="RockSlide.cpp" />
+    <ClCompile Include="RockSmash.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="sceneManager.cpp" />
     <ClCompile Include="Scope.cpp" />
+    <ClCompile Include="ShadowClaw.cpp" />
+    <ClCompile Include="SheerCold.cpp" />
     <ClCompile Include="Skill.cpp" />
     <ClCompile Include="skillDex.cpp" />
     <ClCompile Include="SkillMenu.cpp" />
@@ -427,6 +466,7 @@
     <ClCompile Include="timer.cpp" />
     <ClCompile Include="TMachine.cpp" />
     <ClCompile Include="townMapScene.cpp" />
+    <ClCompile Include="TriAttack.cpp" />
     <ClCompile Include="turnManager.cpp" />
     <ClCompile Include="txtData.cpp" />
     <ClCompile Include="uiManager.cpp" />
@@ -437,7 +477,11 @@
     <ClCompile Include="Vaporeon.cpp" />
     <ClCompile Include="Venusaur.cpp" />
     <ClCompile Include="video.cpp" />
+    <ClCompile Include="VineWhip.cpp" />
+    <ClCompile Include="WakeUpSlap.cpp" />
     <ClCompile Include="Wartortle.cpp" />
+    <ClCompile Include="Waterfall.cpp" />
+    <ClCompile Include="WingAttack.cpp" />
     <ClCompile Include="winMain.cpp" />
     <ClCompile Include="Zubat.cpp" />
   </ItemGroup>

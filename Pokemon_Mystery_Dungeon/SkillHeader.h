@@ -1,6 +1,4 @@
 #pragma once
-#include "DefaultAttack.h"
-
 #include "FireBlast.h"
 #include "Gust.h"
 #include "Lightning.h"
@@ -16,3 +14,15 @@
 #include "SleepPowder.h"
 #include "StunSpore.h"
 #include "MetalClaw.h"
+#include "Bind.h"
+#include "CrossChop.h"
+#include "FeintAttack.h"
+#include "RockSmash.h"
+#include "ShadowClaw.h"
+#include "TriAttack.h"
+
+#include "WakeUpSlap.h"
+#include "WingAttack.h"
+#include "VineWhip.h"
+#include "Waterfall.h"
+#include "SheerCold.h"

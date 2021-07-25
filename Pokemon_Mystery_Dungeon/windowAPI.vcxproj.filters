@@ -154,6 +154,12 @@
     <Filter Include="playGround\Pokémon\No.30 ~ 39">
       <UniqueIdentifier>{e84fb030-8025-425b-98e9-c483ca10e091}</UniqueIdentifier>
     </Filter>
+    <Filter Include="playGround\Skill\Effect\EF number 21~30">
+      <UniqueIdentifier>{6447fe10-9177-4874-a185-5d1e72937380}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="playGround\Skill\SK number 21~30">
+      <UniqueIdentifier>{6e9eadcc-9c7d-4525-824a-faece93eee0d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -600,6 +606,72 @@
     <ClInclude Include="soundManager.h">
       <Filter>2DGameFramework\Manager</Filter>
     </ClInclude>
+    <ClInclude Include="Bind.h">
+      <Filter>playGround\Skill\SK number 11~20</Filter>
+    </ClInclude>
+    <ClInclude Include="CrossChop.h">
+      <Filter>playGround\Skill\SK number 11~20</Filter>
+    </ClInclude>
+    <ClInclude Include="FeintAttack.h">
+      <Filter>playGround\Skill\SK number 11~20</Filter>
+    </ClInclude>
+    <ClInclude Include="RockSmash.h">
+      <Filter>playGround\Skill\SK number 11~20</Filter>
+    </ClInclude>
+    <ClInclude Include="ShadowClaw.h">
+      <Filter>playGround\Skill\SK number 11~20</Filter>
+    </ClInclude>
+    <ClInclude Include="TriAttack.h">
+      <Filter>playGround\Skill\SK number 11~20</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_TriAttack.h">
+      <Filter>playGround\Skill\Effect\EF number 11~20</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_Bind.h">
+      <Filter>playGround\Skill\Effect\EF number 11~20</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_CrossChop.h">
+      <Filter>playGround\Skill\Effect\EF number 11~20</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_FeintAttack.h">
+      <Filter>playGround\Skill\Effect\EF number 11~20</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_RockSmash.h">
+      <Filter>playGround\Skill\Effect\EF number 11~20</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_ShadowClaw.h">
+      <Filter>playGround\Skill\Effect\EF number 11~20</Filter>
+    </ClInclude>
+    <ClInclude Include="SheerCold.h">
+      <Filter>playGround\Skill\SK number 21~30</Filter>
+    </ClInclude>
+    <ClInclude Include="VineWhip.h">
+      <Filter>playGround\Skill\SK number 21~30</Filter>
+    </ClInclude>
+    <ClInclude Include="WakeUpSlap.h">
+      <Filter>playGround\Skill\SK number 21~30</Filter>
+    </ClInclude>
+    <ClInclude Include="Waterfall.h">
+      <Filter>playGround\Skill\SK number 21~30</Filter>
+    </ClInclude>
+    <ClInclude Include="WingAttack.h">
+      <Filter>playGround\Skill\SK number 21~30</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_SheerCold.h">
+      <Filter>playGround\Skill\Effect\EF number 21~30</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_VineWhip.h">
+      <Filter>playGround\Skill\Effect\EF number 21~30</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_WakeUpSlap.h">
+      <Filter>playGround\Skill\Effect\EF number 21~30</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_Waterfall.h">
+      <Filter>playGround\Skill\Effect\EF number 21~30</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_WingAttack.h">
+      <Filter>playGround\Skill\Effect\EF number 21~30</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -1015,6 +1087,72 @@
     </ClCompile>
     <ClCompile Include="soundManager.cpp">
       <Filter>2DGameFramework\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Bind.cpp">
+      <Filter>playGround\Skill\SK number 11~20</Filter>
+    </ClCompile>
+    <ClCompile Include="CrossChop.cpp">
+      <Filter>playGround\Skill\SK number 11~20</Filter>
+    </ClCompile>
+    <ClCompile Include="FeintAttack.cpp">
+      <Filter>playGround\Skill\SK number 11~20</Filter>
+    </ClCompile>
+    <ClCompile Include="RockSmash.cpp">
+      <Filter>playGround\Skill\SK number 11~20</Filter>
+    </ClCompile>
+    <ClCompile Include="ShadowClaw.cpp">
+      <Filter>playGround\Skill\SK number 11~20</Filter>
+    </ClCompile>
+    <ClCompile Include="TriAttack.cpp">
+      <Filter>playGround\Skill\SK number 11~20</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_CrossChop.cpp">
+      <Filter>playGround\Skill\Effect\EF number 11~20</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_FeintAttack.cpp">
+      <Filter>playGround\Skill\Effect\EF number 11~20</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_RockSmash.cpp">
+      <Filter>playGround\Skill\Effect\EF number 11~20</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_ShadowClaw.cpp">
+      <Filter>playGround\Skill\Effect\EF number 11~20</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_TriAttack.cpp">
+      <Filter>playGround\Skill\Effect\EF number 11~20</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_Bind.cpp">
+      <Filter>playGround\Skill\Effect\EF number 11~20</Filter>
+    </ClCompile>
+    <ClCompile Include="SheerCold.cpp">
+      <Filter>playGround\Skill\SK number 21~30</Filter>
+    </ClCompile>
+    <ClCompile Include="VineWhip.cpp">
+      <Filter>playGround\Skill\SK number 21~30</Filter>
+    </ClCompile>
+    <ClCompile Include="WakeUpSlap.cpp">
+      <Filter>playGround\Skill\SK number 21~30</Filter>
+    </ClCompile>
+    <ClCompile Include="Waterfall.cpp">
+      <Filter>playGround\Skill\SK number 21~30</Filter>
+    </ClCompile>
+    <ClCompile Include="WingAttack.cpp">
+      <Filter>playGround\Skill\SK number 21~30</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_SheerCold.cpp">
+      <Filter>playGround\Skill\Effect\EF number 21~30</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_VineWhip.cpp">
+      <Filter>playGround\Skill\Effect\EF number 21~30</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_WakeUpSlap.cpp">
+      <Filter>playGround\Skill\Effect\EF number 21~30</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_Waterfall.cpp">
+      <Filter>playGround\Skill\Effect\EF number 21~30</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_WingAttack.cpp">
+      <Filter>playGround\Skill\Effect\EF number 21~30</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
