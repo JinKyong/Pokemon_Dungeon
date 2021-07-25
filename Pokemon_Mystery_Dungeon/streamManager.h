@@ -20,6 +20,7 @@ public:
 
 	video* addVideo(string strKey, const char* fileName);
 	void startVideo(string strKey);
+	void startVideo(string strKey, D2D1_RECT_F rc);
 	void closeVideo();
 
 	//void getPosition();

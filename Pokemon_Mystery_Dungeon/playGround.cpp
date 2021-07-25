@@ -10,6 +10,7 @@
 #include "townMapScene.h"
 #include "guildMapScene.h"
 #include "crossroadScene.h"
+#include "titleScene.h"
 
 
 playGround::playGround()
@@ -40,8 +41,9 @@ HRESULT playGround::init()
 	SCENEMANAGER->addScene("crossroad", new crossroadScene);
 	SCENEMANAGER->addScene("town", new townMapScene);
 	SCENEMANAGER->addScene("guild", new guildMapScene);
+	SCENEMANAGER->addScene("title", new titleScene);
 
-	SCENEMANAGER->changeScene("map");
+	SCENEMANAGER->changeScene("title");
 	BATTLEMANAGER->init();
 
 	_debug = false;
@@ -73,8 +75,8 @@ void playGround::update()
 
 void playGround::render()
 {
-	/*if (STREAMMANAGER->getPosition("title") < STREAMMANAGER->getLenthEnd("title"))
-		return;*/
+	if (STREAMMANAGER->getPosition() < STREAMMANAGER->getLength())
+		return;
 
 	DTDMANAGER->beginDraw();
 	//================제발 이 사이에 좀 그립시다==========================

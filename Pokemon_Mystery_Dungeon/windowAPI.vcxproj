@@ -281,6 +281,7 @@
     <ClInclude Include="tileManager.h" />
     <ClInclude Include="timeManager.h" />
     <ClInclude Include="timer.h" />
+    <ClInclude Include="titleScene.h" />
     <ClInclude Include="TMachine.h" />
     <ClInclude Include="townMapScene.h" />
     <ClInclude Include="turnManager.h" />
@@ -425,6 +426,7 @@
     <ClCompile Include="tileManager.cpp" />
     <ClCompile Include="timeManager.cpp" />
     <ClCompile Include="timer.cpp" />
+    <ClCompile Include="titleScene.cpp" />
     <ClCompile Include="TMachine.cpp" />
     <ClCompile Include="townMapScene.cpp" />
     <ClCompile Include="turnManager.cpp" />

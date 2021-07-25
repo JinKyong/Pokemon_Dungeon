@@ -42,11 +42,20 @@ HRESULT video::setVideo(const char * fileName)
 
 void video::playVideo()
 {
-
 	MCIWndOpen(_hWndAVI, _fileName, 0);
 	if (_hWndAVI)
 	{
 		SetWindowPos(_hWndAVI, NULL, 0, 0, WINSIZEX, WINSIZEY, SWP_NOZORDER);
+		MCIWndPlay(_hWndAVI);
+	}
+}
+
+void video::playVideo(D2D1_RECT_F rc)
+{
+	MCIWndOpen(_hWndAVI, _fileName, 0);
+	if (_hWndAVI)
+	{
+		SetWindowPos(_hWndAVI, NULL, rc.left, rc.top, rc.right - rc.left, rc.bottom - rc.top, SWP_NOZORDER);
 		MCIWndPlay(_hWndAVI);
 	}
 }

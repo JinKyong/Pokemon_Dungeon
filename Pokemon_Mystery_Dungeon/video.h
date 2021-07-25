@@ -21,6 +21,7 @@ public:
 
 	HRESULT setVideo(const char* fileName);
 	void playVideo();
+	void playVideo(D2D1_RECT_F rc);
 	void closeVideo(void);
 	void deletVideo();
 	void langsVideo(const char* fileName);
