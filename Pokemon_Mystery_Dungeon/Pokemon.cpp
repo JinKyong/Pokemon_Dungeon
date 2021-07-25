@@ -41,9 +41,9 @@ void Pokemon::controlFrame()
 	if (_frameCount >= _count[_state]) {
 		if (_frameX >= _currentImage->getMaxFrameX()) {
 			switch (_state) {
+				//changeState(POKEMON_STATE_DEFAULT);
+				//break;
 			case POKEMON_STATE_ATTACK:
-				changeState(POKEMON_STATE_DEFAULT);
-				break;
 			case POKEMON_STATE_SATTACK:
 				break;
 
@@ -152,11 +152,11 @@ void Pokemon::tuneAttack()
 	else
 		_tmpCount -= TIMEMANAGER->getElapsedTime() * 2;
 
-	_tuningX = cosf(_angle) * attackRange(_tmpCount);
-	_tuningY = -sinf(_angle) * attackRange(_tmpCount);
-
 	if (_tmpCount < 0)
 		_tmpCount = 0;
+
+	_tuningX = cosf(_angle) * attackRange(_tmpCount);
+	_tuningY = -sinf(_angle) * attackRange(_tmpCount);
 }
 
 void Pokemon::tuneHurt()

@@ -38,7 +38,7 @@ HRESULT Dratini::init()
 	_stateImage[POKEMON_STATE_MOVE] = IMAGEMANAGER->addFrameDImage("dratini_move",
 		L"img/pokemon/13. dratini/move.png", 216, 638, 4, 11);
 	_stateImage[POKEMON_STATE_ATTACK] = IMAGEMANAGER->addFrameDImage("dratini_attack",
-		L"img/pokemon/13. dratini/attack.png", 108, 638, 2, 11);
+		L"img/pokemon/13. dratini/attack.png", 162, 638, 3, 11);
 	_stateImage[POKEMON_STATE_SATTACK] = IMAGEMANAGER->addFrameDImage("dratini_sattack",
 		L"img/pokemon/13. dratini/sattack.png", 124, 660, 2, 11);
 	_stateImage[POKEMON_STATE_HURT] = IMAGEMANAGER->addFrameDImage("dratini_hurt",

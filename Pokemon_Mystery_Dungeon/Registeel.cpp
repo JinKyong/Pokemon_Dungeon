@@ -63,7 +63,7 @@ HRESULT Registeel::init()
 	_count[POKEMON_STATE_SATTACK] = 0.8 / (_stateImage[POKEMON_STATE_SATTACK]->getMaxFrameX() + 1);
 	_count[POKEMON_STATE_HURT] = 1.0;
 	_count[POKEMON_STATE_SLEEP] = 0.5;
-	_count[POKEMON_STATE_DEFAULT] = 0.5;
+	_count[POKEMON_STATE_DEFAULT] = 0.8;
 
 	//상태별 미세조정
 	_tuningX = 0;

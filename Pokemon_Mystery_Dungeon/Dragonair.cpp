@@ -38,7 +38,7 @@ HRESULT Dragonair::init()
 	_stateImage[POKEMON_STATE_MOVE] = _stateImage[POKEMON_STATE_IDLE];
 
 	_stateImage[POKEMON_STATE_ATTACK] = IMAGEMANAGER->addFrameDImage("dragonair_attack",
-		L"img/pokemon/14. dragonair/attack.png", 512, 1188, 4, 11);
+		L"img/pokemon/14. dragonair/attack.png", 640, 1188, 5, 11);
 	_stateImage[POKEMON_STATE_SATTACK] = IMAGEMANAGER->addFrameDImage("dragonair_sattack",
 		L"img/pokemon/14. dragonair/sattack.png", 192, 946, 2, 11);
 	_stateImage[POKEMON_STATE_HURT] = IMAGEMANAGER->addFrameDImage("dragonair_hurt",

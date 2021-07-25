@@ -21,7 +21,7 @@ Regirock::Regirock()
 	_type[0] = POKEMON_TYPE_ROCK;
 	_type[1] = END_POKEMON_TYPE;
 
-	_jump = false;
+	_jump = true;
 }
 
 Regirock::~Regirock()
@@ -33,8 +33,8 @@ HRESULT Regirock::init()
 	Pokemon::init();
 
 	//ÀÌ¹ÌÁö
-	_stateImage[POKEMON_STATE_IDLE] = IMAGEMANAGER->addFrameDImage("regirock_idle",
-		L"img/pokemon/32. regirock/idle.png", 68, 748, 1, 11);
+	_stateImage[POKEMON_STATE_IDLE] = IMAGEMANAGER->addFrameDImage("regirock_idle_default",
+		L"img/pokemon/32. regirock/idle_default.png", 68, 748, 1, 11);
 	_stateImage[POKEMON_STATE_MOVE] = IMAGEMANAGER->addFrameDImage("regirock_move",
 		L"img/pokemon/32. regirock/move.png", 272, 748, 4, 11);
 	_stateImage[POKEMON_STATE_ATTACK] = IMAGEMANAGER->addFrameDImage("regirock_attack",

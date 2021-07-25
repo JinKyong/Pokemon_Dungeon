@@ -34,19 +34,19 @@ HRESULT Giratina::init()
 
 	//이미지
 	_stateImage[POKEMON_STATE_IDLE] = IMAGEMANAGER->addFrameDImage("giratina_idle",
-		L"img/pokemon/38. giratina/idle.png", 57, 605, 1, 11);
+		L"img/pokemon/38. giratina/idle.png", 114, 1210, 1, 11);
 	_stateImage[POKEMON_STATE_MOVE] = IMAGEMANAGER->addFrameDImage("giratina_move",
-		L"img/pokemon/38. giratina/move.png", 228, 605, 4, 11);
+		L"img/pokemon/38. giratina/move.png", 456, 1210, 4, 11);
 	_stateImage[POKEMON_STATE_ATTACK] = IMAGEMANAGER->addFrameDImage("giratina_attack",
-		L"img/pokemon/38. giratina/attack.png", 114, 605, 2, 11);
+		L"img/pokemon/38. giratina/attack.png", 228, 1210, 2, 11);
 	_stateImage[POKEMON_STATE_SATTACK] = IMAGEMANAGER->addFrameDImage("giratina_sattack",
-		L"img/pokemon/38. giratina/sattack.png", 57, 605, 1, 11);
+		L"img/pokemon/38. giratina/sattack.png", 114, 1210, 1, 11);
 	_stateImage[POKEMON_STATE_HURT] = IMAGEMANAGER->addFrameDImage("giratina_hurt",
-		L"img/pokemon/38. giratina/hurt.png", 63, 693, 1, 11);
+		L"img/pokemon/38. giratina/hurt.png", 126, 1386, 1, 11);
 	_stateImage[POKEMON_STATE_SLEEP] = IMAGEMANAGER->addFrameDImage("giratina_sleep",
-		L"img/pokemon/38. giratina/sleep.png", 86, 38, 2, 1);
+		L"img/pokemon/38. giratina/sleep.png", 172, 76, 2, 1);
 	_stateImage[POKEMON_STATE_DEFAULT] = IMAGEMANAGER->addFrameDImage("giratina_default",
-		L"img/pokemon/38. giratina/default.png", 57, 605, 1, 11);
+		L"img/pokemon/38. giratina/default.png", 114, 1210, 1, 11);
 
 	//초상화
 	_portrait = IMAGEMANAGER->addDImage("giratina_portrait",
@@ -63,7 +63,7 @@ HRESULT Giratina::init()
 	_count[POKEMON_STATE_SATTACK] = 0.8 / (_stateImage[POKEMON_STATE_SATTACK]->getMaxFrameX() + 1);
 	_count[POKEMON_STATE_HURT] = 1.0;
 	_count[POKEMON_STATE_SLEEP] = 0.5;
-	_count[POKEMON_STATE_DEFAULT] = 0.5;
+	_count[POKEMON_STATE_DEFAULT] = 0.8;
 
 	//상태별 미세조정
 	_tuningX = 0;
