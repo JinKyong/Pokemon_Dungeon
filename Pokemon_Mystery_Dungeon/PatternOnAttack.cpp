@@ -30,8 +30,7 @@ void PatternOnAttack::update()
 	//충돌 검사
 	//주변 8타일에 있으면 공격
 	if (COLLISIONMANAGER->detectionWith8Tiles(_player, (*TURNMANAGER->getAllPlayer())[0])) {
-		_player->setPlayerState(POKEMON_STATE_ATTACK);
-		_player->getPokemon()->setAttack(true);
+		_player->useSkill(-1);
 	}
 	else {
 		//없으면 찾아감

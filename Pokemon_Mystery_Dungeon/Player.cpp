@@ -61,7 +61,7 @@ void Player::update()
 	_body = RectMakeCenter(_x * TILEWIDTH + TILEWIDTH / 2, _y * TILEHEIGHT + TILEHEIGHT / 2,
 		TILEWIDTH, TILEHEIGHT);
 
-	_pokemon->update();
+	//_pokemon->update();
 }
 
 void Player::render()
@@ -145,7 +145,12 @@ void Player::attack()
 		_playerState = POKEMON_STATE_DEFAULT;
 		return;
 	}
-
+	
+	if (_selectedSkill) {
+		_selectedSkill->useSkill();
+		//DIALOGMANAGER->useSkillLog(this, _selectedSkill);
+		_selectedSkill = nullptr;
+	}
 }
 
 void Player::sattack()
@@ -160,14 +165,20 @@ void Player::sattack()
 		DIALOGMANAGER->useSkillLog(this, _selectedSkill);
 		_selectedSkill = nullptr;
 	}
-
 }
 
 void Player::useSkill(int num)
 {
-	_selectedSkill = _skill[num];
-	_playerState = POKEMON_STATE_SATTACK;
-	_pokemon->setSattack(true);
+	if (num == -1) {
+		_selectedSkill = _default;
+		_playerState = POKEMON_STATE_ATTACK;
+		_pokemon->setAttack(true);
+	}
+	else {
+		_selectedSkill = _skill[num];
+		_playerState = POKEMON_STATE_SATTACK;
+		_pokemon->setSattack(true);
+	}
 }
 
 void Player::hitDamage(int num)

@@ -17,7 +17,9 @@ HRESULT Enemy::init(int pokemonNum)
 
 
 	//±â¼ú
-	//_selectedSkill = nullptr;
+	_selectedSkill = nullptr;
+	_default = SKILLDEX->makeSkill(0);
+	_default->init(this);
 	//_skill[0] = SKILLDEX->makeSkill(1);
 	//_skill[0]->init();
 	//_skill[1] = SKILLDEX->makeSkill(6);

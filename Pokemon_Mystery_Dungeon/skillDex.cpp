@@ -4,6 +4,7 @@
 HRESULT skillDex::init()
 {
 	_index = 0;
+	_skillList.insert(make_pair(_index, &skillDex::defaultAttack));
 
 	setSkillDex();
 
@@ -43,7 +44,7 @@ void skillDex::setSkillDex()
 
 Skill * skillDex::makeSkill(int num)
 {
-	if (num <= 0 || _index < num) return nullptr;
+	if (num < 0 || _index < num) return nullptr;
 
 	return (this->*_skillList[num])();
 }

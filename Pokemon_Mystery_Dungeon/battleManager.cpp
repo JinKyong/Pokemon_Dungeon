@@ -69,7 +69,7 @@ STAT battleManager::statCalculation(Player * player)
 float battleManager::skillCalculation(Player * player, Skill * skill)
 {
 	int atkType;
-	float stab;
+	float stab = 1.0f;
 	float equip;
 
 	//포켓몬 실능(물공 || 특공)
@@ -79,8 +79,8 @@ float battleManager::skillCalculation(Player * player, Skill * skill)
 	//자속 여부 확인
 	POKEMON_TYPE* playerType = player->getPokemon()->getPokemonType();
 	POKEMON_TYPE  skillType = skill->getSkillType();
-	if (playerType[0] == skillType || playerType[1] == skillType)	stab = 1.5f;
-	else															stab = 1.f;
+	if(skillType == END_POKEMON_TYPE) {}
+	else if (playerType[0] == skillType || playerType[1] == skillType)	stab = 1.5f;
 
 	//도구 확인
 	//if(player->getItem())
@@ -121,9 +121,9 @@ float battleManager::damageCalculation(Player * player, Effect * effect)
 	POKEMON_TYPE*	playerType = player->getPokemon()->getPokemonType();
 	POKEMON_TYPE	skillType = effect->getType();
 
-	if (playerType[0] < END_POKEMON_TYPE)
+	if (playerType[0] < END_POKEMON_TYPE && skillType < END_POKEMON_TYPE)
 		counter *= _counter[skillType][playerType[0]];
-	if (playerType[1] < END_POKEMON_TYPE)
+	if (playerType[1] < END_POKEMON_TYPE && skillType < END_POKEMON_TYPE)
 		counter *= _counter[skillType][playerType[1]];
 
 	

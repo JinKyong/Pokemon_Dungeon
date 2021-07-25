@@ -25,6 +25,7 @@ public:
 	Skill* makeSkill(int num);
 
 	//======================== 스킬 도감 ========================// 
+	Skill* defaultAttack() { return new DefaultAttack; }
 
 	// ================== 1 ~ 10 ================== //
 	Skill* fireBlast() { return new FireBlast; }

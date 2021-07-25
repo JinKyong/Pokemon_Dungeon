@@ -9,7 +9,7 @@ HRESULT Skill::init(Player * player)
 
 void Skill::useSkill()		//플레이어 포인트를 받아와서		+	최종결정력 담을 변수			//자속은 bool값 or float값으로, 도구는 값으로
 {
-	if (_currentPP <= 0) return;
+	//if (_currentPP <= 0) return;
 
 	int direct = _player->getPokemon()->getDirect();
 

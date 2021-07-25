@@ -160,6 +160,7 @@
     <ClInclude Include="Crobat.h" />
     <ClInclude Include="crossroadScene.h" />
     <ClInclude Include="Darkrai.h" />
+    <ClInclude Include="DefaultAttack.h" />
     <ClInclude Include="dialogManager.h" />
     <ClInclude Include="Diglett.h" />
     <ClInclude Include="dImage.h" />
@@ -298,6 +299,7 @@
     <ClCompile Include="Crobat.cpp" />
     <ClCompile Include="crossroadScene.cpp" />
     <ClCompile Include="Darkrai.cpp" />
+    <ClCompile Include="DefaultAttack.cpp" />
     <ClCompile Include="dialogManager.cpp" />
     <ClCompile Include="Diglett.cpp" />
     <ClCompile Include="dImage.cpp" />

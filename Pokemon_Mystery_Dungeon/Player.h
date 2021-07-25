@@ -43,6 +43,7 @@ protected:
 
 	//기술(스킬)
 	Skill* _selectedSkill;
+	Skill* _default;
 	Skill* _skill[4];
 
 	//좌표

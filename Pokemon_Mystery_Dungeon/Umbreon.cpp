@@ -38,7 +38,7 @@ HRESULT Umbreon::init()
 	_stateImage[POKEMON_STATE_MOVE] = IMAGEMANAGER->addFrameDImage("umbreon_move",
 		L"img/pokemon/25. umbreon/move.png", 232, 682, 4, 11);
 	_stateImage[POKEMON_STATE_ATTACK] = IMAGEMANAGER->addFrameDImage("umbreon_attack",
-		L"img/pokemon/25. umbreon/attack.png", 174, 682, 4, 11);
+		L"img/pokemon/25. umbreon/attack.png", 174, 682, 3, 11);
 	_stateImage[POKEMON_STATE_SATTACK] = IMAGEMANAGER->addFrameDImage("umbreon_sattack",
 		L"img/pokemon/25. umbreon/sattack.png", 62, 682, 1, 11);
 	_stateImage[POKEMON_STATE_HURT] = IMAGEMANAGER->addFrameDImage("umbreon_hurt",

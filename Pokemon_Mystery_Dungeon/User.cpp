@@ -16,6 +16,8 @@ HRESULT User::init(int pokemonNum)
 
 	//±â¼ú
 	_selectedSkill = nullptr;
+	_default = SKILLDEX->makeSkill(0);
+	_default->init(this);
 	_skill[0] = SKILLDEX->makeSkill(1);
 	_skill[0]->init(this);
 	_skill[1] = SKILLDEX->makeSkill(6);
@@ -76,39 +78,8 @@ void User::controlKey()
 		}
 	}
 
-	if (KEYMANAGER->isOnceKeyDown(KEY_A)) {
-		//_pokemon->changeState(POKEMON_STATE_ATTACK);
-		_playerState = POKEMON_STATE_ATTACK;
-		_pokemon->setAttack(true);
-	}
-	if (KEYMANAGER->isOnceKeyDown('Q')) {
-		//_pokemon->changeState(POKEMON_STATE_SATTACK);
-		if (_selectedSkill = _skill[0]) {
-			_playerState = POKEMON_STATE_SATTACK;
-			_pokemon->setSattack(true);
-		}
-	}
-	if (KEYMANAGER->isOnceKeyDown('W')) {
-		//_pokemon->changeState(POKEMON_STATE_SATTACK);
-		if (_selectedSkill = _skill[1]) {
-			_playerState = POKEMON_STATE_SATTACK;
-			_pokemon->setSattack(true);
-		}
-	}
-	if (KEYMANAGER->isOnceKeyDown('E')) {
-		//_pokemon->changeState(POKEMON_STATE_SATTACK);
-		if (_selectedSkill = _skill[2]) {
-			_playerState = POKEMON_STATE_SATTACK;
-			_pokemon->setSattack(true);
-		}
-	}
-	if (KEYMANAGER->isOnceKeyDown('R')) {
-		//_pokemon->changeState(POKEMON_STATE_SATTACK);
-		if (_selectedSkill = _skill[3]) {
-			_playerState = POKEMON_STATE_SATTACK;
-			_pokemon->setSattack(true);
-		}
-	}
+	if (KEYMANAGER->isOnceKeyDown(KEY_A))
+		useSkill(-1);
 
 	if (KEYMANAGER->isOnceKeyDown(KEY_Y)) {
 		UIMANAGER->changeDownMenu("mainMenu");

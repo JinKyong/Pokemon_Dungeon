@@ -564,6 +564,9 @@
     <ClInclude Include="townMapScene.h">
       <Filter>playGround\Stage</Filter>
     </ClInclude>
+    <ClInclude Include="DefaultAttack.h">
+      <Filter>playGround\Skill</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -943,6 +946,9 @@
     </ClCompile>
     <ClCompile Include="townMapScene.cpp">
       <Filter>playGround\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="DefaultAttack.cpp">
+      <Filter>playGround\Skill</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

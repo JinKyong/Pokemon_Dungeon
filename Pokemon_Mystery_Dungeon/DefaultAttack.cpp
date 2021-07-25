@@ -1,26 +1,27 @@
 #include "stdafx.h"
-#include "DynamicPunch.h"
+#include "DefaultAttack.h"
 
-HRESULT DynamicPunch::init(Player* player)
+HRESULT DefaultAttack::init(Player * player)
 {
 	Skill::init(player);
-	_name = L"Æø¹ßÆÝÄ¡";
-	_skillNum = 5;
-	_damage = 100;
-	_accuracy = 0.5f;
-	_currentPP = _maxPP = 5;
+
+	_name = L"±âº»°ø°Ý";
+	_skillNum = 0;
+	_damage = 40;
+	_accuracy = 1.0f;
+	_currentPP = _maxPP = 0;
 	_atkType = PHYSICAL_ATTACK;
-	_type = POKEMON_TYPE_FIGHTING;
+	_type = END_POKEMON_TYPE;
 	_scale = SS_FRONT;
 
 	return S_OK;
 }
 
-void DynamicPunch::release()
+void DefaultAttack::release()
 {
 }
 
-void DynamicPunch::useSkill()
+void DefaultAttack::useSkill()
 {
 	Skill::useSkill();
 

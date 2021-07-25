@@ -42,11 +42,7 @@ void Pokemon::controlFrame()
 		if (_frameX >= _currentImage->getMaxFrameX()) {
 			switch (_state) {
 			case POKEMON_STATE_ATTACK:
-				break;
-
 			case POKEMON_STATE_SATTACK:
-				//_sattack = false;	-> 요게 이펙트 끝날때 가야함
-				changeState(POKEMON_STATE_DEFAULT);
 				break;
 
 			case POKEMON_STATE_HURT:
@@ -157,11 +153,8 @@ void Pokemon::tuneAttack()
 	_tuningX = cosf(_angle) * attackRange(_tmpCount);
 	_tuningY = -sinf(_angle) * attackRange(_tmpCount);
 
-	if (_tmpCount < 0) {
+	if (_tmpCount < 0)
 		_tmpCount = 0;
-		changeState(POKEMON_STATE_DEFAULT);
-		_attack = false;
-	}
 }
 
 void Pokemon::tuneHurt()
