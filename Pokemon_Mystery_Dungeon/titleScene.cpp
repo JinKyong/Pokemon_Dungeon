@@ -17,19 +17,22 @@ HRESULT titleScene::init(Player * player)
 	D2D1_RECT_F rc_top = UIMANAGER->getScreen();
 
 	STREAMMANAGER->startVideo("title_top", rc_top);
-	STREAMMANAGER->startVideo("title_bottom", rc_bottom);
+	STREAMMANAGER->startVideo2("title_bottom", rc_bottom);
 
-	//_change = false;
+	_change = false;
 
 	return S_OK;
 }
 
 void titleScene::release()
 {
+	STREAMMANAGER->closeVideo();
+	STREAMMANAGER->closeVideo2();
 }
 
 void titleScene::update()
 {
+	changeScene();
 }
 
 void titleScene::render()
@@ -38,4 +41,15 @@ void titleScene::render()
 
 void titleScene::changeScene()
 {
+	if (KEYMANAGER->isOnceKeyDown(VK_RETURN)) {
+		STREAMMANAGER->closeVideo();
+		STREAMMANAGER->closeVideo2();
+		CAMERAMANAGER->setFade(FADEOUT);
+		_change = true;
+	}
+
+	if (_change) {
+		if (CAMERAMANAGER->getAlpha() == 1.0)
+			SCENEMANAGER->changeScene("map");
+	}
 }

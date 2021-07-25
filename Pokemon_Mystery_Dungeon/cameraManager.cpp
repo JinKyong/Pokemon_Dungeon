@@ -133,8 +133,8 @@ void cameraManager::render(float destX, float destY)
 	int destY: 우리가 보는 화면에서 출력해줄 y좌표
 	*/
 
-	//if (_fade == FADEIN)		fadeIn();
-	//else if (_fade == FADEOUT)	fadeOut();
+	if (_fade == FADEIN)		fadeIn();
+	else if (_fade == FADEOUT)	fadeOut();
 
 	DTDMANAGER->render(destX, destY, _frontWidth, _frontHeight);
 

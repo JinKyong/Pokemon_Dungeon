@@ -43,10 +43,6 @@ void Pokemon::controlFrame()
 			switch (_state) {
 				//changeState(POKEMON_STATE_DEFAULT);
 				//break;
-			case POKEMON_STATE_ATTACK:
-			case POKEMON_STATE_SATTACK:
-				break;
-
 			case POKEMON_STATE_HURT:
 				changeState(POKEMON_STATE_DEFAULT);
 				TURNMANAGER->setPause(false);

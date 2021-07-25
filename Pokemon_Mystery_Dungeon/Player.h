@@ -31,6 +31,7 @@ protected:
 
 	//플레이어 포켓몬
 	Pokemon* _pokemon;
+	bool _changeState;
 
 	//레벨 & 경험치
 	int _level;

@@ -14,6 +14,7 @@ streamManager::~streamManager()
 HRESULT streamManager::init()
 {
 	_currentVideo = NULL;
+	_currentVideo2 = NULL;
 
 	addVideo("title_top", "video/title_top.wmv");
 	addVideo("title_bottom", "video/title_bottom.wmv");
@@ -71,9 +72,28 @@ void streamManager::startVideo(string strKey, D2D1_RECT_F rc)
 	_currentVideo->playVideo(rc);
 }
 
+void streamManager::startVideo2(string strKey, D2D1_RECT_F rc)
+{
+	_currentVideo2 = findVideo(strKey);
+
+	//for (mapVideoIter iter = _mapVideoList.begin(); iter != _mapVideoList.end(); iter++)
+	//{
+	//	if (_currentVideo != iter->second)
+	//		iter->second->closeVideo();
+	//}
+
+	_currentVideo2->playVideo(rc);
+}
+
 void streamManager::closeVideo()
 {
 	_currentVideo->closeVideo();
+	//_video->deletVideo();
+}
+
+void streamManager::closeVideo2()
+{
+	_currentVideo2->closeVideo();
 	//_video->deletVideo();
 }
 

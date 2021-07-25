@@ -28,6 +28,8 @@ HRESULT Player::init(float x, float y)
 	_body = RectMakeCenter(_x * TILEWIDTH + TILEWIDTH / 2, _y * TILEHEIGHT + TILEHEIGHT / 2,
 		TILEWIDTH, TILEHEIGHT);
 
+	_changeState = false;
+
 	return S_OK;
 }
 
@@ -43,16 +45,25 @@ void Player::update()
 	//상태에 따라 함수 호출
 	switch (_playerState) {
 	case POKEMON_STATE_MOVE:
-		_pokemon->changeState(_playerState);
+		if (!_changeState) {
+			_pokemon->changeState(_playerState);
+			_changeState = true;
+		}
 		move();
 		break;
 	case POKEMON_STATE_ATTACK:
 		attack();
-		_pokemon->changeState(_playerState);
+		if (!_changeState) {
+			_pokemon->changeState(_playerState);
+			_changeState = true;
+		}
 		break;
 	case POKEMON_STATE_SATTACK:
 		sattack();
-		_pokemon->changeState(_playerState);
+		if (!_changeState) {
+			_pokemon->changeState(_playerState);
+			_changeState = true;
+		}
 		break;
 	default:
 		break;
@@ -117,6 +128,7 @@ void Player::resetXY()
 {
 	_initX = _destX = _x;
 	_initY = _destY = _y;
+	_changeState = false;
 }
 
 void Player::move()

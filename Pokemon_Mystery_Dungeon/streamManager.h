@@ -11,6 +11,7 @@ private:
 
 	mapVideoList _mapVideoList;
 	video* _currentVideo;
+	video* _currentVideo2;
 
 public:
 	streamManager();
@@ -21,7 +22,9 @@ public:
 	video* addVideo(string strKey, const char* fileName);
 	void startVideo(string strKey);
 	void startVideo(string strKey, D2D1_RECT_F rc);
+	void startVideo2(string strKey, D2D1_RECT_F rc);
 	void closeVideo();
+	void closeVideo2();
 
 	//void getPosition();
 	//void getLenthEnd();
