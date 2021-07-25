@@ -50,6 +50,6 @@ void titleScene::changeScene()
 
 	if (_change) {
 		if (CAMERAMANAGER->getAlpha() == 1.0)
-			SCENEMANAGER->changeScene("map");
+			SCENEMANAGER->changeScene("select");
 	}
 }

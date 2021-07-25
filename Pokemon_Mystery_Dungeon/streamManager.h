@@ -35,4 +35,5 @@ public:
 
 	long getPosition() { return _currentVideo->getPosition(); }
 	long getLength() { return _currentVideo->getLength(); }
+	video* getCurrentVideo() { return _currentVideo; }
 };

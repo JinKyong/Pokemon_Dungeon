@@ -9,9 +9,11 @@
 HRESULT dungeonScene::init(Player * player)
 {
 	Scene::init(player);
+
 	_width = 151;
 	_height = 151; 
-	_type=TILEMANAGER->getType();
+	_type = TILEMANAGER->getType();
+
 	TILEMANAGER->init(_width, _height, _type);
 	CAMERAMANAGER->setBackScreenSize((_width - 1) * TILEWIDTH, (_height - 1) * TILEHEIGHT);
 	

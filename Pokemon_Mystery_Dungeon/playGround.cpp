@@ -43,7 +43,7 @@ HRESULT playGround::init()
 	SCENEMANAGER->addScene("guild", new guildMapScene);
 	SCENEMANAGER->addScene("title", new titleScene);
 
-	SCENEMANAGER->changeScene("title");
+	SCENEMANAGER->changeScene("select");
 	BATTLEMANAGER->init();
 
 	_debug = false;
@@ -75,8 +75,10 @@ void playGround::update()
 
 void playGround::render()
 {
-	if (STREAMMANAGER->getPosition() < STREAMMANAGER->getLength())
-		return;
+	if (STREAMMANAGER->getCurrentVideo()) {
+		if (STREAMMANAGER->getPosition() < STREAMMANAGER->getLength())
+			return;
+	}
 
 	DTDMANAGER->beginDraw();
 	//================제발 이 사이에 좀 그립시다==========================
