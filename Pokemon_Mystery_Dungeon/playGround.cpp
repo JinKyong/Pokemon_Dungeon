@@ -43,7 +43,7 @@ HRESULT playGround::init()
 	SCENEMANAGER->addScene("guild", new guildMapScene);
 	SCENEMANAGER->addScene("title", new titleScene);
 
-	SCENEMANAGER->changeScene("select");
+	SCENEMANAGER->changeScene("map");
 	BATTLEMANAGER->init();
 
 	_debug = false;

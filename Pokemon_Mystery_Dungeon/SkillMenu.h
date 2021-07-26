@@ -27,6 +27,8 @@ private:
 	dImage* _back2;
 	dImage* _border2;
 
+	D2D1_RECT_F _rc;
+
 	int _index2;
 
 public:
@@ -38,6 +40,8 @@ public:
 	void printTextLeft();
 	void printTextRight();
 	void printTextDown();
+
+	void printPP();
 
 	void plusIndex();
 	void minusIndex();

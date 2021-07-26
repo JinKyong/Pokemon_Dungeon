@@ -48,7 +48,12 @@ void InvenMenu::update()
 
 	if (KEYMANAGER->isOnceKeyDown(KEY_A))
 	{
-		if(!_hidden) _hidden = true;
+		if (_hidden)
+		{
+			if (_index2 == INVENMENU_OPTION_BACK || _index2 == INVENMENU_GIVE_OPTION_BACK) _hidden = false;
+		}
+
+		else _hidden = true;
 	}
 
 	_opacity = !_opacity;
@@ -62,10 +67,18 @@ void InvenMenu::render()
 
 	if (_hidden)
 	{
-		if ((*_invItem)[_index]->getType() == ITEM_HOLD) printTextRight2();
-		else printTextRight();
+		if ((*_invItem)[_index]->getType() == ITEM_HOLD)
+		{
+			printTextRight2();
+			if (_index2 == INVENMENU_GIVE_OPTION_INFO) printTextDown();
+		}
+
+		else
+		{
+			printTextRight();
+			if (_index2 == INVENMENU_OPTION_INFO) printTextDown();
+		}
 	}
-	printTextDown();
 }
 
 void InvenMenu::printTextLeft()
@@ -86,7 +99,7 @@ void InvenMenu::printTextLeft()
 		dest.top += TILEHEIGHT;
 		dest.bottom += TILEHEIGHT;
 
-		if (_invItem->size() % 7 == 0) DTDMANAGER->printText((*_viInvItem)->getName().c_str(), dest, 25);
+		//if (_invItem->size() % 7 == 0) DTDMANAGER->printText((*_viInvItem)->getName().c_str(), dest, 25);
 	}
 }
 

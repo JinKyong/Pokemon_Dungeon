@@ -60,24 +60,6 @@ HRESULT testMapScene::init(Player * player)
 	INVENTORYMANAGER->addItem(titem);
 	INVENTORYMANAGER->addItem(apple);
 
-	
-	INVENTORYMANAGER->addItem(apple);
-	INVENTORYMANAGER->addItem(jelly);
-	INVENTORYMANAGER->addItem(titem);
-	INVENTORYMANAGER->addItem(ribbon);
-	INVENTORYMANAGER->addItem(jelly);
-	INVENTORYMANAGER->addItem(titem);
-	INVENTORYMANAGER->addItem(apple);
-
-	INVENTORYMANAGER->addItem(apple);
-	INVENTORYMANAGER->addItem(jelly);
-	INVENTORYMANAGER->addItem(titem);
-	INVENTORYMANAGER->addItem(ribbon);
-	INVENTORYMANAGER->addItem(jelly);
-	INVENTORYMANAGER->addItem(titem);
-	INVENTORYMANAGER->addItem(apple);
-	
-
 	DIALOGMANAGER->init();
 	//DIALOGMANAGER->loadMetaData(L"data/test");
 
