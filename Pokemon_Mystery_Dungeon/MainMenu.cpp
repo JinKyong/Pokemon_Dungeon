@@ -44,6 +44,13 @@ void MainMenu::update()
 		UIMANAGER->changeDownMenu("logMenu");
 		UIMANAGER->setOpen(false);
 	}
+
+
+	_count++;
+	if (_count > 20) {
+		_opacity = !_opacity;
+		_count = 0;
+	}
 }
 
 void MainMenu::render()
@@ -67,14 +74,15 @@ void MainMenu::printTextLeft()
 	D2D1_RECT_F dest = dRectMake(rc.left + _tuningX + TILEWIDTH, rc.top + _tuningY + TILEHEIGHT / 2,
 		TILEWIDTH * 2, TILEHEIGHT);
 
+	//화살표
+	_arrow->render(dest.left - 20, dest.top - 45 + _index * TILEHEIGHT, _opacity);
+
 	DTDMANAGER->printText(L"기술", dest, 25);
 
 	dest.top += TILEHEIGHT;
 	dest.bottom += TILEHEIGHT;
 	DTDMANAGER->printText(L"도구", dest, 25);
 
-	//화살표
-	_arrow->render(dest.left - 20, dest.top - 45 + _index * TILEHEIGHT);
 }
 
 void MainMenu::printTextRight()

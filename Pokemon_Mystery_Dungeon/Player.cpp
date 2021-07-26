@@ -2,13 +2,13 @@
 #include "Player.h"
 #include "Pattern.h"
 
-HRESULT Player::init(int pokemonNum)
+HRESULT Player::init(int pokemonNum, int level)
 {
 	//포켓몬
 	_pokemon = POKEDEX->makePokemon(pokemonNum);
 	_pokemon->init();
 
-	_level = 5;
+	_level = level;
 	_EXP = 0;
 
 	_realStat = BATTLEMANAGER->statCalculation(this);
@@ -17,7 +17,7 @@ HRESULT Player::init(int pokemonNum)
 	return S_OK;
 }
 
-HRESULT Player::init(float x, float y)
+HRESULT Player::initXY(float x, float y)
 {
 	//허기
 	_starve = 100;

@@ -3,9 +3,9 @@
 #include "PatternPathFinder.h"
 #include "PatternOnAttack.h"
 
-HRESULT Enemy::init(int pokemonNum)
+HRESULT Enemy::init(int pokemonNum, int level)
 {
-	Player::init(pokemonNum);
+	Player::init(pokemonNum, level);
 
 	//플레이어 타입
 	_playerType = PLAYER_TYPE_ENEMY;

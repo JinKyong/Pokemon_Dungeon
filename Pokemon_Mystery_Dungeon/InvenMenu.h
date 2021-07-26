@@ -35,6 +35,7 @@ private:
 
 	int _index2;
 	bool _opacity;
+	int _count;
 
 public:
 	virtual HRESULT init();

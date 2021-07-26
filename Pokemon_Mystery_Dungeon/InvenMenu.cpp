@@ -22,6 +22,8 @@ HRESULT InvenMenu::init()
 	_index = 0;
 	_index2 = 0;
 
+	_count = 0;
+
 	return S_OK;
 }
 
@@ -63,7 +65,11 @@ void InvenMenu::update()
 		else _hidden = true;
 	}
 
-	_opacity = !_opacity;
+	_count++;
+	if (_count > 20) {
+		_opacity = !_opacity;
+		_count = 0;
+	}
 }
 
 void InvenMenu::render()

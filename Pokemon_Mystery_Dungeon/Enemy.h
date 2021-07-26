@@ -10,7 +10,7 @@ class Enemy : public Player
 private:
 
 public:
-	virtual HRESULT init(int pokemonNum);
+	virtual HRESULT init(int pokemonNum, int level);
 
 	virtual	int input();
 };

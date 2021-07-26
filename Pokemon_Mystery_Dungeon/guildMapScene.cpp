@@ -14,10 +14,8 @@ HRESULT guildMapScene::init(Player * player)
 	_background = IMAGEMANAGER->addDImage("guild", L"img/map/house.png", 384, 384);
 	CAMERAMANAGER->setBackScreenSize((_width)* TILEWIDTH, (_height)* TILEHEIGHT);
 	TURNMANAGER->init();
-	player->init(4,8);
+	player->initXY(4,8);
 
-
-	TURNMANAGER->addAllPlayer(player);
 	_itemManager = new ItemManager;
 	_itemManager->init();
 

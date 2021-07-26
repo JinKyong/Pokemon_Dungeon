@@ -18,14 +18,6 @@ HRESULT testMapScene::init(Player * player)
 	TURNMANAGER->init();
 	TURNMANAGER->addAllPlayer(player);
 
-	_pokemon1 = new Enemy;
-	_pokemon1->init(RND->getInt(28) + 1);
-	TURNMANAGER->addAllPlayer(_pokemon1);
-
-
-	_pokemon2 = new Enemy;
-	_pokemon2->init(RND->getInt(15) + 1);
-	TURNMANAGER->addAllPlayer(_pokemon2);
 	//
 	//_pokemon3 = new Enemy;
 	//_pokemon3->init(RND->getInt(15) + 1);

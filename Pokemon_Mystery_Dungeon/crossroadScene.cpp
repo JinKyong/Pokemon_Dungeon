@@ -14,10 +14,10 @@ HRESULT crossroadScene::init(Player * player)
 	_background = IMAGEMANAGER->addDImage("crossroad", L"img/map/crossroad.png", 384, 480);
 	CAMERAMANAGER->setBackScreenSize((_width)* TILEWIDTH, (_height)* TILEHEIGHT);
 	TURNMANAGER->init();
-	player->init(4, 5);
+	player->initXY(4, 5);
 
 
-	TURNMANAGER->addAllPlayer(player);
+	//TURNMANAGER->addAllPlayer(player);
 	_itemManager = new ItemManager;
 	_itemManager->init();
 

@@ -13,12 +13,12 @@ HRESULT bossMapScene::init(Player * player)
 	_background = IMAGEMANAGER->addDImage("bossback", L"img/map/bossmap1.png", 768, 864);
 	CAMERAMANAGER->setBackScreenSize((_width) * TILEWIDTH, (_height) * TILEHEIGHT);
 	TURNMANAGER->init();
-	player->init(10, 10);
+	player->initXY(10, 10);
 	
 	_pokemon1 = new Enemy;
-	_pokemon1->init(TILEMANAGER->getBoss());
+	_pokemon1->init(TILEMANAGER->getBoss(), 25);
 	TURNMANAGER->addAllPlayer(_pokemon1);
-	TURNMANAGER->addAllPlayer(player);
+
 	_itemManager = new ItemManager;
 	_itemManager->init();
 

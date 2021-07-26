@@ -30,6 +30,8 @@ void mainScene::release()
 void mainScene::update()
 {
 	UIMANAGER->update();
+
+	changeScene();
 }
 
 void mainScene::render()
@@ -42,4 +44,12 @@ void mainScene::render()
 
 void mainScene::changeScene()
 {
+	if (CAMERAMANAGER->getAlpha() == 1.0) {
+		//푸키몬이 있으면
+		if(_player->getPokemon())
+			SCENEMANAGER->changeScene("select");
+		//없으면
+		else {
+		}
+	}
 }

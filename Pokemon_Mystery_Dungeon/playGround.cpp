@@ -30,7 +30,7 @@ HRESULT playGround::init()
 	gameNode::init(true);
 
 	_player = new User;
-	_player->init(RND->getInt(15) + 1);
+	_player->init(RND->getInt(38) + 1, 50);
 
 	SCENEMANAGER->init(_player);
 
@@ -47,7 +47,7 @@ HRESULT playGround::init()
 	SCENEMANAGER->addScene("main", new mainScene);
 	SCENEMANAGER->addScene("loading", new loadingScene);
 
-	SCENEMANAGER->changeScene("select");
+	SCENEMANAGER->changeScene("title");
 	BATTLEMANAGER->init();
 
 	_debug = false;
