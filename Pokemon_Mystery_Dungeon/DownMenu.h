@@ -1,6 +1,9 @@
 #pragma once
 #include "KeyNDirect.h"
 
+#define DOWNMENU_WIDTH	624
+#define DOWNMENU_HEIGHT	528
+
 class DownMenu
 {
 protected:

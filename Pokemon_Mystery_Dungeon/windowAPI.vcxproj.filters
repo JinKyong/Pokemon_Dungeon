@@ -490,6 +490,15 @@
     <ClCompile Include="DracoMeteor.cpp">
       <Filter>playGround\Skill\SK No. 21 ~ 30</Filter>
     </ClCompile>
+    <ClCompile Include="mainScene.cpp">
+      <Filter>playGround\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleMenuU.cpp">
+      <Filter>playGround\UI\Menu\UpMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleMenuD.cpp">
+      <Filter>playGround\UI\Menu\DownMenu</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="video.h">
@@ -1011,6 +1020,15 @@
     <ClInclude Include="DracoMeteor.h">
       <Filter>playGround\Skill\SK No. 21 ~ 30</Filter>
     </ClInclude>
+    <ClInclude Include="mainScene.h">
+      <Filter>playGround\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleMenuU.h">
+      <Filter>playGround\UI\Menu\UpMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleMenuD.h">
+      <Filter>playGround\UI\Menu\DownMenu</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
@@ -1117,9 +1135,6 @@
     <Filter Include="헤더 파일">
       <UniqueIdentifier>{2e2fceae-66af-4514-84a4-b912abd77e54}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일">
-      <UniqueIdentifier>{eadd8184-fa4a-4bde-9cff-55aab432b36a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="리소스 파일">
       <UniqueIdentifier>{f94f3106-78c4-4b83-9f6f-1522ca873fe3}</UniqueIdentifier>
     </Filter>
@@ -1164,6 +1179,9 @@
     </Filter>
     <Filter Include="playGround\Skill\SK No. 11 ~ 20">
       <UniqueIdentifier>{ee7b6641-e1aa-4411-93da-cfa0bc3a3a39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일">
+      <UniqueIdentifier>{eadd8184-fa4a-4bde-9cff-55aab432b36a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

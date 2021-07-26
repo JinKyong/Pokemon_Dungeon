@@ -5,9 +5,9 @@ HRESULT LogMenu::init()
 {
 	//배경 이미지
 	_back = IMAGEMANAGER->addDImage(
-		"logMenu_back", L"img/UI/logMenu/back.png", LOGMENU_WIDTH, LOGMENU_HEIGHT);
+		"logMenu_back", L"img/UI/logMenu/back.png", DOWNMENU_WIDTH, DOWNMENU_HEIGHT);
 	_border = IMAGEMANAGER->addDImage(
-		"logMenu_border", L"img/UI/logMenu/border.png", LOGMENU_WIDTH, LOGMENU_HEIGHT);
+		"logMenu_border", L"img/UI/logMenu/border.png", DOWNMENU_WIDTH, DOWNMENU_HEIGHT);
 
 	_tuningX = 0;
 	_tuningY = 0;
@@ -53,7 +53,7 @@ void LogMenu::render()
 	for (; iter != _logList->end(); ++iter) {
 
 		DTDMANAGER->printText(iter->c_str(), 
-			screen.left + LOGMENU_WIDTH / 2, screen.bottom - 144 + count * 20,
+			screen.left + DOWNMENU_WIDTH / 2, screen.bottom - 144 + count * 20,
 			480, 20, 20);
 		count++;
 	}

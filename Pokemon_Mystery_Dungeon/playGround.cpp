@@ -11,6 +11,7 @@
 #include "guildMapScene.h"
 #include "crossroadScene.h"
 #include "titleScene.h"
+#include "mainScene.h"
 
 
 playGround::playGround()
@@ -42,6 +43,7 @@ HRESULT playGround::init()
 	SCENEMANAGER->addScene("town", new townMapScene);
 	SCENEMANAGER->addScene("guild", new guildMapScene);
 	SCENEMANAGER->addScene("title", new titleScene);
+	SCENEMANAGER->addScene("main", new mainScene);
 
 	SCENEMANAGER->changeScene("title");
 	BATTLEMANAGER->init();

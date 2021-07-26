@@ -15,14 +15,16 @@ HRESULT uiManager::init()
 	//위 메뉴
 	addUpMenu("keyMenu", new KeyMenu);
 	addUpMenu("statusMenu", new StatusMenu);
-	changeUpMenu("statusMenu");
+	addUpMenu("titleMenu", new TitleMenuU);
+	//changeUpMenu("statusMenu");
 
 	//아래 메뉴
+	addDownMenu("titleMenu", new TitleMenuD);
 	addDownMenu("mainMenu", new MainMenu);
 	addDownMenu("logMenu", new LogMenu);
 	addDownMenu("invenMenu", new InvenMenu);
 	addDownMenu("SkillMenu", new SkillMenu);
-	changeDownMenu("logMenu");
+	//changeDownMenu("logMenu");
 
 	_open = false;
 

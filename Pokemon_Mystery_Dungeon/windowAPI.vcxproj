@@ -242,6 +242,7 @@
     <ClInclude Include="macroFunc.h" />
     <ClInclude Include="gameNode.h" />
     <ClInclude Include="MainMenu.h" />
+    <ClInclude Include="mainScene.h" />
     <ClInclude Include="Makuhita.h" />
     <ClInclude Include="maptool.h" />
     <ClInclude Include="mapToolScene.h" />
@@ -300,6 +301,8 @@
     <ClInclude Include="tileManager.h" />
     <ClInclude Include="timeManager.h" />
     <ClInclude Include="timer.h" />
+    <ClInclude Include="TitleMenuU.h" />
+    <ClInclude Include="TitleMenuD.h" />
     <ClInclude Include="titleScene.h" />
     <ClInclude Include="TMachine.h" />
     <ClInclude Include="townMapScene.h" />
@@ -415,6 +418,7 @@
     <ClCompile Include="LogMenu.cpp" />
     <ClCompile Include="Lunatone.cpp" />
     <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="mainScene.cpp" />
     <ClCompile Include="Makuhita.cpp" />
     <ClCompile Include="maptool.cpp" />
     <ClCompile Include="mapToolScene.cpp" />
@@ -469,6 +473,8 @@
     <ClCompile Include="tileManager.cpp" />
     <ClCompile Include="timeManager.cpp" />
     <ClCompile Include="timer.cpp" />
+    <ClCompile Include="TitleMenuU.cpp" />
+    <ClCompile Include="TitleMenuD.cpp" />
     <ClCompile Include="titleScene.cpp" />
     <ClCompile Include="TMachine.cpp" />
     <ClCompile Include="townMapScene.cpp" />
