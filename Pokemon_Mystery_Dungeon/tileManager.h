@@ -60,6 +60,11 @@ private:
 	int _type;
 	int _trapCount;
 
+	int _enemyPokemon1;
+	int _enemyPokemon2;
+	int _enemyPokemon3;
+	int _bossPokemon;
+
 public:
 	tileManager();
 	~tileManager();
@@ -102,6 +107,11 @@ public:
 	int getType() { return _type; }
 	int getPlayerX() { return _playerX;}
 	int getPlayerY() { return _playerY; }
+	int getEnemy1() { return _enemyPokemon1; }
+	int getEnemy2() { return _enemyPokemon2; }
+	int getEnemy3() { return _enemyPokemon3; }
+	int getBoss() { return _bossPokemon; }
+
 	char getChar(int x, int y) { return _vChar[x + y * _width]; }
 
 	vector<tagTile*>* getvTile() { return &_vTile; }

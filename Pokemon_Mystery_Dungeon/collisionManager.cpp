@@ -138,10 +138,12 @@ bool collisionManager::playerWithPlayer(Player * player)
 	return true;
 }
 
+
+
 void collisionManager::collisionEndTurnPlayer(Player* player)
 {
 	playerWithItem(player);
-
+	playerWithObject(player);
 	if (player->getPlayerType() == PLAYER_TYPE_ENEMY)
 		collisionDetection(player);
 }
@@ -159,8 +161,35 @@ void collisionManager::playerWithItem(Player* player)
 			_scene->getItemManager()->removeItem(i);
 		}
 	}
+	
 }
+void collisionManager::playerWithObject(Player * player)
+{
+	for (int i = 0; i < _allTile->size(); i++)
+	{
+		RECT temp;
+		if (IntersectRect(&temp, &player->getBody(), &(*_allTile)[i]->rc))
+		{
+			if ((*_allTile)[i]->obj == OBJ_STAIR)
+			{
+				if (SCENEMANAGER->getSceneCount() >= 5)
+				{
+					this->release();
+					TURNMANAGER->release();
+					SCENEMANAGER->changeScene("boss");
+				}
+				else
+				{
+					SCENEMANAGER->setSceneCount(SCENEMANAGER->getSceneCount() + 1);
+					TILEMANAGER->init(TILEMANAGER->getWidth(), TILEMANAGER->getHeight(), TILEMANAGER->getType());
+					TURNMANAGER->randomSetting();
 
+				}
+			}
+		}
+	}
+	
+}
 void collisionManager::collisionDetection(Player * player)
 {
 	Player* user = (*TURNMANAGER->getAllPlayer())[0];

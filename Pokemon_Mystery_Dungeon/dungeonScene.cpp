@@ -21,16 +21,16 @@ HRESULT dungeonScene::init(Player * player)
 	TURNMANAGER->addAllPlayer(player);
 
 	_pokemon1 = new Enemy;
-	_pokemon1->init(RND->getInt(15) + 1);
+	_pokemon1->init(TILEMANAGER->getEnemy1());
 	TURNMANAGER->addAllPlayer(_pokemon1);
 
 
 	_pokemon2 = new Enemy;
-	_pokemon2->init(RND->getInt(15) + 1);
+	_pokemon2->init(TILEMANAGER->getEnemy2());
 	TURNMANAGER->addAllPlayer(_pokemon2);
 
 	_pokemon3 = new Enemy;
-	_pokemon3->init(RND->getInt(15) + 1);
+	_pokemon3->init(TILEMANAGER->getEnemy3());
 	TURNMANAGER->addAllPlayer(_pokemon3);
 
 	
@@ -50,7 +50,12 @@ void dungeonScene::release()
 
 void dungeonScene::update()
 {
-	if (KEYMANAGER->isOnceKeyDown('T'))SCENEMANAGER->changeScene("select");
+	if (KEYMANAGER->isOnceKeyDown('T'))
+	{
+		this->release();
+		TURNMANAGER->release();
+		SCENEMANAGER->changeScene("select");
+	}
 	if (KEYMANAGER->isOnceKeyDown('R'))
 	{
 		if (SCENEMANAGER->getSceneCount() >= 5)
@@ -69,6 +74,11 @@ void dungeonScene::update()
 
 		}
 	}
+	//for(int i=0;i<_width*_height;++i)
+	//{
+	//	TILEMANAGER->getvTile()[i].
+	//}
+	////if (_mini[i].rc.left == (_playerX * 8) && _mini[i].rc.top == (_playerY * 8))
 	TILEMANAGER->update();
 
 	//if (DIALOGMANAGER->getPrint())

@@ -11,14 +11,14 @@ enum TERRAIN
 enum OBJECT
 {
 	OBJ_BLOCK,
-	OBJ_TRAP, OBJ_TRAP1,OBJ_TRAP2,
+	OBJ_TRAP, OBJ_TRAP1, OBJ_TRAP2,
 	OBJ_STAIR,
 	OBJ_NONE
 };
 
 //컨트롤
 enum CTRL
-{	
+{
 	CTRL_TERRAINDRAW,	//지형		
 	CTRL_OBJDRAW,		//오브젝트	
 	CTRL_ERASER,		//지우개		
@@ -57,27 +57,31 @@ enum Tile
 	HorizontalTopWall = '<',
 	HorizontalBottomWall = '=',
 	HorizontalWall = '>',
-	LeftBlockWall='?',
-	RightBlockWall='@',
-	TopBlockWall='A',
-	BottomBlockWall='B',
-	VerticalTopRight='C',
-	VerticalTopLeft='D',
-	VerticalBottomRight='E',
-	VerticalBottomLeft='F',
-	HorizontalTopRight='G',
-	HorizontalTopLeft='H',
-	HorizontalBottomRight='I',
-	HorizontalBottomLeft='J',
-	AllOpenRight='K',
-	AllOpenLeft='L',
-	OpenConnectTopLeft='M',
-	OpenConnectTopRight='N',
-	OpenConnectBottomLeft='O',
-	OpenConnectBottomRight='P',
-	ClearTrap = 'Q',
-	PowerTrap = 'R'
-	
+	LeftBlockWall = '?',
+	RightBlockWall = '@',
+	TopBlockWall = 'A',
+	BottomBlockWall = 'B',
+	VerticalTopRight = 'C',
+	VerticalTopLeft = 'D',
+	VerticalBottomRight = 'E',
+	VerticalBottomLeft = 'F',
+	HorizontalTopRight = 'G',
+	HorizontalTopLeft = 'H',
+	HorizontalBottomRight = 'I',
+	HorizontalBottomLeft = 'J',
+	AllOpenRight = 'K',
+	AllOpenLeft = 'L',
+	OpenConnectTopLeft = 'M',
+	OpenConnectTopRight = 'N',
+	OpenConnectBottomLeft = 'O',
+	OpenConnectBottomRight = 'P',
+	LeftTopBlockCorner = 'Q',
+	RightTopBlockCorner = 'R',
+	LeftBottomBlockCorner = 'S',
+	RightBottomBlockCorner = 'T',
+	ClearTrap = 'U',
+	PowerTrap = 'V'
+
 };
 
 //각객체 방향
