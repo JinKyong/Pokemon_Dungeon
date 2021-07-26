@@ -12,6 +12,7 @@ HRESULT EF_ThunderFang::init(float x, float y, int damage, int skillScale, int a
 	_tuningY = -(_img->getFrameHeight() / 2);
 	_renderCount = 0.05f;
 
+	SOUNDMANAGER->play("ThunderFang");
 	return S_OK;
 }
 

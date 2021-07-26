@@ -12,6 +12,9 @@ HRESULT EF_TriAttack::init(float x, float y, int damage, int skillScale, int atk
 	_tuningY = -(_img->getFrameHeight() / 2);
 	_renderCount = 0.06f;
 
+	_renderCount = 0.06f;
+
+	SOUNDMANAGER->play("TriAttack");
 	return S_OK;
 }
 

@@ -11,6 +11,8 @@ HRESULT EF_Gust::init(float x, float y, int damage, int skillScale, int atkType,
 	_tuningX = -(_img->getFrameWidth() / 2);
 	_tuningY = -(_img->getFrameHeight() / 2 + 40);
 	_renderCount = 0.02f;
+
+	SOUNDMANAGER->play("Gust");
 	return S_OK;
 }
 

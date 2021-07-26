@@ -10,9 +10,6 @@
     <ClCompile Include="battleManager.cpp">
       <Filter>playGround\Battle</Filter>
     </ClCompile>
-    <ClCompile Include="Bind.cpp">
-      <Filter>playGround\Skill</Filter>
-    </ClCompile>
     <ClCompile Include="bossMapScene.cpp">
       <Filter>playGround\Stage</Filter>
     </ClCompile>
@@ -42,9 +39,6 @@
     </ClCompile>
     <ClCompile Include="Crobat.cpp">
       <Filter>playGround\Pokémon\No.10 ~ 19</Filter>
-    </ClCompile>
-    <ClCompile Include="CrossChop.cpp">
-      <Filter>playGround\Skill</Filter>
     </ClCompile>
     <ClCompile Include="crossroadScene.cpp">
       <Filter>playGround\Stage</Filter>
@@ -88,89 +82,8 @@
     <ClCompile Include="dungeonSelectScene.cpp">
       <Filter>playGround\Stage</Filter>
     </ClCompile>
-    <ClCompile Include="DynamicPunch.cpp">
-      <Filter>playGround\Skill</Filter>
-    </ClCompile>
     <ClCompile Include="Eevee.cpp">
       <Filter>playGround\Pokémon\No.20 ~ 29</Filter>
-    </ClCompile>
-    <ClCompile Include="EF_Bind.cpp">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="EF_CrossChop.cpp">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="EF_Default.cpp">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="EF_DynamicPunch.cpp">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="EF_FeintAttack.cpp">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="EF_FireBlast.cpp">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="EF_FireFang.cpp">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="EF_Gust.cpp">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="EF_IceFang.cpp">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="EF_LeafBlade.cpp">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="EF_Lightning.cpp">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="EF_MetalClaw.cpp">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="EF_PoisonPowder.cpp">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="EF_Pound.cpp">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="EF_RockSlide.cpp">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="EF_RockSmash.cpp">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="EF_ShadowClaw.cpp">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="EF_SheerCold.cpp">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="EF_SleepPowder.cpp">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="EF_StunSpore.cpp">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="EF_ThunderFang.cpp">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="EF_TriAttack.cpp">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="EF_VineWhip.cpp">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="EF_WakeUpSlap.cpp">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="EF_Waterfall.cpp">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="EF_WingAttack.cpp">
-      <Filter>playGround\Skill\Effect</Filter>
     </ClCompile>
     <ClCompile Include="Effect.cpp">
       <Filter>playGround\Skill\Effect\base</Filter>
@@ -183,15 +96,6 @@
     </ClCompile>
     <ClCompile Include="Espeon.cpp">
       <Filter>playGround\Pokémon\No.20 ~ 29</Filter>
-    </ClCompile>
-    <ClCompile Include="FeintAttack.cpp">
-      <Filter>playGround\Skill</Filter>
-    </ClCompile>
-    <ClCompile Include="FireBlast.cpp">
-      <Filter>playGround\Skill</Filter>
-    </ClCompile>
-    <ClCompile Include="FireFang.cpp">
-      <Filter>playGround\Skill</Filter>
     </ClCompile>
     <ClCompile Include="Flareon.cpp">
       <Filter>playGround\Pokémon\No.20 ~ 29</Filter>
@@ -217,14 +121,8 @@
     <ClCompile Include="Gummy.cpp">
       <Filter>playGround\Item</Filter>
     </ClCompile>
-    <ClCompile Include="Gust.cpp">
-      <Filter>playGround\Skill</Filter>
-    </ClCompile>
     <ClCompile Include="Hariyama.cpp">
       <Filter>playGround\Pokémon\No.30 ~ 39</Filter>
-    </ClCompile>
-    <ClCompile Include="IceFang.cpp">
-      <Filter>playGround\Skill</Filter>
     </ClCompile>
     <ClCompile Include="image.cpp">
       <Filter>2DGameFramework\image</Filter>
@@ -235,8 +133,14 @@
     <ClCompile Include="InvenMenu.cpp">
       <Filter>playGround\UI\Menu\DownMenu</Filter>
     </ClCompile>
+    <ClCompile Include="InventoryManager.cpp">
+      <Filter>playGround\Item</Filter>
+    </ClCompile>
     <ClCompile Include="Item.cpp">
       <Filter>playGround\Item\base</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemManager.cpp">
+      <Filter>playGround\Item</Filter>
     </ClCompile>
     <ClCompile Include="Ivysaur.cpp">
       <Filter>playGround\Pokémon\No.01 ~ 09</Filter>
@@ -252,12 +156,6 @@
     </ClCompile>
     <ClCompile Include="Lapras.cpp">
       <Filter>playGround\Pokémon\No.20 ~ 29</Filter>
-    </ClCompile>
-    <ClCompile Include="LeafBlade.cpp">
-      <Filter>playGround\Skill</Filter>
-    </ClCompile>
-    <ClCompile Include="Lightning.cpp">
-      <Filter>playGround\Skill</Filter>
     </ClCompile>
     <ClCompile Include="LogMenu.cpp">
       <Filter>playGround\UI\Menu\DownMenu</Filter>
@@ -279,9 +177,6 @@
     </ClCompile>
     <ClCompile Include="Mawile.cpp">
       <Filter>playGround\Pokémon\No.20 ~ 29</Filter>
-    </ClCompile>
-    <ClCompile Include="MetalClaw.cpp">
-      <Filter>playGround\Skill</Filter>
     </ClCompile>
     <ClCompile Include="PathFinder.cpp">
       <Filter>playGround\Pokémon\Player\Pattern\A%2a</Filter>
@@ -307,17 +202,11 @@
     <ClCompile Include="playGround.cpp">
       <Filter>playGround</Filter>
     </ClCompile>
-    <ClCompile Include="PoisonPowder.cpp">
-      <Filter>playGround\Skill</Filter>
-    </ClCompile>
     <ClCompile Include="pokeDex.cpp">
       <Filter>playGround\PokéDex</Filter>
     </ClCompile>
     <ClCompile Include="Pokemon.cpp">
       <Filter>playGround\Pokémon\base</Filter>
-    </ClCompile>
-    <ClCompile Include="Pound.cpp">
-      <Filter>playGround\Skill</Filter>
     </ClCompile>
     <ClCompile Include="printManager.cpp">
       <Filter>2DGameFramework\Manager</Filter>
@@ -337,12 +226,6 @@
     <ClCompile Include="Ribbon.cpp">
       <Filter>playGround\Item</Filter>
     </ClCompile>
-    <ClCompile Include="RockSlide.cpp">
-      <Filter>playGround\Skill</Filter>
-    </ClCompile>
-    <ClCompile Include="RockSmash.cpp">
-      <Filter>playGround\Skill</Filter>
-    </ClCompile>
     <ClCompile Include="Scene.cpp">
       <Filter>playGround\Stage\base</Filter>
     </ClCompile>
@@ -352,12 +235,6 @@
     <ClCompile Include="Scope.cpp">
       <Filter>playGround\Item</Filter>
     </ClCompile>
-    <ClCompile Include="ShadowClaw.cpp">
-      <Filter>playGround\Skill</Filter>
-    </ClCompile>
-    <ClCompile Include="SheerCold.cpp">
-      <Filter>playGround\Skill</Filter>
-    </ClCompile>
     <ClCompile Include="Skill.cpp">
       <Filter>playGround\Skill\base</Filter>
     </ClCompile>
@@ -366,9 +243,6 @@
     </ClCompile>
     <ClCompile Include="SkillMenu.cpp">
       <Filter>playGround\UI\Menu\DownMenu</Filter>
-    </ClCompile>
-    <ClCompile Include="SleepPowder.cpp">
-      <Filter>playGround\Skill</Filter>
     </ClCompile>
     <ClCompile Include="Solrock.cpp">
       <Filter>playGround\Pokémon\No.30 ~ 39</Filter>
@@ -388,9 +262,6 @@
     <ClCompile Include="streamManager.cpp">
       <Filter>2DGameFramework\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="StunSpore.cpp">
-      <Filter>playGround\Skill</Filter>
-    </ClCompile>
     <ClCompile Include="Team.cpp">
       <Filter>playGround\Pokémon\Player</Filter>
     </ClCompile>
@@ -402,9 +273,6 @@
     </ClCompile>
     <ClCompile Include="ThrowItem.cpp">
       <Filter>playGround\Item</Filter>
-    </ClCompile>
-    <ClCompile Include="ThunderFang.cpp">
-      <Filter>playGround\Skill</Filter>
     </ClCompile>
     <ClCompile Include="tileManager.cpp">
       <Filter>playGround\Maptool\base</Filter>
@@ -423,9 +291,6 @@
     </ClCompile>
     <ClCompile Include="townMapScene.cpp">
       <Filter>playGround\Stage</Filter>
-    </ClCompile>
-    <ClCompile Include="TriAttack.cpp">
-      <Filter>playGround\Skill</Filter>
     </ClCompile>
     <ClCompile Include="turnManager.cpp">
       <Filter>playGround\Battle</Filter>
@@ -451,20 +316,8 @@
     <ClCompile Include="Venusaur.cpp">
       <Filter>playGround\Pokémon\No.01 ~ 09</Filter>
     </ClCompile>
-    <ClCompile Include="VineWhip.cpp">
-      <Filter>playGround\Skill</Filter>
-    </ClCompile>
-    <ClCompile Include="WakeUpSlap.cpp">
-      <Filter>playGround\Skill</Filter>
-    </ClCompile>
     <ClCompile Include="Wartortle.cpp">
       <Filter>playGround\Pokémon\No.10 ~ 19</Filter>
-    </ClCompile>
-    <ClCompile Include="Waterfall.cpp">
-      <Filter>playGround\Skill</Filter>
-    </ClCompile>
-    <ClCompile Include="WingAttack.cpp">
-      <Filter>playGround\Skill</Filter>
     </ClCompile>
     <ClCompile Include="winMain.cpp">
       <Filter>소스 파일</Filter>
@@ -478,11 +331,164 @@
     <ClCompile Include="Player.cpp">
       <Filter>playGround\Pokémon\Player\base</Filter>
     </ClCompile>
-    <ClCompile Include="InventoryManager.cpp">
-      <Filter>playGround\Item</Filter>
+    <ClCompile Include="EF_FireBlast.cpp">
+      <Filter>playGround\Skill\Effect\EF No. 01 ~ 10</Filter>
     </ClCompile>
-    <ClCompile Include="ItemManager.cpp">
-      <Filter>playGround\Item</Filter>
+    <ClCompile Include="EF_FireFang.cpp">
+      <Filter>playGround\Skill\Effect\EF No. 01 ~ 10</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_Gust.cpp">
+      <Filter>playGround\Skill\Effect\EF No. 01 ~ 10</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_IceFang.cpp">
+      <Filter>playGround\Skill\Effect\EF No. 01 ~ 10</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_LeafBlade.cpp">
+      <Filter>playGround\Skill\Effect\EF No. 01 ~ 10</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_Lightning.cpp">
+      <Filter>playGround\Skill\Effect\EF No. 01 ~ 10</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_DynamicPunch.cpp">
+      <Filter>playGround\Skill\Effect\EF No. 01 ~ 10</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_Pound.cpp">
+      <Filter>playGround\Skill\Effect\EF No. 01 ~ 10</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_ThunderFang.cpp">
+      <Filter>playGround\Skill\Effect\EF No. 01 ~ 10</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_RockSlide.cpp">
+      <Filter>playGround\Skill\Effect\EF No. 01 ~ 10</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_PoisonPowder.cpp">
+      <Filter>playGround\Skill\Effect\EF No. 11 ~ 20</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_RockSmash.cpp">
+      <Filter>playGround\Skill\Effect\EF No. 11 ~ 20</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_SleepPowder.cpp">
+      <Filter>playGround\Skill\Effect\EF No. 11 ~ 20</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_StunSpore.cpp">
+      <Filter>playGround\Skill\Effect\EF No. 11 ~ 20</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_TriAttack.cpp">
+      <Filter>playGround\Skill\Effect\EF No. 11 ~ 20</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_ShadowClaw.cpp">
+      <Filter>playGround\Skill\Effect\EF No. 11 ~ 20</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_MetalClaw.cpp">
+      <Filter>playGround\Skill\Effect\EF No. 11 ~ 20</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_FeintAttack.cpp">
+      <Filter>playGround\Skill\Effect\EF No. 11 ~ 20</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_CrossChop.cpp">
+      <Filter>playGround\Skill\Effect\EF No. 11 ~ 20</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_Bind.cpp">
+      <Filter>playGround\Skill\Effect\EF No. 11 ~ 20</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_Default.cpp">
+      <Filter>playGround\Skill\Effect\EF No. 21 ~ 30</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_SheerCold.cpp">
+      <Filter>playGround\Skill\Effect\EF No. 21 ~ 30</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_VineWhip.cpp">
+      <Filter>playGround\Skill\Effect\EF No. 21 ~ 30</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_WakeUpSlap.cpp">
+      <Filter>playGround\Skill\Effect\EF No. 21 ~ 30</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_Waterfall.cpp">
+      <Filter>playGround\Skill\Effect\EF No. 21 ~ 30</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_WingAttack.cpp">
+      <Filter>playGround\Skill\Effect\EF No. 21 ~ 30</Filter>
+    </ClCompile>
+    <ClCompile Include="FireBlast.cpp">
+      <Filter>playGround\Skill\SK No. 01 ~ 10</Filter>
+    </ClCompile>
+    <ClCompile Include="DynamicPunch.cpp">
+      <Filter>playGround\Skill\SK No. 01 ~ 10</Filter>
+    </ClCompile>
+    <ClCompile Include="FireFang.cpp">
+      <Filter>playGround\Skill\SK No. 01 ~ 10</Filter>
+    </ClCompile>
+    <ClCompile Include="Gust.cpp">
+      <Filter>playGround\Skill\SK No. 01 ~ 10</Filter>
+    </ClCompile>
+    <ClCompile Include="IceFang.cpp">
+      <Filter>playGround\Skill\SK No. 01 ~ 10</Filter>
+    </ClCompile>
+    <ClCompile Include="LeafBlade.cpp">
+      <Filter>playGround\Skill\SK No. 01 ~ 10</Filter>
+    </ClCompile>
+    <ClCompile Include="Lightning.cpp">
+      <Filter>playGround\Skill\SK No. 01 ~ 10</Filter>
+    </ClCompile>
+    <ClCompile Include="Pound.cpp">
+      <Filter>playGround\Skill\SK No. 01 ~ 10</Filter>
+    </ClCompile>
+    <ClCompile Include="RockSlide.cpp">
+      <Filter>playGround\Skill\SK No. 01 ~ 10</Filter>
+    </ClCompile>
+    <ClCompile Include="ThunderFang.cpp">
+      <Filter>playGround\Skill\SK No. 01 ~ 10</Filter>
+    </ClCompile>
+    <ClCompile Include="Bind.cpp">
+      <Filter>playGround\Skill\SK No. 11 ~ 20</Filter>
+    </ClCompile>
+    <ClCompile Include="CrossChop.cpp">
+      <Filter>playGround\Skill\SK No. 11 ~ 20</Filter>
+    </ClCompile>
+    <ClCompile Include="FeintAttack.cpp">
+      <Filter>playGround\Skill\SK No. 11 ~ 20</Filter>
+    </ClCompile>
+    <ClCompile Include="MetalClaw.cpp">
+      <Filter>playGround\Skill\SK No. 11 ~ 20</Filter>
+    </ClCompile>
+    <ClCompile Include="PoisonPowder.cpp">
+      <Filter>playGround\Skill\SK No. 11 ~ 20</Filter>
+    </ClCompile>
+    <ClCompile Include="RockSmash.cpp">
+      <Filter>playGround\Skill\SK No. 11 ~ 20</Filter>
+    </ClCompile>
+    <ClCompile Include="ShadowClaw.cpp">
+      <Filter>playGround\Skill\SK No. 11 ~ 20</Filter>
+    </ClCompile>
+    <ClCompile Include="SleepPowder.cpp">
+      <Filter>playGround\Skill\SK No. 11 ~ 20</Filter>
+    </ClCompile>
+    <ClCompile Include="StunSpore.cpp">
+      <Filter>playGround\Skill\SK No. 11 ~ 20</Filter>
+    </ClCompile>
+    <ClCompile Include="TriAttack.cpp">
+      <Filter>playGround\Skill\SK No. 11 ~ 20</Filter>
+    </ClCompile>
+    <ClCompile Include="SheerCold.cpp">
+      <Filter>playGround\Skill\SK No. 21 ~ 30</Filter>
+    </ClCompile>
+    <ClCompile Include="VineWhip.cpp">
+      <Filter>playGround\Skill\SK No. 21 ~ 30</Filter>
+    </ClCompile>
+    <ClCompile Include="WakeUpSlap.cpp">
+      <Filter>playGround\Skill\SK No. 21 ~ 30</Filter>
+    </ClCompile>
+    <ClCompile Include="Waterfall.cpp">
+      <Filter>playGround\Skill\SK No. 21 ~ 30</Filter>
+    </ClCompile>
+    <ClCompile Include="WingAttack.cpp">
+      <Filter>playGround\Skill\SK No. 21 ~ 30</Filter>
+    </ClCompile>
+    <ClCompile Include="EF_DracoMeteor.cpp">
+      <Filter>playGround\Skill\Effect\EF No. 21 ~ 30</Filter>
+    </ClCompile>
+    <ClCompile Include="DracoMeteor.cpp">
+      <Filter>playGround\Skill\SK No. 21 ~ 30</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -494,9 +500,6 @@
     </ClInclude>
     <ClInclude Include="battleManager.h">
       <Filter>playGround\Battle</Filter>
-    </ClInclude>
-    <ClInclude Include="Bind.h">
-      <Filter>playGround\Skill</Filter>
     </ClInclude>
     <ClInclude Include="bossMapScene.h">
       <Filter>playGround\Stage</Filter>
@@ -527,9 +530,6 @@
     </ClInclude>
     <ClInclude Include="Crobat.h">
       <Filter>playGround\Pokémon\No.10 ~ 19</Filter>
-    </ClInclude>
-    <ClInclude Include="CrossChop.h">
-      <Filter>playGround\Skill</Filter>
     </ClInclude>
     <ClInclude Include="crossroadScene.h">
       <Filter>playGround\Stage</Filter>
@@ -573,89 +573,8 @@
     <ClInclude Include="dungeonSelectScene.h">
       <Filter>playGround\Stage</Filter>
     </ClInclude>
-    <ClInclude Include="DynamicPunch.h">
-      <Filter>playGround\Skill</Filter>
-    </ClInclude>
     <ClInclude Include="Eevee.h">
       <Filter>playGround\Pokémon\No.20 ~ 29</Filter>
-    </ClInclude>
-    <ClInclude Include="EF_Bind.h">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="EF_CrossChop.h">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="EF_Default.h">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="EF_DynamicPunch.h">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="EF_FeintAttack.h">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="EF_FireBlast.h">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="EF_FireFang.h">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="EF_Gust.h">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="EF_IceFang.h">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="EF_LeafBlade.h">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="EF_Lightning.h">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="EF_MetalClaw.h">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="EF_PoisonPowder.h">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="EF_Pound.h">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="EF_RockSlide.h">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="EF_RockSmash.h">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="EF_ShadowClaw.h">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="EF_SheerCold.h">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="EF_SleepPowder.h">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="EF_StunSpore.h">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="EF_ThunderFang.h">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="EF_TriAttack.h">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="EF_VineWhip.h">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="EF_WakeUpSlap.h">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="EF_Waterfall.h">
-      <Filter>playGround\Skill\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="EF_WingAttack.h">
-      <Filter>playGround\Skill\Effect</Filter>
     </ClInclude>
     <ClInclude Include="Effect.h">
       <Filter>playGround\Skill\Effect\base</Filter>
@@ -668,15 +587,6 @@
     </ClInclude>
     <ClInclude Include="Espeon.h">
       <Filter>playGround\Pokémon\No.20 ~ 29</Filter>
-    </ClInclude>
-    <ClInclude Include="FeintAttack.h">
-      <Filter>playGround\Skill</Filter>
-    </ClInclude>
-    <ClInclude Include="FireFang.h">
-      <Filter>playGround\Skill</Filter>
-    </ClInclude>
-    <ClInclude Include="FireBlast.h">
-      <Filter>playGround\Skill</Filter>
     </ClInclude>
     <ClInclude Include="Flareon.h">
       <Filter>playGround\Pokémon\No.20 ~ 29</Filter>
@@ -702,14 +612,8 @@
     <ClInclude Include="Gummy.h">
       <Filter>playGround\Item</Filter>
     </ClInclude>
-    <ClInclude Include="Gust.h">
-      <Filter>playGround\Skill</Filter>
-    </ClInclude>
     <ClInclude Include="Hariyama.h">
       <Filter>playGround\Pokémon\No.30 ~ 39</Filter>
-    </ClInclude>
-    <ClInclude Include="IceFang.h">
-      <Filter>playGround\Skill</Filter>
     </ClInclude>
     <ClInclude Include="image.h">
       <Filter>2DGameFramework\image</Filter>
@@ -720,8 +624,14 @@
     <ClInclude Include="InvenMenu.h">
       <Filter>playGround\UI\Menu\DownMenu</Filter>
     </ClInclude>
+    <ClInclude Include="InventoryManager.h">
+      <Filter>playGround\Item</Filter>
+    </ClInclude>
     <ClInclude Include="Item.h">
       <Filter>playGround\Item\base</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemManager.h">
+      <Filter>playGround\Item</Filter>
     </ClInclude>
     <ClInclude Include="Ivysaur.h">
       <Filter>playGround\Pokémon\No.01 ~ 09</Filter>
@@ -740,12 +650,6 @@
     </ClInclude>
     <ClInclude Include="Lapras.h">
       <Filter>playGround\Pokémon\No.20 ~ 29</Filter>
-    </ClInclude>
-    <ClInclude Include="LeafBlade.h">
-      <Filter>playGround\Skill</Filter>
-    </ClInclude>
-    <ClInclude Include="Lightning.h">
-      <Filter>playGround\Skill</Filter>
     </ClInclude>
     <ClInclude Include="LogMenu.h">
       <Filter>playGround\UI\Menu\DownMenu</Filter>
@@ -774,9 +678,6 @@
     <ClInclude Include="macroFunc.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="MetalClaw.h">
-      <Filter>playGround\Skill</Filter>
-    </ClInclude>
     <ClInclude Include="PathFinder.h">
       <Filter>playGround\Pokémon\Player\Pattern\A%2a</Filter>
     </ClInclude>
@@ -801,9 +702,6 @@
     <ClInclude Include="playGround.h">
       <Filter>playGround</Filter>
     </ClInclude>
-    <ClInclude Include="PoisonPowder.h">
-      <Filter>playGround\Skill</Filter>
-    </ClInclude>
     <ClInclude Include="pokeDex.h">
       <Filter>playGround\PokéDex</Filter>
     </ClInclude>
@@ -815,9 +713,6 @@
     </ClInclude>
     <ClInclude Include="PokemonType.h">
       <Filter>playGround\PokéDex</Filter>
-    </ClInclude>
-    <ClInclude Include="Pound.h">
-      <Filter>playGround\Skill</Filter>
     </ClInclude>
     <ClInclude Include="printManager.h">
       <Filter>2DGameFramework\Manager</Filter>
@@ -843,12 +738,6 @@
     <ClInclude Include="Ribbon.h">
       <Filter>playGround\Item</Filter>
     </ClInclude>
-    <ClInclude Include="RockSlide.h">
-      <Filter>playGround\Skill</Filter>
-    </ClInclude>
-    <ClInclude Include="RockSmash.h">
-      <Filter>playGround\Skill</Filter>
-    </ClInclude>
     <ClInclude Include="Scene.h">
       <Filter>playGround\Stage\base</Filter>
     </ClInclude>
@@ -857,12 +746,6 @@
     </ClInclude>
     <ClInclude Include="Scope.h">
       <Filter>playGround\Item</Filter>
-    </ClInclude>
-    <ClInclude Include="ShadowClaw.h">
-      <Filter>playGround\Skill</Filter>
-    </ClInclude>
-    <ClInclude Include="SheerCold.h">
-      <Filter>playGround\Skill</Filter>
     </ClInclude>
     <ClInclude Include="singletonBase.h">
       <Filter>2DGameFramework\SingletonBase</Filter>
@@ -878,9 +761,6 @@
     </ClInclude>
     <ClInclude Include="SkillMenu.h">
       <Filter>playGround\UI\Menu\DownMenu</Filter>
-    </ClInclude>
-    <ClInclude Include="SleepPowder.h">
-      <Filter>playGround\Skill</Filter>
     </ClInclude>
     <ClInclude Include="Solrock.h">
       <Filter>playGround\Pokémon\No.30 ~ 39</Filter>
@@ -900,9 +780,6 @@
     <ClInclude Include="streamManager.h">
       <Filter>2DGameFramework\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="StunSpore.h">
-      <Filter>playGround\Skill</Filter>
-    </ClInclude>
     <ClInclude Include="targetver.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -917,9 +794,6 @@
     </ClInclude>
     <ClInclude Include="ThrowItem.h">
       <Filter>playGround\Item</Filter>
-    </ClInclude>
-    <ClInclude Include="ThunderFang.h">
-      <Filter>playGround\Skill</Filter>
     </ClInclude>
     <ClInclude Include="tileInfo.h">
       <Filter>playGround\Maptool\base</Filter>
@@ -941,9 +815,6 @@
     </ClInclude>
     <ClInclude Include="townMapScene.h">
       <Filter>playGround\Stage</Filter>
-    </ClInclude>
-    <ClInclude Include="TriAttack.h">
-      <Filter>playGround\Skill</Filter>
     </ClInclude>
     <ClInclude Include="turnManager.h">
       <Filter>playGround\Battle</Filter>
@@ -969,20 +840,8 @@
     <ClInclude Include="Venusaur.h">
       <Filter>playGround\Pokémon\No.01 ~ 09</Filter>
     </ClInclude>
-    <ClInclude Include="VineWhip.h">
-      <Filter>playGround\Skill</Filter>
-    </ClInclude>
-    <ClInclude Include="WakeUpSlap.h">
-      <Filter>playGround\Skill</Filter>
-    </ClInclude>
     <ClInclude Include="Wartortle.h">
       <Filter>playGround\Pokémon\No.10 ~ 19</Filter>
-    </ClInclude>
-    <ClInclude Include="Waterfall.h">
-      <Filter>playGround\Skill</Filter>
-    </ClInclude>
-    <ClInclude Include="WingAttack.h">
-      <Filter>playGround\Skill</Filter>
     </ClInclude>
     <ClInclude Include="Zubat.h">
       <Filter>playGround\Pokémon\No.10 ~ 19</Filter>
@@ -993,11 +852,164 @@
     <ClInclude Include="Player.h">
       <Filter>playGround\Pokémon\Player\base</Filter>
     </ClInclude>
-    <ClInclude Include="InventoryManager.h">
-      <Filter>playGround\Item</Filter>
+    <ClInclude Include="EF_FireBlast.h">
+      <Filter>playGround\Skill\Effect\EF No. 01 ~ 10</Filter>
     </ClInclude>
-    <ClInclude Include="ItemManager.h">
-      <Filter>playGround\Item</Filter>
+    <ClInclude Include="EF_FireFang.h">
+      <Filter>playGround\Skill\Effect\EF No. 01 ~ 10</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_Gust.h">
+      <Filter>playGround\Skill\Effect\EF No. 01 ~ 10</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_IceFang.h">
+      <Filter>playGround\Skill\Effect\EF No. 01 ~ 10</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_LeafBlade.h">
+      <Filter>playGround\Skill\Effect\EF No. 01 ~ 10</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_Lightning.h">
+      <Filter>playGround\Skill\Effect\EF No. 01 ~ 10</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_DynamicPunch.h">
+      <Filter>playGround\Skill\Effect\EF No. 01 ~ 10</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_Pound.h">
+      <Filter>playGround\Skill\Effect\EF No. 01 ~ 10</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_ThunderFang.h">
+      <Filter>playGround\Skill\Effect\EF No. 01 ~ 10</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_RockSlide.h">
+      <Filter>playGround\Skill\Effect\EF No. 01 ~ 10</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_PoisonPowder.h">
+      <Filter>playGround\Skill\Effect\EF No. 11 ~ 20</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_RockSmash.h">
+      <Filter>playGround\Skill\Effect\EF No. 11 ~ 20</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_SleepPowder.h">
+      <Filter>playGround\Skill\Effect\EF No. 11 ~ 20</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_StunSpore.h">
+      <Filter>playGround\Skill\Effect\EF No. 11 ~ 20</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_TriAttack.h">
+      <Filter>playGround\Skill\Effect\EF No. 11 ~ 20</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_ShadowClaw.h">
+      <Filter>playGround\Skill\Effect\EF No. 11 ~ 20</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_MetalClaw.h">
+      <Filter>playGround\Skill\Effect\EF No. 11 ~ 20</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_FeintAttack.h">
+      <Filter>playGround\Skill\Effect\EF No. 11 ~ 20</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_CrossChop.h">
+      <Filter>playGround\Skill\Effect\EF No. 11 ~ 20</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_Bind.h">
+      <Filter>playGround\Skill\Effect\EF No. 11 ~ 20</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_Default.h">
+      <Filter>playGround\Skill\Effect\EF No. 21 ~ 30</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_SheerCold.h">
+      <Filter>playGround\Skill\Effect\EF No. 21 ~ 30</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_VineWhip.h">
+      <Filter>playGround\Skill\Effect\EF No. 21 ~ 30</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_WakeUpSlap.h">
+      <Filter>playGround\Skill\Effect\EF No. 21 ~ 30</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_Waterfall.h">
+      <Filter>playGround\Skill\Effect\EF No. 21 ~ 30</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_WingAttack.h">
+      <Filter>playGround\Skill\Effect\EF No. 21 ~ 30</Filter>
+    </ClInclude>
+    <ClInclude Include="DynamicPunch.h">
+      <Filter>playGround\Skill\SK No. 01 ~ 10</Filter>
+    </ClInclude>
+    <ClInclude Include="FireBlast.h">
+      <Filter>playGround\Skill\SK No. 01 ~ 10</Filter>
+    </ClInclude>
+    <ClInclude Include="FireFang.h">
+      <Filter>playGround\Skill\SK No. 01 ~ 10</Filter>
+    </ClInclude>
+    <ClInclude Include="Gust.h">
+      <Filter>playGround\Skill\SK No. 01 ~ 10</Filter>
+    </ClInclude>
+    <ClInclude Include="IceFang.h">
+      <Filter>playGround\Skill\SK No. 01 ~ 10</Filter>
+    </ClInclude>
+    <ClInclude Include="LeafBlade.h">
+      <Filter>playGround\Skill\SK No. 01 ~ 10</Filter>
+    </ClInclude>
+    <ClInclude Include="Lightning.h">
+      <Filter>playGround\Skill\SK No. 01 ~ 10</Filter>
+    </ClInclude>
+    <ClInclude Include="Pound.h">
+      <Filter>playGround\Skill\SK No. 01 ~ 10</Filter>
+    </ClInclude>
+    <ClInclude Include="RockSlide.h">
+      <Filter>playGround\Skill\SK No. 01 ~ 10</Filter>
+    </ClInclude>
+    <ClInclude Include="ThunderFang.h">
+      <Filter>playGround\Skill\SK No. 01 ~ 10</Filter>
+    </ClInclude>
+    <ClInclude Include="Bind.h">
+      <Filter>playGround\Skill\SK No. 11 ~ 20</Filter>
+    </ClInclude>
+    <ClInclude Include="CrossChop.h">
+      <Filter>playGround\Skill\SK No. 11 ~ 20</Filter>
+    </ClInclude>
+    <ClInclude Include="FeintAttack.h">
+      <Filter>playGround\Skill\SK No. 11 ~ 20</Filter>
+    </ClInclude>
+    <ClInclude Include="MetalClaw.h">
+      <Filter>playGround\Skill\SK No. 11 ~ 20</Filter>
+    </ClInclude>
+    <ClInclude Include="PoisonPowder.h">
+      <Filter>playGround\Skill\SK No. 11 ~ 20</Filter>
+    </ClInclude>
+    <ClInclude Include="RockSmash.h">
+      <Filter>playGround\Skill\SK No. 11 ~ 20</Filter>
+    </ClInclude>
+    <ClInclude Include="ShadowClaw.h">
+      <Filter>playGround\Skill\SK No. 11 ~ 20</Filter>
+    </ClInclude>
+    <ClInclude Include="SleepPowder.h">
+      <Filter>playGround\Skill\SK No. 11 ~ 20</Filter>
+    </ClInclude>
+    <ClInclude Include="StunSpore.h">
+      <Filter>playGround\Skill\SK No. 11 ~ 20</Filter>
+    </ClInclude>
+    <ClInclude Include="TriAttack.h">
+      <Filter>playGround\Skill\SK No. 11 ~ 20</Filter>
+    </ClInclude>
+    <ClInclude Include="SheerCold.h">
+      <Filter>playGround\Skill\SK No. 21 ~ 30</Filter>
+    </ClInclude>
+    <ClInclude Include="VineWhip.h">
+      <Filter>playGround\Skill\SK No. 21 ~ 30</Filter>
+    </ClInclude>
+    <ClInclude Include="WakeUpSlap.h">
+      <Filter>playGround\Skill\SK No. 21 ~ 30</Filter>
+    </ClInclude>
+    <ClInclude Include="Waterfall.h">
+      <Filter>playGround\Skill\SK No. 21 ~ 30</Filter>
+    </ClInclude>
+    <ClInclude Include="WingAttack.h">
+      <Filter>playGround\Skill\SK No. 21 ~ 30</Filter>
+    </ClInclude>
+    <ClInclude Include="EF_DracoMeteor.h">
+      <Filter>playGround\Skill\Effect\EF No. 21 ~ 30</Filter>
+    </ClInclude>
+    <ClInclude Include="DracoMeteor.h">
+      <Filter>playGround\Skill\SK No. 21 ~ 30</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1134,6 +1146,24 @@
     </Filter>
     <Filter Include="playGround\Maptool\base">
       <UniqueIdentifier>{60b1438b-78e2-43f7-a1ae-1655dbbd68f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="playGround\Skill\Effect\EF No. 11 ~ 20">
+      <UniqueIdentifier>{bd5e6047-e0ad-4ed5-8fae-eda6543b421e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="playGround\Skill\Effect\EF No. 01 ~ 10">
+      <UniqueIdentifier>{f83770cf-5f7d-4196-a4a3-6c2079f022ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="playGround\Skill\Effect\EF No. 21 ~ 30">
+      <UniqueIdentifier>{00f7c14e-cd8a-40e4-8da3-9569b7ec3adf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="playGround\Skill\SK No. 01 ~ 10">
+      <UniqueIdentifier>{0e279077-fe83-4017-b63c-46cee919ff50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="playGround\Skill\SK No. 21 ~ 30">
+      <UniqueIdentifier>{25a43acc-b56a-4276-9629-978f312172c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="playGround\Skill\SK No. 11 ~ 20">
+      <UniqueIdentifier>{ee7b6641-e1aa-4411-93da-cfa0bc3a3a39}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

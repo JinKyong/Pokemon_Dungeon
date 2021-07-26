@@ -11,6 +11,8 @@ HRESULT EF_Lightning::init(float x, float y, int damage, int skillScale, int atk
 	_tuningX = -(_img->getFrameWidth() / 2);
 	_tuningY = -(_img->getFrameHeight() / 2 + 130);
 	_renderCount = 0.05f;
+
+	SOUNDMANAGER->play("Lightning");
 	return S_OK;
 }
 
