@@ -8,6 +8,11 @@ void Item::render()
 		_y * TILEHEIGHT + TILEHEIGHT / 2 - _img->getHeight() / 2);
 }
 
+void Item::eatItem(int value)
+{
+	(*TURNMANAGER->getAllPlayer())[0]->setStarve((*TURNMANAGER->getAllPlayer())[0]->getStarve() + value);
+}
+
 void Item::throwItem(float x, float y, float angle)
 {
 	_x = _fireX = x;

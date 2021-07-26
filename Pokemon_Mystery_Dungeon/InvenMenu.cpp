@@ -58,11 +58,25 @@ void InvenMenu::update()
 			}
 			else
 			{
+				if (_index2 == INVENMENU_OPTION_EACH)
+				{
+					if ((*_invItem)[_index]->getType() == ITEM_FOOD)
+					{
+						((*_invItem))[_index]->eatItem((*_invItem)[_index]->getValue());
+						//터질것같은 향기가 물씬 나는데
+					}
+
+					else if ((*_invItem)[_index]->getType() == ITEM_THROW)
+					{
+
+					}
+				}
+
 				if (_index2 == INVENMENU_OPTION_BACK) _hidden = false;
 			}
 		}
 
-		else _hidden = true;
+		else _hidden = true; 
 	}
 
 	_count++;
