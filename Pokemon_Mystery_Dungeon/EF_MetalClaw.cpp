@@ -10,7 +10,9 @@ HRESULT EF_MetalClaw::init(float x, float y, int damage, int skillScale, int atk
 
 	_tuningX = -(_img->getFrameWidth() / 2);
 	_tuningY = -(_img->getFrameHeight() / 2);
-	_renderCount = 0.06f;
+	_renderCount = 0.04f;
+
+	SOUNDMANAGER->play("MetalClaw");
 
 	return S_OK;
 }

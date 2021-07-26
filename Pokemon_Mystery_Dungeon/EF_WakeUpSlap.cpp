@@ -10,8 +10,9 @@ HRESULT EF_WakeUpSlap::init(float x, float y, int damage, int skillScale, int at
 
 	_tuningX = -(_img->getFrameWidth() / 2);
 	_tuningY = -(_img->getFrameHeight() / 2);
-	_renderCount = 0.05f;
+	_renderCount = 0.03f;
 
+	SOUNDMANAGER->play("WakeUpSlap");
 	return S_OK;
 }
 

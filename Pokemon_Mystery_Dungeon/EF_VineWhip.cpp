@@ -12,6 +12,7 @@ HRESULT EF_VineWhip::init(float x, float y, int damage, int skillScale, int atkT
 	_tuningY = -(_img->getFrameHeight() / 2);
 	_renderCount = 0.06f;
 
+	SOUNDMANAGER->play("VineWhip");
 	return S_OK;
 }
 

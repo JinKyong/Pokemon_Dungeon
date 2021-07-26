@@ -12,6 +12,7 @@ HRESULT EF_CrossChop::init(float x, float y, int damage, int skillScale, int atk
 	_tuningY = -(_img->getFrameHeight() / 2);
 	_renderCount = 0.06f;
 
+	SOUNDMANAGER->play("CrossChop");
 	return S_OK;
 }
 
