@@ -29,6 +29,7 @@ HRESULT Player::init(float x, float y)
 		TILEWIDTH, TILEHEIGHT);
 
 	_changeState = false;
+	_turnCount = 0;
 
 	return S_OK;
 }
@@ -48,6 +49,7 @@ void Player::update()
 		if (!_changeState) {
 			_pokemon->changeState(_playerState);
 			_changeState = true;
+			_turnCount++;
 		}
 		move();
 		break;
@@ -56,6 +58,7 @@ void Player::update()
 		if (!_changeState) {
 			_pokemon->changeState(_playerState);
 			_changeState = true;
+			_turnCount++;
 		}
 		break;
 	case POKEMON_STATE_SATTACK:
@@ -63,6 +66,7 @@ void Player::update()
 		if (!_changeState) {
 			_pokemon->changeState(_playerState);
 			_changeState = true;
+			_turnCount++;
 		}
 		break;
 	default:

@@ -242,9 +242,9 @@ void collisionManager::effectWithEnemy(Effect * effect)
 			if ((effect->getDamage() > 0 && (*playerIter)->getPlayerType() == PLAYER_TYPE_ENEMY) ||
 				(effect->getDamage() < 0 && (*playerIter)->getPlayerType() <= PLAYER_TYPE_TEAM)) {
 
+				SOUNDMANAGER->play("hitDamage");
 				(*playerIter)->getPokemon()->changeState(POKEMON_STATE_HURT);
 				(*playerIter)->hitDamage(BATTLEMANAGER->damageCalculation((*playerIter), effect));
-				SOUNDMANAGER->play("hitDamage");
 
 				//HP가 0보다 낮아지면 -> 바로 지우면 ㅈ됨
 				if ((*playerIter)->getCurrentHP() <= 0)

@@ -58,6 +58,7 @@ protected:
 	Item* _item;
 
 	//맵 상태(마을 또는 던전)
+	int _turnCount;
 	bool _inDungeon;
 
 public:

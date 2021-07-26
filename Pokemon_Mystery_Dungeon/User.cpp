@@ -30,6 +30,15 @@ HRESULT User::init(int pokemonNum)
 
 int User::input()
 {
+	//Çã±âÁü
+	if (_turnCount >= 5) {
+		_starve--;
+		if (_starve <= 0)
+			_starve = 0;
+
+		_turnCount = 0;
+	}
+
 	controlKey();
 	testKey();
 
