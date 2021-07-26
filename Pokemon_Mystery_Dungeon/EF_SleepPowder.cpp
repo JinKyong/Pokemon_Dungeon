@@ -9,9 +9,10 @@ HRESULT EF_SleepPowder::init(float x, float y, int damage, int skillScale, int a
 	_img->setFrameX(0);
 
 	_tuningX = -(_img->getFrameWidth() / 2);
-	_tuningY = -(_img->getFrameHeight() / 2);
-	_renderCount = 0.05f;
+	_tuningY = -(_img->getFrameHeight() / 2 + 30);
+	_renderCount = 0.03f;
 
+	SOUNDMANAGER->play("Powder");
 	return S_OK;
 }
 

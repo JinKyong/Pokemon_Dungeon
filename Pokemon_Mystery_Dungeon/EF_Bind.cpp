@@ -10,7 +10,7 @@ HRESULT EF_Bind::init(float x, float y, int damage, int skillScale, int atkType,
 
 	_tuningX = -(_img->getFrameWidth() / 2);
 	_tuningY = -(_img->getFrameHeight() / 2 + 30);
-	_renderCount = 0.06f;
+	_renderCount = 0.05f;
 
 	return S_OK;
 }
