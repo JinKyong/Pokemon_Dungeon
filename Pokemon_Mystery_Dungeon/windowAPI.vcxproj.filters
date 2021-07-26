@@ -235,14 +235,8 @@
     <ClCompile Include="InvenMenu.cpp">
       <Filter>playGround\UI\Menu\DownMenu</Filter>
     </ClCompile>
-    <ClCompile Include="InventoryManager.cpp">
-      <Filter>playGround\Item</Filter>
-    </ClCompile>
     <ClCompile Include="Item.cpp">
       <Filter>playGround\Item\base</Filter>
-    </ClCompile>
-    <ClCompile Include="ItemManager.cpp">
-      <Filter>playGround\Item</Filter>
     </ClCompile>
     <ClCompile Include="Ivysaur.cpp">
       <Filter>playGround\Pokémon\No.01 ~ 09</Filter>
@@ -484,6 +478,12 @@
     <ClCompile Include="Player.cpp">
       <Filter>playGround\Pokémon\Player\base</Filter>
     </ClCompile>
+    <ClCompile Include="InventoryManager.cpp">
+      <Filter>playGround\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemManager.cpp">
+      <Filter>playGround\Item</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="video.h">
@@ -720,14 +720,8 @@
     <ClInclude Include="InvenMenu.h">
       <Filter>playGround\UI\Menu\DownMenu</Filter>
     </ClInclude>
-    <ClInclude Include="InventoryManager.h">
-      <Filter>playGround\Item</Filter>
-    </ClInclude>
     <ClInclude Include="Item.h">
       <Filter>playGround\Item\base</Filter>
-    </ClInclude>
-    <ClInclude Include="ItemManager.h">
-      <Filter>playGround\Item</Filter>
     </ClInclude>
     <ClInclude Include="Ivysaur.h">
       <Filter>playGround\Pokémon\No.01 ~ 09</Filter>
@@ -998,6 +992,12 @@
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>playGround\Pokémon\Player\base</Filter>
+    </ClInclude>
+    <ClInclude Include="InventoryManager.h">
+      <Filter>playGround\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemManager.h">
+      <Filter>playGround\Item</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
