@@ -10,9 +10,7 @@ HRESULT EF_ShadowClaw::init(float x, float y, int damage, int skillScale, int at
 
 	_tuningX = -(_img->getFrameWidth() / 2);
 	_tuningY = -(_img->getFrameHeight() / 2);
-	_renderCount = 0.02f;
-
-	SOUNDMANAGER->play("ShadowClaw");
+	_renderCount = 0.05f;
 
 	return S_OK;
 }

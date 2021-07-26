@@ -43,9 +43,9 @@ public:
 	virtual void render();
 
 	//아이템 사용
-	//void useItem();	//도핑약 X
+	//void useItem(int value);	//도핑약 X
 
-	//void eatItem(); //{ return ???; };
+	void eatItem(int value); //{ return ???; }; <-?
 	//Item* giveItem() { return this; }; //반환값이 아이템 포인터
 	
 	//throw
@@ -62,6 +62,8 @@ public:
 	void setY(float y) { _y = y; }
 
 	int getType() { return _type; }
+
+	int getValue() { return _value; }
 
 	wstring getName() { return _name; }
 	int getNum() { return _num; }

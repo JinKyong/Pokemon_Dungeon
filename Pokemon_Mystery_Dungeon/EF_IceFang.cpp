@@ -11,8 +11,6 @@ HRESULT EF_IceFang::init(float x, float y, int damage, int skillScale, int atkTy
 	_tuningX = -(_img->getFrameWidth() / 2);
 	_tuningY = -(_img->getFrameHeight() / 2);
 	_renderCount = 0.05f;
-
-	SOUNDMANAGER->play("IceFang");
 	return S_OK;
 }
 

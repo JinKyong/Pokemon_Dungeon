@@ -12,7 +12,6 @@ HRESULT EF_FeintAttack::init(float x, float y, int damage, int skillScale, int a
 	_tuningY = -(_img->getFrameHeight() / 2);
 	_renderCount = 0.03f;
 
-	SOUNDMANAGER->play("FeintAttack");
 	return S_OK;
 }
 
