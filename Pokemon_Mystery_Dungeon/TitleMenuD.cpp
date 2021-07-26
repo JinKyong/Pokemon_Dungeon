@@ -28,4 +28,12 @@ void TitleMenuD::update()
 void TitleMenuD::render()
 {
 	DownMenu::render();
+
+	//if(세이브파일ㅇ ㅣ있으면)
+	//printText(계속하기)
+	//누르면 로드파일 불러와서 플레이어 이니시 시키면됨
+
+	//else(세이브파일이 없으면)
+	//printText(새로시작)
+	//누르면 푸키몬 선택화면으로
 }

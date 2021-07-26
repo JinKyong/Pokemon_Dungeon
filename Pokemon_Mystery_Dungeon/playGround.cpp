@@ -45,7 +45,7 @@ HRESULT playGround::init()
 	SCENEMANAGER->addScene("title", new titleScene);
 	SCENEMANAGER->addScene("main", new mainScene);
 
-	SCENEMANAGER->changeScene("title");
+	SCENEMANAGER->changeScene("dungeon");
 	BATTLEMANAGER->init();
 
 	_debug = false;

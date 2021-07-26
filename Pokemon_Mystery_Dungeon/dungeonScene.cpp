@@ -38,6 +38,9 @@ HRESULT dungeonScene::init(Player * player)
 	_itemManager = new ItemManager;
 	_itemManager->init();
 	TURNMANAGER->randomSetting();
+
+	UIMANAGER->changeUpMenu("statusMenu");
+	UIMANAGER->changeDownMenu("logMenu");
 	COLLISIONMANAGER->init(this);
 
 	return S_OK;

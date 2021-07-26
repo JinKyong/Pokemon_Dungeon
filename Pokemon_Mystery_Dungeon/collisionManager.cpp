@@ -165,31 +165,34 @@ void collisionManager::playerWithItem(Player* player)
 }
 void collisionManager::playerWithObject(Player * player)
 {
-	for (int i = 0; i < _allTile->size(); i++)
-	{
-		RECT temp;
-		if (IntersectRect(&temp, &player->getBody(), &(*_allTile)[i]->rc))
-		{
-			if ((*_allTile)[i]->obj == OBJ_STAIR)
-			{
-				if (SCENEMANAGER->getSceneCount() >= 5)
-				{
-					this->release();
-					TURNMANAGER->release();
-					SCENEMANAGER->changeScene("boss");
-				}
-				else
-				{
-					SCENEMANAGER->setSceneCount(SCENEMANAGER->getSceneCount() + 1);
-					TILEMANAGER->init(TILEMANAGER->getWidth(), TILEMANAGER->getHeight(), TILEMANAGER->getType());
-					TURNMANAGER->randomSetting();
+	int x = player->getX();
+	int y = player->getY();
 
-				}
+	int index = y * TILEMANAGER->getWidth() + x;
+
+	RECT temp;
+	if (IntersectRect(&temp, &player->getBody(), &(*_allTile)[index]->rc))
+	{
+		if ((*_allTile)[index]->obj == OBJ_STAIR)
+		{
+			//계단과 충돌시 로딩씬으로 넘어가기
+			if (SCENEMANAGER->getSceneCount() >= 5)
+			{
+				this->release();
+				TURNMANAGER->release();
+				SCENEMANAGER->changeScene("boss");
+			}
+			else
+			{
+				SCENEMANAGER->setSceneCount(SCENEMANAGER->getSceneCount() + 1);
+				TILEMANAGER->init(TILEMANAGER->getWidth(), TILEMANAGER->getHeight(), TILEMANAGER->getType());
+				TURNMANAGER->randomSetting();
+
 			}
 		}
 	}
-	
 }
+
 void collisionManager::collisionDetection(Player * player)
 {
 	Player* user = (*TURNMANAGER->getAllPlayer())[0];
