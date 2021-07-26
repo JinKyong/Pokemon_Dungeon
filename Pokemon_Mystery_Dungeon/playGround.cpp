@@ -30,7 +30,6 @@ HRESULT playGround::init()
 	gameNode::init(true);
 
 	_player = new User;
-	_player->init(RND->getInt(38) + 1, 50);
 
 	SCENEMANAGER->init(_player);
 

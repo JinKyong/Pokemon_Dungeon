@@ -44,6 +44,8 @@ public:
 
 	// ====================접근자,설정자==================== //
 	wstring getName() { return _name; }
+	int getNum() { return _skillNum; }
+
 	int getDamage() { return _damage; }
 
 	float getAccuracy() { return _accuracy; }

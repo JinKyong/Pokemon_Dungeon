@@ -12,7 +12,6 @@ HRESULT EF_SheerCold::init(float x, float y, int damage, int skillScale, int atk
 	_tuningY = -(_img->getFrameHeight() / 2);
 	_renderCount = 0.05f;
 
-	SOUNDMANAGER->play("SheerCold");
 	return S_OK;
 }
 

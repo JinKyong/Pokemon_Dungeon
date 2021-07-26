@@ -31,47 +31,21 @@ HRESULT soundManager::init()
 
 
 	//이펙트 사운드
-	addSound("DefaultAttack", "sound/DefaultAttack.mp3", false, false);		//평타
-	addSound("hitDamage", "sound/hitDamage.mp3", false, false);				//데미지받음
+	addSound("hitDamage", "sound/hitDamage.mp3", false, false);				//공통 맞는소리
 
-	addSound("FireBlast", "sound/FireBlast.mp3", false, false);
-	addSound("Gust", "sound/Gust.mp3", false, false);
 	addSound("Lightning", "sound/Lightning.mp3", false, false);
+	addSound("FireBlast", "sound/FireBlast.mp3", false, false);
 	addSound("RockSlide", "sound/RockSlide.mp3", false, false);
-	addSound("DynamicPunch", "sound/DynamicPunch.mp3", false, false);
-	addSound("LeafBlade", "sound/LeafBlade.mp3", false, false);
-	addSound("ThunderFang", "sound/ThunderFang.mp3", false, false);
-	addSound("IceFang", "sound/IceFang.mp3", false, false);
-	addSound("FireFang", "sound/FireFang.mp3", false, false);
-	addSound("Pound", "sound/Pound.mp3", false, false);
-
-	addSound("Powder", "sound/Powder.mp3", false, false);
-	addSound("MetalClaw", "sound/MetalClaw.mp3", false, false);
-	addSound("Bind", "sound/Bind.mp3", false, false);
-	addSound("CrossChop", "sound/CrossChop.mp3", false, false);
-	addSound("FeintAttack", "sound/FeintAttack.mp3", false, false);
-	addSound("RockSmash", "sound/RockSmash.mp3", false, false);
-	addSound("ShadowClaw", "sound/ShadowClaw.mp3", false, false);
-	addSound("TriAttack", "sound/TriAttack.mp3", false, false);
-
-	addSound("WakeUpSlap", "sound/WakeUpSlap.mp3", false, false);
-	addSound("WingAttack", "sound/WingAttack.mp3", false, false);
-	addSound("VineWhip", "sound/VineWhip.mp3", false, false);
+	addSound("Gust", "sound/Gust.mp3", false, false);
 	addSound("Waterfall", "sound/Waterfall.mp3", false, false);
-	addSound("SheerCold", "sound/SheerCold.mp3", false, false);
+	addSound("ThunderFang", "sound/ThunderFang.mp3", false, false);
 	addSound("DracoMeteor", "sound/DracoMeteor.mp3", false, false);
-
-	//맵 사운드
-	addSound("Mt.Bristle", "sound/Field/Mt.Bristle0.mp3", false, false);
-	addSound("Concealed Ruins", "sound/Field/Concealed Ruins1.mp3", false, false);
-	addSound("Amp Plains", "sound/Field/Amp Plains2.mp3", false, false);
-	addSound("Brine Cave", "sound/Field/Brine Cave3.mp3", false, false);
-	addSound("Waterfall Cave", "sound/Field/Waterfall Cave4.mp3", false, false);
-	addSound("Apple Woods", "sound/Field/Apple Woods5.mp3", false, false);
-	addSound("Craggy Coast", "sound/Field/Craggy Coast6.mp3", false, false);
-	addSound("Mt.Horn", "sound/Field/Mt.Mt.Horn7.mp3", false, false);
-
-
+	addSound("FireFang", "sound/FireFang.mp3", false, false);
+	addSound("RockSmash", "sound/RockSmash.mp3", false, false);
+	addSound("DynamicPunch", "sound/DynamicPunch.mp3", false, false);
+	addSound("TriAttack", "sound/TriAttack.mp3", false, false);
+	addSound("WingAttack", "sound/WingAttack.mp3", false, false);
+	addSound("LeafBlade", "sound/LeafBlade.mp3", false, false);
 	return S_OK;
 }
 

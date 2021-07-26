@@ -12,6 +12,7 @@ HRESULT Apple::init(float x, float y, float angle)
 	//_itemInfoLong = L "";
 	_type = ITEM_FOOD;
 	_num = 1;
+	_value = 50;
 
 	//IMAGEMANAGER->addDImage("gold_apple", L"img/item/food/apple2.png", ITEMSIZE, ITEMSIZE);	//황금사과
 	//IMAGEMANAGER->addDImage("rot_apple", L"img/item/food/apple3.png", ITEMSIZE, ITEMSIZE);	//썩은

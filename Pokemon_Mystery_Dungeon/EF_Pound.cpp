@@ -12,7 +12,6 @@ HRESULT EF_Pound::init(float x, float y, int damage, int skillScale, int atkType
 	_tuningY = -(_img->getFrameHeight() / 2);
 	_renderCount = 0.03f;
 
-	SOUNDMANAGER->play("Pound");
 	return S_OK;
 }
 

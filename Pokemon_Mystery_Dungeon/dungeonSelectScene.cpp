@@ -12,9 +12,8 @@ HRESULT dungeonSelectScene::init(Player * player)
 	_x = 0;
 	_y = 0;
 	
-	TURNMANAGER->init();
+	//TURNMANAGER->init();
 	player->initXY(0, 0);
-	TURNMANAGER->addAllPlayer(player);
 
 	_selector = RectMake(_x,_y, 12, 12);
 	_d0 = RectMake(72, 72, 24, 24);
@@ -44,6 +43,9 @@ void dungeonSelectScene::update()
 	else if (KEYMANAGER->isStayKeyDown(KEY_LEFT))_x -= 5;
 	if (KEYMANAGER->isStayKeyDown(KEY_UP))_y -= 5;
 	else if (KEYMANAGER->isStayKeyDown(KEY_DOWN))_y += 5;
+
+	if (KEYMANAGER->isOnceKeyDown(VK_F10))
+		TXTDATA->saveGame(_player);
 
 	if (_x <= 0)_x = 0;
 	if (_y <= 0)_y = 0;
