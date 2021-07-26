@@ -20,6 +20,8 @@ private:
 	RECT _d6;
 	RECT _d7;
 
+	bool _change;
+
 public:
 	HRESULT init(Player *player);
 	void release();

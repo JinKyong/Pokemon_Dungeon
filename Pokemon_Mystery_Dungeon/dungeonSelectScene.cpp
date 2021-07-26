@@ -25,6 +25,9 @@ HRESULT dungeonSelectScene::init(Player * player)
 	_d5 = RectMake(300, 120, 24, 24);
 	_d6 = RectMake(294, 288, 24, 24);
 	_d7 = RectMake(330, 288, 24, 24);
+
+	_change = false;
+
 	return S_OK;
 }
 
@@ -34,7 +37,6 @@ void dungeonSelectScene::release()
 
 void dungeonSelectScene::update()
 {
-	RECT tmp;
 	if (KEYMANAGER->isStayKeyDown(KEY_RIGHT))_x += 5;
 	else if (KEYMANAGER->isStayKeyDown(KEY_LEFT))_x -= 5;
 	if (KEYMANAGER->isStayKeyDown(KEY_UP))_y -= 5;
@@ -44,56 +46,8 @@ void dungeonSelectScene::update()
 	if (_y <= 0)_y = 0;
 	if (_x >= TILEWIDTH * _width)_x = TILEWIDTH * _width;
 	if (_y >= TILEHEIGHT * _height)_y = TILEHEIGHT * _height;
-	if (KEYMANAGER->isOnceKeyDown(KEY_A)) {
-		if (IntersectRect(&tmp, &_d0, &_selector))
-		{
-			TURNMANAGER->release();
-			TILEMANAGER->setType(6);
-			SCENEMANAGER->changeScene("dungeon");
-		}
-		if (IntersectRect(&tmp, &_d1, &_selector))
-		{
-			TURNMANAGER->release();
-			TILEMANAGER->setType(7);
-			SCENEMANAGER->changeScene("dungeon");
-		}
-		if (IntersectRect(&tmp, &_d2, &_selector))
-		{
-			TURNMANAGER->release();
-			TILEMANAGER->setType(2);
-			SCENEMANAGER->changeScene("dungeon");
-		}
-		if (IntersectRect(&tmp, &_d3, &_selector))
-		{
-			TURNMANAGER->release();
-			TILEMANAGER->setType(1);
-			SCENEMANAGER->changeScene("dungeon");
-		}
-		if (IntersectRect(&tmp, &_d4, &_selector))
-		{
-			TURNMANAGER->release();
-			TILEMANAGER->setType(4);
-			SCENEMANAGER->changeScene("dungeon");
-		}
-		if (IntersectRect(&tmp, &_d5, &_selector))
-		{
-			TURNMANAGER->release();
-			TILEMANAGER->setType(0);
-			SCENEMANAGER->changeScene("dungeon");
-		}
-		if (IntersectRect(&tmp, &_d6, &_selector))
-		{
-			TURNMANAGER->release();
-			TILEMANAGER->setType(5);
-			SCENEMANAGER->changeScene("dungeon");
-		}
-		if (IntersectRect(&tmp, &_d7, &_selector))
-		{
-			TURNMANAGER->release();
-			TILEMANAGER->setType(3);
-			SCENEMANAGER->changeScene("dungeon");
-		}
-	}
+	
+	changeScene();
 
 	CAMERAMANAGER->updateScreen(WINSIZEX/2, WINSIZEY/2);
 	_selector = RectMake(_x, _y, 12, 12);
@@ -117,4 +71,68 @@ void dungeonSelectScene::render()
 
 void dungeonSelectScene::changeScene()
 {
+	if (KEYMANAGER->isOnceKeyDown(KEY_A)) {
+		RECT tmp;
+		if (IntersectRect(&tmp, &_d0, &_selector))
+		{
+			TURNMANAGER->release();
+			TILEMANAGER->setType(6);
+			CAMERAMANAGER->setFade(FADEOUT);
+			_change = true;
+		}
+		else if (IntersectRect(&tmp, &_d1, &_selector))
+		{
+			TURNMANAGER->release();
+			TILEMANAGER->setType(7);
+			CAMERAMANAGER->setFade(FADEOUT);
+			_change = true;
+		}
+		else if (IntersectRect(&tmp, &_d2, &_selector))
+		{
+			TURNMANAGER->release();
+			TILEMANAGER->setType(2);
+			CAMERAMANAGER->setFade(FADEOUT);
+			_change = true;
+		}
+		else if (IntersectRect(&tmp, &_d3, &_selector))
+		{
+			TURNMANAGER->release();
+			TILEMANAGER->setType(1);
+			CAMERAMANAGER->setFade(FADEOUT);
+			_change = true;
+		}
+		else if (IntersectRect(&tmp, &_d4, &_selector))
+		{
+			TURNMANAGER->release();
+			TILEMANAGER->setType(4);
+			CAMERAMANAGER->setFade(FADEOUT);
+			_change = true;
+		}
+		else if (IntersectRect(&tmp, &_d5, &_selector))
+		{
+			TURNMANAGER->release();
+			TILEMANAGER->setType(0);
+			CAMERAMANAGER->setFade(FADEOUT);
+			_change = true;
+		}
+		else if (IntersectRect(&tmp, &_d6, &_selector))
+		{
+			TURNMANAGER->release();
+			TILEMANAGER->setType(5);
+			CAMERAMANAGER->setFade(FADEOUT);
+			_change = true;
+		}
+		else if (IntersectRect(&tmp, &_d7, &_selector))
+		{
+			TURNMANAGER->release();
+			TILEMANAGER->setType(3);
+			CAMERAMANAGER->setFade(FADEOUT);
+			_change = true;
+		}
+	}
+
+	if (_change) {
+		if (CAMERAMANAGER->getAlpha() == 1.0)
+			SCENEMANAGER->changeScene("dungeon");
+	}
 }
