@@ -35,6 +35,7 @@ public:
 	//Player 충돌(엔드 턴)
 	void collisionEndTurnPlayer(Player* player);
 	void playerWithItem(Player* player);
+	void playerWithObject(Player* player);
 
 	//감지범위 충돌
 	void collisionDetection(Player* player);

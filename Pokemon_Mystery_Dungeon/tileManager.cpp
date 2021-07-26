@@ -53,11 +53,68 @@ HRESULT tileManager::init(int width, int height, int type)
 	_Obbase = IMAGEMANAGER->addFrameDImage("object", L"img/map/tiles/object_all.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
 	_minibase = IMAGEMANAGER->addFrameDImage("minimap", L"img/map/tiles/minimap temp.png", 136, 8, 17, 1);
 
+	if (_type == 0)
+	{
+		_enemyPokemon1 = 27;
+		_enemyPokemon2 = 31;
+		_enemyPokemon3 = 35;
+		_bossPokemon = 36;
+	}
+	else if (_type == 1)
+	{
+		_enemyPokemon1 = 30;
+		_enemyPokemon2 = 25;
+		_enemyPokemon3 = 17;
+		_bossPokemon = 19;
+	}
+	else if (_type == 2)
+	{
+		_enemyPokemon1 = 15;
+		_enemyPokemon2 = 5;
+		_enemyPokemon3 = 22;
+		_bossPokemon = 32;
+	}
+	else if (_type == 3)
+	{
+		_enemyPokemon1 = 14;
+		_enemyPokemon2 = 31;
+		_enemyPokemon3 = 11;
+		_bossPokemon = 38;
+	}
+	else if (_type == 4)
+	{
+		_enemyPokemon1 = 13;
+		_enemyPokemon2 = 10;
+		_enemyPokemon3 = 21;
+		_bossPokemon = 12;
+	}
+	else if (_type == 5)
+	{
+		_enemyPokemon1 = 29;
+		_enemyPokemon2 = 20;
+		_enemyPokemon3 = 8;
+		_bossPokemon = 37;
+	}
+	else if (_type == 6)
+	{
+		_enemyPokemon1 = 13;
+		_enemyPokemon2 = 14;
+		_enemyPokemon3 = 28;
+		_bossPokemon = 33;
+	}
+	else if (_type == 7)
+	{
+		_enemyPokemon1 = 16;
+		_enemyPokemon2 = 2;
+		_enemyPokemon3 = 24;
+		_bossPokemon = 34;
+	}
+
 	//던전 랜덤 생성
 	dungeon(_width, _height);
 	//생성된 맵 -> 타일로 변환
 	setup();
-	
+
 	return S_OK;
 }
 
@@ -155,7 +212,7 @@ void tileManager::setup()
 			Tile->y = i;
 			_vTile.push_back(Tile);
 
-			SetRect(&_mini[i*_width+j].rc,
+			SetRect(&_mini[i*_width + j].rc,
 				j * (TILESIZE / 6),
 				i * (TILESIZE / 6),
 				j * (TILESIZE / 6) + (TILESIZE / 6),
@@ -167,273 +224,471 @@ void tileManager::setup()
 	vector<char>::iterator _viChar;
 
 	//랜던생성된 맵 정보 기반으로 타일 이미지와 속성 매핑
-	for (_viChar=_vChar.begin(); _viChar != _vChar.end(); ++_viChar,i++)
+	for (_viChar = _vChar.begin(); _viChar != _vChar.end(); ++_viChar, i++)
+	{
+		if ((*_viChar) == Unused)
 		{
-			if ((*_viChar) == Unused)
-			{
-				_vTile[i]->terrainFrameX = 10;
-				_vTile[i]->terrainFrameY = 1;
-				_vTile[i]->objFrameX = 0;
-				_vTile[i]->objFrameY = 0;
-				_vTile[i]->terrain = TR_BLOCK;
-				_vTile[i]->obj = OBJ_NONE;
-			}
-			
-			else if ((*_viChar) == UpStairs)
-			{
-				_vTile[i]->terrainFrameX = 0;
-				_vTile[i]->terrainFrameY = 0;
-				_vTile[i]->objFrameX = 13;
-				_vTile[i]->objFrameY = 0;
-				_vTile[i]->terrain = TR_GRASS;
-				_vTile[i]->obj = OBJ_STAIR;
-			}
-			else if ((*_viChar) == DownStairs)
-			{
-				_vTile[i]->terrainFrameX = 1;
-				_vTile[i]->terrainFrameY = 0;
-				_vTile[i]->objFrameX = 14;
-				_vTile[i]->objFrameY = 0;
-				_vTile[i]->terrain = TR_GRASS;
-				_vTile[i]->obj = OBJ_STAIR;
-			}
-			else if ((*_viChar) == ClearTrap)
-			{
-				_vTile[i]->terrainFrameX = 1;
-				_vTile[i]->terrainFrameY = 0;
-				_vTile[i]->objFrameX = 0;
-				_vTile[i]->objFrameY = 0;
-				_vTile[i]->terrain = TR_GRASS;
-				_vTile[i]->obj = OBJ_TRAP;
-			}
-			else if ((*_viChar) == PowerTrap)
-			{
-				_vTile[i]->terrainFrameX = 1;
-				_vTile[i]->terrainFrameY = 0;
-				_vTile[i]->objFrameX = 1;
-				_vTile[i]->objFrameY = 0;
-				_vTile[i]->terrain = TR_GRASS;
-				_vTile[i]->obj = OBJ_TRAP1;
-			}
-			else if ((*_viChar) == LeftTriWall)
-			{
-				_vTile[i]->terrainFrameX = 2;
-				_vTile[i]->terrainFrameY = 3;
-				_vTile[i]->objFrameX = 0;
-				_vTile[i]->objFrameY = 0;
-				_vTile[i]->terrain = TR_BLOCK;
-				_vTile[i]->obj = OBJ_NONE;
-			}
-			else if ((*_viChar) == RightTriWall)
-			{
-				_vTile[i]->terrainFrameX = 3;
-				_vTile[i]->terrainFrameY = 3;
-				_vTile[i]->objFrameX = 0;
-				_vTile[i]->objFrameY = 0;
-				_vTile[i]->terrain = TR_BLOCK;
-				_vTile[i]->obj = OBJ_NONE;
-			}
-			else if ((*_viChar) == TopTriWall)
-			{
-				_vTile[i]->terrainFrameX = 0;
-				_vTile[i]->terrainFrameY = 3;
-				_vTile[i]->objFrameX = 0;
-				_vTile[i]->objFrameY = 0;
-				_vTile[i]->terrain = TR_BLOCK;
-				_vTile[i]->obj = OBJ_NONE;
-			}
-			else if ((*_viChar) == BottomTriWall)
-			{
-				_vTile[i]->terrainFrameX = 1;
-				_vTile[i]->terrainFrameY = 3;
-				_vTile[i]->objFrameX = 0;
-				_vTile[i]->objFrameY = 0;
-				_vTile[i]->terrain = TR_BLOCK;
-				_vTile[i]->obj = OBJ_NONE;
-			}
-			else if ((*_viChar) == LeftOpenWall)
-			{
-				_vTile[i]->terrainFrameX = 6;
-				_vTile[i]->terrainFrameY = 3;
-				_vTile[i]->objFrameX = 0;
-				_vTile[i]->objFrameY = 0;
-				_vTile[i]->terrain = TR_BLOCK;
-				_vTile[i]->obj = OBJ_NONE;
-			}
-			else if ((*_viChar) == RightOpenWall)
-			{
-				_vTile[i]->terrainFrameX = 7;
-				_vTile[i]->terrainFrameY = 3;
-				_vTile[i]->objFrameX = 0;
-				_vTile[i]->objFrameY = 0;
-				_vTile[i]->terrain = TR_BLOCK;
-				_vTile[i]->obj = OBJ_NONE;
-			}
-			else if ((*_viChar) == TopOpenWall)
-			{
-				_vTile[i]->terrainFrameX = 4;
-				_vTile[i]->terrainFrameY = 3;
-				_vTile[i]->objFrameX = 0;
-				_vTile[i]->objFrameY = 0;
-				_vTile[i]->terrain = TR_BLOCK;
-				_vTile[i]->obj = OBJ_NONE;
-			}
-			else if ((*_viChar) == BottomOpenWall)
-			{
+			_vTile[i]->terrainFrameX = 10;
+			_vTile[i]->terrainFrameY = 1;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+
+		else if ((*_viChar) == UpStairs)
+		{
+			_vTile[i]->terrainFrameX = 0;
+			_vTile[i]->terrainFrameY = 0;
+			_vTile[i]->objFrameX = 13;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_GRASS;
+			_vTile[i]->obj = OBJ_STAIR;
+		}
+		else if ((*_viChar) == DownStairs)
+		{
+			_vTile[i]->terrainFrameX = 1;
+			_vTile[i]->terrainFrameY = 0;
+			_vTile[i]->objFrameX = 14;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_GRASS;
+			_vTile[i]->obj = OBJ_STAIR;
+		}
+		else if ((*_viChar) == ClearTrap)
+		{
+			_vTile[i]->terrainFrameX = 1;
+			_vTile[i]->terrainFrameY = 0;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_GRASS;
+			_vTile[i]->obj = OBJ_TRAP;
+		}
+		else if ((*_viChar) == PowerTrap)
+		{
+			_vTile[i]->terrainFrameX = 1;
+			_vTile[i]->terrainFrameY = 0;
+			_vTile[i]->objFrameX = 1;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_GRASS;
+			_vTile[i]->obj = OBJ_TRAP1;
+		}
+		else if ((*_viChar) == LeftTriWall)
+		{
+			_vTile[i]->terrainFrameX = 2;
+			_vTile[i]->terrainFrameY = 3;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == RightTriWall)
+		{
+			_vTile[i]->terrainFrameX = 3;
+			_vTile[i]->terrainFrameY = 3;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == TopTriWall)
+		{
+			_vTile[i]->terrainFrameX = 0;
+			_vTile[i]->terrainFrameY = 3;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == BottomTriWall)
+		{
+			_vTile[i]->terrainFrameX = 1;
+			_vTile[i]->terrainFrameY = 3;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == LeftOpenWall)
+		{
+			_vTile[i]->terrainFrameX = 6;
+			_vTile[i]->terrainFrameY = 3;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == RightOpenWall)
+		{
+			_vTile[i]->terrainFrameX = 7;
+			_vTile[i]->terrainFrameY = 3;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == TopOpenWall)
+		{
+			_vTile[i]->terrainFrameX = 4;
+			_vTile[i]->terrainFrameY = 3;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == BottomOpenWall)
+		{
 			_vTile[i]->terrainFrameX = 5;
 			_vTile[i]->terrainFrameY = 3;
 			_vTile[i]->objFrameX = 0;
 			_vTile[i]->objFrameY = 0;
 			_vTile[i]->terrain = TR_BLOCK;
 			_vTile[i]->obj = OBJ_NONE;
-			}
+		}
 
-			else if ((*_viChar) == LeftOpenCorner)
-			{
-				_vTile[i]->terrainFrameX = 6;
-				_vTile[i]->terrainFrameY = 0;
-				_vTile[i]->objFrameX = 0;
-				_vTile[i]->objFrameY = 0;
-				_vTile[i]->terrain = TR_BLOCK;
-				_vTile[i]->obj = OBJ_NONE;
-			}
-			else if ((*_viChar) == RightOpenCorner)
-			{
-				_vTile[i]->terrainFrameX = 8;
-				_vTile[i]->terrainFrameY = 0;
-				_vTile[i]->objFrameX = 0;
-				_vTile[i]->objFrameY = 0;
-				_vTile[i]->terrain = TR_BLOCK;
-				_vTile[i]->obj = OBJ_NONE;
-			}
-			else if ((*_viChar) == LeftOpenBottom)
-			{
-				_vTile[i]->terrainFrameX = 6;
-				_vTile[i]->terrainFrameY = 2;
-				_vTile[i]->objFrameX = 0;
-				_vTile[i]->objFrameY = 0;
-				_vTile[i]->terrain = TR_BLOCK;
-				_vTile[i]->obj = OBJ_NONE;
-			}
-			else if ((*_viChar) == RightOpenBottom)
-			{
-				_vTile[i]->terrainFrameX = 8;
-				_vTile[i]->terrainFrameY = 2;
-				_vTile[i]->objFrameX = 0;
-				_vTile[i]->objFrameY = 0;
-				_vTile[i]->terrain = TR_BLOCK;
-				_vTile[i]->obj = OBJ_NONE;
-			}
-			else if ((*_viChar) == VerticalLeftWall)
-			{
-				_vTile[i]->terrainFrameX = 11;
-				_vTile[i]->terrainFrameY = 1;
-				_vTile[i]->objFrameX = 0;
-				_vTile[i]->objFrameY = 0;
-				_vTile[i]->terrain = TR_BLOCK;
-				_vTile[i]->obj = OBJ_NONE;
-			}
-			else if ((*_viChar) == VerticalRightWall)
-			{
-				_vTile[i]->terrainFrameX = 9;
-				_vTile[i]->terrainFrameY = 1;
-				_vTile[i]->objFrameX = 0;
-				_vTile[i]->objFrameY = 0;
-				_vTile[i]->terrain = TR_BLOCK;
-				_vTile[i]->obj = OBJ_NONE;
-			}
-			else if ((*_viChar) == HorizontalTopWall)
-			{
-				_vTile[i]->terrainFrameX = 10;
-				_vTile[i]->terrainFrameY = 2;
-				_vTile[i]->objFrameX = 0;
-				_vTile[i]->objFrameY = 0;
-				_vTile[i]->terrain = TR_BLOCK;
-				_vTile[i]->obj = OBJ_NONE;
-			}
-			else if ((*_viChar) == HorizontalBottomWall)
-			{
-				_vTile[i]->terrainFrameX = 10;
-				_vTile[i]->terrainFrameY = 0;
-				_vTile[i]->objFrameX = 0;
-				_vTile[i]->objFrameY = 0;
-				_vTile[i]->terrain = TR_BLOCK;
-				_vTile[i]->obj = OBJ_NONE;
-			}
-			else if ((*_viChar) == LeftCorner)
-			{
-				_vTile[i]->terrainFrameX = 3;
-				_vTile[i]->terrainFrameY = 0;
-				_vTile[i]->objFrameX = 0;
-				_vTile[i]->objFrameY = 0;
-				_vTile[i]->terrain = TR_BLOCK;
-				_vTile[i]->obj = OBJ_NONE;
-			}
-			else if ((*_viChar) == RightCorner)
-			{
-				_vTile[i]->terrainFrameX = 5;
-				_vTile[i]->terrainFrameY = 0;
-				_vTile[i]->objFrameX = 0;
-				_vTile[i]->objFrameY = 0;
-				_vTile[i]->terrain = TR_BLOCK;
-				_vTile[i]->obj = OBJ_NONE;
-			}
-			else if ((*_viChar) == LeftBottom)
-			{
-				_vTile[i]->terrainFrameX = 3;
-				_vTile[i]->terrainFrameY = 2;
-				_vTile[i]->objFrameX = 0;
-				_vTile[i]->objFrameY = 0;
-				_vTile[i]->terrain = TR_BLOCK;
-				_vTile[i]->obj = OBJ_NONE;
-			}
-			else if ((*_viChar) == RightBottom)
-			{
-				_vTile[i]->terrainFrameX = 5;
-				_vTile[i]->terrainFrameY = 2;
-				_vTile[i]->objFrameX = 0;
-				_vTile[i]->objFrameY = 0;
-				_vTile[i]->terrain = TR_BLOCK;
-				_vTile[i]->obj = OBJ_NONE;
-			}
-			else if ((*_viChar) == VerticalWall)
-			{
-				_vTile[i]->terrainFrameX = 3;
-				_vTile[i]->terrainFrameY = 1;
-				_vTile[i]->objFrameX = 0;
-				_vTile[i]->objFrameY = 0;
-				_vTile[i]->terrain = TR_BLOCK;
-				_vTile[i]->obj = OBJ_NONE;
-			}
-			else if ((*_viChar) == HorizontalWall)
-			{
-				_vTile[i]->terrainFrameX = 4;
-				_vTile[i]->terrainFrameY = 0;
-				_vTile[i]->objFrameX = 0;
-				_vTile[i]->objFrameY = 0;
-				_vTile[i]->terrain = TR_BLOCK;
-				_vTile[i]->obj = OBJ_NONE;
-			}
-			else if ((*_viChar) == ClosedDoor)
-			{
+		else if ((*_viChar) == LeftOpenCorner)
+		{
+			_vTile[i]->terrainFrameX = 6;
+			_vTile[i]->terrainFrameY = 0;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == RightOpenCorner)
+		{
+			_vTile[i]->terrainFrameX = 8;
+			_vTile[i]->terrainFrameY = 0;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == LeftOpenBottom)
+		{
+			_vTile[i]->terrainFrameX = 6;
+			_vTile[i]->terrainFrameY = 2;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == RightOpenBottom)
+		{
+			_vTile[i]->terrainFrameX = 8;
+			_vTile[i]->terrainFrameY = 2;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == VerticalLeftWall)
+		{
+			_vTile[i]->terrainFrameX = 11;
+			_vTile[i]->terrainFrameY = 1;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == VerticalRightWall)
+		{
+			_vTile[i]->terrainFrameX = 9;
+			_vTile[i]->terrainFrameY = 1;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == HorizontalTopWall)
+		{
+			_vTile[i]->terrainFrameX = 10;
+			_vTile[i]->terrainFrameY = 2;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == HorizontalBottomWall)
+		{
+			_vTile[i]->terrainFrameX = 10;
+			_vTile[i]->terrainFrameY = 0;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == LeftCorner)
+		{
+			_vTile[i]->terrainFrameX = 3;
+			_vTile[i]->terrainFrameY = 0;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == RightCorner)
+		{
+			_vTile[i]->terrainFrameX = 5;
+			_vTile[i]->terrainFrameY = 0;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == LeftBottom)
+		{
+			_vTile[i]->terrainFrameX = 3;
+			_vTile[i]->terrainFrameY = 2;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == RightBottom)
+		{
+			_vTile[i]->terrainFrameX = 5;
+			_vTile[i]->terrainFrameY = 2;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == VerticalWall)
+		{
+			_vTile[i]->terrainFrameX = 3;
+			_vTile[i]->terrainFrameY = 1;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == HorizontalWall)
+		{
+			_vTile[i]->terrainFrameX = 4;
+			_vTile[i]->terrainFrameY = 0;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == ClosedDoor)
+		{
 			_vTile[i]->terrainFrameX = RND->getInt(3);
 			_vTile[i]->terrainFrameY = RND->getInt(3);
 			_vTile[i]->objFrameX = 0;
 			_vTile[i]->objFrameY = 0;
 			_vTile[i]->terrain = TR_GRASS;
 			_vTile[i]->obj = OBJ_NONE;
-			}
-			else
-			{
-				_vTile[i]->terrainFrameX = RND->getInt(3);
-				_vTile[i]->terrainFrameY = RND->getInt(3);
-				_vTile[i]->objFrameX = 0;
-				_vTile[i]->objFrameY = 0;
-				_vTile[i]->terrain = TR_GRASS;
-				_vTile[i]->obj = OBJ_NONE;
-			}
 		}
-	
+		else if ((*_viChar) == LeftBlockWall)
+		{
+			_vTile[i]->terrainFrameX = 8;
+			_vTile[i]->terrainFrameY = 1;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == RightBlockWall)
+		{
+			_vTile[i]->terrainFrameX = 6;
+			_vTile[i]->terrainFrameY = 1;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == TopBlockWall)
+		{
+			_vTile[i]->terrainFrameX = 7;
+			_vTile[i]->terrainFrameY = 0;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == BottomBlockWall)
+		{
+			_vTile[i]->terrainFrameX = 7;
+			_vTile[i]->terrainFrameY = 2;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == VerticalTopRight)
+		{
+			_vTile[i]->terrainFrameX = 12;
+			_vTile[i]->terrainFrameY = 0;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == VerticalTopLeft)
+		{
+			_vTile[i]->terrainFrameX = 13;
+			_vTile[i]->terrainFrameY = 0;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == VerticalBottomRight)
+		{
+			_vTile[i]->terrainFrameX = 12;
+			_vTile[i]->terrainFrameY = 1;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == VerticalBottomLeft)
+		{
+			_vTile[i]->terrainFrameX = 13;
+			_vTile[i]->terrainFrameY = 1;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == HorizontalTopLeft)
+		{
+			_vTile[i]->terrainFrameX = 12;
+			_vTile[i]->terrainFrameY = 3;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == HorizontalTopRight)
+		{
+			_vTile[i]->terrainFrameX = 13;
+			_vTile[i]->terrainFrameY = 3;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == HorizontalBottomLeft)
+		{
+			_vTile[i]->terrainFrameX = 12;
+			_vTile[i]->terrainFrameY = 2;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == HorizontalBottomRight)
+		{
+			_vTile[i]->terrainFrameX = 13;
+			_vTile[i]->terrainFrameY = 2;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == AllOpenLeft)
+		{
+			_vTile[i]->terrainFrameX = 10;
+			_vTile[i]->terrainFrameY = 3;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == AllOpenRight)
+		{
+			_vTile[i]->terrainFrameX = 11;
+			_vTile[i]->terrainFrameY = 3;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == OpenConnectTopLeft)
+		{
+			_vTile[i]->terrainFrameX = 14;
+			_vTile[i]->terrainFrameY = 3;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == OpenConnectTopRight)
+		{
+			_vTile[i]->terrainFrameX = 14;
+			_vTile[i]->terrainFrameY = 1;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == OpenConnectBottomLeft)
+		{
+			_vTile[i]->terrainFrameX = 14;
+			_vTile[i]->terrainFrameY = 2;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == OpenConnectBottomRight)
+		{
+			_vTile[i]->terrainFrameX = 14;
+			_vTile[i]->terrainFrameY = 0;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == LeftTopBlockCorner)
+		{
+			_vTile[i]->terrainFrameX = 11;
+			_vTile[i]->terrainFrameY = 2;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == RightTopBlockCorner)
+		{
+			_vTile[i]->terrainFrameX = 9;
+			_vTile[i]->terrainFrameY = 2;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == LeftBottomBlockCorner)
+		{
+			_vTile[i]->terrainFrameX = 11;
+			_vTile[i]->terrainFrameY = 0;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else if ((*_viChar) == RightBottomBlockCorner)
+		{
+			_vTile[i]->terrainFrameX = 9;
+			_vTile[i]->terrainFrameY = 0;
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_BLOCK;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+		else
+		{
+			_vTile[i]->terrainFrameX = RND->getInt(3);
+			_vTile[i]->terrainFrameY = RND->getInt(3);
+			_vTile[i]->objFrameX = 0;
+			_vTile[i]->objFrameY = 0;
+			_vTile[i]->terrain = TR_GRASS;
+			_vTile[i]->obj = OBJ_NONE;
+		}
+	}
+
 }
 
 void tileManager::load(const char * mapName)
@@ -500,16 +755,16 @@ void tileManager::minimap()
 
 	for (int i = 0; i < _width * _height; ++i)
 	{
-	
 
-		_mini[i].terrainFrameX= _vTile[i]->terrainFrameX;
+
+		_mini[i].terrainFrameX = _vTile[i]->terrainFrameX;
 		_mini[i].terrainFrameY = _vTile[i]->terrainFrameY;
-		_mini[i].objFrameX= _vTile[i]->objFrameX;
+		_mini[i].objFrameX = _vTile[i]->objFrameX;
 		_mini[i].objFrameY = _vTile[i]->objFrameY;
-		_mini[i].terrain= _vTile[i]->terrain;
-		_mini[i].obj= _vTile[i]->obj;
+		_mini[i].terrain = _vTile[i]->terrain;
+		_mini[i].obj = _vTile[i]->obj;
 
-		
+
 		if ((_mini[i].terrainFrameX == 0 && _mini[i].terrainFrameY == 0) ||
 			(_mini[i].terrainFrameX == 1 && _mini[i].terrainFrameY == 0) ||
 			(_mini[i].terrainFrameX == 2 && _mini[i].terrainFrameY == 0) ||
@@ -522,15 +777,15 @@ void tileManager::minimap()
 		if (_mini[i].terrainFrameY >= 0)_mini[i].terrainFrameY = 0;
 		if (_mini[i].terrainFrameX == 10)_mini[i].terrainFrameX = 16;
 		if (_mini[i].rc.left == (_playerX * 8) && _mini[i].rc.top == (_playerY * 8))_mini[i].terrainFrameX = 0;
-	//	if (_mini[i].terrainFrameX > 16)_mini[i].terrainFrameX = 15;
-		
-		
-		
+		//	if (_mini[i].terrainFrameX > 16)_mini[i].terrainFrameX = 15;
+
+
+
 		_minibase->frameRender(
-			rc.left + (_mini[i].rc.left/2), rc.top+200 + (_mini[i].rc.top/2),
+			rc.left + (_mini[i].rc.left / 2), rc.top + 200 + (_mini[i].rc.top / 2),
 			_mini[i].terrainFrameX, _mini[i].terrainFrameY);
 
-	
+
 	}
 }
 
@@ -551,7 +806,7 @@ void tileManager::dungeon(int width, int height)
 	//최대 몇 개 feature 생성할지 정해서 랜덤 생성
 	//(feature == 방 || 복도)
 	generate(15);
-	
+
 }
 
 void tileManager::generate(int maxFeatures)
@@ -559,7 +814,7 @@ void tileManager::generate(int maxFeatures)
 	_trapCount--;
 	// place the first room in the center
 	//_width에 비율 주는걸로 첫방 X위치 조절가능, _height는 Y위치, 기본은 중앙인 1/2
-	if ( !makeRoom(_width/2 , _height/2, static_cast<Direction>(RND->getInt(4)) ) )
+	if (!makeRoom(_width / 2, _height / 2, static_cast<Direction>(RND->getInt(4))))
 		return;
 
 
@@ -567,23 +822,29 @@ void tileManager::generate(int maxFeatures)
 	//2번째 구조 생성(1번째는 무조건 첫방)
 	for (int i = 1; i < maxFeatures; ++i)
 	{
-		if (!createFeature()) 
+		if (!createFeature())
 			break;
 	}
 
 	//윗계단 생성자 
-	if (!placeObject(UpStairs))
+	if (_type < 4)
 	{
-		return;
+		if (!placeObject(UpStairs))
+		{
+			return;
+		}
 	}
 
 	//아랫계단 생성자
-	if (!placeObject(DownStairs))
+	if (_type >= 4)
 	{
-		return;
+		if (!placeObject(DownStairs))
+		{
+			return;
+		}
 	}
 	//함정 생성
-	for (int j = 0; j <_trapCount; j++)
+	for (int j = 0; j < _trapCount; j++)
 	{
 		int i = RND->getInt(5);
 		int trap = 0;
@@ -591,7 +852,7 @@ void tileManager::generate(int maxFeatures)
 		{
 			trap = ClearTrap;
 		}
-		else 
+		else
 		{
 			trap = PowerTrap;
 		}
@@ -600,7 +861,7 @@ void tileManager::generate(int maxFeatures)
 			return;
 		}
 	}
-	
+
 }
 
 bool tileManager::createFeature()
@@ -638,7 +899,7 @@ bool tileManager::createFeature(int x, int y, Direction dir)
 
 	int dx = 0;
 	int dy = 0;
-	
+
 
 	if (dir == North)
 		dy = 1;
@@ -702,7 +963,7 @@ bool tileManager::makeRoom(int x, int y, Direction dir)
 	static const int minRoomSize = 7;
 	static const int maxRoomSize = 15;
 
-	
+
 	//방 생성
 	int width, height;
 	int tmpX, tmpY;
@@ -835,141 +1096,176 @@ bool tileManager::placeRect(RECT rc, char Char)
 			if (getChar(x, y) != Unused)
 				return false; // the area already used
 		}
-	
+
 	//RECT 테두리에 벽 설정
 	for (int y = rc.top - 1; y <= rc.bottom; y++)
 		for (int x = rc.left - 1; x <= rc.right; x++)
 		{
-			if (x == rc.left - 1 &&
-				(getChar(x, y - 1) >= LeftTriWall) &&
-				(getChar(x - 1, y) == Floor || 
-				getChar(x - 1, y)==Corridor) &&
-				(getChar(x + 1, y) >= TopTriWall) &&
-				(getChar(x, y + 1) >= LeftTriWall))
-				setChar(x, y, LeftTriWall);
-			else if (x == rc.right &&
-				(getChar(x, y - 1) >= LeftTriWall) &&
-				(getChar(x + 1, y) == Floor || 
-				getChar(x + 1, y) == Corridor) &&
-				(getChar(x - 1, y) >= TopTriWall) &&
-				(getChar(x, y + 1) >= LeftTriWall))
-				setChar(x, y, RightTriWall);
-			else if (y == rc.top - 1 &&
-				(getChar(x - 1, y) >= LeftTriWall) &&
-				(getChar(x, y - 1) == Floor || 
-				getChar(x, y - 1) == Corridor) &&
-				(getChar(x, y + 1) >= LeftTriWall) &&
-				(getChar(x + 1, y) >= LeftTriWall))
-				setChar(x, y, TopTriWall);
-			else if (y == rc.bottom &&
-				(getChar(x - 1, y) >= LeftTriWall) &&
-				(getChar(x, y + 1) == Floor || 
-				getChar(x, y + 1) == Corridor) &&
-				(getChar(x, y - 1) >= LeftTriWall) &&
-				(getChar(x + 1, y) >= LeftTriWall))
-				setChar(x, y, BottomTriWall);
-			else if (x == rc.left - 1 &&
-				(getChar(x, y - 1) == VerticalLeftWall || 
-				getChar(x, y - 1) == LeftOpenWall) &&
-				(getChar(x - 1, y) == Unused) &&
-				(getChar(x + 1, y) >= TopTriWall) &&
-				(getChar(x, y + 1) == VerticalLeftWall || 
-				getChar(x, y + 1) == LeftOpenWall))
-				setChar(x, y, LeftOpenWall);
-			else if (x == rc.right &&
-				(getChar(x, y - 1) == VerticalRightWall || 
-				getChar(x, y - 1) == RightOpenWall) &&
-				(getChar(x + 1, y) == Unused) &&
-				(getChar(x - 1, y) >= TopTriWall) &&
-				(getChar(x, y + 1) == VerticalRightWall || 
-				getChar(x, y + 1) == RightOpenWall))
-				setChar(x, y, RightOpenWall);
-			else if (y == rc.top - 1 &&
-				(getChar(x - 1, y) == HorizontalTopWall || 
-					getChar(x - 1, y) == TopOpenWall) &&
-				getChar(x, y - 1) == Unused &&
-				getChar(x, y + 1) >= LeftTriWall &&
-				(getChar(x + 1, y) == HorizontalTopWall || 
-					getChar(x + 1, y) == TopOpenWall))
-				setChar(x, y, TopOpenWall);
-			else if (y == rc.bottom &&
-				(getChar(x - 1, y) == HorizontalBottomWall || 
-					getChar(x - 1, y) == BottomOpenWall) &&
-				getChar(x, y + 1) == Unused &&
-				getChar(x, y - 1) >= LeftTriWall &&
-				(getChar(x + 1, y) == HorizontalBottomWall || 
-					getChar(x + 1, y) == BottomOpenWall))
-				setChar(x, y, BottomOpenWall);
-			else if (getChar(x, y - 1) == Unused &&
-					getChar(x - 1, y) == Unused &&
-					(getChar(x + 1, y) != Floor || 
-					getChar(x + 1, y) != Corridor) &&
-					(getChar(x, y + 1) != Floor || 
-					getChar(x, y + 1) != Corridor))
-				setChar(x, y, LeftOpenCorner);
-			else if (x==rc.right&&y==rc.top-1&&
-				getChar(x, y - 1) == Unused &&
-					getChar(x + 1, y) == Unused)
-				setChar(x, y, RightOpenCorner);
-			
-			else if (x==rc.left-1&&y==rc.bottom&&
-				(getChar(x, y +1) == Unused && 
-					getChar(x-1, y ) == Unused))
-				setChar(x, y, LeftOpenBottom);
-			else if (x==rc.right&&y==rc.bottom&&
-				(getChar(x, y + 1) == Unused &&
-				getChar(x + 1, y) == Unused ))
-				setChar(x, y, RightOpenBottom);
-			else if (getChar(x - 1, y) == (Floor || Corridor) &&
-				getChar(x + 1, y) != (Floor || Corridor || Unused) &&
-				getChar(x, y - 1) == (Floor || Corridor) &&
-				getChar(x, y + 1) != (Floor || Corridor || Unused))
-				setChar(x, y, LeftCorner);
-			else if (getChar(x - 1, y) != (Floor || Corridor) &&
-				getChar(x + 1, y) == (Floor || Corridor || Unused) &&
-				getChar(x, y - 1) == (Floor || Corridor) &&
-				getChar(x, y + 1) != (Floor || Corridor || Unused))
-				setChar(x, y, RightCorner);
-			else if (getChar(x - 1, y) == (Floor || Corridor) &&
-				getChar(x, y + 1) == (Floor || Corridor) &&
-				getChar(x, y - 1) != (Floor || Corridor || Unused) &&
-				getChar(x + 1, y) != (Floor || Corridor || Unused))
-				setChar(x, y, LeftBottom);
-			else if (getChar(x-1,y)!=(Floor||Corridor||Unused)&&
-				getChar(x,y+1)!=(Floor||Corridor||Unused)&&
-				getChar(x,y-1)==(Floor||Corridor)&&
-				getChar(x+1,y)==(Floor||Corridor)) 
-				setChar(x, y, RightBottom);
-			else if (x == rc.left-1 &&
-				(getChar(x-1, y) == Unused|| 
-				getChar(x - 1, y) == VerticalRightWall||
-					getChar(x-1,y)==RightOpenCorner))
-				setChar(x, y, VerticalLeftWall);
-			else if (x == rc.right &&
-				((getChar(x+1, y) == Unused||
-					getChar(x+1,y)==VerticalLeftWall||
-					getChar(x+1,y)==LeftOpenCorner)))
-				setChar(x, y, VerticalRightWall);
-			else if ((getChar(x - 1, y) == Floor||
-				getChar(x-1,y)==Corridor)&&
-				(getChar(x+1,y)==Floor||
-				getChar(x+1,y)==Corridor)
-				)
-				setChar(x, y, VerticalWall);
-			else if (y == rc.top - 1 &&
-				(getChar(x, y-1) == Unused||
-				getChar(x,y-1)==HorizontalBottomWall))
+
+			if ((x != rc.left - 1 && x != rc.right) &&
+				(y == rc.top - 1) &&
+				(getChar(x, y - 1) == Unused ||
+					getChar(x, y - 1) == HorizontalBottomWall||
+					getChar(x,y-1)==LeftOpenBottom||
+					getChar(x,y-1)==RightOpenBottom))
 				setChar(x, y, HorizontalTopWall);
-			else if (y == rc.bottom &&
-				(getChar(x, y + 1) == Unused||
-				getChar(x,y+1)==HorizontalTopWall))
+		
+			else if ((x != rc.left - 1 && x != rc.right) &&
+				(y == rc.bottom) &&
+				(getChar(x, y + 1) == Unused ||
+					getChar(x, y + 1) == HorizontalTopWall||
+					getChar(x, y + 1) == LeftOpenCorner ||
+					getChar(x, y + 1) == RightOpenCorner||
+					getChar(x, y + 1) == LeftOpenBottom ||
+					getChar(x, y + 1) == RightOpenBottom))
 				setChar(x, y, HorizontalBottomWall);
-			else if(y == rc.top - 1 ||y == rc.bottom)
-				setChar(x, y, HorizontalWall);
+			
+			else if ((x == rc.left - 1) &&
+				(y != rc.top - 1 && y != rc.bottom) &&
+				(getChar(x - 1, y) == Unused ||
+					getChar(x - 1, y) == VerticalRightWall||
+					getChar(x-1,y)==LeftOpenCorner||
+					getChar(x-1,y)==RightOpenCorner||
+					getChar(x-1, y) == LeftOpenBottom ||
+					getChar(x-1, y) == RightOpenBottom))
+				setChar(x, y, VerticalLeftWall);
+		
+			else if ((x == rc.right) &&
+				(y != rc.top - 1 && y != rc.bottom) &&
+				(getChar(x + 1, y) == Unused ||
+					getChar(x + 1, y) == VerticalLeftWall||
+					getChar(x + 1, y) == LeftOpenCorner ||
+					getChar(x + 1, y) == RightOpenCorner ||
+					getChar(x + 1, y) == LeftOpenBottom ||
+					getChar(x + 1, y) == RightOpenBottom))
+				setChar(x, y, VerticalRightWall);
+			
+			
+			
+			else if ((x == rc.right&&y == rc.bottom ||
+				x == rc.left - 1 && y == rc.bottom ||
+				x == rc.left - 1 && y == rc.top - 1 ||
+				x == rc.right&&y == rc.top - 1) &&
+				(getChar(x - 1, y) == HorizontalTopWall ||
+					getChar(x - 1, y) == LeftOpenCorner||
+					getChar(x-1,y)==RightTopBlockCorner) &&
+					(getChar(x, y - 1) == VerticalLeftWall ||
+						getChar(x, y - 1) == LeftOpenCorner||
+						getChar(x,y-1)==LeftBottomBlockCorner))
+				setChar(x, y, LeftTopBlockCorner);
+			
+			else if ((x == rc.right&&y == rc.bottom ||
+				x == rc.left - 1 && y == rc.bottom ||
+				x == rc.left - 1 && y == rc.top - 1 ||
+				x == rc.right&&y == rc.top - 1) &&
+				(getChar(x + 1, y) == HorizontalTopWall ||
+					getChar(x + 1, y) == RightOpenCorner||
+					getChar(x+1,y)==LeftTopBlockCorner) &&
+					(getChar(x, y - 1) == VerticalRightWall ||
+						getChar(x, y - 1) == RightOpenCorner||
+				getChar(x,y-1)==RightBottomBlockCorner))
+				setChar(x, y, RightTopBlockCorner);
+			
+			else if ((x == rc.right&&y == rc.bottom ||
+				x == rc.right&&y == rc.top - 1 ||
+				x == rc.left - 1 && y == rc.bottom ||
+				x == rc.left - 1 && y == rc.top - 1) &&
+				(getChar(x - 1, y) == HorizontalBottomWall||
+					getChar(x-1,y)==LeftOpenBottom||
+					getChar(x-1,y)==RightBottomBlockCorner) &&
+				(getChar(x, y + 1) == VerticalLeftWall ||
+					getChar(x, y + 1) == LeftTopBlockCorner ||
+					getChar(x, y + 1) == LeftOpenBottom))
+				setChar(x, y, LeftBottomBlockCorner);
+			
+			else if ((x == rc.right&&y == rc.bottom ||
+				x == rc.right&&y == rc.top - 1 ||
+				x == rc.left - 1 && y == rc.bottom ||
+				x == rc.left - 1 && y == rc.top - 1) &&
+				(getChar(x + 1, y) == HorizontalBottomWall||
+					getChar(x+1,y)==RightOpenBottom||
+					getChar(x+1,y)==LeftBottomBlockCorner)&&
+				(getChar(x, y + 1) == VerticalRightWall ||
+					getChar(x, y + 1) == RightTopBlockCorner ||
+					getChar(x, y + 1) == RightOpenBottom))
+				setChar(x, y, RightBottomBlockCorner);
+
+			else if ((x == rc.right&&y == rc.bottom ||
+				x == rc.left - 1 && y == rc.bottom ||
+				x == rc.left - 1 && y == rc.top - 1 ||
+				x == rc.right&&y == rc.top - 1) &&
+				getChar(x - 1, y) == HorizontalTopWall &&
+				getChar(x + 1, y) == HorizontalTopWall)
+				setChar(x, y, HorizontalTopWall);
+
+			else if ((x == rc.right&&y == rc.bottom ||
+				x == rc.left - 1 && y == rc.bottom ||
+				x == rc.left - 1 && y == rc.top - 1 ||
+				x == rc.right&&y == rc.top - 1) &&
+				getChar(x - 1, y) == HorizontalBottomWall &&
+				getChar(x + 1, y) == HorizontalBottomWall)
+				setChar(x, y, HorizontalBottomWall);
+
+			else if ((x == rc.right&&y == rc.bottom ||
+				x == rc.left - 1 && y == rc.bottom ||
+				x == rc.left - 1 && y == rc.top - 1 ||
+				x == rc.right&&y == rc.top - 1) &&
+				getChar(x, y - 1) == VerticalLeftWall &&
+				getChar(x, y + 1) == VerticalLeftWall)
+				setChar(x, y, VerticalLeftWall);
+
+			else if ((x == rc.right&&y == rc.bottom ||
+				x == rc.left - 1 && y == rc.bottom ||
+				x == rc.left - 1 && y == rc.top - 1 ||
+				x == rc.right&&y == rc.top - 1) &&
+				getChar(x, y - 1) == VerticalRightWall &&
+				getChar(x, y + 1) == VerticalRightWall)
+				setChar(x, y, VerticalRightWall);
+
+			else if ((x == rc.left - 1 && y == rc.top - 1) &&
+				((getChar(x - 1, y) == Unused && getChar(x, y - 1) == Unused) ||
+				(getChar(x - 1, y) == RightOpenWall ||
+					getChar(x - 1, y) == RightOpenCorner ||
+					getChar(x - 1, y) == RightOpenBottom) &&
+					(getChar(x, y - 1) == BottomOpenWall ||
+						getChar(x, y - 1) == RightOpenBottom ||
+						getChar(x, y - 1) == LeftOpenBottom)))
+				setChar(x, y, LeftOpenCorner);
+			else if ((x == rc.right&&y == rc.top - 1) &&
+				((getChar(x + 1, y) == Unused && getChar(x, y - 1) == Unused) ||
+				(getChar(x + 1, y) == LeftOpenWall ||
+					getChar(x + 1, y) == LeftOpenCorner ||
+					getChar(x + 1, y) == LeftOpenBottom) &&
+					(getChar(x, y - 1) == BottomOpenWall ||
+						getChar(x, y - 1) == RightOpenBottom ||
+						getChar(x, y - 1) == LeftOpenBottom)))
+				setChar(x, y, RightOpenCorner);
+			else if ((x == rc.left - 1 && y == rc.bottom) &&
+			((getChar(x - 1, y) == Unused&& getChar(x, y + 1) == Unused) ||
+			(getChar(x - 1, y) == RightOpenWall ||
+			getChar(x - 1, y) == RightOpenCorner ||
+			getChar(x - 1, y) == RightOpenBottom) &&
+			(getChar(x, y + 1) == BottomOpenWall ||
+			getChar(x, y + 1) == RightOpenBottom ||
+			getChar(x, y + 1) == LeftOpenBottom)))
+				setChar(x, y, LeftOpenBottom);
+			else if ((x == rc.right&&y == rc.bottom) &&
+			((getChar(x + 1, y) == Unused && getChar(x, y + 1) == Unused) ||
+			(getChar(x + 1, y) == LeftOpenWall ||
+			getChar(x + 1, y) == LeftOpenCorner ||
+			getChar(x + 1, y) == LeftOpenBottom) &&
+			(getChar(x, y + 1) == BottomOpenWall ||
+			getChar(x, y + 1) == RightOpenBottom ||
+			getChar(x, y + 1) == LeftOpenBottom)))
+				setChar(x, y, RightOpenBottom);
+
+
+			//else if (y == rc.top - 1 || y == rc.bottom)
+			//	setChar(x, y, HorizontalWall);
 			else
 				setChar(x, y, Char);
 		}
-	
+
 	//생성 가능하면 true
 	return true;
 }
@@ -1025,7 +1321,7 @@ OBJECT tileManager::objSelect(int frameX, int frameY)
 	{
 		return OBJ_BLOCK;
 	}
-	
+
 
 	return OBJ_BLOCK;
 }
