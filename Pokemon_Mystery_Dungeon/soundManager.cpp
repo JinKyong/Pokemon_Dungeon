@@ -60,6 +60,18 @@ HRESULT soundManager::init()
 	addSound("Waterfall", "sound/Waterfall.mp3", false, false);
 	addSound("SheerCold", "sound/SheerCold.mp3", false, false);
 	addSound("DracoMeteor", "sound/DracoMeteor.mp3", false, false);
+
+
+	//¸Ê »ç¿îµå
+	addSound("Mt.Bristle", "sound/Field/Mt.Bristle0.mp3", false, true);
+	addSound("Concealed Ruins", "sound/Field/Concealed Ruins1.mp3", false, true);
+	addSound("Amp Plains", "sound/Field/Amp Plains2.mp3", false, true);
+	addSound("Brine Cave", "sound/Field/Brine Cave3.mp3", false, true);
+	addSound("Waterfall Cave", "sound/Field/Waterfall Cave4.mp3", false, true);
+	addSound("Apple Woods", "sound/Field/Apple Woods5.mp3", false, true);
+	addSound("Craggy Coast", "sound/Field/Craggy Coast6.mp3", false, true);
+	addSound("Mt.Horn", "sound/Field/Mt.Mt.Horn7.mp3", false, true);
+
 	return S_OK;
 }
 
