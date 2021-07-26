@@ -95,6 +95,8 @@ void dtdManager::render(float destX, float destY, float width, float height)
 	_dRenderTarget->BeginDraw();
 	_dRenderTarget->Clear(ColorF(ColorF::Aquamarine));
 
+	CAMERAMANAGER->fade();
+
 	//À§ È­¸é
 	UIMANAGER->renderUp();
 

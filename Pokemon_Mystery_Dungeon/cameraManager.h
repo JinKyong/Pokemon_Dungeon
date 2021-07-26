@@ -47,6 +47,7 @@ public:
 	void resetCam();
 
 	//FadeIN, FadeOUT
+	void fade();
 	void fadeIn();
 	void fadeOut();
 

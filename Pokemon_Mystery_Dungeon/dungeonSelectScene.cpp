@@ -35,63 +35,66 @@ void dungeonSelectScene::release()
 void dungeonSelectScene::update()
 {
 	RECT tmp;
-	if (KEYMANAGER->isStayKeyDown('W'))_y -= 10;
-	if (KEYMANAGER->isStayKeyDown('A'))_x -= 10;
-	if (KEYMANAGER->isStayKeyDown('S'))_y += 10;
-	if (KEYMANAGER->isStayKeyDown('D'))_x += 10;
+	if (KEYMANAGER->isStayKeyDown(KEY_RIGHT))_x += 5;
+	else if (KEYMANAGER->isStayKeyDown(KEY_LEFT))_x -= 5;
+	if (KEYMANAGER->isStayKeyDown(KEY_UP))_y -= 5;
+	else if (KEYMANAGER->isStayKeyDown(KEY_DOWN))_y += 5;
 
 	if (_x <= 0)_x = 0;
 	if (_y <= 0)_y = 0;
 	if (_x >= TILEWIDTH * _width)_x = TILEWIDTH * _width;
 	if (_y >= TILEHEIGHT * _height)_y = TILEHEIGHT * _height;
-	if (IntersectRect(&tmp,&_d0,&_selector))
-	{
-		TURNMANAGER->release();
-		TILEMANAGER->setType(6);
-		SCENEMANAGER->changeScene("dungeon");
+	if (KEYMANAGER->isOnceKeyDown(KEY_A)) {
+		if (IntersectRect(&tmp, &_d0, &_selector))
+		{
+			TURNMANAGER->release();
+			TILEMANAGER->setType(6);
+			SCENEMANAGER->changeScene("dungeon");
+		}
+		if (IntersectRect(&tmp, &_d1, &_selector))
+		{
+			TURNMANAGER->release();
+			TILEMANAGER->setType(7);
+			SCENEMANAGER->changeScene("dungeon");
+		}
+		if (IntersectRect(&tmp, &_d2, &_selector))
+		{
+			TURNMANAGER->release();
+			TILEMANAGER->setType(2);
+			SCENEMANAGER->changeScene("dungeon");
+		}
+		if (IntersectRect(&tmp, &_d3, &_selector))
+		{
+			TURNMANAGER->release();
+			TILEMANAGER->setType(1);
+			SCENEMANAGER->changeScene("dungeon");
+		}
+		if (IntersectRect(&tmp, &_d4, &_selector))
+		{
+			TURNMANAGER->release();
+			TILEMANAGER->setType(4);
+			SCENEMANAGER->changeScene("dungeon");
+		}
+		if (IntersectRect(&tmp, &_d5, &_selector))
+		{
+			TURNMANAGER->release();
+			TILEMANAGER->setType(0);
+			SCENEMANAGER->changeScene("dungeon");
+		}
+		if (IntersectRect(&tmp, &_d6, &_selector))
+		{
+			TURNMANAGER->release();
+			TILEMANAGER->setType(5);
+			SCENEMANAGER->changeScene("dungeon");
+		}
+		if (IntersectRect(&tmp, &_d7, &_selector))
+		{
+			TURNMANAGER->release();
+			TILEMANAGER->setType(3);
+			SCENEMANAGER->changeScene("dungeon");
+		}
 	}
-	if (IntersectRect(&tmp, &_d1, &_selector))
-	{
-		TURNMANAGER->release();
-		TILEMANAGER->setType(7);
-		SCENEMANAGER->changeScene("dungeon");
-	}
-	if (IntersectRect(&tmp, &_d2, &_selector))
-	{
-		TURNMANAGER->release();
-		TILEMANAGER->setType(2);
-		SCENEMANAGER->changeScene("dungeon");
-	}
-	if (IntersectRect(&tmp, &_d3, &_selector))
-	{
-		TURNMANAGER->release();
-		TILEMANAGER->setType(1);
-		SCENEMANAGER->changeScene("dungeon");
-	}
-	if (IntersectRect(&tmp, &_d4, &_selector))
-	{
-		TURNMANAGER->release();
-		TILEMANAGER->setType(4);
-		SCENEMANAGER->changeScene("dungeon");
-	}
-	if (IntersectRect(&tmp, &_d5, &_selector))
-	{
-		TURNMANAGER->release();
-		TILEMANAGER->setType(0);
-		SCENEMANAGER->changeScene("dungeon");
-	}
-	if (IntersectRect(&tmp, &_d6, &_selector))
-	{
-		TURNMANAGER->release();
-		TILEMANAGER->setType(5);
-		SCENEMANAGER->changeScene("dungeon");
-	}
-	if (IntersectRect(&tmp, &_d7, &_selector))
-	{
-		TURNMANAGER->release();
-		TILEMANAGER->setType(3);
-		SCENEMANAGER->changeScene("dungeon");
-	}
+
 	CAMERAMANAGER->updateScreen(WINSIZEX/2, WINSIZEY/2);
 	_selector = RectMake(_x, _y, 12, 12);
 	

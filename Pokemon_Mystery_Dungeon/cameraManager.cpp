@@ -81,6 +81,13 @@ void cameraManager::resetCam()
 		_camY = _camY + 40 < 0 ? _camY + 40 : 0;
 }
 
+void cameraManager::fade()
+{
+	//페이드 인 아웃
+	if (_fade == FADEIN)		fadeIn();
+	else if (_fade == FADEOUT)	fadeOut();
+}
+
 void cameraManager::fadeIn()
 {
 	_alpha -= FADE * TIMEMANAGER->getElapsedTime();
@@ -88,7 +95,10 @@ void cameraManager::fadeIn()
 
 	if (_alpha == 0) _fade = NORMAL;
 
-	_fadeScreen->render(_screen.left, _screen.top, _alpha);
+	D2D1_RECT_F dest = dRectMake(3 * WINSIZEX / 16, 3 * WINSIZEY / 8, _frontWidth, _frontHeight);
+	D2D1_RECT_F sour = dRectMake(0, 0, _fadeScreen->getWidth(), _fadeScreen->getHeight());
+	DTDMANAGER->getRenderTarget()->DrawBitmap(_fadeScreen->getBitmap(), dest,
+		_alpha, D2D1_BITMAP_INTERPOLATION_MODE_LINEAR, sour);
 }
 
 void cameraManager::fadeOut()
@@ -98,7 +108,10 @@ void cameraManager::fadeOut()
 
 	if (_alpha == 1.0) _fade = NORMAL;
 
-	_fadeScreen->render(_screen.left, _screen.top, _alpha);
+	D2D1_RECT_F dest = dRectMake(3 * WINSIZEX / 16, 3 * WINSIZEY / 8, _frontWidth, _frontHeight);
+	D2D1_RECT_F sour = dRectMake(0, 0, _fadeScreen->getWidth(), _fadeScreen->getHeight());
+	DTDMANAGER->getRenderTarget()->DrawBitmap(_fadeScreen->getBitmap(), dest,
+		_alpha, D2D1_BITMAP_INTERPOLATION_MODE_LINEAR, sour);
 }
 
 void cameraManager::vibrateScreen(float standardX, float standardY, float magnitude, float interval)
@@ -132,11 +145,6 @@ void cameraManager::render(float destX, float destY)
 	int destX: 우리가 보는 화면에서 출력해줄 x좌표
 	int destY: 우리가 보는 화면에서 출력해줄 y좌표
 	*/
-
-	if (_fade == FADEIN)		fadeIn();
-	else if (_fade == FADEOUT)	fadeOut();
-
-	DTDMANAGER->endDraw();
 
 	DTDMANAGER->render(destX, destY, _frontWidth, _frontHeight);
 

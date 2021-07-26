@@ -84,6 +84,7 @@ void playGround::render()
 	//================제발 이 사이에 좀 그립시다==========================
 	SCENEMANAGER->render();
 
+	DTDMANAGER->endDraw();
 	//==================================================================
 	CAMERAMANAGER->render(3 * WINSIZEX / 16, 3 * WINSIZEY / 8);
 }
