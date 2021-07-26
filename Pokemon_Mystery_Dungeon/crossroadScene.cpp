@@ -9,7 +9,7 @@ HRESULT crossroadScene::init(Player * player)
 	_height = 10;
 	_type = 0;
 	TILEMANAGER->setType(_type);
-	TILEMANAGER->init(_width, _height);
+//	TILEMANAGER->init(_width, _height);
 	TILEMANAGER->load("crossroad.map");
 	_background = IMAGEMANAGER->addDImage("crossroad", L"img/map/crossroad.png", 384, 480);
 	CAMERAMANAGER->setBackScreenSize((_width)* TILEWIDTH, (_height)* TILEHEIGHT);

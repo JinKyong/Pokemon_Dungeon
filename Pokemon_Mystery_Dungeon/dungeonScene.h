@@ -9,11 +9,7 @@ private:
 	Player* _pokemon1;
 	Player* _pokemon2;
 	Player* _pokemon3;
-	
 
-	int _width;
-	int _height;
-	int _type;
 public:
 
 	HRESULT init(Player *player);

@@ -237,6 +237,7 @@
     <ClInclude Include="Lapras.h" />
     <ClInclude Include="LeafBlade.h" />
     <ClInclude Include="Lightning.h" />
+    <ClInclude Include="loadingScene.h" />
     <ClInclude Include="LogMenu.h" />
     <ClInclude Include="Lunatone.h" />
     <ClInclude Include="macroFunc.h" />
@@ -415,6 +416,7 @@
     <ClCompile Include="Lapras.cpp" />
     <ClCompile Include="LeafBlade.cpp" />
     <ClCompile Include="Lightning.cpp" />
+    <ClCompile Include="loadingScene.cpp" />
     <ClCompile Include="LogMenu.cpp" />
     <ClCompile Include="Lunatone.cpp" />
     <ClCompile Include="MainMenu.cpp" />

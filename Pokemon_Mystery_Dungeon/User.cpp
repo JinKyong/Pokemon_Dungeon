@@ -22,6 +22,11 @@ HRESULT User::init(int pokemonNum)
 	setSkill(4);
 
 	//_inDungeon = false;
+	_level = 50;
+	_EXP = 0;
+
+	_realStat = BATTLEMANAGER->statCalculation(this);
+	_currentHP = _realStat.hp;
 
 	_num = POKEDEX->getIndex();
 

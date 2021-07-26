@@ -5,6 +5,7 @@ HRESULT dungeonSelectScene::init(Player * player)
 {
 	_width = 11;
 	_height = 7;
+
 	CAMERAMANAGER->setBackScreenSize(TILEWIDTH*_width, TILEHEIGHT*_height);
 	_background = IMAGEMANAGER->addDImage("dungeonSelect", L"img/map/dungeonmap.png", 528, 336);
 
@@ -13,9 +14,8 @@ HRESULT dungeonSelectScene::init(Player * player)
 	
 	TURNMANAGER->init();
 	player->init(4, 5);
-
-
 	TURNMANAGER->addAllPlayer(player);
+
 	_selector = RectMake(_x,_y, 12, 12);
 	_d0 = RectMake(72, 72, 24, 24);
 	_d1 = RectMake(72, 200, 24, 24);
@@ -56,7 +56,6 @@ void dungeonSelectScene::update()
 
 void dungeonSelectScene::render()
 {
-	
 	_background->render(0, 0);
 	DTDMANAGER->Rectangle(_d0);
 	DTDMANAGER->Rectangle(_d1);
@@ -75,57 +74,51 @@ void dungeonSelectScene::changeScene()
 		RECT tmp;
 		if (IntersectRect(&tmp, &_d0, &_selector))
 		{
-			TURNMANAGER->release();
-			TILEMANAGER->setType(6);
+			TILEMANAGER->init(151, 151, 6);
+			//이름
+			//나오는 포켓몬 초기화하고
 			CAMERAMANAGER->setFade(FADEOUT);
 			_change = true;
 		}
 		else if (IntersectRect(&tmp, &_d1, &_selector))
 		{
-			TURNMANAGER->release();
-			TILEMANAGER->setType(7);
+			TILEMANAGER->init(151, 151, 7);
 			CAMERAMANAGER->setFade(FADEOUT);
 			_change = true;
 		}
 		else if (IntersectRect(&tmp, &_d2, &_selector))
 		{
-			TURNMANAGER->release();
-			TILEMANAGER->setType(2);
+			TILEMANAGER->init(151, 151, 2);
 			CAMERAMANAGER->setFade(FADEOUT);
 			_change = true;
 		}
 		else if (IntersectRect(&tmp, &_d3, &_selector))
 		{
-			TURNMANAGER->release();
-			TILEMANAGER->setType(1);
+			TILEMANAGER->init(151, 151, 1);
 			CAMERAMANAGER->setFade(FADEOUT);
 			_change = true;
 		}
 		else if (IntersectRect(&tmp, &_d4, &_selector))
 		{
-			TURNMANAGER->release();
-			TILEMANAGER->setType(4);
+			TILEMANAGER->init(151, 151, 4);
 			CAMERAMANAGER->setFade(FADEOUT);
 			_change = true;
 		}
 		else if (IntersectRect(&tmp, &_d5, &_selector))
 		{
-			TURNMANAGER->release();
-			TILEMANAGER->setType(0);
+			TILEMANAGER->init(151, 151, 0);
 			CAMERAMANAGER->setFade(FADEOUT);
 			_change = true;
 		}
 		else if (IntersectRect(&tmp, &_d6, &_selector))
 		{
-			TURNMANAGER->release();
-			TILEMANAGER->setType(5);
+			TILEMANAGER->init(151, 151, 5);
 			CAMERAMANAGER->setFade(FADEOUT);
 			_change = true;
 		}
 		else if (IntersectRect(&tmp, &_d7, &_selector))
 		{
-			TURNMANAGER->release();
-			TILEMANAGER->setType(3);
+			TILEMANAGER->init(151, 151, 3);
 			CAMERAMANAGER->setFade(FADEOUT);
 			_change = true;
 		}
@@ -133,6 +126,6 @@ void dungeonSelectScene::changeScene()
 
 	if (_change) {
 		if (CAMERAMANAGER->getAlpha() == 1.0)
-			SCENEMANAGER->changeScene("dungeon");
+			SCENEMANAGER->changeScene("loading");
 	}
 }

@@ -9,7 +9,7 @@ HRESULT guildMapScene::init(Player * player)
 	_height = 8;
 	_type = 0;
 	TILEMANAGER->setType(_type);
-	TILEMANAGER->init(_width, _height);
+//	TILEMANAGER->init(_width, _height);
 	TILEMANAGER->load("housemap.map");
 	_background = IMAGEMANAGER->addDImage("guild", L"img/map/house.png", 384, 384);
 	CAMERAMANAGER->setBackScreenSize((_width)* TILEWIDTH, (_height)* TILEHEIGHT);

@@ -499,6 +499,9 @@
     <ClCompile Include="TitleMenuD.cpp">
       <Filter>playGround\UI\Menu\DownMenu</Filter>
     </ClCompile>
+    <ClCompile Include="loadingScene.cpp">
+      <Filter>playGround\Stage</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="video.h">
@@ -1028,6 +1031,9 @@
     </ClInclude>
     <ClInclude Include="TitleMenuD.h">
       <Filter>playGround\UI\Menu\DownMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="loadingScene.h">
+      <Filter>playGround\Stage</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

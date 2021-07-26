@@ -8,7 +8,7 @@ HRESULT bossMapScene::init(Player * player)
 	Scene::init(player);
 	_width = 16;
 	_height = 18;
-	TILEMANAGER->init(_width, _height);
+	//->init(_width, _height);
 	TILEMANAGER->load("bossmap1.map");
 	_background = IMAGEMANAGER->addDImage("bossback", L"img/map/bossmap1.png", 768, 864);
 	CAMERAMANAGER->setBackScreenSize((_width) * TILEWIDTH, (_height) * TILEHEIGHT);

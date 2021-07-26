@@ -176,19 +176,7 @@ void collisionManager::playerWithObject(Player * player)
 		if ((*_allTile)[index]->obj == OBJ_STAIR)
 		{
 			//계단과 충돌시 로딩씬으로 넘어가기
-			if (SCENEMANAGER->getSceneCount() >= 5)
-			{
-				this->release();
-				TURNMANAGER->release();
-				SCENEMANAGER->changeScene("boss");
-			}
-			else
-			{
-				SCENEMANAGER->setSceneCount(SCENEMANAGER->getSceneCount() + 1);
-				TILEMANAGER->init(TILEMANAGER->getWidth(), TILEMANAGER->getHeight(), TILEMANAGER->getType());
-				TURNMANAGER->randomSetting();
-
-			}
+			CAMERAMANAGER->setFade(FADEOUT);
 		}
 	}
 }

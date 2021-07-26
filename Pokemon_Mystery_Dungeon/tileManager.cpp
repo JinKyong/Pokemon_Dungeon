@@ -11,26 +11,14 @@ tileManager::~tileManager()
 
 HRESULT tileManager::init()
 {
+	_floor++;
+	//해당 던전의 보스층이 되면
+	//보스방 생성하도록
 
-	return S_OK;
-}
-
-HRESULT tileManager::init(int width, int height)
-{
-	//맵 크기 설정
-	_width = width;
-	_height = height;
-	//타일맵 이미지 등록
-	_Mapbase[0] = IMAGEMANAGER->addFrameDImage("terrain0", L"img/map/tiles/terrain_0.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
-	_Mapbase[1] = IMAGEMANAGER->addFrameDImage("terrain1", L"img/map/tiles/terrain_1.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
-	_Mapbase[2] = IMAGEMANAGER->addFrameDImage("terrain2", L"img/map/tiles/terrain_2.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
-	_Mapbase[3] = IMAGEMANAGER->addFrameDImage("terrain3", L"img/map/tiles/terrain_3.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
-	_Mapbase[4] = IMAGEMANAGER->addFrameDImage("terrain4", L"img/map/tiles/terrain_4.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
-	_Mapbase[5] = IMAGEMANAGER->addFrameDImage("terrain5", L"img/map/tiles/terrain_5.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
-	_Mapbase[6] = IMAGEMANAGER->addFrameDImage("terrain6", L"img/map/tiles/terrain_6.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
-	_Mapbase[7] = IMAGEMANAGER->addFrameDImage("terrain7", L"img/map/tiles/terrain_7.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
-	_Obbase = IMAGEMANAGER->addFrameDImage("object", L"img/map/tiles/object_all.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
-	_minibase = IMAGEMANAGER->addFrameDImage("minimap", L"img/map/tiles/minimap temp.png", 136, 8, 17, 1);
+	//던전 랜덤 생성
+	dungeon(_width, _height);
+	//생성된 맵 -> 타일로 변환
+	setup();
 
 	return S_OK;
 }
@@ -41,6 +29,7 @@ HRESULT tileManager::init(int width, int height, int type)
 	_width = width;
 	_height = height;
 	_type = type;
+
 	//타일맵 이미지 등록
 	_Mapbase[0] = IMAGEMANAGER->addFrameDImage("terrain0", L"img/map/tiles/terrain_0.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
 	_Mapbase[1] = IMAGEMANAGER->addFrameDImage("terrain1", L"img/map/tiles/terrain_1.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
@@ -55,6 +44,11 @@ HRESULT tileManager::init(int width, int height, int type)
 
 	if (_type == 0)
 	{
+		//이름도 정해주고
+		//벡터.clear()
+		//벡터.push_back(27);
+		//애들 레벨범위도 5 ~ 10 10 15
+
 		_enemyPokemon1 = 27;
 		_enemyPokemon2 = 31;
 		_enemyPokemon3 = 35;
@@ -110,16 +104,21 @@ HRESULT tileManager::init(int width, int height, int type)
 		_bossPokemon = 34;
 	}
 
-	//던전 랜덤 생성
-	dungeon(_width, _height);
-	//생성된 맵 -> 타일로 변환
-	setup();
+	_floor = 0;
 
 	return S_OK;
 }
 
 void tileManager::release()
 {
+	//vector<tagTile*>::iterator tiles = _vTile.begin();
+	//
+	//for (; tiles != _vTile.end();) {
+	//	SAFE_DELETE(*tiles);
+	//	tiles = _vTile.erase(tiles);
+	//}
+
+	_vTile.clear();
 }
 
 void tileManager::update()

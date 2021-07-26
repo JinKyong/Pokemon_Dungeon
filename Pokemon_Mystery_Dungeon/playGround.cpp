@@ -12,6 +12,7 @@
 #include "crossroadScene.h"
 #include "titleScene.h"
 #include "mainScene.h"
+#include "loadingScene.h"
 
 
 playGround::playGround()
@@ -44,8 +45,9 @@ HRESULT playGround::init()
 	SCENEMANAGER->addScene("guild", new guildMapScene);
 	SCENEMANAGER->addScene("title", new titleScene);
 	SCENEMANAGER->addScene("main", new mainScene);
+	SCENEMANAGER->addScene("loading", new loadingScene);
 
-	SCENEMANAGER->changeScene("dungeon");
+	SCENEMANAGER->changeScene("select");
 	BATTLEMANAGER->init();
 
 	_debug = false;

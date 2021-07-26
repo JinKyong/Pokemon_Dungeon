@@ -58,8 +58,11 @@ private:
 	int _width;
 	int _height;
 	int _type;
+	int _floor;
+	wstring _dungeonName;
 	int _trapCount;
-
+	
+	//벡터로 바꿔서 번호만 넣기
 	int _enemyPokemon1;
 	int _enemyPokemon2;
 	int _enemyPokemon3;
@@ -70,7 +73,6 @@ public:
 	~tileManager();
 
 	HRESULT init();										//기본 이니셜라이즈
-	HRESULT init(int width, int height);				//맵로드용 이니셜라이즈
 	HRESULT init(int width, int height, int type);		//던전용 이니셜라이즈
 	void release();
 	void update();
@@ -105,6 +107,7 @@ public:
 	int getWidth() { return _width; }
 	int getHeight() { return _height; }
 	int getType() { return _type; }
+	int getFloor() { return _floor; }
 	int getPlayerX() { return _playerX;}
 	int getPlayerY() { return _playerY; }
 	int getEnemy1() { return _enemyPokemon1; }
