@@ -1,6 +1,8 @@
 #pragma once
 #include "singletonBase.h"
 
+class Item;
+
 struct tagIniData
 {
 	LPCWCHAR subject;
@@ -28,6 +30,9 @@ public:
 	HRESULT init();
 	void release();
 
+
+	void loadGame(Player* player);
+	void saveGame(Player* player);
 
 	//initData
 	void addData(LPCWCHAR subject, LPCWCHAR title, LPCWCHAR body);

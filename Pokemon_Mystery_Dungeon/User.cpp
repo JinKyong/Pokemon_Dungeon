@@ -18,8 +18,6 @@ HRESULT User::init(int pokemonNum, int level)
 	_default = SKILLDEX->makeSkill(0);
 	_default->init(this);
 
-	setSkill(4);
-
 	_num = POKEDEX->getIndex();
 
 	return S_OK;

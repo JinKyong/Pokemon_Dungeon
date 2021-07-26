@@ -64,6 +64,7 @@ public:
 	int getType() { return _type; }
 
 	wstring getName() { return _name; }
+	int getNum() { return _num; }
 	wstring getItemInfo() { return _itemInfo; }
 	wstring getitemInfoLong() { return _itemInfoLong; }
 

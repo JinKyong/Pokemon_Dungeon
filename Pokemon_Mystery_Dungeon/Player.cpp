@@ -183,6 +183,24 @@ void Player::sattack()
 	}
 }
 
+void Player::resetPP()
+{
+	for (int i = 0; i < 4; i++) {
+		if (_skill[i])
+			_skill[i]->init(this);
+	}
+}
+
+void Player::loadSkill(int num)
+{
+	for (int i = 0; i < 4; i++) {
+		if (!_skill[i]) {
+			_skill[i] = SKILLDEX->makeSkill(num);
+			break;
+		}
+	}
+}
+
 void Player::setSkill(int num)
 {
 	_skill[0] = nullptr;

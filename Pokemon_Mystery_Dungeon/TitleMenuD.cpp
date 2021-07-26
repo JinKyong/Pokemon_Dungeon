@@ -48,6 +48,7 @@ void TitleMenuD::update()
 		}
 		else if (_index == TITLEMENU_OPTION_CONTINUE) {
 			//로드하고
+			TXTDATA->loadGame((*TURNMANAGER->getAllPlayer())[0]);
 			CAMERAMANAGER->setFade(FADEOUT);
 			_hidden = true;
 		}

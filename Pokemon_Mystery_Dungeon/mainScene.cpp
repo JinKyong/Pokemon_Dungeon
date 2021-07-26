@@ -5,13 +5,15 @@ HRESULT mainScene::init(Player * player)
 {
 	Scene::init(player);
 
+	TURNMANAGER->addAllPlayer(player);
+
 	//배경 이미지
 	for (int i = 0; i < 7; i++) {
 		char keyName[128];
 		WCHAR dirName[128];
 
-		sprintf_s(keyName, "mainImage%d", i);
-		swprintf_s(dirName, L"img/title/%d.png", i);
+		sprintf_s(keyName, "mainImage%d", i + 1);
+		swprintf_s(dirName, L"img/title/%d.png", i + 1);
 		_backImage[i] = IMAGEMANAGER->addDImage(keyName, dirName, 256, 192);
 	}
 

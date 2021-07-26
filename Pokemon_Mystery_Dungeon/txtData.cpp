@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "txtData.h"
-
+#include "Item.h"
 
 txtData::txtData()
 {
@@ -18,6 +18,114 @@ HRESULT txtData::init()
 
 void txtData::release()
 {
+}
+
+void txtData::loadGame(Player* player)
+{
+	LPCWCHAR fileName = L"data/saveData";
+	int pokemon = _wtoi(loadDataString2(fileName, L"player", L"pokemon", 128));
+	int level = _wtoi(loadDataString2(fileName, L"player", L"level", 128));
+
+	//포켓몬, 레벨
+	player->init(pokemon, level);
+
+	//경험치
+	int exp = _wtoi(loadDataString2(fileName, L"plaeyr", L"exp", 128));
+	player->setEXP(exp);
+
+	//기술목록
+	WCHAR skill[128] = L"";
+	lstrcatW(skill, loadDataString2(fileName, L"player", L"skill", 128));
+	vector<LPCWCHAR> skillList = wcharArraySeparation(skill);
+	vector<LPCWCHAR>::iterator skillIter = skillList.begin();
+	for (; skillIter != skillList.end(); ++skillIter) {
+		player->loadSkill(_wtoi(*skillIter));
+	}
+
+	////인벤 목록
+	//WCHAR inven[128];
+	//swprintf_s(inven, L"");
+	//vector<Item*>* itemList = INVENTORYMANAGER->getVItem();
+	//vector<Item*>::iterator itemIter = itemList->begin();
+	//for (; itemIter != itemList->end(); ++itemIter) {
+	//	WCHAR tmp[128];
+	//	swprintf_s(tmp, L"%d@", (*itemIter)->getNum());
+	//	lstrcatW(inven, tmp);
+	//}
+	//lstrcatW(inven, L"#");
+	//addData(L"player", L"inven", inven);
+	//
+	////창고 목록
+	//WCHAR storage[512];
+	//swprintf_s(storage, L"");
+	//itemList = INVENTORYMANAGER->getVitemStorage();
+	//itemIter = itemList->begin();
+	//for (; itemIter != itemList->end(); ++itemIter) {
+	//	WCHAR tmp[128];
+	//	swprintf_s(tmp, L"%d@", (*itemIter)->getNum());
+	//	lstrcatW(storage, tmp);
+	//}
+	//lstrcatW(storage, L"#");
+	//addData(L"player", L"storage", storage);
+}
+
+void txtData::saveGame(Player* player)
+{
+	//포켓몬
+	WCHAR pokemon[128];
+	swprintf_s(pokemon, L"%d", player->getPokemon()->getNum());
+	addData(L"player", L"pokemon", pokemon);
+
+	//레벨
+	WCHAR level[128];
+	swprintf_s(level, L"%d", player->getLevel());
+	addData(L"player", L"level", level);
+
+	//경험치
+	WCHAR exp[128];
+	swprintf_s(exp, L"%d", player->getEXP());
+	addData(L"player", L"exp", exp);
+
+	//기술목록
+	WCHAR skill[128];
+	swprintf_s(skill, L"");
+	for (int i = 0; i < 4; i++) {
+		if (player->getSkill()[i]) {
+			WCHAR tmp[128];
+			swprintf_s(tmp, L"%d@", player->getSkill()[i]->getNum());
+			lstrcatW(skill, tmp);
+		}
+	}
+	lstrcatW(skill, L"#");
+	addData(L"player", L"skill", skill);
+
+	//인벤 목록
+	WCHAR inven[128];
+	swprintf_s(inven, L"");
+	vector<Item*>* itemList = INVENTORYMANAGER->getVItem();
+	vector<Item*>::iterator itemIter = itemList->begin();
+	for (; itemIter != itemList->end(); ++itemIter) {
+		WCHAR tmp[128];
+		swprintf_s(tmp, L"%d@", (*itemIter)->getNum());
+		lstrcatW(inven, tmp);
+	}
+	lstrcatW(inven, L"#");
+	addData(L"player", L"inven", inven);
+
+	//창고 목록
+	WCHAR storage[512];
+	swprintf_s(storage, L"");
+	itemList = INVENTORYMANAGER->getVitemStorage();
+	itemIter = itemList->begin();
+	for (; itemIter != itemList->end(); ++itemIter) {
+		WCHAR tmp[128];
+		swprintf_s(tmp, L"%d@", (*itemIter)->getNum());
+		lstrcatW(storage, tmp);
+	}
+	lstrcatW(storage, L"#");
+	addData(L"player", L"storage", storage);
+
+	iniSave(L"data/saveData");
 }
 
 void txtData::addData(LPCWCHAR subject, LPCWCHAR title, LPCWCHAR body)
