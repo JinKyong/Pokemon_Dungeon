@@ -8,8 +8,8 @@ HRESULT Scope::init(float x, float y, float angle)
 	_y = y;
 	_body = RectMakeCenter(x * TILEWIDTH + TILEWIDTH / 2, y * TILEHEIGHT + TILEHEIGHT / 2, ITEMSIZE, ITEMSIZE);
 
-	_name = L"제어불가스코프"; //도구를 던지는 방향이 랜덤이 된다.
-	_itemInfo = L"아이템 설명이 없습니다";
+	_name = L"제어불가스코프";
+	_itemInfo = L"도구를 던지는 방향이 랜덤이 된다";
 	_itemInfoLong = L"아이템 설명이 없습니다";
 	_type = ITEM_HOLD;
 	_num = 24;

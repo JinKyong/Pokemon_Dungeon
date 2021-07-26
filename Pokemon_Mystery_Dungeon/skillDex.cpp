@@ -52,6 +52,7 @@ void skillDex::setSkillDex()
 	addSkill(&skillDex::vineWhip);
 	addSkill(&skillDex::waterfall);
 	addSkill(&skillDex::sheerCold);
+	addSkill(&skillDex::dracoMeteor);
 }
 
 Skill * skillDex::makeSkill(int num)

@@ -50,7 +50,14 @@ void InvenMenu::update()
 	{
 		if (_hidden)
 		{
-			if (_index2 == INVENMENU_OPTION_BACK || _index2 == INVENMENU_GIVE_OPTION_BACK) _hidden = false;
+			if ((*_invItem)[_index]->getType() == ITEM_HOLD)
+			{
+				if (_index2 == INVENMENU_GIVE_OPTION_BACK) _hidden = false;
+			}
+			else
+			{
+				if (_index2 == INVENMENU_OPTION_BACK) _hidden = false;
+			}
 		}
 
 		else _hidden = true;

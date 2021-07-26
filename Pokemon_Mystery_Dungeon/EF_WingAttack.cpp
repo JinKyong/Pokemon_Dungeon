@@ -12,6 +12,8 @@ HRESULT EF_WingAttack::init(float x, float y, int damage, int skillScale, int at
 	_tuningY = -(_img->getFrameHeight() / 2 + 40);
 	_renderCount = 0.02f;
 
+	SOUNDMANAGER->play("WingAttack");
+
 	return S_OK;
 }
 

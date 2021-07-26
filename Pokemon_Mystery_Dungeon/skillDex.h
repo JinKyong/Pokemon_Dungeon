@@ -57,5 +57,6 @@ public:
 	Skill* vineWhip() { return new VineWhip; }
 	Skill* waterfall() { return new Waterfall; }
 	Skill* sheerCold() { return new SheerCold; }
+	Skill* dracoMeteor() { return new DracoMeteor; }
 };
 

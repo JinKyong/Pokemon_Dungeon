@@ -29,6 +29,23 @@ HRESULT soundManager::init()
 	//곡 등록
 	registerSound();
 
+
+	//이펙트 사운드
+	addSound("hitDamage", "sound/hitDamage.mp3", false, false);				//공통 맞는소리
+
+	addSound("Lightning", "sound/Lightning.mp3", false, false);
+	addSound("FireBlast", "sound/FireBlast.mp3", false, false);
+	addSound("RockSlide", "sound/RockSlide.mp3", false, false);
+	addSound("Gust", "sound/Gust.mp3", false, false);
+	addSound("Waterfall", "sound/Waterfall.mp3", false, false);
+	addSound("ThunderFang", "sound/ThunderFang.mp3", false, false);
+	addSound("DracoMeteor", "sound/DracoMeteor.mp3", false, false);
+	addSound("FireFang", "sound/FireFang.mp3", false, false);
+	addSound("RockSmash", "sound/RockSmash.mp3", false, false);
+	addSound("DynamicPunch", "sound/DynamicPunch.mp3", false, false);
+	addSound("TriAttack", "sound/TriAttack.mp3", false, false);
+	addSound("WingAttack", "sound/WingAttack.mp3", false, false);
+	addSound("LeafBlade", "sound/LeafBlade.mp3", false, false);
 	return S_OK;
 }
 

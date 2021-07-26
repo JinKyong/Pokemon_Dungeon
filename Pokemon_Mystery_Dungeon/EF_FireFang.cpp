@@ -11,6 +11,8 @@ HRESULT EF_FireFang::init(float x, float y, int damage, int skillScale, int atkT
 	_tuningX = -(_img->getFrameWidth() / 2);
 	_tuningY = -(_img->getFrameHeight() / 2);
 	_renderCount = 0.05f;
+
+	SOUNDMANAGER->play("FireFang");
 	return S_OK;
 }
 
