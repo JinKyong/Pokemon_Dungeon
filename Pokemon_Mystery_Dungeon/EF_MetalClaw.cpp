@@ -13,7 +13,6 @@ HRESULT EF_MetalClaw::init(float x, float y, int damage, int skillScale, int atk
 	_renderCount = 0.03f;
 
 	SOUNDMANAGER->play("MetalClaw");
-
 	return S_OK;
 }
 

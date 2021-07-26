@@ -13,7 +13,6 @@ HRESULT EF_RockSmash::init(float x, float y, int damage, int skillScale, int atk
 	_renderCount = 0.05f;
 
 	SOUNDMANAGER->play("RockSmash");
-
 	return S_OK;
 }
 
