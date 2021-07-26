@@ -10,7 +10,7 @@ HRESULT EF_LeafBlade::init(float x, float y, int damage, int skillScale, int atk
 
 	_tuningX = -(_img->getFrameWidth() / 2);
 	_tuningY = -(_img->getFrameHeight() / 2);
-	_renderCount = 0.02f;
+	_renderCount = 0.01f;
 
 	SOUNDMANAGER->play("LeafBlade");
 	return S_OK;

@@ -10,7 +10,7 @@ HRESULT EF_DracoMeteor::init(float x, float y, int damage, int skillScale, int a
 
 	_tuningX = -(_img->getFrameWidth() / 2 + 90);
 	_tuningY = -(_img->getFrameHeight() / 2 + 90);
-	_renderCount = 0.06f;
+	_renderCount = 0.02f;
 
 	SOUNDMANAGER->play("DracoMeteor");
 	return S_OK;

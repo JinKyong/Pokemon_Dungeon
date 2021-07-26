@@ -10,7 +10,7 @@ HRESULT EF_FireBlast::init(float x, float y, int damage, int skillScale, int atk
 
 	_tuningX = -(_img->getFrameWidth() / 2);
 	_tuningY = -(_img->getFrameHeight() / 2);
-	_renderCount = 0.05f;
+	_renderCount = 0.03f;
 
 	SOUNDMANAGER->play("FireBlast");
 	return S_OK;
