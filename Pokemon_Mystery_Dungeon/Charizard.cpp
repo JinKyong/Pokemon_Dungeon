@@ -74,6 +74,18 @@ HRESULT Charizard::init()
 	_interceptY = 3 * TILEWIDTH / 4;
 	_gradient = -_interceptY / (_interceptX * _interceptX);
 
+	//스킬 목록
+	_skill.push_back(1);
+	_skill.push_back(2);
+	_skill.push_back(5);
+	_skill.push_back(7);
+	_skill.push_back(8);
+	_skill.push_back(9);
+	_skill.push_back(14);
+	_skill.push_back(17);
+	_skill.push_back(18);
+	_skill.push_back(19);
+	_skill.push_back(22);
 
 	return S_OK;
 }

@@ -74,6 +74,10 @@ HRESULT Pichu::init()
 	_interceptY = 3 * TILEWIDTH / 4;
 	_gradient = -_interceptY / (_interceptX * _interceptX);
 
+	//스킬 목록
+	_skill.push_back(3);
+	_skill.push_back(10);
+	_skill.push_back(21);
 
 	return S_OK;
 }

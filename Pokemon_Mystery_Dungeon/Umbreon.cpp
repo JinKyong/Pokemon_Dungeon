@@ -74,6 +74,14 @@ HRESULT Umbreon::init()
 	_interceptY = 3 * TILEWIDTH / 4;
 	_gradient = -_interceptY / (_interceptX * _interceptX);
 
+	//스킬 목록
+	_skill.push_back(4);
+	_skill.push_back(10);
+	_skill.push_back(14);
+	_skill.push_back(17);
+	_skill.push_back(19);
+	_skill.push_back(20);
+	_skill.push_back(21);
 
 	return S_OK;
 }

@@ -43,7 +43,7 @@ HRESULT playGround::init()
 	SCENEMANAGER->addScene("guild", new guildMapScene);
 	SCENEMANAGER->addScene("title", new titleScene);
 
-	SCENEMANAGER->changeScene("map");
+	SCENEMANAGER->changeScene("title");
 	BATTLEMANAGER->init();
 
 	_debug = false;
@@ -84,7 +84,6 @@ void playGround::render()
 	//================제발 이 사이에 좀 그립시다==========================
 	SCENEMANAGER->render();
 
-	DTDMANAGER->endDraw();
 	//==================================================================
 	CAMERAMANAGER->render(3 * WINSIZEX / 16, 3 * WINSIZEY / 8);
 }

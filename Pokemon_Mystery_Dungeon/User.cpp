@@ -18,6 +18,8 @@ HRESULT User::init(int pokemonNum)
 	_selectedSkill = nullptr;
 	_default = SKILLDEX->makeSkill(0);
 	_default->init(this);
+
+	vector<int> skillList = _pokemon->getSkill();
 	_skill[0] = SKILLDEX->makeSkill(1);
 	_skill[0]->init(this);
 	_skill[1] = SKILLDEX->makeSkill(6);

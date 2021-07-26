@@ -60,7 +60,7 @@ protected:
 	//스탯(개체값)
 
 	//배울 수 있는 기술(스킬)
-	//vector<int> _skill;
+	vector<int> _skill;
 	//레벨업으로 배우는 기술(스킬)
 	//map<num, int>
 
@@ -110,5 +110,7 @@ public:
 	STAT getPokemonValue() { return _pokemonValue; }
 
 	POKEMON_TYPE* getPokemonType() { return _type; }
+
+	vector<int> getSkill() { return _skill; }
 };
 

@@ -136,6 +136,8 @@ void cameraManager::render(float destX, float destY)
 	if (_fade == FADEIN)		fadeIn();
 	else if (_fade == FADEOUT)	fadeOut();
 
+	DTDMANAGER->endDraw();
+
 	DTDMANAGER->render(destX, destY, _frontWidth, _frontHeight);
 
 #ifdef _DEBUG

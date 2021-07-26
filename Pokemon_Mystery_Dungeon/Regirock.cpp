@@ -74,6 +74,12 @@ HRESULT Regirock::init()
 	_interceptY = 3 * TILEWIDTH / 4;
 	_gradient = -_interceptY / (_interceptX * _interceptX);
 
+	//스킬 목록
+	_skill.push_back(4);
+	_skill.push_back(5);
+	_skill.push_back(16);
+	_skill.push_back(18);
+	_skill.push_back(21);
 
 	return S_OK;
 }

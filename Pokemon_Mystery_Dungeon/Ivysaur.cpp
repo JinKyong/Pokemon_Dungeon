@@ -74,6 +74,13 @@ HRESULT Ivysaur::init()
 	_interceptY = 3 * TILEWIDTH / 4;
 	_gradient = -_interceptY / (_interceptX * _interceptX);
 
+	//스킬 목록
+	_skill.push_back(6);
+	_skill.push_back(11);
+	_skill.push_back(12);
+	_skill.push_back(13);
+	_skill.push_back(15);
+	_skill.push_back(23);
 
 	return S_OK;
 }

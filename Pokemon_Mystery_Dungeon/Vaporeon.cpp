@@ -74,6 +74,12 @@ HRESULT Vaporeon::init()
 	_interceptY = 3 * TILEWIDTH / 4;
 	_gradient = -_interceptY / (_interceptX * _interceptX);
 
+	//스킬 목록
+	_skill.push_back(10);
+	_skill.push_back(17);
+	_skill.push_back(18);
+	_skill.push_back(20);
+	_skill.push_back(24);
 
 	return S_OK;
 }
