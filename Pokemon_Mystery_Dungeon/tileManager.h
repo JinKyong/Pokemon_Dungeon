@@ -68,6 +68,8 @@ private:
 	int _enemyPokemon3;
 	int _bossPokemon;
 
+	//int _range;
+
 public:
 	tileManager();
 	~tileManager();
@@ -110,15 +112,21 @@ public:
 	int getFloor() { return _floor; }
 	int getPlayerX() { return _playerX;}
 	int getPlayerY() { return _playerY; }
+	
+	//여기서부터 주석위까지 지울것들
 	int getEnemy1() { return _enemyPokemon1; }
 	int getEnemy2() { return _enemyPokemon2; }
 	int getEnemy3() { return _enemyPokemon3; }
 	int getBoss() { return _bossPokemon; }
 
+	//int getRange() { return _range; }
+
 	char getChar(int x, int y) { return _vChar[x + y * _width]; }
 
 	vector<tagTile*>* getvTile() { return &_vTile; }
 	vector<RECT>* getvRoom() { return &_vRoom; }
+
+
 
 };
 
