@@ -10,7 +10,9 @@ HRESULT EF_DynamicPunch::init(float x, float y, int damage, int skillScale, int 
 
 	_tuningX = -(_img->getFrameWidth() / 2);
 	_tuningY = -(_img->getFrameHeight() / 2);
-	_renderCount = 0.05f;
+	_renderCount = 0.04f;
+
+	SOUNDMANAGER->play("DynamicPunch");
 	return S_OK;
 }
 

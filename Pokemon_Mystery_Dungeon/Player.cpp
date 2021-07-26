@@ -29,6 +29,7 @@ HRESULT Player::init(float x, float y)
 		TILEWIDTH, TILEHEIGHT);
 
 	_changeState = false;
+	_turnCount = 0;
 
 	return S_OK;
 }
@@ -48,6 +49,7 @@ void Player::update()
 		if (!_changeState) {
 			_pokemon->changeState(_playerState);
 			_changeState = true;
+			_turnCount++;
 		}
 		move();
 		break;
@@ -56,6 +58,7 @@ void Player::update()
 		if (!_changeState) {
 			_pokemon->changeState(_playerState);
 			_changeState = true;
+			_turnCount++;
 		}
 		break;
 	case POKEMON_STATE_SATTACK:
@@ -63,6 +66,7 @@ void Player::update()
 		if (!_changeState) {
 			_pokemon->changeState(_playerState);
 			_changeState = true;
+			_turnCount++;
 		}
 		break;
 	default:
@@ -179,6 +183,44 @@ void Player::sattack()
 	}
 }
 
+void Player::setSkill(int num)
+{
+	_skill[0] = nullptr;
+	_skill[1] = nullptr;
+	_skill[2] = nullptr;
+	_skill[3] = nullptr;
+
+	vector<int> skillList = _pokemon->getSkill();
+	vector<int> skills;
+	bool same;
+	int numbers = num;
+
+	if (skillList.size() < num)
+		numbers = skillList.size();
+
+	for (int i = 0; i < numbers; i++) {
+
+		int skillNum = skillList[RND->getInt(skillList.size())];
+		same = true;
+
+		while (same && skills.size()) {
+			skillNum = skillList[RND->getInt(skillList.size())];
+			for (int i = 0; i < skills.size(); i++) {
+				if (skillNum == skills[i]) {
+					same = true;
+					break;
+				}
+				else
+					same = false;
+			}
+		}
+		skills.push_back(skillNum);
+
+		_skill[i] = SKILLDEX->makeSkill(skillNum);
+		_skill[i]->init(this);
+	}
+}
+
 void Player::useSkill(int num)
 {
 	if (num == -1) {
@@ -195,7 +237,7 @@ void Player::useSkill(int num)
 
 void Player::hitDamage(int num)
 {
-	_currentHP -= num;
+	_currentHP -= abs(num);
 }
 
 void Player::addEXP(int num)

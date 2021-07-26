@@ -271,6 +271,7 @@ void collisionManager::effectWithEnemy(Effect * effect)
 			if ((effect->getDamage() > 0 && (*playerIter)->getPlayerType() == PLAYER_TYPE_ENEMY) ||
 				(effect->getDamage() < 0 && (*playerIter)->getPlayerType() <= PLAYER_TYPE_TEAM)) {
 
+				SOUNDMANAGER->play("hitDamage");
 				(*playerIter)->getPokemon()->changeState(POKEMON_STATE_HURT);
 				(*playerIter)->hitDamage(BATTLEMANAGER->damageCalculation((*playerIter), effect));
 

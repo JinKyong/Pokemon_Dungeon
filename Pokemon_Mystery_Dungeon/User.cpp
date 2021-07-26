@@ -19,15 +19,7 @@ HRESULT User::init(int pokemonNum)
 	_default = SKILLDEX->makeSkill(0);
 	_default->init(this);
 
-	vector<int> skillList = _pokemon->getSkill();
-	_skill[0] = SKILLDEX->makeSkill(1);
-	_skill[0]->init(this);
-	_skill[1] = SKILLDEX->makeSkill(6);
-	_skill[1]->init(this);
-	_skill[2] = SKILLDEX->makeSkill(3);
-	_skill[2]->init(this);
-	_skill[3] = SKILLDEX->makeSkill(4);
-	_skill[3]->init(this);
+	setSkill(4);
 
 	//_inDungeon = false;
 
@@ -38,6 +30,15 @@ HRESULT User::init(int pokemonNum)
 
 int User::input()
 {
+	//Çã±âÁü
+	if (_turnCount >= 5) {
+		_starve--;
+		if (_starve <= 0)
+			_starve = 0;
+
+		_turnCount = 0;
+	}
+
 	controlKey();
 	testKey();
 

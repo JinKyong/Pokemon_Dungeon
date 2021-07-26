@@ -105,6 +105,8 @@ void dtdManager::render(float destX, float destY, float width, float height)
 	_dRenderTarget->DrawBitmap(_dBitmap, dest,
 		1.0, D2D1_BITMAP_INTERPOLATION_MODE_LINEAR, sour);
 
+	CAMERAMANAGER->fade();
+
 	_dRenderTarget->EndDraw();
 }
 
