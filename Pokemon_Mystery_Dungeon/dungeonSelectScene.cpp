@@ -13,7 +13,7 @@ HRESULT dungeonSelectScene::init(Player * player)
 	_y = 0;
 	
 	TURNMANAGER->init();
-	player->init(4, 5);
+	player->initXY(0, 0);
 	TURNMANAGER->addAllPlayer(player);
 
 	_selector = RectMake(_x,_y, 12, 12);
@@ -27,6 +27,9 @@ HRESULT dungeonSelectScene::init(Player * player)
 	_d7 = RectMake(330, 288, 24, 24);
 
 	_change = false;
+
+	UIMANAGER->changeUpMenu("statusMenu");
+	UIMANAGER->changeDownMenu("NULL");
 
 	return S_OK;
 }

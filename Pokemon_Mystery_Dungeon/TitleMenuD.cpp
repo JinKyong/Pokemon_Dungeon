@@ -9,10 +9,19 @@ HRESULT TitleMenuD::init()
 	_border = IMAGEMANAGER->addDImage(
 		"titleMenu_border", L"img/UI/titleMenu/border.png", DOWNMENU_WIDTH, DOWNMENU_HEIGHT);
 
+	//선택 화살표
+	_arrow = IMAGEMANAGER->addDImage("selectTri", L"img/UI/mainMenu/tri.png", 10, 22);
+
 	_tuningX = 0;
 	_tuningY = 0;
 
-	_hidden = true;
+	_hidden = false;
+
+	//세이브파일이 없으면 -1
+	_maxIndex = END_TITLEMENU_OPTION;
+
+	_opacity = 1.0f;
+	_count = 0;
 
 	return S_OK;
 }
@@ -23,17 +32,53 @@ void TitleMenuD::release()
 
 void TitleMenuD::update()
 {
+	if (_hidden) return;
+
+	if (KEYMANAGER->isOnceKeyDown(KEY_DOWN)) {
+		_index = (_index + 1) % _maxIndex;
+	}
+	else if (KEYMANAGER->isOnceKeyDown(KEY_UP)) {
+		_index = (_index - 1 + _maxIndex) % _maxIndex;
+	}
+
+	if (KEYMANAGER->isOnceKeyDown(KEY_A)) {
+		if (_index == TITLEMENU_OPTION_NEW) {
+			CAMERAMANAGER->setFade(FADEOUT);
+			_hidden = true;
+		}
+		else if (_index == TITLEMENU_OPTION_CONTINUE) {
+			//로드하고
+			CAMERAMANAGER->setFade(FADEOUT);
+			_hidden = true;
+		}
+	}
+
+
+
+	_count++;
+	if (_count > 20) {
+		_opacity = !_opacity;
+		_count = 0;
+	}
 }
 
 void TitleMenuD::render()
 {
+	if (_hidden) return;
+
 	DownMenu::render();
 
-	//if(세이브파일ㅇ ㅣ있으면)
-	//printText(계속하기)
-	//누르면 로드파일 불러와서 플레이어 이니시 시키면됨
+	D2D1_RECT_F screen = CAMERAMANAGER->getScreen();
 
-	//else(세이브파일이 없으면)
-	//printText(새로시작)
-	//누르면 푸키몬 선택화면으로
+	_arrow->render(screen.left + 50, screen.top + 50 * _index + 60, _opacity);
+
+	D2D1_RECT_F dest = dRectMake(screen.left + 80, screen.top + 55, 300, 300);
+
+	DTDMANAGER->printText(L"새로하기", dest, 30);
+
+	if (_maxIndex == END_TITLEMENU_OPTION) {
+		dest.top += 50;
+		dest.bottom += 50;
+		DTDMANAGER->printText(L"계속하기", dest, 30);
+	}
 }

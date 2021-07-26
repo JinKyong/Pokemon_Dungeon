@@ -21,6 +21,11 @@ HRESULT SkillMenu::init()
 	_index2 = 0;
 	
 	_skill = (*TURNMANAGER->getAllPlayer())[0]->getSkill();
+	_maxIndex = 0;
+	for (int i = 0; i < 4; i++) {
+		if (_skill[i])
+			_maxIndex++;
+	}
 
 	_hidden = false;
 
@@ -71,6 +76,12 @@ void SkillMenu::update()
 
 		else _hidden = true;
 	}
+
+	_count++;
+	if (_count > 20) {
+		_opacity = !_opacity;
+		_count = 0;
+	}
 }
 
 void SkillMenu::render()
@@ -94,7 +105,7 @@ void SkillMenu::printTextLeft()
 		_rc.left + _tuningX + TILEWIDTH * 3 + TILEWIDTH / 2 + 15, _rc.top + _tuningY + 20 + TILEHEIGHT, 200, 100, 25);
 
 	//화살표
-	if (!_hidden) _arrow->render(leftDest.left - 20, leftDest.top + _index * TILEHEIGHT);
+	if (!_hidden) _arrow->render(leftDest.left - 20, leftDest.top + _index * TILEHEIGHT, _opacity);
 
 	if(_skill[0])
 		DTDMANAGER->printText(_skill[0]->getName().c_str(), leftDest, 25);
@@ -116,8 +127,6 @@ void SkillMenu::printTextLeft()
 
 	if(_skill[3])
 		DTDMANAGER->printText(_skill[3]->getName().c_str(), leftDest, 25);
-
-	//스킬이 있는지 검사->출력->검사->출력
 }
 
 void SkillMenu::printTextRight()
@@ -139,7 +148,7 @@ void SkillMenu::printTextRight()
 
 	DTDMANAGER->printText(L"돌아간다", rightDest, 25);
 
-	if (_hidden) _arrow->render(rightDest.left - 20, (rightDest.top + TILEHEIGHT / 2 - TILEHEIGHT * 2) + _index2 * 36);
+	if (_hidden) _arrow->render(rightDest.left - 20, (rightDest.top + TILEHEIGHT / 2 - TILEHEIGHT * 2) + _index2 * 36, _opacity);
 }
 
 void SkillMenu::printTextDown()
@@ -204,7 +213,8 @@ void SkillMenu::plusIndex()
 	if (!_hidden)
 	{
 		_index += 1;
-		if (_index > 3) _index = 0;
+
+		if (_index >= _maxIndex) _index = 0;
 	}
 
 	if (_hidden)
@@ -219,7 +229,8 @@ void SkillMenu::minusIndex()
 	if (!_hidden)
 	{
 		_index -= 1;
-		if (_index < 0) _index = 3;
+
+		if (_index < 0) _index = _maxIndex - 1;
 	}
 
 	if (_hidden)

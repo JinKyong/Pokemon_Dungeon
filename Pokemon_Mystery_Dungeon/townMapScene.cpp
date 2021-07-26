@@ -14,10 +14,8 @@ HRESULT townMapScene::init(Player * player)
 	_background = IMAGEMANAGER->addDImage("town", L"img/map/village.png", 1152, 480);
 	CAMERAMANAGER->setBackScreenSize((_width)* TILEWIDTH, (_height)* TILEHEIGHT);
 	TURNMANAGER->init();
-	player->init(24,4);
+	player->initXY(24,4);
 
-
-	TURNMANAGER->addAllPlayer(player);
 	_itemManager = new ItemManager;
 	_itemManager->init();
 

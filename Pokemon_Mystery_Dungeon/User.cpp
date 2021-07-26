@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "User.h"
 
-HRESULT User::init(int pokemonNum)
+HRESULT User::init(int pokemonNum, int level)
 {
-	Player::init(pokemonNum);
+	Player::init(pokemonNum, level);
 
 	//플레이어 타입
 	_playerType = PLAYER_TYPE_USER;
@@ -13,20 +13,12 @@ HRESULT User::init(int pokemonNum)
 		_pattern[i] = nullptr;
 	_currentPattern = END_PLAYER_PATTERN;
 
-
 	//기술
 	_selectedSkill = nullptr;
 	_default = SKILLDEX->makeSkill(0);
 	_default->init(this);
 
 	setSkill(4);
-
-	//_inDungeon = false;
-	_level = 50;
-	_EXP = 0;
-
-	_realStat = BATTLEMANAGER->statCalculation(this);
-	_currentHP = _realStat.hp;
 
 	_num = POKEDEX->getIndex();
 

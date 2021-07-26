@@ -13,6 +13,8 @@ enum MAINMENU_OPTION {
 class MainMenu : public DownMenu
 {
 private:
+	bool _opacity;
+	int _count;
 
 public:
 	virtual HRESULT init();

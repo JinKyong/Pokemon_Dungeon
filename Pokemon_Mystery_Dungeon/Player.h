@@ -62,8 +62,8 @@ protected:
 	bool _inDungeon;
 
 public:
-	virtual HRESULT init(int pokemonNum);
-	virtual HRESULT init(float x, float y);
+	virtual HRESULT init(int pokemonNum, int level);
+	virtual HRESULT initXY(float x, float y);
 	virtual void release();
 	virtual void update();
 	virtual void render();

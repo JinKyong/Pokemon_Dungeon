@@ -1,28 +1,25 @@
 #include "stdafx.h"
 #include "Team.h"
 
-HRESULT Team::init(int pokemonNum)
+HRESULT Team::init(int pokemonNum, int level)
 {
+	Player::init(pokemonNum, level);
+
 	//플레이어 타입
 	_playerType = PLAYER_TYPE_TEAM;
 	_playerState = POKEMON_STATE_DEFAULT;
+	//패턴
+	//_pattern[PLAYER_PATTERN_PATHFINDER] = new PatternPathFinder;
+	//_pattern[PLAYER_PATTERN_ONATTACK] = new PatternOnAttack;
+	//changePattern(PLAYER_PATTERN_PATHFINDER);
 
-	//포켓몬
-	_pokemon = POKEDEX->makePokemon(pokemonNum);
-	_pokemon->init();
 
-	//좌표
-	_x = 25;
-	_y = 13;
-	_destX = _x;
-	_destY = _y;
-	_body = RectMakeCenter(_x * TILEWIDTH + TILEWIDTH / 2, _y * TILEHEIGHT + TILEHEIGHT / 2,
-		TILEWIDTH, TILEHEIGHT);
+	//기술
+	_selectedSkill = nullptr;
+	_default = SKILLDEX->makeSkill(0);
+	_default->init(this);
 
-	//스탯
-	//계산해서 넣음 포켓몬 꺼
-
-	_inDungeon = false;
+	setSkill(3);
 
 	return S_OK;
 }

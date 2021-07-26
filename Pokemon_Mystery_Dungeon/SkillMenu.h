@@ -29,7 +29,11 @@ private:
 
 	D2D1_RECT_F _rc;
 
+	int _maxIndex;
 	int _index2;
+
+	bool _opacity;
+	int _count;
 
 public:
 	virtual HRESULT init();
