@@ -196,6 +196,7 @@ void Player::loadSkill(int num)
 	for (int i = 0; i < 4; i++) {
 		if (!_skill[i]) {
 			_skill[i] = SKILLDEX->makeSkill(num);
+			_skill[i]->init(this);
 			break;
 		}
 	}
