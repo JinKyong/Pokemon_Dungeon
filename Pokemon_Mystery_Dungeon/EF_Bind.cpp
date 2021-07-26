@@ -12,7 +12,6 @@ HRESULT EF_Bind::init(float x, float y, int damage, int skillScale, int atkType,
 	_tuningY = -(_img->getFrameHeight() / 2 + 30);
 	_renderCount = 0.06f;
 
-	SOUNDMANAGER->play("Bind");
 	return S_OK;
 }
 
