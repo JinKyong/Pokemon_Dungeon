@@ -30,7 +30,13 @@ void PatternOnAttack::update()
 	//충돌 검사
 	//주변 8타일에 있으면 공격
 	if (COLLISIONMANAGER->detectionWith8Tiles(_player, (*TURNMANAGER->getAllPlayer())[0])) {
-		_player->useSkill(-1);
+		int num = RND->getInt(4);
+		Skill** skill = _player->getSkill();
+
+		if (skill[num])
+			_player->useSkill(num);
+		else
+			_player->useSkill(-1);
 	}
 	else {
 		//없으면 찾아감

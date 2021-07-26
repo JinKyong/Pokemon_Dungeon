@@ -76,6 +76,7 @@ public:
 	void move();
 	void attack();
 	void sattack();
+	void setSkill(int num);
 	void useSkill(int num);
 
 

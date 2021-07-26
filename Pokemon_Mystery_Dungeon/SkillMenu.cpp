@@ -96,22 +96,26 @@ void SkillMenu::printTextLeft()
 	//화살표
 	if (!_hidden) _arrow->render(leftDest.left - 20, leftDest.top + _index * TILEHEIGHT);
 
-	DTDMANAGER->printText(_skill[0]->getName().c_str(), leftDest, 25);
+	if(_skill[0])
+		DTDMANAGER->printText(_skill[0]->getName().c_str(), leftDest, 25);
 
 	leftDest.top += TILEHEIGHT;
 	leftDest.bottom += TILEHEIGHT;
 
-	DTDMANAGER->printText(_skill[1]->getName().c_str(), leftDest, 25);
+	if(_skill[1])
+		DTDMANAGER->printText(_skill[1]->getName().c_str(), leftDest, 25);
 
 	leftDest.top += TILEHEIGHT;
 	leftDest.bottom += TILEHEIGHT;
 
-	DTDMANAGER->printText(_skill[2]->getName().c_str(), leftDest, 25);
+	if(_skill[2])
+		DTDMANAGER->printText(_skill[2]->getName().c_str(), leftDest, 25);
 
 	leftDest.top += TILEHEIGHT;
 	leftDest.bottom += TILEHEIGHT;
 
-	DTDMANAGER->printText(_skill[3]->getName().c_str(), leftDest, 25);
+	if(_skill[3])
+		DTDMANAGER->printText(_skill[3]->getName().c_str(), leftDest, 25);
 
 	//스킬이 있는지 검사->출력->검사->출력
 }
@@ -151,40 +155,48 @@ void SkillMenu::printPP()
 	D2D1_RECT_F ppDest2 = dRectMake(_rc.left + _tuningX + TILEWIDTH * 7, _rc.top + _tuningY + TILEHEIGHT + TILEHEIGHT / 2, TILEWIDTH * 10, TILEHEIGHT);
 
 	WCHAR str[128];
-	swprintf_s(str, L"%d /", _skill[0]->getCurrentPP());
-	DTDMANAGER->printText(str, ppDest, 25);
-	swprintf_s(str, L" %d", _skill[0]->getMaxPP());
-	DTDMANAGER->printText(str, ppDest2, 25);
+	if (_skill[0]) {
+		swprintf_s(str, L"%d /", _skill[0]->getCurrentPP());
+		DTDMANAGER->printText(str, ppDest, 25);
+		swprintf_s(str, L" %d", _skill[0]->getMaxPP());
+		DTDMANAGER->printText(str, ppDest2, 25);
+	}
 
 	ppDest.top += TILEHEIGHT;
 	ppDest.bottom += TILEHEIGHT;
 	ppDest2.top += TILEHEIGHT;
 	ppDest2.bottom += TILEHEIGHT;
 
-	swprintf_s(str, L"%d /", _skill[1]->getCurrentPP());
-	DTDMANAGER->printText(str, ppDest, 25);
-	swprintf_s(str, L" %d", _skill[1]->getMaxPP());
-	DTDMANAGER->printText(str, ppDest2, 25);
+	if (_skill[1]) {
+		swprintf_s(str, L"%d /", _skill[1]->getCurrentPP());
+		DTDMANAGER->printText(str, ppDest, 25);
+		swprintf_s(str, L" %d", _skill[1]->getMaxPP());
+		DTDMANAGER->printText(str, ppDest2, 25);
+	}
 
 	ppDest.top += TILEHEIGHT;
 	ppDest.bottom += TILEHEIGHT;
 	ppDest2.top += TILEHEIGHT;
 	ppDest2.bottom += TILEHEIGHT;
 
-	swprintf_s(str, L"%d /", _skill[2]->getCurrentPP());
-	DTDMANAGER->printText(str, ppDest, 25);
-	swprintf_s(str, L" %d", _skill[2]->getMaxPP());
-	DTDMANAGER->printText(str, ppDest2, 25);
+	if (_skill[2]) {
+		swprintf_s(str, L"%d /", _skill[2]->getCurrentPP());
+		DTDMANAGER->printText(str, ppDest, 25);
+		swprintf_s(str, L" %d", _skill[2]->getMaxPP());
+		DTDMANAGER->printText(str, ppDest2, 25);
+	}
 	
 	ppDest.top += TILEHEIGHT;
 	ppDest.bottom += TILEHEIGHT;
 	ppDest2.top += TILEHEIGHT;
 	ppDest2.bottom += TILEHEIGHT;
 	
-	swprintf_s(str, L"%d /", _skill[3]->getCurrentPP());
-	DTDMANAGER->printText(str, ppDest, 25);
-	swprintf_s(str, L" %d", _skill[3]->getMaxPP());
-	DTDMANAGER->printText(str, ppDest2, 25);
+	if (_skill[3]) {
+		swprintf_s(str, L"%d /", _skill[3]->getCurrentPP());
+		DTDMANAGER->printText(str, ppDest, 25);
+		swprintf_s(str, L" %d", _skill[3]->getMaxPP());
+		DTDMANAGER->printText(str, ppDest2, 25);
+	}
 }
 
 void SkillMenu::plusIndex()
