@@ -117,7 +117,7 @@ void turnManager::randomSetting()
 		float x = RND->getFromIntTo((*room)[index].left, (*room)[index].right);
 		float y = RND->getFromIntTo((*room)[index].top, (*room)[index].bottom);
 
-		(*player)->init(x, y);
+		(*player)->initXY(x, y);
 		++player;
 	}
 
