@@ -4,6 +4,7 @@
 #include "KeyMenu.h"
 #include "StatusMenu.h"
 #include "TitleMenuU.h"
+#include "BlackMenu.h"
 
 
 //아래 메뉴
@@ -12,3 +13,4 @@
 #include "LogMenu.h"
 #include "InvenMenu.h"
 #include "SkillMenu.h"
+#include "ResultMenu.h"

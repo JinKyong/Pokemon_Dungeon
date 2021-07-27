@@ -2,17 +2,6 @@
 #include "playGround.h"
 #include "testScene.h"
 #include "User.h"
-#include "mapToolScene.h"
-#include "testMapScene.h"
-#include "bossMapScene.h"
-#include "dungeonSelectScene.h"
-#include "dungeonScene.h"
-#include "townMapScene.h"
-#include "guildMapScene.h"
-#include "crossroadScene.h"
-#include "titleScene.h"
-#include "mainScene.h"
-#include "loadingScene.h"
 
 
 playGround::playGround()
@@ -32,19 +21,6 @@ HRESULT playGround::init()
 	_player = new User;
 
 	SCENEMANAGER->init(_player);
-
-	SCENEMANAGER->addScene("tool", new mapToolScene);
-	SCENEMANAGER->addScene("test", new testScene);
-	SCENEMANAGER->addScene("map", new testMapScene);
-	SCENEMANAGER->addScene("boss", new bossMapScene);
-	SCENEMANAGER->addScene("select", new dungeonSelectScene);
-	SCENEMANAGER->addScene("dungeon", new dungeonScene);
-	SCENEMANAGER->addScene("crossroad", new crossroadScene);
-	SCENEMANAGER->addScene("town", new townMapScene);
-	SCENEMANAGER->addScene("guild", new guildMapScene);
-	SCENEMANAGER->addScene("title", new titleScene);
-	SCENEMANAGER->addScene("main", new mainScene);
-	SCENEMANAGER->addScene("loading", new loadingScene);
 
 	SCENEMANAGER->changeScene("main");
 	BATTLEMANAGER->init();

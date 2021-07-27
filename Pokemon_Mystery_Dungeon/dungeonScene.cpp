@@ -66,6 +66,10 @@ void dungeonScene::render()
 
 void dungeonScene::changeScene()
 {
-	if (CAMERAMANAGER->getAlpha() == 1.0)
-		SCENEMANAGER->changeScene("loading");
+	if (CAMERAMANAGER->getAlpha() == 1.0) {
+		if (TILEMANAGER->getFloor() == 10)
+			SCENEMANAGER->changeScene("result");
+		else
+			SCENEMANAGER->changeScene("loading");
+	}
 }

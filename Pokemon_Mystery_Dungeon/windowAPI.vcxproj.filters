@@ -502,6 +502,15 @@
     <ClCompile Include="loadingScene.cpp">
       <Filter>playGround\Stage</Filter>
     </ClCompile>
+    <ClCompile Include="resultScene.cpp">
+      <Filter>playGround\Stage</Filter>
+    </ClCompile>
+    <ClCompile Include="ResultMenu.cpp">
+      <Filter>playGround\UI\Menu\DownMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="BlackMenu.cpp">
+      <Filter>playGround\UI\Menu\UpMenu</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="video.h">
@@ -1034,6 +1043,15 @@
     </ClInclude>
     <ClInclude Include="loadingScene.h">
       <Filter>playGround\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="resultScene.h">
+      <Filter>playGround\Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="ResultMenu.h">
+      <Filter>playGround\UI\Menu\DownMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="BlackMenu.h">
+      <Filter>playGround\UI\Menu\UpMenu</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

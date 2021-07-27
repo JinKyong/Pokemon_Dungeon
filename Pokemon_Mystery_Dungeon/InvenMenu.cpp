@@ -43,8 +43,8 @@ void InvenMenu::update()
 		if (_hidden) _hidden = false;
 		else
 		{
-			UIMANAGER->changeDownMenu("logMenu");
-			UIMANAGER->setOpen(false);
+			UIMANAGER->changeDownMenu("mainMenu");
+			//UIMANAGER->setOpen(false);
 		}
 	}
 

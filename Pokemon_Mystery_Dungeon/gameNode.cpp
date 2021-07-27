@@ -26,6 +26,7 @@ HRESULT gameNode::init(bool managerInit)
 		//SetTimer(_hWnd, 1, 10, NULL);
 		KEYMANAGER->init();
 		IMAGEMANAGER->init();
+		SCENEMANAGER->init();
 		TIMEMANAGER->init();
 		PRINTMANAGER->init();
 		STREAMMANAGER->init();
@@ -53,6 +54,9 @@ void gameNode::release()
 
 		IMAGEMANAGER->release();
 		IMAGEMANAGER->releaseSingleton();
+
+		SCENEMANAGER->release();
+		SCENEMANAGER->releaseSingleton();
 
 		TIMEMANAGER->release();
 		TIMEMANAGER->releaseSingleton();

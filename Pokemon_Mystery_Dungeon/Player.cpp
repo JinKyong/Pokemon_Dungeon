@@ -9,7 +9,7 @@ HRESULT Player::init(int pokemonNum, int level)
 	_pokemon->init();
 
 	_level = level;
-	_EXP = 0;
+	_EXP = (_level - 1) * (_level - 1) * 100;
 
 	_realStat = BATTLEMANAGER->statCalculation(this);
 	_currentHP = _realStat.hp;
@@ -181,6 +181,11 @@ void Player::sattack()
 		DIALOGMANAGER->useSkillLog(this, _selectedSkill);
 		_selectedSkill = nullptr;
 	}
+}
+
+void Player::resetHP()
+{
+	_currentHP = _realStat.hp;
 }
 
 void Player::resetPP()

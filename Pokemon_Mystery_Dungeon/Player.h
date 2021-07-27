@@ -78,6 +78,7 @@ public:
 	void attack();
 	void sattack();
 
+	void resetHP();
 	void resetPP();
 	void loadSkill(int num);
 	void setSkill(int num);

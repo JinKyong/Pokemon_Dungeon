@@ -28,8 +28,30 @@ HRESULT soundManager::init()
 
 	//곡 등록
 	registerSound();
+	
 
+	return S_OK;
+}
 
+void soundManager::release()
+{
+	_system->release();
+	_system->close();
+
+	delete[] _sound;
+	delete[] _channel;
+}
+
+void soundManager::update()
+{
+	//FMOD 엔진 내부에 작동을 계속해서 최신화 시켜주려면 update 걸어두자
+	_system->update();
+}
+
+void soundManager::registerSound()
+{
+	//addSound("beginning", "music/Beginning of the Journey.mp3",	true, false);
+	//addSound("castle", "music/Hyrule Castle.mp3", true, false);
 	//이펙트 사운드
 	addSound("DefaultAttack", "sound/DefaultAttack.mp3", false, false);		//평타
 	addSound("hitDamage", "sound/hitDamage.mp3", false, false);				//데미지받음
@@ -61,7 +83,6 @@ HRESULT soundManager::init()
 	addSound("SheerCold", "sound/SheerCold.mp3", false, false);
 	addSound("DracoMeteor", "sound/DracoMeteor.mp3", false, false);
 
-
 	//맵 사운드
 	addSound("Mt.Bristle", "sound/Field/Mt.Bristle0.mp3", false, true);
 	addSound("Concealed Ruins", "sound/Field/Concealed Ruins1.mp3", false, true);
@@ -71,29 +92,6 @@ HRESULT soundManager::init()
 	addSound("Apple Woods", "sound/Field/Apple Woods5.mp3", false, true);
 	addSound("Craggy Coast", "sound/Field/Craggy Coast6.mp3", false, true);
 	addSound("Mt.Horn", "sound/Field/Mt.Mt.Horn7.mp3", false, true);
-
-	return S_OK;
-}
-
-void soundManager::release()
-{
-	_system->release();
-	_system->close();
-
-	delete[] _sound;
-	delete[] _channel;
-}
-
-void soundManager::update()
-{
-	//FMOD 엔진 내부에 작동을 계속해서 최신화 시켜주려면 update 걸어두자
-	_system->update();
-}
-
-void soundManager::registerSound()
-{
-	//addSound("beginning", "music/Beginning of the Journey.mp3",	true, false);
-	//addSound("castle", "music/Hyrule Castle.mp3", true, false);
 }
 
 void soundManager::addSound(string keyName, string soundName, bool bgm, bool loop)

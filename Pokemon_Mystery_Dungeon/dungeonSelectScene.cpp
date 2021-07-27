@@ -14,6 +14,8 @@ HRESULT dungeonSelectScene::init(Player * player)
 	
 	//TURNMANAGER->init();
 	player->initXY(0, 0);
+	_player->resetHP();
+	_player->resetPP();
 
 	_selector = RectMake(_x,_y, 12, 12);
 	_d0 = RectMake(72, 72, 24, 24);

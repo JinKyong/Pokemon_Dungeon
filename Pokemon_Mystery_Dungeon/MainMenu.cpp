@@ -37,7 +37,7 @@ void MainMenu::update()
 
 	if (KEYMANAGER->isOnceKeyDown(KEY_A)) {
 		if (_index == MAINMENU_OPTION_SKILL)
-			UIMANAGER->changeDownMenu("SkillMenu");
+			UIMANAGER->changeDownMenu("skillMenu");
 		else if (_index == MAINMENU_OPTION_INVENTORY)
 			UIMANAGER->changeDownMenu("invenMenu");
 	}

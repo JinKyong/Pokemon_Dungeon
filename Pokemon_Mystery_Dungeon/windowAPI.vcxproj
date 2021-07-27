@@ -150,6 +150,7 @@
     <ClInclude Include="Atile.h" />
     <ClInclude Include="battleManager.h" />
     <ClInclude Include="Bind.h" />
+    <ClInclude Include="BlackMenu.h" />
     <ClInclude Include="Blastoise.h" />
     <ClInclude Include="bossMapScene.h" />
     <ClInclude Include="Bulbasaur.h" />
@@ -271,6 +272,8 @@
     <ClInclude Include="Regirock.h" />
     <ClInclude Include="Registeel.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="ResultMenu.h" />
+    <ClInclude Include="resultScene.h" />
     <ClInclude Include="Ribbon.h" />
     <ClInclude Include="RockSlide.h" />
     <ClInclude Include="RockSmash.h" />
@@ -329,6 +332,7 @@
     <ClCompile Include="Atile.cpp" />
     <ClCompile Include="battleManager.cpp" />
     <ClCompile Include="Bind.cpp" />
+    <ClCompile Include="BlackMenu.cpp" />
     <ClCompile Include="Blastoise.cpp" />
     <ClCompile Include="bossMapScene.cpp" />
     <ClCompile Include="Bulbasaur.cpp" />
@@ -443,6 +447,8 @@
     <ClCompile Include="Regice.cpp" />
     <ClCompile Include="Regirock.cpp" />
     <ClCompile Include="Registeel.cpp" />
+    <ClCompile Include="ResultMenu.cpp" />
+    <ClCompile Include="resultScene.cpp" />
     <ClCompile Include="Ribbon.cpp" />
     <ClCompile Include="RockSlide.cpp" />
     <ClCompile Include="RockSmash.cpp" />

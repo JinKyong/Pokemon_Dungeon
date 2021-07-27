@@ -7,7 +7,7 @@ HRESULT DefaultAttack::init(Player * player)
 
 	_name = L"기본공격";
 	_skillNum = 0;
-	_damage = 40;
+	_damage = 25;
 	_accuracy = 1.0f;
 	_currentPP = _maxPP = 0;
 	_atkType = PHYSICAL_ATTACK;

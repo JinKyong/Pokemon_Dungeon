@@ -82,7 +82,7 @@ DWORD loadingScene::threadFunction(LPVOID lpParameter)
 		}
 
 		//이렇게 안하면 휙 지나감
-		//Sleep(1);
+		Sleep(1);
 
 		loadingHelper->_currentCount++;
 	}

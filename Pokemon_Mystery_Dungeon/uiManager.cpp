@@ -16,6 +16,7 @@ HRESULT uiManager::init()
 	addUpMenu("keyMenu", new KeyMenu);
 	addUpMenu("statusMenu", new StatusMenu);
 	addUpMenu("titleMenu", new TitleMenuU);
+	addUpMenu("blackMenu", new BlackMenu);
 	//changeUpMenu("statusMenu");
 
 	//아래 메뉴
@@ -23,7 +24,8 @@ HRESULT uiManager::init()
 	addDownMenu("mainMenu", new MainMenu);
 	addDownMenu("logMenu", new LogMenu);
 	addDownMenu("invenMenu", new InvenMenu);
-	addDownMenu("SkillMenu", new SkillMenu);
+	addDownMenu("skillMenu", new SkillMenu);
+	addDownMenu("resultMenu", new ResultMenu);
 	//changeDownMenu("logMenu");
 
 	_open = false;

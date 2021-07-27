@@ -2,6 +2,18 @@
 #include "sceneManager.h"
 #include "Player.h"
 #include "Scene.h"
+#include "mapToolScene.h"
+#include "testMapScene.h"
+#include "bossMapScene.h"
+#include "dungeonSelectScene.h"
+#include "dungeonScene.h"
+#include "townMapScene.h"
+#include "guildMapScene.h"
+#include "crossroadScene.h"
+#include "titleScene.h"
+#include "mainScene.h"
+#include "loadingScene.h"
+#include "resultScene.h"
 
 Player* sceneManager::_player = NULL;
 Scene* sceneManager::_currentScene = NULL;
@@ -17,8 +29,19 @@ sceneManager::~sceneManager()
 
 HRESULT sceneManager::init()
 {
-	_currentScene = NULL;
-	_sceneCount = 0;
+	//SCENEMANAGER->addScene("tool", new mapToolScene);
+	//SCENEMANAGER->addScene("map", new testMapScene);
+	SCENEMANAGER->addScene("boss", new bossMapScene);
+	SCENEMANAGER->addScene("select", new dungeonSelectScene);
+	SCENEMANAGER->addScene("dungeon", new dungeonScene);
+	//SCENEMANAGER->addScene("crossroad", new crossroadScene);
+	//SCENEMANAGER->addScene("town", new townMapScene);
+	//SCENEMANAGER->addScene("guild", new guildMapScene);
+	SCENEMANAGER->addScene("title", new titleScene);
+	SCENEMANAGER->addScene("main", new mainScene);
+	SCENEMANAGER->addScene("loading", new loadingScene);
+	SCENEMANAGER->addScene("result", new resultScene);
+
 	return S_OK;
 }
 
