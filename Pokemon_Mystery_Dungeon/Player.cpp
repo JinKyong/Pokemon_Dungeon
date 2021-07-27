@@ -72,6 +72,7 @@ void Player::update()
 		}
 		break;
 	default:
+		_playerState = END_POKEMON_STATE;
 		break;
 	}
 
@@ -153,14 +154,14 @@ void Player::move()
 		_y = _destY;
 
 		//_pokemon->changeState(POKEMON_STATE_DEFAULT);
-		_playerState = POKEMON_STATE_DEFAULT;
+		_playerState = END_POKEMON_STATE;
 	}
 }
 
 void Player::attack()
 {
 	if (!_pokemon->getAttack()) {
-		_playerState = POKEMON_STATE_DEFAULT;
+		_playerState = END_POKEMON_STATE;
 		return;
 	}
 	
@@ -174,7 +175,7 @@ void Player::attack()
 void Player::sattack()
 {
 	if (!_pokemon->getSattack()) {
-		_playerState = POKEMON_STATE_DEFAULT;
+		_playerState = END_POKEMON_STATE;
 		return;
 	}
 

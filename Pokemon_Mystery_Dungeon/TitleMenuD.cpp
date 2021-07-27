@@ -28,8 +28,6 @@ HRESULT TitleMenuD::init()
 
 void TitleMenuD::release()
 {
-	SOUNDMANAGER->stop("Index");
-	SOUNDMANAGER->stop("Select");
 }
 
 void TitleMenuD::update()

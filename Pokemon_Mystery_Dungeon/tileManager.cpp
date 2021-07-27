@@ -158,12 +158,12 @@ HRESULT tileManager::init(int width, int height, int type)
 
 void tileManager::release()
 {
-	//vector<tagTile*>::iterator tiles = _vTile.begin();
-	//
-	//for (; tiles != _vTile.end();) {
-	//	SAFE_DELETE(*tiles);
-	//	tiles = _vTile.erase(tiles);
-	//}
+	vector<tagTile*>::iterator tiles = _vTile.begin();
+	
+	for (; tiles != _vTile.end();) {
+		SAFE_DELETE(*tiles);
+		tiles = _vTile.erase(tiles);
+	}
 
 	_vTile.clear();
 }
@@ -243,26 +243,28 @@ void tileManager::maprender()
 void tileManager::setup()
 {
 	//鸥老 rect积己秦辑 持绢林绊
-	for (int i = 0; i < _height; ++i)
-	{
-		for (int j = 0; j < _width; ++j)
+	if (_vTile.size() == 0) {
+		for (int i = 0; i < _height; ++i)
 		{
-			PTILE Tile;
-			Tile = new TILE;
-			SetRect(&Tile->rc,
-				j * TILESIZE,
-				i * TILESIZE,
-				j * TILESIZE + TILESIZE,
-				i * TILESIZE + TILESIZE);
-			Tile->x = j;
-			Tile->y = i;
-			_vTile.push_back(Tile);
+			for (int j = 0; j < _width; ++j)
+			{
+				PTILE Tile;
+				Tile = new TILE;
+				SetRect(&Tile->rc,
+					j * TILESIZE,
+					i * TILESIZE,
+					j * TILESIZE + TILESIZE,
+					i * TILESIZE + TILESIZE);
+				Tile->x = j;
+				Tile->y = i;
+				_vTile.push_back(Tile);
 
-			SetRect(&_mini[i*_width + j].rc,
-				j * (TILESIZE / 6),
-				i * (TILESIZE / 6),
-				j * (TILESIZE / 6) + (TILESIZE / 6),
-				i * (TILESIZE / 6) + (TILESIZE / 6));
+				SetRect(&_mini[i*_width + j].rc,
+					j * (TILESIZE / 6),
+					i * (TILESIZE / 6),
+					j * (TILESIZE / 6) + (TILESIZE / 6),
+					i * (TILESIZE / 6) + (TILESIZE / 6));
+			}
 		}
 	}
 
@@ -853,8 +855,6 @@ void tileManager::minimap()
 		_minibase->frameRender(
 			rc.left + (_mini[i].rc.left / 2), rc.top + (_mini[i].rc.top / 2),
 			_mini[i].terrainFrameX, _mini[i].terrainFrameY);
-
-
 	}
 }
 

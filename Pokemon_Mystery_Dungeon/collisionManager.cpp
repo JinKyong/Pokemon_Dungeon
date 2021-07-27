@@ -18,7 +18,6 @@ HRESULT collisionManager::init(Scene * scene)
 
 void collisionManager::release()
 {
-	SOUNDMANAGER->stop("PickUp");
 }
 
 bool collisionManager::collisionInputPlayer(Player * player)		// User, Enemy 안에 함수 부름
@@ -82,7 +81,6 @@ bool collisionManager::playerWithPlayer(Player * player)
 {
 	int tileWidth = TILEMANAGER->getWidth();	//가로 타일 갯수
 
-	int directCount;
 	int playerIndex = player->getY() * tileWidth + player->getX();
 	int index[11] = { 0, };
 
@@ -102,38 +100,56 @@ bool collisionManager::playerWithPlayer(Player * player)
 	{
 		if ((*playerIter) == player) continue;
 
-		directCount = 0;
-		int destX = (*playerIter)->getDestX();
-		int	destY = (*playerIter)->getDestY();
+		int destX, destY;
+		if ((*playerIter)->getPlayerState() == POKEMON_STATE_ATTACK ||
+			(*playerIter)->getPlayerState() == POKEMON_STATE_SATTACK) {
+			destX = (*playerIter)->getX();
+			destY = (*playerIter)->getY();
+		}
+		else {
+			destX = (*playerIter)->getDestX();
+			destY = (*playerIter)->getDestY();
+		}
 
 		int direct = player->getDirect();			//방향마다 다음타일 하나만 검사
 		//좌우
-		if ((direct & RIGHT) == RIGHT) {
+		if (direct == RIGHT) {
 			if ((*_allTile)[index[RIGHT]]->x == destX &&
-				(*_allTile)[index[RIGHT]]->y == destY)		return false;
-			directCount |= RIGHT;
+				(*_allTile)[index[RIGHT]]->y == destY)			return false;
 		}
-		else if ((direct & LEFT) == LEFT) {
+		else if (direct == LEFT) {
 			if ((*_allTile)[index[LEFT]]->x == destX &&
-				(*_allTile)[index[LEFT]]->y == destY)		return false;
-			directCount |= LEFT;
+				(*_allTile)[index[LEFT]]->y == destY)			return false;
 		}
 
 		//상하
-		if ((direct & UP) == UP) {
+		else if (direct == UP) {
 			if ((*_allTile)[index[UP]]->x == destX &&
-				(*_allTile)[index[UP]]->y == destY)		return false;
-			directCount |= UP;
+				(*_allTile)[index[UP]]->y == destY)				return false;
 		}
-		else if ((direct & DOWN) == DOWN) {
+		else if (direct == DOWN) {
 			if ((*_allTile)[index[DOWN]]->x == destX &&
-				(*_allTile)[index[DOWN]]->y == destY)		return false;
-			directCount |= DOWN;
+				(*_allTile)[index[DOWN]]->y == destY)			return false;
 		}
 
 		//대각
-		if ((*_allTile)[index[directCount]]->x == destX &&
-			(*_allTile)[index[directCount]]->y == destY)	return false;
+		else if (direct == (UP | RIGHT)) {
+			if ((*_allTile)[index[UP | RIGHT]]->x == destX &&
+				(*_allTile)[index[UP | RIGHT]]->y == destY)		return false;
+		}
+		else if (direct == (UP | LEFT)) {
+			if ((*_allTile)[index[UP | LEFT]]->x == destX &&
+				(*_allTile)[index[UP | LEFT]]->y == destY)		return false;
+		}
+
+		else if (direct == (DOWN | RIGHT)) {
+			if ((*_allTile)[index[DOWN | RIGHT]]->x == destX &&
+				(*_allTile)[index[DOWN | RIGHT]]->y == destY)	return false;
+		}
+		else if (direct == (DOWN | LEFT)) {
+			if ((*_allTile)[index[DOWN | LEFT]]->x == destX &&
+				(*_allTile)[index[DOWN | LEFT]]->y == destY)	return false;
+		}
 	}
 
 	return true;

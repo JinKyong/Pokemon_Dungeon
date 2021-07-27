@@ -36,9 +36,6 @@ HRESULT SkillMenu::init()
 
 void SkillMenu::release()
 {
-	SOUNDMANAGER->stop("Index");
-	SOUNDMANAGER->stop("Select");
-	SOUNDMANAGER->stop("Cancel");
 }
 
 void SkillMenu::update()

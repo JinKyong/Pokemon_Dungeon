@@ -29,8 +29,6 @@ HRESULT InvenMenu::init()
 
 void InvenMenu::release()
 {
-	SOUNDMANAGER->stop("Index");
-	SOUNDMANAGER->stop("Cancel");
 }
 
 void InvenMenu::update()

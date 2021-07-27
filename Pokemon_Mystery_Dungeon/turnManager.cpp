@@ -90,7 +90,7 @@ void turnManager::update()
 					_currentProgressTurn == POKEMON_STATE_SATTACK)
 					break;
 
-				else if (_currentProgressTurn == POKEMON_STATE_DEFAULT) {
+				else if (_currentProgressTurn == END_POKEMON_STATE) {
 					COLLISIONMANAGER->collisionEndTurnPlayer((*player));
 					//(*player)->getPokemon()->changeState(POKEMON_STATE_DEFAULT);
 					(*player)->resetXY();
@@ -111,10 +111,13 @@ void turnManager::update()
 void turnManager::render()
 {
 	//모든 플레이어 render
-	playerIter player = _allPlayerList.end() - 1;
-	for (; player != _allPlayerList.begin(); --player)
+	playerIter player = _allPlayerList.begin();
+	for (; player != _allPlayerList.end(); ++player) {
+		if ((*player) == getCurrentPlayer()) continue;
 		(*player)->render();
-	(*player)->render();
+	}
+	if(getCurrentPlayer())
+		getCurrentPlayer()->render();
 }
 
 void turnManager::randomSetting()
@@ -154,7 +157,7 @@ void turnManager::randomSetting()
 void turnManager::inputFromPlayer()
 {
 	//(턴이 소모되는)input이 있으면 order++
-	if (_allPlayerList[_order]->input() != POKEMON_STATE_DEFAULT) {
+	if (_allPlayerList[_order]->input() != END_POKEMON_STATE) {
 		addInputPlayer(_allPlayerList[_order]);
 		_order++;
 	}
@@ -172,4 +175,12 @@ void turnManager::addAllPlayer(Player * player)
 void turnManager::addInputPlayer(Player * player)
 {
 	_inputPlayerList.push_back(player);
+}
+
+Player * turnManager::getCurrentPlayer()
+{
+	if (_inputPlayerList.size())
+		return _inputPlayerList[0];
+
+	return nullptr;
 }
