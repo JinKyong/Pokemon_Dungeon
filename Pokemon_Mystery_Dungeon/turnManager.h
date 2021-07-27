@@ -28,6 +28,7 @@ public:
 	void render();
 
 	void randomSetting();
+	void randomAddEnemy();
 
 
 	//ют╥б

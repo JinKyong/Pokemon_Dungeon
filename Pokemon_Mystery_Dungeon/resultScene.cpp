@@ -12,6 +12,8 @@ HRESULT resultScene::init(Player * player)
 	UIMANAGER->changeUpMenu("blackMenu");
 	UIMANAGER->changeDownMenu("resultMenu");
 
+	SOUNDMANAGER->play("Clear");
+
 	return S_OK;
 }
 

@@ -104,6 +104,9 @@ void turnManager::update()
 		else {
 			_order = 0;
 			_input = true;
+
+			if (!RND->getInt(25))
+				randomAddEnemy();
 		}
 	}
 }
@@ -152,6 +155,41 @@ void turnManager::randomSetting()
 		++player;
 	}
 
+}
+
+void turnManager::randomAddEnemy()
+{
+	//에너미 랜덤생성
+	vector<int> enemyList = TILEMANAGER->getEnemyList();
+	int minLevel = TILEMANAGER->getMinLevel();
+	int maxLevel = TILEMANAGER->getMaxLevel();
+
+	Player* enemy = new Enemy;
+	enemy->init(enemyList[RND->getInt(enemyList.size())], RND->getFromIntTo(minLevel, maxLevel));
+	addAllPlayer(enemy);
+
+
+
+	//랜덤 배치
+	Player* user = (*TURNMANAGER->getAllPlayer())[0];
+	RECT tmp;
+	while (true) {
+		vector<RECT>* room = TILEMANAGER->getvRoom();
+		int index = RND->getInt(room->size());
+		RECT roomRECT = RectMake(
+			(*room)[index].left * TILEWIDTH, (*room)[index].top * TILEHEIGHT,
+			((*room)[index].right - (*room)[index].left) * TILEWIDTH,
+			((*room)[index].bottom - (*room)[index].top) * TILEHEIGHT);
+
+		if(IntersectRect(&tmp, &roomRECT, &user->getBody()))
+			continue;
+
+		float x = RND->getFromIntTo((*room)[index].left, (*room)[index].right);
+		float y = RND->getFromIntTo((*room)[index].top, (*room)[index].bottom);
+
+		enemy->initXY(x, y);
+		break;
+	}
 }
 
 void turnManager::inputFromPlayer()
