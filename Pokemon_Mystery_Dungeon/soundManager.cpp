@@ -59,6 +59,10 @@ void soundManager::registerSound()
 	addSound("PickUp", "sound/PickUp.mp3", false, false);					//템줍기
 	addSound("Complete", "sound/Complete1.mp3", false, false);				//보스클리어
 
+	addSound("Index", "sound/index.mp3", false, false);						//선택창 이동
+	addSound("Select", "sound/select.mp3", false, false);					//선택
+	addSound("Cancle", "sound/cancle.mp3", false, false);					//취소
+
 	addSound("FireBlast", "sound/FireBlast.mp3", false, false);
 	addSound("Gust", "sound/Gust.mp3", false, false);
 	addSound("Lightning", "sound/Lightning.mp3", false, false);

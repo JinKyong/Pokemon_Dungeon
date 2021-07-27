@@ -35,14 +35,17 @@ void TitleMenuD::update()
 	if (_hidden) return;
 
 	if (KEYMANAGER->isOnceKeyDown(KEY_DOWN)) {
+		SOUNDMANAGER->play("Index");
 		_index = (_index + 1) % _maxIndex;
 	}
 	else if (KEYMANAGER->isOnceKeyDown(KEY_UP)) {
+		SOUNDMANAGER->play("Index");
 		_index = (_index - 1 + _maxIndex) % _maxIndex;
 	}
 
 	if (KEYMANAGER->isOnceKeyDown(KEY_A)) {
 		if (_index == TITLEMENU_OPTION_NEW) {
+			SOUNDMANAGER->play("Select");
 			(*TURNMANAGER->getAllPlayer())[0]->init(RND->getInt(38) + 1, 25);
 			(*TURNMANAGER->getAllPlayer())[0]->setSkill(4);
 			CAMERAMANAGER->setFade(FADEOUT);
@@ -52,6 +55,7 @@ void TitleMenuD::update()
 			//로드하고
 			TXTDATA->loadGame((*TURNMANAGER->getAllPlayer())[0]);
 			CAMERAMANAGER->setFade(FADEOUT);
+			SOUNDMANAGER->play("Select");
 			_hidden = true;
 		}
 	}
