@@ -32,11 +32,14 @@ HRESULT dungeonSelectScene::init(Player * player)
 	UIMANAGER->changeUpMenu("statusMenu");
 	UIMANAGER->changeDownMenu("NULL");
 
+	SOUNDMANAGER->play("select");
+
 	return S_OK;
 }
 
 void dungeonSelectScene::release()
 {
+	SOUNDMANAGER->stop("select");
 }
 
 void dungeonSelectScene::update()

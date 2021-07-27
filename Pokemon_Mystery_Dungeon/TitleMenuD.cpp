@@ -43,7 +43,7 @@ void TitleMenuD::update()
 
 	if (KEYMANAGER->isOnceKeyDown(KEY_A)) {
 		if (_index == TITLEMENU_OPTION_NEW) {
-			(*TURNMANAGER->getAllPlayer())[0]->init(RND->getInt(38) + 1, 50);
+			(*TURNMANAGER->getAllPlayer())[0]->init(RND->getInt(38) + 1, 25);
 			(*TURNMANAGER->getAllPlayer())[0]->setSkill(4);
 			CAMERAMANAGER->setFade(FADEOUT);
 			_hidden = true;

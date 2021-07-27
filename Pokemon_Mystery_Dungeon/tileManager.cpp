@@ -67,8 +67,8 @@ HRESULT tileManager::init(int width, int height, int type)
 		_enemyList.push_back(25);
 		_enemyList.push_back(17);
 		_bossPokemon = 19;
-		_minLevel = 23;
-		_maxLevel = 28;
+		_minLevel = 30;
+		_maxLevel = 35;
 
 		//SOUNDMANAGER->play("Concealed Ruins");
 	}
@@ -80,8 +80,8 @@ HRESULT tileManager::init(int width, int height, int type)
 		_enemyList.push_back(6);
 		_enemyList.push_back(22);
 		_bossPokemon = 32;
-		_minLevel = 20;
-		_maxLevel = 25;
+		_minLevel = 40;
+		_maxLevel = 45;
 
 		//SOUNDMANAGER->play("Amp Plains");
 	}
@@ -93,8 +93,8 @@ HRESULT tileManager::init(int width, int height, int type)
 		_enemyList.push_back(31);
 		_enemyList.push_back(11);
 		_bossPokemon = 38;
-		_minLevel = 13;
-		_maxLevel = 18;
+		_minLevel = 22;
+		_maxLevel = 27;
 
 		//SOUNDMANAGER->play("Brine Cave");
 	}
@@ -132,8 +132,8 @@ HRESULT tileManager::init(int width, int height, int type)
 		_enemyList.push_back(14);
 		_enemyList.push_back(28);
 		_bossPokemon = 33;
-		_minLevel = 10;
-		_maxLevel = 15;
+		_minLevel = 18;
+		_maxLevel = 24;
 
 		//SOUNDMANAGER->play("Craggy Coast");
 	}
@@ -145,8 +145,8 @@ HRESULT tileManager::init(int width, int height, int type)
 		_enemyList.push_back(2);
 		_enemyList.push_back(24);
 		_bossPokemon = 34;
-		_minLevel = 12;
-		_maxLevel = 17;
+		_minLevel = 13;
+		_maxLevel = 18;
 
 		//SOUNDMANAGER->play("Mt.Horn");
 	}
@@ -1374,4 +1374,80 @@ OBJECT tileManager::objSelect(int frameX, int frameY)
 
 
 	return OBJ_BLOCK;
+}
+
+void tileManager::playBGM()
+{
+	char music[128];
+
+	switch (_type) {
+	case 0:
+		sprintf_s(music, "Mt.Bristle");
+		break;
+	case 1:
+		sprintf_s(music, "Concealed Ruins");
+		break;
+	case 2:
+		sprintf_s(music, "Amp Plains");
+		break;
+	case 3:
+		sprintf_s(music, "Brine Cave");
+		break;
+	case 4:
+		sprintf_s(music, "Waterfall Cave");
+		break;
+	case 5:
+		sprintf_s(music, "Apple Woods");
+		break;
+	case 6:
+		sprintf_s(music, "Craggy Coast");
+		break;
+	case 7:
+		sprintf_s(music, "Mt.Horn");
+		break;
+	default:
+		sprintf_s(music, "");
+		break;
+	}
+
+	if (!SOUNDMANAGER->isPlaySound(music))
+		SOUNDMANAGER->play(music);
+}
+
+void tileManager::stopBGM()
+{
+	char music[128];
+
+	switch (_type) {
+	case 0:
+		sprintf_s(music, "Mt.Bristle");
+		break;
+	case 1:
+		sprintf_s(music, "Concealed Ruins");
+		break;
+	case 2:
+		sprintf_s(music, "Amp Plains");
+		break;
+	case 3:
+		sprintf_s(music, "Brine Cave");
+		break;
+	case 4:
+		sprintf_s(music, "Waterfall Cave");
+		break;
+	case 5:
+		sprintf_s(music, "Apple Woods");
+		break;
+	case 6:
+		sprintf_s(music, "Craggy Coast");
+		break;
+	case 7:
+		sprintf_s(music, "Mt.Horn");
+		break;
+	default:
+		sprintf_s(music, "");
+		break;
+	}
+
+	if (SOUNDMANAGER->isPlaySound(music))
+		SOUNDMANAGER->stop(music);
 }

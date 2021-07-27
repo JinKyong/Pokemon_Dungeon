@@ -41,35 +41,41 @@ void ResultMenu::render()
 
 	Player* player = (*TURNMANAGER->getAllPlayer())[0];
 
-	//NAME, LEVEL, EXP
+	//NAME
 	dest = dRectMakeCenter(
 		(screen.left + screen.right) / 2, (screen.top + screen.bottom) / 2 - 50,
-		500, 50);
-	swprintf_s(text, L"포켓몬 : %s  레벨 : %d  경험치 : %d",
-		player->getPokemon()->getName().c_str(), player->getLevel(), player->getEXP());
-	DTDMANAGER->printText(text, dest, 25, true);
+		400, 50);
+	swprintf_s(text, L"포켓몬 : %s", player->getPokemon()->getName().c_str());
+	DTDMANAGER->printText(text, dest, 25);
+
+	//LEVEL, EXP
+	dest = dRectMakeCenter(
+		(screen.left + screen.right) / 2, (screen.top + screen.bottom) / 2,
+		400, 50);
+	swprintf_s(text, L"레벨 : %d  \t 경험치 : %d", player->getLevel(), player->getEXP());
+	DTDMANAGER->printText(text, dest, 25);
 
 	//HP, SPEED
 	dest = dRectMakeCenter(
-		(screen.left + screen.right) / 2, (screen.top + screen.bottom) / 2,
-		500, 50);
-	swprintf_s(text, L"체력 : %d \t 스피드 : %d",
+		(screen.left + screen.right) / 2, (screen.top + screen.bottom) / 2 + 50,
+		400, 50);
+	swprintf_s(text, L"체력 : %d  \t 스피드 : %d",
 		player->getRealStat().hp, player->getRealStat().speed);
-	DTDMANAGER->printText(text, dest, 25, true);
+	DTDMANAGER->printText(text, dest, 25);
 
 	//ATTACK, DEFENSE
 	dest = dRectMakeCenter(
-		(screen.left + screen.right) / 2, (screen.top + screen.bottom) / 2 + 50,
-		500, 50);
-	swprintf_s(text, L"공격 : %d \t 방어 : %d",
+		(screen.left + screen.right) / 2, (screen.top + screen.bottom) / 2 + 100,
+		400, 50);
+	swprintf_s(text, L"공격 : %d  \t 방어 : %d",
 		player->getRealStat().attack, player->getRealStat().defense);
-	DTDMANAGER->printText(text, dest, 25, true);
+	DTDMANAGER->printText(text, dest, 25);
 
 	//SATTACK, SDEFENSE
 	dest = dRectMakeCenter(
-		(screen.left + screen.right) / 2, (screen.top + screen.bottom) / 2 + 100,
-		500, 50);
+		(screen.left + screen.right) / 2, (screen.top + screen.bottom) / 2 + 150,
+		400, 50);
 	swprintf_s(text, L"특수공격 : %d \t 특수방어 : %d",
 		player->getRealStat().sattack, player->getRealStat().sdefense);
-	DTDMANAGER->printText(text, dest, 25, true);
+	DTDMANAGER->printText(text, dest, 25);
 }

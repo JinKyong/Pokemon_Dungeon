@@ -22,7 +22,7 @@ HRESULT playGround::init()
 
 	SCENEMANAGER->init(_player);
 
-	SCENEMANAGER->changeScene("main");
+	SCENEMANAGER->changeScene("title");
 	BATTLEMANAGER->init();
 
 	_debug = false;

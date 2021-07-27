@@ -98,10 +98,12 @@ void MainMenu::printTextDown()
 	D2D1_RECT_F downDest = dRectMake(_rc.left + _tuningX + TILEWIDTH + TILEWIDTH / 2, _rc.top + 5 + _tuningY + 10 + TILEHEIGHT * 8, TILEWIDTH * 10, TILEHEIGHT);
 	D2D1_RECT_F downDest2 = dRectMake(_rc.left + _tuningX + TILEWIDTH * 7, _rc.top + 5 + _tuningY + 10 + TILEHEIGHT * 8, TILEWIDTH * 10, TILEHEIGHT);
 
-	DTDMANAGER->printText((*TURNMANAGER->getAllPlayer())[0]->getPokemon()->getName().c_str(), downDest, 25);	   
+	Player* player = (*TURNMANAGER->getAllPlayer())[0];
+	DTDMANAGER->printText(player->getPokemon()->getName().c_str(), downDest, 25);	   
 
-
-	DTDMANAGER->printText(L"¹è: ", downDest2, 25);
+	WCHAR text[128];
+	swprintf_s(text, L"¹è: %d / 100", player->getStarve());
+	DTDMANAGER->printText(text, downDest2, 25);
 	downDest2.top += 30;
 	downDest2.bottom += 30;
 	DTDMANAGER->printText(L"µ·: ", downDest2, 25);

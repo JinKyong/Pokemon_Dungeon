@@ -95,6 +95,9 @@ public:
 	TERRAIN terrainSelect(int frameX, int frameY);
 	OBJECT objSelect(int frameX, int frameY);
 
+	void playBGM();
+	void stopBGM();
+
 
 
 	void setChar(int x, int y, char Char) { _vChar[x + y * _width] = Char; }

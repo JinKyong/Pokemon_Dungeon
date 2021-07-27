@@ -91,7 +91,11 @@ void soundManager::registerSound()
 	addSound("Waterfall Cave", "sound/Field/Waterfall Cave4.mp3", true, true);
 	addSound("Apple Woods", "sound/Field/Apple Woods5.mp3", true, true);
 	addSound("Craggy Coast", "sound/Field/Craggy Coast6.mp3", true, true);
-	addSound("Mt.Horn", "sound/Field/Mt.Mt.Horn7.mp3", true, true);
+	addSound("Mt.Horn", "sound/Field/Mt.Horn7.mp3", true, true);
+
+	//기타 사운드
+	addSound("mainBGM", "sound/other/mainBGM.mp3", true, true);
+	addSound("select", "sound/other/dungeonSelect.mp3", true, true);
 }
 
 void soundManager::addSound(string keyName, string soundName, bool bgm, bool loop)

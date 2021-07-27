@@ -54,7 +54,18 @@ void turnManager::update()
 					_allPlayerList[0]->addEXP(exp);
 				}
 
-				_allPlayerList.erase(player);
+				//유저가 죽으면 메인화면으로
+				if ((*player)->getPlayerType() == PLAYER_TYPE_USER) {
+					_allPlayerList.erase(player);
+
+					TILEMANAGER->stopBGM();
+					_inputPlayerList.clear();
+					CAMERAMANAGER->setFade(FADEOUT);
+					return;
+				}
+				else
+					_allPlayerList.erase(player);
+
 				break;
 			}
 		}

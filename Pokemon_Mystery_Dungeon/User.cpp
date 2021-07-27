@@ -25,8 +25,11 @@ HRESULT User::init(int pokemonNum, int level)
 
 int User::input()
 {
-	//Çã±âÁü
+	//Ã¼·Â ¹× Çã±âÁü
 	if (_turnCount >= 5) {
+		if (_currentHP < _realStat.hp)
+			_currentHP++;
+
 		_starve--;
 		if (_starve <= 0)
 			_starve = 0;
@@ -35,7 +38,7 @@ int User::input()
 	}
 
 	controlKey();
-	testKey();
+	//testKey();
 
 	return _playerState;
 }
@@ -82,12 +85,6 @@ void User::controlKey()
 	if (KEYMANAGER->isOnceKeyDown(KEY_Y)) {
 		UIMANAGER->changeDownMenu("mainMenu");
 		UIMANAGER->setOpen(true);
-	}
-	if (KEYMANAGER->isOnceKeyDown('S')) {
-		_pokemon->changeState(POKEMON_STATE_SLEEP);
-	}
-	if (KEYMANAGER->isOnceKeyDown('A')) {
-		_pokemon->changeState(POKEMON_STATE_HURT);
 	}
 }
 

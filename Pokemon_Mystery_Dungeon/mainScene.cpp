@@ -22,11 +22,14 @@ HRESULT mainScene::init(Player * player)
 	UIMANAGER->changeUpMenu("titleMenu");
 	UIMANAGER->changeDownMenu("titleMenu");
 
+	SOUNDMANAGER->play("mainBGM");
+
 	return S_OK;
 }
 
 void mainScene::release()
 {
+	SOUNDMANAGER->stop("mainBGM");
 }
 
 void mainScene::update()
