@@ -49,180 +49,105 @@ HRESULT tileManager::init(int width, int height, int type)
 		//º¤ÅÍ.push_back(27);
 		//¾Öµé ·¹º§¹üÀ§µµ 5 ~ 10 10 15
 
-		_enemyPokemon1 = 27;
-		_enemyPokemon2 = 31;
-		_enemyPokemon3 = 35;
+		_dungeonName = L"»ßÂß»ßÂß»ê";
+		_enemyList.clear();
+		_enemyList.push_back(27);
+		_enemyList.push_back(31);
+		_enemyList.push_back(35);
 		_bossPokemon = 36;
-		//_dungeonName = L"»ßÂß»ßÂß»ê";
-		//_range = RND->getFromIntTo(5, 8);
-		//int _pokeNumber;
-		//_vInt.clear();
-		//_pokeNumber = 27;
-		//_vInt.push_back(_pokeNumber);
-		//_pokeNumber = 31;
-		//_vInt.push_back(_pokeNumber);
-		//_pokeNumber = 35;
-		//_vInt.push_back(_pokeNumber);
-		//
-		//_boss = 36;
-		//
-		//
+		_minLevel = 5;
+		_maxLevel = 8;
 		//SOUNDMANAGER->play("Mt.Bristle");
 	}
 	else if (_type == 1)
 	{
-		_enemyPokemon1 = 30;
-		_enemyPokemon2 = 25;
-		_enemyPokemon3 = 17;
+		_dungeonName = L"¼û°ÜÁø À¯Àû";
+		_enemyList.clear();
+		_enemyList.push_back(30);
+		_enemyList.push_back(25);
+		_enemyList.push_back(17);
 		_bossPokemon = 19;
+		_minLevel = 23;
+		_maxLevel = 28;
 
-		//_range = RND->getFromIntTo(23, 28);
-		//_dungeonName = L"¼û°ÜÁø À¯Àû";
-		//int _pokeNumber;
-		//_vInt.clear();
-		//_pokeNumber = 30;
-		//_vInt.push_back(_pokeNumber);
-		//_pokeNumber = 25;
-		//_vInt.push_back(_pokeNumber);
-		//_pokeNumber = 17;
-		//_vInt.push_back(_pokeNumber);
-		//_boss = 19;
-		//
 		//SOUNDMANAGER->play("Concealed Ruins");
 	}
 	else if (_type == 2)
 	{
-		_enemyPokemon1 = 15;
-		_enemyPokemon2 = 5;
-		_enemyPokemon3 = 22;
+		_dungeonName = L"ÀÏ·ºÆ®¸¯ Æò¿ø";
+		_enemyList.clear();
+		_enemyList.push_back(15);
+		_enemyList.push_back(6);
+		_enemyList.push_back(22);
 		_bossPokemon = 32;
+		_minLevel = 20;
+		_maxLevel = 25;
 
-		//_dungeonName = L"ÀÏ·ºÆ®¸¯ Æò¿ø";
-		//_range = RND->getFromIntTo(20, 25);
-		//int _pokeNumber;
-		//_vInt.clear();
-		//_pokeNumber = 15;
-		//_vInt.push_back(_pokeNumber);
-		//_pokeNumber = 6;
-		//_vInt.push_back(_pokeNumber);
-		//_pokeNumber = 22;
-		//_vInt.push_back(_pokeNumber);
-		//
-		//_boss = 32;
 		//SOUNDMANAGER->play("Amp Plains");
 	}
 	else if (_type == 3)
 	{
-		_enemyPokemon1 = 14;
-		_enemyPokemon2 = 31;
-		_enemyPokemon3 = 11;
+		_dungeonName = L"¹Ù´å°¡ µ¿±¼";
+		_enemyList.clear();
+		_enemyList.push_back(14);
+		_enemyList.push_back(31);
+		_enemyList.push_back(11);
 		_bossPokemon = 38;
+		_minLevel = 13;
+		_maxLevel = 18;
 
-		//_range = RND->getFromIntTo(13, 18);
-		//_dungeonName = L"¹Ù´å°¡ µ¿±¼";
-		//
-		//int _pokeNumber;
-		//_vInt.clear();
-		//_pokeNumber = 14;
-		//_vInt.push_back(_pokeNumber);
-		//_pokeNumber = 31;
-		//_vInt.push_back(_pokeNumber);
-		//_pokeNumber = 11;
-		//_vInt.push_back(_pokeNumber);
-		//
-		//_boss = 38;
-		//
 		//SOUNDMANAGER->play("Brine Cave");
 	}
 	else if (_type == 4)
 	{
-		_enemyPokemon1 = 13;
-		_enemyPokemon2 = 10;
-		_enemyPokemon3 = 21;
+		_dungeonName = L"¿ë¼ÒÀÇ µ¿±¼";
+		_enemyList.clear();
+		_enemyList.push_back(13);
+		_enemyList.push_back(10);
+		_enemyList.push_back(21);
 		_bossPokemon = 12;
+		_minLevel = 8;
+		_maxLevel = 12;
 
-		//_dungeonName = L"¿ë¼ÒÀÇ µ¿±¼";
-		//_range = RND->getFromIntTo(8, 12);
-		//int _pokeNumber;
-		//_vInt.clear();
-		//_pokeNumber = 13;
-		//_vInt.push_back(_pokeNumber);
-		//_pokeNumber = 10;
-		//_vInt.push_back(_pokeNumber);
-		//_pokeNumber = 21;
-		//_vInt.push_back(_pokeNumber);
-		//
-		//_boss = 12;
-		//
 		//SOUNDMANAGER->play("Waterfall Cave");
 	}
 	else if (_type == 5)
 	{
-		_enemyPokemon1 = 29;
-		_enemyPokemon2 = 20;
-		_enemyPokemon3 = 8;
+		_dungeonName = L"»ç°úÀÇ ½£";
+		_enemyList.clear();
+		_enemyList.push_back(29);
+		_enemyList.push_back(20);
+		_enemyList.push_back(8);
 		_bossPokemon = 37;
+		_minLevel = 10;
+		_maxLevel = 15;
 
-		//_range = RND->getFromIntTo(10, 15);
-		//_dungeonName = L"»ç°úÀÇ ½£";
-		//int _pokeNumber;
-		//_vInt.clear();
-		//_pokeNumber = 29;
-		//_vInt.push_back(_pokeNumber);
-		//_pokeNumber = 20;
-		//_vInt.push_back(_pokeNumber);
-		//_pokeNumber = 8;
-		//_vInt.push_back(_pokeNumber);
-		//
-		//
-		//_boss = 37;
-		//
 		//SOUNDMANAGER->play("Apple Woods");
 	}
 	else if (_type == 6)
 	{
-		_enemyPokemon1 = 13;
-		_enemyPokemon2 = 14;
-		_enemyPokemon3 = 28;
+		_dungeonName = L"¿¬¾ÈÀÇ ¾Ï¹Ý";
+		_enemyList.clear();
+		_enemyList.push_back(13);
+		_enemyList.push_back(14);
+		_enemyList.push_back(28);
 		_bossPokemon = 33;
+		_minLevel = 10;
+		_maxLevel = 15;
 
-		//_range = RND->getFromIntTo(10, 15);
-		//_dungeonName = L"¿¬¾ÈÀÇ ¾Ï¹Ý";
-		//int _pokeNumber;
-		//_vInt.clear();
-		//_pokeNumber = 13;
-		//_vInt.push_back(_pokeNumber);
-		//_pokeNumber = 14;
-		//_vInt.push_back(_pokeNumber);
-		//_pokeNumber = 28;
-		//_vInt.push_back(_pokeNumber);
-		//
-		//
-		//_boss = 33;
-		//
 		//SOUNDMANAGER->play("Craggy Coast");
 	}
 	else if (_type == 7)
 	{
-		_enemyPokemon1 = 16;
-		_enemyPokemon2 = 2;
-		_enemyPokemon3 = 24;
+		_dungeonName = L"»Ô»ê";
+		_enemyList.clear();
+		_enemyList.push_back(16);
+		_enemyList.push_back(2);
+		_enemyList.push_back(24);
 		_bossPokemon = 34;
+		_minLevel = 12;
+		_maxLevel = 17;
 
-		//_range = RND->getFromIntTo(12, 17);
-		//_dungeonName = L"»Ô»ê";
-		//int _pokeNumber;
-		//_vInt.clear();
-		//_pokeNumber = 16;
-		//_vInt.push_back(_pokeNumber);
-		//_pokeNumber = 2;
-		//_vInt.push_back(_pokeNumber);
-		//_pokeNumber = 24;
-		//_vInt.push_back(_pokeNumber);
-		//
-		//
-		//_boss = 34;
-		//
 		//SOUNDMANAGER->play("Mt.Horn");
 	}
 

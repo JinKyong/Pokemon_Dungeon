@@ -63,12 +63,10 @@ private:
 	int _trapCount;
 	
 	//벡터로 바꿔서 번호만 넣기
-	int _enemyPokemon1;
-	int _enemyPokemon2;
-	int _enemyPokemon3;
+	vector<int> _enemyList;
 	int _bossPokemon;
-
-	//int _range;
+	int _minLevel;
+	int _maxLevel;
 
 public:
 	tileManager();
@@ -114,10 +112,10 @@ public:
 	int getPlayerY() { return _playerY; }
 	
 	//여기서부터 주석위까지 지울것들
-	int getEnemy1() { return _enemyPokemon1; }
-	int getEnemy2() { return _enemyPokemon2; }
-	int getEnemy3() { return _enemyPokemon3; }
+	vector<int> getEnemyList() { return _enemyList; }
 	int getBoss() { return _bossPokemon; }
+	int getMinLevel() { return _minLevel; }
+	int getMaxLevel() { return _maxLevel; }
 
 	//int getRange() { return _range; }
 

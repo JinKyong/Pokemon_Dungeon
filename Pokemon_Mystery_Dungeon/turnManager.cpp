@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "turnManager.h"
+#include "Enemy.h"
 
 HRESULT turnManager::init()
 {
@@ -107,6 +108,22 @@ void turnManager::render()
 
 void turnManager::randomSetting()
 {
+	//에너미 추가
+	vector<int> enemyList = TILEMANAGER->getEnemyList();
+	int number = RND->getFromIntTo(3, 6);
+	int minLevel = TILEMANAGER->getMinLevel();
+	int maxLevel = TILEMANAGER->getMaxLevel();
+
+	for (int i = 0; i < number; i++) {
+		Player* enemy = new Enemy;
+		enemy->init(enemyList[RND->getInt(enemyList.size())], RND->getFromIntTo(minLevel, maxLevel));
+		addAllPlayer(enemy);
+	}
+
+
+
+
+	//랜덤 배치
 	vector<RECT>* room = TILEMANAGER->getvRoom();
 
 	playerIter player = _allPlayerList.begin();
