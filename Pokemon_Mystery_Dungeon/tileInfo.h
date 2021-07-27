@@ -28,7 +28,7 @@ enum CTRL
 //타일 글자타입
 enum Tile
 {
-	Unused = ' ',
+	Unused = '~',
 	Floor = '!',
 	Corridor = '#',
 	Wall = '$',

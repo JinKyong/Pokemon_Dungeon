@@ -1147,125 +1147,129 @@ bool tileManager::placeRect(RECT rc, char Char)
 	for (int y = rc.top - 1; y <= rc.bottom; y++)
 		for (int x = rc.left - 1; x <= rc.right; x++)
 		{
+			int LeftCorner=((getChar(x - 1, y) == HorizontalTopWall && (getChar(x, y - 1) == VerticalLeftWall)) ||
+				(getChar(x - 1, y) == LeftOpenCorner && (getChar(x, y - 1) == VerticalLeftWall)) ||
+				(getChar(x - 1, y) == RightTopBlockCorner && (getChar(x, y - 1) == VerticalLeftWall)) ||
+				(getChar(x - 1, y) == HorizontalTopWall && (getChar(x, y - 1) == LeftBottomBlockCorner)) ||
+				(getChar(x - 1, y) == LeftOpenCorner && (getChar(x, y - 1) == LeftBottomBlockCorner)) ||
+				(getChar(x - 1, y) == RightTopBlockCorner && (getChar(x, y - 1) == LeftBottomBlockCorner)) ||
+				(getChar(x - 1, y) == HorizontalTopWall && (getChar(x, y - 1) == LeftOpenCorner)) ||
+				(getChar(x - 1, y) == LeftOpenCorner && (getChar(x, y - 1) == LeftOpenCorner)) ||
+				(getChar(x - 1, y) == RightTopBlockCorner && (getChar(x, y - 1) == LeftOpenCorner)));
 
-			if ((x != rc.left - 1 && x != rc.right) &&
+			int RightCorner= ((getChar(x + 1, y) == HorizontalTopWall && (getChar(x, y - 1) == VerticalRightWall)) ||
+				(getChar(x + 1, y) == RightOpenCorner && (getChar(x, y - 1) == VerticalRightWall)) ||
+				(getChar(x + 1, y) == LeftTopBlockCorner && (getChar(x, y - 1) == VerticalRightWall)) ||
+				(getChar(x + 1, y) == HorizontalTopWall && (getChar(x, y - 1) == RightBottomBlockCorner)) ||
+				(getChar(x + 1, y) == RightOpenCorner && (getChar(x, y - 1) == RightBottomBlockCorner)) ||
+				(getChar(x + 1, y) == LeftTopBlockCorner && (getChar(x, y - 1) == RightBottomBlockCorner)) ||
+				(getChar(x + 1, y) == HorizontalTopWall && (getChar(x, y - 1) == RightOpenCorner)) ||
+				(getChar(x + 1, y) == RightOpenCorner && (getChar(x, y - 1) == RightOpenCorner)) ||
+				(getChar(x + 1, y) == LeftTopBlockCorner && (getChar(x, y - 1) == RightOpenCorner)));
+			
+			int RightBottom= ((getChar(x + 1, y) == HorizontalBottomWall && (getChar(x, y + 1) == VerticalRightWall)) ||
+				(getChar(x + 1, y) == RightOpenBottom && (getChar(x, y + 1) == VerticalRightWall)) ||
+				(getChar(x + 1, y) == LeftBottomBlockCorner && (getChar(x, y + 1) == VerticalRightWall)) ||
+				(getChar(x + 1, y) == HorizontalBottomWall && (getChar(x, y + 1) == RightTopBlockCorner)) ||
+				(getChar(x + 1, y) == RightOpenBottom && (getChar(x, y + 1) == RightTopBlockCorner)) ||
+				(getChar(x + 1, y) == LeftBottomBlockCorner && (getChar(x, y + 1) == RightTopBlockCorner)) ||
+				(getChar(x + 1, y) == HorizontalBottomWall && (getChar(x, y + 1) == RightOpenBottom)) ||
+				(getChar(x + 1, y) == RightOpenBottom && (getChar(x, y + 1) == RightOpenBottom)) ||
+				(getChar(x + 1, y) == LeftBottomBlockCorner && (getChar(x, y + 1) == RightOpenBottom)));
+			
+			int LeftBottom = ((getChar(x - 1, y) == HorizontalBottomWall && (getChar(x, y + 1) == VerticalLeftWall)) ||
+				(getChar(x - 1, y) == LeftOpenBottom && (getChar(x, y + 1) == VerticalLeftWall)) ||
+				(getChar(x - 1, y) == RightBottomBlockCorner && (getChar(x, y + 1) == VerticalLeftWall)) ||
+				(getChar(x - 1, y) == HorizontalBottomWall && (getChar(x, y + 1) == LeftTopBlockCorner)) ||
+				(getChar(x - 1, y) == LeftOpenBottom && (getChar(x, y + 1) == LeftTopBlockCorner)) ||
+				(getChar(x - 1, y) == RightBottomBlockCorner && (getChar(x, y + 1) == LeftTopBlockCorner)) ||
+				(getChar(x - 1, y) == HorizontalBottomWall && (getChar(x, y + 1) == LeftOpenBottom)) ||
+				(getChar(x - 1, y) == LeftOpenBottom && (getChar(x, y + 1) == LeftOpenBottom)) ||
+				(getChar(x - 1, y) == RightBottomBlockCorner && (getChar(x, y + 1) == LeftOpenBottom)));
+
+			if ((x > rc.left - 1 && x < rc.right) &&
 				(y == rc.top - 1) &&
 				(getChar(x, y - 1) == Unused ||
-					getChar(x, y - 1) == HorizontalBottomWall||
-					getChar(x,y-1)==LeftOpenBottom||
-					getChar(x,y-1)==RightOpenBottom))
+					getChar(x, y - 1) == HorizontalBottomWall ||
+					getChar(x, y - 1) == LeftOpenBottom ||
+					getChar(x, y - 1) == RightOpenBottom))
 				setChar(x, y, HorizontalTopWall);
-		
-			else if ((x != rc.left - 1 && x != rc.right) &&
+
+			else if ((x > rc.left - 1 && x < rc.right) &&
 				(y == rc.bottom) &&
 				(getChar(x, y + 1) == Unused ||
-					getChar(x, y + 1) == HorizontalTopWall||
+					getChar(x, y + 1) == HorizontalTopWall ||
 					getChar(x, y + 1) == LeftOpenCorner ||
-					getChar(x, y + 1) == RightOpenCorner||
+					getChar(x, y + 1) == RightOpenCorner ||
 					getChar(x, y + 1) == LeftOpenBottom ||
 					getChar(x, y + 1) == RightOpenBottom))
 				setChar(x, y, HorizontalBottomWall);
-			
+
 			else if ((x == rc.left - 1) &&
-				(y != rc.top - 1 && y != rc.bottom) &&
+				(y > rc.top - 1 && y < rc.bottom) &&
 				(getChar(x - 1, y) == Unused ||
-					getChar(x - 1, y) == VerticalRightWall||
-					getChar(x-1,y)==LeftOpenCorner||
-					getChar(x-1,y)==RightOpenCorner||
-					getChar(x-1, y) == LeftOpenBottom ||
-					getChar(x-1, y) == RightOpenBottom))
+					getChar(x - 1, y) == VerticalRightWall ||
+					getChar(x - 1, y) == LeftOpenCorner ||
+					getChar(x - 1, y) == RightOpenCorner ||
+					getChar(x - 1, y) == LeftOpenBottom ||
+					getChar(x - 1, y) == RightOpenBottom))
 				setChar(x, y, VerticalLeftWall);
-		
+
 			else if ((x == rc.right) &&
-				(y != rc.top - 1 && y != rc.bottom) &&
+				(y > rc.top - 1 && y < rc.bottom) &&
 				(getChar(x + 1, y) == Unused ||
-					getChar(x + 1, y) == VerticalLeftWall||
+					getChar(x + 1, y) == VerticalLeftWall ||
 					getChar(x + 1, y) == LeftOpenCorner ||
 					getChar(x + 1, y) == RightOpenCorner ||
 					getChar(x + 1, y) == LeftOpenBottom ||
 					getChar(x + 1, y) == RightOpenBottom))
 				setChar(x, y, VerticalRightWall);
-			
-			
-			
-			else if ((x == rc.right&&y == rc.bottom ||
-				x == rc.left - 1 && y == rc.bottom ||
-				x == rc.left - 1 && y == rc.top - 1 ||
-				x == rc.right&&y == rc.top - 1) &&
-				(getChar(x - 1, y) == HorizontalTopWall ||
-					getChar(x - 1, y) == LeftOpenCorner||
-					getChar(x-1,y)==RightTopBlockCorner) &&
-					(getChar(x, y - 1) == VerticalLeftWall ||
-						getChar(x, y - 1) == LeftOpenCorner||
-						getChar(x,y-1)==LeftBottomBlockCorner))
+
+
+
+			else if (LeftCorner)
 				setChar(x, y, LeftTopBlockCorner);
-			
-			else if ((x == rc.right&&y == rc.bottom ||
-				x == rc.left - 1 && y == rc.bottom ||
-				x == rc.left - 1 && y == rc.top - 1 ||
-				x == rc.right&&y == rc.top - 1) &&
-				(getChar(x + 1, y) == HorizontalTopWall ||
-					getChar(x + 1, y) == RightOpenCorner||
-					getChar(x+1,y)==LeftTopBlockCorner) &&
-					(getChar(x, y - 1) == VerticalRightWall ||
-						getChar(x, y - 1) == RightOpenCorner||
-				getChar(x,y-1)==RightBottomBlockCorner))
+
+			else if (RightCorner)
 				setChar(x, y, RightTopBlockCorner);
 			
-			else if ((x == rc.right&&y == rc.bottom ||
-				x == rc.right&&y == rc.top - 1 ||
-				x == rc.left - 1 && y == rc.bottom ||
-				x == rc.left - 1 && y == rc.top - 1) &&
-				(getChar(x - 1, y) == HorizontalBottomWall||
-					getChar(x-1,y)==LeftOpenBottom||
-					getChar(x-1,y)==RightBottomBlockCorner) &&
-				(getChar(x, y + 1) == VerticalLeftWall ||
-					getChar(x, y + 1) == LeftTopBlockCorner ||
-					getChar(x, y + 1) == LeftOpenBottom))
+
+			else if (LeftBottom)
 				setChar(x, y, LeftBottomBlockCorner);
-			
-			else if ((x == rc.right&&y == rc.bottom ||
-				x == rc.right&&y == rc.top - 1 ||
-				x == rc.left - 1 && y == rc.bottom ||
-				x == rc.left - 1 && y == rc.top - 1) &&
-				(getChar(x + 1, y) == HorizontalBottomWall||
-					getChar(x+1,y)==RightOpenBottom||
-					getChar(x+1,y)==LeftBottomBlockCorner)&&
-				(getChar(x, y + 1) == VerticalRightWall ||
-					getChar(x, y + 1) == RightTopBlockCorner ||
-					getChar(x, y + 1) == RightOpenBottom))
+
+			else if (RightBottom)
 				setChar(x, y, RightBottomBlockCorner);
 
 			else if ((x == rc.right&&y == rc.bottom ||
 				x == rc.left - 1 && y == rc.bottom ||
 				x == rc.left - 1 && y == rc.top - 1 ||
 				x == rc.right&&y == rc.top - 1) &&
-				getChar(x - 1, y) == HorizontalTopWall &&
-				getChar(x + 1, y) == HorizontalTopWall)
+				(getChar(x - 1, y) == HorizontalTopWall &&
+					getChar(x + 1, y) == HorizontalTopWall))
 				setChar(x, y, HorizontalTopWall);
 
 			else if ((x == rc.right&&y == rc.bottom ||
 				x == rc.left - 1 && y == rc.bottom ||
 				x == rc.left - 1 && y == rc.top - 1 ||
 				x == rc.right&&y == rc.top - 1) &&
-				getChar(x - 1, y) == HorizontalBottomWall &&
-				getChar(x + 1, y) == HorizontalBottomWall)
+				(getChar(x - 1, y) == HorizontalBottomWall &&
+					getChar(x + 1, y) == HorizontalBottomWall))
 				setChar(x, y, HorizontalBottomWall);
 
 			else if ((x == rc.right&&y == rc.bottom ||
 				x == rc.left - 1 && y == rc.bottom ||
 				x == rc.left - 1 && y == rc.top - 1 ||
 				x == rc.right&&y == rc.top - 1) &&
-				getChar(x, y - 1) == VerticalLeftWall &&
-				getChar(x, y + 1) == VerticalLeftWall)
+				(getChar(x, y - 1) == VerticalLeftWall &&
+					getChar(x, y + 1) == VerticalLeftWall))
 				setChar(x, y, VerticalLeftWall);
 
 			else if ((x == rc.right&&y == rc.bottom ||
 				x == rc.left - 1 && y == rc.bottom ||
 				x == rc.left - 1 && y == rc.top - 1 ||
 				x == rc.right&&y == rc.top - 1) &&
-				getChar(x, y - 1) == VerticalRightWall &&
-				getChar(x, y + 1) == VerticalRightWall)
+				(getChar(x, y - 1) == VerticalRightWall &&
+					getChar(x, y + 1) == VerticalRightWall))
 				setChar(x, y, VerticalRightWall);
 
 			else if ((x == rc.left - 1 && y == rc.top - 1) &&
@@ -1287,22 +1291,22 @@ bool tileManager::placeRect(RECT rc, char Char)
 						getChar(x, y - 1) == LeftOpenBottom)))
 				setChar(x, y, RightOpenCorner);
 			else if ((x == rc.left - 1 && y == rc.bottom) &&
-			((getChar(x - 1, y) == Unused&& getChar(x, y + 1) == Unused) ||
-			(getChar(x - 1, y) == RightOpenWall ||
-			getChar(x - 1, y) == RightOpenCorner ||
-			getChar(x - 1, y) == RightOpenBottom) &&
-			(getChar(x, y + 1) == BottomOpenWall ||
-			getChar(x, y + 1) == RightOpenBottom ||
-			getChar(x, y + 1) == LeftOpenBottom)))
+				((getChar(x - 1, y) == Unused && getChar(x, y + 1) == Unused) ||
+				(getChar(x - 1, y) == RightOpenWall ||
+					getChar(x - 1, y) == RightOpenCorner ||
+					getChar(x - 1, y) == RightOpenBottom) &&
+					(getChar(x, y + 1) == BottomOpenWall ||
+						getChar(x, y + 1) == RightOpenBottom ||
+						getChar(x, y + 1) == LeftOpenBottom)))
 				setChar(x, y, LeftOpenBottom);
 			else if ((x == rc.right&&y == rc.bottom) &&
-			((getChar(x + 1, y) == Unused && getChar(x, y + 1) == Unused) ||
-			(getChar(x + 1, y) == LeftOpenWall ||
-			getChar(x + 1, y) == LeftOpenCorner ||
-			getChar(x + 1, y) == LeftOpenBottom) &&
-			(getChar(x, y + 1) == BottomOpenWall ||
-			getChar(x, y + 1) == RightOpenBottom ||
-			getChar(x, y + 1) == LeftOpenBottom)))
+				((getChar(x + 1, y) == Unused && getChar(x, y + 1) == Unused) ||
+				(getChar(x + 1, y) == LeftOpenWall ||
+					getChar(x + 1, y) == LeftOpenCorner ||
+					getChar(x + 1, y) == LeftOpenBottom) &&
+					(getChar(x, y + 1) == BottomOpenWall ||
+						getChar(x, y + 1) == RightOpenBottom ||
+						getChar(x, y + 1) == LeftOpenBottom)))
 				setChar(x, y, RightOpenBottom);
 
 
