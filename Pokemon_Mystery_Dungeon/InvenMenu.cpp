@@ -63,7 +63,13 @@ void InvenMenu::update()
 		{
 			if ((*_invItem)[_index]->getType() == ITEM_HOLD)
 			{
-				if (_index2 == INVENMENU_GIVE_OPTION_DUMP) INVENTORYMANAGER->removeItem(_index);
+				if (_index2 == INVENMENU_GIVE_OPTION_DUMP)
+				{
+					INVENTORYMANAGER->removeItem(_index);
+					UIMANAGER->changeDownMenu("logMenu");
+					UIMANAGER->setOpen(false);
+					_hidden = false;
+				}
 				if (_index2 == INVENMENU_GIVE_OPTION_BACK) _hidden = false;	
 			}
 			else
@@ -72,8 +78,19 @@ void InvenMenu::update()
 				{
 					if ((*_invItem)[_index]->getType() == ITEM_FOOD)
 					{
-						((*_invItem))[_index]->eatItem((*_invItem)[_index]->getValue());
+						Player* player = (*TURNMANAGER->getAllPlayer())[0];
+
+						//배고픔 상태가 이상하죠 저도 알아요
+						if (player->getStarve() < 100) ((*_invItem))[_index]->eatItem((*_invItem)[_index]->getValue());
+						if (player->getStarve() >= 100)
+						{
+							player->setStarve(player->getStarve() + (*_invItem)[_index]->getValue());
+						}
+
 						INVENTORYMANAGER->removeItem(_index);
+						UIMANAGER->changeDownMenu("logMenu");
+						UIMANAGER->setOpen(false);
+						_hidden = false;
 					}
 
 					else if ((*_invItem)[_index]->getType() == ITEM_THROW)
@@ -85,6 +102,9 @@ void InvenMenu::update()
 				if (_index2 == INVENMENU_OPTION_DUMP)
 				{
 					INVENTORYMANAGER->removeItem(_index);
+					UIMANAGER->changeDownMenu("logMenu");
+					UIMANAGER->setOpen(false);
+					_hidden = false;
 				}
 
 				if (_index2 == INVENMENU_OPTION_BACK) _hidden = false;

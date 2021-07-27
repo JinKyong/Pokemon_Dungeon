@@ -27,7 +27,3 @@ void Apple::release()
 void Apple::update()
 {
 }
-
-void Apple::eatItem(float value)
-{
-}

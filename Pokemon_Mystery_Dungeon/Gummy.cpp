@@ -136,7 +136,3 @@ void Gummy::render()
 	_img->frameRender(_x * TILEWIDTH + TILEWIDTH / 2 - _img->getFrameWidth() / 2,
 	_y * TILEHEIGHT + TILEHEIGHT / 2 - _img->getFrameHeight() / 2, _gummyNum, 0);
 }
-
-void Gummy::eatItem(float value)
-{
-}

@@ -17,6 +17,4 @@ public:
 	virtual void update();
 	virtual void render();
 
-	//아이템 사용
-	void eatItem(float value);
 };
