@@ -36,11 +36,12 @@ public:
 	void addAllPlayer(Player* player);
 	void addInputPlayer(Player* player);
 
+	Player* getCurrentPlayer();
+
 
 
 
 	playerList* getAllPlayer() { return &_allPlayerList; }
-	Player* getCurrentPlayer() { return _inputPlayerList[0]; }
 
 	bool getPause() { return _pause; }
 	void setPause(bool pause) { _pause = pause; }

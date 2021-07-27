@@ -91,10 +91,10 @@ bool collisionManager::playerWithPlayer(Player * player)
 	index[LEFT] = playerIndex - 1;
 	index[UP] = playerIndex - tileWidth;
 	index[DOWN] = playerIndex + tileWidth;
-	index[UP | RIGHT] = index[UP] + 1;
-	index[UP | LEFT] = index[UP] - 1;
-	index[DOWN | RIGHT] = index[DOWN] + 1;
-	index[DOWN | LEFT] = index[DOWN] - 1;
+	//index[UP | RIGHT] = index[UP] + 1;
+	//index[UP | LEFT] = index[UP] - 1;
+	//index[DOWN | RIGHT] = index[DOWN] + 1;
+	//index[DOWN | LEFT] = index[DOWN] - 1;
 
 	vector<Player*>::iterator playerIter;
 
@@ -103,8 +103,16 @@ bool collisionManager::playerWithPlayer(Player * player)
 		if ((*playerIter) == player) continue;
 
 		directCount = 0;
-		int destX = (*playerIter)->getDestX();
-		int	destY = (*playerIter)->getDestY();
+		int destX, destY;
+		if ((*playerIter)->getPlayerState() == POKEMON_STATE_ATTACK ||
+			(*playerIter)->getPlayerState() == POKEMON_STATE_SATTACK) {
+			destX = (*playerIter)->getX();
+			destY = (*playerIter)->getY();
+		}
+		else {
+			destX = (*playerIter)->getDestX();
+			destY = (*playerIter)->getDestY();
+		}
 
 		int direct = player->getDirect();			//방향마다 다음타일 하나만 검사
 		//좌우
@@ -132,8 +140,8 @@ bool collisionManager::playerWithPlayer(Player * player)
 		}
 
 		//대각
-		if ((*_allTile)[index[directCount]]->x == destX &&
-			(*_allTile)[index[directCount]]->y == destY)	return false;
+		//if ((*_allTile)[index[directCount]]->x == destX &&
+		//	(*_allTile)[index[directCount]]->y == destY)	return false;
 	}
 
 	return true;

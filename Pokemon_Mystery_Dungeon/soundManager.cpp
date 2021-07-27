@@ -139,6 +139,7 @@ unsigned int soundManager::play(string keyName, float volume)
 	arrSoundsIter iter = _mTotalSounds.begin();
 	unsigned int time = 0;
 
+	bool isPlay;
 	int count = 0;
 
 	for (iter; iter != _mTotalSounds.end(); ++iter, count++)

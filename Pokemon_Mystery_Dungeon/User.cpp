@@ -7,7 +7,7 @@ HRESULT User::init(int pokemonNum, int level)
 
 	//플레이어 타입
 	_playerType = PLAYER_TYPE_USER;
-	_playerState = POKEMON_STATE_DEFAULT;
+	_playerState = END_POKEMON_STATE;
 	//패턴 없음
 	for (int i = 0; i < END_PLAYER_PATTERN; i++)
 		_pattern[i] = nullptr;

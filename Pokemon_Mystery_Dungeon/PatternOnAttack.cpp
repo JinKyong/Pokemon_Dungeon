@@ -27,6 +27,11 @@ void PatternOnAttack::update()
 	_pathFinder->update();
 	_pathList = _pathFinder->getPathList();
 
+	//목적지 설정
+	_player->setDestX(_pathList[0]->getIdX());
+	_player->setDestY(_pathList[0]->getIdY());
+	_player->setDirect();
+
 	//충돌 검사
 	//주변 8타일에 있으면 공격
 	if (COLLISIONMANAGER->detectionWith8Tiles(_player, (*TURNMANAGER->getAllPlayer())[0])) {
@@ -41,19 +46,11 @@ void PatternOnAttack::update()
 	else {
 		//없으면 찾아감
 		if (COLLISIONMANAGER->playerWithPlayer(_player)) {
-			//목적지 설정
-			_player->setDestX(_pathList[0]->getIdX());
-			_player->setDestY(_pathList[0]->getIdY());
-
 			_pathList.erase(_pathList.begin());
 			_player->setPlayerState(POKEMON_STATE_MOVE);
 		}
-		else {
-			//_player->setDirect();
-
-			//_pathList.erase(_pathList.begin());
-			_player->setPlayerState(POKEMON_STATE_MOVE);
-		}
+		else
+			_player->setPlayerState(POKEMON_STATE_DEFAULT);
 	}
 }
 

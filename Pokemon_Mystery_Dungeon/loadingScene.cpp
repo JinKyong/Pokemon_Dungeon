@@ -9,6 +9,9 @@ HRESULT loadingScene::init(Player * player)
 	CAMERAMANAGER->updateScreen(0, 0);
 	_back = IMAGEMANAGER->addDImage("loadingBack", L"img/fade_B.png", WINSIZEX, WINSIZEY);
 
+	_currentCount = 0;
+	_create = false;
+
 	//쓰레드를 써보십시다
 	CreateThread(
 		NULL,			//스레드의 보안속성(자신윈도우가 존재할때)
@@ -21,14 +24,12 @@ HRESULT loadingScene::init(Player * player)
 
 	TILEMANAGER->playBGM();
 
-	_currentCount = 0;
-	_create = false;
-
 	return S_OK;
 }
 
 void loadingScene::release()
 {
+	//TerminateThread();
 }
 
 void loadingScene::update()

@@ -9,7 +9,7 @@ HRESULT Enemy::init(int pokemonNum, int level)
 
 	//플레이어 타입
 	_playerType = PLAYER_TYPE_ENEMY;
-	_playerState = POKEMON_STATE_DEFAULT;
+	_playerState = END_POKEMON_STATE;
 	//패턴
 	_pattern[PLAYER_PATTERN_PATHFINDER] = new PatternPathFinder;
 	_pattern[PLAYER_PATTERN_ONATTACK] = new PatternOnAttack;

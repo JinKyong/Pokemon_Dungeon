@@ -27,21 +27,18 @@ void PatternPathFinder::update()
 		_pathList = _pathFinder->getPathList();
 	}
 
+	_player->setDestX(_pathList[0]->getIdX());
+	_player->setDestY(_pathList[0]->getIdY());
+	_player->setDirect();
+
 	//충돌 검사
 	if (COLLISIONMANAGER->playerWithPlayer(_player)) {
 		//목적지 설정
-		_player->setDestX(_pathList[0]->getIdX());
-		_player->setDestY(_pathList[0]->getIdY());
-
 		_pathList.erase(_pathList.begin());
 		_player->setPlayerState(POKEMON_STATE_MOVE);
 	}
-	else {
-		//_player->setDirect();
-
-		//_pathList.erase(_pathList.begin());
-		_player->setPlayerState(POKEMON_STATE_MOVE);
-	}
+	else
+		_player->setPlayerState(POKEMON_STATE_DEFAULT);
 }
 
 void PatternPathFinder::render()
