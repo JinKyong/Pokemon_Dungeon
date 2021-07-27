@@ -262,6 +262,8 @@ void Player::useSkill(int num)
 void Player::hitDamage(int num)
 {
 	_currentHP -= abs(num);
+	if (_currentHP < 0)
+		_currentHP = 0;
 }
 
 void Player::addEXP(int num)

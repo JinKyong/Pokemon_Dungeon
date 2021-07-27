@@ -70,7 +70,7 @@ void dungeonScene::changeScene()
 		if ((*TURNMANAGER->getAllPlayer())[0]->getPlayerType() != PLAYER_TYPE_USER)
 			SCENEMANAGER->changeScene("main");
 
-		else if (TILEMANAGER->getFloor() == 2) {
+		else if (TILEMANAGER->getFloor() == 5) {
 			TILEMANAGER->stopBGM();
 			SCENEMANAGER->changeScene("result");
 		}
