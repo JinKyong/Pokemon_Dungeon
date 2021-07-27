@@ -18,6 +18,7 @@ HRESULT collisionManager::init(Scene * scene)
 
 void collisionManager::release()
 {
+	SOUNDMANAGER->stop("PickUp");
 }
 
 bool collisionManager::collisionInputPlayer(Player * player)		// User, Enemy 안에 함수 부름
@@ -157,7 +158,10 @@ void collisionManager::playerWithItem(Player* player)
 		{
 			DIALOGMANAGER->addItemLog(player, (*_allItem)[i]);
 			if (player->getPlayerType() <= PLAYER_TYPE_TEAM)
+			{
 				INVENTORYMANAGER->addItem((*_allItem)[i]);
+				SOUNDMANAGER->play("PickUp");
+			}
 			_scene->getItemManager()->removeItem(i);
 		}
 	}

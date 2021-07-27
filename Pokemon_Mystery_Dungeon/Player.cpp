@@ -36,6 +36,7 @@ HRESULT Player::initXY(float x, float y)
 
 void Player::release()
 {
+	SOUNDMANAGER->stop("LevelUp");
 }
 
 void Player::update()
@@ -281,8 +282,8 @@ void Player::levelUP()
 
 	//레벨업하면 잠시 메뉴를 띄워야함
 	//레벨업 로그
+	SOUNDMANAGER->play("LevelUp");
 	DIALOGMANAGER->levelUPLog(this, _level);
 	UIMANAGER->getCurrentDownMenu()->setHidden(true);
 	DIALOGMANAGER->loadMetaData(L"data/levelUP");
-
 }

@@ -55,6 +55,9 @@ void soundManager::registerSound()
 	//이펙트 사운드
 	addSound("DefaultAttack", "sound/DefaultAttack.mp3", false, false);		//평타
 	addSound("hitDamage", "sound/hitDamage.mp3", false, false);				//데미지받음
+	addSound("LevelUp", "sound/LevelUp.mp3", false, false);					//레벨업
+	addSound("PickUp", "sound/PickUp.mp3", false, false);					//템줍기
+	addSound("Complete", "sound/Complete.mp3", false, false);				//보스클리어
 
 	addSound("FireBlast", "sound/FireBlast.mp3", false, false);
 	addSound("Gust", "sound/Gust.mp3", false, false);
