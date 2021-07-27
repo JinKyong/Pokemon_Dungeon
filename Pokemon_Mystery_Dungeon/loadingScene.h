@@ -8,11 +8,6 @@ class loadingScene : public Scene
 private:
 	dImage* _back;
 
-	int _width;
-	int _height;		//¸Ê Å©±â
-	int _type;			//¸Ê Á¾·ù
-	int _floor;			//¸Ê Ãþ
-
 public:
 
 	int _currentCount;
@@ -24,7 +19,6 @@ public:
 	void render();
 	void changeScene();
 
-	void playSound();
 	static DWORD CALLBACK threadFunction(LPVOID lpParameter);
 };
 

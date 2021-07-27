@@ -5,8 +5,9 @@ HRESULT loadingScene::init(Player * player)
 {
 	Scene::init(player);
 
+	CAMERAMANAGER->setBackScreenSize(687, 562);
+	CAMERAMANAGER->updateScreen(0, 0);
 	_back = IMAGEMANAGER->addDImage("loadingBack", L"img/fade_B.png", WINSIZEX, WINSIZEY);
-	CAMERAMANAGER->setBackScreenSize(WINSIZEX, WINSIZEY);
 
 	//쓰레드를 써보십시다
 	CreateThread(
