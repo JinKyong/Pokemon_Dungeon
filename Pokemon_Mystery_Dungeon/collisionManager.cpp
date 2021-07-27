@@ -159,8 +159,8 @@ void collisionManager::playerWithItem(Player* player)
 			DIALOGMANAGER->addItemLog(player, (*_allItem)[i]);
 			if (player->getPlayerType() <= PLAYER_TYPE_TEAM)
 			{
-				INVENTORYMANAGER->addItem((*_allItem)[i]);
 				SOUNDMANAGER->play("PickUp");
+				INVENTORYMANAGER->addItem((*_allItem)[i]);
 			}
 			_scene->getItemManager()->removeItem(i);
 		}

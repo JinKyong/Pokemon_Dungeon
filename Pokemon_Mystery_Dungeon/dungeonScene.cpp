@@ -12,6 +12,7 @@ HRESULT dungeonScene::init(Player * player)
 
 	CAMERAMANAGER->setBackScreenSize((TILEMANAGER->getWidth() - 1) * TILEWIDTH, (TILEMANAGER->getHeight() - 1) * TILEHEIGHT);
 
+	DIALOGMANAGER->init();
 	//TILEMANAGER->init();
 	TURNMANAGER->init();
 
@@ -38,7 +39,9 @@ void dungeonScene::update()
 {
 	TILEMANAGER->update();
 
-	if ((*TURNMANAGER->getAllPlayer())[0]->getPlayerType() == PLAYER_TYPE_USER) {
+	if (DIALOGMANAGER->getPrint())
+		DIALOGMANAGER->update();
+	else if ((*TURNMANAGER->getAllPlayer())[0]->getPlayerType() == PLAYER_TYPE_USER) {
 		if (UIMANAGER->getOpen())
 			UIMANAGER->update();
 		else {
@@ -62,17 +65,24 @@ void dungeonScene::render()
 	EFFECTMANAGER->render();
 
 	UIMANAGER->renderDown();
+
+	if (DIALOGMANAGER->getPrint())
+		DIALOGMANAGER->render();
 }
 
 void dungeonScene::changeScene()
 {
 	if (CAMERAMANAGER->getAlpha() == 1.0) {
-		if ((*TURNMANAGER->getAllPlayer())[0]->getPlayerType() != PLAYER_TYPE_USER)
+		if ((*TURNMANAGER->getAllPlayer())[0]->getPlayerType() != PLAYER_TYPE_USER) {
+			TILEMANAGER->stopBGM();
 			SCENEMANAGER->changeScene("main");
+			DIALOGMANAGER->release();
+		}
 
 		else if (TILEMANAGER->getFloor() == 5) {
 			TILEMANAGER->stopBGM();
 			SCENEMANAGER->changeScene("result");
+			DIALOGMANAGER->release();
 		}
 
 		else

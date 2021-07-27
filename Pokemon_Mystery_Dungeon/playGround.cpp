@@ -23,7 +23,9 @@ HRESULT playGround::init()
 	SCENEMANAGER->init(_player);
 
 	SCENEMANAGER->changeScene("title");
+
 	BATTLEMANAGER->init();
+	DIALOGMANAGER->init();
 
 	_debug = false;
 
@@ -35,7 +37,11 @@ void playGround::release()
 {
 	gameNode::release();
 
+	BATTLEMANAGER->release();
+	BATTLEMANAGER->releaseSingleton();
 
+	DIALOGMANAGER->release();
+	DIALOGMANAGER->releaseSingleton();
 }
 
 

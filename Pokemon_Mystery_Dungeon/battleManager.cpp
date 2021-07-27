@@ -55,6 +55,7 @@ int battleManager::EXPCalculation(Player * player)
 	int sum = stat.hp + stat.attack + stat.defense + stat.sattack + stat.sdefense + stat.speed;
 
 	return sum * (player->getLevel() / (float)100) * 3;
+	//return 30000;
 }
 
 STAT battleManager::statCalculation(Player * player)
