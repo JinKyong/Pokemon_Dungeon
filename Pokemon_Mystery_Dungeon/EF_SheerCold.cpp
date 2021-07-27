@@ -18,6 +18,7 @@ HRESULT EF_SheerCold::init(float x, float y, int damage, int skillScale, int atk
 
 void EF_SheerCold::release()
 {
+	SOUNDMANAGER->stop("SheerCold");
 }
 
 void EF_SheerCold::update()

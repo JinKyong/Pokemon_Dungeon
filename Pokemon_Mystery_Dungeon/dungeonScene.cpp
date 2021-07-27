@@ -38,13 +38,13 @@ void dungeonScene::update()
 {
 	TILEMANAGER->update();
 
-		if (UIMANAGER->getOpen())
-			UIMANAGER->update();
-		else {
-			_itemManager->update();
-			TURNMANAGER->update();
-			EFFECTMANAGER->update();
-		}
+	if (UIMANAGER->getOpen())
+		UIMANAGER->update();
+	else {
+		_itemManager->update();
+		TURNMANAGER->update();
+		EFFECTMANAGER->update();
+	}
 	changeScene();
 
 	CAMERAMANAGER->updateScreen(_player->getX(), _player->getY());
@@ -67,8 +67,43 @@ void dungeonScene::render()
 void dungeonScene::changeScene()
 {
 	if (CAMERAMANAGER->getAlpha() == 1.0) {
-		if (TILEMANAGER->getFloor() == 10)
+		if (TILEMANAGER->getFloor() == 2) {
 			SCENEMANAGER->changeScene("result");
+			char music[128];
+
+			switch (TILEMANAGER->getType()) {
+			case 0:
+				sprintf_s(music, "Mt.Bristle");
+				break;
+			case 1:
+				sprintf_s(music, "Concealed Ruins");
+				break;
+			case 2:
+				sprintf_s(music, "Amp Plains");
+				break;
+			case 3:
+				sprintf_s(music, "Brine Cave");
+				break;
+			case 4:
+				sprintf_s(music, "Waterfall Cave");
+				break;
+			case 5:
+				sprintf_s(music, "Apple Woods");
+				break;
+			case 6:
+				sprintf_s(music, "Craggy Coast");
+				break;
+			case 7:
+				sprintf_s(music, "Mt.Horn");
+				break;
+			default:
+				sprintf_s(music, "");
+				break;
+			}
+
+			if (SOUNDMANAGER->isPlaySound(music))
+				SOUNDMANAGER->stop(music);
+		}
 		else
 			SCENEMANAGER->changeScene("loading");
 	}

@@ -18,6 +18,7 @@ HRESULT EF_SleepPowder::init(float x, float y, int damage, int skillScale, int a
 
 void EF_SleepPowder::release()
 {
+	SOUNDMANAGER->stop("Powder");
 }
 
 void EF_SleepPowder::update()

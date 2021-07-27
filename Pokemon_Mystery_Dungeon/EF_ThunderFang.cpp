@@ -18,6 +18,7 @@ HRESULT EF_ThunderFang::init(float x, float y, int damage, int skillScale, int a
 
 void EF_ThunderFang::release()
 {
+	SOUNDMANAGER->stop("ThunderFang");
 }
 
 void EF_ThunderFang::update()

@@ -18,6 +18,7 @@ HRESULT EF_LeafBlade::init(float x, float y, int damage, int skillScale, int atk
 
 void EF_LeafBlade::release()
 {
+	SOUNDMANAGER->stop("LeafBlade");
 }
 
 void EF_LeafBlade::update()

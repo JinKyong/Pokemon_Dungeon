@@ -18,6 +18,7 @@ HRESULT EF_FeintAttack::init(float x, float y, int damage, int skillScale, int a
 
 void EF_FeintAttack::release()
 {
+	SOUNDMANAGER->stop("FeintAttack");
 }
 
 void EF_FeintAttack::update()

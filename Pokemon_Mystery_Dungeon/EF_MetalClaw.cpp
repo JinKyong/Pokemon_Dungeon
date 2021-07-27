@@ -18,6 +18,7 @@ HRESULT EF_MetalClaw::init(float x, float y, int damage, int skillScale, int atk
 
 void EF_MetalClaw::release()
 {
+	SOUNDMANAGER->stop("MetalClaw");
 }
 
 void EF_MetalClaw::update()

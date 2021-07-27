@@ -19,6 +19,7 @@ HRESULT EF_WingAttack::init(float x, float y, int damage, int skillScale, int at
 
 void EF_WingAttack::release()
 {
+	SOUNDMANAGER->stop("WingAttack");
 }
 
 void EF_WingAttack::update()

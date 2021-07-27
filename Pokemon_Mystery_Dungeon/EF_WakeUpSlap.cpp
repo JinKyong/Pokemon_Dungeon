@@ -18,6 +18,7 @@ HRESULT EF_WakeUpSlap::init(float x, float y, int damage, int skillScale, int at
 
 void EF_WakeUpSlap::release()
 {
+	SOUNDMANAGER->stop("WakeUpSlap");
 }
 
 void EF_WakeUpSlap::update()

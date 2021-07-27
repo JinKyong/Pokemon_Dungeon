@@ -24,6 +24,7 @@ public:
 	void render();
 	void changeScene();
 
+	void playSound();
 	static DWORD CALLBACK threadFunction(LPVOID lpParameter);
 };
 

@@ -18,6 +18,7 @@ HRESULT EF_Default::init(float x, float y, int damage, int skillScale, int atkTy
 
 void EF_Default::release()
 {
+	SOUNDMANAGER->stop("DefaultAttack");
 }
 
 void EF_Default::update()

@@ -18,6 +18,7 @@ HRESULT EF_Lightning::init(float x, float y, int damage, int skillScale, int atk
 
 void EF_Lightning::release()
 {
+	SOUNDMANAGER->stop("Lightning");
 }
 
 void EF_Lightning::update()

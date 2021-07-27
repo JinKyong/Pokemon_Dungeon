@@ -18,6 +18,7 @@ HRESULT EF_FireFang::init(float x, float y, int damage, int skillScale, int atkT
 
 void EF_FireFang::release()
 {
+	SOUNDMANAGER->stop("FireFang");
 }
 
 void EF_FireFang::update()

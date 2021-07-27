@@ -18,6 +18,7 @@ HRESULT EF_Gust::init(float x, float y, int damage, int skillScale, int atkType,
 
 void EF_Gust::release()
 {
+	SOUNDMANAGER->stop("Gust");
 }
 
 void EF_Gust::update()

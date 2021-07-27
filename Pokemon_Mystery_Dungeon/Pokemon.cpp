@@ -45,6 +45,7 @@ void Pokemon::controlFrame()
 				//break;
 			case POKEMON_STATE_HURT:
 				changeState(POKEMON_STATE_DEFAULT);
+				SOUNDMANAGER->stop("hitDamage");
 				TURNMANAGER->setPause(false);
 				break;
 

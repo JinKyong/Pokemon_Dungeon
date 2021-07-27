@@ -18,6 +18,7 @@ HRESULT EF_CrossChop::init(float x, float y, int damage, int skillScale, int atk
 
 void EF_CrossChop::release()
 {
+	SOUNDMANAGER->stop("CrossChop");
 }
 
 void EF_CrossChop::update()

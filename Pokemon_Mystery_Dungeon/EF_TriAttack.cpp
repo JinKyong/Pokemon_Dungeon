@@ -18,6 +18,7 @@ HRESULT EF_TriAttack::init(float x, float y, int damage, int skillScale, int atk
 
 void EF_TriAttack::release()
 {
+	SOUNDMANAGER->stop("TriAttack");
 }
 
 void EF_TriAttack::update()

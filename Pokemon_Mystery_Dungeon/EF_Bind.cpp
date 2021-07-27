@@ -18,6 +18,7 @@ HRESULT EF_Bind::init(float x, float y, int damage, int skillScale, int atkType,
 
 void EF_Bind::release()
 {
+	SOUNDMANAGER->stop("Bind");
 }
 
 void EF_Bind::update()

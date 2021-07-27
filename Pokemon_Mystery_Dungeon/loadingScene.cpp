@@ -18,6 +18,8 @@ HRESULT loadingScene::init(Player * player)
 		NULL			//스레드 생성 후 스레드의 ID 넘겨줌
 	);
 
+	playSound();
+
 	_currentCount = 0;
 	_create = false;
 
@@ -65,6 +67,44 @@ void loadingScene::changeScene()
 		if(CAMERAMANAGER->getAlpha() == 1.0)
 			SCENEMANAGER->changeScene("dungeon");
 	}
+}
+
+void loadingScene::playSound()
+{
+	char music[128];
+
+	switch (TILEMANAGER->getType()) {
+	case 0:
+		sprintf_s(music, "Mt.Bristle");
+		break;
+	case 1:
+		sprintf_s(music, "Concealed Ruins");
+		break;
+	case 2:
+		sprintf_s(music, "Amp Plains");
+		break;
+	case 3:
+		sprintf_s(music, "Brine Cave");
+		break;
+	case 4:
+		sprintf_s(music, "Waterfall Cave");
+		break;
+	case 5:
+		sprintf_s(music, "Apple Woods");
+		break;
+	case 6:
+		sprintf_s(music, "Craggy Coast");
+		break;
+	case 7:
+		sprintf_s(music, "Mt.Horn");
+		break;
+	default:
+		sprintf_s(music, "");
+		break;
+	}
+
+	if(!SOUNDMANAGER->isPlaySound(music))
+		SOUNDMANAGER->play(music);
 }
 
 DWORD loadingScene::threadFunction(LPVOID lpParameter)

@@ -18,6 +18,7 @@ HRESULT EF_PoisonPowder::init(float x, float y, int damage, int skillScale, int 
 
 void EF_PoisonPowder::release()
 {
+	SOUNDMANAGER->stop("Powder");
 }
 
 void EF_PoisonPowder::update()

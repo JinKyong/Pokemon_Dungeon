@@ -18,6 +18,7 @@ HRESULT EF_DynamicPunch::init(float x, float y, int damage, int skillScale, int 
 
 void EF_DynamicPunch::release()
 {
+	SOUNDMANAGER->stop("DynamicPunch");
 }
 
 void EF_DynamicPunch::update()

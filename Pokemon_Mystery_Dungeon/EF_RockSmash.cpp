@@ -18,6 +18,7 @@ HRESULT EF_RockSmash::init(float x, float y, int damage, int skillScale, int atk
 
 void EF_RockSmash::release()
 {
+	SOUNDMANAGER->stop("RockSmash");
 }
 
 void EF_RockSmash::update()

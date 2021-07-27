@@ -18,6 +18,7 @@ HRESULT EF_ShadowClaw::init(float x, float y, int damage, int skillScale, int at
 
 void EF_ShadowClaw::release()
 {
+	SOUNDMANAGER->stop("ShadowClaw");
 }
 
 void EF_ShadowClaw::update()

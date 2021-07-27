@@ -18,6 +18,7 @@ HRESULT EF_FireBlast::init(float x, float y, int damage, int skillScale, int atk
 
 void EF_FireBlast::release()
 {
+	SOUNDMANAGER->stop("FireBlast");
 }
 
 void EF_FireBlast::update()

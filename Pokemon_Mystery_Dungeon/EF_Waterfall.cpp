@@ -18,6 +18,7 @@ HRESULT EF_Waterfall::init(float x, float y, int damage, int skillScale, int atk
 
 void EF_Waterfall::release()
 {
+	SOUNDMANAGER->stop("Waterfall");
 }
 
 void EF_Waterfall::update()

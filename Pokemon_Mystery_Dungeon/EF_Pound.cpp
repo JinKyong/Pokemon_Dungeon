@@ -19,6 +19,7 @@ HRESULT EF_Pound::init(float x, float y, int damage, int skillScale, int atkType
 
 void EF_Pound::release()
 {
+	SOUNDMANAGER->stop("Pound");
 }
 
 void EF_Pound::update()

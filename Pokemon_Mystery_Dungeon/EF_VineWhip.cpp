@@ -18,6 +18,7 @@ HRESULT EF_VineWhip::init(float x, float y, int damage, int skillScale, int atkT
 
 void EF_VineWhip::release()
 {
+	SOUNDMANAGER->stop("VineWhip");
 }
 
 void EF_VineWhip::update()

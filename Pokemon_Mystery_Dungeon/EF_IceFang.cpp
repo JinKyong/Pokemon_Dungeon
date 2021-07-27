@@ -18,6 +18,7 @@ HRESULT EF_IceFang::init(float x, float y, int damage, int skillScale, int atkTy
 
 void EF_IceFang::release()
 {
+	SOUNDMANAGER->stop("IceFang");
 }
 
 void EF_IceFang::update()

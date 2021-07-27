@@ -18,6 +18,7 @@ HRESULT EF_DracoMeteor::init(float x, float y, int damage, int skillScale, int a
 
 void EF_DracoMeteor::release()
 {
+	SOUNDMANAGER->stop("DracoMeteor");
 }
 
 void EF_DracoMeteor::update()

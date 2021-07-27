@@ -18,6 +18,7 @@ HRESULT EF_RockSlide::init(float x, float y, int damage, int skillScale, int atk
 
 void EF_RockSlide::release()
 {
+	SOUNDMANAGER->stop("RockSlide");
 }
 
 void EF_RockSlide::update()

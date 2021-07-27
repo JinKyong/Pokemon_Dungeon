@@ -18,6 +18,7 @@ HRESULT EF_StunSpore::init(float x, float y, int damage, int skillScale, int atk
 
 void EF_StunSpore::release()
 {
+	SOUNDMANAGER->stop("Powder");
 }
 
 void EF_StunSpore::update()
