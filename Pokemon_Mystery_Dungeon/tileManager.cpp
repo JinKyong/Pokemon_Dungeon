@@ -40,7 +40,7 @@ HRESULT tileManager::init(int width, int height, int type)
 	_Mapbase[6] = IMAGEMANAGER->addFrameDImage("terrain6", L"img/map/tiles/terrain_6.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
 	_Mapbase[7] = IMAGEMANAGER->addFrameDImage("terrain7", L"img/map/tiles/terrain_7.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
 	_Obbase = IMAGEMANAGER->addFrameDImage("object", L"img/map/tiles/object_all.png", 720, 192, SAMPLETILEX, SAMPLETILEY);
-	_minibase = IMAGEMANAGER->addFrameDImage("minimap", L"img/map/tiles/minimap temp.png", 136, 8, 17, 1);
+	_minibase = IMAGEMANAGER->addFrameDImage("minimap", L"img/map/tiles/minimap temp.png", 184, 8, 23, 1);
 
 	if (_type == 0)
 	{
@@ -57,7 +57,7 @@ HRESULT tileManager::init(int width, int height, int type)
 		_bossPokemon = 36;
 		_minLevel = 5;
 		_maxLevel = 8;
-		//SOUNDMANAGER->play("Mt.Bristle");
+		
 	}
 	else if (_type == 1)
 	{
@@ -70,7 +70,7 @@ HRESULT tileManager::init(int width, int height, int type)
 		_minLevel = 30;
 		_maxLevel = 35;
 
-		//SOUNDMANAGER->play("Concealed Ruins");
+	
 	}
 	else if (_type == 2)
 	{
@@ -83,7 +83,7 @@ HRESULT tileManager::init(int width, int height, int type)
 		_minLevel = 40;
 		_maxLevel = 45;
 
-		//SOUNDMANAGER->play("Amp Plains");
+		
 	}
 	else if (_type == 3)
 	{
@@ -96,7 +96,7 @@ HRESULT tileManager::init(int width, int height, int type)
 		_minLevel = 22;
 		_maxLevel = 27;
 
-		//SOUNDMANAGER->play("Brine Cave");
+		
 	}
 	else if (_type == 4)
 	{
@@ -109,7 +109,7 @@ HRESULT tileManager::init(int width, int height, int type)
 		_minLevel = 8;
 		_maxLevel = 12;
 
-		//SOUNDMANAGER->play("Waterfall Cave");
+		
 	}
 	else if (_type == 5)
 	{
@@ -122,7 +122,7 @@ HRESULT tileManager::init(int width, int height, int type)
 		_minLevel = 10;
 		_maxLevel = 15;
 
-		//SOUNDMANAGER->play("Apple Woods");
+		
 	}
 	else if (_type == 6)
 	{
@@ -135,7 +135,7 @@ HRESULT tileManager::init(int width, int height, int type)
 		_minLevel = 18;
 		_maxLevel = 24;
 
-		//SOUNDMANAGER->play("Craggy Coast");
+		
 	}
 	else if (_type == 7)
 	{
@@ -148,7 +148,7 @@ HRESULT tileManager::init(int width, int height, int type)
 		_minLevel = 13;
 		_maxLevel = 18;
 
-		//SOUNDMANAGER->play("Mt.Horn");
+		
 	}
 
 	_floor = 0;
@@ -819,16 +819,39 @@ void tileManager::minimap()
 			(_mini[i].terrainFrameX == 2 && _mini[i].terrainFrameY == 1) ||
 			(_mini[i].terrainFrameX == 0 && _mini[i].terrainFrameY == 2) ||
 			(_mini[i].terrainFrameX == 1 && _mini[i].terrainFrameY == 2) ||
-			(_mini[i].terrainFrameX == 2 && _mini[i].terrainFrameY == 2))_mini[i].terrainFrameX = 16;
-		if (_mini[i].terrainFrameY >= 0)_mini[i].terrainFrameY = 0;
-		if (_mini[i].terrainFrameX == 10)_mini[i].terrainFrameX = 16;
-		if (_mini[i].rc.left == (_playerX * 8) && _mini[i].rc.top == (_playerY * 8))_mini[i].terrainFrameX = 0;
-		//	if (_mini[i].terrainFrameX > 16)_mini[i].terrainFrameX = 15;
+			(_mini[i].terrainFrameX == 2 && _mini[i].terrainFrameY == 2)) {
+			_mini[i].terrainFrameX = 22; _mini[i].terrainFrameY = 0;
+		}
+		
+		else if (_mini[i].terrainFrameX == 10 && _mini[i].terrainFrameY == 2) { _mini[i].terrainFrameX = 10; _mini[i].terrainFrameY = 0; }
 
+		else if (_mini[i].terrainFrameX == 10 && _mini[i].terrainFrameY == 0) 
+		{_mini[i].terrainFrameX = 11; _mini[i].terrainFrameY = 0;}
+		
+		else if (_mini[i].terrainFrameX == 9 && _mini[i].terrainFrameY == 1) 
+		{_mini[i].terrainFrameX = 12; _mini[i].terrainFrameY = 0;}
+		
+		else if (_mini[i].terrainFrameX == 11 && _mini[i].terrainFrameY == 1)
+		{_mini[i].terrainFrameX = 13; _mini[i].terrainFrameY = 0;}
 
+		else if ((_mini[i].terrainFrameX == 6 && _mini[i].terrainFrameY == 0)) { _mini[i].terrainFrameX = 14; _mini[i].terrainFrameY = 0; }
+		
+		else if ((_mini[i].terrainFrameX == 8 && _mini[i].terrainFrameY == 0)) { _mini[i].terrainFrameX = 16; _mini[i].terrainFrameY = 0; }
+		
+		else if ((_mini[i].terrainFrameX == 6 && _mini[i].terrainFrameY == 2)) { _mini[i].terrainFrameX = 18; _mini[i].terrainFrameY = 0; }
+		
+		else if ((_mini[i].terrainFrameX == 8 && _mini[i].terrainFrameY == 2)) { _mini[i].terrainFrameX = 20; _mini[i].terrainFrameY = 0; }
+				
+		else {
+			_mini[i].terrainFrameX = 22; _mini[i].terrainFrameY = 0;
+		}
+
+		if (_mini[i].rc.left == (_playerX * 8) && _mini[i].rc.top == (_playerY * 8)) {
+			_mini[i].terrainFrameX = 0; _mini[i].terrainFrameY = 0;
+		}
 
 		_minibase->frameRender(
-			rc.left + (_mini[i].rc.left / 2), rc.top + 200 + (_mini[i].rc.top / 2),
+			rc.left + (_mini[i].rc.left / 2), rc.top + (_mini[i].rc.top / 2),
 			_mini[i].terrainFrameX, _mini[i].terrainFrameY);
 
 

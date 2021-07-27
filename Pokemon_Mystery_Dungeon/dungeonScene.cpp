@@ -37,6 +37,8 @@ void dungeonScene::release()
 
 void dungeonScene::update()
 {
+	TILEMANAGER->setPlayerX(_player->getX());
+	TILEMANAGER->setPlayerY(_player->getY());
 	TILEMANAGER->update();
 
 	if (DIALOGMANAGER->getPrint())
