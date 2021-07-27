@@ -83,6 +83,7 @@ void User::controlKey()
 		useSkill(-1);
 
 	if (KEYMANAGER->isOnceKeyDown(KEY_Y)) {
+		SOUNDMANAGER->play("Option");
 		UIMANAGER->changeDownMenu("mainMenu");
 		UIMANAGER->setOpen(true);
 	}

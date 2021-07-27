@@ -36,15 +36,27 @@ HRESULT SkillMenu::init()
 
 void SkillMenu::release()
 {
+	SOUNDMANAGER->stop("Index");
+	SOUNDMANAGER->stop("Select");
+	SOUNDMANAGER->stop("Cancel");
 }
 
 void SkillMenu::update()
 {
-	if (KEYMANAGER->isOnceKeyDown(KEY_UP)) minusIndex();
-	if (KEYMANAGER->isOnceKeyDown(KEY_DOWN)) plusIndex();
+	if (KEYMANAGER->isOnceKeyDown(KEY_UP))
+	{
+		SOUNDMANAGER->play("Index");
+		minusIndex();
+	}
+	if (KEYMANAGER->isOnceKeyDown(KEY_DOWN))
+	{
+		SOUNDMANAGER->play("Index");
+		plusIndex();
+	}
 
 	if (KEYMANAGER->isOnceKeyDown(KEY_B))
 	{
+		SOUNDMANAGER->play("Cancel");
 		if (_hidden) _hidden = false;
 
 		else
@@ -55,6 +67,7 @@ void SkillMenu::update()
 
 	if (KEYMANAGER->isOnceKeyDown(KEY_A))
 	{
+		SOUNDMANAGER->play("Select");
 		if (_hidden)
 		{
 			if (_index2 == SKILL_SELECTMENU_OPTION_USE)

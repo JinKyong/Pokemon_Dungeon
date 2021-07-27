@@ -37,6 +37,7 @@ HRESULT Player::initXY(float x, float y)
 void Player::release()
 {
 	SOUNDMANAGER->stop("LevelUp");
+	SOUNDMANAGER->stop("Option");
 }
 
 void Player::update()

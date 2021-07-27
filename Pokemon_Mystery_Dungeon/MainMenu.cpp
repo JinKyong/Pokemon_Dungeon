@@ -24,18 +24,24 @@ HRESULT MainMenu::init()
 
 void MainMenu::release()
 {
+	SOUNDMANAGER->stop("Index");
+	SOUNDMANAGER->stop("Select");
+	SOUNDMANAGER->stop("Cancel");
 }
 
 void MainMenu::update()
 {
 	if (KEYMANAGER->isOnceKeyDown(KEY_DOWN)) {
+		SOUNDMANAGER->play("Index");
 		_index = (_index + 1) % END_MAINMENU_OPTION;
 	}
 	else if (KEYMANAGER->isOnceKeyDown(KEY_UP)) {
+		SOUNDMANAGER->play("Index");
 		_index = (_index - 1 + END_MAINMENU_OPTION) % END_MAINMENU_OPTION;
 	}
 
 	if (KEYMANAGER->isOnceKeyDown(KEY_A)) {
+		SOUNDMANAGER->play("Select");
 		if (_index == MAINMENU_OPTION_SKILL)
 			UIMANAGER->changeDownMenu("skillMenu");
 		else if (_index == MAINMENU_OPTION_INVENTORY)
@@ -43,6 +49,7 @@ void MainMenu::update()
 	}
 
 	if (KEYMANAGER->isOnceKeyDown(KEY_B)) {
+		SOUNDMANAGER->play("Cancel");
 		UIMANAGER->changeDownMenu("logMenu");
 		UIMANAGER->setOpen(false);
 	}

@@ -29,17 +29,28 @@ HRESULT InvenMenu::init()
 
 void InvenMenu::release()
 {
+	SOUNDMANAGER->stop("Index");
+	SOUNDMANAGER->stop("Cancel");
 }
 
 void InvenMenu::update()
 {
-	if (KEYMANAGER->isOnceKeyDown(KEY_UP)) minusIndex();
-	if (KEYMANAGER->isOnceKeyDown(KEY_DOWN)) plusIndex();
+	if (KEYMANAGER->isOnceKeyDown(KEY_UP))
+	{
+		SOUNDMANAGER->play("Index");
+		minusIndex();
+	}
+	if (KEYMANAGER->isOnceKeyDown(KEY_DOWN))
+	{
+		SOUNDMANAGER->play("Index");
+		plusIndex();
+	}
 	//if (KEYMANAGER->isOnceKeyDown(KEY_LEFT)) leftIndex();
 	//if (KEYMANAGER->isOnceKeyDown(KEY_RIGHT)) rightIndex();
 
 	if (KEYMANAGER->isOnceKeyDown(KEY_B))
 	{
+		SOUNDMANAGER->play("Cancel");
 		if (_hidden) _hidden = false;
 		else
 		{

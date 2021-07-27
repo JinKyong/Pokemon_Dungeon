@@ -40,6 +40,7 @@ HRESULT dungeonSelectScene::init(Player * player)
 void dungeonSelectScene::release()
 {
 	SOUNDMANAGER->stop("select");
+	SOUNDMANAGER->stop("Select");
 }
 
 void dungeonSelectScene::update()
@@ -80,6 +81,7 @@ void dungeonSelectScene::render()
 void dungeonSelectScene::changeScene()
 {
 	if (KEYMANAGER->isOnceKeyDown(KEY_A)) {
+		SOUNDMANAGER->play("Select");
 		RECT tmp;
 		if (IntersectRect(&tmp, &_d0, &_selector))
 		{

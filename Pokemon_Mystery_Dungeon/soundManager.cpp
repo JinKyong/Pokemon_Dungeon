@@ -61,7 +61,8 @@ void soundManager::registerSound()
 
 	addSound("Index", "sound/index.mp3", false, false);						//선택창 이동
 	addSound("Select", "sound/select.mp3", false, false);					//선택
-	addSound("Cancle", "sound/cancle.mp3", false, false);					//취소
+	addSound("Cancel", "sound/cancel.mp3", false, false);					//취소
+	addSound("Option", "sound/option.mp3", false, false);					//옵션창(UI)
 
 	addSound("FireBlast", "sound/FireBlast.mp3", false, false);
 	addSound("Gust", "sound/Gust.mp3", false, false);
