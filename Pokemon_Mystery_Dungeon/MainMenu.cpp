@@ -24,9 +24,6 @@ HRESULT MainMenu::init()
 
 void MainMenu::release()
 {
-	SOUNDMANAGER->stop("Index");
-	SOUNDMANAGER->stop("Select");
-	SOUNDMANAGER->stop("Cancel");
 }
 
 void MainMenu::update()

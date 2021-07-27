@@ -55,6 +55,7 @@ void playGround::update()
 	}
 
 	SCENEMANAGER->update();
+	SOUNDMANAGER->update();
 }
 
 

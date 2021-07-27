@@ -31,7 +31,7 @@ HRESULT dungeonScene::init(Player * player)
 
 void dungeonScene::release()
 {
-	TILEMANAGER->release();
+	//TILEMANAGER->release();
 	TURNMANAGER->release();
 }
 
@@ -77,14 +77,16 @@ void dungeonScene::changeScene()
 	if (CAMERAMANAGER->getAlpha() == 1.0) {
 		if ((*TURNMANAGER->getAllPlayer())[0]->getPlayerType() != PLAYER_TYPE_USER) {
 			TILEMANAGER->stopBGM();
-			SCENEMANAGER->changeScene("main");
+			TILEMANAGER->release();
 			DIALOGMANAGER->release();
+			SCENEMANAGER->changeScene("main");
 		}
 
 		else if (TILEMANAGER->getFloor() == 5) {
 			TILEMANAGER->stopBGM();
-			SCENEMANAGER->changeScene("result");
+			TILEMANAGER->release();
 			DIALOGMANAGER->release();
+			SCENEMANAGER->changeScene("result");
 		}
 
 		else

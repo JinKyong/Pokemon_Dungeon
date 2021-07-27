@@ -41,7 +41,6 @@ HRESULT dungeonSelectScene::init(Player * player)
 void dungeonSelectScene::release()
 {
 	SOUNDMANAGER->stop("select");
-	SOUNDMANAGER->stop("Select");
 }
 
 void dungeonSelectScene::update()
