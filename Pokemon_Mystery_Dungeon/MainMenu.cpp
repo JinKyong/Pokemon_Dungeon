@@ -17,6 +17,8 @@ HRESULT MainMenu::init()
 
 	_index = 0;
 
+	_rc = CAMERAMANAGER->getScreen();
+
 	return S_OK;
 }
 
@@ -69,8 +71,7 @@ void MainMenu::render()
 
 void MainMenu::printTextLeft()
 {
-	D2D1_RECT_F rc = CAMERAMANAGER->getScreen();
-	D2D1_RECT_F dest = dRectMake(rc.left + _tuningX + TILEWIDTH, rc.top + _tuningY + TILEHEIGHT / 2,
+	D2D1_RECT_F dest = dRectMake(_rc.left + _tuningX + TILEWIDTH, _rc.top + _tuningY + TILEHEIGHT / 2,
 		TILEWIDTH * 2, TILEHEIGHT);
 
 	//È­»ìÇ¥
@@ -86,12 +87,28 @@ void MainMenu::printTextLeft()
 
 void MainMenu::printTextRight()
 {
-	D2D1_RECT_F rc = CAMERAMANAGER->getScreen();
-	D2D1_RECT_F dest2 = dRectMakeCenter(rc.right - 225, rc.top + 125, 200, 200);
+	
+	D2D1_RECT_F dest2 = dRectMakeCenter(_rc.right - 225, _rc.top + 125, 200, 200);
 	
 	DTDMANAGER->printText(TILEMANAGER->getDungeonName().c_str(), dest2, 25, true);
 }
 
 void MainMenu::printTextDown()
 {
+	D2D1_RECT_F downDest = dRectMake(_rc.left + _tuningX + TILEWIDTH + TILEWIDTH / 2, _rc.top + 5 + _tuningY + 10 + TILEHEIGHT * 8, TILEWIDTH * 10, TILEHEIGHT);
+	D2D1_RECT_F downDest2 = dRectMake(_rc.left + _tuningX + TILEWIDTH * 7, _rc.top + 5 + _tuningY + 10 + TILEHEIGHT * 8, TILEWIDTH * 10, TILEHEIGHT);
+
+	DTDMANAGER->printText((*TURNMANAGER->getAllPlayer())[0]->getPokemon()->getName().c_str(), downDest, 25);	   
+
+
+	DTDMANAGER->printText(L"¹è: ", downDest2, 25);
+	downDest2.top += 30;
+	downDest2.bottom += 30;
+	DTDMANAGER->printText(L"µ·: ", downDest2, 25);
+	downDest2.top += 30;
+	downDest2.bottom += 30;
+	DTDMANAGER->printText(L"³¯¾¾: ", downDest2, 25);
+	downDest2.top += 30;
+	downDest2.bottom += 30;
+	DTDMANAGER->printText(L"½Ã°£: ", downDest2, 25);
 }

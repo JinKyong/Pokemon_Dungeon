@@ -16,6 +16,8 @@ private:
 	bool _opacity;
 	int _count;
 
+	D2D1_RECT_F _rc;
+
 public:
 	virtual HRESULT init();
 	virtual void release();

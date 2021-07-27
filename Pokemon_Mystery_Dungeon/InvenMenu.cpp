@@ -63,7 +63,7 @@ void InvenMenu::update()
 					if ((*_invItem)[_index]->getType() == ITEM_FOOD)
 					{
 						((*_invItem))[_index]->eatItem((*_invItem)[_index]->getValue());
-						//터질것같은 향기가 물씬 나는데
+						INVENTORYMANAGER->removeItem(_index);
 					}
 
 					else if ((*_invItem)[_index]->getType() == ITEM_THROW)
