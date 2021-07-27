@@ -48,7 +48,7 @@ public:
 
 private:
 	LPIMAGE_INFO	_imageInfo;
-	const WCHAR*	_fileName;		//파일 이름
+	LPWSTR			_fileName;		//파일 이름
 
 	//이미지 로드를 위한 객체
 	IWICImagingFactory		*_wicFactory;

@@ -59,14 +59,13 @@ void dungeonSelectScene::update()
 	
 	changeScene();
 
-	CAMERAMANAGER->updateScreen(WINSIZEX/2, WINSIZEY/2);
 	_selector = RectMake(_x, _y, 12, 12);
-	
 }
 
 void dungeonSelectScene::render()
 {
 	_background->render(0, 0);
+
 	DTDMANAGER->Rectangle(_d0);
 	DTDMANAGER->Rectangle(_d1);
 	DTDMANAGER->Rectangle(_d2);
@@ -85,8 +84,6 @@ void dungeonSelectScene::changeScene()
 		if (IntersectRect(&tmp, &_d0, &_selector))
 		{
 			TILEMANAGER->init(151, 151, 6);
-			//이름
-			//나오는 포켓몬 초기화하고
 			CAMERAMANAGER->setFade(FADEOUT);
 			_change = true;
 		}

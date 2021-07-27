@@ -23,7 +23,9 @@ HRESULT dImage::init(LPCWCHAR fileName, int width, int height)
 	_imageInfo->width = width;
 	_imageInfo->height = height;
 
-	_fileName = fileName;
+	int len = lstrlenW(fileName);
+	_fileName = new WCHAR[len + 1];
+	lstrcpyW(_fileName, fileName);
 
 	HRESULT hr;
 
@@ -78,7 +80,9 @@ HRESULT dImage::init(LPCWCHAR fileName, int width, int height, int frameX, int f
 	_imageInfo->frameWidth = width / frameX;
 	_imageInfo->frameHeight = height / frameY;
 
-	_fileName = fileName;
+	int len = lstrlenW(fileName);
+	_fileName = new WCHAR[len + 1];
+	lstrcpyW(_fileName, fileName);
 
 	HRESULT hr = E_FAIL;
 
