@@ -4,6 +4,7 @@
 #include "Enemy.h"
 #include "Apple.h"
 #include "Gummy.h"
+#include "Ribbon.h"
 #include "ThrowItem.h"
 
 HRESULT dungeonScene::init(Player * player)
@@ -25,6 +26,33 @@ HRESULT dungeonScene::init(Player * player)
 	UIMANAGER->changeDownMenu("logMenu");
 
 	COLLISIONMANAGER->init(this);
+
+	_itemManager = new ItemManager;
+	_itemManager->init();
+
+	Apple* apple;
+	apple = new Apple;
+	apple->init(25, 15, PI);
+
+	Gummy* jelly;
+	jelly = new Gummy;
+	jelly->init(26, 15, PI);
+
+	Ribbon* ribbon;
+	ribbon = new Ribbon;
+	ribbon->init(28, 15, PI);
+
+	ThrowItem* titem;
+	titem = new ThrowItem;
+	titem->init(27, 15, PI);
+
+	INVENTORYMANAGER->addItem(apple);
+	INVENTORYMANAGER->addItem(jelly);
+	INVENTORYMANAGER->addItem(titem);
+	INVENTORYMANAGER->addItem(ribbon);
+	INVENTORYMANAGER->addItem(jelly);
+	INVENTORYMANAGER->addItem(titem);
+	INVENTORYMANAGER->addItem(apple);
 
 	return S_OK;
 }
