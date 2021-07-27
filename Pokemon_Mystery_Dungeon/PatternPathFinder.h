@@ -16,6 +16,8 @@ public:
 	virtual void update();
 	virtual void render();
 
+	void detour();
+
 	vector<Atile*> getPathList() { return _pathList; }
 };
 
