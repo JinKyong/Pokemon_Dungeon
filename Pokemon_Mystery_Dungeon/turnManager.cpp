@@ -28,7 +28,7 @@ void turnManager::release()
 			++_playerIter;
 	}
 
-	_allPlayerList.clear();
+	//_allPlayerList.clear();
 }
 
 void turnManager::update()

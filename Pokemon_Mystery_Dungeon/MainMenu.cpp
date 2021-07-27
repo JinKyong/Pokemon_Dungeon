@@ -70,12 +70,11 @@ void MainMenu::render()
 void MainMenu::printTextLeft()
 {
 	D2D1_RECT_F rc = CAMERAMANAGER->getScreen();
-
 	D2D1_RECT_F dest = dRectMake(rc.left + _tuningX + TILEWIDTH, rc.top + _tuningY + TILEHEIGHT / 2,
 		TILEWIDTH * 2, TILEHEIGHT);
 
 	//화살표
-	_arrow->render(dest.left - 20, dest.top - 45 + _index * TILEHEIGHT, _opacity);
+	_arrow->render(dest.left - 20, dest.top + _index * TILEHEIGHT, _opacity);
 
 	DTDMANAGER->printText(L"기술", dest, 25);
 
@@ -87,7 +86,10 @@ void MainMenu::printTextLeft()
 
 void MainMenu::printTextRight()
 {
-
+	D2D1_RECT_F rc = CAMERAMANAGER->getScreen();
+	D2D1_RECT_F dest2 = dRectMakeCenter(rc.right - 225, rc.top + 125, 200, 200);
+	
+	DTDMANAGER->printText(TILEMANAGER->getDungeonName().c_str(), dest2, 25, true);
 }
 
 void MainMenu::printTextDown()

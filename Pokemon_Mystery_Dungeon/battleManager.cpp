@@ -137,7 +137,7 @@ float battleManager::damageCalculation(Player * player, Effect * effect)
 
 	
 
-	float finalDamage = (float)skillDamage / defense * RND->getFromIntTo(8.5, 10) * counter;
+	float finalDamage = (float)skillDamage / defense * RND->getFromIntTo(35, 50) * counter;
 	
 	//최소 데미지 1
 	if (0 < finalDamage && finalDamage < 1)

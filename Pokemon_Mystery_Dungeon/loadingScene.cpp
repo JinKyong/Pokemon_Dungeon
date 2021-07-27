@@ -40,16 +40,16 @@ void loadingScene::render()
 	D2D1_RECT_F screen = CAMERAMANAGER->getScreen();
 
 	D2D1_RECT_F dest = dRectMakeCenter(
-		(screen.left + screen.right) / 2, (screen.top + screen.bottom) / 2,
-		300, 300);
+		(screen.left + screen.right) / 2, (screen.top + screen.bottom) / 2 - 100,
+		300, 200);
 
 	WCHAR text[128];
 	swprintf_s(text, L"%s", TILEMANAGER->getDungeonName().c_str());
 	DTDMANAGER->printText(text, dest, 50, true);
 
 	dest = dRectMakeCenter(
-		(screen.left + screen.right) / 2, (screen.top + screen.bottom) / 2 + 50,
-		50, 50);
+		(screen.left + screen.right) / 2, (screen.top + screen.bottom) / 2,
+		200, 100);
 	//올라가는 던전이면
 	swprintf_s(text, L"%dF", TILEMANAGER->getFloor());
 	//내려가는 던전이면

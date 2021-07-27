@@ -31,6 +31,7 @@ HRESULT dungeonScene::init(Player * player)
 void dungeonScene::release()
 {
 	TILEMANAGER->release();
+	TURNMANAGER->release();
 }
 
 void dungeonScene::update()

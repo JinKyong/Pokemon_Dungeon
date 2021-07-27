@@ -46,7 +46,7 @@ HRESULT playGround::init()
 	SCENEMANAGER->addScene("main", new mainScene);
 	SCENEMANAGER->addScene("loading", new loadingScene);
 
-	SCENEMANAGER->changeScene("title");
+	SCENEMANAGER->changeScene("main");
 	BATTLEMANAGER->init();
 
 	_debug = false;

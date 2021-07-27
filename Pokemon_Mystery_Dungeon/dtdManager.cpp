@@ -262,6 +262,8 @@ void dtdManager::printText(LPCWCHAR text, float x, float y, int width, int heigh
 	}
 
 	_dBitRenderTarget->DrawTextA(text, lstrlenW(text), _dWCustomFormat, dRectMakeCenter(x, y, width, height), _tBrush);
+
+	SAFE_RELEASE2(_dWCustomFormat);
 }
 
 void dtdManager::printText(LPCWCHAR text, D2D1_RECT_F rc)
@@ -306,6 +308,8 @@ void dtdManager::printText(LPCWCHAR text, D2D1_RECT_F rc, float size, bool centr
 	}
 
 	_dBitRenderTarget->DrawTextA(text, lstrlenW(text), _dWCustomFormat, rc, _tBrush);
+
+	SAFE_RELEASE2(_dWCustomFormat);
 }
 
 void dtdManager::setRotate(float angle, float x, float y)
