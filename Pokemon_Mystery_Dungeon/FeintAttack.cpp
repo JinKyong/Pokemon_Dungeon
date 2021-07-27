@@ -25,6 +25,6 @@ void FeintAttack::useSkill()
 	Skill::useSkill();
 
 	_feintAttackEffect = new EF_FeintAttack;
-	_feintAttackEffect->init(_x, _y, _damage, _scale, _atkType, _type);
+	_feintAttackEffect->init(_x, _y, _finalDamage, _scale, _atkType, _type);
 	EFFECTMANAGER->addEffect(_feintAttackEffect);
 }

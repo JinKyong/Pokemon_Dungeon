@@ -25,6 +25,6 @@ void WakeUpSlap::useSkill()
 	Skill::useSkill();
 
 	_wakeUpSlapEffect = new EF_WakeUpSlap;
-	_wakeUpSlapEffect->init(_x, _y, _damage, _scale, _atkType, _type);
+	_wakeUpSlapEffect->init(_x, _y, _finalDamage, _scale, _atkType, _type);
 	EFFECTMANAGER->addEffect(_wakeUpSlapEffect);
 }

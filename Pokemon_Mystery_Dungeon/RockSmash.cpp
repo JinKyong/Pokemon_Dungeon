@@ -25,6 +25,6 @@ void RockSmash::useSkill()
 	Skill::useSkill();
 
 	_rockSmashEffect = new EF_RockSmash;
-	_rockSmashEffect->init(_x, _y, _damage, _scale, _atkType, _type);
+	_rockSmashEffect->init(_x, _y, _finalDamage, _scale, _atkType, _type);
 	EFFECTMANAGER->addEffect(_rockSmashEffect);
 }

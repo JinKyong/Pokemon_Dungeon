@@ -42,9 +42,9 @@ public:
 
 	//텍스트 출력(backBuffer)
 	void printText(LPCWCHAR text, float x, float y, int width, int height);
-	void printText(LPCWCHAR text, float x, float y, int width, int height, float size);
+	void printText(LPCWCHAR text, float x, float y, int width, int height, float size, bool central = false);
 	void printText(LPCWCHAR text, D2D1_RECT_F rc);
-	void printText(LPCWCHAR text, D2D1_RECT_F rc, float size);
+	void printText(LPCWCHAR text, D2D1_RECT_F rc, float size, bool central = false);
 
 
 	//각종 변환

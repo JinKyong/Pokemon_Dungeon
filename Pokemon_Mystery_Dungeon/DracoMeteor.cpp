@@ -25,6 +25,6 @@ void DracoMeteor::useSkill()
 	Skill::useSkill();
 
 	_dracoMeteorEffect = new EF_DracoMeteor;
-	_dracoMeteorEffect->init(_x, _y, _damage, _scale, _atkType, _type);
+	_dracoMeteorEffect->init(_x, _y, _finalDamage, _scale, _atkType, _type);
 	EFFECTMANAGER->addEffect(_dracoMeteorEffect);
 }

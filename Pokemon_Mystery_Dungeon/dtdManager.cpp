@@ -225,7 +225,7 @@ void dtdManager::printText(LPCWCHAR text, float x, float y, int width, int heigh
 	_dBitRenderTarget->DrawTextA(text, lstrlenW(text), _dWDefaultFormat, dRectMakeCenter(x, y, width, height), _tBrush);
 }
 
-void dtdManager::printText(LPCWCHAR text, float x, float y, int width, int height, float size)
+void dtdManager::printText(LPCWCHAR text, float x, float y, int width, int height, float size, bool central)
 {
 	if (_dWCustomFormat) {
 		if (_dWCustomFormat->GetFontSize() != size) {
@@ -254,6 +254,11 @@ void dtdManager::printText(LPCWCHAR text, float x, float y, int width, int heigh
 			L"ko-kr",
 			&_dWCustomFormat
 		);
+	}
+
+	if (central) {
+		_dWCustomFormat->SetTextAlignment(DWRITE_TEXT_ALIGNMENT_CENTER);
+		_dWCustomFormat->SetParagraphAlignment(DWRITE_PARAGRAPH_ALIGNMENT_CENTER);
 	}
 
 	_dBitRenderTarget->DrawTextA(text, lstrlenW(text), _dWCustomFormat, dRectMakeCenter(x, y, width, height), _tBrush);
@@ -264,7 +269,7 @@ void dtdManager::printText(LPCWCHAR text, D2D1_RECT_F rc)
 	_dBitRenderTarget->DrawTextA(text, lstrlenW(text), _dWDefaultFormat, rc, _tBrush);
 }
 
-void dtdManager::printText(LPCWCHAR text, D2D1_RECT_F rc, float size)
+void dtdManager::printText(LPCWCHAR text, D2D1_RECT_F rc, float size, bool central)
 {
 	if (_dWCustomFormat) {
 		if (_dWCustomFormat->GetFontSize() != size) {
@@ -293,6 +298,11 @@ void dtdManager::printText(LPCWCHAR text, D2D1_RECT_F rc, float size)
 			L"ko-kr",
 			&_dWCustomFormat
 		);
+	}
+	
+	if (central) {
+		_dWCustomFormat->SetTextAlignment(DWRITE_TEXT_ALIGNMENT_CENTER);
+		_dWCustomFormat->SetParagraphAlignment(DWRITE_PARAGRAPH_ALIGNMENT_CENTER);
 	}
 
 	_dBitRenderTarget->DrawTextA(text, lstrlenW(text), _dWCustomFormat, rc, _tBrush);

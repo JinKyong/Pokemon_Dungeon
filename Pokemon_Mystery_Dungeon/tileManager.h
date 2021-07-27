@@ -108,16 +108,14 @@ public:
 	int getHeight() { return _height; }
 	int getType() { return _type; }
 	int getFloor() { return _floor; }
+	wstring getDungeonName() { return _dungeonName; }
 	int getPlayerX() { return _playerX;}
 	int getPlayerY() { return _playerY; }
 	
-	//여기서부터 주석위까지 지울것들
 	vector<int> getEnemyList() { return _enemyList; }
 	int getBoss() { return _bossPokemon; }
 	int getMinLevel() { return _minLevel; }
 	int getMaxLevel() { return _maxLevel; }
-
-	//int getRange() { return _range; }
 
 	char getChar(int x, int y) { return _vChar[x + y * _width]; }
 

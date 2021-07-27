@@ -25,6 +25,6 @@ void TriAttack::useSkill()
 	Skill::useSkill();
 
 	_triAttackEffect = new EF_TriAttack;
-	_triAttackEffect->init(_x, _y, _damage, _scale, _atkType, _type);
+	_triAttackEffect->init(_x, _y, _finalDamage, _scale, _atkType, _type);
 	EFFECTMANAGER->addEffect(_triAttackEffect);
 }

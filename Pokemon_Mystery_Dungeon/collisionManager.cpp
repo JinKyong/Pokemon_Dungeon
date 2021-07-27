@@ -165,6 +165,8 @@ void collisionManager::playerWithItem(Player* player)
 }
 void collisionManager::playerWithObject(Player * player)
 {
+	if (player->getPlayerType() != PLAYER_TYPE_USER) return;
+
 	int x = player->getX();
 	int y = player->getY();
 
