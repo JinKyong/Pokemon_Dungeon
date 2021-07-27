@@ -6,7 +6,8 @@ HRESULT dungeonSelectScene::init(Player * player)
 	_width = 11;
 	_height = 7;
 
-	CAMERAMANAGER->setBackScreenSize(TILEWIDTH*_width, TILEHEIGHT*_height);
+	CAMERAMANAGER->setBackScreenSize(TILEWIDTH * _width, TILEHEIGHT * _height);
+	CAMERAMANAGER->updateScreen(0, 0);
 	_background = IMAGEMANAGER->addDImage("dungeonSelect", L"img/map/dungeonmap.png", 528, 336);
 
 	_x = 0;
@@ -40,7 +41,6 @@ HRESULT dungeonSelectScene::init(Player * player)
 void dungeonSelectScene::release()
 {
 	SOUNDMANAGER->stop("select");
-	SOUNDMANAGER->stop("Select");
 }
 
 void dungeonSelectScene::update()

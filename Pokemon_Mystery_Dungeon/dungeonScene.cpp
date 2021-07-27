@@ -4,6 +4,7 @@
 #include "Enemy.h"
 #include "Apple.h"
 #include "Gummy.h"
+#include "Ribbon.h"
 #include "ThrowItem.h"
 
 HRESULT dungeonScene::init(Player * player)
@@ -26,12 +27,39 @@ HRESULT dungeonScene::init(Player * player)
 
 	COLLISIONMANAGER->init(this);
 
+	_itemManager = new ItemManager;
+	_itemManager->init();
+
+	Apple* apple;
+	apple = new Apple;
+	apple->init(25, 15, PI);
+
+	Gummy* jelly;
+	jelly = new Gummy;
+	jelly->init(26, 15, PI);
+
+	Ribbon* ribbon;
+	ribbon = new Ribbon;
+	ribbon->init(28, 15, PI);
+
+	ThrowItem* titem;
+	titem = new ThrowItem;
+	titem->init(27, 15, PI);
+
+	INVENTORYMANAGER->addItem(apple);
+	INVENTORYMANAGER->addItem(jelly);
+	INVENTORYMANAGER->addItem(titem);
+	INVENTORYMANAGER->addItem(ribbon);
+	INVENTORYMANAGER->addItem(jelly);
+	INVENTORYMANAGER->addItem(titem);
+	INVENTORYMANAGER->addItem(apple);
+
 	return S_OK;
 }
 
 void dungeonScene::release()
 {
-	TILEMANAGER->release();
+	//TILEMANAGER->release();
 	TURNMANAGER->release();
 }
 
@@ -77,14 +105,16 @@ void dungeonScene::changeScene()
 	if (CAMERAMANAGER->getAlpha() == 1.0) {
 		if ((*TURNMANAGER->getAllPlayer())[0]->getPlayerType() != PLAYER_TYPE_USER) {
 			TILEMANAGER->stopBGM();
-			SCENEMANAGER->changeScene("main");
+			TILEMANAGER->release();
 			DIALOGMANAGER->release();
+			SCENEMANAGER->changeScene("main");
 		}
 
 		else if (TILEMANAGER->getFloor() == 5) {
 			TILEMANAGER->stopBGM();
-			SCENEMANAGER->changeScene("result");
+			TILEMANAGER->release();
 			DIALOGMANAGER->release();
+			SCENEMANAGER->changeScene("result");
 		}
 
 		else

@@ -29,8 +29,6 @@ HRESULT InvenMenu::init()
 
 void InvenMenu::release()
 {
-	SOUNDMANAGER->stop("Index");
-	SOUNDMANAGER->stop("Cancel");
 }
 
 void InvenMenu::update()
@@ -65,7 +63,8 @@ void InvenMenu::update()
 		{
 			if ((*_invItem)[_index]->getType() == ITEM_HOLD)
 			{
-				if (_index2 == INVENMENU_GIVE_OPTION_BACK) _hidden = false;
+				if (_index2 == INVENMENU_GIVE_OPTION_DUMP) INVENTORYMANAGER->removeItem(_index);
+				if (_index2 == INVENMENU_GIVE_OPTION_BACK) _hidden = false;	
 			}
 			else
 			{
@@ -81,6 +80,11 @@ void InvenMenu::update()
 					{
 
 					}
+				}
+
+				if (_index2 == INVENMENU_OPTION_DUMP)
+				{
+					INVENTORYMANAGER->removeItem(_index);
 				}
 
 				if (_index2 == INVENMENU_OPTION_BACK) _hidden = false;

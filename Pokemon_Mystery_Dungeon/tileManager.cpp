@@ -19,7 +19,7 @@ HRESULT tileManager::init()
 	dungeon(_width, _height);
 	//생성된 맵 -> 타일로 변환
 	setup();
-	minimap();
+
 	return S_OK;
 }
 
@@ -152,17 +152,18 @@ HRESULT tileManager::init(int width, int height, int type)
 	}
 
 	_floor = 0;
+
 	return S_OK;
 }
 
 void tileManager::release()
 {
-	//vector<tagTile*>::iterator tiles = _vTile.begin();
-	//
-	//for (; tiles != _vTile.end();) {
-	//	SAFE_DELETE(*tiles);
-	//	tiles = _vTile.erase(tiles);
-	//}
+	vector<tagTile*>::iterator tiles = _vTile.begin();
+	
+	for (; tiles != _vTile.end();) {
+		SAFE_DELETE(*tiles);
+		tiles = _vTile.erase(tiles);
+	}
 
 	_vTile.clear();
 }
@@ -185,23 +186,6 @@ void tileManager::update()
 		_initY = 0;
 	if (_endY >= _height)
 		_endY = _height - 1;
-	for (int i = 0; i < _width*_height; i++)
-	{
-		if ((_mini[i].terrainFrameX == 0 && _mini[i].terrainFrameY == 0) ||
-			(_mini[i].terrainFrameX == 1 && _mini[i].terrainFrameY == 0) ||
-			(_mini[i].terrainFrameX == 2 && _mini[i].terrainFrameY == 0) ||
-			(_mini[i].terrainFrameX == 0 && _mini[i].terrainFrameY == 1) ||
-			(_mini[i].terrainFrameX == 1 && _mini[i].terrainFrameY == 1) ||
-			(_mini[i].terrainFrameX == 2 && _mini[i].terrainFrameY == 1) ||
-			(_mini[i].terrainFrameX == 0 && _mini[i].terrainFrameY == 2) ||
-			(_mini[i].terrainFrameX == 1 && _mini[i].terrainFrameY == 2) ||
-			(_mini[i].terrainFrameX == 2 && _mini[i].terrainFrameY == 2)) {
-			_mini[i].terrainFrameX = 22; _mini[i].terrainFrameY = 0;
-		}
-		if (_mini[i].rc.left == (_playerX * 8) && _mini[i].rc.top == (_playerY * 8)) {
-			_mini[i].terrainFrameX = 0; _mini[i].terrainFrameY = 0;
-		}
-	}
 }
 
 void tileManager::render()
@@ -232,20 +216,10 @@ void tileManager::render()
 			if (PRINTMANAGER->isDebug())
 				DTDMANAGER->Rectangle(_vTile[index]->rc);
 		}
-	D2D1_RECT_F rc = CAMERAMANAGER->getScreen();
+
 	//미니맵(이거 키면 (진경 컴퓨터 기준)렉 걸림)
 	if (PRINTMANAGER->isDebug())
-	
-	
-	for (int i = 0; i < _width * _height; ++i)
-	{
-		_minibase->frameRender(
-			rc.left + (_mini[i].rc.left / 2), rc.top + (_mini[i].rc.top / 2),
-			_mini[i].terrainFrameX, _mini[i].terrainFrameY);
-		
-	
-	}
-
+		minimap();
 }
 void tileManager::maprender()
 {
@@ -263,34 +237,34 @@ void tileManager::maprender()
 			_vTile[i]->rc.left, _vTile[i]->rc.top,
 			_vTile[i]->objFrameX, _vTile[i]->objFrameY);
 	}
-	//if (PRINTMANAGER->isDebug())
-	//	_minibase->frameRender(
-	//		rc.left + (_mini[i].rc.left / 2), rc.top + (_mini[i].rc.top / 2),
-	//		_mini[i].terrainFrameX, _mini[i].terrainFrameY);
+	if (PRINTMANAGER->isDebug())
+		minimap();
 }
 void tileManager::setup()
 {
 	//타일 rect생성해서 넣어주고
-	for (int i = 0; i < _height; ++i)
-	{
-		for (int j = 0; j < _width; ++j)
+	if (_vTile.size() == 0) {
+		for (int i = 0; i < _height; ++i)
 		{
-			PTILE Tile;
-			Tile = new TILE;
-			SetRect(&Tile->rc,
-				j * TILESIZE,
-				i * TILESIZE,
-				j * TILESIZE + TILESIZE,
-				i * TILESIZE + TILESIZE);
-			Tile->x = j;
-			Tile->y = i;
-			_vTile.push_back(Tile);
+			for (int j = 0; j < _width; ++j)
+			{
+				PTILE Tile;
+				Tile = new TILE;
+				SetRect(&Tile->rc,
+					j * TILESIZE,
+					i * TILESIZE,
+					j * TILESIZE + TILESIZE,
+					i * TILESIZE + TILESIZE);
+				Tile->x = j;
+				Tile->y = i;
+				_vTile.push_back(Tile);
 
-			SetRect(&_mini[i*_width + j].rc,
-				j * (TILESIZE / 6),
-				i * (TILESIZE / 6),
-				j * (TILESIZE / 6) + (TILESIZE / 6),
-				i * (TILESIZE / 6) + (TILESIZE / 6));
+				SetRect(&_mini[i*_width + j].rc,
+					j * (TILESIZE / 6),
+					i * (TILESIZE / 6),
+					j * (TILESIZE / 6) + (TILESIZE / 6),
+					i * (TILESIZE / 6) + (TILESIZE / 6));
+			}
 		}
 	}
 
@@ -862,41 +836,25 @@ void tileManager::minimap()
 		else if (_mini[i].terrainFrameX == 11 && _mini[i].terrainFrameY == 1)
 		{_mini[i].terrainFrameX = 13; _mini[i].terrainFrameY = 0;}
 
-		else if (_mini[i].terrainFrameX == 6 && _mini[i].terrainFrameY == 0) { _mini[i].terrainFrameX = 14; _mini[i].terrainFrameY = 0; }
+		else if ((_mini[i].terrainFrameX == 6 && _mini[i].terrainFrameY == 0)) { _mini[i].terrainFrameX = 14; _mini[i].terrainFrameY = 0; }
 		
-		else if (_mini[i].terrainFrameX == 8 && _mini[i].terrainFrameY == 0) { _mini[i].terrainFrameX = 16; _mini[i].terrainFrameY = 0; }
+		else if ((_mini[i].terrainFrameX == 8 && _mini[i].terrainFrameY == 0)) { _mini[i].terrainFrameX = 16; _mini[i].terrainFrameY = 0; }
 		
-		else if (_mini[i].terrainFrameX == 6 && _mini[i].terrainFrameY == 2) { _mini[i].terrainFrameX = 18; _mini[i].terrainFrameY = 0; }
+		else if ((_mini[i].terrainFrameX == 6 && _mini[i].terrainFrameY == 2)) { _mini[i].terrainFrameX = 18; _mini[i].terrainFrameY = 0; }
 		
-		else if (_mini[i].terrainFrameX == 8 && _mini[i].terrainFrameY == 2) { _mini[i].terrainFrameX = 20; _mini[i].terrainFrameY = 0; }
+		else if ((_mini[i].terrainFrameX == 8 && _mini[i].terrainFrameY == 2)) { _mini[i].terrainFrameX = 20; _mini[i].terrainFrameY = 0; }
 				
-		
 		else {
 			_mini[i].terrainFrameX = 22; _mini[i].terrainFrameY = 0;
-			
-		}
-		if ((_mini[i].objFrameX == 0 && _mini[i].objFrameY == 0 && _mini[i].obj == OBJ_TRAP)) {
-		_mini[i].terrainFrameX = 8; _mini[i].terrainFrameY = 0;
 		}
 
-		else if ((_mini[i].objFrameX == 1 && _mini[i].objFrameY == 0 && _mini[i].obj == OBJ_TRAP1))
-		{
-		_mini[i].terrainFrameX = 8; _mini[i].terrainFrameY = 0;
+		if (_mini[i].rc.left == (_playerX * 8) && _mini[i].rc.top == (_playerY * 8)) {
+			_mini[i].terrainFrameX = 0; _mini[i].terrainFrameY = 0;
 		}
 
-		else if ((_mini[i].objFrameX == 13 && _mini[i].objFrameY == 0 && _mini[i].obj == OBJ_STAIR))
-		{
-		_mini[i].terrainFrameX = 8; _mini[i].terrainFrameY = 0;
-		}
-
-		else if ((_mini[i].objFrameX == 14 && _mini[i].objFrameY == 0 && _mini[i].obj == OBJ_STAIR))
-		{
-		_mini[i].terrainFrameX = 8; _mini[i].terrainFrameY = 0;
-		}
-		else
-		{
-			_mini[i].objFrameX = 22; _mini[i].objFrameY = 0;
-		}
+		_minibase->frameRender(
+			rc.left + (_mini[i].rc.left / 2), rc.top + (_mini[i].rc.top / 2),
+			_mini[i].terrainFrameX, _mini[i].terrainFrameY);
 	}
 }
 
