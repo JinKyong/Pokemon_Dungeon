@@ -101,14 +101,13 @@ bool collisionManager::playerWithPlayer(Player * player)
 		if ((*playerIter) == player) continue;
 
 		int destX, destY;
-		if ((*playerIter)->getPlayerState() == POKEMON_STATE_ATTACK ||
-			(*playerIter)->getPlayerState() == POKEMON_STATE_SATTACK) {
-			destX = (*playerIter)->getX();
-			destY = (*playerIter)->getY();
-		}
-		else {
+		if ((*playerIter)->getPlayerState() == POKEMON_STATE_MOVE) {
 			destX = (*playerIter)->getDestX();
 			destY = (*playerIter)->getDestY();
+		}
+		else {
+			destX = (*playerIter)->getX();
+			destY = (*playerIter)->getY();
 		}
 
 		int direct = player->getDirect();			//방향마다 다음타일 하나만 검사

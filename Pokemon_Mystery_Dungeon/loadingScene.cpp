@@ -77,7 +77,7 @@ DWORD loadingScene::threadFunction(LPVOID lpParameter)
 
 	//필요한 이미지랑 사운드 여기에서 추가하시면 됩니다
 
-	while (loadingHelper->_currentCount != LOADINGMAX)
+	while (loadingHelper->_currentCount <= LOADINGMAX)
 	{
 		if (!loadingHelper->_create) {
 			srand(time(NULL));
@@ -88,7 +88,7 @@ DWORD loadingScene::threadFunction(LPVOID lpParameter)
 		//이렇게 안하면 휙 지나감
 		Sleep(1);
 
-		loadingHelper->_currentCount++;
+		loadingHelper->_currentCount = loadingHelper->_currentCount + TIMEMANAGER->getElapsedTime();
 	}
 
 	return 0;

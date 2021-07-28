@@ -1,7 +1,7 @@
 #pragma once
 #include "Scene.h"
 
-#define LOADINGMAX	200
+#define LOADINGMAX	10.0f
 
 class loadingScene : public Scene
 {
@@ -10,7 +10,7 @@ private:
 
 public:
 
-	int _currentCount;
+	float _currentCount;
 	bool _create;
 
 	HRESULT init(Player *player);

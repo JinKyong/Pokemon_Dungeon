@@ -55,7 +55,7 @@ void PatternPathFinder::detour()
 		_player->setDestY(_player->getY() - 1);
 		_player->setDirect();
 		if (COLLISIONMANAGER->collisionInputPlayer(_player)) {
-			//_pathList.erase(_pathList.begin());
+			_pathList.erase(_pathList.begin());
 			_player->setPlayerState(POKEMON_STATE_MOVE);
 		}
 		else {
@@ -63,7 +63,7 @@ void PatternPathFinder::detour()
 			_player->setDestY(_player->getY() + 1);
 			_player->setDirect();
 			if (COLLISIONMANAGER->collisionInputPlayer(_player)) {
-				//_pathList.erase(_pathList.begin());
+				_pathList.erase(_pathList.begin());
 				_player->setPlayerState(POKEMON_STATE_MOVE);
 			}
 			else {
@@ -79,7 +79,7 @@ void PatternPathFinder::detour()
 		_player->setDestY(_player->getY() - 1);
 		_player->setDirect();
 		if (COLLISIONMANAGER->collisionInputPlayer(_player)) {
-			//_pathList.erase(_pathList.begin());
+			_pathList.erase(_pathList.begin());
 			_player->setPlayerState(POKEMON_STATE_MOVE);
 		}
 		else {
@@ -87,7 +87,7 @@ void PatternPathFinder::detour()
 			_player->setDestY(_player->getY() + 1);
 			_player->setDirect();
 			if (COLLISIONMANAGER->collisionInputPlayer(_player)) {
-				//_pathList.erase(_pathList.begin());
+				_pathList.erase(_pathList.begin());
 				_player->setPlayerState(POKEMON_STATE_MOVE);
 			}
 			else {
@@ -104,7 +104,7 @@ void PatternPathFinder::detour()
 		_player->setDestY(_player->getY() - 1);
 		_player->setDirect();
 		if (COLLISIONMANAGER->collisionInputPlayer(_player)) {
-			//_pathList.erase(_pathList.begin());
+			_pathList.erase(_pathList.begin());
 			_player->setPlayerState(POKEMON_STATE_MOVE);
 		}
 		else {
@@ -112,7 +112,7 @@ void PatternPathFinder::detour()
 			_player->setDestY(_player->getY() - 1);
 			_player->setDirect();
 			if (COLLISIONMANAGER->collisionInputPlayer(_player)) {
-				//_pathList.erase(_pathList.begin());
+				_pathList.erase(_pathList.begin());
 				_player->setPlayerState(POKEMON_STATE_MOVE);
 			}
 			else {
@@ -128,7 +128,7 @@ void PatternPathFinder::detour()
 		_player->setDestY(_player->getY() + 1);
 		_player->setDirect();
 		if (COLLISIONMANAGER->collisionInputPlayer(_player)) {
-			//_pathList.erase(_pathList.begin());
+			_pathList.erase(_pathList.begin());
 			_player->setPlayerState(POKEMON_STATE_MOVE);
 		}
 		else {
@@ -136,7 +136,7 @@ void PatternPathFinder::detour()
 			_player->setDestY(_player->getY() + 1);
 			_player->setDirect();
 			if (COLLISIONMANAGER->collisionInputPlayer(_player)) {
-				//_pathList.erase(_pathList.begin());
+				_pathList.erase(_pathList.begin());
 				_player->setPlayerState(POKEMON_STATE_MOVE);
 			}
 			else {
@@ -153,7 +153,7 @@ void PatternPathFinder::detour()
 		_player->setDestY(_player->getY() - 1);
 		_player->setDirect();
 		if (COLLISIONMANAGER->collisionInputPlayer(_player)) {
-			//_pathList.erase(_pathList.begin());
+			_pathList.erase(_pathList.begin());
 			_player->setPlayerState(POKEMON_STATE_MOVE);
 		}
 		else {
@@ -161,7 +161,7 @@ void PatternPathFinder::detour()
 			_player->setDestY(_player->getY());
 			_player->setDirect();
 			if (COLLISIONMANAGER->collisionInputPlayer(_player)) {
-				//_pathList.erase(_pathList.begin());
+				_pathList.erase(_pathList.begin());
 				_player->setPlayerState(POKEMON_STATE_MOVE);
 			}
 			else {
@@ -177,7 +177,7 @@ void PatternPathFinder::detour()
 		_player->setDestY(_player->getY() - 1);
 		_player->setDirect();
 		if (COLLISIONMANAGER->collisionInputPlayer(_player)) {
-			//_pathList.erase(_pathList.begin());
+			_pathList.erase(_pathList.begin());
 			_player->setPlayerState(POKEMON_STATE_MOVE);
 		}
 		else {
@@ -185,7 +185,7 @@ void PatternPathFinder::detour()
 			_player->setDestY(_player->getY());
 			_player->setDirect();
 			if (COLLISIONMANAGER->collisionInputPlayer(_player)) {
-				//_pathList.erase(_pathList.begin());
+				_pathList.erase(_pathList.begin());
 				_player->setPlayerState(POKEMON_STATE_MOVE);
 			}
 			else {
@@ -202,7 +202,7 @@ void PatternPathFinder::detour()
 		_player->setDestY(_player->getY());
 		_player->setDirect();
 		if (COLLISIONMANAGER->collisionInputPlayer(_player)) {
-			//_pathList.erase(_pathList.begin());
+			_pathList.erase(_pathList.begin());
 			_player->setPlayerState(POKEMON_STATE_MOVE);
 		}
 		else {
@@ -210,7 +210,7 @@ void PatternPathFinder::detour()
 			_player->setDestY(_player->getY() + 1);
 			_player->setDirect();
 			if (COLLISIONMANAGER->collisionInputPlayer(_player)) {
-				//_pathList.erase(_pathList.begin());
+				_pathList.erase(_pathList.begin());
 				_player->setPlayerState(POKEMON_STATE_MOVE);
 			}
 			else {
@@ -226,7 +226,7 @@ void PatternPathFinder::detour()
 		_player->setDestY(_player->getY());
 		_player->setDirect();
 		if (COLLISIONMANAGER->collisionInputPlayer(_player)) {
-			//_pathList.erase(_pathList.begin());
+			_pathList.erase(_pathList.begin());
 			_player->setPlayerState(POKEMON_STATE_MOVE);
 		}
 		else {
@@ -234,7 +234,7 @@ void PatternPathFinder::detour()
 			_player->setDestY(_player->getY() + 1);
 			_player->setDirect();
 			if (COLLISIONMANAGER->collisionInputPlayer(_player)) {
-				//_pathList.erase(_pathList.begin());
+				_pathList.erase(_pathList.begin());
 				_player->setPlayerState(POKEMON_STATE_MOVE);
 			}
 			else {
