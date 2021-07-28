@@ -3,6 +3,8 @@
 #include "Player.h"
 #include <vector>
 
+class ItemManager;
+
 class turnManager : public singletonBase<turnManager>
 {
 private:
@@ -21,8 +23,10 @@ private:
 	POKEMON_STATE _currentProgressTurn;
 	bool _pause;
 
+	ItemManager* _im;
 public:
 	HRESULT init();
+	HRESULT init(ItemManager* im);
 	void release();
 	void update();
 	void render();
