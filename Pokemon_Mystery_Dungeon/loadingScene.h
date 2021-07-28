@@ -1,7 +1,7 @@
 #pragma once
 #include "Scene.h"
 
-#define LOADINGMAX	500
+#define LOADINGMAX	200
 
 class loadingScene : public Scene
 {

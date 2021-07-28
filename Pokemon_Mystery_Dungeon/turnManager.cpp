@@ -15,18 +15,27 @@ HRESULT turnManager::init()
 
 void turnManager::release()
 {
-	playerIter _playerIter = _allPlayerList.begin();
+	playerIter player = _inputPlayerList.begin();
 
-	for (; _playerIter != _allPlayerList.end();)
+	for (; player != _inputPlayerList.end();)
+		player = _inputPlayerList.erase(player);
+
+
+	player = _allPlayerList.begin();
+
+	for (; player != _allPlayerList.end();)
 	{
-		if ((*_playerIter)->getPlayerType() == PLAYER_TYPE_ENEMY) {
-			(*_playerIter)->release();
-			SAFE_DELETE((*_playerIter));
-			_playerIter = _allPlayerList.erase(_playerIter);
+		if ((*player)->getPlayerType() == PLAYER_TYPE_ENEMY) {
+			(*player)->release();
+			SAFE_DELETE((*player));
+			player = _allPlayerList.erase(player);
 		}
 		else
-			++_playerIter;
+			++player;
 	}
+
+
+	_pause = false;
 
 	//_allPlayerList.clear();
 }

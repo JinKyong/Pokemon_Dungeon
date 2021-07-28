@@ -198,6 +198,7 @@ void collisionManager::playerWithObject(Player * player)
 		if ((*_allTile)[index]->obj == OBJ_STAIR)
 		{
 			//계단과 충돌시 로딩씬으로 넘어가기
+			TURNMANAGER->setPause(true);
 			CAMERAMANAGER->setFade(FADEOUT);
 		}
 	}

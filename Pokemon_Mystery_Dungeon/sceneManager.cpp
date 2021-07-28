@@ -26,6 +26,7 @@ HRESULT sceneManager::init()
 	SCENEMANAGER->addScene("main", new mainScene);
 	SCENEMANAGER->addScene("loading", new loadingScene);
 	SCENEMANAGER->addScene("result", new resultScene);
+	SCENEMANAGER->addScene("maptool", new mapToolScene);
 
 	return S_OK;
 }
