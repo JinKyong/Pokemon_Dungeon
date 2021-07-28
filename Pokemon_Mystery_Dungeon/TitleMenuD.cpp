@@ -15,10 +15,7 @@ HRESULT TitleMenuD::init()
 	_tuningX = 0;
 	_tuningY = 0;
 
-	_hidden = false;
-
-	//세이브파일이 없으면 -1
-	_maxIndex = END_TITLEMENU_OPTION;
+	checkSave();
 
 	_opacity = 1.0f;
 	_count = 0;
@@ -32,8 +29,6 @@ void TitleMenuD::release()
 
 void TitleMenuD::update()
 {
-	if (_hidden) return;
-
 	if (KEYMANAGER->isOnceKeyDown(KEY_DOWN)) {
 		SOUNDMANAGER->play("Index");
 		_index = (_index + 1) % _maxIndex;
@@ -60,8 +55,6 @@ void TitleMenuD::update()
 		}
 	}
 
-
-
 	_count++;
 	if (_count > 20) {
 		_opacity = !_opacity;
@@ -71,7 +64,7 @@ void TitleMenuD::update()
 
 void TitleMenuD::render()
 {
-	if (_hidden) return;
+	//if (_hidden) return;
 
 	DownMenu::render();
 
@@ -83,9 +76,38 @@ void TitleMenuD::render()
 
 	DTDMANAGER->printText(L"새로하기", dest, 30);
 
-	if (_maxIndex == END_TITLEMENU_OPTION) {
+	if (!_hidden) {
 		dest.top += 50;
 		dest.bottom += 50;
 		DTDMANAGER->printText(L"계속하기", dest, 30);
+	}
+}
+
+void TitleMenuD::checkSave()
+{
+	char dir[256];
+	char str[256];
+
+	//세이브파일이 없으면 -1//파일명 
+	sprintf_s(dir, "\\%s.ini", "data/saveData");
+
+	//경로얻기
+	GetCurrentDirectory(256, str);
+
+	//경로와 파일명 합치기
+	strncat_s(str, 256, dir, 254);
+
+	//파일 있는지 없는지 검사
+	//있다면
+	if (INVALID_FILE_ATTRIBUTES != GetFileAttributes(str)) {
+		_hidden = false;
+
+		_maxIndex = END_TITLEMENU_OPTION;
+	}
+	//없다면
+	else if (INVALID_FILE_ATTRIBUTES == GetFileAttributes(str)) {
+		_hidden = true;
+
+		_maxIndex = END_TITLEMENU_OPTION - 1;
 	}
 }
