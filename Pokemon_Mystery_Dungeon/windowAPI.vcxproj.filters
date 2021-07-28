@@ -40,9 +40,6 @@
     <ClCompile Include="Crobat.cpp">
       <Filter>playGround\Pokémon\No.10 ~ 19</Filter>
     </ClCompile>
-    <ClCompile Include="crossroadScene.cpp">
-      <Filter>playGround\Stage</Filter>
-    </ClCompile>
     <ClCompile Include="Darkrai.cpp">
       <Filter>playGround\Pokémon\No.10 ~ 19</Filter>
     </ClCompile>
@@ -114,9 +111,6 @@
     </ClCompile>
     <ClCompile Include="Golbat.cpp">
       <Filter>playGround\Pokémon\No.10 ~ 19</Filter>
-    </ClCompile>
-    <ClCompile Include="guildMapScene.cpp">
-      <Filter>playGround\Stage</Filter>
     </ClCompile>
     <ClCompile Include="Gummy.cpp">
       <Filter>playGround\Item</Filter>
@@ -265,12 +259,6 @@
     <ClCompile Include="Team.cpp">
       <Filter>playGround\Pokémon\Player</Filter>
     </ClCompile>
-    <ClCompile Include="testMapScene.cpp">
-      <Filter>playGround\Stage</Filter>
-    </ClCompile>
-    <ClCompile Include="testScene.cpp">
-      <Filter>playGround\Stage</Filter>
-    </ClCompile>
     <ClCompile Include="ThrowItem.cpp">
       <Filter>playGround\Item</Filter>
     </ClCompile>
@@ -288,9 +276,6 @@
     </ClCompile>
     <ClCompile Include="TMachine.cpp">
       <Filter>playGround\Item</Filter>
-    </ClCompile>
-    <ClCompile Include="townMapScene.cpp">
-      <Filter>playGround\Stage</Filter>
     </ClCompile>
     <ClCompile Include="turnManager.cpp">
       <Filter>playGround\Battle</Filter>
@@ -552,9 +537,6 @@
     <ClInclude Include="Crobat.h">
       <Filter>playGround\Pokémon\No.10 ~ 19</Filter>
     </ClInclude>
-    <ClInclude Include="crossroadScene.h">
-      <Filter>playGround\Stage</Filter>
-    </ClInclude>
     <ClInclude Include="Darkrai.h">
       <Filter>playGround\Pokémon\No.10 ~ 19</Filter>
     </ClInclude>
@@ -626,9 +608,6 @@
     </ClInclude>
     <ClInclude Include="Golbat.h">
       <Filter>playGround\Pokémon\No.10 ~ 19</Filter>
-    </ClInclude>
-    <ClInclude Include="guildMapScene.h">
-      <Filter>playGround\Stage</Filter>
     </ClInclude>
     <ClInclude Include="Gummy.h">
       <Filter>playGround\Item</Filter>
@@ -807,12 +786,6 @@
     <ClInclude Include="Team.h">
       <Filter>playGround\Pokémon\Player</Filter>
     </ClInclude>
-    <ClInclude Include="testMapScene.h">
-      <Filter>playGround\Stage</Filter>
-    </ClInclude>
-    <ClInclude Include="testScene.h">
-      <Filter>playGround\Stage</Filter>
-    </ClInclude>
     <ClInclude Include="ThrowItem.h">
       <Filter>playGround\Item</Filter>
     </ClInclude>
@@ -833,9 +806,6 @@
     </ClInclude>
     <ClInclude Include="TMachine.h">
       <Filter>playGround\Item</Filter>
-    </ClInclude>
-    <ClInclude Include="townMapScene.h">
-      <Filter>playGround\Stage</Filter>
     </ClInclude>
     <ClInclude Include="turnManager.h">
       <Filter>playGround\Battle</Filter>
@@ -1052,6 +1022,9 @@
     </ClInclude>
     <ClInclude Include="BlackMenu.h">
       <Filter>playGround\UI\Menu\UpMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneHeader.h">
+      <Filter>playGround\Stage\base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

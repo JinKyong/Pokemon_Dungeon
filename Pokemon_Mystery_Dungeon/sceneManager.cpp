@@ -2,13 +2,8 @@
 #include "sceneManager.h"
 #include "Player.h"
 #include "Scene.h"
-#include "bossMapScene.h"
-#include "dungeonSelectScene.h"
-#include "dungeonScene.h"
-#include "titleScene.h"
-#include "mainScene.h"
-#include "loadingScene.h"
-#include "resultScene.h"
+
+#include "SceneHeader.h"
 
 Player* sceneManager::_player = NULL;
 Scene* sceneManager::_currentScene = NULL;

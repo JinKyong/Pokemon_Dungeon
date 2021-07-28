@@ -162,7 +162,6 @@
     <ClInclude Include="collisionManager.h" />
     <ClInclude Include="Crobat.h" />
     <ClInclude Include="CrossChop.h" />
-    <ClInclude Include="crossroadScene.h" />
     <ClInclude Include="Darkrai.h" />
     <ClInclude Include="DefaultAttack.h" />
     <ClInclude Include="dialogManager.h" />
@@ -219,7 +218,6 @@
     <ClInclude Include="Giratina.h" />
     <ClInclude Include="Glass.h" />
     <ClInclude Include="Golbat.h" />
-    <ClInclude Include="guildMapScene.h" />
     <ClInclude Include="Gummy.h" />
     <ClInclude Include="Gust.h" />
     <ClInclude Include="Hariyama.h" />
@@ -278,6 +276,7 @@
     <ClInclude Include="RockSlide.h" />
     <ClInclude Include="RockSmash.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="SceneHeader.h" />
     <ClInclude Include="sceneManager.h" />
     <ClInclude Include="Scope.h" />
     <ClInclude Include="ShadowClaw.h" />
@@ -297,8 +296,6 @@
     <ClInclude Include="StunSpore.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Team.h" />
-    <ClInclude Include="testMapScene.h" />
-    <ClInclude Include="testScene.h" />
     <ClInclude Include="ThrowItem.h" />
     <ClInclude Include="ThunderFang.h" />
     <ClInclude Include="tileInfo.h" />
@@ -309,7 +306,6 @@
     <ClInclude Include="TitleMenuD.h" />
     <ClInclude Include="titleScene.h" />
     <ClInclude Include="TMachine.h" />
-    <ClInclude Include="townMapScene.h" />
     <ClInclude Include="TriAttack.h" />
     <ClInclude Include="turnManager.h" />
     <ClInclude Include="txtData.h" />
@@ -344,7 +340,6 @@
     <ClCompile Include="collisionManager.cpp" />
     <ClCompile Include="Crobat.cpp" />
     <ClCompile Include="CrossChop.cpp" />
-    <ClCompile Include="crossroadScene.cpp" />
     <ClCompile Include="Darkrai.cpp" />
     <ClCompile Include="DefaultAttack.cpp" />
     <ClCompile Include="dialogManager.cpp" />
@@ -402,7 +397,6 @@
     <ClCompile Include="Giratina.cpp" />
     <ClCompile Include="Glass.cpp" />
     <ClCompile Include="Golbat.cpp" />
-    <ClCompile Include="guildMapScene.cpp" />
     <ClCompile Include="Gummy.cpp" />
     <ClCompile Include="Gust.cpp" />
     <ClCompile Include="Hariyama.cpp" />
@@ -474,8 +468,6 @@
     <ClCompile Include="streamManager.cpp" />
     <ClCompile Include="StunSpore.cpp" />
     <ClCompile Include="Team.cpp" />
-    <ClCompile Include="testMapScene.cpp" />
-    <ClCompile Include="testScene.cpp" />
     <ClCompile Include="ThrowItem.cpp" />
     <ClCompile Include="ThunderFang.cpp" />
     <ClCompile Include="tileManager.cpp" />
@@ -485,7 +477,6 @@
     <ClCompile Include="TitleMenuD.cpp" />
     <ClCompile Include="titleScene.cpp" />
     <ClCompile Include="TMachine.cpp" />
-    <ClCompile Include="townMapScene.cpp" />
     <ClCompile Include="TriAttack.cpp" />
     <ClCompile Include="turnManager.cpp" />
     <ClCompile Include="txtData.cpp" />

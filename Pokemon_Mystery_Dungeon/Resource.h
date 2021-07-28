@@ -11,6 +11,7 @@
 #define IDM_EXIT				105
 #define IDI_WINDOWAPI			107
 #define IDI_SMALL				108
+#define IDI_GAMEICON			3238
 #define IDC_WINDOWAPI			109
 #define IDC_MYICON				2
 #ifndef IDC_STATIC
