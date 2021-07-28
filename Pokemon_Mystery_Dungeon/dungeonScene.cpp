@@ -19,16 +19,10 @@ HRESULT dungeonScene::init(Player * player)
 
 	TURNMANAGER->randomSetting();
 
-	_itemManager = new ItemManager;
-	_itemManager->init();
-
 	UIMANAGER->changeUpMenu("statusMenu");
 	UIMANAGER->changeDownMenu("logMenu");
 
 	COLLISIONMANAGER->init(this);
-
-	_itemManager = new ItemManager;
-	_itemManager->init();
 
 	Apple* apple;
 	apple = new Apple;
