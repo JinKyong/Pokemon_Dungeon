@@ -30,7 +30,7 @@ void txtData::loadGame(Player* player)
 	player->init(pokemon, level);
 
 	//경험치
-	int exp = _wtoi(loadDataString2(fileName, L"plaeyr", L"exp", 128));
+	int exp = _wtoi(loadDataString2(fileName, L"player", L"exp", 128));
 	player->setEXP(exp);
 
 	//기술목록
