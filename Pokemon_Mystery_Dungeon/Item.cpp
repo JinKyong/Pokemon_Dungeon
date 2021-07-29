@@ -13,6 +13,7 @@ void Item::eatItem(int value)
 	(*TURNMANAGER->getAllPlayer())[0]->setStarve((*TURNMANAGER->getAllPlayer())[0]->getStarve() + value);
 }
 
+/*
 void Item::throwItem(float x, float y, float angle)
 {
 	_x = _fireX = x;
@@ -29,3 +30,4 @@ void Item::itemMove()
 	_body = RectMakeCenter(_x * TILEWIDTH + TILEWIDTH / 2, _y * TILEHEIGHT + TILEHEIGHT / 2,
 		ITEMSIZE, ITEMSIZE);
 }
+*/

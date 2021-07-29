@@ -24,6 +24,7 @@ private:
 	bool _pause;
 
 	ItemManager* _im;
+
 public:
 	HRESULT init();
 	HRESULT init(ItemManager* im);
@@ -42,9 +43,6 @@ public:
 	void addInputPlayer(Player* player);
 
 	Player* getCurrentPlayer();
-
-
-
 
 	playerList* getAllPlayer() { return &_allPlayerList; }
 

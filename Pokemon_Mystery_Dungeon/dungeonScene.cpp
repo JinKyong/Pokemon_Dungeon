@@ -40,10 +40,6 @@ HRESULT dungeonScene::init(Player * player)
 	titem = new ThrowItem;
 	titem->init(27, 15, PI);
 
-	INVENTORYMANAGER->addItem(apple);
-	INVENTORYMANAGER->addItem(jelly);
-	INVENTORYMANAGER->addItem(titem);
-	INVENTORYMANAGER->addItem(ribbon);
 	INVENTORYMANAGER->addItem(titem);
 	INVENTORYMANAGER->addItem(apple);
 	INVENTORYMANAGER->addItem(jelly);

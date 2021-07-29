@@ -24,8 +24,12 @@ enum INVENMENU_GIVE_OPTION {
 class InvenMenu : public DownMenu
 {
 private:
-	vector<Item*>* _invItem;
 	vector<Item*>::iterator _viInvItem;
+	vector<Item*>* _invItem;
+
+	D2D1_RECT_F _rc;
+
+	Player* _player;
 
 	dImage* _back2;
 	dImage* _border2;

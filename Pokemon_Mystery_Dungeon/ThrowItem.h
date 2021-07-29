@@ -5,6 +5,7 @@ class ThrowItem : public Item
 {
 private:
 	int _throwNum;
+	Player* _player;
 
 public:
 	ThrowItem() {};
@@ -14,4 +15,7 @@ public:
 	virtual void release();
 	virtual void update();
 	virtual void render();
+
+	void throwItem(float x, float y, float angle);
+	void itemMove();
 };

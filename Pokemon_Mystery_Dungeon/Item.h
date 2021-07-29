@@ -49,8 +49,8 @@ public:
 	//Item* giveItem() { return this; }; //반환값이 아이템 포인터
 	
 	//throw
-	void throwItem(float x, float y, float angle);
-	void itemMove();
+	//void throwItem(float x, float y, float angle);
+	//void itemMove();
 
 
 

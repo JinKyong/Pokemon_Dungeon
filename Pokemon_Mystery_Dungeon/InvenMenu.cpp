@@ -23,6 +23,9 @@ HRESULT InvenMenu::init()
 	_index2 = 0;
 
 	_count = 0;
+	
+	_player = (*TURNMANAGER->getAllPlayer())[0];
+	_rc = CAMERAMANAGER->getScreen();
 
 	return S_OK;
 }
@@ -78,13 +81,10 @@ void InvenMenu::update()
 				{
 					if ((*_invItem)[_index]->getType() == ITEM_FOOD)
 					{
-						Player* player = (*TURNMANAGER->getAllPlayer())[0];
-
-						//배고픔 상태가 이상하죠 저도 알아요
-						if (player->getStarve() < 100) ((*_invItem))[_index]->eatItem((*_invItem)[_index]->getValue());
-						if (player->getStarve() >= 100)
+						if (_player->getStarve() < 100) ((*_invItem))[_index]->eatItem((*_invItem)[_index]->getValue());
+						if (_player->getStarve() >= 100)
 						{
-							player->setStarve(player->getStarve() + (*_invItem)[_index]->getValue());
+							_player->setStarve(100);
 						}
 
 						INVENTORYMANAGER->removeItem(_index);
@@ -95,7 +95,10 @@ void InvenMenu::update()
 
 					else if ((*_invItem)[_index]->getType() == ITEM_THROW)
 					{
-
+						INVENTORYMANAGER->removeItem(_index);
+						UIMANAGER->changeDownMenu("logMenu");
+						UIMANAGER->setOpen(false);
+						_hidden = false;
 					}
 				}
 
@@ -141,12 +144,13 @@ void InvenMenu::render()
 			if (_index2 == INVENMENU_OPTION_INFO) printTextDown();
 		}
 	}
+
+	printTextDown();
 }
 
 void InvenMenu::printTextLeft()
 {
-	D2D1_RECT_F rc = CAMERAMANAGER->getScreen();
-	D2D1_RECT_F dest = dRectMake(rc.left + _tuningX + TILEWIDTH, rc.top + _tuningY + TILEHEIGHT + TILEHEIGHT / 2,
+	D2D1_RECT_F dest = dRectMake(_rc.left + _tuningX + TILEWIDTH, _rc.top + _tuningY + TILEHEIGHT + TILEHEIGHT / 2,
 		TILEWIDTH * 10, TILEHEIGHT);
 
 	//화살표
@@ -167,12 +171,11 @@ void InvenMenu::printTextLeft()
 
 void InvenMenu::printTextRight()
 {
-	D2D1_RECT_F rc = CAMERAMANAGER->getScreen();
-	D2D1_RECT_F dest3 = dRectMake(rc.left + _tuningX + TILEWIDTH * 9 + 25, rc.top + _tuningY + 12,
+	D2D1_RECT_F dest3 = dRectMake(_rc.left + _tuningX + TILEWIDTH * 9 + 25, _rc.top + _tuningY + 12,
 		TILEWIDTH * 10, TILEHEIGHT);
 
-	_back2->render(rc.left + _tuningX, rc.top + _tuningY, 0.5);
-	_border2->render(rc.left + _tuningX, rc.top + _tuningY);
+	_back2->render(_rc.left + _tuningX, _rc.top + _tuningY, 0.5);
+	_border2->render(_rc.left + _tuningX, _rc.top + _tuningY);
 
 	if ((*_invItem)[_index]->getType() == ITEM_FOOD) DTDMANAGER->printText(L"먹는다", dest3, 25);
 	else if ((*_invItem)[_index]->getType() == ITEM_THROW) DTDMANAGER->printText(L"쏜다", dest3, 25);
@@ -200,12 +203,11 @@ void InvenMenu::printTextRight()
 
 void InvenMenu::printTextRight2()
 {
-	D2D1_RECT_F rc = CAMERAMANAGER->getScreen();
-	D2D1_RECT_F dest3 = dRectMake(rc.left + _tuningX + TILEWIDTH * 9 + 25, rc.top + _tuningY + 12,
+	D2D1_RECT_F dest3 = dRectMake(_rc.left + _tuningX + TILEWIDTH * 9 + 25, _rc.top + _tuningY + 12,
 		TILEWIDTH * 10, TILEHEIGHT);
 
-	_back3->render(rc.left + _tuningX, rc.top + _tuningY, 0.5);
-	_border3->render(rc.left + _tuningX, rc.top + _tuningY);	
+	_back3->render(_rc.left + _tuningX, _rc.top + _tuningY, 0.5);
+	_border3->render(_rc.left + _tuningX, _rc.top + _tuningY);	
 
 	DTDMANAGER->printText(L"건네준다", dest3, 25);
 
@@ -226,8 +228,7 @@ void InvenMenu::printTextRight2()
 
 void InvenMenu::printTextDown()
 {
-	D2D1_RECT_F rc = CAMERAMANAGER->getScreen();
-	D2D1_RECT_F dest2 = dRectMake(rc.left + _tuningX + TILEWIDTH / 2, rc.top + _tuningY + TILEHEIGHT * 9,
+	D2D1_RECT_F dest2 = dRectMake(_rc.left + _tuningX + TILEWIDTH / 2, _rc.top + _tuningY + TILEHEIGHT * 9,
 		TILEWIDTH * 10, TILEHEIGHT);
 
 	//아이템설명

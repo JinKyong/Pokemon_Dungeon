@@ -21,11 +21,15 @@ HRESULT Gummy::init(float x, float y, float angle)
 
 		_num = 2;
 
+		break;
+
 	case POKEMON_TYPE_FIGHTING:
 		_name = L"주황구미";
 		_gummyType = POKEMON_TYPE_FIGHTING;
 
 		_num = 3;
+
+		break;
 
 	case POKEMON_TYPE_ELECTRIC:
 		_name = L"노란구미";
@@ -33,11 +37,15 @@ HRESULT Gummy::init(float x, float y, float angle)
 
 		_num = 4;
 
+		break;
+
 	case POKEMON_TYPE_GRASS:
 		_name = L"새싹구미";
 		_gummyType = POKEMON_TYPE_GRASS;
 
 		_num = 5;
+
+		break;
 
 	case POKEMON_TYPE_BUG:
 		_name = L"초록구미";
@@ -45,11 +53,15 @@ HRESULT Gummy::init(float x, float y, float angle)
 
 		_num = 6;
 
+		break;
+
 	case POKEMON_TYPE_FLYING:
 		_name = L"하늘색구미";
 		_gummyType = POKEMON_TYPE_FLYING;
 
 		_num = 7;
+
+		break;
 
 	case POKEMON_TYPE_WATER:
 		_name = L"파란구미";
@@ -57,11 +69,15 @@ HRESULT Gummy::init(float x, float y, float angle)
 
 		_num = 8;
 
+		break;
+
 	case POKEMON_TYPE_DRAGON:
 		_name = L"감색구미";
 		_gummyType = POKEMON_TYPE_DRAGON;
 
 		_num = 9;
+
+		break;
 
 	case POKEMON_TYPE_GHOST:
 		_name = L"보라구미";
@@ -69,11 +85,15 @@ HRESULT Gummy::init(float x, float y, float angle)
 
 		_num = 10;
 
+		break;
+
 	case POKEMON_TYPE_POISON:
 		_name = L"분홍구미";
 		_gummyType = POKEMON_TYPE_POISON;
 
 		_num = 11;
+
+		break;
 
 	case POKEMON_TYPE_DARK:
 		_name = L"검정구미";
@@ -81,11 +101,15 @@ HRESULT Gummy::init(float x, float y, float angle)
 
 		_num = 12;
 
+		break;
+
 	case POKEMON_TYPE_GROUND:
 		_name = L"갈색구미";
 		_gummyType = POKEMON_TYPE_GROUND;
 
 		_num = 13;
+
+		break;
 
 	case POKEMON_TYPE_NORMAL:
 		_name = L"하얀구미";
@@ -94,11 +118,15 @@ HRESULT Gummy::init(float x, float y, float angle)
 
 		_num = 14;
 
+		break;
+
 	case POKEMON_TYPE_STEEL:
 		_name = L"은색구미";
 		_gummyType = POKEMON_TYPE_STEEL;
 
 		_num = 15;
+
+		break;
 
 	case POKEMON_TYPE_ROCK:
 		_name = L"회색구미";
@@ -106,17 +134,23 @@ HRESULT Gummy::init(float x, float y, float angle)
 
 		_num = 16;
 
+		break;
+
 	case POKEMON_TYPE_ICE:
 		_name = L"투명(255.0.255)구미";
 		_gummyType = POKEMON_TYPE_ICE;
 
 		_num = 17;
 
+		break;
+
 	case POKEMON_TYPE_PSYCHIC:
 		_name = L"금색구미";
 		_gummyType = POKEMON_TYPE_PSYCHIC;
 
 		_num = 18;
+
+		break;
 	}
 
 	return S_OK;
