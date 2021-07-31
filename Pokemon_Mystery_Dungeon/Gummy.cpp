@@ -15,7 +15,7 @@ HRESULT Gummy::init(float x, float y, float angle)
 
 	switch (_gummyNum)
 	{
-	case POKEMON_TYPE_FIRE:
+	case 0:
 		_name = L"빨간구미";
 		_gummyType = POKEMON_TYPE_FIRE;
 
@@ -23,7 +23,7 @@ HRESULT Gummy::init(float x, float y, float angle)
 
 		break;
 
-	case POKEMON_TYPE_FIGHTING:
+	case 1:
 		_name = L"주황구미";
 		_gummyType = POKEMON_TYPE_FIGHTING;
 
@@ -31,7 +31,7 @@ HRESULT Gummy::init(float x, float y, float angle)
 
 		break;
 
-	case POKEMON_TYPE_ELECTRIC:
+	case 2:
 		_name = L"노란구미";
 		_gummyType = POKEMON_TYPE_ELECTRIC;
 
@@ -39,7 +39,7 @@ HRESULT Gummy::init(float x, float y, float angle)
 
 		break;
 
-	case POKEMON_TYPE_GRASS:
+	case 3:
 		_name = L"새싹구미";
 		_gummyType = POKEMON_TYPE_GRASS;
 
@@ -47,7 +47,7 @@ HRESULT Gummy::init(float x, float y, float angle)
 
 		break;
 
-	case POKEMON_TYPE_BUG:
+	case 4:
 		_name = L"초록구미";
 		_gummyType = POKEMON_TYPE_BUG;
 
@@ -55,7 +55,7 @@ HRESULT Gummy::init(float x, float y, float angle)
 
 		break;
 
-	case POKEMON_TYPE_FLYING:
+	case 5:
 		_name = L"하늘색구미";
 		_gummyType = POKEMON_TYPE_FLYING;
 
@@ -63,7 +63,7 @@ HRESULT Gummy::init(float x, float y, float angle)
 
 		break;
 
-	case POKEMON_TYPE_WATER:
+	case 6:
 		_name = L"파란구미";
 		_gummyType = POKEMON_TYPE_WATER;
 
@@ -71,7 +71,7 @@ HRESULT Gummy::init(float x, float y, float angle)
 
 		break;
 
-	case POKEMON_TYPE_DRAGON:
+	case 7:
 		_name = L"감색구미";
 		_gummyType = POKEMON_TYPE_DRAGON;
 
@@ -79,7 +79,7 @@ HRESULT Gummy::init(float x, float y, float angle)
 
 		break;
 
-	case POKEMON_TYPE_GHOST:
+	case 8:
 		_name = L"보라구미";
 		_gummyType = POKEMON_TYPE_GHOST;
 
@@ -87,7 +87,7 @@ HRESULT Gummy::init(float x, float y, float angle)
 
 		break;
 
-	case POKEMON_TYPE_POISON:
+	case 9:
 		_name = L"분홍구미";
 		_gummyType = POKEMON_TYPE_POISON;
 
@@ -95,7 +95,7 @@ HRESULT Gummy::init(float x, float y, float angle)
 
 		break;
 
-	case POKEMON_TYPE_DARK:
+	case 10:
 		_name = L"검정구미";
 		_gummyType = POKEMON_TYPE_DARK;
 
@@ -103,7 +103,7 @@ HRESULT Gummy::init(float x, float y, float angle)
 
 		break;
 
-	case POKEMON_TYPE_GROUND:
+	case 11:
 		_name = L"갈색구미";
 		_gummyType = POKEMON_TYPE_GROUND;
 
@@ -111,7 +111,7 @@ HRESULT Gummy::init(float x, float y, float angle)
 
 		break;
 
-	case POKEMON_TYPE_NORMAL:
+	case 12:
 		_name = L"하얀구미";
 		_gummyType = POKEMON_TYPE_NORMAL;
 		_itemInfoLong = L"먹으면 배고픔이 약간 회복된다\n 탐험대의 동료에게 주면\n 지능이 올라간다\n 노말타입 포켓몬이\n 좋아하는 음식이다\n 던전 안에서 먹는것이\n 조금 더 유리하다!";
@@ -120,7 +120,7 @@ HRESULT Gummy::init(float x, float y, float angle)
 
 		break;
 
-	case POKEMON_TYPE_STEEL:
+	case 13:
 		_name = L"은색구미";
 		_gummyType = POKEMON_TYPE_STEEL;
 
@@ -128,7 +128,7 @@ HRESULT Gummy::init(float x, float y, float angle)
 
 		break;
 
-	case POKEMON_TYPE_ROCK:
+	case 14:
 		_name = L"회색구미";
 		_gummyType = POKEMON_TYPE_ROCK;
 
@@ -136,7 +136,7 @@ HRESULT Gummy::init(float x, float y, float angle)
 
 		break;
 
-	case POKEMON_TYPE_ICE:
+	case 15:
 		_name = L"투명(255.0.255)구미";
 		_gummyType = POKEMON_TYPE_ICE;
 
@@ -144,7 +144,7 @@ HRESULT Gummy::init(float x, float y, float angle)
 
 		break;
 
-	case POKEMON_TYPE_PSYCHIC:
+	case 16:
 		_name = L"금색구미";
 		_gummyType = POKEMON_TYPE_PSYCHIC;
 
