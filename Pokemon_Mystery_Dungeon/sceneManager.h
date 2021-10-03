@@ -19,10 +19,10 @@ private:
 
 	mapSceneList _mSceneList;
 
-public:
-	sceneManager();
-	~sceneManager();
+	sceneManager() {};
+	friend singletonBase<sceneManager>;
 
+public:
 	HRESULT init();
 	HRESULT init(Player* player);
 	void release();

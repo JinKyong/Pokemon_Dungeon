@@ -1,13 +1,8 @@
 #include "stdafx.h"
 #include "timeManager.h"
 
-
 timeManager::timeManager()
 	: _timer(NULL)
-{
-}
-
-timeManager::~timeManager()
 {
 }
 

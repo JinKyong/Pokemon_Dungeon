@@ -13,9 +13,10 @@ private:
 	video* _currentVideo;
 	video* _currentVideo2;
 
+	streamManager() {};
+	friend singletonBase<streamManager>;
+
 public:
-	streamManager();
-	~streamManager();
 	HRESULT init();
 	void release();
 

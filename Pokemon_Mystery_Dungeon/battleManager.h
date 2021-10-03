@@ -37,10 +37,10 @@ private:
 	float _counter[END_POKEMON_TYPE][END_POKEMON_TYPE];
 	int _test[5][5];
 
-public:
 	battleManager();
-	~battleManager();
+	friend singletonBase<battleManager>;
 
+public:
 	HRESULT init();
 	void release();
 	void update();

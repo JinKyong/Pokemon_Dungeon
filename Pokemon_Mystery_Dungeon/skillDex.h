@@ -15,6 +15,9 @@ private:
 
 	int _index;
 
+	skillDex() {};
+	friend singletonBase<skillDex>;
+
 public:
 	HRESULT init();
 	void release();

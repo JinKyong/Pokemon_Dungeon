@@ -16,10 +16,10 @@ private:
 
 	Player* _player;
 
-public:
 	InventoryManager() {};
-	~InventoryManager() {};
+	friend singletonBase<InventoryManager>;
 
+public:
 	virtual HRESULT init();
 	void release();
 

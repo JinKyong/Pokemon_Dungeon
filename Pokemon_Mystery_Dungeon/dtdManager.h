@@ -22,6 +22,9 @@ private:
 
 	bool _clear;
 
+	dtdManager() {};
+	friend singletonBase<dtdManager>;
+
 public:
 	HRESULT init();
 	void release();

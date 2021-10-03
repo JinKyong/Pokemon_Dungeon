@@ -7,10 +7,7 @@ HRESULT Scene::init(Player * player)
 {
 	_player = player;
 
-	_itemManager = new ItemManager;
-	_itemManager->init();
-
-	TURNMANAGER->init(_itemManager);
+	TURNMANAGER->init();
 
 	return S_OK;
 }

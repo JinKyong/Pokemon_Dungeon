@@ -2,15 +2,6 @@
 #include "txtData.h"
 #include "Item.h"
 
-txtData::txtData()
-{
-}
-
-
-txtData::~txtData()
-{
-}
-
 HRESULT txtData::init()
 {
 	return S_OK;

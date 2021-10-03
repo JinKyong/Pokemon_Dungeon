@@ -20,10 +20,11 @@ private:
 	//플레이어랑 에너미
 	//플레이어랑 아이템
 
-public:
-	collisionManager() {};
-	~collisionManager() {};
 
+	collisionManager() {};
+	friend singletonBase<collisionManager>;
+
+public:
 	HRESULT init(Scene* scene);
 	void release();
 

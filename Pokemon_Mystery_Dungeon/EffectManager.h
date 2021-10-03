@@ -20,10 +20,10 @@ private:
 	skillEffect	_vEffect;
 	skillIter	_viEffect;
 
-public:
 	EffectManager() {};
-	~EffectManager() {};
+	friend singletonBase<EffectManager>;
 
+public:
 	virtual HRESULT init();
 	virtual void release();
 	virtual void update();

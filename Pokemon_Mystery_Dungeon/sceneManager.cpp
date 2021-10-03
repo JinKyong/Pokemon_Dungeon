@@ -8,15 +8,6 @@
 Player* sceneManager::_player = NULL;
 Scene* sceneManager::_currentScene = NULL;
 
-sceneManager::sceneManager()
-{
-}
-
-
-sceneManager::~sceneManager()
-{
-}
-
 HRESULT sceneManager::init()
 {
 	SCENEMANAGER->addScene("boss", new bossMapScene);

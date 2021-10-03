@@ -15,6 +15,9 @@ private:
 
 	int _index;
 
+	pokeDex() {};
+	friend singletonBase<pokeDex>;
+
 public:
 	HRESULT init();
 	void release();

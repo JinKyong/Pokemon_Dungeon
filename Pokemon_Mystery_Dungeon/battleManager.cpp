@@ -26,10 +26,6 @@ battleManager::battleManager() :
 {
 }
 
-battleManager::~battleManager()
-{
-}
-
 HRESULT battleManager::init()
 {
 

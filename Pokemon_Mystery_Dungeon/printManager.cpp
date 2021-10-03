@@ -11,5 +11,3 @@ HRESULT printManager::init()
 void printManager::release()
 {
 }
-
-

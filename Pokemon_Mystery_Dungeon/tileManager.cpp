@@ -1,14 +1,6 @@
 #include "stdafx.h"
 #include "tileManager.h"
 
-tileManager::tileManager()
-{
-}
-
-tileManager::~tileManager()
-{
-}
-
 HRESULT tileManager::init()
 {
 	_floor++;

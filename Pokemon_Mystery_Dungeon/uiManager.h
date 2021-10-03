@@ -39,6 +39,9 @@ private:
 
 	bool _open;
 
+	uiManager() {};
+	friend singletonBase<uiManager>;
+
 public:
 	HRESULT init();
 	void release();

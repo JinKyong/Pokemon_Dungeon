@@ -1,10 +1,6 @@
 #include "stdafx.h"
 #include "turnManager.h"
 #include "Enemy.h"
-#include "Apple.h"
-#include "Gummy.h"
-#include "ThrowItem.h"
-#include "ItemManager.h"
 
 HRESULT turnManager::init()
 {
@@ -14,12 +10,6 @@ HRESULT turnManager::init()
 	_currentProgressTurn = POKEMON_STATE_DEFAULT;
 	_pause = false;
 
-	return S_OK;
-}
-
-HRESULT turnManager::init(ItemManager * im)
-{
-	_im = im;
 	return S_OK;
 }
 
@@ -185,22 +175,6 @@ void turnManager::randomSetting()
 	float y2 = RND->getFromIntTo((*room)[index2].top, (*room)[index2].bottom);
 	float x3 = RND->getFromIntTo((*room)[index3].left, (*room)[index3].right);
 	float y3 = RND->getFromIntTo((*room)[index3].top, (*room)[index3].bottom);
-
-	Apple* apple;
-	apple = new Apple;
-	apple->init(x1, y1, PI);
-
-	Gummy* jelly;
-	jelly = new Gummy;
-	jelly->init(x2, y2, PI);
-
-	ThrowItem* titem;
-	titem = new ThrowItem;
-	titem->init(x3, y3, PI);
-
-	_im->addItem(apple);
-	_im->addItem(jelly);
-	_im->addItem(titem);
 }
 
 void turnManager::randomAddEnemy()

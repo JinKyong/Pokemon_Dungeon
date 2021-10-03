@@ -25,9 +25,11 @@ private:
 
 	ItemManager* _im;
 
+	turnManager() {};
+	friend singletonBase<turnManager>;
+
 public:
 	HRESULT init();
-	HRESULT init(ItemManager* im);
 	void release();
 	void update();
 	void render();

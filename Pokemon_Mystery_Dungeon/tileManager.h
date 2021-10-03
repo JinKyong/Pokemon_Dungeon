@@ -68,10 +68,10 @@ private:
 	int _minLevel;
 	int _maxLevel;
 
-public:
-	tileManager();
-	~tileManager();
+	tileManager() {};
+	friend singletonBase<tileManager>;
 
+public:
 	HRESULT init();										//기본 이니셜라이즈
 	HRESULT init(int width, int height, int type);		//던전용 이니셜라이즈
 	void release();

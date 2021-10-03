@@ -4,7 +4,6 @@
 #include "ItemManager.h"
 #include "Player.h"
 
-
 HRESULT collisionManager::init(Scene * scene)
 {
 	_scene = scene;

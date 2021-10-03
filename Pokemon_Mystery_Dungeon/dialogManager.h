@@ -40,6 +40,9 @@ private:
 	//전투 log가 담기는 vector
 	battleLog _battleLog;
 
+	dialogManager() {};
+	friend singletonBase<dialogManager>;
+
 public:
 	HRESULT init();
 	void release();
